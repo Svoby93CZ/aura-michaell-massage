@@ -609,6 +609,22 @@ header { /* 04. Navigation & Hero Components */
     max-width: none; /* Zruší maximální šířku, aby se přizpůsobila dostupnému místu */
     min-width: 0; /* Povolení zmenšení tlačítek, pokud je položek více */
   }
+
+  /* Grid layout pro navigaci - 3 sloupce, 2 řádky */
+  .page-services .services-nav--grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 sloupce stejné šířky */
+    grid-template-rows: repeat(2, auto); /* 2 řádky automatické výšky */
+    gap: 18px; /* Mezera mezi tlačítky */
+    max-width: 100%; /* Přes celou šířku stránky */
+    width: 100%; /* Plná šířka */
+    padding: 18px 24px;
+  }
+
+  .page-services .services-nav--grid .nav-btn {
+    flex: none; /* Vypnutí flex vlastností pro grid */
+    width: auto; /* Automatická šířka podle gridu */
+  }
 }
 
 .hero-nav--featured { /* Zvýrazněná „karta“ navigace v hero sekci */
@@ -855,7 +871,7 @@ header { /* 04. Navigation & Hero Components */
   font-size: 18px; /* Nastaví velikost písma. */
   font-weight: 600; /* Určuje tloušťku písma. */
   color: #000000; /* Nastaví barvu textu. */
-  margin: 20px auto; /* Odsadí prvek od okolního obsahu. */
+  margin: 10px auto; /* Odsadí prvek od okolního obsahu. */
   max-width: 90%; /* Omezí maximální šířku prvku. */
 }
 .cards > * {
@@ -881,7 +897,7 @@ header { /* 04. Navigation & Hero Components */
   padding: 12px 18px; /* Přidá vnitřní odsazení prvku. */
   margin: 16px auto 24px; /* Odsadí prvek od okolního obsahu. */
   border-radius: 18px; /* Zaoblí rohy prvku. */
-  background: linear-gradient(135deg, rgba(124,74,39,0.96), rgba(171,117,78,0.92)); /* Definuje pozadí prvku. */
+  background: linear-gradient(-68deg, rgba(134, 59, 53, 0.96), rgba(184, 140, 140, 0.92)); /* Definuje pozadí prvku. */
   color: #361000; /* Nastaví barvu textu. */
   font-family: 'Raleway', sans-serif; /* Určuje použité písmo. */
   font-size: 0.95rem; /* Nastaví velikost písma. */
@@ -978,9 +994,10 @@ header { /* 04. Navigation & Hero Components */
   flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
   justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
   gap: 24px; /* Nastaví mezery mezi položkami. */
-  font-size: 1.3em; /* Nastaví velikost písma. */
+  font-size: 1.1em; /* Nastaví velikost písma. */
   font-weight: bold; /* Určuje tloušťku písma. */
   text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000; /* Přidá stín textu. */
+  text-align: center; /* Zarovná text na střed */
 }
 
 .page-services .indikace {
@@ -989,6 +1006,19 @@ header { /* 04. Navigation & Hero Components */
 
 .page-services .kontraindikace {
   color: #e33333; /* Nastaví barvu textu. */
+}
+
+/* Kontejner pro zobrazení INDIKACE a KONTRAINDIKACE vedle sebe */
+.indikace-kontraindikace-container {
+  display: flex; /* Flexbox pro položky vedle sebe */
+  gap: 16px; /* Mezera mezi sekcemi */
+  margin-bottom: 24px; /* Spodní okraj */
+  flex-wrap: wrap; /* Umožní zalomení na menších obrazovkách */
+}
+
+.indikace-kontraindikace-container > div {
+  flex: 1; /* Obě sekce budou stejně široké */
+  min-width: 280px; /* Minimální šířka pro zachování čitelnosti */
 }
 
 /* Parallax efekt pro aromaterapii - s fade efektem jako na hlavní stránce */
@@ -3482,5 +3512,41 @@ body.night-mode .logo-bubble img:hover {
     height: 6px;
     top: 3px;
     left: 14px;
+  }
+}
+
+/* ========================================
+   Úpravy navigace pro stránku služeb
+   ======================================== */
+
+.page-services .primary-nav__inner {
+  justify-content: center; /* Centrování navigace bez loga */
+}
+
+.page-services .primary-nav__brand {
+  display: none; /* Skrytí loga na stránce služeb */
+}
+
+.page-services .primary-nav__toggle {
+  margin-right: auto; /* Zarovnání hamburger menu vlevo */
+}
+
+.page-services .primary-nav__menu {
+  margin-left: 0; /* Odstranění levého marginu */
+}
+
+/* Desktop navigace - zajištění stejné velikosti všech tlačítek */
+@media (min-width: 921px) {
+  .page-services .primary-nav__link {
+    white-space: nowrap; /* Zabránění zalamování textu */
+    min-width: fit-content; /* Minimální šířka podle obsahu */
+  }
+
+  .page-services .primary-nav__menu {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
   }
 }
