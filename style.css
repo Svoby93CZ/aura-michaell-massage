@@ -44,6 +44,16 @@ html { /* 02. Base Elements */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
 }
 
+/* Performance optimalizace */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, iframe {
+  content-visibility: auto;
+}
+
 body { /* ZÁKLADNÍ STYLY */
   margin: 0; /* Odsadí prvek od okolního obsahu. */
   padding: 0 var(--pad) 40px; /* Přidá vnitřní odsazení prvku. */
@@ -89,6 +99,8 @@ body { /* ZÁKLADNÍ STYLY */
   background-attachment: fixed, fixed; /* Určuje, zda se pozadí posouvá se stránkou. */
   border-radius: inherit; /* Zaoblí rohy prvku. */
   pointer-events: none; /* Řídí reakci na události kurzoru. */
+  will-change: transform; /* Optimalizace pro GPU akceleraci */
+  transform: translateZ(0); /* Hardware acceleration */
   -webkit-mask-image: linear-gradient(90deg,
       rgba(0,0,0,0) 0%,
       rgba(0,0,0,0.35) 6%,
@@ -163,6 +175,16 @@ body { /* ZÁKLADNÍ STYLY */
 .parallax-bonus {
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.0), rgba(26,12,6,0.0)); /* Určuje překryvný gradient parallax sekce. */
   --parallax-image: url('galerie/karty.jpg'); /* Vybere obrázek používaný pro parallax pozadí. */
+}
+
+.parallax-vouchers {
+  --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.0), rgba(26,12,6,0.0)); /* Určuje překryvný gradient parallax sekce. */
+  --parallax-image: url('Poukazy/Poukaz 1000,-.jpg'); /* Vybere obrázek používaný pro parallax pozadí. */
+  margin-top: -40px; /* Posune parallax výše */
+}
+
+.parallax-vouchers::before {
+  opacity: 0.3; /* Průhlednost pouze pozadí parallaxu */
 }
 
 .parallax-balance {
@@ -695,6 +717,37 @@ header { /* 04. Navigation & Hero Components */
   .parallax-section {
     background-attachment: scroll; /* Určuje, zda se pozadí posouvá se stránkou. */
   }
+
+  .parallax-vouchers::before {
+    content: none !important; /* Úplně odstraní pseudo element */
+    display: none !important; /* Vypne parallax pozadí v mobilním zobrazení */
+  }
+
+  .parallax-vouchers {
+    background: #fff8f0 !important; /* Jednoduchá světlá barva pozadí */
+    background-image: none !important; /* Vypne všechny background-image */
+    background-attachment: scroll !important;
+    margin: 20px 0 !important; /* Normální marginy */
+    padding: 20px 15px !important; /* Vnitřní padding */
+    min-height: auto !important; /* Vypne min-height */
+    height: auto !important;
+    position: static !important; /* Změní position */
+    overflow: visible !important;
+    border-radius: 12px;
+  }
+
+  .parallax-vouchers .parallax-content {
+    color: #000 !important; /* Tmavý text */
+    position: static !important;
+    z-index: auto !important;
+    text-shadow: none !important;
+  }
+
+  .parallax-vouchers p,
+  .parallax-vouchers span {
+    text-shadow: none !important; /* Odstraní všechny stíny textu */
+    color: inherit !important;
+  }
   .hero-nav {
     gap: 8px; /* Nastaví mezery mezi položkami. */
     padding: 8px 10px; /* Přidá vnitřní odsazení prvku. */
@@ -1014,11 +1067,103 @@ header { /* 04. Navigation & Hero Components */
   gap: 16px; /* Mezera mezi sekcemi */
   margin-bottom: 24px; /* Spodní okraj */
   flex-wrap: wrap; /* Umožní zalomení na menších obrazovkách */
+  max-width: 100%;
 }
 
-.indikace-kontraindikace-container > div {
+.indikace-kontraindikace-container > div,
+.indikace-kontraindikace-container > details {
   flex: 1; /* Obě sekce budou stejně široké */
   min-width: 280px; /* Minimální šířka pro zachování čitelnosti */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.indikace-kontraindikace-container summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px dashed rgba(60,30,10,0.35);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  flex-wrap: wrap;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.indikace-kontraindikace-container summary::-webkit-details-marker {
+  display: none;
+}
+
+.indikace-kontraindikace-container summary h3 {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.indikace-kontraindikace-container summary h3 span {
+  display: block;
+  font-size: 0.95em;
+  margin-top: 4px;
+}
+
+.indikace-kontraindikace-container summary::after {
+  content: "Rozkliknout ▾";
+  font-size: 0.95em;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  transition: transform 0.2s ease, color 0.2s ease;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.indikace-toggle summary::after {
+  color: #92ab4e;
+}
+
+.kontraindikace-toggle summary::after {
+  color: #e33333;
+}
+
+.indikace-kontraindikace-container details[open] summary::after {
+  content: "Skrýt ▴";
+  transform: none;
+}
+
+.indikace-kontraindikace-container summary:hover {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(60,30,10,0.55);
+}
+
+.indikace-kontraindikace-container summary:focus-visible {
+  outline: 3px solid rgba(124, 74, 39, 0.55);
+  outline-offset: 2px;
+}
+
+.indikace-kontraindikace-container details > ul {
+  margin-top: 10px;
+}
+
+@media (max-width: 720px) {
+  .indikace-kontraindikace-container {
+    gap: 12px;
+  }
+
+  .indikace-kontraindikace-container > details {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  .indikace-kontraindikace-container summary {
+    padding: 4px 0;
+  }
 }
 
 /* Parallax efekt pro aromaterapii - s fade efektem jako na hlavní stránce */
@@ -2395,14 +2540,14 @@ footer img {
     display: flex; /* Nastaví způsob zobrazení prvku. */
     flex-direction: row; /* Určuje směr Flexboxu. */
     flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-    gap: 32px; /* Nastaví mezery mezi položkami. */
+    gap: 16px; /* Nastaví mezery mezi položkami. */
     justify-content: flex-start; /* Zarovná děti v hlavní ose Flexboxu. */
     margin-top: 12px; /* Odsazení shora pro prvek. */
   }
   .cards .card-info {
-    flex: 0 1 24%; /* Rychle nastaví chování flex položky. */
-    max-width: 24%; /* Omezí maximální šířku prvku. */
-    min-width: 220px; /* Nastaví minimální šířku prvku. */
+    flex: 0 1 20%; /* Rychle nastaví chování flex položky. */
+    max-width: 20%; /* Omezí maximální šířku prvku. */
+    min-width: 200px; /* Nastaví minimální šířku prvku. */
     box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
     margin: 0; /* Odsadí prvek od okolního obsahu. */
     display: flex; /* Nastaví způsob zobrazení prvku. */
@@ -2762,6 +2907,8 @@ body.nav-open {
   backdrop-filter: blur(10px);
   pointer-events: none;
   transition: background 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform; /* GPU acceleration */
+  transform: translateZ(0); /* Hardware acceleration */
 }
 
 .primary-nav__inner {
@@ -2813,7 +2960,7 @@ body.nav-open {
   left: clamp(22px, 4vw, 36px);
   transform: translateY(-50%);
   font-family: 'Inknut Antiqua', serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   letter-spacing: 0.6px;
   color: #2b1c12;
   text-decoration: none;
@@ -2823,7 +2970,7 @@ body.nav-open {
   opacity: 0;
   width: 0;
   pointer-events: none;
-  --nav-title-width: 18.5ch;
+  --nav-title-width: 33ch;
   z-index: var(--layer-dropdown);
   display: inline-flex;
   align-items: center;
@@ -2881,14 +3028,15 @@ body.nav-open {
 }
 
 .primary-nav--condensed .primary-nav__link--cta {
-  background: linear-gradient(100deg, #590000 60%, #560000 100%);
-  border: 2px solid rgba(255,248,242,0.28);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  background: linear-gradient(100deg, #d32f2f 0%, #c62828 100%);
+  border: 2px solid rgba(255,248,242,0.4);
+  box-shadow: 0 8px 22px rgba(211,47,47,0.4);
 }
 
 .primary-nav--condensed .primary-nav__link--cta:hover,
 .primary-nav--condensed .primary-nav__link--cta:focus-visible {
-  background: linear-gradient(100deg, #8b1111 60%, #c62828 100%);
+  background: linear-gradient(100deg, #f44336 0%, #e53935 100%);
+  box-shadow: 0 10px 26px rgba(211,47,47,0.5);
 }
 
 .primary-nav--condensed .primary-nav__menu {
@@ -2991,6 +3139,9 @@ body.nav-open {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, padding 0.2s ease, border-color 0.3s ease, color 0.3s ease;
   text-shadow: 0 1px 3px rgba(0,0,0,0.25);
   -webkit-text-stroke: 0.1px #000000;
+  white-space: nowrap; /* Zabránění zalamování textu pro konzistentní velikost */
+  will-change: transform; /* Optimalizace pro animace */
+  backface-visibility: hidden; /* Zabránění blikání při animacích */
 }
 
 .primary-nav__dropdown-toggle {
@@ -3054,14 +3205,16 @@ body.nav-open {
 }
 
 .primary-nav__link--cta {
-  background: linear-gradient(100deg, #590000 60%, #560000 100%);
-  border: 2px solid rgba(255,248,242,0.28);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  background: linear-gradient(100deg, #d32f2f 0%, #c62828 100%);
+  border: 2px solid rgba(255,248,242,0.4);
+  box-shadow: 0 10px 28px rgba(211,47,47,0.45);
+  font-weight: 700;
 }
 
 .primary-nav__link--cta:hover,
 .primary-nav__link--cta:focus-visible {
-  background: linear-gradient(100deg, #8b1111 60%, #c62828 100%);
+  background: linear-gradient(100deg, #f44336 0%, #e53935 100%);
+  box-shadow: 0 12px 32px rgba(211,47,47,0.55);
 }
 
 .primary-nav__dropdown {
@@ -3165,23 +3318,12 @@ body.night-mode .primary-nav__dropdown-panel {
   }
 
   .primary-nav__title-link {
-    position: static;
-    transform: none;
-    margin: 0 0 8px;
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    align-self: flex-start;
-    font-size: clamp(1rem, 5vw, 1.2rem);
-    width: 0;
-    overflow: hidden;
-    text-align: left;
+    display: none !important; /* Skryje název v mobilním zobrazení */
   }
 
   .primary-nav--show-title .primary-nav__title-link,
   .primary-nav--show-title.primary-nav--condensed .primary-nav__title-link {
-    width: var(--nav-title-width);
-    margin-bottom: 4px;
+    display: none !important; /* Skryje název v mobilním zobrazení */
   }
 
   .primary-nav--show-title .primary-nav__menu,
@@ -3219,16 +3361,21 @@ body.night-mode .primary-nav__dropdown-panel {
   .primary-nav__link,
   .primary-nav__dropdown-toggle {
     width: auto;
-    min-width: min(200px, 78vw);
-    max-width: min(260px, 90vw);
+    min-width: 200px;
+    max-width: 260px;
     justify-content: center;
     margin: 0 auto;
   }
 
   .primary-nav__dropdown {
-    width: 100%;
+    width: auto;
     flex-direction: column;
     align-items: center;
+  }
+
+  .primary-nav__dropdown-toggle {
+    min-width: 200px;
+    max-width: 260px;
   }
 
   .primary-nav__dropdown-panel {

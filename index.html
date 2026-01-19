@@ -36,7 +36,8 @@
   <link rel="icon" type="image/png" href="galerie/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="page-home">
@@ -46,7 +47,7 @@
       <a href="#hero" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
         <img src="galerie/logo.png" alt="Aura Michaell Massage" class="primary-nav__brand-logo" width="64" height="64" />
       </a>
-      <a href="#hero" class="primary-nav__title-link" aria-hidden="true" tabindex="-1">Aura Michaell Massage</a>
+      <a href="#hero" class="primary-nav__title-link" aria-hidden="true" tabindex="-1">AURA MICHAELL MASSAGE</a>
 
       <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
         <span class="primary-nav__toggle-bar"></span>
@@ -194,23 +195,31 @@
         <img src="galerie/shop4.jpg" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop4.jpg" loading="lazy">
         <img src="galerie/shop5.jpg" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop5.jpg" loading="lazy">
       </div>
-      <p><span style="font-weight: bold; font-size: 1.2em;">K zakoupení jsou i dárkové poukazy.</span><br></p>
-      <div class="shop-gallery" role="group" aria-label="Poukazy k zakoupení">
-        <img src="Poukazy/Poukaz 200,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 200,-.jpg" loading="lazy">
-        <img src="Poukazy/Poukaz 500,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 500,-.jpg" loading="lazy">
-        <img src="Poukazy/Poukaz 1000,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 1000,-.jpg" loading="lazy">
-        <img src="Poukazy/Poukaz 1500,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 1500,-.jpg" loading="lazy">
-        <img src="Poukazy/Poukaz 2000,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 2000,-.jpg" loading="lazy">
-      </div>
-      </section>
 
-      <section style="background-color: #ae865e2c; border: 2px solid #89491567; border-radius: 12px; padding: 20px; margin: 0 -24px; width: calc(100% + 48px); box-sizing: border-box; display: flex; flex-wrap: nowrap;">
-      <div style="text-align: center; font-weight: bold; font-size: 1em;">
-        <p style="color: #891915;text-align: center; font-weight: bold; font-size: 1.3em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">! Poukazy lze nyní zakoupit buď osobně v salonu, nebo nově elektronicky !</p>
-        <p>Pro poukaz v elektronické podobě je nutné se domluvit po telefonu, nebo osobně při návštěvě salonu.<br>
-          V elektronické podobě si můžete sami zvolit <span style="font-size: 1.2em; color: #3f8915; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">libovolnou hodnotu</span> poukazu.</p>
-        <p>Po domluvě Vám přes <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">SMS</span> napíšu platební údaje a po zaplacení pošlu na <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">e-mail</span> poukaz ve formátu <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">PDF</span>, který si můžete vytisknout nebo uložit do telefonu.</p>
-      </div>
+      <!-- Parallax sekce s poukazy -->
+      <section class="parallax-section parallax-vouchers" aria-label="Dárkové poukazy">
+        <div class="parallax-content">
+          <p><span style="font-weight: bold; font-size: 1.2em; color: #000">K zakoupení jsou i dárkové poukazy.</span><br></p>
+
+          <div class="shop-gallery" role="group" aria-label="Poukazy k zakoupení">
+            <img src="Poukazy/Poukaz 200,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 200,-.jpg" loading="lazy">
+            <img src="Poukazy/Poukaz 500,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 500,-.jpg" loading="lazy">
+            <img src="Poukazy/Poukaz 1000,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 1000,-.jpg" loading="lazy">
+            <img src="Poukazy/Poukaz 1500,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 1500,-.jpg" loading="lazy">
+            <img src="Poukazy/Poukaz 2000,-.jpg" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 2000,-.jpg" loading="lazy">
+          </div>
+      </section>
+          <div style="padding-top: 20px;">
+            <div style="background-color: #ae865e2c; border: 2px solid #89491567; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+              <div style="text-align: center; font-weight: bold; font-size: 1em;">
+                <p style="color: #891915; text-align: center; font-weight: bold; font-size: 1.3em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">! Poukazy lze nyní zakoupit buď osobně v salonu, nebo nově elektronicky !</p>
+                <p style="color: #000;">Pro poukaz v elektronické podobě je nutné se domluvit po telefonu, nebo osobně při návštěvě salonu.<br>
+                  V elektronické podobě si můžete sami zvolit <span style="font-size: 1.2em; color: #3f8915; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">libovolnou hodnotu</span> poukazu.</p>
+                <p style="color: #000;">Po domluvě Vám přes <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">SMS</span> napíšu platební údaje a po zaplacení pošlu na <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">e-mail</span> poukaz ve formátu <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">PDF</span>, který si můžete vytisknout nebo uložit do telefonu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <div style="padding: 24px;"></div>
 
@@ -306,7 +315,7 @@
     <button type="button" class="modal-nav modal-nav--next" aria-label="Další obrázek">&#10095;</button>
   </div>
 
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 
   <!-- Noční režim script -->
   <script>
