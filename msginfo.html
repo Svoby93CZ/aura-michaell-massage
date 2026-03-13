@@ -27,6 +27,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Style+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="vylepšení.css">
   <link rel="icon" href="favicon.ico">
 </head>
 <body class="page-services">
@@ -39,7 +40,7 @@
         <span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-label">Menu</span>
       </button>
-
+      <!-- Hlavní navigační menu -->
       <div class="primary-nav__menu" id="primary-nav-menu" aria-hidden="true">
         <a href="#klasicke" class="primary-nav__link">Klasické masáže</a>
         <a href="#sportovni" class="primary-nav__link">Sportovní masáže</a>
@@ -47,19 +48,84 @@
         <a href="#slowtouch" class="primary-nav__link">Tichý dotek</a>
         <a href="#vedomy" class="primary-nav__link">Vědomý dotek</a>
         <a href="#ostatni" class="primary-nav__link">Ostatní služby</a>
-        <a href="index.html" class="primary-nav__link primary-nav__link--cta">← Domů</a>
+        <a href="index.html" class="primary-nav__link primary-nav__link--cta">← Hlavní stránka</a>
       </div>
     </div>
   </nav>
+        <div style="padding-top: 42px;-webkit-text-stroke: 0.1px #000000;text-align: center;font-size: 2.5rem;">
+          <h1>Přehled masáží a služeb</h1>
+        </div>
+  <section class="services-hero"> <!-- Hrdina sekce služeb -->
+    <header class="services-hero__header">
+      <section class="services-hero__intro">
 
-  <header>
-    <div class="hero-title" style="margin-top: 80px;">
-      <h1 style="-webkit-text-stroke: 0.1px #000000;">Přehled masáží a služeb</h1>
-      <div class="logo-bubble">
-        <img src="galerie/logo.png" alt="aura-michaell-massage">
+        <div class="services-hero__intro-text" style="background: url('galerie/papir.png') no-repeat center center; background-size: cover; box-shadow: none; border-radius: 23px; padding: 20px;">
+          <p>Vítejte v přehledu všech masáží a služeb.</p>
+          <p>Níže najdete stručné popisy, indikace a kontraindikace, ceny i délky jednotlivých procedur.</p>
+          <p>Stačí si vybrat, co vám nejvíce vyhovuje a jedním kliknutím na cenovku přejít k rezervaci.</p>
+        </div>
+      </section>
+
+      <div class="services-hero__oil-cards" style="padding-top: 130px;">
+        <!-- Aroma oleje TOMFIT -->
+        <div style="background: rgba(124,200,120,.15); padding: 12px; border-radius: 8px; border-style: solid; border-color: #7cb878; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 12px;">
+          <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #2d5a26;">🌿 <span style="-webkit-text-stroke: 0.1px #000; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Aroma oleje</span> <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">TOMFIT</span></h4>
+          <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
+              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #228b22; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍃 Zelený čaj</span><br> Osvěžující a revitalizační účinek</li>
+              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #006400; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🌿 Tea tree</span><br> Očistné a antibakteriální působení</li>
+              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #ff8c00; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍊 Pomeranč</span><br> Pozitivní energie, uvolnění stresu</li>
+              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #32cd32; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🌱 Aloe vera</span><br> Hydratace a zklidnění pokožky</li>
+              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #8b4513; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍫 Čokoláda</span><br> Hřejivá vůně, uvolnění a hebkost</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
+
+    <!-- Aromaterapeutická masáž - s parallax efektem -->
+    <section id="aromaterapie-featured" class="services-hero__aroma">
+      <div class="services-hero__aroma-wrapper">
+        <div id="aromaterapie" style="position: relative; z-index: 1; padding: 16px 8px; margin: 0 auto; max-width: 1200px;">
+          <div class="classic-massage-info" style="font-size: 1.3em;">
+
+            <h3 style="font-weight: bold; text-align: center;"><span style="border-bottom: 2px solid #585046;font-size: 1.8em;-webkit-text-stroke: 0.1px #2b1e17;">
+              Aromaterapeutická masáž s oleji<br></span>
+              <span style="-webkit-text-stroke: 0.1px #f1962049;font-size: 1.8em;">TOMFIT</span>
+              <span style="font-size: 1.8em;">&</span>
+              <span style="-webkit-text-stroke: 0.1px #f1962049;font-size: 1.8em">VERANA</span>
+            </h3>
+          </div>
+          <div class="classic-massage-info" style="font-size: 0.95em; font-weight: bold; text-align: center; margin-bottom: 20px;">
+            <p style="font-size: 1.4em; color: #4a3a2a; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.751);">Vyberte si masážní olej podle nálady a toho, co právě potřebuje vaše tělo.</p>
+            <p style="font-size: 1.3em; background: rgba(255, 215, 100, 0.3); padding: 8px 16px; border-radius: 8px; display: inline-block; margin-top: 8px;">
+              ✨ <strong>Aromaoleje lze použít ke všem masážím v naší nabídce!</strong> ✨
+            </p>
+            <p style="font-size: 1.25em; margin-top: 12px;text-shadow: 0 2px 4px rgba(255, 255, 255, 0.751);">Používám kvalitní přírodní produkty značek <span style="font-weight: bolder; font-size: 1.2em; -webkit-text-stroke: 0.1px #f1962049;">TOMFIT</span> a <span style="font-weight: bold; -webkit-text-stroke: 0.1px #f1962049; font-size: 1.2em">VERANA</span>, které podpoří relaxaci, regeneraci a krásný pocit z masáže.</p>
+            <div style="padding-bottom: 16px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Další produkty pod aromaterapií -->
+      <div class="aroma-side-cards" style="padding-bottom: 10px;">
+        <!-- Emulze TOMFIT -->
+        <div style="background: rgba(180,150,200,.15); padding: 12px; border-radius: 8px; border-style: solid; border-color: #b496c8; box-shadow: 0 2px 8px rgba(60,30,10,0.25);">
+          <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #5a3d6a;">🌼 <span style="-webkit-text-stroke: 0.1px #000;  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Emulze</span>
+            <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">TOMFIT</span></h4>
+          <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
+            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #227f8b; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Měsíčková</span><br> Péče pro citlivou pokožku, regenerace</li>
+          </ul>
+        </div>
+        <!-- Speciální olej VERANA -->
+        <div style="background: rgba(255,165,80,.15); padding: 12px; border-radius: 8px; border-style: solid; border-color: #ffa550; box-shadow: 0 2px 8px rgba(60,30,10,0.25);">
+          <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #a05000;">🍊 <span style="-webkit-text-stroke: 0.1px #000; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Speciální olej</span> <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">VERANA</span></h4>
+          <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em;text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
+            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #8b226b; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Stop Cellulite</span><br> Pomoc při pevnějším a hladším vzhledu pokožky</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </section>
 
   <nav class="hero-nav hero-nav--featured services-nav services-nav--grid" role="navigation" aria-label="Navigace služeb" style="display: none;">
     <a href="#klasicke" class="nav-btn"><span>Klasické masáže</span></a>
@@ -69,56 +135,6 @@
     <a href="#vedomy" class="nav-btn"><span>Vědomý dotek</span></a>
     <a href="#ostatni" class="nav-btn"><span>Ostatní služby</span></a>
   </nav>
-
-  <!-- Aromaterapeutická masáž - s parallax efektem -->
-  <section id="aromaterapie-featured">
-    <div id="aromaterapie" style="position: relative; z-index: 1; padding: 16px 8px; margin: 0 auto; max-width: 1200px;">
-      <div class="classic-massage-info" style="font-size: 1.3em;">
-        <h3 style="font-weight: bold; text-align: center;"><span style="border-bottom: 2px solid #585046;font-size: 1.8em;-webkit-text-stroke: 0.1px #2b1e17;">
-          Aromaterapeutická masáž s oleji<br></span>
-          <span style="-webkit-text-stroke: 0.1px #f1962049;font-size: 1.8em;">TOMFIT</span>
-          <span style="font-size: 1.8em;">&</span>
-          <span style="-webkit-text-stroke: 0.1px #f1962049;font-size: 1.8em">VERANA</span>
-        </h3>
-      </div>
-      <div class="classic-massage-info" style="font-size: 0.95em; font-weight: bold; text-align: center; margin-bottom: 20px;">
-        <p style="font-size: 1.4em; color: #4a3a2a; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.751);">Vyberte si masážní olej podle nálady a toho, co právě potřebuje vaše tělo.</p>
-        <p style="font-size: 1.3em; background: rgba(255, 215, 100, 0.3); padding: 8px 16px; border-radius: 8px; display: inline-block; margin-top: 8px;">
-          ✨ <strong>Aromaoleje lze použít ke všem masážím v naší nabídce!</strong> ✨
-        </p>
-        <p style="font-size: 1.25em; margin-top: 12px;text-shadow: 0 2px 4px rgba(255, 255, 255, 0.751);">Používám kvalitní přírodní produkty značek <span style="font-weight: bolder; font-size: 1.2em; -webkit-text-stroke: 0.1px #f1962049;">TOMFIT</span> a <span style="font-weight: bold; -webkit-text-stroke: 0.1px #f1962049; font-size: 1.2em">VERANA</span>, které podpoří relaxaci, regeneraci a krásný pocit z masáže.</p>
-        <div style="padding-bottom: 16px;"></div>
-      </div>
-      <!-- Aroma oleje TOMFIT -->
-      <div style="background: rgba(124,200,120,.15); padding: 12px; border-radius: 8px; border-style: solid; border-color: #7cb878; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 12px;">
-        <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #2d5a26;">🌿 <span style="-webkit-text-stroke: 0.1px #000; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Aroma oleje</span> <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">TOMFIT</span></h4>
-        <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
-            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #228b22; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍃 Zelený čaj</span><br> Osvěžující a revitalizační účinek</li>
-            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #006400; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🌿 Tea tree</span><br> Očistné a antibakteriální působení</li>
-            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #ff8c00; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍊 Pomeranč</span><br> Pozitivní energie, uvolnění stresu</li>
-            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #32cd32; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🌱 Aloe vera</span><br> Hydratace a zklidnění pokožky</li>
-            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #8b4513; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍫 Čokoláda</span><br> Hřejivá vůně, uvolnění a hebkost</li>
-        </ul>
-      </div>
-      <!-- Emulze TOMFIT a Speciální olej VERANA - druhý sloupec -->
-      <div>
-        <!-- Emulze TOMFIT -->
-        <div style="background: rgba(180,150,200,.15); padding: 12px; border-radius: 8px; border-style: solid; border-color: #b496c8; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 12px;">
-          <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #5a3d6a;">🌼 <span style="-webkit-text-stroke: 0.1px #000;  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Emulze</span> <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">TOMFIT</span></h4>
-          <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
-            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #227f8b; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Měsíčková</span><br> Péče pro citlivou pokožku, regenerace</li>
-          </ul>
-        </div>
-        <!-- Speciální olej VERANA -->
-        <div style="background: rgba(255,165,80,.15); padding: 12px; border-radius: 8px; border-style: solid; border-color: #ffa550; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 12px;">
-          <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #a05000;">🍊 <span style="-webkit-text-stroke: 0.1px #000; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Speciální olej</span> <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">VERANA</span></h4>
-          <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em;text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
-            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #8b226b; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Stop Cellulite</span><br> Pomoc při pevnějším a hladším vzhledu pokožky</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Upozornění na příplatek -->
   <div style="max-width: 1200px; margin: 0 auto; padding: 8px 8px 20px 8px;border-bottom: 3px solid #8a8a8a;">
@@ -139,11 +155,15 @@
         <div class="classic-massage-info" style="font-size: 0.8em;font-weight: bold;">
           <p>Klasická masáž je jednou z nejznámějších a nejoblíbenějších forem masáže, vhodná pro každého bez ohledu na věk či životní styl.</p>
           <p>Přináší uvolnění svalů, podporuje správné držení těla a pomáhá zmírnit bolesti způsobené stresem, jednostrannou zátěží nebo sedavým zaměstnáním.</p>
-          <p>Masáž zlepšuje prokrvení a okysličení tkání, podporuje přirozenou regeneraci a přináší celkový pocit lehkosti a relaxace.</p>
-          <p>Díky jemnějším i hlubším tahům působí nejen na tělo, ale i na psychiku – snižuje napětí, odstraňuje únavu a pomáhá navodit vnitřní rovnováhu.</p>
-          <p>Klasická masáž je tradiční forma masáže, která se zaměřuje na uvolnění svalového napětí, zlepšení krevního oběhu a celkovou relaxaci těla. Provádí se pomocí různých technik, jako je hnětení, tření, tepání a protahování.</p>
-          <p>Nejčastěji se masírují záda, šíje, ramena a končetiny. Klasická masáž pomáhá zmírnit stres, bolesti svalů i únavu a podporuje regeneraci organismu.</p>
+          <div class="read-more-content" style="display: none;">
+            <p>Masáž zlepšuje prokrvení a okysličení tkání, podporuje přirozenou regeneraci a přináší celkový pocit lehkosti a relaxace.</p>
+            <p>Díky jemnějším i hlubším tahům působí nejen na tělo, ale i na psychiku – snižuje napětí, odstraňuje únavu a pomáhá navodit vnitřní rovnováhu.</p>
+            <p>Klasická masáž je tradiční forma masáže, která se zaměřuje na uvolnění svalového napětí, zlepšení krevního oběhu a celkovou relaxaci těla. Provádí se pomocí různých technik, jako je hnětení, tření, tepání a protahování.</p>
+            <p>Nejčastěji se masírují záda, šíje, ramena a končetiny. Klasická masáž pomáhá zmírnit stres, bolesti svalů i únavu a podporuje regeneraci organismu.</p>
+          </div>
+          <button class="read-more-btn" onclick="toggleReadMore(this)" style="margin-top: 8px; padding: 6px 16px; background: rgba(124,74,39,.4); border: 1px solid #8b5a2b; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9em;">Číst více ▼</button>
         </div>
+        <div style="padding-bottom: 20px;"></div> <!-- Odstavec mezi textem a indikacemi -->
         <div class="indikace-kontraindikace-container">
           <!--Indikace-->
           <details class="indikace-toggle" style="background: rgba(69, 135, 38, 0.2); padding: 12px; border-radius: 8px; border-style: solid; border-color: #92ab4e; box-shadow: 0 2px 8px rgba(60,30,10,0.25);">
@@ -768,6 +788,7 @@
     </footer>
   <!-- Plovoucí tlačítko pro návrat nahoru -->
   <button id="scrollTopBtn" title="Zpět nahoru" style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: #7c4a27; color: #fff; border: none; font-size: 2em; box-shadow: 0 4px 16px rgba(60,30,10,0.18); cursor: pointer; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 9999;">↑</button>
+  <script src="main.js" defer></script>
   <script>
     const scrollBtn = document.getElementById('scrollTopBtn');
     window.addEventListener('scroll', function() {
@@ -820,94 +841,34 @@
     }
     */
 
-    // ===== Sticky navigace pro stránku služeb =====
-    const nav = document.querySelector('.primary-nav');
-    const body = document.body;
-    const menu = nav ? nav.querySelector('.primary-nav__menu') : null;
-    const toggle = nav ? nav.querySelector('.primary-nav__toggle') : null;
-    const heroTitle = document.querySelector('.hero-title');
-    let heroOutOfView = false;
+    // ===== Sticky mini-navigace =====
+    const miniNav = document.getElementById('miniNav');
+    if (miniNav) {
+      const handleMiniNavScroll = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        if (scrollY > 300) {
+          miniNav.classList.add('mini-nav--visible');
+        } else {
+          miniNav.classList.remove('mini-nav--visible');
+        }
+      };
+      window.addEventListener('scroll', handleMiniNavScroll, { passive: true });
+      handleMiniNavScroll();
+    }
 
-    const updateNavCondensed = () => {
-      if (!nav) return;
-      // Zobrazit sticky navigaci pouze když je hero-title mimo viewport
-      const shouldCondense = heroOutOfView && !nav.classList.contains('is-open');
-      nav.classList.toggle('primary-nav--condensed', shouldCondense);
+    // ===== Funkce pro "Číst více" =====
+    window.toggleReadMore = function(btn) {
+      const content = btn.previousElementSibling;
+      if (content && content.classList.contains('read-more-content')) {
+        if (content.style.display === 'none') {
+          content.style.display = 'block';
+          btn.innerHTML = 'Číst méně ▲';
+        } else {
+          content.style.display = 'none';
+          btn.innerHTML = 'Číst více ▼';
+        }
+      }
     };
-
-    if (nav && heroTitle && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          // Navigace je mimo viewport když její poměr viditelnosti je menší než 0.1
-          heroOutOfView = entry.intersectionRatio < 0.1;
-          updateNavCondensed();
-        });
-      }, {
-        threshold: [0, 0.1, 0.5, 1],
-        rootMargin: '0px'
-      });
-      observer.observe(heroTitle);
-    }
-
-    if (nav && menu && toggle) {
-      const closeMenu = () => {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        menu.setAttribute('aria-hidden', 'true');
-        menu.scrollTop = 0;
-        body.classList.remove('nav-open');
-        updateNavCondensed();
-      };
-
-      const openMenu = () => {
-        nav.classList.add('is-open');
-        toggle.setAttribute('aria-expanded', 'true');
-        menu.setAttribute('aria-hidden', 'false');
-        menu.scrollTop = 0;
-        body.classList.add('nav-open');
-        nav.classList.remove('primary-nav--condensed');
-        updateNavCondensed();
-      };
-
-      const syncForViewport = () => {
-        const isDesktop = window.matchMedia('(min-width: 921px)').matches;
-        if (isDesktop) {
-          nav.classList.remove('is-open');
-          toggle.setAttribute('aria-expanded', 'false');
-          menu.setAttribute('aria-hidden', 'false');
-          menu.scrollTop = 0;
-          body.classList.remove('nav-open');
-        } else {
-          if (!nav.classList.contains('is-open')) {
-            menu.setAttribute('aria-hidden', 'true');
-          }
-        }
-        updateNavCondensed();
-      };
-
-      toggle.addEventListener('click', () => {
-        if (nav.classList.contains('is-open')) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-
-      nav.querySelectorAll('.primary-nav__link').forEach(link => {
-        link.addEventListener('click', () => {
-          const isDesktop = window.matchMedia('(min-width: 921px)').matches;
-          if (!isDesktop) {
-            closeMenu();
-          }
-        });
-      });
-
-      window.addEventListener('resize', syncForViewport);
-      syncForViewport();
-    }
-
-    window.addEventListener('scroll', updateNavCondensed, { passive: true });
-    updateNavCondensed();
   </script>
 </body>
 </html>
