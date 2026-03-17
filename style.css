@@ -4430,7 +4430,14 @@ body.night-mode .logo-bubble img:hover {
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   display: block;
+  will-change: transform;
+}
+
+.lightbox-image-wrapper img:active {
+  cursor: grabbing;
 }
 
 /* Zoom Controls */
@@ -4531,5 +4538,51 @@ body.night-mode .logo-bubble img:hover {
   .lightbox-zoom-level {
     font-size: 0.75rem;
     min-width: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lightbox-image-wrapper {
+    width: 95vw;
+    height: 50vh;
+  }
+
+  .lightbox-img {
+    max-width: 95vw;
+    max-height: 50vh;
+  }
+
+  .lightbox-controls {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .lightbox-zoom-in,
+  .lightbox-zoom-out,
+  .lightbox-zoom-reset {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+
+  .lightbox-close {
+    width: 32px;
+    height: 32px;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lightbox-zoom-level {
+    font-size: 0.7rem;
+    min-width: 28px;
+  }
+
+  .lightbox-caption {
+    padding: 4px 8px;
+    font-size: 0.8rem;
   }
 }
