@@ -4029,3 +4029,507 @@ body.night-mode .logo-bubble img:hover {
     max-height: 500px;
   }
 }
+
+/* ========================================
+   CEREMONIE PAGE - MOBILNÍ OPTIMALIZACE
+   ======================================== */
+
+/* Responzivní h1 nadpis */
+.ceremonie-hero-title {
+  font-size: clamp(2.5rem, 8vw, 5rem) !important;
+  -webkit-text-stroke: 0.15px #000000;
+  color: #4a1f00;
+  text-shadow: 0 4px 8px rgba(209, 209, 209, 0.751);
+  text-align: center;
+  background: rgba(174, 174, 174, 0.315);
+  padding: 16px !important;
+  border-radius: 42px;
+  box-shadow: 0 2px 8px rgba(60,30,10,0.25);
+  max-width: fit-content;
+  margin: 0 auto !important;
+  padding-bottom: 23px !important;
+}
+
+/* Obsah sboxy - responzivní padding a font size */
+.ceremony-content-box {
+  font-size: clamp(1rem, 2.8vw, 1.25em);
+  background-image: url(galerie/papir.png);
+  background-size: cover;
+  background-position: center;
+  padding: clamp(12px, 4vw, 20px);
+  border-radius: 23px;
+  margin-bottom: clamp(16px, 4vw, 40px);
+}
+
+.ceremony-content-box p {
+  line-height: 1.6;
+  margin: clamp(8px, 2vw, 12px) 0;
+}
+
+.ceremony-content-box ul {
+  line-height: 1.7;
+  margin: clamp(12px, 2vw, 18px) 0 clamp(16px, 3vw, 24px) clamp(0.8em, 3vw, 1.1em);
+  padding-left: clamp(0.8em, 3vw, 1.1em);
+}
+
+.ceremony-content-box li {
+  margin-bottom: clamp(6px, 1.5vw, 8px);
+}
+
+/* Galerie obrázků - responzivní layout */
+.ceremony-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(12px, 3vw, 18px);
+  padding: clamp(12px, 2vw, 20px);
+}
+
+.ceremony-gallery img {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+/* Button - responzivní */
+.ceremony-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 2vw, 12px);
+  padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
+  border-radius: 999px;
+  background-image: url(galerie/darkpap.png);
+  background-size: cover;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: clamp(1rem, 2.5vw, 1.25em);
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+  display: inline-flex;
+  justify-content: center;
+  margin: clamp(16px, 3vw, 20px) auto;
+}
+
+.ceremony-btn:hover,
+.ceremony-btn:focus {
+  background: linear-gradient(90deg, #b97c4d 0%, #9b5c2e 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(60,30,10,0.28), 0 1.5px 0 #491e00 inset;
+}
+
+.ceremony-btn:active {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(60,30,10,0.2), 0 1.5px 0 #491e00 inset;
+}
+
+.ceremony-btn img {
+  width: clamp(20px, 3vw, 28px);
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+}
+
+/* Meta text - responzivní */
+.ceremony-meta-text {
+  font-style: italic;
+  margin-bottom: clamp(16px, 3vw, 28px);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.751);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.753);
+  padding: clamp(3px, 2vw, 4px);
+  border-color: #9114148d;
+  border-style: solid;
+  border-radius: 42px;
+  box-shadow: 0 2px 8px rgba(60,30,10,0.25);
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+}
+
+/* Mobil optimalizace */
+@media (max-width: 768px) {
+  .body_ceremonie {
+    padding: 0 clamp(8px, 2vw, 12px) clamp(24px, 5vw, 40px);
+    padding-top: 80px;
+  }
+
+  .ceremony-content-box {
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    padding: clamp(10px, 3vw, 16px);
+  }
+
+  .ceremony-gallery {
+    grid-template-columns: 1fr;
+    gap: clamp(10px, 2vw, 14px);
+  }
+
+  .ceremony-gallery img {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .body_ceremonie {
+    padding: 0 8px 24px;
+    padding-top: 70px;
+  }
+
+  .ceremonie-hero-title {
+    font-size: 2rem;
+    padding: 12px;
+    padding-bottom: 16px;
+    border-radius: 24px;
+  }
+
+  .ceremony-content-box {
+    font-size: 0.95rem;
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+  }
+
+  .ceremony-content-box h3 {
+    font-size: 1.1rem !important;
+    margin-top: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .ceremony-content-box ul {
+    margin-left: 1em;
+    font-size: 0.9rem;
+  }
+
+  .ceremony-gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .ceremony-gallery img {
+    aspect-ratio: auto;
+    max-height: 250px;
+  }
+
+  .ceremony-btn {
+    padding: 10px 16px;
+    font-size: 1rem;
+    gap: 8px;
+  }
+
+  .ceremony-btn img {
+    width: 20px;
+  }
+
+  .ceremony-meta-text {
+    font-size: 0.8rem;
+    padding: 2px 4px;
+  }
+}
+
+/* ========================================
+   LIGHTBOX MODAL PRO OBRÁZKY
+   ======================================== */
+
+.ceremony-gallery-img {
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.ceremony-gallery-img:hover,
+.ceremony-gallery-img:focus {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+  outline: none;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--layer-modal);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-modal[aria-hidden="false"] {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.lightbox-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 95vw;
+  max-height: 95vh;
+  animation: lightboxSlideIn 0.3s ease;
+}
+
+/* Lightbox Header - Toolbar */
+.lightbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+}
+
+/* Lightbox Content - Image s šipkami */
+.lightbox-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+@keyframes lightboxSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-img {
+  max-width: 85vw;
+  max-height: 85vh;
+  height: auto;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox-close {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+  background: rgba(255, 255, 255, 0.25);
+  transform: rotate(90deg);
+  outline: none;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.lightbox-prev:hover,
+.lightbox-prev:focus,
+.lightbox-next:hover,
+.lightbox-next:focus {
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
+.lightbox-prev:hover,
+.lightbox-prev:focus {
+  transform: translateX(-4px);
+}
+
+.lightbox-next:hover,
+.lightbox-next:focus {
+  transform: translateX(4px);
+}
+
+.lightbox-caption {
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: 80vw;
+  word-wrap: break-word;
+  z-index: 3;
+}
+
+/* Lightbox Image Wrapper - pro zoom */
+.lightbox-image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+  height: 70vh;
+  max-width: 1200px;
+  max-height: 700px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.lightbox-image-wrapper img {
+  transform-origin: center;
+  transition: transform 0.15s ease;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  display: block;
+}
+
+/* Zoom Controls */
+.lightbox-controls {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  z-index: 3;
+}
+
+.lightbox-zoom-in,
+.lightbox-zoom-out,
+.lightbox-zoom-reset {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.lightbox-zoom-in:hover,
+.lightbox-zoom-in:focus,
+.lightbox-zoom-out:hover,
+.lightbox-zoom-out:focus,
+.lightbox-zoom-reset:hover,
+.lightbox-zoom-reset:focus {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+  outline: none;
+}
+
+.lightbox-zoom-level {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 4px 8px;
+  min-width: 40px;
+}
+
+/* Mobilní optimalizace lightboxu */
+@media (max-width: 768px) {
+  .lightbox-container {
+    gap: 8px;
+  }
+
+  .lightbox-image-wrapper {
+    width: 90vw;
+    height: 60vh;
+  }
+
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 60vh;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    width: 44px;
+    height: 44px;
+  }
+
+  .lightbox-close {
+    width: 40px;
+    height: 40px;
+  }
+
+  .lightbox-caption {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .lightbox-controls {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .lightbox-zoom-in,
+  .lightbox-zoom-out,
+  .lightbox-zoom-reset {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lightbox-zoom-level {
+    font-size: 0.75rem;
+    min-width: 36px;
+  }
+}
