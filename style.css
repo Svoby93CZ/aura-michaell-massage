@@ -59,7 +59,7 @@ body { /* ZÁKLADNÍ STYLY */
   padding: 0 var(--pad) 40px; /* Přidá vnitřní odsazení prvku. */
   padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
   font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
-  background: url('pozadi.jpg') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
+  background: url('pozadi2.jpg') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
 }
@@ -1765,6 +1765,10 @@ header { /* 04. Navigation & Hero Components */
 footer { /* FOOTER */
   text-align: center; /* Zarovná text. */
   margin-top: 20px; /* Odsazení shora pro prvek. */
+  background-image: url(galerie/papir.png);
+  background-size: fill; /* Určuje velikost pozadí. */
+  background-position: center; /* Určuje pozici pozadí. */
+  border-radius: 23px; /* Zaoblí rohy prvku. */
 }
 footer img {
   width: 80px; /* Definuje šířku prvku. */
