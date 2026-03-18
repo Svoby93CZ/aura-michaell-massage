@@ -554,12 +554,12 @@ header { /* 04. Navigation & Hero Components */
 }
 
 .page-home .bonus-card-section { /* Bonusová karta */
-  margin-bottom: 60px; /* Odsazení zespodu pro prvek. */
+  margin-bottom: 30px; /* Odsazení zespodu pro prvek. */
 }
 
 .page-home .bonus-card-section .parallax-content {
   max-width: min(920px, 100%); /* Omezí maximální šířku prvku. */
-  padding: 42px 36px; /* Přidá vnitřní odsazení prvku. */
+  padding: 24px 36px; /* Přidá vnitřní odsazení prvku. */
   border-radius: 20px; /* Zaoblí rohy prvku. */
   box-shadow: none; /* Přidá stín prvku. */
 }
@@ -611,6 +611,19 @@ header { /* 04. Navigation & Hero Components */
 
 .page-home .bonus-card-box .cards img {
   width: clamp(160px, 45%, 260px); /* Definuje šířku prvku. */
+}
+
+/* 3D Karta s Three.js */
+.card-3d-scene {
+  width: clamp(300px, 80%, 500px);
+  height: auto;
+  min-width: 300px;
+  min-height: 194px;
+  aspect-ratio: 1.545 / 1; /* Standardní poměr rozměru vizitky (85×55 mm) */
+  display: block;
+  margin: 0 auto;
+  cursor: default;
+  touch-action: manipulation;
 }
 
 @media (max-width: 640px) {

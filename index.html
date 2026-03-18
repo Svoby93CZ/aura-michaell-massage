@@ -39,6 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body class="page-home">
   <!-- Hlavní navigační panel -->
@@ -149,19 +150,13 @@
             <div class="discount-main">Každá desátá masáž</div>
             <div class="discount-sub">SLEVA</div>
           </div>
-
-          <div class="cards" role="group" aria-label="Přední a zadní strana bonusové karty">
-            <img src="galerie/karta1.jpg" alt="Věrnostní karta – přední strana" data-full="galerie/karta1.jpg">
-            <img src="galerie/karta2.jpg" alt="Věrnostní karta – zadní strana" data-full="galerie/karta2.jpg">
-          </div>
+            <div id="card-3d-container" class="card-3d-scene"></div>
         </div>
-        <div style="padding-top: 12px;">
-          <div style="background: rgba(255, 255, 255, 0.8); border-radius: 8px; width: fit-content; margin: 0 auto; padding: 6px;">
+          <div style="background-image: url(galerie/papir.png);background-position: center; border-radius: 8px;border: 2px solid #1a0100; width: fit-content; margin: 0 auto; padding: 6px;">
           <p><span style="font-weight: bold; color: black; text-shadow: 0 2px 8px rgb(255, 255, 255); text-align: center;">Každý zákazník obdrží <span style="font-size: 1.4em;">Věrnostní kartičku</span> pro získání slevy.</span><br>
             <span style="font-weight: normal; color: black; text-shadow: 0 2px 8px rgb(255, 255, 255); text-align: center;">Po každé absolvované masáži Vám bude na kartičku udělaná značka.<br>
             Po absolvování <span style="font-weight: bold;">deseti</span> masáží získáte slevu<span style="font-weight: bold; border: 2px solid; border-radius: 16px; border-color: #891915;background-color: #89191554;"> 200 Kč </span> na další masáž!</span>
           </p>
-          </div>
         </div>
       </div>
     </section>
@@ -315,33 +310,8 @@
     <button type="button" class="modal-nav modal-nav--next" aria-label="Další obrázek">&#10095;</button>
   </div>
 
-  <script src="main.js" defer></script>
-
-  <!-- Noční režim script -->
-  <script>
-    (function() {
-      const toggle = document.getElementById('night-mode-toggle');
-      const body = document.body;
-
-      // Načíst uložený stav z localStorage
-      const isNightMode = localStorage.getItem('nightMode') === 'true';
-      if (isNightMode) {
-        toggle.checked = true;
-        body.classList.add('night-mode');
-      }
-
-      // Toggle funkce
-      toggle.addEventListener('change', function() {
-        if (this.checked) {
-          body.classList.add('night-mode');
-          localStorage.setItem('nightMode', 'true');
-        } else {
-          body.classList.remove('night-mode');
-          localStorage.setItem('nightMode', 'false');
-        }
-      });
-    })();
-  </script>
+  <script src="main.js?v=1" defer></script>
+  <script src="card-3d.js?v=6" defer></script>
 
   <!-- Plovoucí tlačítko pro návrat nahoru -->
   <button id="scrollTopBtn" title="Zpět nahoru">↑</button>
