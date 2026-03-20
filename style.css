@@ -59,7 +59,7 @@ body { /* ZÁKLADNÍ STYLY */
   padding: 0 var(--pad) 40px; /* Přidá vnitřní odsazení prvku. */
   padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
   font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
-  background: url('pozadi2.jpg') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
+  background: url('pozadi3.png') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
 }
@@ -4601,5 +4601,166 @@ body.night-mode .logo-bubble img:hover {
   .lightbox-caption {
     padding: 4px 8px;
     font-size: 0.8rem;
+  }
+}
+/* =========================================================
+   PREMIUM TEXTUROVANÁ NAVIGACE (Všechny úpravy spojeny)
+   ========================================================= */
+
+/* Základní barva a integrovaná SVG textura šumu */
+.primary-nav.premium-theme {
+  background-color: rgba(26, 15, 10, 0.95) !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E") !important;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* Povolit zobrazení loga na stránce s ceníkem */
+.page-services .primary-nav.premium-theme .primary-nav__brand {
+  display: flex !important;
+}
+
+/* Úprava loga a textu vedle něj */
+.premium-theme .primary-nav__brand {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  gap: 12px !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.premium-theme .primary-nav__brand-logo {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  border: 1px solid #c5a059 !important;
+  background-color: #f4ecd8 !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+  padding: 2px !important;
+  filter: none !important;
+}
+
+.premium-theme .premium-brand-text {
+  color: #f4ecd8 !important;
+  font-family: 'Tenor Sans', serif !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+
+/* Odkazy v menu - elegantní minimalistický vzhled s prostorem */
+.premium-theme .primary-nav__menu {
+  gap: 12px !important;
+}
+
+.premium-theme .primary-nav__link,
+.premium-theme .primary-nav__dropdown-toggle {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #dcc7b1 !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px;
+  padding: 8px 16px !important; /* Prostor kolem textu, aby nesplýval */
+  position: relative;
+}
+
+/* Hover efekt - decentní zlatá linka od spodu přizpůsobená mezerám */
+.premium-theme .primary-nav__link::after,
+.premium-theme .primary-nav__dropdown-toggle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 16px; /* Začíná až za prázdným prostorem */
+  width: 0%;
+  height: 1px;
+  background-color: #c5a059;
+  transition: width 0.3s ease;
+}
+
+.premium-theme .primary-nav__link:hover::after,
+.premium-theme .primary-nav__dropdown-toggle:hover::after {
+  width: calc(100% - 32px); /* Končí před prázdným prostorem */
+}
+
+.premium-theme .primary-nav__link:hover,
+.premium-theme .primary-nav__dropdown-toggle:hover {
+  color: #c5a059 !important;
+  transform: none !important;
+}
+
+/* Zvýraznění sekce Ceremonie */
+.premium-theme .premium-link-ceremony {
+  color: #b97c4d !important;
+}
+.premium-theme .premium-link-ceremony::after {
+  background-color: #b97c4d;
+}
+
+/* Tlačítko rezervace */
+.premium-theme .primary-nav__link--cta {
+  background: linear-gradient(135deg, #7c1a1a, #4a0000) !important;
+  color: #fff !important;
+  padding: 10px 24px !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+  text-transform: uppercase;
+  font-size: 0.85rem !important;
+}
+
+.premium-theme .primary-nav__link--cta:hover {
+  background: linear-gradient(135deg, #992222, #660000) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6) !important;
+  transform: translateY(-2px) !important;
+}
+.premium-theme .primary-nav__link--cta::after {
+  display: none !important; /* Vypnutí hover linky pro toto tlačítko */
+}
+
+/* Dropdown menu */
+.premium-theme .primary-nav__dropdown-panel {
+  background: rgba(26, 15, 10, 0.98) !important;
+  border: 1px solid rgba(197, 160, 89, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
+}
+
+.premium-theme .primary-nav__dropdown-link {
+  color: #dcc7b1 !important;
+  padding: 10px 12px !important;
+}
+
+.premium-theme .primary-nav__dropdown-link:hover {
+  background: rgba(197, 160, 89, 0.1) !important;
+  color: #c5a059 !important;
+}
+
+.premium-theme .primary-nav__dropdown-link::after {
+  display: none !important;
+}
+
+/* Vypnutí těch velkých tooltip bublin z původního kódu na nové liště */
+.premium-theme .primary-nav__link[data-tooltip]::after,
+.premium-theme .primary-nav__link[data-tooltip]::before {
+  display: none !important;
+}
+
+/* Mobilní menu úprava barev */
+@media (max-width: 920px) {
+  .premium-theme .premium-brand-text {
+    display: none !important;
+  }
+  .premium-theme .primary-nav__menu {
+    background-color: rgba(26, 15, 10, 0.98) !important;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E") !important;
+    border: 1px solid rgba(197, 160, 89, 0.2) !important;
   }
 }
