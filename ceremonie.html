@@ -32,7 +32,7 @@
     gtag('config', 'G-732NT4QJEX');
   </script>
 
-  <link rel="icon" type="image/png" href="galerie/logo.png" />
+  <link rel="icon" type="image/png" href="galerie/logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
@@ -132,12 +132,11 @@
         Stačí přijít taková, jaká jsi ✨</p>
       </div>
       <div style="margin-top: 40px; text-align: center;">
-        <a href="https://aura-ceremonie.reservio.com" target="_blank" rel="noopener noreferrer" class="ceremony-btn">
-          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" alt="Rezervace" />
-          Rezervace zde
-        </a>
+        <a href="https://aura-ceremonie.reservio.com" target="_blank" rel="noopener noreferrer" class="btn-3d-premium">
+          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" style="width: 32px; height: 32px; margin-right: 10px;" alt="Rezervace" />
+          Chci se zůčastnit</a>
       </div>
-      <div style="background-image: url(galerie/papir.png); background-size: cover; background-position: center; padding-bottom: 20px; padding-top: 20px; border-radius: 23px; margin-top: 42px;">
+      <div style="background-image: url(galerie/papir.webp); background-size: cover; background-position: center; padding-bottom: 20px; padding-top: 20px; border-radius: 23px; margin-top: 42px;">
         <div class="ceremony-gallery">
           <img src="ceremonie/ceremonie.jpg" alt="Kakaová ceremonie" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
           <img src="ceremonie/vzor.jpg" alt="Dekorace ceremonie" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
@@ -202,8 +201,8 @@
   </div>
 
   <script src="main.js"></script>
-  <script>
-    // ===== LIGHTBOX S ZOOMEM A DRAG/PAN FUNKCIONALITOU =====
+  <!-- LIGHTBOX S ZOOMEM A DRAG/PAN FUNKCIONALITOU - AUTORSKÁ IMPLEMENTACE -->
+    <script>
     document.addEventListener('DOMContentLoaded', () => {
       const modal = document.getElementById('lightbox-modal');
       const image = document.getElementById('lightbox-image');
@@ -425,5 +424,18 @@
       });
     });
   </script>
+
+  <!-- Plovoucí tlačítko pro návrat nahoru -->
+  <button id="scrollTopBtn" title="Zpět nahoru">↑</button>
+
+  <!-- Plovoucí tlačítko pro přehrávání hudby -->
+  <audio id="bg-music" loop>
+    <source src="sound/hudba.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="music-toggle" class="music-toggle-btn" aria-label="Přehrát / Pozastavit hudbu">
+    <img id="music-icon" src="galerie/play.webp" alt="Play">
+  </button>
+
 </body>
 </html>

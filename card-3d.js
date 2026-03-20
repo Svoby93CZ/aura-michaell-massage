@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (container) {
     setTimeout(() => {
       new Card3D('card-3d-container', {
-        front: 'galerie/karta1.jpg',
-        back: 'galerie/karta2.jpg'
+        front: 'galerie/karta1.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
+        back: 'galerie/karta2.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
       });
     }, 100);
   }

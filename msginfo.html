@@ -55,11 +55,12 @@
         <div style="padding-top: 42px;-webkit-text-stroke: 0.1px #000000;text-align: center;font-size: 2.5rem;">
           <h1>Přehled masáží a služeb</h1>
         </div>
-  <section class="services-hero"> <!-- Hrdina sekce služeb -->
+  <!-- Hrdina sekce služeb -->
+  <section class="services-hero">
     <header class="services-hero__header">
       <section class="services-hero__intro">
 
-        <div class="parallax-section" style="margin: 0; min-height: auto; box-shadow: none; text-shadow: none; border-radius: 23px; --parallax-image: url('galerie/papir3.png'); --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));">
+        <div class="parallax-section" style="margin: 0; min-height: auto; box-shadow: none; text-shadow: none; border-radius: 23px; --parallax-image: url('galerie/papir3.webp'); --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));">
           <div class="parallax-content services-hero__intro-text" style="background: transparent; box-shadow: none; border-radius: 0; max-width: none; width: 100%; padding-top: 32px; padding-bottom: 32px;">
             <p style="color: #3e2f2a; text-shadow: none; font-weight: 600;">Vítejte v přehledu všech masáží a služeb.</p>
             <p style="color: #3e2f2a; text-shadow: none; font-weight: 600;">Níže najdete stručné popisy, indikace a kontraindikace, ceny i délky jednotlivých procedur.</p>
@@ -127,7 +128,7 @@
     </section>
 
   </section>
-
+  <!-- Navigace pro rychlý přístup k jednotlivým sekcím služeb -->
   <nav class="hero-nav hero-nav--featured services-nav services-nav--grid" role="navigation" aria-label="Navigace služeb" style="display: none;">
     <a href="#klasicke" class="nav-btn"><span>Klasické masáže</span></a>
     <a href="#sportovni" class="nav-btn"><span>Sportovní masáže</span></a>
@@ -785,7 +786,7 @@
         © 2025 Aura Michaell Massage. Všechna práva vyhrazena.
       </div>
 
-      <img src="galerie/logo.png" alt="Footer Logo">
+      <img src="galerie/logo.webp" alt="Footer Logo">
     </footer>
   <!-- Plovoucí tlačítko pro návrat nahoru -->
   <button id="scrollTopBtn" title="Zpět nahoru" style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: #7c4a27; color: #fff; border: none; font-size: 2em; box-shadow: 0 4px 16px rgba(60,30,10,0.18); cursor: pointer; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 9999;">↑</button>
@@ -804,43 +805,6 @@
     scrollBtn.addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    // Mobilní parallax efekt pro aromaterapii - VYPNUTO
-    // Na mobilu bude použito pouze statické pozadí bez parallax efektu
-    /*
-    if (window.innerWidth <= 768) {
-      const parallaxSection = document.getElementById('aromaterapie-featured');
-      if (parallaxSection) {
-        window.addEventListener('scroll', function() {
-          const scrolled = window.pageYOffset;
-          const sectionTop = parallaxSection.offsetTop;
-          const sectionHeight = parallaxSection.offsetHeight;
-          const windowHeight = window.innerHeight;
-
-          // Kontrola, zda je sekce viditelná
-          if (scrolled + windowHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
-            const offset = (scrolled - sectionTop) * 0.3; // 0.3 je rychlost parallaxu
-            const beforeElement = parallaxSection.querySelector('::before') || parallaxSection;
-
-            // Použití CSS custom property pro transform
-            parallaxSection.style.setProperty('--parallax-offset', offset + 'px');
-          }
-        });
-
-        // Přidání CSS pro aplikaci offsetu
-        const style = document.createElement('style');
-        style.textContent = `
-          @media (max-width: 768px) {
-            #aromaterapie-featured::before {
-              transform: translateY(var(--parallax-offset, 0px));
-              will-change: transform;
-            }
-          }
-        `;
-        document.head.appendChild(style);
-      }
-    }
-    */
 
     // ===== Sticky mini-navigace =====
     const miniNav = document.getElementById('miniNav');
@@ -871,5 +835,13 @@
       }
     };
   </script>
+
+  <!-- Plovoucí tlačítko pro přehrávání hudby -->
+  <audio id="bg-music" loop>
+    <source src="sound/hudba.mp3" type="audio/mpeg">
+  </audio>
+  <button id="music-toggle" class="music-toggle-btn" aria-label="Přehrát / Pozastavit hudbu">
+    <img id="music-icon" src="galerie/play.webp" alt="Play">
+  </button>
 </body>
 </html>

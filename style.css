@@ -174,7 +174,7 @@ body { /* ZÁKLADNÍ STYLY */
 
 .parallax-welcome {
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.35), rgba(26,12,6,0.6)); /* Určuje překryvný gradient parallax sekce. */
-  --parallax-image: url('galerie/shop3.jpg'); /* Vybere obrázek používaný pro parallax pozadí. */
+  --parallax-image: url('galerie/shop3.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
 }
 
 .parallax-welcome-intro { /* Parallax variant for the welcome (intro) section */
@@ -184,7 +184,7 @@ body { /* ZÁKLADNÍ STYLY */
 
 .parallax-bonus {
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.0), rgba(26,12,6,0.0)); /* Určuje překryvný gradient parallax sekce. */
-  --parallax-image: url('galerie/karty.jpg'); /* Vybere obrázek používaný pro parallax pozadí. */
+  --parallax-image: url('galerie/karty.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
 }
 
 .parallax-vouchers {
@@ -303,7 +303,7 @@ header { /* 04. Navigation & Hero Components */
   position: absolute;
   inset: 0;
   background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.45), rgba(255,255,255,0)),
-    url('galerie/logo.png');
+    url('galerie/logo.webp');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 200px auto;
@@ -1778,7 +1778,7 @@ header { /* 04. Navigation & Hero Components */
 footer { /* FOOTER */
   text-align: center; /* Zarovná text. */
   margin-top: 20px; /* Odsazení shora pro prvek. */
-  background-image: url(galerie/papir.png);
+  background-image: url(galerie/papir.webp);
   background-size: fill; /* Určuje velikost pozadí. */
   background-position: center; /* Určuje pozici pozadí. */
   border-radius: 23px; /* Zaoblí rohy prvku. */
@@ -4070,7 +4070,7 @@ body.night-mode .logo-bubble img:hover {
 /* Obsah sboxy - responzivní padding a font size */
 .ceremony-content-box {
   font-size: clamp(1rem, 2.8vw, 1.25em);
-  background-image: url(galerie/papir.png);
+  background-image: url(galerie/papir.webp);
   background-size: cover;
   background-position: center;
   padding: clamp(12px, 4vw, 20px);
@@ -4763,4 +4763,88 @@ body.night-mode .logo-bubble img:hover {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E") !important;
     border: 1px solid rgba(197, 160, 89, 0.2) !important;
   }
+}
+/* =========================================================
+   PLOVOUCÍ TLAČÍTKO PRO HUDBU
+   ========================================================= */
+.music-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px; /* Umístěno vlevo dole */
+  z-index: 9999;
+  background: rgba(26, 15, 10, 0.85); /* Tmavý poloprůhledný základ */
+  border: 1px solid rgba(197, 160, 89, 0.5); /* Zlatavý okraj */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.music-toggle-btn:hover {
+  transform: scale(1.1);
+  border-color: #c5a059; /* Zvýraznění okraje při najetí */
+}
+
+/* Velikost samotné ikonky uvnitř */
+.music-toggle-btn img {
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+}
+/* =========================================================
+   3D PRÉMIOVÉ TLAČÍTKO (Ceremonie)
+   ========================================================= */
+.btn-3d-premium {
+  display: inline-flex;
+  padding: 14px 36px;
+  font-family: 'Tenor Sans', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: fit-content;
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  
+  /* Barva tlačítka - měděno/kakaový přechod */
+  background: linear-gradient(145deg, #b97c4d, #8a5a32);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* 3D efekt - vrstvení stínů tvoří tloušťku tlačítka */
+  box-shadow: 
+    0 6px 0 #4a2e18, /* Spodní "hrana" (tloušťka) tlačítka */
+    0 12px 20px rgba(0, 0, 0, 0.4), /* Prostorový stín na zemi */
+    inset 0 2px 5px rgba(255, 255, 255, 0.3); /* Vnitřní odlesk nahoře */
+    
+  transition: all 0.15s ease;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 6px; /* Místo pro pohyb dolů */
+}
+
+/* Efekt při najetí myší - tlačítko se lehce zvedne a rozzáří */
+.btn-3d-premium:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(145deg, #c5a059, #9b6b3b);
+  box-shadow: 
+    0 8px 0 #4a2e18, /* Hrana se zvětší (tlačítko se zvedlo) */
+    0 16px 25px rgba(0, 0, 0, 0.5), /* Stín se rozostří */
+    inset 0 2px 5px rgba(255, 255, 255, 0.4);
+}
+
+/* Efekt při kliknutí - tlačítko se zamáčkne dolů */
+.btn-3d-premium:active {
+  transform: translateY(6px); /* Zmáčknutí směrem dolů o velikost hrany */
+  box-shadow: 
+    0 0 0 #4a2e18, /* Spodní hrana "zmizí", protože je tlačítko zamáčklé */
+    0 2px 5px rgba(0, 0, 0, 0.4), /* Prostorový stín se zmenší */
+    inset 0 4px 8px rgba(0, 0, 0, 0.4); /* Vnitřní stín pro efekt propadnutí */
 }
