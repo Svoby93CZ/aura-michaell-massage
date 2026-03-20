@@ -416,3 +416,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+// ===== 3D EFEKT PRO LOGO V HLAVNÍ SEKCI =====
+const logoBubble = document.querySelector('.logo-bubble');
+if (logoBubble) {
+  // Vypneme původní pulzování, aby se nebilo s 3D natočením
+  logoBubble.style.animation = 'none';
+  // Povolíme 3D prostor uvnitř bubliny
+  logoBubble.style.transformStyle = 'preserve-3d';
+
+  const logoImg = logoBubble.querySelector('img');
+  if (logoImg) {
+    // Kouzlo: Vysuneme samotné logo směrem k uživateli (nad podklad)
+    logoImg.style.transform = 'translateZ(40px)';
+    // Přidáme stín pod vznášející se logo, což umocní hloubku
+    logoImg.style.filter = 'drop-shadow(0 15px 15px rgba(0,0,0,0.5))';
+  }
+
+  document.addEventListener('mousemove', (e) => {
+    // Výpočet pozice myši vůči středu obrazovky (viewportu)
+    const xAxis = (window.innerWidth / 2 - e.clientX) / 25; // Čím menší dělitel, tím silnější náklon
+    const yAxis = (window.innerHeight / 2 - e.clientY) / 25;
+
+    // Rychlý a plynulý přechod při sledování myši
+    logoBubble.style.transition = 'transform 0.1s ease-out';
+    // Samotný 3D náklon a jemné zvětšení
+    logoBubble.style.transform = `perspective(1000px) rotateY(${-xAxis}deg) rotateX(${yAxis}deg) scale3d(1.05, 1.05, 1.05)`;
+  });
+
+  // Plynulé vrácení do původní polohy, když uživatel opustí okno webu
+  document.addEventListener('mouseleave', () => {
+    logoBubble.style.transition = 'transform 0.5s ease-out';
+    logoBubble.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)';
+  });
+}

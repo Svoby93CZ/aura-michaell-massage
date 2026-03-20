@@ -59,7 +59,7 @@ body { /* ZÁKLADNÍ STYLY */
   padding: 0 var(--pad) 40px; /* Přidá vnitřní odsazení prvku. */
   padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
   font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
-  background: url('pozadi3.png') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
+  background: url('galerie/papir_poz.webp') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
 }

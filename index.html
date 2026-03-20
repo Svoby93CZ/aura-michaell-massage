@@ -96,7 +96,13 @@
 
     <!-- Hlavní nadpis -->
     <div id="hero" class="hero-title" style="display: flex; align-items: center; gap: 24px; padding-top: 60px;">
-      <h1 style="-webkit-text-stroke: 0.1px #000000;">Aura Michaell Massage</h1>
+
+      <div class="parallax-section" style="margin: 0; min-height: auto; box-shadow: none; text-shadow: none; --parallax-image: url('galerie/papir3.webp'); --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));">
+        <div class="parallax-content" style="padding: 24px 60px 24px 32px; max-width: none; font-family: 'Tenor Sans', serif;">
+          <h1 style="-webkit-text-stroke: 0.1px #000000; margin: 0;">Aura Michaell Massage</h1>
+        </div>
+      </div>
+
       <div class="logo-bubble">
         <img src="galerie/logo.png" alt="Logo">
       </div>
@@ -127,35 +133,46 @@
             <li>Následně už jenom přijímáte, hýčkáte svou schránku a svoji duševní pohodu.</li>
           </ul>
           <div class="welcome-media">
-            <img src="galerie/navsteva.jpg" alt="Přivítání klienta" class="welcome-image" loading="lazy">
+            <div class="parallax-section" style="margin: 0; min-height: auto; box-shadow: none; border-radius: 20px; --parallax-image: url('galerie/navsteva.jpg'); --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));">
+              <div class="parallax-content" style="padding: 0; max-width: none; line-height: 0;">
+                <img src="galerie/navsteva.jpg" alt="Přivítání klienta" class="welcome-image" loading="lazy" style="opacity: 0; display: block; width: 100%; height: auto;">
+              </div>
+            </div>
           </div>
             <div class="welcome-gallery" role="group" aria-label="Rozhovor před masáží">
               <img src="galerie/rozhovor1.jpg" alt="Rozhovor před masáží" data-lightbox="welcome-talk" data-full="galerie/rozhovor1.jpg" loading="lazy">
               <img src="galerie/rozhovor2.jpg" alt="Rozhovor před masáží" data-lightbox="welcome-talk" data-full="galerie/rozhovor2.jpg" loading="lazy">
-          </div>
-
+            </div>
         </div>
       </div>
     </section>
 
     <!-- Bonusová karta -->
     <section id="offer" class="parallax-section parallax-bonus bonus-card-section" aria-label="Bonusová karta">
-      <div class="parallax-content">
-        <div class="offer-box bonus-card-box">
-          <div class="discount-bubble">
-            <div class="discount-main">Každá desátá masáž</div>
-            <div class="discount-sub">SLEVA</div>
-          </div>
-            <div id="card-3d-container" class="card-3d-scene"></div>
-        </div>
-          <div style="background-image: url(galerie/papir.png);background-position: center; border-radius: 8px;border: 2px solid #1a0100; width: fit-content; margin: 0 auto; padding: 6px;">
-          <p><span style="font-weight: bold; color: black; text-shadow: 0 2px 8px rgb(255, 255, 255); text-align: center;">Každý zákazník obdrží <span style="font-size: 1.4em;">Věrnostní kartičku</span> pro získání slevy.</span><br>
-            <span style="font-weight: normal; color: black; text-shadow: 0 2px 8px rgb(255, 255, 255); text-align: center;">Po každé absolvované masáži Vám bude na kartičku udělaná značka.<br>
-            Po absolvování <span style="font-weight: bold;">deseti</span> masáží získáte slevu<span style="font-weight: bold; border: 2px solid; border-radius: 16px; border-color: #891915;background-color: #89191554;"> 200 Kč </span> na další masáž!</span>
-          </p>
-        </div>
+  <div class="parallax-content">
+    <div class="offer-box bonus-card-box">
+      <div class="discount-bubble">
+        <div class="discount-main">Každá desátá masáž</div>
+        <div class="discount-sub">SLEVA</div>
       </div>
-    </section>
+      <div id="card-3d-container" class="card-3d-scene"></div>
+    </div>
+
+    <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(galerie/papir.png); background-position: center; background-size: cover; border-radius: 8px; border: 2px solid #1a0100; width: fit-content; margin: 0 auto; padding: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+      <p style="margin: 0; text-align: center;">
+        <span style="-webkit-text-stroke: 0.01em #000000; font-weight: bold; color: rgb(255, 255, 255); text-shadow: 0 2px 4px rgba(0,0,0,0.5); display: block; margin-bottom: 8px;">
+          Každý zákazník obdrží <span style="font-size: 1.4em; color: #ffffff;">Věrnostní kartičku</span> pro získání slevy.
+        </span>
+        <span style="font-weight: normal; color: #dcc7b1; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
+          Po každé absolvované masáži Vám bude na kartičku udělaná značka.<br>
+          Po absolvování <span style="font-weight: bold; color: white;">deseti</span> masáží získáte slevu
+          <span style="font-weight: bold; padding: 2px 8px; border-radius: 16px; background-color: #891915; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">200 Kč</span>
+          na další masáž!
+        </span>
+      </p>
+    </div>
+  </div>
+</section>
 
     <!-- O mně -->
     <section id="about">
@@ -193,7 +210,7 @@
     </section>
 
     <!-- Recenze Google -->
-    <section id="recenze" class="section reviews" style="background: rgba(135, 104, 38, 0.2); padding: 12px; border-radius: 8px; border-style: solid; border-color: #673401; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 24px;">
+    <section id="recenze" class="section reviews" style="background-image: url(galerie/papirA42.png);background-position: center; padding: 12px; border-radius: 8px; border-style: solid; border-color: #673401; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 24px;">
       <div class='sk-ww-google-reviews' data-embed-id='25613697'></div><script src='https://widgets.sociablekit.com/google-reviews/widget.js' defer></script>
       <div class="elfsight-app-b275f04e-832a-452d-91ed-1fdc07117847" data-elfsight-app-lazy></div>
     </section>
@@ -247,8 +264,6 @@
       <div class="footer-copy">
         © 2025 Aura Michaell Massage. Všechna práva vyhrazena.
       </div>
-
-      <img src="galerie/logo.png" alt="Footer Logo">
     </footer>
   </div>
 
