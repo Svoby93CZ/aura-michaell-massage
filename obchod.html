@@ -19,6 +19,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montez&family=My+Soul&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="page-home"> <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
@@ -38,7 +42,7 @@
         <a href="index.html" class="primary-nav__link">Domů</a>
         <a href="msginfo.html" class="primary-nav__link" data-tooltip="Ceník masáží a procedur">Služby a ceník</a>
         <a href="ceremonie.html" class="primary-nav__link premium-link-ceremony" data-tooltip="Kakaová ceremonie a kruhy pro ženy">Ceremonie</a>
-        <a href="index.html#about" class="primary-nav__link">O mně</a>
+        <a href="about.html" class="primary-nav__link">O mně</a>
 
         <div class="primary-nav__dropdown">
           <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false">
@@ -64,57 +68,76 @@
 
   <div class="container">
     <div style="padding-top: 40px;"></div>
-
     <section class="parallax-section parallax-balance" aria-label="Harmonie a rovnováha">
       <div class="parallax-content">
-        <h2>Harmonie & Rovnováha</h2>
-        <p>
+        <p style="font-weight: bold; font-size: 3em;color: #ffffff; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'montez', cursive;">
+          Harmonie & Rovnováha<br>
+        </p>
+        <p style="font-size: 1.2em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-weight: bold;">
           Každý produkt i služba v nabídce je vybraná s ohledem na kvalitu a autentický zážitek. Přijďte načerpat novou energii
-          a odneste si domů kousek klidu.
+          a odneste si domů kousek klidu.<br>
+          Zde najdete kvalitní kosmetiku, šperky ruční výroby a další doplňky pro vaši pohodu.
         </p>
       </div>
     </section>
 
-    <section id="shop">
-      <p><span style="font-weight: bold; font-size: 1.2em;">V mém salónu nabízím také širší výběr produktů.</span><br>
-        <span style="font-weight: normal; font-size: 1em;">Zde najdete kvalitní kosmetiku, šperky ruční výroby a další doplňky pro vaši pohodu.</span>
-      </p>
+    <section id="shop" aria-label="Obchod a dárkové poukazy">
+      <p style="font-weight: bold; font-size: 1.2em; color: #000;">K zakoupení jsou i ručně vyráběné produkty.</p>
       <div class="shop-gallery" role="group" aria-label="Produkty v obchodě">
-        <img src="galerie/shop1.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop1.webp" loading="lazy">
-        <img src="galerie/shop2.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop2.webp" loading="lazy">
-        <img src="galerie/shop3.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop3.webp" loading="lazy">
-        <img src="galerie/shop4.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop4.webp" loading="lazy">
-        <img src="galerie/shop5.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop5.webp" loading="lazy">
+        <img src="galerie/shop1.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop1.webp" loading="lazy" decoding="async" fetchpriority="low"
+          srcset="galerie/shop1.webp 400w, galerie/shop1.webp 800w, galerie/shop1.webp 1200w"
+          sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
+        <img src="galerie/shop2.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop2.webp" loading="lazy" decoding="async" fetchpriority="low"
+          srcset="galerie/shop2.webp 400w, galerie/shop2.webp 800w, galerie/shop2.webp 1200w"
+          sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
+        <img src="galerie/shop3.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop3.webp" loading="lazy" decoding="async" fetchpriority="low"
+          srcset="galerie/shop3.webp 400w, galerie/shop3.webp 800w, galerie/shop3.webp 1200w"
+          sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
+        <img src="galerie/shop4.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop4.webp" loading="lazy" decoding="async" fetchpriority="low"
+          srcset="galerie/shop4.webp 400w, galerie/shop4.webp 800w, galerie/shop4.webp 1200w"
+          sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
+        <img src="galerie/shop5.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop5.webp" loading="lazy" decoding="async" fetchpriority="low"
+          srcset="galerie/shop5.webp 400w, galerie/shop5.webp 800w, galerie/shop5.webp 1200w"
+          sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
       </div>
 
-      <section class="parallax-section parallax-vouchers" aria-label="Dárkové poukazy">
-        <div class="parallax-content">
-          <p><span style="font-weight: bold; font-size: 1.2em; color: #000">K zakoupení jsou i dárkové poukazy.</span><br></p>
-          <div class="shop-gallery" role="group" aria-label="Poukazy k zakoupení">
-            <img src="Poukazy/Poukaz 200,-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 200,-.webp" loading="lazy">
-            <img src="Poukazy/Poukaz 500,-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 500,-.webp" loading="lazy">
-            <img src="Poukazy/Poukaz 1000,-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 1000,-.webp" loading="lazy">
-            <img src="Poukazy/Poukaz 1500,-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 1500,-.webp" loading="lazy">
-            <img src="Poukazy/Poukaz 2000,-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz 2000,-.webp" loading="lazy">
-          </div>
+      <section aria-label="Dárkové poukazy">
+        <p style="font-weight: bold; font-size: 1.2em; color: #000;">K zakoupení jsou i dárkové poukazy.</p>
+        <div class="shop-gallery" role="group" aria-label="Poukazy k zakoupení">
+          <img src="Poukazy/Poukaz%20200%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%20200%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+            srcset="Poukazy/Poukaz%20200%2C-.webp 400w, Poukazy/Poukaz%20200%2C-.webp 800w, Poukazy/Poukaz%20200%2C-.webp 1200w"
+            sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
+          <img src="Poukazy/Poukaz%20500%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%20500%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+            srcset="Poukazy/Poukaz%20500%2C-.webp 400w, Poukazy/Poukaz%20500%2C-.webp 800w, Poukazy/Poukaz%20500%2C-.webp 1200w"
+            sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
+          <img src="Poukazy/Poukaz%201000%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%201000%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+            srcset="Poukazy/Poukaz%201000%2C-.webp 400w, Poukazy/Poukaz%201000%2C-.webp 800w, Poukazy/Poukaz%201000%2C-.webp 1200w"
+            sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
+          <img src="Poukazy/Poukaz%201500%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%201500%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+            srcset="Poukazy/Poukaz%201500%2C-.webp 400w, Poukazy/Poukaz%201500%2C-.webp 800w, Poukazy/Poukaz%201500%2C-.webp 1200w"
+            sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
+          <img src="Poukazy/Poukaz%202000%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%202000%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+            srcset="Poukazy/Poukaz%202000%2C-.webp 400w, Poukazy/Poukaz%202000%2C-.webp 800w, Poukazy/Poukaz%202000%2C-.webp 1200w"
+            sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
         </div>
       </section>
-
-      <div style="padding-top: 20px;">
-        <div style="background-image: url(galerie/papir.webp); background-size: cover; background-attachment: fixed; border: 2px solid #89491567; border-radius: 12px; padding: 20px; box-sizing: border-box;">
-          <div style="text-align: center; font-weight: bold; font-size: 1em;">
-            <p style="color: #891915; text-align: center; font-weight: bold; font-size: 1.3em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">! Poukazy lze nyní zakoupit buď osobně v salonu, nebo nově elektronicky !</p>
-            <p style="color: #000;">Pro poukaz v elektronické podobě je nutné se domluvit po telefonu, nebo osobně při návštěvě salonu.<br>
-              V elektronické podobě si můžete sami zvolit <span style="font-size: 1.2em; color: #3f8915; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;-webkit-text-stroke: #000 1px;">libovolnou hodnotu</span> poukazu.</p>
-            <p style="color: #000;">Po domluvě Vám přes <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">SMS</span> napíšu platební údaje a po zaplacení pošlu na <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">e-mail</span> poukaz ve formátu <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">PDF</span>, který si můžete vytisknout nebo uložit do telefonu.</p>
-          </div>
-        </div>
-      </div>
     </section>
+  </div>
+
+    <div style="padding-top: 20px;">
+      <section class="conteiner">
+      <div style="background-image: url(galerie/papirek.webp); background-size: cover; border-radius: 30px; padding: 20px;text-align: center; font-weight: bold; font-size: 1em;border: 2px solid #000;">
+          <p style="color: #891915; text-align: center; font-weight: bold; font-size: 1.3em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">! Poukazy lze nyní zakoupit buď osobně v salonu, nebo nově elektronicky !</p>
+          <p style="color: #000;">Pro poukaz v elektronické podobě je nutné se domluvit po telefonu, nebo osobně při návštěvě salonu.<br>
+             V elektronické podobě si můžete sami zvolit <span style="font-size: 1.2em; color: #3f8915; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;-webkit-text-stroke: #000 0.001em;">libovolnou hodnotu</span> poukazu.</p>
+          <p style="color: #000;">Po domluvě Vám přes <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-weight: bold;">SMS</span> napíšu platební údaje a po zaplacení pošlu na <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">e-mail</span> poukaz ve formátu <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">PDF</span>, který si můžete vytisknout nebo uložit do telefonu.</p>
+      </div>
+      </section>
+    </div>
 
     <footer class="site-footer" style="margin-top: 60px;">
       <div class="footer-widgets">
-        <h2>Zásady ochrany osobních údajů</h2>
+        <h2 style="font-family: 'Lavishly Yours', cursive; font-size: 4rem;">Zásady ochrany osobních údajů</h2>
         <h4>Vaše osobní údaje zpracováváme v souladu s platnou legislativou (GDPR).</h4>
         <h4>Více informací naleznete v <a href="privacy-policy.html">plném znění zásad ochrany osobních údajů</a>.</h4>
         <div class="footer-social" aria-label="Sociální sítě">
@@ -136,11 +159,9 @@
         </div>
       </div>
       <div class="footer-copy">
-        © 2025 Aura Michaell Massage. Všechna práva vyhrazena.
+        © 2026 Aura Michaell Massage. Všechna práva vyhrazena.
       </div>
-      <img src="galerie/logo.webp" alt="Footer Logo">
-    </footer>
-  </div>
+  </footer>
 
   <div id="lightbox" class="modal" aria-hidden="true">
     <button type="button" class="modal-close" aria-label="Zavřít náhled">×</button>

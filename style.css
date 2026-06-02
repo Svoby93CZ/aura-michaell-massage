@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
   Přehled stylového průvodce
   01. Proměnné tématu
   02. Základní prvky
@@ -106,7 +106,7 @@ body { /* ZÁKLADNÍ STYLY */
   background-position: center; /* Určuje pozici pozadí. */
   background-repeat: no-repeat; /* Řídí opakování pozadí. */
   background-size: cover; /* Nastaví velikost pozadí. */
-  background-attachment: fixed, fixed; /* Určuje, zda se pozadí posouvá se stránkou. */
+  background-attachment: scroll, scroll; /* Výchozí: scroll pro lepší výkon. */
   border-radius: inherit; /* Zaoblí rohy prvku. */
   pointer-events: none; /* Řídí reakci na události kurzoru. */
   will-change: transform; /* Optimalizace pro GPU akceleraci */
@@ -149,6 +149,15 @@ body { /* ZÁKLADNÍ STYLY */
       rgba(0,0,0,0) 100%);
   -webkit-mask-composite: multiply; /* Určuje způsob skládání masek ve WebKit prohlížečích. */
   mask-composite: intersect; /* Nastaví, jak se kombinují masky ve standardních prohlížečích. */
+}
+
+/* Prefer performance: enable fixed attachment only on large viewports and
+   when user hasn't requested reduced motion. This avoids expensive repaints
+   on mobile and low-end devices. */
+@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
+  .parallax-section::before {
+    background-attachment: fixed, fixed;
+  }
 }
 
 .parallax-content {
@@ -262,16 +271,13 @@ header { /* 04. Navigation & Hero Components */
 
 .logo-bubble {
   margin-left: 80px; /* Odsazení zleva pro prvek. */
-  width: 108px; /* Definuje šířku prvku. */
-  height: 108px; /* Definuje výšku prvku. */
+  width: auto; /* Definuje šířku prvku. */
+  height: auto; /* Definuje výšku prvku. */
   border-radius: 50%; /* Zaoblí rohy prvku. */
-  background: #DCC7B1; /* Definuje pozadí prvku. */
   display: flex; /* Nastaví způsob zobrazení prvku. */
   align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
   justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  box-shadow: 0 4px 15px rgba(0,0,0,.5); /* Přidá stín prvku. */
   flex-shrink: 0; /* Určuje, jak moc se položka zmenší. */
-  border: 2px solid #3e2f2a; /* Vykreslí rámeček kolem prvku. */
   animation: pulse 3s infinite ease-in-out; /* Přidá pulzující animaci */
 }
 
@@ -685,6 +691,13 @@ header { /* 04. Navigation & Hero Components */
   box-shadow: 0 10px 22px rgba(0,0,0,0.24); /* Přidá stín prvku. */
 }
 
+/* Performance: defer rendering of heavy gallery until needed */
+.shop-gallery,
+.page-home .shop-gallery {
+  content-visibility: auto;
+  contain-intrinsic-size: 320px 180px;
+}
+
 @media (max-width: 720px) {
   .page-home .shop-gallery {
     justify-content: flex-start; /* Zarovná děti v hlavní ose Flexboxu. */
@@ -714,6 +727,39 @@ header { /* 04. Navigation & Hero Components */
   }
 }
 
+.page-about .parallax-content h1,
+.page-about .parallax-content h2 {
+  font-family: 'Lavishly Yours', 'Patrick Hand', cursive;
+  letter-spacing: 0.04em;
+  color: #000000;
+  text-shadow:
+    0 0 4px rgb(255, 255, 255),
+    0 0 4px rgb(255, 255, 255);
+}
+
+.page-about .parallax-content p {
+  font-family: 'Raleway', sans-serif;
+}
+
+.page-about .about-row {
+  gap: 18px;
+}
+
+.page-about .parallax-section {
+  min-height: 240px;
+}
+
+.page-about .parallax-content {
+  padding: 24px 20px;
+}
+
+.page-about .parallax-content h1 {
+  font-size: 8rem;
+  margin: 0;
+  color: #000000;
+  opacity: 0.8;
+  text-shadow: 0 0 8px rgba(255,255,255,0.6), 0 0 4px rgba(255,255,255,0.8);
+}
 
 .hero-nav {
   display: flex; /* Nastaví způsob zobrazení prvku. */
@@ -1348,6 +1394,67 @@ header { /* 04. Navigation & Hero Components */
   }
 }
 
+.service-accordion {
+  border: 1px solid rgba(124, 90, 37, 0.25);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  margin: 0 auto 24px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.service-accordion summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  cursor: pointer;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(124, 74, 39, 0.18);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.service-accordion summary h2 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.service-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.service-accordion summary::after {
+  content: "Rozbalit ▾";
+  font-size: 0.95em;
+  font-weight: 700;
+  color: #3b2611;
+  white-space: nowrap;
+}
+
+.service-accordion[open] summary::after {
+  content: "Sbalit ▴";
+}
+
+.service-accordion > div {
+  padding: 20px 24px 24px;
+}
+
+@media (max-width: 720px) {
+  .service-accordion summary {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 18px;
+  }
+
+  .service-accordion summary h2 {
+    font-size: 2.2rem;
+  }
+}
+
 /* Parallax efekt pro aromaterapii - s fade efektem jako na hlavní stránce */
 #aromaterapie-featured {
   position: relative;
@@ -1542,18 +1649,17 @@ header { /* 04. Navigation & Hero Components */
 
 /* Styly pro sekci "Ostatní služby" na PC - dvousloupcový layout */
 @media (min-width: 769px) {
-  #ostatni {
+  #ostatni .service-accordion > div {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    column-gap: 32px !important;
-    row-gap: 32px !important;
+    gap: 32px !important;
     align-items: start !important;
   }
 
-  /* Nadpis přes oba sloupce */
-  #ostatni .cenik-section-title {
+  /* Nadpis zůstane klasicky, titulek zůstává v summary */
+  #ostatni .service-accordion summary {
     grid-column: 1 / -1 !important;
-    margin-bottom: 32px !important; /* Stejná mezera jako mezi řádky */
+    margin-bottom: 32px !important;
   }
 
   /* Aromaterapie - grid layout pro barevné rámečky ve 2 sloupcích */
@@ -1600,13 +1706,13 @@ header { /* 04. Navigation & Hero Components */
     object-fit: cover !important;
   }
 
-  /* Skryjeme prázdné mezery */
-  #ostatni > div[style*="padding-bottom: 30px"] {
+  /* Skryjeme prázdné mezery uvnitř detailů */
+  #ostatni .service-accordion > div > div[style*="padding-bottom: 30px"] {
     display: none !important;
   }
 
-  /* Každý div služby zabere jeden sloupec */
-  #ostatni > div[style*="background"] {
+  /* Každý div služby zabere jeden sloupec v gridu */
+  #ostatni .service-accordion > div > div[style*="background"] {
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;

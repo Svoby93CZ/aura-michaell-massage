@@ -25,7 +25,11 @@
   <!-- Fonty a styl hlavní stránky -->
   <link href="https://fonts.googleapis.com/css?family=Tenor+Sans:400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway:800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Style+Script&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montez&family=My+Soul&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="vylepšení.css">
   <link rel="icon" href="favicon.ico">
@@ -52,8 +56,10 @@
       </div>
     </div>
   </nav>
-        <div style="padding-top: 42px;-webkit-text-stroke: 0.1px #000000;text-align: center;font-size: 2.5rem;">
-          <h1>Přehled masáží a služeb</h1>
+        <div style="padding: 10px 20px; text-align: center; font-family: 'Montez', cursive; color: #3e2f2a; -webkit-text-stroke: 0.001em #000000; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 0 2px #000;">
+          <h1 style="margin: 0; font-size: 7rem; display: inline-flex; align-items: center; justify-content: center; padding: 0.8em 1.6em; border-radius: 22px; line-height: 1.05; background-image: url('galerie/papir_bily.webp'); background-position: center; background-repeat: no-repeat; background-size: contain; background-origin: padding-box; background-clip: padding-box; opacity: 0.8;">
+            Přehled masáží a služeb
+          </h1>
         </div>
   <!-- Hrdina sekce služeb -->
   <section class="services-hero">
@@ -67,10 +73,9 @@
             <p style="color: #3e2f2a; text-shadow: none; font-weight: 600;">Stačí si vybrat, co vám nejvíce vyhovuje a jedním kliknutím na cenovku přejít k rezervaci.</p>
           </div>
         </div>
-
       <div class="services-hero__oil-cards" style="padding-top: 130px;">
         <!-- Aroma oleje TOMFIT -->
-        <div style="background: rgba(124,200,120,.15); padding: 12px; border-radius: 8px; border-style: solid; border-color: #7cb878; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 12px;">
+        <div style="background-image: url(galerie/papirek.webp);background-position: auto; padding: 12px; border-radius: 8px; border-style: solid; border-color: #7cb878; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 12px;">
           <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #2d5a26;">🌿 <span style="-webkit-text-stroke: 0.1px #000; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Aroma oleje</span> <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">TOMFIT</span></h4>
           <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
               <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #228b22; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍃 Zelený čaj</span><br> Osvěžující a revitalizační účinek</li>
@@ -150,8 +155,11 @@
   <div style="padding-bottom: 150px;"></div>
 
     <!-- Klasické masáže -->
-    <section id="klasicke" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 120px;">
-      <h2 class="cenik-section-title" style="font-size: 2.3em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">~ Klasické masáže ~</h2>
+    <section id="klasicke" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
+      <details class="service-accordion">
+        <summary>
+          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Klasické masáže ~</h2>
+        </summary>
       <!--Info o Klasických masážích-->
       <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 24px;">
         <div class="classic-massage-info" style="font-size: 0.8em;font-weight: bold;">
@@ -283,10 +291,14 @@
           </div>
         </div>
       </div>
+    </details>
     </section>
     <!-- Sportovní masáže -->
-    <section id="sportovni" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 120px;">
-      <h2 class="cenik-section-title" style="font-size: 2.3em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">~ Sportovní masáže ~</h2>
+    <section id="sportovni" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
+      <details class="service-accordion">
+        <summary>
+          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Sportovní masáže ~</h2>
+        </summary>
       <!--Info o Sportovních masážích-->
       <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 24px;">
         <div class="classic-massage-info" style="font-size: 0.8em;font-weight: bold;">
@@ -436,10 +448,14 @@
           </a>
         </div>
       </div>
-    </section>
+        </details>
+      </section>
     <!-- Zábaly -->
-    <section id="zabaly" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 120px;">
-      <h2 class="cenik-section-title" style="font-size: 2.3em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">~ Zábaly ~</h2>
+    <section id="zabaly" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
+      <details class="service-accordion">
+        <summary>
+          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Zábaly ~</h2>
+        </summary>
       <!--Info o Zábalích-->
       <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 24px;">
         <div class="classic-massage-info" style="font-size: 0.8em;font-weight: bold;">
@@ -544,10 +560,14 @@
             </div>
           </div>
         </div>
-    </section>
+        </details>
+      </section>
     <!-- Slow touch - tichý dotek -->
-    <section id="slowtouch" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 120px;">
-      <h2 class="cenik-section-title" style="font-size: 2.3em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">~ Tichý dotek ~</h2>
+    <section id="slowtouch" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
+      <details class="service-accordion">
+        <summary>
+          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Tichý dotek ~</h2>
+        </summary>
       <!--Info o Slow touch masážích-->
       <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 24px;">
         <div class="classic-massage-info" style="font-size: 0.8em; font-weight: bold;">
@@ -605,10 +625,14 @@
             </div>
           </div>
         </div>
+      </details>
     </section>
     <!-- Vědomý dotek - něco více -->
-    <section id="vedomy" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 120px;">
-      <h2 class="cenik-section-title" style="font-size: 2.3em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">~ Vědomý dotek ~</h2>
+    <section id="vedomy" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
+      <details class="service-accordion">
+        <summary>
+          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Vědomý dotek ~</h2>
+        </summary>
       <!--Info o Vědomý dotek masážích-->
       <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 24px;">
         <div class="classic-massage-info" style="font-size: 0.8em; font-weight: bold;">
@@ -646,14 +670,18 @@
             </div>
           </div>
         </div>
+      </details>
     </section>
     <!-- Ostatní služby -->
-    <section id="ostatni" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 120px;">
-      <h2 class="cenik-section-title" style="font-size: 2.3em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">~ Ostatní služby ~</h2>
+    <section id="ostatni" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
+      <details class="service-accordion">
+        <summary>
+          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Ostatní služby ~</h2>
+        </summary>
       <!--Baňkování-->
       <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 0;">
         <div class="classic-massage-info" style="font-size: 1.3em;">
-          <h3 style="font-weight: bold;"><span style="border-bottom: 2px solid #585046;font-size: 2em;">Baňkování:</span></h3>
+          <h3 style="font-weight: bold;"><span style="font-size: 2em;font-family: 'Montez', cursive;">Baňkování:</span></h3>
           <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/6be9b101-bbf4-40af-baf2-1f3fa1195b03" target="_blank" rel="noopener noreferrer">
             <div class="service-price-tag">
               <span class="service-price">800 Kč</span>
@@ -662,22 +690,23 @@
             </div>
           </a>
         </div>
+        <div class="cards" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+          <img src="masaze/banky.webp" alt="Baňkování" style="display: block; width: 100%; max-width: 500px;" loading="lazy">
+        </div>
         <div class="classic-massage-info" style="font-size: 0.9em; font-weight: bold;">
           <p>Baňkování je tradiční terapeutická metoda, při které se na pokožku přikládají speciální skleněné, silikonové nebo plastové baňky, ve kterých se vytvoří podtlak.</p>
           <div style="padding-bottom: 16px;"></div>
           <p>Tím dochází k prokrvení tkání, uvolnění svalového napětí, podpoře lymfatického systému a detoxikaci organismu.</p>
           <p>Baňkování se často používá k úlevě od bolesti zad, svalových blokád nebo při nachlazení.</p>
-          </div>
+        </div>
           <h4 style="font-size: large;text-align: center;"><span style="border-bottom: 2px solid #000000;">! Ošetření může zanechat dočasné kruhové otlaky na kůži. !</span></h4>
           <div style="padding-bottom: 16px;"></div>
-        <div class="cards" style="display: flex; align-items: center;margin-right: 18px;">
-          <img src="masaze/banky.webp" alt="Baňkování" style="display: block;" loading="lazy">
-        </div>
+        
       </div>
         <!--Lávové kameny-->
         <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 0;">
           <div class="classic-massage-info" style="font-size: 1.3em;">
-            <h3 style="font-weight: bold;"><span style="border-bottom: 2px solid #585046;font-size: 2em;">Lávové kameny:</span></h3>
+            <h3 style="font-weight: bold;"><span style="font-size: 2em;font-family: 'Montez', cursive;">Lávové kameny:</span></h3>
             <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/40f64f4e-c7d7-4656-bcaa-9c5f2ab7b188" target="_blank" rel="noopener noreferrer">
               <div class="service-price-tag">
                 <span class="service-price">800 Kč</span>
@@ -686,22 +715,25 @@
               </div>
             </a>
           </div>
-          <div class="classic-massage-info" style="font-size: 0.9em; font-weight: bold;">
-          <p>Masáž lávovými kameny je relaxační a terapeutická technika, při které se používají nahřáté hladké lávové kameny.</p>
-          <p>Teplo z kamenů proniká hluboko do svalů, uvolňuje napětí, zlepšuje krevní oběh a podporuje detoxikaci organismu.</p>
-          <div style="padding-bottom: 16px;"></div>
-          <p>Tato masáž je ideální pro ty, kteří hledají hlubokou relaxaci a úlevu od stresu a svalových bolestí.</p>
-          <p>Masáž navozuje hlubokou relaxaci, ulevuje od stresu a pomáhá obnovit energetickou rovnováhu těla.</p>
-          <div style="padding-bottom: 16px;"></div>
+
+          <div class="cards" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+            <img src="masaze/lk.webp" alt="Lávové kameny" style="display: block; width: 100%; max-width: 500px;" loading="lazy">
           </div>
-          <div class="cards" style="display: flex; align-items: center;margin-right: 18px;">
-            <img src="masaze/lk.webp" alt="Lávové kameny" style="display: block;" loading="lazy">
+          
+          <div style="font-size: 0.9em; font-weight: bold;">
+            <p>Masáž lávovými kameny je relaxační a terapeutická technika, při které se používají nahřáté hladké lávové kameny.</p>
+            <p>Teplo z kamenů proniká hluboko do svalů, uvolňuje napětí, zlepšuje krevní oběh a podporuje detoxikaci organismu.</p>
+            <div style="padding-bottom: 16px;"></div>
+            <p>Tato masáž je ideální pro ty, kteří hledají hlubokou relaxaci a úlevu od stresu a svalových bolestí.</p>
+            <p>Masáž navozuje hlubokou relaxaci, ulevuje od stresu a pomáhá obnovit energetickou rovnováhu těla.</p>
+            <div style="padding-bottom: 16px;"></div>
           </div>
+
         </div>
         <!--Relaxační masáž obličeje a dekoltu-->
-      <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 0;">
+      <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 0;box-sizing: border-box;">
         <div class="classic-massage-info" style="font-size: 1.3em;">
-          <h3 style="font-weight: bold;"><span style="border-bottom: 2px solid #585046;font-size: 1.6em;">Relaxační masáž obličeje a dekoltu:</span></h3>
+          <h3 style="font-weight: bold;"><span style="font-size: 1.6em;font-family: 'Montez', cursive;">Relaxační masáž obličeje a dekoltu:</span></h3>
           <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/789051db-4d63-4b75-8e9a-bdd1e25814e3" target="_blank" rel="noopener noreferrer">
             <div class="service-price-tag">
               <span class="service-price">400 Kč</span>
@@ -717,14 +749,14 @@
           <p>Masáž může zároveň přispět k osvěžení vzhledu pleti, zmírnění otoků a zlepšení její elasticity.</p>
           <div style="padding-bottom: 16px;"></div>
         </div>
-        <div class="cards" style="display: flex; align-items: center;margin-right: 18px;">
-          <img src="masaze/amh.webp" alt="Relaxační masáž obličeje a dekoltu" style="display: block;" loading="lazy">
+        <div class="cards" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+          <img src="masaze/amh.webp" alt="Relaxační masáž obličeje a dekoltu" style="display: block; width: 100%; max-width: 500px;" loading="lazy">
         </div>
       </div>
       <!--Rituál šťastná maminka-->
-      <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 0;">
+      <div style="background: rgba(124,74,39,.2); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 0;box-sizing: border-box;">
         <div class="classic-massage-info" style="font-size: 1.3em;">
-          <h3 style="font-weight: bold;"><span style="border-bottom: 2px solid #585046;font-size: 2em;">Rituál šťastná maminka:</span></h3>
+          <h3 style="font-weight: bold;"><span style="font-size: 2em;font-family: 'Montez', cursive;">Rituál šťastná maminka:</span></h3>
           <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/11e33b11-2e8f-4f07-af05-f4a830cf2a20" target="_blank" rel="noopener noreferrer">
             <div class="service-price-tag">
               <span class="service-price">800 Kč</span>
@@ -748,15 +780,15 @@
           <p>Rituál „Šťastná maminka“ není pouze masáží – je to hluboce lidské setkání skrze dotek, prostor pro zastavení, ztišení a laskavé vnímání vlastního těla.</p>
         </div>
         <div style="padding-bottom: 16px;"></div>
-        <div class="cards" style="display: flex; align-items: center;margin-right: 18px;">
-          <img src="masaze/rsm.webp" alt="Rituál šťastná maminka" style="display: block;" loading="lazy">
+        <div class="cards" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+          <img src="masaze/rsm.webp" alt="Rituál šťastná maminka" style="display: block; width: 100%; max-width: 500px;" loading="lazy">
         </div>
       </div>
-      </div>
-  </section>
+      </details>
+    </section>
   <footer class="site-footer">
       <div class="footer-widgets">
-        <h2>Zásady ochrany osobních údajů</h2>
+        <h2 style="font-family: 'Lavishly Yours', cursive; font-size: 4rem;">Zásady ochrany osobních údajů</h2>
         <h4>Vaše osobní údaje zpracováváme v souladu s platnou legislativou (GDPR).</h4>
         <h4>Více informací naleznete v <a href="privacy-policy.html">plném znění zásad ochrany osobních údajů</a>.</h4>
 
@@ -785,8 +817,6 @@
       <div class="footer-copy">
         © 2025 Aura Michaell Massage. Všechna práva vyhrazena.
       </div>
-
-      <img src="galerie/logo.webp" alt="Footer Logo">
     </footer>
   <!-- Plovoucí tlačítko pro návrat nahoru -->
   <button id="scrollTopBtn" title="Zpět nahoru" style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: #7c4a27; color: #fff; border: none; font-size: 2em; box-shadow: 0 4px 16px rgba(60,30,10,0.18); cursor: pointer; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 9999;">↑</button>
@@ -835,13 +865,5 @@
       }
     };
   </script>
-
-  <!-- Plovoucí tlačítko pro přehrávání hudby -->
-  <audio id="bg-music" loop>
-    <source src="sound/hudba.mp3" type="audio/mpeg">
-  </audio>
-  <button id="music-toggle" class="music-toggle-btn" aria-label="Přehrát / Pozastavit hudbu">
-    <img id="music-icon" src="galerie/play.webp" alt="Play">
-  </button>
 </body>
 </html>

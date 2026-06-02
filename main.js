@@ -1,4 +1,7 @@
+console.log('[DEBUG] main.js loaded');
+
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('[DEBUG] DOMContentLoaded fired');
   // ===== Primární navigace =====
   const nav = document.querySelector('.primary-nav');
   const body = document.body;
@@ -259,6 +262,47 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // Zabraňte vnitřním detailům (indikace/kontraindikace) v zavírání rodičovské sekce
+  const innerDetails = document.querySelectorAll('.service-accordion .indikace-toggle, .service-accordion .kontraindikace-toggle');
+  console.log('[DEBUG] Počet vnitřních details:', innerDetails.length);
+
+  innerDetails.forEach((detail, idx) => {
+    // Blokuj toggle event
+    detail.addEventListener('toggle', event => {
+      console.log(`[DEBUG] Inner details #${idx} toggle:`, event.target.hasAttribute('open') ? 'OPENED' : 'CLOSED', 'CLASS:', event.target.className);
+      event.stopPropagation();
+    });
+    // Blokuj click event na summary
+    const summary = detail.querySelector('summary');
+    if (summary) {
+      summary.addEventListener('click', event => {
+        console.log(`[DEBUG] Inner summary #${idx} click:`, summary.textContent.slice(0, 30));
+        event.stopPropagation();
+      });
+    }
+  });
+
+  // Monitoruj hlavní sekce
+  const mainAccordions = document.querySelectorAll('.service-accordion');
+  console.log('[DEBUG] Počet hlavních accordionů:', mainAccordions.length);
+
+  mainAccordions.forEach((accordion, idx) => {
+    accordion.addEventListener('toggle', event => {
+      console.log(`[DEBUG] Main accordion #${idx} toggle:`, event.target.hasAttribute('open') ? 'OPENED' : 'CLOSED');
+    });
+
+    // Sleduj mutace atributu
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach(mutation => {
+        if (mutation.attributeName === 'open') {
+          const isOpen = accordion.hasAttribute('open');
+          console.log(`[DEBUG] Main accordion #${idx} attribute change:`, isOpen ? 'OPENED' : 'CLOSED');
+        }
+      });
+    });
+    observer.observe(accordion, { attributes: true, attributeFilter: ['open'] });
+  });
 
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
