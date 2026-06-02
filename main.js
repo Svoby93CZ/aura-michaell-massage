@@ -449,6 +449,43 @@ if (logoBubble) {
     logoBubble.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)';
   });
 }
+
+/* --- Corner decor parallax: jemný pohyb blobů podle pozice myši --- */
+(function(){
+  const container = document.querySelector('.corner-decor');
+  if (!container) return;
+  const blobs = Array.from(container.querySelectorAll('.c'));
+  if (!blobs.length) return;
+
+  let w = window.innerWidth, h = window.innerHeight;
+  let mouseX = w/2, mouseY = h/2;
+  let rafId = null;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function onMove(e){
+    mouseX = e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX) || mouseX;
+    mouseY = e.clientY || (e.touches && e.touches[0] && e.touches[0].clientY) || mouseY;
+    if (!rafId) rafId = requestAnimationFrame(update);
+  }
+
+  function update(){
+    rafId = null;
+    const cx = (mouseX - w/2) / w;
+    const cy = (mouseY - h/2) / h;
+    blobs.forEach((b, i) => {
+      const depth = (i % 2 === 0 ? -1 : 1) * (12 + i * 4);
+      const tx = Math.round(cx * depth * 20);
+      const ty = Math.round(cy * depth * 12);
+      b.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+    });
+  }
+
+  if (!reduced) {
+    window.addEventListener('mousemove', onMove, {passive:true});
+    window.addEventListener('touchmove', onMove, {passive:true});
+  }
+  window.addEventListener('resize', () => { w = window.innerWidth; h = window.innerHeight; });
+})();
 // ===== HUDBA NA POZADÍ A PŘEPÍNÁNÍ TLAČÍTKA =====
 const bgMusic = document.getElementById('bg-music');
 const musicToggleBtn = document.getElementById('music-toggle');

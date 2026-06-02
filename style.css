@@ -789,6 +789,17 @@ header { /* 04. Navigation & Hero Components */
   text-overflow: clip; /* Odstraní automatické zkracování textu při delších názvech */
 }
 
+/* --- Corner decor: světélkující rohy --- */
+.corner-decor{pointer-events:none;position:fixed;inset:0;z-index:var(--layer-floating)}
+.corner-decor .c{position:absolute;width:240px;height:240px;border-radius:50%;filter:blur(36px);opacity:.9;mix-blend-mode:screen;animation:corner-float 8s ease-in-out infinite;transform:translate3d(0,0,0)}
+.corner-decor .c.top-left{left:-80px;top:-80px;background:radial-gradient(circle,#ffd6e0 0%,transparent 60%)}
+.corner-decor .c.top-right{right:-100px;top:-100px;background:radial-gradient(circle,#d6f0ff 0%,transparent 60%)}
+.corner-decor .c.bottom-left{left:-90px;bottom:-90px;background:radial-gradient(circle,#e6ffd6 0%,transparent 60%)}
+.corner-decor .c.bottom-right{right:-80px;bottom:-80px;background:radial-gradient(circle,#fff3d6 0%,transparent 60%)}
+@keyframes corner-float{0%{transform:translateY(0)}50%{transform:translateY(18px)}100%{transform:translateY(0)}}
+@media (max-width:640px){.corner-decor .c{width:160px;height:160px;filter:blur(30px);}}
+@media (prefers-reduced-motion:reduce){.corner-decor .c{animation:none;transition:none}}
+
 @media (min-width: 900px) {
   .page-services .services-nav {
     display: flex; /* Na větších obrazovkách se tlačítka srovnají do řádku */
