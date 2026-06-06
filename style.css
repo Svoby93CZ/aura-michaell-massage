@@ -394,18 +394,13 @@ header { /* 04. Navigation & Hero Components */
   flex-direction: row;
   gap: 12px;
   margin-top: 12px;
-  position: relative;
+  position:relative;
   z-index: 10;
 }
 
 .page-services .aroma-side-cards > div {
   flex: 1;
-  box-sizing: border-box;
-}
-
-.page-services .services-hero #aromaterapie {
-  font-size: 0.8em;
-  padding: 10px 6px;
+  box-sizing: center;
 }
 
 @media (max-width: 900px) {
@@ -1011,16 +1006,6 @@ header { /* 04. Navigation & Hero Components */
   .page-services .services-nav .nav-btn {
     font-size: clamp(1rem, 4.8vw, 1.25rem); /* Přizpůsobí velikost textu a udrží jej na jednom řádku. */
     white-space: nowrap; /* Zabrání zalomení textu kategorie. */
-  }
-
-  .page-services .cenik-section-title,
-  .page-services .cenik-section-titlemini,
-  .cenik-section-title,
-  .cenik-section-titlemini {
-    font-size: clamp(1.45rem, 6.8vw, 2.6rem) !important; /* Zvýrazní nadpis kategorií na menších displejích. */
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    white-space: nowrap;
   }
 
   .hero-nav > div {
@@ -1806,16 +1791,6 @@ header { /* 04. Navigation & Hero Components */
     font-size: 2.5rem !important;
   }
 
-  /* Padding v sekcích - zmenšit na mobilech */
-  #klasicke,
-  #sportovni,
-  #zabaly,
-  #slowtouch,
-  #vedomy,
-  #ostatni {
-    padding-bottom: 40px !important;
-  }
-
   /* Padding v headerech - zmenšit */
   .page-services h1 {
     padding: 0.4em 0.8em !important;
@@ -2338,6 +2313,7 @@ footer img {
   letter-spacing: 0.5px; /* Nastaví rozestupy mezi písmeny. */
   border-bottom: 2px solid #e0d3c2; /* Vykreslí spodní rámeček. */
   padding-bottom: 6px; /* Vnitřní odsazení zespodu. */
+  text-align: left; /* Zarovná text. */
 }
 .cenik-section-titlemini {
   color: #7c4a27; /* Nastaví barvu textu. */
@@ -2903,9 +2879,9 @@ footer img {
     margin-left: 0; /* Odsazení zleva pro prvek. */
   }
   .cenik-section-title {
-    font-size: 3em; /* Nastaví velikost písma. */
+    font-size: 1.25em; /* Nastaví velikost písma. */
     margin: 0 0 12px 0; /* Odsadí prvek od okolního obsahu. */
-    text-align: center; /* Zarovná text. */
+    text-align: left; /* Zarovná text. */
     background: none; /* Definuje pozadí prvku. */
     border-bottom: 2px solid #e0d3c2; /* Vykreslí spodní rámeček. */
     padding-bottom: 8px; /* Vnitřní odsazení zespodu. */
