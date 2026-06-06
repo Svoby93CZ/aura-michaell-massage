@@ -1680,6 +1680,33 @@ header { /* 04. Navigation & Hero Components */
     grid-column: 1 / -1 !important;
   }
 
+  /* Nadpisy v sekci Ostatní služby bez zalomení */
+  #ostatni .classic-massage-info h3 {
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #ostatni .classic-massage-info h3 span {
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Make service titles non-wrapping on all screen sizes */
+  #ostatni .classic-massage-info h3,
+  #ostatni .classic-massage-info h3 span {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+  }
+
   /* Barevné rámečky ve 2 sloupcích - automatické rozmístění */
   #aromaterapie > div[style*="background: rgba(124,200,120"],
   #aromaterapie > div[style*="background: rgba(180,150,200"],
@@ -1738,6 +1765,174 @@ header { /* 04. Navigation & Hero Components */
 
   #ostatni .cards img:hover {
     transform: scale(1.02) !important;
+  }
+}
+
+/* Make all headings in Ostatní služby non-wrapping on all screens */
+#ostatni .service-accordion summary h2,
+#ostatni .classic-massage-info h3,
+#ostatni .classic-massage-info h3 span,
+#ostatni h4 {
+  display: inline-flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+}
+
+#ostatni .classic-massage-info h3 span {
+  width: max-content !important;
+}
+
+#ostatni .classic-massage-info p {
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+/* Mobilní optimalizace pro msginfo.html - max-width 768px */
+@media (max-width: 768px) {
+  /* Hlavní nadpis - zmenšit font size na mobilech */
+  .page-services h1[style*="font-size: 7rem"] {
+    font-size: 3rem !important;
+    padding: 0.4em 0.8em !important;
+  }
+
+  /* Nadpisy sekcí - zmenšit na mobilech */
+  .cenik-section-title {
+    font-size: 2.5rem !important;
+  }
+
+  /* Padding v sekcích - zmenšit na mobilech */
+  #klasicke,
+  #sportovni,
+  #zabaly,
+  #slowtouch,
+  #vedomy,
+  #ostatni {
+    padding-bottom: 40px !important;
+  }
+
+  /* Padding v headerech - zmenšit */
+  .page-services h1 {
+    padding: 0.4em 0.8em !important;
+  }
+
+  /* Font size v service-info - zmenšit */
+  .classic-massage-info {
+    font-size: 0.9em !important;
+  }
+
+  .classic-massage-info h3 {
+    font-size: 1.1em !important;
+  }
+
+  .classic-massage-info h3 span {
+    font-size: 1.3em !important;
+  }
+
+  /* Parallax section - zmenšit min-height */
+  .parallax-section {
+    min-height: 180px !important;
+    margin: 24px 0 !important;
+  }
+
+  .parallax-content {
+    padding: 16px 12px !important;
+  }
+
+  /* Oil cards - zmenšit padding */
+  .services-hero__oil-cards {
+    padding-top: 60px !important;
+  }
+
+  /* Service boxes - zmenšit padding a margin */
+  .page-services [style*="background: rgba"] {
+    padding: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Font size pro seznamy v service info */
+  .page-services ul {
+    font-size: 0.85em !important;
+  }
+
+  .page-services li {
+    padding-bottom: 6px !important;
+  }
+
+  /* Zmenšit spacing kolem sekce */
+  .page-services [style*="padding-bottom: 16px"],
+  .page-services [style*="padding-bottom: 20px"],
+  .page-services [style*="padding-bottom: 30px"] {
+    padding-bottom: 8px !important;
+  }
+
+  /* Zmenšit service price tag */
+  .service-price-tag {
+    padding: 4px 8px !important;
+  }
+
+  /* Zmenšit gap v grid layoutech */
+  #ostatni .service-accordion > div {
+    gap: 12px !important;
+  }
+
+  /* Card images - zmenšit max-width */
+  #ostatni .cards img,
+  .classic-massage-info img {
+    max-width: 100% !important;
+    max-height: 300px !important;
+  }
+
+  /* Intro text - zmenšit font */
+  .services-hero__intro-text p {
+    font-size: 0.9em !important;
+  }
+
+  /* Indikace a kontraindikace - zmenšit */
+  .indikace-kontraindikace-container {
+    gap: 8px !important;
+  }
+
+  .indikace-toggle,
+  .kontraindikace-toggle {
+    padding: 8px !important;
+  }
+}
+
+/* Extra malé mobily - max-width 480px */
+@media (max-width: 480px) {
+  .page-services h1[style*="font-size"] {
+    font-size: 2rem !important;
+    padding: 0.3em 0.6em !important;
+  }
+
+  .cenik-section-title {
+    font-size: 1.8rem !important;
+  }
+
+  .classic-massage-info {
+    font-size: 0.8em !important;
+  }
+
+  .classic-massage-info h3 span {
+    font-size: 1.1em !important;
+  }
+
+  #ostatni .cards img {
+    max-height: 250px !important;
+  }
+
+  .parallax-section {
+    min-height: 160px !important;
+  }
+
+  .services-hero__oil-cards {
+    padding-top: 40px !important;
   }
 }
 
