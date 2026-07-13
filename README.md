@@ -7,91 +7,45 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 ```
 .
 ├── index.html              # Hlavní stránka
-├── msginfo.html           # Přehled služeb a ceníky
-├── privacy-policy.html    # Ochrana osobních údajů (GDPR)
-├── style.css              # Hlavní CSS styly
-├── main.js                # JavaScript funkcionalita
-├── galerie/               # Obrázky pro galerii
-├── masaze/                # Obrázky masáží
-├── Poukazy/              # Dárkové poukazy
-└── tools/                # Nástroje pro údržbu kódu
+├── about.html              # O salonu
+├── ceremonie.html          # Ceremoniální a rituální služby
+├── obchod.html             # Obchod / doplňkové nabídky
+├── msginfo.html            # Přehled služeb a ceníky
+├── privacy-policy.html     # Ochrana osobních údajů (GDPR)
+├── style.css               # Hlavní CSS styly
+├── main.js                 # JavaScript funkcionalita
+├── card-3d.js              # 3D karta / vizuální efekty
+├── galerie/                # Obrázky pro galerii
+├── masaze/                 # Obrázky masáží
+├── Poukazy/                # Dárkové poukazy
+├── sound/                  # Zvukové soubory
+└── tools/                  # Nástroje pro údržbu kódu
+    ├── _audit-unused-css.ps1
     └── inline_section_comments.py
 ```
 
-## 🚀 Funkce
+## 🚀 Co web umí
 
-### Hlavní stránka (index.html)
-- ✨ Hero sekce s animovaným logem
-- 📱 Responzivní navigace
-- 🖼️ Galerie s lightboxem
-- 💳 Bonusová věrnostní karta
-- 📍 Interaktivní mapa
-- ⭐ Integrace Google recenzí
-- 📧 Kontaktní informace
-
-### Stránka služeb (msginfo.html)
-- 📋 Kompletní ceník masáží
-- ℹ️ Detailní popis každé služby
-- 🔗 Přímé odkazy na online rezervaci
-- 📱 Mobilní optimalizovaný ceník
-- ✅ Indikace a kontraindikace
-
-### Technologie
-- 🎨 Moderní CSS s proměnnými a flexboxem
-- ⚡ Vanilla JavaScript (žádné závislosti)
-- 📱 Plně responzivní design
-- ♿ Přístupnost (ARIA atributy)
-- 🚀 Performance optimalizace
+- Responzivní prezentaci salonu na desktopu i mobilu
+- Hero sekci, navigaci, kontakty a základní informační stránky
+- Přehled služeb a ceníků v desktop i mobilním zobrazení
+- Galerie a vizuální doplňky včetně 3D efektů
+- Stránku zásad ochrany osobních údajů
+- Statický web bez front-end závislostí
 
 ## 🛠️ Údržba
 
-### Aktualizace ceníků
-Ceníky se upravují v souboru `msginfo.html` ve dvou variantách:
-1. Desktop verze (tabulky)
-2. Mobilní verze (karty)
+Aktualizace ceníků probíhají v souboru [msginfo.html](msginfo.html) ve dvou variantách:
+1. desktop zobrazení,
+2. mobilní karty.
 
-### Přidání nových obrázků
-- Galerie: složka `galerie/`
-- Masáže: složka `masaze/`
-- Poukazy: složka `Poukazy/`
+Nové obrázky přidávejte podle účelu do složek [galerie/](galerie/), [masaze/](masaze/) nebo [Poukazy/](Poukazy/).
 
-### CSS komentáře
-Pro sloučení inline komentářů v CSS použijte:
-```bash
+Pro sjednocení inline komentářů v CSS použijte:
+
+```powershell
 python tools/inline_section_comments.py
 ```
-
-## 🔧 Vylepšení a opravy
-
-### Provedené opravy (28. října 2025)
-1. ✅ Přidány meta tagy pro SEO
-2. ✅ Opraveny gramatické chyby
-3. ✅ Přidána lazy loading pro obrázky
-4. ✅ Optimalizace fontů (preconnect)
-5. ✅ Nové CSS proměnné pro lepší správu
-6. ✅ Vytvořeny konfigurační soubory
-
-### Doporučení pro budoucnost
-1. 📊 Implementovat Google Analytics
-2. 🗜️ Komprese obrázků (WebP formát)
-3. 🔐 SSL certifikát pro HTTPS
-4. 💬 Chatbot nebo kontaktní formulář
-5. 🌐 Multilingual support (němčina, polština)
-6. 📱 PWA (Progressive Web App) funkcionalita
-
-## 🎯 Performance
-
-### Současné výsledky
-- ✅ Žádné JavaScript chyby
-- ✅ Validní HTML a CSS
-- ✅ Mobilní první přístup
-- ✅ Rychlé načítání
-
-### Možné optimalizace
-- Minifikace CSS a JavaScript
-- Komprese obrázků
-- CDN pro statické soubory
-- Caching strategie
 
 ## 📞 Kontakt
 
@@ -102,8 +56,8 @@ python tools/inline_section_comments.py
 
 ## 📝 Licence
 
-© 2025 Aura Michaell Massage. Všechna práva vyhrazena.
+© 2026 Aura Michaell Massage. Všechna práva vyhrazena.
 
 ---
 
-**Poslední aktualizace:** 28. října 2025
+**Poslední aktualizace:** 18. června 2026

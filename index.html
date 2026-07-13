@@ -91,7 +91,7 @@
         </div>
 
         <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="primary-nav__link primary-nav__link--cta">
-          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" style="width: 16px; height: 16px; margin-right: 10px;" alt="Rezervace"/>
+          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="primary-nav__cta-icon" alt="Rezervace"/>
           Rezervace
         </a>
       </div>
@@ -99,32 +99,26 @@
   </nav>
 
     <!-- Hlavní nadpis -->
-    <div id="hero" class="hero-title" style="display: flex; align-items: center; gap: 24px; padding-top: 60px;">
-
-      <div class="parallax-section" style="margin: 0; min-height: auto; box-shadow: none; text-shadow: none; --parallax-image: url('galerie/papir3.webp'); --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));">
-        <div class="parallax-content" style="padding: 24px 60px 24px 32px; max-width: none; font-family: 'Tenor Sans', serif;">
-          <h1 style="-webkit-text-stroke: 0.1px #000000; margin: 0;">Aura Michaell Massage</h1>
-        </div>
+    <section id="hero" class="hero-wrapper">
+      <div class="hero-brand">
+        <div class="hero-logo-draw" aria-hidden="true"></div>
+        <h1 class="main-title-text">
+          AURA<br>MICHAELL<br>MASSAGE</h1>
       </div>
 
-      <div class="logo-bubble">
-        <img src="galerie/logo.webp" alt="Logo">
+      <div class="hero-intro">
+        <h2>Nechte starosti odejít.</h2>
+        <p>
+          V salonu vytvářím prostředí, kde se zavřou dveře před každodenním shonem a kde se staráte jen o sebe.
+          Dopřejte si chvíli, ve které se tělo i mysl znovu sladí.
+        </p>
       </div>
-    </div>
-  <section class="parallax-section parallax-welcome" aria-label="Relaxace v Aura Michaell Massage">
-    <div class="parallax-content">
-      <h2 style="-webkit-text-stroke: 1.6px #000000;">Nechte starosti odejít.</h2>
-      <p>
-        V salonu vytvářím prostředí, kde se zavřou dveře před každodenním shonem a kde se staráte jen o sebe.
-        Dopřejte si chvíli, ve které se tělo i mysl znovu sladí.
-      </p>
-    </div>
-  </section>
+    </section>
 
     <!-- Přivítání -->
     <section class="parallax-section parallax-welcome-intro welcome-section" aria-label="Přivítání v salonu">
       <div class="parallax-content">
-        <h2><span style="font-style: oblique; -webkit-text-stroke: 2px #000000;">Přivítáme se</span></h2>
+        <h2><span class="welcome-title-accent">Přivítáme se</span></h2>
         <div class="welcome-content">
           <ul class="welcome-list">
             <li>Usadím Vás, nabídnu šálek lahodného sypaného čaje, kávy či vody.</li>
@@ -137,9 +131,9 @@
             <li>Následně už jenom přijímáte, hýčkáte svou schránku a svoji duševní pohodu.</li>
           </ul>
           <div class="welcome-media">
-            <div class="parallax-section" style="margin: 0; min-height: auto; box-shadow: none; border-radius: 20px; --parallax-image: url('galerie/navsteva.webp'); --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));">
-              <div class="parallax-content" style="padding: 0; max-width: none; line-height: 0;">
-                <img src="galerie/navsteva.webp" alt="Přivítání klienta" class="welcome-image" loading="lazy" style="opacity: 0; display: block; width: 100%; height: auto;">
+            <div class="parallax-section welcome-media-frame">
+              <div class="parallax-content welcome-media-frame__content">
+                <img src="galerie/navsteva.webp" alt="Přivítání klienta" class="welcome-image welcome-image--ghost" loading="lazy">
               </div>
             </div>
           </div>
@@ -151,67 +145,56 @@
       </div>
     </section>
 
-    <!-- Bonusová karta -->
-    <section id="offer" class="parallax-section parallax-bonus bonus-card-section" aria-label="Bonusová karta">
-  <div class="parallax-content">
-    <div class="offer-box bonus-card-box">
-      <div class="discount-bubble">
-        <div class="discount-main">Každá desátá masáž</div>
-        <div class="discount-sub">SLEVA</div>
-      </div>
-      <div id="card-3d-container" class="card-3d-scene"></div>
-    </div>
-
-    <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(galerie/papir.webp); background-position: center; background-size: cover; border-radius: 8px; border: 2px solid #1a0100; width: fit-content; margin: 0 auto; padding: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-      <p style="margin: 0; text-align: center;">
-        <span style="-webkit-text-stroke: 0.01em #000000; font-weight: bold; color: rgb(255, 255, 255); text-shadow: 0 2px 4px rgba(0,0,0,0.5); display: block; margin-bottom: 8px;">
-          Každý zákazník obdrží <span style="font-size: 1.4em; color: #ffffff;">Věrnostní kartičku</span> pro získání slevy.
-        </span>
-        <span style="font-weight: normal; color: #dcc7b1; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
-          Po každé absolvované masáži Vám bude na kartičku udělaná značka.<br>
-          Po absolvování <span style="font-weight: bold; color: white;">deseti</span> masáží získáte slevu
-          <span style="font-weight: bold; padding: 2px 8px; border-radius: 16px; background-color: #891915; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">200 Kč</span>
-          na další masáž!
-        </span>
-      </p>
-    </div>
-  </div>
-</section>
-
-    <!-- Lokace/MAPA -->
-    <section id="location">
-
-      <div class="prostor-map">
-
-        <div class="prostor-img">
-          <img src="galerie/prostor.webp" alt="Prostor, kde se tělo nadechne">
-        </div>
-        <div class="map-address">
-          <h2 style="text-align: center;">Najdete mě zde:</h2>
-          <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <div class="address-box" style="font-family: 'Roboto', Arial, sans-serif;">
-            <div style="padding-bottom: 15px;">
-            <strong>Adresa:</strong><br>
+    <!-- Karta a mapa -->
+    <section id="offer-location" class="home-offer-location">
+      <div class="merged-parallax-content home-offer-location__content">
+        <div class="parallax-section home-offer-location__panel">
+          <div class="parallax-content services-hero__intro-text home-offer-location__intro">
+            <h2 class="home-offer-location__title">
+              Věrnostní karta
+            </h2>
+            <div id="card-3d-container" class="card-3d-scene home-offer-location__card"></div>
+              <p class="home-offer-location__text">
+                Po 10 absolvovaných masážích získáte slevu<br>
+                <span class="home-offer-location__badge">200 Kč</span>
+              </p>
             </div>
-            Šmilovského 663/1<br>
-            792 01 Bruntál<br>
-            Přízemí
           </div>
-        </div>
+          <div class="merged-col">
+            <div class="home-offer-location__map-card">
+              <h2 class="home-offer-location__map-title">
+                Kde mě najdete
+              </h2>
+              <div class="home-offer-location__map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <div class="home-offer-location__address">
+                <span class="home-offer-location__address-line">📍 Šmilovského 663/1</span><br>
+                  792 01 Bruntál
+              </div>
+            </div>
+          </div>
       </div>
     </section>
 
     <!-- Recenze Google -->
-    <section id="recenze" class="section reviews" style="background-image: url(galerie/papirek.webp); background-position: center; padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25); margin-bottom: 24px;">
-      <div class='sk-ww-google-reviews' data-embed-id='25613697'></div><script src='https://widgets.sociablekit.com/google-reviews/widget.js' defer></script>
-      <div class="elfsight-app-b275f04e-832a-452d-91ed-1fdc07117847" data-elfsight-app-lazy></div>
+    <section id="recenze" class="home-reviews">
+      <details class="service-accordion home-reviews__accordion">
+        <summary class="home-reviews__summary">
+          <h2 class="home-reviews__title">Co o mně říkají klienti</h2>
+        </summary>
+        <div class="home-reviews__content">
+          <div class='sk-ww-google-reviews' data-embed-id='25613697'></div>
+          <script src='https://widgets.sociablekit.com/google-reviews/widget.js' defer></script>
+          <div class="elfsight-app-b275f04e-832a-452d-91ed-1fdc07117847" data-elfsight-app-lazy></div>
+        </div>
+      </details>
     </section>
+    <div class="home-spacer home-spacer--large"></div>
     <!-- IMPRESSUM / PRÁVNÍ ÚDAJE -->
-    <section id="impressum" class="section imprint" style="background-image: url(galerie/papirek.webp); padding: 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(60,30,10,0.25);border: 3px solid #1a0100; margin-bottom: 24px;" aria-label="Impressum a právní údaje">
-      <h2 style="font-family: 'Montez', cursive; font-size: 3rem;">Impressum</h2>
-      <ul style="font-family: 'Roboto', Arial, sans-serif;">
+    <section id="impressum" class="section imprint home-impressum" aria-label="Impressum a právní údaje">
+      <h2 class="home-impressum__title">Impressum</h2>
+      <ul class="home-impressum__list">
         <li><strong>Provozovatel:</strong> Michaela Svobodová – Aura Michaell Massage</li>
         <li><strong>Sídlo:</strong> Šmilovského 663/1, 792 01 Bruntál, Česká republika</li>
         <li><strong>IČO:</strong> 23405830</li>
@@ -219,17 +202,14 @@
         <li><strong>Telefon:</strong>
           <a href="tel:+420727836338">+420 727 836 338</a>
         </li>
-        <li style="font-family: 'Roboto', Arial, sans-serif;"><strong>Provozní doba:</strong> Dle objednávek</li>
+        <li class="home-impressum__item"><strong>Provozní doba:</strong> Dle objednávek</li>
       </ul>
     </section>
-
-    <!-- Počítadlo návštěv -->
-    <script type="text/javascript" src="https://counter.websiteout.com/js/16/6/0/1"></script>
-
+    <div class="home-spacer"></div>
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer class="site-footer home-footer">
       <div class="footer-widgets">
-        <h2 style="font-family: 'Lavishly Yours', cursive; font-size: 4rem;">Zásady ochrany osobních údajů</h2>
+        <h2 class="home-footer__title">Zásady ochrany osobních údajů</h2>
         <h4>Vaše osobní údaje zpracováváme v souladu s platnou legislativou (GDPR).</h4>
         <h4>Více informací naleznete v <a href="privacy-policy.html">plném znění zásad ochrany osobních údajů</a>.</h4>
 
@@ -259,6 +239,9 @@
         © 2026 Aura Michaell Massage. Všechna práva vyhrazena.
       </div>
     </footer>
+    <!-- Počítadlo návštěv -->
+    <div class="home-spacer"></div>
+    <script type="text/javascript" src="https://counter.websiteout.com/js/16/6/0/1"></script>
   </div>
 
   <div id="lightbox" class="modal" aria-hidden="true">

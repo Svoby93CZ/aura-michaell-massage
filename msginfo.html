@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Kompletní nabídka masáží a služeb - klasické, sportovní masáže, zábaly, slow touch. Ceník a rezervace online." />
+  <meta name="description" content="Nový interaktivní přehled masáží a služeb. Filtrujte podle délky, typu a najděte ideální péči během pár vteřin.">
 
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <title>Přehled masáží a služeb - Aura Michaell Massage</title>
+  <title>Přehled masáží a služeb | Aura Michaell Massage</title>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
   <script>
@@ -20,286 +20,19 @@
     gtag('config', 'G-732NT4QJEX');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Tenor+Sans:400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Style+Script&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montez&family=My+Soul&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="vylepšení.css">
   <link rel="icon" href="favicon.ico">
-
-  <style>
-    /* 1. ZMENŠENÍ MEZER MEZI HLAVNÍMI KATEGORIEMI */
-    /* Zacílíme přímo na id sekcí a přebijeme 80px padding z HTML */
-    #klasicke, #sportovni, #zabaly, #slowtouch, #vedomy, #ostatni {
-      padding-bottom: 6px !important; /* Zmenšená mezera - hodnotu si můžeš libovolně upravit */
-      border-bottom: none !important; /* Schová tu původní spodní linku, už nebude potřeba */
-    }
-
-    /* 2. JEMNÝ HOVER EFEKT NA CELOU KATEGORII */
-    .service-accordion {
-      /* Připraví prohlížeč na plynulou animaci */
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
-    }
-
-    .service-accordion:hover {
-      transform: translateY(-4px); /* Celý blok se jemně nadnese */
-      box-shadow: 0 16px 32px rgba(60, 30, 10, 0.15) !important; /* Vrhne větší a měkčí stín */
-      border-color: rgba(124, 90, 37, 0.4) !important; /* Linka rámečku lehce ztmavne */
-    }
-    /* Plynulý scroll a odsazení pro kotvy (aby menu nepřekrývalo nadpisy po prokliku) */
-    html {
-      scroll-padding-top: 100px;
-    }
-
-    /* 1. Oprava vybuchlého nadpisu */
-    .main-title-wrapper {
-      padding: 10px 20px;
-      text-align: center;
-      font-family: 'Montez', cursive;
-      color: #3e2f2a;
-      -webkit-text-stroke: 0.001em #000000;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 0 2px #000;
-    }
-    .main-title {
-      margin: 0;
-      font-size: clamp(2.5rem, 8vw, 7rem);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6em 1em;
-      border-radius: 22px;
-      line-height: 1.1;
-      box-sizing: border-box;
-      max-width: 100%;
-      background-image: url('galerie/papir_bily.webp');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      background-origin: padding-box;
-      background-clip: padding-box;
-      opacity: 0.9; /* Dal jsem maličko vyšší krytí, aby stín lépe vynikl */
-
-      /* NOVÉ EFEKTY */
-      /* 1. Stín přesně kopírující okraje papíru (použil jsem tmavě hnědou, aby to ladilo s webem) */
-      filter: drop-shadow(0px 8px 12px rgb(0, 0, 0));
-
-      /* 2. Jemné ležérní natočení papíru */
-      transform: rotate(-1.5deg);
-
-      /* 3. Zajištění plynulosti pro hover animaci níže */
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    /* 4. Efekt zvednutí při najetí myší nebo dotyku prstem */
-    .main-title:hover {
-      transform: rotate(0deg) scale(1.02) translateY(-4px);
-    }
-
-    /* 2. Utility třídy pro informační boxy (nahrazují dlouhé inline styly) */
-    .info-box {
-      padding: 12px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(60,30,10,0.25);
-      box-sizing: border-box;
-    }
-    .info-box--brown {
-      background: rgba(124,74,39,.2);
-      margin-bottom: 24px;
-    }
-    .info-box--brown-no-margin {
-      background: rgba(124,74,39,.2);
-      margin-bottom: 0;
-    }
-    .info-box--green {
-      background: rgba(69, 135, 38, 0.2);
-      border: 1px solid #92ab4e;
-    }
-    .info-box--red {
-      background: rgba(154, 51, 51, 0.2);
-      border: 1px solid #e33333;
-    }
-/* ===== NOVÝ PREMIUM STYL PRO POPLATEK ===== */
-
-    .fee-notification-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 8px;
-      box-sizing: border-box;
-    }
-
-    .fee-notification-box {
-      /* Jen textura papíru, ŽÁDNÁ pevná barva nebo border! */
-      background-image: url('galerie/papir_bily.webp');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      filter: drop-shadow(0px 8px 12px rgb(0, 0, 0));/* Stín kopírující přesně tvar potrhaného papíru */
-
-      /* Vnitřní okraje a max-šířka, aby to nevypadalo nataženě */
-      padding: 60px 60px;
-      text-align: center;
-      margin: 10px auto 24px auto;
-      max-width: 550px;
-
-      /* Ležérní natočení papíru */
-      transform: rotate(1deg);
-    }
-
-    /* Styl pro text varování */
-    .fee-text-warning {
-      font-family: 'Raleway', sans-serif;
-      font-size: 1.1em;
-      font-weight: 700;
-      color: #3e2f2a;
-      margin: 0 0 6px 0;
-    }
-
-    /* Elegantní styl pro samotnou cenu "+50 Kč" */
-    .fee-price {
-      font-family: 'Montez', cursive;
-      font-size: 3.5rem;
-      color: #874f00;
-      margin: 0;
-      line-height: 1;
-    }
-    .info-box--dark {
-      background: rgba(0, 0, 0, 0.2);
-      padding: 4px;
-      margin: 0 auto 4px auto;
-      max-width: 800px;
-      text-align: center;
-    }
-    /* =========================================
-       ÚPRAVA ROZBALOVACÍCH SEKCÍ (MEZERY + HOVER)
-       ========================================= */
-
-    /* 1. HLAVNÍ KATEGORIE (Klasické masáže, Zábaly...) */
-
-    /* Přebití obřích 80px mezer, které jsou natvrdo v HTML */
-    section[id] {
-      padding-bottom: 24px !important;
-      border-bottom: none !important; /* Schová starou čáru, díky novému hover stínu už není potřeba */
-    }
-
-    /* Příprava pro animaci a zmenšení mezer pod kartou */
-    .service-accordion {
-      margin: 0 auto 16px !important;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
-    }
-
-    /* Samotný HOVER efekt (karta se jemně zvedne a vrhne větší stín) */
-    .service-accordion:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(60, 30, 10, 0.18) !important;
-      border-color: rgba(124, 74, 39, 0.5) !important;
-    }
-    .indikace-toggle, .kontraindikace-toggle {
-      transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-    }
-
-    /* Jemnější hover efekt i pro zelené a červené boxy */
-    .indikace-toggle:hover, .kontraindikace-toggle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(60, 30, 10, 0.15) !important;
-    }
-    /* =========================================
-       3. OPRAVA ZAROVNÁNÍ "OSTATNÍ SLUŽBY"
-       ========================================= */
-    #ostatni .service-accordion summary h2 {
-      width: auto !important; /* Přebije problematických 100% ze style.css */
-      display: block !important;
-    }
-
-    /* =========================================
-       4. ZÚŽENÍ RÁMEČKŮ NA DESKTOPU
-       ========================================= */
-    @media (min-width: 769px) {
-      .service-accordion summary {
-        padding: 4px 24px !important; /* Výrazně zmenší vertikální vnitřní prostor */
-      }
-
-      .service-accordion summary h2 {
-        font-size: 4rem !important; /* Přepíše inline styl 5em na příjemnější velikost */
-        line-height: 1 !important; /* Zkrotí obrovské neviditelné řádkování fontu Montez */
-        margin-top: 10px !important; /* Lehké optické dorovnání textu na střed */
-      }
-    }
-    /* =========================================
-       5. ÚPRAVA ÚVODNÍHO TEXTU (ROZTAŽENÍ)
-       ========================================= */
-    .page-services .services-hero {
-      display: block !important; /* Zruší původní rozdělení na dva sloupce */
-      padding-top: 20px !important;
-    }
-    .page-services .services-hero__header {
-      max-width: 850px !important; /* Omezí text tak akorát, aby se dobře četl a netáhl se přes obří monitor */
-      margin: 0 auto !important; /* Vystředí celý blok s textem */
-      width: 100% !important;
-    }
-
-    /* =========================================
-       6. SJEDNOCENÍ RÁMEČKŮ A VYSTŘEDĚNÍ NADPISŮ
-       ========================================= */
-    .service-accordion summary {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important; /* Vystředí nadpis horizontálně */
-      position: relative !important; /* Nastaví pevný prostor pro šipku */
-      padding: 12px 24px !important; /* Sjednotí a opticky zmenší výšku rámečku na PC i mobilu */
-      min-height: 70px !important;
-    }
-
-    .service-accordion summary h2 {
-      width: auto !important; /* Opraví odskočený nadpis "Ostatní služby" */
-      margin: 0 !important;
-      text-align: center !important;
-      font-size: clamp(2rem, 6vw, 3.8rem) !important; /* Dynamická velikost písma */
-      line-height: 1 !important; /* Zkrotí obří neviditelné okraje fontu */
-      display: block !important;
-    }
-
-    /* Ukotvení šipky "Rozbalit/Sbalit" absolutně vpravo */
-    .service-accordion summary::after {
-      position: absolute !important;
-      right: 24px !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-      margin-left: 0 !important;
-    }
-
-    /* Udrží správnou pozici šipky i po kliknutí */
-    .service-accordion[open] summary::after {
-      transform: translateY(-50%) !important;
-    }
-
-    /* Zmenšení odsazení šipky na malých mobilech */
-    @media (max-width: 720px) {
-      .service-accordion summary::after {
-        right: 16px !important;
-        font-size: 0.85em !important;
-      }
-    }
-    /* =========================================
-       7. TMAVŠÍ A VÝRAZNĚJŠÍ STÍNY PRO RÁMEČKY
-       ========================================= */
-    .service-accordion {
-      /* Výraznější hluboký stín v klidovém stavu */
-      box-shadow: 0 6px 22px rgba(45, 25, 10, 0.25) !important;
-    }
-
-    .service-accordion:hover {
-      /* Po najetí myší nebo dotyku stín ještě víc ztmavne a zvětší se */
-      box-shadow: 0 16px 38px rgba(45, 25, 10, 0.42) !important;
-    }
-  </style>
 </head>
-<body class="page-services">
+<body class="page-services page-services-v2">
+  <!-- Hlavní navigace stránky -->
   <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
+      <a href="#hero" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
+        <span class="premium-brand-text">Aura Michaell Massage</span>
+      </a>
       <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
         <span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-bar"></span>
@@ -307,755 +40,488 @@
         <span class="primary-nav__toggle-label">Menu</span>
       </button>
       <div class="primary-nav__menu" id="primary-nav-menu" aria-hidden="true">
-        <a href="#klasicke" class="primary-nav__link">Klasické masáže</a>
-        <a href="#sportovni" class="primary-nav__link">Sportovní masáže</a>
-        <a href="#zabaly" class="primary-nav__link">Zábaly</a>
-        <a href="#slowtouch" class="primary-nav__link">Tichý dotek</a>
-        <a href="#vedomy" class="primary-nav__link">Vědomý dotek</a>
-        <a href="#ostatni" class="primary-nav__link">Ostatní služby</a>
-        <a href="index.html" class="primary-nav__link primary-nav__link--cta">← Hlavní stránka</a>
+        <a href="index.html" class="primary-nav__link primary-nav__link--cta">Zpět na hlavní stránku</a>
       </div>
     </div>
   </nav>
-  <div class="main-title-wrapper"style="padding-top: 70px;">
-    <h1 class="main-title" >
-      Přehled masáží a služeb
-    </h1>
-  </div>
-  <section class="services-hero">
-    <header class="services-hero__header">
-      <section class="services-hero__intro">
-        <div class="parallax-section" style="margin: 0; min-height: auto; box-shadow: none; text-shadow: none; border-radius: 23px; --parallax-image: url('galerie/papir3.webp'); --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));">
-          <div class="parallax-content services-hero__intro-text" style="background: transparent; box-shadow: none; border-radius: 0; max-width: none; width: 100%; padding-top: 32px; padding-bottom: 32px;">
-            <p style="color: #3e2f2a; text-shadow: none; font-weight: 600;">Vítejte v přehledu všech masáží a služeb.</p>
-            <p style="color: #3e2f2a; text-shadow: none; font-weight: 600;">Níže najdete stručné popisy, indikace a kontraindikace, ceny i délky jednotlivých procedur.</p>
-            <p style="color: #3e2f2a; text-shadow: none; font-weight: 600;">Stačí si vybrat, co vám nejvíce vyhovuje a jedním kliknutím na cenovku přejít k rezervaci.</p>
-          </div>
-        </div>
-    </header>
-  </section>
-  <nav class="hero-nav hero-nav--featured services-nav services-nav--grid" role="navigation" aria-label="Navigace služeb" style="display: none;">
-    <a href="#klasicke" class="nav-btn"><span>Klasické masáže</span></a>
-    <a href="#sportovni" class="nav-btn"><span>Sportovní masáže</span></a>
-    <a href="#zabaly" class="nav-btn"><span>Zábaly</span></a>
-    <a href="#slowtouch" class="nav-btn"><span>Tichý dotek</span></a>
-    <a href="#vedomy" class="nav-btn"><span>Vědomý dotek</span></a>
-    <a href="#ostatni" class="nav-btn"><span>Ostatní služby</span></a>
-  </nav>
-    <section id="klasicke" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
-      <details class="service-accordion">
-        <summary>
-          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Klasické masáže ~</h2>
-        </summary>
-      <div class="info-box info-box--brown">
-        <div class="classic-massage-info" style="font-size: 0.8em;font-weight: bold;">
-          <p>Klasická masáž je jednou z nejznámějších a nejoblíbenějších forem masáže, vhodná pro každého bez ohledu na věk či životní styl.</p>
-          <p>Přináší uvolnění svalů, podporuje správné držení těla a pomáhá zmírnit bolesti způsobené stresem, jednostrannou zátěží nebo sedavým zaměstnáním.</p>
-          <div class="read-more-content" style="display: none;">
-            <p>Masáž zlepšuje prokrvení a okysličení tkání, podporuje přirozenou regeneraci a přináší celkový pocit lehkosti a relaxace.</p>
-            <p>Díky jemnějším i hlubším tahům působí nejen na tělo, ale i na psychiku – snižuje napětí, odstraňuje únavu a pomáhá navodit vnitřní rovnováhu.</p>
-            <p>Klasická masáž je tradiční forma masáže, která se zaměřuje na uvolnění svalového napětí, zlepšení krevního oběhu a celkovou relaxaci těla. Provádí se pomocí různých technik, jako je hnětení, tření, tepání a protahování.</p>
-            <p>Nejčastěji se masírují záda, šíje, ramena a končetiny. Klasická masáž pomáhá zmírnit stres, bolesti svalů i únavu a podporuje regeneraci organismu.</p>
-          </div>
-          <button class="read-more-btn" onclick="toggleReadMore(this)" style="margin-top: 8px; padding: 6px 16px; background: rgba(124,74,39,.4); border: 1px solid #8b5a2b; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9em;">Číst více ▼</button>
-        </div>
-        <div style="padding-bottom: 20px;"></div> <div class="indikace-kontraindikace-container">
-          <details class="indikace-toggle info-box info-box--green">
-            <summary>
-              <h3 class="indikace">✅ Indikace:<span style="color:#000000;">Pro koho je vhodná</span></h3>
-            </summary>
-            <ul style="font-size: 1em;font-weight: bold; margin-left: 1.2em;">
-              <li>pro každého, kdo hledá odpočinek a regeneraci</li>
-              <li>při bolestech zad, šíje či celkovém svalovém napětí</li>
-              <li>pro lidi se sedavým zaměstnáním nebo jednostrannou zátěží</li>
-              <li>jako prevence proti stresu a únavě.</li>
-            </ul>
-          </details>
-          <details class="kontraindikace-toggle info-box info-box--red">
-            <summary>
-              <h3 class="kontraindikace">⛔ Kontraindikace:<span style="color:#000000;">Pro koho není vhodná</span></h3>
-            </summary>
-            <ul style="font-size: 1em;font-weight: bold; margin-left: 1.2em;">
-              <li>Horečka a akutní infekce</li>
-              <li>Kožní onemocnění nebo poranění kůže</li>
-              <li>Křečové žíly (v místě výskytu)</li>
-              <li>Nádorová onemocnění</li>
-              <li>Krvácivé stavy nebo riziko trombózy</li>
-              <li>Těhotenství (v určitých fázích a s opatrností)</li>
-            </ul>
-          </details>
-        </div>
-        <div class="info-box info-box--dark">
-          <p style="text-align:center;font-weight: bold;"><span style="border-bottom: 2px solid #403e3e;">! Po kliknutí na cenovku se dostanete na stránku pro rezervaci masáže. !</span></p>
-        </div>
-      <div class="cards">
-        <div class="card-info">
-          <div class="card-img-col">
-            <img src="masaze/kmz.webp" alt="Masáž zad a šíje" loading="lazy">
-            <div class="card-title">Záda a šíje</div>
-            <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/8cc1ae74-f248-41f5-b532-87a75d527a49" target="_blank" rel="noopener noreferrer">
-              <div class="service-price-tag">
-                <span class="service-price">800 Kč</span>
-                <span class="service-price-divider" aria-hidden="true"></span>
-                <span class="service-duration">50 min</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="card-info">
-          <div class="card-img-col">
-            <img src="masaze/kmzsdkp.webp" alt="Záda/šíje/dolních končetin ze zadu/ze předu" loading="lazy">
-            <div class="card-title">Záda/šíje/dolních končetin ze zadu/ze předu</div>
-            <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/cfbda387-3f4c-4ddb-bf89-9f553735ee35" target="_blank" rel="noopener noreferrer">
-              <div class="service-price-tag">
-                <span class="service-price">1 600 Kč</span>
-                <span class="service-price-divider" aria-hidden="true"></span>
-                <span class="service-duration">120 min</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="card-info">
-          <div class="card-img-col">
-            <img src="masaze/kmdkzp.webp" alt="Dolních končetin ze zadu/ze předu" loading="lazy">
-            <div class="card-title">Dolních končetin ze zadu/ze předu</div>
-            <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/5fc39bb3-7e02-4078-8a4f-857194b828a4" target="_blank" rel="noopener noreferrer">
-              <div class="service-price-tag">
-                <span class="service-price">850 Kč</span>
-                <span class="service-price-divider" aria-hidden="true"></span>
-                <span class="service-duration">60 min</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="card-info">
-          <div class="card-img-col">
-            <img src="masaze/kmdkz.webp" alt="Dolních končetin ze zadu" loading="lazy">
-            <div class="card-title">Dolních končetin ze zadu</div>
-            <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/cdd9d157-6b1c-46a9-b2a6-9f854ff60cb9" target="_blank" rel="noopener noreferrer">
-              <div class="service-price-tag">
-                <span class="service-price">400 Kč</span>
-                <span class="service-price-divider" aria-hidden="true"></span>
-                <span class="service-duration">30 min</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="card-info">
-          <div class="card-img-col">
-            <img src="masaze/kmdkp.webp" alt="Dolních končetin ze předu" loading="lazy">
-            <div class="card-title">Dolních končetin ze předu</div>
-            <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/e114d069-2856-4e8b-8448-455734d0edae" target="_blank" rel="noopener noreferrer">
-              <div class="service-price-tag">
-                <span class="service-price">400 Kč</span>
-                <span class="service-price-divider" aria-hidden="true"></span>
-                <span class="service-duration">30 min</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="card-info">
-          <div class="card-img-col">
-            <img src="masaze/kmhk.webp" alt="Horních končetin" loading="lazy">
-            <div class="card-title">Horních končetin</div>
-            <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/cfc019ba-80cc-4efd-a9f1-0183bde08544" target="_blank" rel="noopener noreferrer">
-              <div class="service-price-tag">
-                <span class="service-price">500 Kč</span>
-                <span class="service-price-divider" aria-hidden="true"></span>
-                <span class="service-duration">30 min</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </details>
-    </section>
-    <section id="sportovni" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
-      <details class="service-accordion">
-        <summary>
-          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Sportovní masáže ~</h2>
-        </summary>
-      <div class="info-box info-box--brown">
-        <div class="classic-massage-info" style="font-size: 0.8em;font-weight: bold;">
-          <p>Sportovní masáž je dynamická a cílená technika, která pomáhá uvolnit svaly, zlepšit regeneraci a předcházet přetížení či bolestem.</p>
-          <p>Ačkoliv vznikla především pro sportovce, je vhodná pro každého, kdo chce svému tělu dopřát účinnou péči – ať už jde o fyzicky aktivní lidi, nebo o ty, kteří mají sedavé zaměstnání, jednostrannou zátěží, či pociťují napětí v zádech a šíji.</p>
-        </div>
-        <div class="info-box info-box--brown">
-          <h3 style="font-size: 1em; font-weight: bold; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000;">Může být prováděna:</h3>
-          <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em;">
-            <li>aktivačně</li>
-            <li>před fyzickou aktivitou pro zvýšení prokrvení a připravení svalů na zátěž</li>
-            <li>pro prokrvení a nastartování svalů</li>
-            <li>regeneračně</li>
-            <li>pro rychlejší zotavení po zátěži nebo náročném dni</li>
-            <li>nebo jako součást pravidelné péče o pohybový aparát i celkovou pohodu.</li>
-          </ul>
-        </div>
-      <div class="classic-massage-info" style="font-size: 0.8em; font-weight: bold;">
-        <p>Výsledkem je pocit lehkosti, uvolnění a nově nabité energie – masáž tedy ocení opravdu každý, nejen sportovci.</p>
-      </div>
-      <div class="indikace-kontraindikace-container">
-        <details class="indikace-toggle info-box info-box--green">
-          <summary>
-            <h3 class="indikace">✅ Indikace: <span style="color:#000000;">Pro koho je vhodná</span></h3>
-          </summary>
-          <ul style="font-size: 1em;font-weight: bold; margin-left: 1.2em;">
-            <li>Ztuhlé nebo přetížené svaly</li>
-            <li>Příprava na sportovní výkon</li>
-            <li>Regenerace po fyzické námaze</li>
-            <li>Prevence svalových poranění</li>
-            <li>Zlepšení pohyblivosti a výkonnosti</li>
-          </ul>
-        </details>
-        <details class="kontraindikace-toggle info-box info-box--red">
-          <summary>
-            <h3 class="kontraindikace">⛔ Kontraindikace: <span style="color:#000000;">Pro koho není vhodná</span></h3>
-          </summary>
-          <ul style="font-size: 1em;font-weight: bold; margin-left: 1.2em;">
-            <li>Akutní úrazy (např. výrony, natržení svalů)</li>
-            <li>Záněty svalů nebo kloubů (Horečka, infekce)</li>
-            <li>Kožní onemocnění v místě masáže</li>
-            <li>Srdeční onemocnění nebo vysoký krevní tlak (bez lékařského souhlasu)</li>
-          </ul>
-        </details>
-      </div>
-      <div class="info-box info-box--dark">
-  <p style="text-align:center;font-weight: bold;"><span style="border-bottom: 2px solid #403e3e;">! Po kliknutí na cenovku se dostanete na stránku pro rezervaci masáže. !</span></p>
-      </div>
-    <div class="cards">
-      <div class="card-info">
-        <div class="card-img-col">
-          <img src="masaze/smzs.webp" alt="Sportovní masáž zad a šíje" loading="lazy">
-          <div class="card-title">Záda a šíje</div>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/cc7f914d-b398-4a1f-bb89-9c20d39eafd0" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">800 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">50 min</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="card-info">
-        <div class="card-img-col">
-          <img src="masaze/sms.webp" alt="Sportovní masáž - šíje" loading="lazy">
-          <div class="card-title">Šíje</div>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/c9febe66-1ee5-497a-bc5c-e087dd1d9e07" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">200 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">15 min</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="card-info">
-        <div class="card-img-col">
-          <img src="masaze/smzsdkzp.webp" alt="Sportovní masáž - zad/šíje/dolních kočetin ze zadu/ze předu" loading="lazy">
-          <div class="card-title">Záda/šíje/dolních končetin ze zadu/ze předu</div>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/fb4065e8-74fe-47c6-b6fe-10246772fca6" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">1 600 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">110 min</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="card-info">
-        <div class="card-img-col">
-          <img src="masaze/smdkzp.webp" alt="Sportovní masáž - dolních končetin ze zadu/ze předu/hýždě" loading="lazy">
-          <div class="card-title">Dolních končetin ze zadu/ze předu/hýždě</div>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/11af849a-d558-4a49-84da-691967541069" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">850 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">90 min</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="card-info">
-        <div class="card-img-col">
-          <img src="masaze/smhkr.webp" alt="Sportovní masáž - horních končetin + rameno" loading="lazy">
-          <div class="card-title">Horních končetin + rameno</div>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/1b6bdcdd-3390-4be2-94fc-10db7507a18f" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">400 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">40 min</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="card-info">
-        <div class="card-img-col">
-          <img src="masaze/smdkp.webp" alt="Sportovní masáž - Dolních končetin ze předu" loading="lazy">
-          <div class="card-title">Dolních končetin ze předu</div>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/eaed703f-134d-46e5-a8a2-802c074081e3" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">450 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">30 min</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="card-info">
-        <div class="card-img-col">
-          <img src="masaze/smdkz.webp" alt="Sportovní masáž - Dolních končetin ze zadu" loading="lazy">
-          <div class="card-title">Dolních končetin ze zadu</div>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/91870220-0ec5-43c4-8c45-15478ce014ee" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">450 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">30 min</span>
-            </div>
-          </a>
-        </div>
-      </div>
-        </details>
-      </section>
-    <section id="zabaly" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
-      <details class="service-accordion">
-        <summary>
-          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Zábaly ~</h2>
-        </summary>
-      <div class="info-box info-box--brown">
-        <div class="classic-massage-info" style="font-size: 0.8em;font-weight: bold;">
-          <p>Parafínový zábal je příjemná a účinná procedura, která kombinuje hluboké prohřátí a intenzivní hydrataci pokožky.</p>
-          <p>Teplý parafín zlepšuje prokrvení, uvolňuje svaly a klouby a zároveň zanechává pokožku hebkou, jemnou a vyživenou.</p>
-          <p>Zábaly jsou vhodné nejen pro relaxaci, ale také jako doplněk k masážím.</p>
-          <p>Pomáhají při bolestech kloubů, svalů, ztuhlosti či syndromu studených rukou a nohou.</p>
-          <p>Parafínový zábal rukou je wellness a terapeutická procedura, při které se ruce ponoří do teplého parafínu.</p>
-          <p>Ten na pokožce vytvoří ochrannou vrstvu, která udržuje teplo a vlhkost.</p>
-          <p>Zábal prohřívá klouby, uvolňuje svaly, zmírňuje bolest a ztuhlost, zlepšuje prokrvení a zároveň intenzivně hydratuje a vyživuje pokožku.</p>
-        </div>
-        <p style="text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; font-size: 1em;font-weight: bold;">Možná kombinace s jinou procedurou se <span style="color: #e33333;">slevou.</span></p>
-        <div class="indikace-kontraindikace-container">
-          <details class="indikace-toggle info-box info-box--green">
-            <summary>
-              <h3 class="indikace">✅ Indikace: <span style="color:#000000;">Pro koho je vhodná</span></h3>
-            </summary>
-            <ul style="font-size: 1em;font-weight: bold; margin-left: 1.2em;">
-              <li>Suchou, popraskanou či unavenou pokožku</li>
-              <li>Osoby s artrózou, revmatismem nebo bolestí kloubů</li>
-              <li>Každého, kdo si chce dopřát relaxaci a péči o ruce</li>
-            </ul>
-          </details>
-          <details class="kontraindikace-toggle info-box info-box--red">
-            <summary>
-              <h3 class="kontraindikace">⛔ Kontraindikace: <span style="color:#000000;">Pro koho není vhodná</span></h3>
-            </summary>
-            <ul style="font-size: 1em;font-weight: bold; margin-left: 1.2em;">
-              <li>Otevřené rány, ekzémy, infekce, akutní záněty, cukrovka, cévní onemocnění, horečka.</li>
-              <li>Alergie na parafín.</li>
-            </ul>
-          </details>
-        </div>
-        <div class="info-box info-box--dark">
-          <p style="text-align:center;font-weight: bold;"><span style="border-bottom: 2px solid #403e3e;">! Po kliknutí na cenovku se dostanete na stránku pro rezervaci služby. !</span></p>
-      </div>
-      <div class="cards" style="justify-content: center; width: 100%; margin-bottom: 24px; gap: 16px; flex-wrap: wrap;">
-        <div style="max-width: 220px; width: 100%;">
-          <div class="card-info">
-            <div class="card-img-col">
-            <img src="masaze/pzr.webp" alt="Parafínový zábal rukou" loading="lazy">
-              <div class="card-title">Parafínový zábal rukou</div>
-              <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/851b4828-53b3-40b0-a4f9-f0aaf3cbe38e" target="_blank" rel="noopener noreferrer">
-                <div class="service-price-tag">
-                  <span class="service-price">350 Kč</span>
-                  <span class="service-price-divider" aria-hidden="true"></span>
-                  <span class="service-duration">30 min</span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div style="max-width: 220px; width: 100%;">
-          <div class="card-info">
-            <div class="card-img-col">
-            <img src="masaze/pzn.webp" alt="Parafínový zábal nohou" loading="lazy">
-              <div class="card-title">Parafínový zábal nohou</div>
-              <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/c23df20e-7152-4dc0-aa84-16d9b973eb1a" target="_blank" rel="noopener noreferrer">
-                <div class="service-price-tag">
-                  <span class="service-price">350 Kč</span>
-                  <span class="service-price-divider" aria-hidden="true"></span>
-                  <span class="service-duration">30 min</span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div style="max-width: 220px; width: 100%;">
-          <div class="card-info">
-            <div class="card-img-col">
-            <img src="masaze/rasz.webp" alt="Rašelinový zábal - zad" loading="lazy">
-              <div class="card-title">Rašelinový zábal - zad</div>
-              <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/eb45b07c-c18d-4518-982a-720ab1c5f195" target="_blank" rel="noopener noreferrer">
-                <div class="service-price-tag">
-                  <span class="service-price">350 Kč</span>
-                  <span class="service-price-divider" aria-hidden="true"></span>
-                  <span class="service-duration">35 min</span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div style="max-width: 220px; width: 100%;">
-          <div class="card-info">
-            <div class="card-img-col">
-            <img src="masaze/rass.webp" alt="Rašelinový zábal - šíje" loading="lazy">
-              <div class="card-title">Rašelinový zábal - šíje</div>
-              <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/c0715d98-03ea-40e4-a812-2b3650c85ef9" target="_blank" rel="noopener noreferrer">
-                <div class="service-price-tag">
-                  <span class="service-price">350 Kč</span>
-                  <span class="service-price-divider" aria-hidden="true"></span>
-                  <span class="service-duration">35 min</span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        </details>
-      </section>
-    <section id="slowtouch" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
-      <details class="service-accordion">
-        <summary>
-          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Tichý dotek ~</h2>
-        </summary>
-      <div class="info-box info-box--brown">
-        <div class="classic-massage-info" style="font-size: 0.8em; font-weight: bold;">
-          <p>Objevte jemnou a hluboce uklidňující masáž Tichý dotek, která je věnovaná vaší pohodě a vnitřní rovnováze.</p>
-          <p>Během 30 minut zažijete tichý, pomalý dotek, škrábání a hlazení ve vlasech, na krku a zádech, který uvolní napětí, podpoří relaxaci a probudí smysly.</p>
-          <p>Tato masáž není jen o fyzickém uvolnění – je to zážitek klidu a péče, který vás spojí s vlastním tělem a myslí.</p>
-          <p>Ideální pro všechny, kdo hledají jemný, neinvazivní způsob, jak si odpočinout a načerpat novou energii.</p>
-          <p>Tichý dotek Masáž je 30minutový rituál ticha a péče, který kombinuje jemné hlazení, škrábání a česání vlasů, krku a zad.</p>
-          <p>Tato masáž podporuje hlubokou relaxaci, uvolnění svalového napětí a přináší pocit vnitřního klidu.</p>
-          <p>Je ideální pro každého, kdo si chce odpočinout od každodenního stresu a obnovit rovnováhu těla a mysli.</p>
-        </div>
-        <div class="indikace-kontraindikace-container">
-          <details class="indikace-toggle info-box info-box--green">
-            <summary>
-              <h3 class="indikace">✅ Indikace: <span style="color:#000000;">Pro koho je vhodná</span></h3>
-            </summary>
-            <ul style="font-size: 1em; font-weight: bold; margin-left: 1.2em;">
-              <li>Zvýšené napětí v oblasti krku, ramen a zad</li>
-              <li>Stres, úzkost, nespavost</li>
-              <li>Potřeba relaxace a načerpání energie</li>
-              <li>Citlivost na dotek a potřeba jemné péče</li>
-            </ul>
-          </details>
-          <details class="kontraindikace-toggle info-box info-box--red">
-            <summary>
-              <h3 class="kontraindikace">⛔ Kontraindikace: <span style="color:#000000;">Pro koho není vhodná</span></h3>
-            </summary>
-            <ul style="font-size: 1em; font-weight: bold; margin-left: 1.2em;">
-              <li>Akutní záněty, horečka nebo infekce</li>
-              <li>Kožní poranění nebo podráždění v oblasti masáže</li>
-              <li>Trombóza nebo jiné vážné cévní problémy</li>
-            </ul>
-          </details>
-        </div>
-        <div class="info-box info-box--dark">
-          <p style="text-align:center;font-weight: bold;"><span style="border-bottom: 2px solid #403e3e;">! Po kliknutí na cenovku se dostanete na stránku pro rezervaci masáže. !</span></p>
-        </div>
-        <div class="cards" style="justify-content: center; width: 100%; margin-bottom: 24px;">
-          <div style="max-width: 320px;">
-            <div class="card-info">
-              <div class="card-img-col">
-              <img src="masaze/vd.webp" alt="Slow touch masáž hlavy" loading="lazy">
-                <div class="card-title">Tichý dotek, masáž hlavy</div>
-                <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/947a02c2-394e-4ec5-b067-8b36631e624f" target="_blank" rel="noopener noreferrer">
-                  <div class="service-price-tag">
-                    <span class="service-price">400 Kč</span>
-                    <span class="service-price-divider" aria-hidden="true"></span>
-                    <span class="service-duration">30 min</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </details>
-    </section>
-    <section id="vedomy" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
-      <details class="service-accordion">
-        <summary>
-          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Vědomý dotek ~</h2>
-        </summary>
-      <div class="info-box info-box--brown">
-        <div class="classic-massage-info" style="font-size: 0.8em; font-weight: bold;">
-          <p>Vědomý dotek je jedinečný rituál, který vás vede zpět k sobě samým.</p>
-          <p>Skrze laskavou a pozornou práci s tělem se otevírá prostor pro hluboké uvolnění, přítomnost a vnitřní klid.</p>
-          <p>Nejde jen o masáž – je to setkání, ve kterém je každý dotek veden s plnou pozorností, respektem a jemností.</p>
-        </div>
-        <div class="info-box info-box--green" style="margin-bottom: 24px;">
-          <h3 style="font-weight: bold;font-size: 1.3em;text-align: center;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">Co vám Vědomý dotek přinese:</h3>
-          <ul style="font-size: 1em;font-weight: bold; margin-left: 1.2em; display: inline-block; text-align: left;">
-            <li>hluboké uvolnění těla a mysli</li>
-            <li>podporu při zvládání napětí a stresu</li>
-            <li>probuzení smyslů a vnímání vlastního těla</li>
-            <li>pocit bezpečí, důvěry a propojení se sebou</li>
-            <li>jedinečný zážitek</li>
-          </ul>
-        </div>
-        <h3 style="font-weight: bold;font-size: 1em;text-align: center;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #11ff00;">Tento prostor je určený pro každého, kdo touží zpomalit, nadechnout se a dopřát si chvíli, která je celá jen pro něj.</h3>
-        <h3 style="font-weight: bold;font-size: 1em;text-align: center;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #ff0000;">!! NEJEDNÁ SE O INTIMNÍ, NEBO SEXUALNÍ MASÁŽ !!</h3>
-  <div class="cards" style="justify-content: center; width: 100%; margin-bottom: 24px;">
-          <div style="max-width: 320px;">
-          <div class="card-info">
-              <div class="card-img-col">
-              <img src="masaze/vd2.webp" alt="Antistresová masáž hlavy" loading="lazy">
-              <div class="card-title">Vědomý dotek – rituál</div>
-              <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/5d8755a6-e69d-4497-8286-1898380ff92e" target="_blank" rel="noopener noreferrer">
-                <div class="service-price-tag">
-                  <span class="service-price">2 500 Kč</span>
-                  <span class="service-price-divider" aria-hidden="true"></span>
-                  <span class="service-duration">90 min</span>
-                </div>
-              </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </details>
-    </section>
-    <section id="ostatni" style="border-bottom: 3px solid #e0d3c2; padding-bottom: 80px;">
-      <details class="service-accordion">
-        <summary>
-          <h2 class="cenik-section-title" style="font-size: 5em;text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'Montez', cursive;-webkit-text-stroke: 0.001em #361801;">~ Ostatní služby ~</h2>
-        </summary>
-      <div class="info-box info-box--brown-no-margin">
-        <div class="classic-massage-info" style="font-size: 1.3em;">
-          <h3 style="font-weight: bold;"><span style="font-size: 2em;font-family: 'Montez', cursive;">Baňkování:</span></h3>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/6be9b101-bbf4-40af-baf2-1f3fa1195b03" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">800 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">50 min</span>
-            </div>
-          </a>
-        </div>
-        <div class="cards" style="display: flex; align-items: center; justify-content: center; width: 100%;">
-          <img src="masaze/banky.webp" alt="Baňkování" style="display: block; width: 100%; max-width: 500px;" loading="lazy">
-        </div>
-        <div class="classic-massage-info" style="font-size: 0.9em; font-weight: bold;">
-          <p>Baňkování je tradiční terapeutická metoda, při které se na pokožku přikládají speciální skleněné, silikonové nebo plastové baňky, ve kterých se vytvoří podtlak.</p>
-          <div style="padding-bottom: 16px;"></div>
-          <p>Tím dochází k prokrvení tkání, uvolnění svalového napětí, podpoře lymfatického systému a detoxikaci organismu.</p>
-          <p>Baňkování se často používá k úlevě od bolesti zad, svalových blokád nebo při nachlazení.</p>
-        </div>
-          <h4 style="font-size: large;text-align: center;"><span style="border-bottom: 2px solid #000000;">! Ošetření může zanechat dočasné kruhové otlaky na kůži. !</span></h4>
-          <div style="padding-bottom: 16px;"></div>
-      </div>
-        <div class="info-box info-box--brown-no-margin">
-          <div class="classic-massage-info" style="font-size: 1.3em;">
-            <h3 style="font-weight: bold;"><span style="font-size: 2em;font-family: 'Montez', cursive;">Lávové kameny:</span></h3>
-            <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/40f64f4e-c7d7-4656-bcaa-9c5f2ab7b188" target="_blank" rel="noopener noreferrer">
-              <div class="service-price-tag">
-                <span class="service-price">800 Kč</span>
-                <span class="service-price-divider" aria-hidden="true"></span>
-                <span class="service-duration">50 min</span>
-              </div>
-            </a>
-          </div>
-        <div class="cards" style="display: flex; align-items: center; justify-content: center; width: 100%;">
-          <img src="masaze/lk.webp" alt="Lávové kameny" style="display: block; width: 100%; max-width: 500px;" loading="lazy">
-        </div>
+  <!-- Vyrovnávací mezera pod fixní navigací -->
+<div style="padding: 20px;"></div>
 
-          <div style="font-size: 0.9em; font-weight: bold;">
-            <p>Masáž lávovými kameny je relaxační a terapeutická technika, při které se používají nahřáté hladké lávové kameny.</p>
-            <p>Teplo z kamenů proniká hluboko do svalů, uvolňuje napětí, zlepšuje krevní oběh a podporuje detoxikaci organismu.</p>
-            <div style="padding-bottom: 16px;"></div>
-            <p>Tato masáž je ideální pro ty, kteří hledají hlubokou relaxaci a úlevu od stresu a svalových bolestí.</p>
-            <p>Masáž navozuje hlubokou relaxaci, ulevuje od stresu a pomáhá obnovit energetickou rovnováhu těla.</p>
-            <div style="padding-bottom: 16px;"></div>
-          </div>
+  <!-- Hlavní obsah stránky služeb -->
+  <main class="svc2">
+    <!-- =====================================================
+         EDITORSKÉ ZNAČKY
+         1) HERO TEXTY: upravujte v sekci .svc2-hero
+         2) TEXTY KATEGORIÍ: .svc2-group__header + .svc2-card__body p
+         3) CENY A DÉLKY: .svc2-meta (1. span = minuty, 2. span = cena)
+         4) REZERVAČNÍ ODKAZY: tlačítko "Rezervovat" (atribut href)
+         5) FILTROVATELNOST: data-category, data-duration, data-name
+         ===================================================== -->
 
-        </div>
-        <div class="info-box info-box--brown-no-margin">
-        <div class="classic-massage-info" style="font-size: 1.3em;">
-          <h3 style="font-weight: bold;"><span style="font-size: 1.6em;font-family: 'Montez', cursive;">Relaxační masáž obličeje a dekoltu:</span></h3>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/789051db-4d63-4b75-8e9a-bdd1e25814e3" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">400 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">30 min</span>
-            </div>
-          </a>
-        </div>
-        <div class="classic-massage-info" style="font-size: 0.9em; font-weight: bold;">
-          <p>Relaxační masáž obličeje a dekoltu je jemná a uklidňující masážní technika zaměřená na uvolnění napětí ve svalech obličeje, krku a horní části hrudníku.</p>
-          <div style="padding-bottom: 16px;"></div>
-          <p>Pomáhá zlepšit prokrvení, podpořit lymfatický odtok, redukovat stres a navodit pocit hluboké relaxace.</p>
-          <p>Masáž může zároveň přispět k osvěžení vzhledu pleti, zmírnění otoků a zlepšení její elasticity.</p>
-          <div style="padding-bottom: 16px;"></div>
-        </div>
-        <div class="cards" style="display: flex; align-items: center; justify-content: center; width: 100%;">
-          <img src="masaze/amh.webp" alt="Relaxační masáž obličeje a dekoltu" style="display: block; width: 100%; max-width: 500px;" loading="lazy">
-        </div>
+    <!-- Hlavní nadpis -->
+    <section id="hero" class="hero-wrapper">
+      <div class="hero-brand">
+        <div class="hero-logo-draw" aria-hidden="true"></div>
+        <h1 class="main-title-text">
+          PŘEHLED<br>MASÁŽÍ<br>A SLUŽEB
+        </h1>
       </div>
-      <div class="info-box info-box--brown-no-margin">
-        <div class="classic-massage-info" style="font-size: 1.3em;">
-          <h3 style="font-weight: bold;"><span style="font-size: 2em;font-family: 'Montez', cursive;">Rituál šťastná maminka:</span></h3>
-          <a class="service-price-tag-link" href="https://aura-michaell-massage.reservio.com/services/11e33b11-2e8f-4f07-af05-f4a830cf2a20" target="_blank" rel="noopener noreferrer">
-            <div class="service-price-tag">
-              <span class="service-price">800 Kč</span>
-              <span class="service-price-divider" aria-hidden="true"></span>
-              <span class="service-duration">50 min</span>
-            </div>
-          </a>
-        </div>
-        <div class="classic-massage-info" style="font-size: 0.9em; font-weight: bold;">
-          <p>Jemná masáž pro těhotné, maminky i každou ženu, která si chce odpočinout.</p>
-          <p>Rituál „Šťastná maminka“ je velmi jemná masáž dekoltu, krku a obličeje, založená na principech vědomého doteku.</p>
-          <p>Každý pohyb je veden s respektem, klidem a plnou pozorností k ženě a jejímu aktuálnímu stavu.</p>
-          <p>Masáž pomáhá uvolnit napětí, zklidnit mysl a navodit pocit vnitřní pohody a bezpečí.</p>
-          <div style="padding-bottom: 16px;"></div>
-          <p>Tato masáž je vhodná pro ženy v těhotenství, a to od <span style="text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;color: #055100;text-shadow: 0 2px 8px rgba(63, 211, 0, 0.25), 0 0 2px #000;font-size: large;">4. měsíce (13. týden)</span> těhotenství, pouze v případě fyziologického <span style="border-bottom: 2px solid #585046;color: #364804;font-size: large;">průběhu bez komplikací.</span></p>
-          <p>Probíhá ve stabilizované poloze na zádech, na měkké podložce na zemi, s podloženými nohami a hlavou v klíně masérky, což zajišťuje maximální pohodlí a klidný průběh rituálu.</p>
-          <div style="padding-bottom: 16px;"></div>
-          <p>Masáž je také velmi přínosná po porodu, kdy žena potřebuje znovu najít rovnováhu, uvolnění a propojení se sebou.</p>
-          <p>Je však určena i pro každou ženu, která si chce dopřát chvíli vědomého odpočinku a něžné péče.</p>
-          <div style="padding-bottom: 16px;"></div>
-          <p>Rituál „Šťastná maminka“ není pouze masáží – je to hluboce lidské setkání skrze dotek, prostor pro zastavení, ztišení a laskavé vnímání vlastního těla.</p>
-        </div>
-        <div style="padding-bottom: 16px;"></div>
-        <div class="cards" style="display: flex; align-items: center; justify-content: center; width: 100%;">
-          <img src="masaze/rsm.webp" alt="Rituál šťastná maminka" style="display: block; width: 100%; max-width: 500px;" loading="lazy">
-        </div>
-      </div>
-      </details>
-    </section>
-    <section id="aromaterapie-featured" class="services-hero__aroma">
-      <div class="services-hero__aroma-wrapper">
-        <div id="aromaterapie" style="position: relative; z-index: 1; padding: 16px 8px; margin: 0 auto; max-width: 1200px;">
-          <div class="classic-massage-info" style="font-size: 1.3em;">
-
-            <h3 style="font-weight: bold; text-align: center;"><span style="border-bottom: 2px solid #585046;font-size: 1.8em;-webkit-text-stroke: 0.1px #2b1e17;">
-              Aromaterapeutická masáž s oleji<br></span>
-              <span style="-webkit-text-stroke: 0.1px #f1962049;font-size: 1.8em;">TOMFIT</span>
-              <span style="font-size: 1.8em;">&</span>
-              <span style="-webkit-text-stroke: 0.1px #f1962049;font-size: 1.8em">VERANA</span>
-            </h3>
-          </div>
-          <div class="classic-massage-info" style="font-size: 0.95em; font-weight: bold; text-align: center; margin-bottom: 20px;transform: rotate(-1.6deg);">
-            <p style="font-size: 1.4em; color: #4a3a2a; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.751);">Vyberte si masážní olej podle nálady a toho, co právě potřebuje vaše tělo.</p>
-            <p style="font-size: 1.3em; background: rgba(255, 215, 100, 0.3); padding: 8px 16px; border-radius: 8px; display: inline-block; margin-top: 8px;">
-              ✨ <strong>Aromaoleje lze použít ke všem masážím v naší nabídce!</strong> ✨
-            </p>
-            <p style="font-size: 1.25em; margin-top: 12px;text-shadow: 0 2px 4px rgba(255, 255, 255, 0.751);">Používám kvalitní přírodní produkty značek <span style="font-weight: bolder; font-size: 1.2em; -webkit-text-stroke: 0.1px #f1962049;">TOMFIT</span> a <span style="font-weight: bold; -webkit-text-stroke: 0.1px #f1962049; font-size: 1.2em">VERANA</span>, které podpoří relaxaci, regeneraci a krásný pocit z masáže.</p>
-          </div>
-        </div>
-      </div>
-      <div class="aroma-side-cards">
-        <div style="margin-top: 16px; background: url(galerie/papir.webp); background-size: 100% 100%;background-repeat: no-repeat;background-position: center;padding: 10px 20px;box-sizing: border-box;filter: drop-shadow(8px 8px 8px rgb(0, 0, 0))">
-          <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #2d5a26;">🌿 <span style="-webkit-text-stroke: 0.1px #000; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Aroma oleje</span> <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">TOMFIT</span></h4>
-            <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
-              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #228b22; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍃 Zelený čaj</span><br> Osvěžující a revitalizační účinek</li>
-              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #006400; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🌿 Tea tree</span><br> Očistné a antibakteriální působení</li>
-              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #ff8c00; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍊 Pomeranč</span><br> Pozitivní energie, uvolnění stresu</li>
-              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #32cd32; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🌱 Aloe vera</span><br> Hydratace a zklidnění pokožky</li>
-              <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #8b4513; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">🍫 Čokoláda</span><br> Hřejivá vůně, uvolnění a hebkost</li>
-            </ul>
-        </div>
-        <div style="margin-top: 16px; background: url(galerie/papir.webp); background-size: 100% 100%;background-repeat: no-repeat;background-position: center;padding: 10px 20px;box-sizing: border-box;filter: drop-shadow(0px 8px 8px rgb(0, 0, 0))">
-          <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #5a3d6a;">🌼 <span style="-webkit-text-stroke: 0.1px #000;  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Emulze</span>
-            <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">TOMFIT</span></h4>
-          <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
-            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #227f8b; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Měsíčková</span><br> Péče pro citlivou pokožku, regenerace</li>
-          </ul>
-          <h4 style="font-weight: bold; font-size: 1.1em; text-shadow: 0 2px 4px rgba(60,30,10,0.25), 0 0 2px #000; color: #a05000;">🍊 <span style="-webkit-text-stroke: 0.1px #000; text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">Speciální olej</span> <span style="-webkit-text-stroke: 0.1px #f6a53a55; color: #000000;">VERANA</span></h4>
-          <ul style="font-size: 0.9em; font-weight: bold; margin-left: 1.2em;text-shadow: 0 2px 4px rgba(255, 255, 255, 0.25), 0 0 2px #ffffff;">
-            <li style="padding-bottom: 8px;"><span style="font-size: 1.3em; color: #8b226b; -webkit-text-stroke: 0.2px #000; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">Stop Cellulite</span><br> Pomoc při pevnějším a hladším vzhledu pokožky</li>
-          </ul>
-        </div>
-      </div>
-      <div class="fee-notification-wrapper">
-        <div class="fee-notification-box">
-          <p class="fee-text-warning">⚠️ Výběr aromatického oleje nebo emulze je zpoplatněn příplatkem k ceně masáže. ⚠️</p>
-          <p class="fee-price">+ 50 Kč</p>
-        </div>
+      <div class="hero-intro">
+        <h2>Zde si můžete vybrat svou ideální masáž.</h2>
+        <p style="font-weight: lighter;">
+          Níže najdete stručné popisy, indikace a kontraindikace, ceny i délky jednotlivých procedur.<br> 
+          Stačí si vybrat, co vám nejvíce vyhovuje a jedním kliknutím na cenovku přejít k rezervaci.
+        </p>
       </div>
     </section>
+
+    <!-- Katalog služeb: filtry + jednotlivé kategorie -->
+    <section id="prehled" class="svc2-filters" data-service-catalog>
+      <header class="svc2-filters__header">
+        <h2>Katalog služeb</h2>
+      </header>
+
+      <!-- Rychlé přepínání kategorií pomocí chip tlačítek -->
+      <div class="svc2-chip-row" role="toolbar" aria-label="Filtr podle kategorie">
+        <button class="svc2-chip is-active" type="button" data-category-filter="all" aria-pressed="true">Vše</button>
+        <button class="svc2-chip" type="button" data-category-filter="klasicke" aria-pressed="false">Klasické</button>
+        <button class="svc2-chip" type="button" data-category-filter="sportovni" aria-pressed="false">Sportovní</button>
+        <button class="svc2-chip" type="button" data-category-filter="zabaly" aria-pressed="false">Zábaly</button>
+        <button class="svc2-chip" type="button" data-category-filter="ritualy" aria-pressed="false">Rituály</button>
+        <button class="svc2-chip" type="button" data-category-filter="ostatni" aria-pressed="false">Doplňkové</button>
+      </div>
+
+      <!-- Live informace o počtu výsledků po filtrování -->
+      <p class="svc2-results" aria-live="polite"><strong id="serviceResultsCount">23 služeb</strong> odpovídá výběru.</p>
+      <p class="svc2-empty" id="serviceEmptyState" hidden>Pro kombinaci filtrů nebyla nalezena žádná služba. Zkuste upravit hledání.</p>
+
+      <!-- Přehled kategorií služeb -->
+      <div class="svc2-groups">
+        <!-- Kategorie: Klasické masáže -->
+        <section id="klasicke" class="svc2-group" data-group="klasicke" aria-labelledby="group-klasicke-title">
+          <header class="svc2-group__header">
+            <h3 id="group-klasicke-title">Klasické masáže</h3>
+            <p>Úleva od svalového napětí, zlepšení prokrvení a celková regenerace.</p>
+          </header>
+          <details class="svc2-info">
+            <summary>Indikace a kontraindikace</summary>
+            <div class="svc2-info__grid">
+              <div>
+                <h4>Indikace</h4>
+                <ul>
+                  <li>bolesti zad, šíje a únava svalstva</li>
+                  <li>sedavé zaměstnání a jednostranná zátěž</li>
+                  <li>prevence stresu a regenerace těla</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Kontraindikace</h4>
+                <ul>
+                  <li>horečka, akutní infekce, zánět</li>
+                  <li>kožní poranění a akutní kožní potíže</li>
+                  <li>riziko trombózy, některé fáze těhotenství</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+          <!-- EDITOR: Úprava služeb v kategorii "Klasické" začíná zde -->
+          <div class="svc2-grid">
+            <!-- EDITOR KARTA:
+                 - Název služby: h4
+                 - Popis služby: p
+                 - Délka a cena: .svc2-meta > span
+                 - Rezervace: odkaz a[href]
+                 - Filtry/řazení: data-category, data-duration, data-name, data-recommended
+                 Stejná struktura platí i pro všechny další karty níže. -->
+            <article class="svc2-card" data-category="klasicke" data-duration="50" data-name="zada a sije klasicka masaz" data-recommended="true">
+              <img src="masaze/kmz.webp" alt="Klasická masáž zad a šíje" loading="lazy">
+              <div class="svc2-card__body">
+                <span class="svc2-card__badge">Doporučujeme</span>
+                <h4>Záda a šíje</h4>
+                <p>Klasická cílená masáž pro uvolnění nejvíce přetížených oblastí.</p>
+                <div class="svc2-meta"><span>50 min</span><span>800 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/8cc1ae74-f248-41f5-b532-87a75d527a49" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="klasicke" data-duration="120" data-name="zada sije dolni koncetiny zepredu zezadu">
+              <img src="masaze/kmzsdkp.webp" alt="Klasická masáž zad, šíje a dolních končetin" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Záda, šíje, dolní končetiny</h4>
+                <p>Komplexní celotělovější varianta pro hloubkové uvolnění.</p>
+                <div class="svc2-meta"><span>120 min</span><span>1 600 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/cfbda387-3f4c-4ddb-bf89-9f553735ee35" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="klasicke" data-duration="60" data-name="dolni koncetiny zepredu zezadu klasicka">
+              <img src="masaze/kmdkzp.webp" alt="Klasická masáž dolních končetin zepředu i zezadu" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Dolní končetiny zepředu i zezadu</h4>
+                <p>Skvělá volba při unavených nohou a dlouhém stání.</p>
+                <div class="svc2-meta"><span>60 min</span><span>850 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/5fc39bb3-7e02-4078-8a4f-857194b828a4" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="klasicke" data-duration="30" data-name="dolni koncetiny zezadu klasicka">
+              <img src="masaze/kmdkz.webp" alt="Klasická masáž dolních končetin zezadu" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Dolní končetiny zezadu</h4>
+                <p>Kratší varianta zaměřená na zadní stranu nohou.</p>
+                <div class="svc2-meta"><span>30 min</span><span>400 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/cdd9d157-6b1c-46a9-b2a6-9f854ff60cb9" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="klasicke" data-duration="30" data-name="dolni koncetiny zepredu klasicka">
+              <img src="masaze/kmdkp.webp" alt="Klasická masáž dolních končetin zepředu" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Dolní končetiny zepředu</h4>
+                <p>Jemná, ale efektivní péče o přední stranu nohou.</p>
+                <div class="svc2-meta"><span>30 min</span><span>400 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/e114d069-2856-4e8b-8448-455734d0edae" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="klasicke" data-duration="30" data-name="horni koncetiny klasicka">
+              <img src="masaze/kmhk.webp" alt="Klasická masáž horních končetin" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Horní končetiny</h4>
+                <p>Úleva předloktí, pažím a ramenům po zátěži i práci.</p>
+                <div class="svc2-meta"><span>30 min</span><span>500 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/cfc019ba-80cc-4efd-a9f1-0183bde08544" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Kategorie: Sportovní masáže -->
+        <section id="sportovni" class="svc2-group" data-group="sportovni" aria-labelledby="group-sportovni-title">
+          <header class="svc2-group__header">
+            <h3 id="group-sportovni-title">Sportovní masáže</h3>
+            <p>Dynamická péče vhodná před výkonem, po zátěži i při dlouhodobém napětí.</p>
+          </header>
+          <details class="svc2-info">
+            <summary>Indikace a kontraindikace</summary>
+            <div class="svc2-info__grid">
+              <div>
+                <h4>Indikace</h4>
+                <ul>
+                  <li>ztuhlé nebo přetížené svaly</li>
+                  <li>příprava na výkon a rychlejší regenerace</li>
+                  <li>zlepšení pohyblivosti a prevence poranění</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Kontraindikace</h4>
+                <ul>
+                  <li>akutní úrazy, zánět, horečka</li>
+                  <li>kožní potíže v místě masáže</li>
+                  <li>závažné srdeční potíže bez souhlasu lékaře</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+          <div class="svc2-grid">
+            <article class="svc2-card" data-category="sportovni" data-duration="50" data-name="sportovni zada sije" data-recommended="true">
+              <img src="masaze/smzs.webp" alt="Sportovní masáž zad a šíje" loading="lazy">
+              <div class="svc2-card__body">
+                <span class="svc2-card__badge">Top volba</span>
+                <h4>Záda a šíje</h4>
+                <p>Silnější technika pro přetížené trapézy a mezilopatkovou oblast.</p>
+                <div class="svc2-meta"><span>50 min</span><span>800 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/cc7f914d-b398-4a1f-bb89-9c20d39eafd0" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="sportovni" data-duration="15" data-name="sportovni sije">
+              <img src="masaze/sms.webp" alt="Sportovní masáž šíje" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Šíje</h4>
+                <p>Rychlá lokální pomoc při napětí v oblasti krku.</p>
+                <div class="svc2-meta"><span>15 min</span><span>200 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/c9febe66-1ee5-497a-bc5c-e087dd1d9e07" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="sportovni" data-duration="110" data-name="sportovni zada sije dolni koncetiny">
+              <img src="masaze/smzsdkzp.webp" alt="Sportovní masáž zad, šíje a dolních končetin" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Záda, šíje, dolní končetiny</h4>
+                <p>Intenzivní celotělesná varianta pro aktivní klienty.</p>
+                <div class="svc2-meta"><span>110 min</span><span>1 600 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/fb4065e8-74fe-47c6-b6fe-10246772fca6" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="sportovni" data-duration="90" data-name="sportovni dolni koncetiny hyzde">
+              <img src="masaze/smdkzp.webp" alt="Sportovní masáž dolních končetin a hýždí" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Dolní končetiny a hýždě</h4>
+                <p>Cílené uvolnění nohou po běhu, kole nebo dlouhém stání.</p>
+                <div class="svc2-meta"><span>90 min</span><span>850 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/11af849a-d558-4a49-84da-691967541069" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="sportovni" data-duration="40" data-name="sportovni horni koncetiny rameno">
+              <img src="masaze/smhkr.webp" alt="Sportovní masáž horních končetin a ramene" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Horní končetiny a rameno</h4>
+                <p>Odlehčí přetížení paží a ramen po sportu i práci.</p>
+                <div class="svc2-meta"><span>40 min</span><span>400 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/1b6bdcdd-3390-4be2-94fc-10db7507a18f" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="sportovni" data-duration="30" data-name="sportovni dolni koncetiny zepredu">
+              <img src="masaze/smdkp.webp" alt="Sportovní masáž dolních končetin zepředu" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Dolní končetiny zepředu</h4>
+                <p>Aktivační i regenerační varianta pro přední svalové řetězce.</p>
+                <div class="svc2-meta"><span>30 min</span><span>450 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/eaed703f-134d-46e5-a8a2-802c074081e3" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="sportovni" data-duration="30" data-name="sportovni dolni koncetiny zezadu">
+              <img src="masaze/smdkz.webp" alt="Sportovní masáž dolních končetin zezadu" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Dolní končetiny zezadu</h4>
+                <p>Cílený zásah na hamstringy, lýtka a svalové trigger body.</p>
+                <div class="svc2-meta"><span>30 min</span><span>450 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/91870220-0ec5-43c4-8c45-15478ce014ee" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Kategorie: Zábaly -->
+        <section id="zabaly" class="svc2-group" data-group="zabaly" aria-labelledby="group-zabaly-title">
+          <header class="svc2-group__header">
+            <h3 id="group-zabaly-title">Zábaly</h3>
+            <p>Hřejivá péče zaměřená na uvolnění, prohřátí a regeneraci zatížených partií.</p>
+          </header>
+          <div class="svc2-grid">
+            <article class="svc2-card" data-category="zabaly" data-duration="30" data-name="parafinovy zabal rukou">
+              <img src="masaze/pzr.webp" alt="Parafínový zábal rukou" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Parafínový zábal rukou</h4>
+                <p>Prohřátí, hydratace a péče o klouby i pokožku rukou.</p>
+                <div class="svc2-meta"><span>30 min</span><span>350 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/851b4828-53b3-40b0-a4f9-f0aaf3cbe38e" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="zabaly" data-duration="30" data-name="parafinovy zabal nohou">
+              <img src="masaze/pzn.webp" alt="Parafínový zábal nohou" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Parafínový zábal nohou</h4>
+                <p>Zmírnění únavy a příjemné hloubkové prohřátí chodidel.</p>
+                <div class="svc2-meta"><span>30 min</span><span>350 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/c23df20e-7152-4dc0-aa84-16d9b973eb1a" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="zabaly" data-duration="35" data-name="raselinovy zabal zad">
+              <img src="masaze/rasz.webp" alt="Rašelinový zábal zad" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Rašelinový zábal zad</h4>
+                <p>Tepelná terapie pro bedra a oblast mezi lopatkami.</p>
+                <div class="svc2-meta"><span>35 min</span><span>350 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/eb45b07c-c18d-4518-982a-720ab1c5f195" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="zabaly" data-duration="35" data-name="raselinovy zabal sije">
+              <img src="masaze/rass.webp" alt="Rašelinový zábal šíje" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Rašelinový zábal šíje</h4>
+                <p>Cílené uvolnění krční oblasti a trapézových svalů.</p>
+                <div class="svc2-meta"><span>35 min</span><span>350 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/c0715d98-03ea-40e4-a812-2b3650c85ef9" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Kategorie: Rituály doteku -->
+        <section id="ritualy" class="svc2-group" data-group="ritualy" aria-labelledby="group-ritualy-title">
+          <header class="svc2-group__header">
+            <h3 id="group-ritualy-title">Rituály doteku</h3>
+            <p>Jemnější péče, která propojuje relaxaci, teplo a hluboké zklidnění nervového systému.</p>
+          </header>
+          <div class="svc2-grid">
+            <article class="svc2-card" data-category="ritualy" data-duration="50" data-name="ritual stastna maminka" data-recommended="true">
+              <img src="masaze/rsm.webp" alt="Rituál šťastná maminka" loading="lazy">
+              <div class="svc2-card__body">
+                <span class="svc2-card__badge">Oblíbená novinka</span>
+                <h4>Rituál šťastná maminka</h4>
+                <p>Jemná péče pro ženy v těhotenství od 13. týdne i v poporodním období.</p>
+                <div class="svc2-meta"><span>50 min</span><span>800 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/11e33b11-2e8f-4f07-af05-f4a830cf2a20" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+            <article class="svc2-card" data-category="ritualy" data-duration="30" data-name="tichy dotek masaz hlavy" data-recommended="true">
+              <img src="masaze/vd.webp" alt="Tichý dotek masáž hlavy" loading="lazy">
+              <div class="svc2-card__body">
+                <span class="svc2-card__badge">Nejjemnější péče</span>
+                <h4>Tichý dotek - masáž hlavy</h4>
+                <p>Pomalý rituál hlazení, škrábání a zklidnění celé nervové soustavy.</p>
+                <div class="svc2-meta"><span>30 min</span><span>400 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/947a02c2-394e-4ec5-b067-8b36631e624f" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="ritualy" data-duration="90" data-name="vedomy dotek ritual">
+              <img src="masaze/vd2.webp" alt="Vědomý dotek rituál" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Vědomý dotek - rituál</h4>
+                <p>Hluboké zpomalení, vědomá práce s tělem a návrat k vnitřnímu klidu.</p>
+                <div class="svc2-meta"><span>90 min</span><span>2 500 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/5d8755a6-e69d-4497-8286-1898380ff92e" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Kategorie: Doplňkové služby -->
+        <section id="ostatni" class="svc2-group" data-group="ostatni" aria-labelledby="group-ostatni-title">
+          <header class="svc2-group__header">
+            <h3 id="group-ostatni-title">Doplňkové služby</h3>
+            <p>Specializovaná péče, kterou lze volit samostatně nebo kombinovat s masážemi.</p>
+          </header>
+          <div class="svc2-grid">
+            <article class="svc2-card" data-category="ostatni" data-duration="50" data-name="bankovani">
+              <img src="masaze/banky.webp" alt="Baňkování" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Baňkování</h4>
+                <p>Podtlaková metoda podporující prokrvení a uvolnění trigger bodů.</p>
+                <div class="svc2-meta"><span>50 min</span><span>800 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/6be9b101-bbf4-40af-baf2-1f3fa1195b03" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="ostatni" data-duration="50" data-name="lavove kameny">
+              <img src="masaze/lk.webp" alt="Masáž lávovými kameny" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Lávové kameny</h4>
+                <p>Hřejivé kameny zmírňují stres, ztuhlost a podporují tok energie.</p>
+                <div class="svc2-meta"><span>50 min</span><span>800 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/40f64f4e-c7d7-4656-bcaa-9c5f2ab7b188" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+
+            <article class="svc2-card" data-category="ostatni" data-duration="30" data-name="relaxacni masaz obliceje dekoltu">
+              <img src="masaze/amh.webp" alt="Relaxační masáž obličeje a dekoltu" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Masáž obličeje a dekoltu</h4>
+                <p>Jemná technika pro zklidnění mimiky, osvěžení pleti a odpočinek.</p>
+                <div class="svc2-meta"><span>30 min</span><span>400 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/789051db-4d63-4b75-8e9a-bdd1e25814e3" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Aromaterapie jako doplňková sekce mimo katalogové karty -->
+    <section id="aroma" class="svc2-aroma" aria-labelledby="aroma-title">
+      <div class="svc2-aroma__lead">
+        <h2 id="aroma-title">Aromaterapie ke každé masáži</h2>
+        <p>
+          K vybraným procedurám můžete přidat aromaterapeutický olej nebo emulzi značek TOMFIT a VERANA.
+          Výběr vůně i účinků doladíme před masáží podle nálady a aktuální potřeby těla.
+        </p>
+      </div>
+      <!-- EDITOR: Seznamy vůní a emulzí upravujte pouze v bodech li níže -->
+      <div class="svc2-aroma__lists">
+        <article>
+          <h3>Aroma oleje TOMFIT</h3>
+          <ul>
+            <li>Zelený čaj - osvěžení a revitalizace</li>
+            <li>Tea tree - očista a podpora pokožky</li>
+            <li>Pomeranč - lehkost a pozitivní energie</li>
+            <li>Aloe vera - hydratace a zklidnění</li>
+            <li>Čokoláda - hřejivá relaxace</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Emulze a specialni olej</h3>
+          <ul>
+            <li>Měsíčková emulze TOMFIT - citlivá a unavená pokožka</li>
+            <li>Stop Cellulite VERANA - podpora pevnosti pokožky</li>
+          </ul>
+        </article>
+      </div>
+      <p class="svc2-aroma__fee">Příplatek za aromaterapii: + 50 Kč</p>
+    </section>
+
+    <!-- FAQ sekce pro rychlou orientaci klienta -->
+    <section id="faq" class="svc2-faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Jak si vybrat vhodnou službu</h2>
+      <div class="svc2-faq__grid">
+        <article>
+          <h3>1. Vyberte cíl</h3>
+          <p>
+            Chcete úlevu od bolesti, regeneraci po sportu nebo hluboké zklidnění? Podle toho volte kategorii.
+          </p>
+        </article>
+        <article>
+          <h3>2. Zvolte délku</h3>
+          <p>
+            Krátké 15-40 min procedury jsou vhodné při akutním napětí. Delší rituály přináší hlubší uvolnění.
+          </p>
+        </article>
+        <article>
+          <h3>3. Ověřte kontraindikace</h3>
+          <p>
+            Při akutních zdravotních stavech doporučujeme konzultaci před rezervací, ať je péče bezpečná.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <!-- EDITOR: Kontaktní a právní texty webu -->
   <footer class="site-footer">
-      <div class="footer-widgets">
-        <h2 style="font-family: 'Lavishly Yours', cursive; font-size: 4rem;">Zásady ochrany osobních údajů</h2>
-        <h4>Vaše osobní údaje zpracováváme v souladu s platnou legislativou (GDPR).</h4>
-        <h4>Více informací naleznete v <a href="privacy-policy.html">plném znění zásad ochrany osobních údajů</a>.</h4>
+    <div class="footer-widgets">
+      <h2 class="home-footer__title">Zásady ochrany osobních údajů</h2>
+      <h4>Vaše osobní údaje zpracováváme v souladu s platnou legislativou (GDPR).</h4>
+      <h4>Více informací naleznete v <a href="privacy-policy.html">plném znění zásad ochrany osobních údajů</a>.</h4>
 
-        <div class="footer-social" aria-label="Sociální sítě">
-          <div class="social">
-            <img src="instalogo.png" alt="Instagram">
-            <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </div>
+      <div class="footer-social" aria-label="Sociální sítě">
+        <div class="social">
+          <img src="instalogo.png" alt="Instagram">
+          <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
 
-          <div class="social">
-            <img src="fb.png" alt="Facebook">
-            <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer">Facebook</a>
-          </div>
+        <div class="social">
+          <img src="fb.png" alt="Facebook">
+          <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
 
-          <div class="social">
-            <a href="#impressum">Impressum</a>
-          </div>
+        <div class="social">
+          <a href="#faq">Impressum</a>
+        </div>
 
-          <div class="social">
-            <img src="GDPRlogo.png" alt="GDPR">
-            <a href="privacy-policy.html">Ochrana osobních údajů</a>
-          </div>
+        <div class="social">
+          <img src="GDPRlogo.png" alt="GDPR">
+          <a href="privacy-policy.html">Ochrana osobních údajů</a>
         </div>
       </div>
+    </div>
 
-      <div class="footer-copy">
-        © 2025 Aura Michaell Massage. Všechna práva vyhrazena.
-      </div>
-    </footer>
-  <button id="scrollTopBtn" title="Zpět nahoru" style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: #7c4a27; color: #fff; border: none; font-size: 2em; box-shadow: 0 4px 16px rgba(60,30,10,0.18); cursor: pointer; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 9999;">↑</button>
+    <div class="footer-copy">
+      (c) 2026 Aura Michaell Massage. Všechna práva vyhrazena.
+    </div>
+  </footer>
+
+  <!-- Plovoucí tlačítko návratu nahoru -->
+  <button id="scrollTopBtn" title="Zpět nahoru">↑</button>
+  <!-- Sdílený JavaScript pro navigaci, filtry a interakce -->
   <script src="main.js" defer></script>
-  <script>
-    const scrollBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 300) {
-        scrollBtn.style.opacity = '1';
-        scrollBtn.style.visibility = 'visible';
-      } else {
-        scrollBtn.style.opacity = '0';
-        scrollBtn.style.visibility = 'hidden';
-      }
-    });
-    scrollBtn.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // ===== Sticky mini-navigace =====
-    const miniNav = document.getElementById('miniNav');
-    if (miniNav) {
-      const handleMiniNavScroll = () => {
-        const scrollY = window.scrollY || window.pageYOffset;
-        if (scrollY > 300) {
-          miniNav.classList.add('mini-nav--visible');
-        } else {
-          miniNav.classList.remove('mini-nav--visible');
-        }
-      };
-      window.addEventListener('scroll', handleMiniNavScroll, { passive: true });
-      handleMiniNavScroll();
-    }
-
-    // ===== Funkce pro "Číst více" =====
-    window.toggleReadMore = function(btn) {
-      const content = btn.previousElementSibling;
-      if (content && content.classList.contains('read-more-content')) {
-        if (content.style.display === 'none') {
-          content.style.display = 'block';
-          btn.innerHTML = 'Číst méně ▲';
-        } else {
-          content.style.display = 'none';
-          btn.innerHTML = 'Číst více ▼';
-        }
-      }
-    };
-  </script>
 </body>
 </html>
