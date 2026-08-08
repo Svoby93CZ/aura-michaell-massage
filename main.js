@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const eraseDurationMs = 1200;
       const startDelayMs = 80;
       const staggerMs = 12;
-      const holdDrawnMs = 900;
+      const holdDrawnMs = 4000;
       const holdErasedMs = 260;
 
       paths.forEach((path, index) => {
@@ -154,6 +154,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const updateNavCondensed = () => {
     if (!nav) {
+      return;
+    }
+    const isDesktop = window.matchMedia('(min-width: 921px)').matches;
+    if (isDesktop) {
+      nav.classList.remove('primary-nav--condensed');
+      nav.classList.remove('primary-nav--show-title');
+      if (brand) {
+        brand.setAttribute('aria-hidden', 'false');
+        brand.tabIndex = 0;
+      }
+      evaluateTitleState();
       return;
     }
     const threshold = 80;
@@ -826,37 +837,61 @@ if (logoBubble) {
 })();
 // ===== HUDBA NA POZADÍ A PŘEPÍNÁNÍ TLAČÍTKA =====
 const bgMusic = document.getElementById('bg-music');
-const musicToggleBtn = document.getElementById('music-toggle');
-const musicIcon = document.getElementById('music-icon');
+const musicToggleButtons = Array.from(
+  document.querySelectorAll('[data-music-toggle], #music-toggle')
+);
+const musicIcons = Array.from(
+  document.querySelectorAll('[data-music-icon], #music-icon')
+);
 
-if (bgMusic && musicToggleBtn && musicIcon) {
+if (bgMusic && musicToggleButtons.length > 0 && musicIcons.length > 0) {
   // Zde nastav cesty k obrázkům, které se budou střídat!
   const iconPlay = 'galerie/play.webp';
   const iconPause = 'galerie/pause.webp';
+
+  const syncMusicIcons = () => {
+    const isPaused = bgMusic.paused;
+    const icon = isPaused ? iconPlay : iconPause;
+    const iconAlt = isPaused ? 'Play' : 'Pause';
+
+    musicIcons.forEach((img) => {
+      img.src = icon;
+      img.alt = iconAlt;
+    });
+  };
 
   // Funkce, která řeší zákaz autoplaye v prohlížeči
   const tryPlayMusic = () => {
     bgMusic.play().then(() => {
       // Pokud se přehrání povede, změníme ikonku na pauzu
-      musicIcon.src = iconPause;
+      syncMusicIcons();
     }).catch((err) => {
       // Prohlížeč hudbu zablokoval, ikonka zůstane na "play"
       console.log("Autoplay blokován prohlížečem, čeká se na interakci.");
-      musicIcon.src = iconPlay;
+      syncMusicIcons();
     });
   };
 
-  // Kliknutí na samotné tlačítko
-  musicToggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // Zabránění spuštění globálního kliku níže
-    if (bgMusic.paused) {
-      bgMusic.play();
-      musicIcon.src = iconPause;
-    } else {
-      bgMusic.pause();
-      musicIcon.src = iconPlay;
-    }
+  // Kliknutí na kterékoliv hudební tlačítko
+  musicToggleButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation(); // Zabránění spuštění globálního kliku níže
+      if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+          syncMusicIcons();
+        }).catch(() => {
+          syncMusicIcons();
+        });
+      } else {
+        bgMusic.pause();
+        syncMusicIcons();
+      }
+    });
   });
+
+  bgMusic.addEventListener('play', syncMusicIcons);
+  bgMusic.addEventListener('pause', syncMusicIcons);
+  bgMusic.addEventListener('ended', syncMusicIcons);
 
   // Chytrý trik: Spustí hudbu při PRVNÍM kliknutí kamkoliv na web (např. na tlačítko "Menu")
   let userInteracted = false;
@@ -866,4 +901,6 @@ if (bgMusic && musicToggleBtn && musicIcon) {
       userInteracted = true;
     }
   }, { once: true }); // Proběhne jen jednou
+
+  syncMusicIcons();
 }

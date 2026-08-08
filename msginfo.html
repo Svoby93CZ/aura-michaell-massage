@@ -27,21 +27,49 @@
   <link rel="icon" href="favicon.ico">
 </head>
 <body class="page-services page-services-v2">
-  <!-- Hlavní navigace stránky -->
-  <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
+    <!-- Hlavní navigační panel -->
+   <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
-      <a href="#hero" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
-        <span class="premium-brand-text">Aura Michaell Massage</span>
-      </a>
+      <button id="scrollTopBtn" title="Zpět nahoru" class="primary-nav__utility-btn primary-nav__utility-btn--scroll" type="button" aria-label="Zpět nahoru">↑</button>
       <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
         <span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-label">Menu</span>
       </button>
+
       <div class="primary-nav__menu" id="primary-nav-menu" aria-hidden="true">
-        <a href="index.html" class="primary-nav__link primary-nav__link--cta">Zpět na hlavní stránku</a>
+        <a href="index.html" class="primary-nav__link" data-tooltip="Hlavní stránka">Hlavní stránka</a>
+        <a href="ceremonie.html" class="primary-nav__link premium-link-ceremony" data-tooltip="Kakaová ceremonie a kruhy pro ženy">Ceremonie</a>
+        <a href="obchod.html" class="primary-nav__link">Poukazy</a>
+        <a href="about.html" class="primary-nav__link">O mně</a>
+
+        <div class="primary-nav__dropdown">
+          <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false">
+            Kontakt
+            <svg class="primary-nav__dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true" focusable="false">
+              <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="primary-nav__dropdown-panel" aria-hidden="true">
+            <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">
+              Instagram
+            </a>
+            <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">
+              Facebook
+            </a>
+            <a href="tel:+420727836338" class="primary-nav__dropdown-link">
+              Telefon
+            </a>
+            <a href="#location" class="primary-nav__dropdown-link">
+              Mapa
+            </a>
+          </div>
+        </div>
       </div>
+      <button id="music-toggle" class="music-toggle-btn primary-nav__utility-btn primary-nav__utility-btn--music" type="button" aria-label="Přehrát / Pozastavit hudbu" data-music-toggle>
+        <img id="music-icon" class="music-toggle-icon" data-music-icon src="galerie/play.webp" alt="Play">
+      </button>
     </div>
   </nav>
   <!-- Vyrovnávací mezera pod fixní navigací -->
@@ -484,40 +512,25 @@
       </div>
     </section>
   </main>
-  <!-- Footer -->
-  <!-- EDITOR: Kontaktní a právní texty webu -->
-  <footer class="site-footer">
-    <div class="footer-widgets">
-      <h2 class="home-footer__title">Zásady ochrany osobních údajů</h2>
-      <h4>Vaše osobní údaje zpracováváme v souladu s platnou legislativou (GDPR).</h4>
-      <h4>Více informací naleznete v <a href="privacy-policy.html">plném znění zásad ochrany osobních údajů</a>.</h4>
-
-      <div class="footer-social" aria-label="Sociální sítě">
-        <div class="social">
+  <div class="site-footer" role="contentinfo">
+    <div class="site-footer__bar">
+      <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
+      <div class="site-footer__links" aria-label="Rychlé odkazy">
+        <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="site-footer__link">
           <img src="instalogo.png" alt="Instagram">
-          <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer">Instagram</a>
-        </div>
-
-        <div class="social">
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="site-footer__link">
           <img src="fb.png" alt="Facebook">
-          <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer">Facebook</a>
-        </div>
-
-        <div class="social">
-          <a href="#faq">Impressum</a>
-        </div>
-
-        <div class="social">
+          <span>Facebook</span>
+        </a>
+        <a href="privacy-policy.html" class="site-footer__link">
           <img src="GDPRlogo.png" alt="GDPR">
-          <a href="privacy-policy.html">Ochrana osobních údajů</a>
-        </div>
+          <span>Ochrana osobních údajů</span>
+        </a>
       </div>
     </div>
-
-    <div class="footer-copy">
-      (c) 2026 Aura Michaell Massage. Všechna práva vyhrazena.
-    </div>
-  </footer>
+  </div>
 
   <!-- Plovoucí tlačítko návratu nahoru -->
   <button id="scrollTopBtn" title="Zpět nahoru">↑</button>

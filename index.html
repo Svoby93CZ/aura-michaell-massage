@@ -50,6 +50,8 @@
   <!-- Hlavní navigační panel -->
    <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
+      <button id="scrollTopBtn" title="Zpět nahoru" class="primary-nav__utility-btn primary-nav__utility-btn--scroll" type="button" aria-label="Zpět nahoru">↑</button>
+
       <a href="#hero" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
         <span class="premium-brand-text">Aura Michaell Massage</span>
       </a>
@@ -95,17 +97,22 @@
           Rezervace
         </a>
       </div>
+
+      <button id="music-toggle" class="music-toggle-btn primary-nav__utility-btn primary-nav__utility-btn--music" type="button" aria-label="Přehrát / Pozastavit hudbu" data-music-toggle>
+        <img id="music-icon" class="music-toggle-icon" data-music-icon src="galerie/play.webp" alt="Play">
+      </button>
     </div>
   </nav>
 
     <!-- Hlavní nadpis -->
+    <div style="padding: 40px;"></div>
     <section id="hero" class="hero-wrapper">
       <div class="hero-brand">
         <div class="hero-logo-draw" aria-hidden="true"></div>
         <h1 class="main-title-text">
           AURA<br>MICHAELL<br>MASSAGE</h1>
       </div>
-
+      <div style="height: 20px;"></div>
       <div class="hero-intro">
         <h2>Nechte starosti odejít.</h2>
         <p>
@@ -118,10 +125,9 @@
 <!-- Karta a mapa -->
     <section id="offer-location" class="home-offer-location" style="padding: 60px;">
       <div class="home-offer-location__header reveal-on-scroll">
-        <p class="home-offer-location__eyebrow">Příjemné setkání a pohodlí</p>
         <h2 class="home-offer-location__section-title">Věrnostní výhoda i pohodlné nalezení salonu</h2>
         <p class="home-offer-location__section-copy" style="font-weight: bold;">
-          Každá návštěva je pro mě příležitost vytvořit klidný prostor.<br>Zde najdete nejen naši adresu, ale také výhodu za opakované návštěvy.
+          Každá návštěva je pro mě příležitost vytvořit klidný prostor. Zde najdete nejen naši adresu, ale také výhodu za opakované návštěvy.
         </p>
       </div>
 
@@ -171,22 +177,10 @@
     </section>
 
     <!-- Přivítání -->
-    <div style="
-    background-image: url('galerie/papir.webp');
-    background-size: cover;
-    background-position: center;
-    border-radius: 24px;
-    -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%), linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%), linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;">
-    <h2 style="text-shadow:
-    0 2px 8px rgb(88, 47, 8),
-    0 0 2px #6e3505;text-transform: uppercase;text-align: center;font-size: 4rem;font-style: oblique;padding-top: 50px;-webkit-text-stroke: 1px #000;font-family: 'Tenor Sans'">
-      Přivítáme se</h2>
     <section class="parallax-section parallax-welcome-intro welcome-section" aria-label="Přivítání v salonu">
+      <h2 class="welcome-section__title">Přivítáme se</h2>
       <div class="parallax-content">
-        <div class="welcome-content">
+        <div class="welcome-content"> 
           <ul class="welcome-list">
             <li>Usadím Vás, nabídnu šálek lahodného sypaného čaje, kávy či vody.</li>
             <li>Společně si popovídáme, strávíme spolu chvilku v naprostém klidu a vzájemném poznání.</li>
@@ -197,13 +191,6 @@
             <li>Poté, co jsou obě strany zklidněné a připravené, se jde masírovat.</li>
             <li>Následně už jenom přijímáte, hýčkáte svou schránku a svoji duševní pohodu.</li>
           </ul>
-          <div class="welcome-media">
-            <div class="parallax-section welcome-media-frame">
-              <div class="parallax-content welcome-media-frame__content">
-                <img src="galerie/navsteva.webp" alt="Přivítání klienta" class="welcome-image welcome-image--ghost" loading="lazy">
-              </div>
-            </div>
-          </div>
             <div class="welcome-gallery" role="group" aria-label="Rozhovor před masáží">
               <img src="galerie/rozhovor1.webp" alt="Rozhovor před masáží" data-lightbox="welcome-talk" data-full="galerie/rozhovor1.webp" loading="lazy">
               <img src="galerie/rozhovor2.webp" alt="Rozhovor před masáží" data-lightbox="welcome-talk" data-full="galerie/rozhovor2.webp" loading="lazy">
@@ -211,11 +198,11 @@
         </div>
       </div>
     </section>
-    </div>
 
     <!-- IMPRESSUM / PRÁVNÍ ÚDAJE -->
-    <section id="impressum" class="section imprint home-impressum" aria-label="Impressum a právní údaje">
-      <h2 class="home-impressum__title" style="font-size: 4.2em;">Impressum</h2>
+    <div style="padding: 50px;"></div>
+    <section style="border: 1.5px solid rgb(0, 0, 0);" id="impressum" class="section imprint home-impressum" aria-label="Impressum a právní údaje">
+      <h2 style="font-size: 2.3rem;" class="home-impressum__title">Impressum</h2>
       <ul class="home-impressum__list">
         <li><strong>Provozovatel:</strong> Michaela Svobodová – Aura Michaell Massage</li>
         <li><strong>Sídlo:</strong> Šmilovského 663/1, 792 01 Bruntál, Česká republika</li>
@@ -227,44 +214,30 @@
         <li class="home-impressum__item"><strong>Provozní doba:</strong> Dle objednávek</li>
       </ul>
     </section>
-    <div class="home-spacer"></div>
-    <!-- Footer -->
-    <footer class="site-footer home-footer">
-      <div class="footer-widgets">
-        <h2 class="home-footer__title">Zásady ochrany osobních údajů</h2>
-        <h4>Vaše osobní údaje zpracováváme v souladu s platnou legislativou (GDPR).</h4>
-        <h4>Více informací naleznete v <a href="privacy-policy.html">plném znění zásad ochrany osobních údajů</a>.</h4>
-
-        <div class="footer-social" aria-label="Sociální sítě">
-          <div class="social">
+    <!-- Footer lišta -->
+    <div class="site-footer home-footer" role="contentinfo">
+      <div class="site-footer__bar">
+        <div class="site-footer__counter" aria-label="Počítadlo návštěv">
+          <strong>Návštěvy:</strong>
+          <script type="text/javascript" src="https://counter.websiteout.com/js/16/6/0/1"></script>
+        </div>
+        <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
+        <div class="site-footer__links" aria-label="Rychlé odkazy">
+          <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="site-footer__link">
             <img src="instalogo.png" alt="Instagram">
-            <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </div>
-
-          <div class="social">
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="site-footer__link">
             <img src="fb.png" alt="Facebook">
-            <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer">Facebook</a>
-          </div>
-
-          <div class="social">
-            <a href="#impressum">Impressum</a>
-          </div>
-
-          <div class="social">
+            <span>Facebook</span>
+          </a>
+          <a href="privacy-policy.html" class="site-footer__link">
             <img src="GDPRlogo.png" alt="GDPR">
-            <a href="privacy-policy.html">Ochrana osobních údajů</a>
-          </div>
+            <span>Ochrana osobních údajů</span>
+          </a>
         </div>
       </div>
-
-      <div class="footer-copy">
-        © 2026 Aura Michaell Massage. Všechna práva vyhrazena.
-      </div>
-    </footer>
-    <!-- Počítadlo návštěv -->
-    <div class="home-spacer"></div>
-    <script type="text/javascript" src="https://counter.websiteout.com/js/16/6/0/1"></script>
-  </div>
+    </div>
 
   <div id="lightbox" class="modal" aria-hidden="true">
     <button type="button" class="modal-close" aria-label="Zavřít náhled">&times;</button>
@@ -273,27 +246,12 @@
     <button type="button" class="modal-nav modal-nav--next" aria-label="Další obrázek">&#10095;</button>
   </div>
 
-  <!-- Dekorace v rozích: světélkující bloby -->
-  <div class="corner-decor" aria-hidden="true">
-    <span class="c top-left"></span>
-    <span class="c top-right"></span>
-    <span class="c bottom-left"></span>
-    <span class="c bottom-right"></span>
-  </div>
-
-  <script src="main.js?v=1" defer></script>
+  <script src="main.js?v=2" defer></script>
   <script src="card-3d.js?v=6" defer></script>
-
-  <!-- Plovoucí tlačítko pro návrat nahoru -->
-  <button id="scrollTopBtn" title="Zpět nahoru">↑</button>
 
   <!-- Plovoucí tlačítko pro přehrávání hudby -->
   <audio id="bg-music" loop>
     <source src="sound/hudba.mp3" type="audio/mpeg">
   </audio>
-
-  <button id="music-toggle" class="music-toggle-btn" aria-label="Přehrát / Pozastavit hudbu">
-    <img id="music-icon" src="galerie/play.webp" alt="Play">
-  </button>
 </body>
 </html>
