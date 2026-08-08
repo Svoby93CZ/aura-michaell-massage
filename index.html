@@ -115,10 +115,77 @@
       </div>
     </section>
 
+<!-- Karta a mapa -->
+    <section id="offer-location" class="home-offer-location" style="padding: 60px;">
+      <div class="home-offer-location__header reveal-on-scroll">
+        <p class="home-offer-location__eyebrow">Příjemné setkání a pohodlí</p>
+        <h2 class="home-offer-location__section-title">Věrnostní výhoda i pohodlné nalezení salonu</h2>
+        <p class="home-offer-location__section-copy" style="font-weight: bold;">
+          Každá návštěva je pro mě příležitost vytvořit klidný prostor.<br>Zde najdete nejen naši adresu, ale také výhodu za opakované návštěvy.
+        </p>
+      </div>
+
+      <div class="home-offer-location__content">
+        <article class="home-offer-location__panel home-offer-location__panel--card reveal-on-scroll">
+          <div class="home-offer-location__panel-head">
+            <div>
+              <p class="home-offer-location__label">Věrnostní karta</p>
+              <h3 class="home-offer-location__panel-title">Po deseti masážích</h3>
+            </div>
+            <span class="home-offer-location__pill">Sleva 200 Kč</span>
+          </div>
+
+          <div id="card-3d-container" class="card-3d-scene home-offer-location__card"></div>
+
+          <div class="home-offer-location__text">
+            <p>Každá další návštěva vás přibližuje k výhodné slevě.</p>
+            <p>Věrnostní karta je jednoduchá, bez zbytečných formalit.</p>
+          </div>
+
+          <a class="home-offer-location__link" href="msginfo.html">Prohlédnout služby</a>
+        </article>
+
+        <article class="home-offer-location__panel home-offer-location__panel--map reveal-on-scroll">
+          <div class="home-offer-location__panel-head">
+            <div>
+              <p class="home-offer-location__label">Najděte mě snadno</p>
+              <h3 class="home-offer-location__panel-title">Kde mě najdete</h3>
+            </div>
+            <span class="home-offer-location__pill home-offer-location__pill--accent">Bruntál</span>
+          </div>
+
+          <div class="home-offer-location__map-card">
+            <div class="home-offer-location__map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="home-offer-location__address">
+              <span class="home-offer-location__address-line">Šmilovského 663/1</span>
+              <span>792 01 Bruntál</span>
+            </div>
+
+            <a class="home-offer-location__link" href="https://maps.google.com/?q=Šmilovského+663%2F1+Bruntál" target="_blank" rel="noopener noreferrer">Otevřít v mapách</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- Přivítání -->
+    <div style="
+    background-image: url('galerie/papir.webp');
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%), linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%), linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;">
+    <h2 style="text-shadow:
+    0 2px 8px rgb(88, 47, 8),
+    0 0 2px #6e3505;text-transform: uppercase;text-align: center;font-size: 4rem;font-style: oblique;padding-top: 50px;-webkit-text-stroke: 1px #000;font-family: 'Tenor Sans'">
+      Přivítáme se</h2>
     <section class="parallax-section parallax-welcome-intro welcome-section" aria-label="Přivítání v salonu">
       <div class="parallax-content">
-        <h2><span class="welcome-title-accent">Přivítáme se</span></h2>
         <div class="welcome-content">
           <ul class="welcome-list">
             <li>Usadím Vás, nabídnu šálek lahodného sypaného čaje, kávy či vody.</li>
@@ -144,56 +211,11 @@
         </div>
       </div>
     </section>
+    </div>
 
-    <!-- Karta a mapa -->
-    <section id="offer-location" class="home-offer-location">
-      <div class="merged-parallax-content home-offer-location__content">
-        <div class="parallax-section home-offer-location__panel">
-          <div class="parallax-content services-hero__intro-text home-offer-location__intro">
-            <h2 class="home-offer-location__title">
-              Věrnostní karta
-            </h2>
-            <div id="card-3d-container" class="card-3d-scene home-offer-location__card"></div>
-              <p class="home-offer-location__text">
-                Po 10 absolvovaných masážích získáte slevu<br>
-                <span class="home-offer-location__badge">200 Kč</span>
-              </p>
-            </div>
-          </div>
-          <div class="merged-col">
-            <div class="home-offer-location__map-card">
-              <h2 class="home-offer-location__map-title">
-                Kde mě najdete
-              </h2>
-              <div class="home-offer-location__map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-              <div class="home-offer-location__address">
-                <span class="home-offer-location__address-line">📍 Šmilovského 663/1</span><br>
-                  792 01 Bruntál
-              </div>
-            </div>
-          </div>
-      </div>
-    </section>
-
-    <!-- Recenze Google -->
-    <section id="recenze" class="home-reviews">
-      <details class="service-accordion home-reviews__accordion">
-        <summary class="home-reviews__summary">
-          <h2 class="home-reviews__title">Co o mně říkají klienti</h2>
-        </summary>
-        <div class="home-reviews__content">
-          <div class='sk-ww-google-reviews' data-embed-id='25613697'></div>
-          <script src='https://widgets.sociablekit.com/google-reviews/widget.js' defer></script>
-          <div class="elfsight-app-b275f04e-832a-452d-91ed-1fdc07117847" data-elfsight-app-lazy></div>
-        </div>
-      </details>
-    </section>
-    <div class="home-spacer home-spacer--large"></div>
     <!-- IMPRESSUM / PRÁVNÍ ÚDAJE -->
     <section id="impressum" class="section imprint home-impressum" aria-label="Impressum a právní údaje">
-      <h2 class="home-impressum__title">Impressum</h2>
+      <h2 class="home-impressum__title" style="font-size: 4.2em;">Impressum</h2>
       <ul class="home-impressum__list">
         <li><strong>Provozovatel:</strong> Michaela Svobodová – Aura Michaell Massage</li>
         <li><strong>Sídlo:</strong> Šmilovského 663/1, 792 01 Bruntál, Česká republika</li>

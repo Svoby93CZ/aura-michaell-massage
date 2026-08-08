@@ -320,6 +320,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   evaluateTitleState();
 
+  // Jemné animace při vstupu do viewportu
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (revealElements.length > 0) {
+    if ('IntersectionObserver' in window && !prefersReducedMotion) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -8% 0px'
+      });
+
+      revealElements.forEach(element => revealObserver.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add('is-visible'));
+    }
+  }
+
   // Lazy loading pro obrázky
   const lazyImages = document.querySelectorAll('img[loading="lazy"]');
   if ('IntersectionObserver' in window) {

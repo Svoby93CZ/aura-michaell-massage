@@ -482,10 +482,12 @@ header { /* 04. Navigation & Hero Components */
 }
 
 .page-home .welcome-section .parallax-content {
-  max-width: min(960px, 100%); /* Omezí maximální šířku prvku. */
-  padding: 40px 36px; /* Přidá vnitřní odsazení prvku. */
-  border-radius: 18px; /* Zaoblí rohy prvku. */
-  box-shadow: 0 8px 24px rgba(0,0,0,0.28); /* Přidá stín prvku. */
+  max-width: 100%; /* Plánuje celou šířku. */
+  width: 100%; /* Rozpřahé přes celou šířku. */
+  padding: 40px 0 40px 40px; /* Padding jen vlevo. */
+  border-radius: 0; /* Žádné zaoblíní. */
+  box-shadow: none; /* Žádný stín. */
+  display: flex; /* Flex layout. */
 }
 .page-home .welcome-section .parallax-content h2 {
   font-size: clamp(2.1rem, 9vw, 2.8rem); /* Zvětšení písma pro lepší čitelnost na mobilu */
@@ -493,35 +495,40 @@ header { /* 04. Navigation & Hero Components */
 
 .page-home .welcome-content {
   display: flex; /* Nastaví způsob zobrazení prvku. */
-  align-items: flex-start; /* Zarovná děti v pomocné ose Flexboxu. */
-  gap: 24px; /* Nastaví mezery mezi položkami. */
-  flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
+  align-items: stretch; /* Zarovná děti na plnou výšku. */
+  gap: 0; /* Žádné mezery. */
+  flex-wrap: nowrap; /* Žádné zalomení, vše v jedné řadě. */
+  flex-direction: row; /* Text vlevo, obrázek vpravo. */
+  width: 100%; /* Plánuje celou šířku. */
 }
 .page-home .welcome-list {
-  flex: 1 1 260px; /* Rychle nastaví chování flex položky. */
-  min-width: 220px; /* Nastaví minimální šířku prvku. */
+  flex: 0 0 350px; /* Pevná šířka textu - nezmenšuje se ani nezvětšuje. */
+  min-width: auto; /* Žádné omezení minimální šířky. */
   margin: 0; /* Odsadí prvek od okolního obsahu. */
   padding-left: 1.2em; /* Vnitřní odsazení zleva. */
+  padding-right: 24px; /* Vnitřní odsazení zprava. */
   font-weight: 700; /* Určuje tloušťku písma. */
   text-align: left; /* Zarovná text. */
   list-style: disc; /* Nastaví styl odrážek seznamu. */
   text-shadow:
-    0 2px 8px rgba(60,30,10,0.25),
-    0 0 2px #000; /* Přidá stín textu. */
+    0 2px 6px rgba(0, 0, 0, 0.76),
+    0 2px 6px #000000; /* Přidá stín textu. */
+  color: #ffffff; /* Nastaví barvu textu. */
 }
 .page-home .welcome-list li {
   margin-bottom: 8px; /* Odsazení zespodu pro prvek. */
 }
 .page-home .welcome-image {
   width: 100%; /* Definuje šířku prvku. */
-  max-width: 320px; /* Omezí maximální šířku prvku. */
+  max-width: 100%; /* Žádné omezení - obsadí celou šířku */
+  height: 100%; /* Obsadí plnou výšku kontejneru */
   border-radius: 8px; /* Zaoblí rohy prvku. */
   object-fit: cover; /* Řídí přizpůsobení média do boxu. */
-  margin-bottom: 20px; /* Odsazení zespodu pro prvek. */
+  margin-bottom: 0; /* Žádné odsazení. */
 }
 .page-home .welcome-media {
-  flex: 0 1 360px; /* Rychle nastaví chování flex položky. */
-  max-width: 360px; /* Omezí maximální šířku prvku. */
+  flex: 1 1 auto; /* Zabere všechna zbývající místa. */
+  max-width: none; /* Žádné omezení maximální šířky. */
   width: 100%; /* Definuje šířku prvku. */
   display: flex; /* Nastaví způsob zobrazení prvku. */
   flex-direction: column; /* Určuje směr Flexboxu. */
@@ -551,6 +558,75 @@ header { /* 04. Navigation & Hero Components */
 .page-home .welcome-gallery img:hover,
 .page-home .welcome-gallery img:focus {
   transform: scale(1.04); /* Transformuje prvek (posun, natočení, měřítko). */
+}
+
+/* Responzivní úpravy pro welcome sekci */
+@media (max-width: 1024px) {
+  .page-home .welcome-list {
+    flex: 0 0 300px; /* Zmenšená šířka textu na tabletů */
+  }
+}
+
+@media (max-width: 768px) {
+  .page-home .welcome-section .parallax-content {
+    padding: 30px 20px; /* Menší padding na mobilu */
+    display: block; /* Změna na block */
+  }
+
+  .page-home .welcome-content {
+    flex-direction: column; /* Stacking na mobilu */
+    gap: 20px; /* Přidá mezeru mezi sekcemi */
+    width: 100%;
+  }
+
+  .page-home .welcome-list {
+    flex: none; /* Žádná flex omezení */
+    width: 100%; /* Plná šířka */
+    padding-right: 20px; /* Padding zprava */
+  }
+
+  .page-home .welcome-media {
+    width: 100%; /* Plná šířka */
+    margin-top: 10px;
+  }
+
+  .page-home .welcome-gallery {
+    flex-wrap: wrap; /* Povolení zalomení na mobilu */
+    max-width: 100%;
+  }
+
+  .page-home .welcome-gallery img {
+    flex: 1 1 calc(50% - 6px); /* Dva obrázky vedle sebe */
+  }
+}
+
+@media (max-width: 600px) {
+  .page-home .welcome-section .parallax-content {
+    padding: 20px 15px;
+  }
+
+  .page-home .welcome-list {
+    font-size: 0.9em; /* Menší text na mobilu */
+    padding-left: 1em;
+    padding-right: 15px;
+  }
+
+  .page-home .welcome-list li {
+    margin-bottom: 6px;
+  }
+
+  .page-home .welcome-gallery img {
+    flex: 1 1 100%; /* Jeden obrázek na řádku */
+    max-width: 100%;
+  }
+
+  .page-home .welcome-media {
+    min-height: auto;
+  }
+
+  .page-home .welcome-section .parallax-content h2 {
+    text-align: center; /* Nadpis na střed na mobilu */
+  }
 }
 
 .page-home .bonus-card-section { /* Bonusová karta */
@@ -1466,6 +1542,7 @@ header { /* 04. Navigation & Hero Components */
   -webkit-mask-composite: multiply;
   mask-composite: intersect;
 }
+
 
 /* Mobilní verze s parallaxem */
 @media (max-width: 768px) {
@@ -2401,7 +2478,7 @@ footer img {
     font-size: 0.98rem; /* Nastaví velikost písma. */
   }
   .section h2 {
-    font-size: 1.2rem; /* Nastaví velikost písma. */
+    font-size: 3rem; /* Nastaví velikost písma. */
     margin-bottom: 0.7rem; /* Odsazení zespodu pro prvek. */
   }
   .section ul li strong {
@@ -2421,9 +2498,9 @@ footer img {
     font-size: 0.95em; /* Nastaví velikost písma. */
   }
   #impressum ul li {
-    display: flex; /* Nastaví způsob zobrazení prvku. */
+    display: center; /* Nastaví způsob zobrazení prvku. */
     flex-direction: column; /* Určuje směr Flexboxu. */
-    align-items: flex-start; /* Zarovná děti v pomocné ose Flexboxu. */
+    align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
     margin-bottom: 1rem; /* Odsazení zespodu pro prvek. */
   }
   #impressum ul li strong {
@@ -5100,7 +5177,7 @@ body.night-mode .logo-bubble img:hover {
 
 .hero-intro h2 {
   font-family: 'Inknut Antiqua', serif;
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-size: clamp(1.8rem, 1vw, 2.4rem);
   color: #3e2f2a;
   margin-top: 0;
   margin-bottom: 20px;
@@ -5204,75 +5281,186 @@ body.night-mode .logo-bubble img:hover {
 .home-offer-location {
   margin: 40px auto 80px auto;
   max-width: 1200px;
-  padding: 0 20px;
+  padding: 0 20px 20px;
+}
+
+.home-offer-location__header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 32px;
+}
+
+.home-offer-location__eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #7c4a27;
+}
+
+.home-offer-location__section-title {
+  margin: 0 0 12px;
+  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-size: clamp(1.8rem, 1vw, 2.6rem);
+  line-height: 1.3;
+  color: #3e2f2a;
+}
+
+.home-offer-location__section-copy {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #5c4d44;
 }
 
 .home-offer-location__content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
   padding: 0;
 }
 
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .home-offer-location__panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 45px rgba(25, 15, 9, 0.12);
+  background:
+    linear-gradient(135deg, rgba(255, 250, 238, 0.80), rgba(251, 241, 229, 0.70)),
+    url('galerie/papir_poz.webp') center/cover no-repeat;
+  background-size: cover;
+  background-blend-mode: normal;
+}
+
+/* Vypnutí parallaxu na mobilech pro lepší výkon */
+@media (max-width: 768px) {
+  [style*="background-attachment: fixed"] {
+    background-attachment: scroll !important;
+  }
+}
+
+.home-offer-location__panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 248, 238, 0.18);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.home-offer-location__panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-offer-location__panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.home-offer-location__label {
+  margin: 0 0 6px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #7c4a27;
+}
+
+.home-offer-location__panel-title {
   margin: 0;
-  min-height: auto;
-  box-shadow: none;
-  text-shadow: none;
-  border-radius: 23px;
-  --parallax-image: url('galerie/karty.webp');
-  --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));
+  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  color: #3e2f2a;
 }
 
-.home-offer-location__intro {
-  background: transparent;
-  box-shadow: none;
-  border-radius: 0;
-  max-width: none;
-  width: 100%;
-  padding-top: 32px;
-  padding-bottom: 32px;
+.home-offer-location__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(137, 25, 21, 0.12);
+  color: #891915;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.home-offer-location__title {
-  font-family: 'Montez', cursive;
-  font-size: 3.5rem;
-  color: #000000;
-  text-shadow: 2px 2px 8px #ffffff;
-  margin: 0 0 20px 0;
+.home-offer-location__pill--accent {
+  background: rgba(124, 74, 39, 0.14);
+  color: #7c4a27;
 }
 
 .home-offer-location__card {
-  margin-bottom: 24px;
+  align-self: center;
+  width: min(100%, 320px);
+  min-height: 220px;
+  margin: 0 auto;
+  border-radius: 22px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
 }
 
 .home-offer-location__text {
-  color: #fff;
-  text-shadow: 1px 1px 4px #000;
   font-family: 'Raleway', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #5a4f49;
 }
 
-.home-offer-location__badge {
-  display: inline-block;
-  margin-top: 8px;
-  font-weight: bold;
-  padding: 8px 24px;
-  border-radius: 12px;
-  background-color: #891915;
-  font-size: 1.5rem;
+.home-offer-location__link {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #891915, #a33d2f);
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 20px rgba(137, 25, 21, 0.2);
+}
+
+.home-offer-location__link:hover,
+.home-offer-location__link:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(137, 25, 21, 0.26);
 }
 
 .home-offer-location__map-card {
-  background-image: url('galerie/papir_bily.webp');
-  background-size: 100% 100%;
-  padding: 120px 60px;
-  transform: rotate(1.5deg);
-  text-align: center;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  filter: drop-shadow(0px 8px 12px rgb(0, 0, 0));
+  gap: 16px;
+  height: 100%;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(24, 20, 15, 0.06);
 }
 
 .primary-nav__cta-icon {
@@ -5281,84 +5469,150 @@ body.night-mode .logo-bubble img:hover {
   margin-right: 10px;
 }
 
-.home-offer-location__map-title {
-  font-family: 'Montez', cursive;
-  font-size: 3.5rem;
-  color: #3e2f2a;
-  margin: 0 0 20px 0;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
 .home-offer-location__map {
-  border-radius: 12px;
+  border-radius: 18px;
   overflow: hidden;
-  border: 2px solid #c9a36f;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  border: 2px solid rgba(182, 132, 84, 0.55);
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.10);
   width: 100%;
-  height: 250px;
+  height: 260px;
   position: relative;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.42), rgba(250,235,218,0.36)),
+    url('galerie/papir_poz.webp') center/cover no-repeat;
+  background-size: cover;
+  background-blend-mode: normal;
 }
 
 .home-offer-location__map iframe {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
 }
 
 .home-offer-location__address {
-  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   font-family: 'Raleway', sans-serif;
-  font-size: 1.15rem;
-  color: #3e2f2a;
+  font-size: 1rem;
+  color: #4f3d35;
   font-weight: 600;
   line-height: 1.6;
 }
 
 .home-offer-location__address-line {
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   color: #7c4a27;
+}
+
+@media (max-width: 900px) {
+  .home-offer-location__content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-offer-location {
+    padding: 0 14px 20px;
+  }
+
+  .home-offer-location__panel {
+    padding: 22px 18px;
+  }
+
+  .home-offer-location__panel-head {
+    flex-direction: column;
+  }
+
+  .home-offer-location__map {
+    height: 220px;
+  }
 }
 
 .home-reviews {
   max-width: 1200px;
-  margin: 0 auto 40px auto;
-  padding: 0 16px;
+  margin: 0 auto 52px auto;
+  padding: 0 20px;
+}
+
+.home-reviews__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 24px;
+}
+
+.home-reviews__eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #7c4a27;
+}
+
+.home-reviews__title {
+  margin: 0 0 10px;
+  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #3e2f2a;
+}
+
+.home-reviews__copy {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #5c4d44;
 }
 
 .home-reviews__accordion {
   margin-bottom: 0 !important;
-  background: rgba(255,255,255,0.4);
-  border: 1px solid #c9a36f;
+  background: linear-gradient(135deg, rgba(242, 228, 209, 0.96), rgba(235, 214, 192, 0.95));
+  border: 1px solid rgba(201, 163, 111, 0.35);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(25, 15, 9, 0.10);
+  overflow: hidden;
 }
 
 .home-reviews__summary {
   justify-content: center;
-  min-height: 60px !important;
+  min-height: 70px !important;
+  padding: 0 24px;
+  cursor: pointer;
+  list-style: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  color: #3e2f2a;
 }
 
-.home-reviews__title {
-  font-family: 'Montez', cursive;
-  font-size: 3rem;
-  margin: 0;
-  padding-top: 10px;
-  color: #3e2f2a;
-  border: none;
-  text-shadow: none;
+.home-reviews__summary::-webkit-details-marker {
+  display: none;
 }
 
 .home-reviews__content {
-  background: url(galerie/papirek.webp);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-origin: padding-box;
+  background: linear-gradient(135deg, rgba(249, 238, 222, 0.92), rgba(236, 216, 195, 0.92));
   padding: 24px;
   text-align: left;
   font-family: 'Raleway', sans-serif;
-  filter: drop-shadow(0px 8px 12px rgb(0, 0, 0));
+  border-top: 1px solid rgba(201, 163, 111, 0.25);
+}
+
+@media (max-width: 600px) {
+  .home-reviews {
+    padding: 0 14px;
+  }
+
+  .home-reviews__summary {
+    min-height: 62px !important;
+    padding: 0 18px;
+  }
+
+  .home-reviews__content {
+    padding: 18px;
+  }
 }
 
 .home-spacer {
@@ -5370,15 +5624,24 @@ body.night-mode .logo-bubble img:hover {
 }
 
 .home-impressum {
+  width: 100vw;
   background-image: url(galerie/papirek.webp);
-  padding: 12px;
+  padding: 20px 30px 12px;
   margin-bottom: 24px;
+  margin-top: -30px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
   filter: drop-shadow(0px 8px 12px rgb(0, 0, 0));
+  -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 .home-impressum__title {
   font-family: 'Montez', cursive;
-  font-size: 3rem;
+  text-align: center;
+  margin: 0 0 20px 0;
 }
 
 .home-impressum__list {
@@ -6642,5 +6905,51 @@ html:has(body.page-services) {
 
   .page-services-v2 .svc2-card {
     grid-template-rows: 176px 1fr;
+  }
+}
+
+/* --- Custom: styling pro Google mapu (ladění s layoutem stránky) --- */
+.home-offer-location__map-card {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.66), rgba(255,255,255,0.74)),
+    url('galerie/papir_poz.webp') center/cover no-repeat;
+  border: 1px solid rgba(92,53,32,0.10);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--box-shadow-medium);
+}
+
+.home-offer-location__map-title {
+  margin-bottom: 8px;
+  color: var(--dark);
+  font-family: 'Inknut Antiqua', serif;
+}
+
+.home-offer-location__map {
+  border-radius: 12px;
+  overflow: hidden; /* zajistí zaoblené rohy i pro iframe */
+  border: 2px solid rgba(124,74,39,0.06);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.32), rgba(255,255,255,0.18)),
+    url('galerie/papir_poz.webp') center/cover no-repeat;
+  background-color: #ece0cf;
+}
+
+.home-offer-location__map iframe {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border: 0; /* odstraní defaultní rámeček */
+}
+
+@media (min-width: 900px) {
+  .home-offer-location__map iframe {
+    height: 420px;
+  }
+}
+
+@media (max-width: 520px) {
+  .home-offer-location__map iframe {
+    height: 260px;
   }
 }
