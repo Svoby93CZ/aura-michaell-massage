@@ -69,6 +69,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 ## 3) CSS vlastnosti (použité v projektu)
 
 ### Rozměry a box model
+
 - `width`, `height` - šířka a výška prvku.
 - `min-width`, `min-height` - minimální rozměr.
 - `max-width`, `max-height` - maximální rozměr.
@@ -78,6 +79,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 - `aspect-ratio` - poměr stran prvku.
 
 ### Pozicování a vrstvení
+
 - `position` - způsob pozicování (`relative`, `absolute`, `fixed`).
 - `top`, `right`, `bottom`, `left` - odsazení při pozicování.
 - `inset` - zkrácený zápis pro top/right/bottom/left.
@@ -86,6 +88,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 - `order` - pořadí položek ve flexu.
 
 ### Flexbox a Grid
+
 - `flex`, `flex-basis`, `flex-direction`, `flex-wrap`, `flex-shrink` - rozložení ve flexboxu.
 - `align-items`, `align-content`, `align-self` - zarovnání ve vedlejší ose.
 - `justify-content` - zarovnání v hlavní ose.
@@ -93,6 +96,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 - `grid-template-columns`, `grid-template-rows`, `grid-column` - rozložení v CSS Grid.
 
 ### Typografie a text
+
 - `font-family`, `font-size`, `font-style`, `font-weight` - vzhled písma.
 - `line-height` - výška řádku.
 - `letter-spacing` - mezery mezi písmeny.
@@ -107,6 +111,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 - `list-style` - styl odrážek/číslování seznamu.
 
 ### Barvy, pozadí, rámečky
+
 - `color` - barva textu.
 - `background`, `background-color`, `background-image` - pozadí prvku.
 - `background-position`, `background-size`, `background-repeat`, `background-attachment` - chování pozadí.
@@ -118,6 +123,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 - `opacity` - průhlednost.
 
 ### Interakce a chování
+
 - `cursor` - tvar kurzoru myši.
 - `pointer-events` - zda prvek reaguje na kliknutí/hover.
 - `user-select`, `-webkit-user-select`, `-moz-user-select`, `-ms-user-select` - možnost označovat text.
@@ -130,6 +136,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 - `scrollbar-width` - šířka scrollbarů.
 
 ### Animace, transformace, efekty
+
 - `transition` - plynulé přechody stavů.
 - `transform`, `transform-origin` - posun, rotace, škálování.
 - `animation`, `animation-duration`, `animation-delay` - klíčové animace.
@@ -139,6 +146,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 - `backface-visibility` - viditelnost zadní strany při 3D transformacích.
 
 ### Masky a speciální grafika
+
 - `mask-image`, `mask-composite` - maskování prvků.
 - `-webkit-mask-image`, `-webkit-mask-composite` - webkit varianta masek.
 - `clip` - ořez obsahu.
@@ -146,6 +154,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 - `content` - obsah pseudo-prvků (`::before`, `::after`).
 
 ### Výkon a rendering
+
 - `content-visibility` - odložené vykreslení mimo viewport.
 - `contain-intrinsic-size` - rezervace prostoru pro odložený obsah.
 - `-webkit-font-smoothing`, `-moz-osx-font-smoothing` - vyhlazení písma.
@@ -153,6 +162,7 @@ Je rozdělený na HTML, CSS a JavaScript.
 - `-webkit-text-stroke`, `-webkit-background-clip` - webkit textové efekty.
 
 ### CSS proměnné (custom properties) použité v projektu
+
 - `--pad`, `--gap` - globální mezery/odsazení.
 - `--accent`, `--accent-2`, `--gold`, `--cream`, `--dark`, `--border` - barevné a stylové tokeny.
 - `--box-shadow-light`, `--box-shadow-medium`, `--box-shadow-heavy` - připravené stíny.
