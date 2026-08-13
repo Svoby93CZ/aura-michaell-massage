@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+  <!-- Základní metadata stránky -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="description" content="O mně - Aura Michaell Massage. Poznejte mou práci, přístup k masážím a atmosféru salonu v Bruntále." />
   <title>O mně - Aura Michaell Massage</title>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -12,6 +15,8 @@
     gtag('js', new Date());
     gtag('config', 'G-732NT4QJEX');
   </script>
+
+  <!-- Ikona stránky, fonty a hlavní stylesheet -->
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +24,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="page-about">
+  <!-- Hlavní navigační panel -->
   <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
       <a href="index.html" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
@@ -36,13 +42,13 @@
         <a href="ceremonie.html" class="primary-nav__link premium-link-ceremony" data-tooltip="Kakaová ceremonie a kruhy pro ženy">Ceremonie</a>
         <a href="obchod.html" class="primary-nav__link">Poukazy</a>
         <div class="primary-nav__dropdown">
-          <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false">
+          <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="contact-dropdown-panel" aria-label="Otevřít nabídku kontaktů">
             Kontakt
             <svg class="primary-nav__dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true" focusable="false">
               <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
             </svg>
           </button>
-          <div class="primary-nav__dropdown-panel" aria-hidden="true">
+          <div class="primary-nav__dropdown-panel" id="contact-dropdown-panel" aria-hidden="true">
             <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">Instagram</a>
             <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">Facebook</a>
             <a href="tel:+420727836338" class="primary-nav__dropdown-link">Telefon</a>
@@ -50,26 +56,39 @@
           </div>
         </div>
         <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="primary-nav__link primary-nav__link--cta">
-          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" style="width: 16px; height: 16px; margin-right: 10px;" alt="Rezervace" />
+          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="primary-nav__cta-icon" alt="Rezervace" />
           Rezervace
         </a>
       </div>
     </div>
   </nav>
+
+  <!-- Hlavní obsah stránky -->
   <main class="container">
+    <!-- Úvodní banner stránky O mně -->
     <section class="parallax-section parallax-balance"
-             style="--parallax-image: url('galerie/papir3.webp'); --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));"
+             style="--parallax-image: url('galerie/salon.webp');"
              aria-label="O mně">
-      <div class="parallax-content">
-        <h1>Něco málo o mně</h1>
+      <div class="parallax-content about-hero__content">
+        <div class="hero-logo-draw" aria-hidden="true" style="padding-top: 20px;"></div>
+        <h1 class="main-title-text" style="padding-top: 20px;white-space: nowrap !important;">Něco málo o mně</h1>
+        <p class="about-hero__intro">Poznejte můj přístup, zkušenosti a místo, kde vzniká prostor pro klid, péči a vědomý dotek.</p>
       </div>
     </section>
+
+    <!-- Informace o masérce a její praxi -->
     <section id="about">
       <div class="about-row">
-        <img src="galerie/info.webp" alt="Masérka">
-        <img src="galerie/praxe.webp" alt="Praxe a vzdělání">
+        <article class="about-card">
+          <img src="galerie/info.webp" alt="Masérka" loading="lazy" decoding="async">
+        </article>
+        <article class="about-card">
+          <img src="galerie/praxe.webp" alt="Praxe a vzdělání" loading="lazy" decoding="async">
+        </article>
       </div>
     </section>
+
+    <!-- Patička s odkazy na sociální sítě a zásady ochrany údajů -->
     <div class="site-footer" role="contentinfo">
       <div class="site-footer__bar">
         <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
@@ -90,7 +109,11 @@
       </div>
     </div>
   </main>
+
+  <!-- Sdílená interaktivita stránky -->
   <script src="main.js?v=1" defer></script>
-  <button id="scrollTopBtn" title="Zpět nahoru">↑</button>
+
+  <!-- Tlačítko pro návrat na začátek stránky -->
+  <button id="scrollTopBtn" type="button" title="Zpět nahoru" aria-label="Zpět nahoru">↑</button>
 </body>
 </html>

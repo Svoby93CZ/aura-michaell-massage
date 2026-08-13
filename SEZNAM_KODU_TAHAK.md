@@ -3,204 +3,628 @@
 Tento soubor je přehled toho, co se v projektu opravdu používá.
 Je rozdělený na HTML, CSS a JavaScript.
 
-## 1) HTML elementy (tagy)
+Cílem je ne jen vyjmenovat názvy technologií, ale ukázat, jak se to v projektu používá v praxi, na konkrétních typech prvků a strukturách z webu.
+
+## 1) HTML elementy (tagy) a jejich význam v tomto projektu
+
+### Základní struktura dokumentu
 
 - `html` - kořen celého HTML dokumentu.
-- `head` - metadata stránky (titulek, CSS, meta tagy).
+- `head` - metadata stránky: titulek, CSS, SEO, sociální meta tagy, skripty.
 - `title` - název stránky v záložce prohlížeče.
-- `meta` - technické informace (kódování, viewport, SEO).
-- `link` - připojení externích souborů (typicky CSS, ikony).
-- `style` - vložené CSS přímo v HTML.
+- `meta` - technické informace (kódování, viewport, SEO, Open Graph, bezpečnostní hlavičky).
+- `link` - připojení externích souborů, například CSS, fontů nebo faviconu.
+- `script` - JavaScript kód nebo externí skript.
 - `body` - viditelný obsah stránky.
+
+Příklad z projektu:
+
+```html
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aura Michaell Massage</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+```
+
+### Obsahové bloky
+
 - `header` - hlavička sekce nebo stránky.
-- `nav` - navigace (menu, odkazy).
+- `nav` - navigace (menu, odkazy, dropdown).
 - `main` - hlavní obsah stránky.
 - `section` - tematický blok obsahu.
-- `article` - samostatný obsahový celek.
-- `footer` - patička sekce nebo stránky.
-- `div` - univerzální blokový kontejner.
-- `span` - univerzální řádkový kontejner.
+- `article` - samostatný informační blok, například karta služby, článek nebo panel.
+- `footer` - patička stránky.
+- `div` - univerzální kontejner pro layout a skupiny prvků.
+- `span` - řádkový kontejner na text nebo menší části obsahu.
+
+Příklad z projektu:
+
+```html
+<nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
+  <div class="primary-nav__inner">
+    <a href="#hero" class="primary-nav__brand">Aura Michaell Massage</a>
+    <button class="primary-nav__toggle" type="button">Menu</button>
+  </div>
+</nav>
+```
+
+### Text a odkazy
+
 - `h1`, `h2`, `h3`, `h4` - nadpisy různých úrovní.
 - `p` - odstavec textu.
 - `a` - odkaz.
+- `strong` - důležitý text, zvýraznění významu.
+- `br` - nový řádek.
+- `ul`, `ol`, `li` - seznamy a jejich položky.
+
+Příklad:
+
+```html
+<h1 class="main-title-text">AURA<br>MICHAELL<br>MASSAGE</h1>
+<p>V salonu vytvářím prostředí, kde se zavřou dveře před každodenním shonem.</p>
+<ul class="welcome-list">
+  <li>Usadím Vás a nabídnu čaj.</li>
+  <li>Společně si popovídáme.</li>
+</ul>
+```
+
+### Obrázky, média a mapy
+
 - `img` - obrázek.
-- `iframe` - vložený externí obsah (např. mapa/video).
-- `ul` - nečíslovaný seznam.
-- `li` - položka seznamu.
-- `button` - tlačítko pro akce.
-- `strong` - zvýrazněný text (významově důležitý).
-- `br` - zalomení řádku.
-- `details` - rozbalovací blok.
-- `summary` - viditelná hlavička pro `details`.
-- `audio` - přehrávání zvuku.
-- `source` - zdroj média (`audio`, `video`, `picture`).
-- `noscript` - obsah pro případ vypnutého JavaScriptu.
-- `script` - JavaScript kód.
+- `picture` - varianta pro více zdrojů (např. WebP + fallback).
+- `source` - zdroj média pro `audio`, `video` nebo `picture`.
+- `iframe` - vložený obsah, například mapa Google Maps.
+- `audio` - zvukový obsah.
+- `noscript` - obsah pro prohlížeče s vypnutým JavaScriptem.
 - `svg` - vektorová grafika.
-- `g` - skupina prvků uvnitř SVG.
-- `path` - křivka/tvar v SVG.
-- `circle` - kruh v SVG.
+- `path`, `circle`, `g` - jednotlivé části SVG.
+
+Příklad z projektu:
+
+```html
+<div class="home-offer-location__map">
+  <iframe src="https://www.google.com/maps/embed?..." allowfullscreen loading="lazy"></iframe>
+</div>
+
+<img src="galerie/rozhovor1.webp" alt="Rozhovor před masáží" loading="lazy">
+```
+
+### Formuláře a interaktivní prvky
+
+- `button` - klikací tlačítko.
+- `details` / `summary` - rozbalovací sekce.
+- `label` - popisek pro formulář.
+- `input`, `textarea` - pole pro zadávání dat.
+
+Tady v projektu se používá hlavně `button` pro menu, zobrazení dropdownu, scroll nahoru, hudbu a CTA tlačítka.
 
 ## 2) HTML atributy (co se v projektu používá)
 
-- `class` - přiřazení CSS tříd.
-- `id` - unikátní identifikátor prvku.
-- `style` - inline CSS přímo na prvku.
-- `lang` - jazyk dokumentu.
-- `charset` - znaková sada dokumentu.
-- `name`, `content`, `http-equiv`, `property` - metadata (`meta`) pro prohlížeče/SEO.
+### Základní atributy
+
+- `class` - přiřazení CSS tříd. Např. `class="primary-nav__link"`.
+- `id` - unikátní identifikátor prvku. Např. `id="hero"`, `id="music-toggle"`.
+- `style` - inline CSS přímo na prvku; používá se občas pro jednoduché jednorázové úpravy.
+- `lang` - jazyk dokumentu: `lang="cs"`
+- `charset` - znaková sada: `charset="UTF-8"`
+- `name`, `content`, `http-equiv`, `property` - metadata pro SEO, sociální sítě a prohlížeče.
+
+### Odkazy a média
+
 - `href` - adresa odkazu.
-- `target` - kde se odkaz otevře (`_blank` apod.).
-- `rel` - vztah odkazu (bezpečnost/SEO).
-- `src` - zdroj obrázku/skriptu/média.
+- `target="_blank"` - otevření odkazu v novém okně.
+- `rel="noopener noreferrer"` - bezpečnostní nastavení externích odkazů.
+- `src` - zdroj obrázku, skriptu, zvuku, iframe.
 - `srcset`, `sizes` - responzivní obrázky.
 - `alt` - alternativní text obrázku.
-- `loading`, `decoding`, `fetchpriority` - optimalizace načítání obrázků.
+- `loading`, `decoding`, `fetchpriority` - optimalizace načítání obrazů.
 - `width`, `height` - rozměry prvku.
-- `type` - typ prvku (např. u tlačítka či scriptu).
-- `media` - podmínky načítání stylu.
-- `title` - doplňkový popisek.
-- `role` - role prvku pro asistivní technologie.
-- `allowfullscreen`, `referrerpolicy` - chování iframu a bezpečnost.
-- `aria-label`, `aria-labelledby`, `aria-controls`, `aria-expanded`, `aria-hidden`, `aria-live`, `aria-pressed` - přístupnost pro čtečky.
-- `data-*` (např. `data-category`, `data-tooltip`, `data-duration`) - vlastní data pro JS logiku.
-- SVG atributy: `viewBox`, `xmlns`, `fill`, `stroke`, `stroke-width`, `stroke-linecap`, `stroke-linejoin`, `cx`, `cy`, `r`, `d`, `focusable`.
+
+Příklad:
+
+```html
+<a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer">
+  Rezervace
+</a>
+
+<img src="galerie/logo.webp" alt="Logo Aura Michaell Massage" loading="lazy">
+```
+
+### Přístupnost a interakce
+
+- `aria-label` - popis pro čtečky obrazovky.
+- `aria-expanded` - zda je prvek rozbalený.
+- `aria-controls` - propojení s ovládaným obsahem.
+- `aria-hidden` - skrytí prvku pro asistivní technologie.
+- `role` - role elementu.
+- `title` - krátký tooltip.
+- `type="button"` - tlačítko bez implicitního submitu.
+
+Příklad z projektu:
+
+```html
+<button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
+  Menu
+</button>
+```
+
+### Data a vlastní atributy
+
+- `data-*` - vlastní data, která JavaScript čte a mění podle nich chování.
+
+Příklady:
+
+```html
+<button class="music-toggle-btn" data-music-toggle>
+  <img src="galerie/play.webp" data-music-icon alt="Play">
+</button>
+```
+
+Díky `data-music-toggle` a `data-music-icon` JavaScript ví, který tlačítko ovládat a který obrázek změnit.
+
+### SVG atributy
+
+- `viewBox` - oblast vykreslení SVG.
+- `xmlns` - XML namespace.
+- `fill`, `stroke`, `stroke-width`, `stroke-linecap` - vzhled čar a tvarů.
+- `d` - data cesty v SVG.
+
+Příklad z dropdownu v navigaci:
+
+```html
+<svg class="primary-nav__dropdown-arrow" viewBox="0 0 12 8" aria-hidden="true">
+  <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+</svg>
+```
 
 ## 3) CSS vlastnosti (použité v projektu)
 
 ### Rozměry a box model
 
-- `width`, `height` - šířka a výška prvku.
-- `min-width`, `min-height` - minimální rozměr.
-- `max-width`, `max-height` - maximální rozměr.
-- `margin`, `margin-top`, `margin-right`, `margin-bottom`, `margin-left` - vnější odsazení.
-- `padding`, `padding-top`, `padding-right`, `padding-bottom`, `padding-left`, `padding-inline` - vnitřní odsazení.
-- `box-sizing` - jak se počítají rozměry prvku (`border-box`).
-- `aspect-ratio` - poměr stran prvku.
+- `width`, `height` - šířka a výška.
+- `max-width`, `min-height` - omezení rozměrů.
+- `margin`, `padding` - vnější a vnitřní odsazení.
+- `box-sizing: border-box` - šířka a výška zahrnují i padding a border.
+
+Příklad:
+
+```css
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+```
 
 ### Pozicování a vrstvení
 
-- `position` - způsob pozicování (`relative`, `absolute`, `fixed`).
-- `top`, `right`, `bottom`, `left` - odsazení při pozicování.
-- `inset` - zkrácený zápis pro top/right/bottom/left.
+- `position: relative`, `absolute`, `fixed` - pozice prvku.
+- `top`, `left`, `right`, `bottom`, `inset` - posunutí.
 - `z-index` - pořadí vrstev.
-- `display` - způsob vykreslení (`block`, `flex`, `grid`, ...).
-- `order` - pořadí položek ve flexu.
+- `display: flex`, `display: grid` - typ rozvržení.
 
-### Flexbox a Grid
+Příklad:
 
-- `flex`, `flex-basis`, `flex-direction`, `flex-wrap`, `flex-shrink` - rozložení ve flexboxu.
-- `align-items`, `align-content`, `align-self` - zarovnání ve vedlejší ose.
-- `justify-content` - zarovnání v hlavní ose.
-- `gap` - mezery mezi položkami.
-- `grid-template-columns`, `grid-template-rows`, `grid-column` - rozložení v CSS Grid.
+```css
+.parallax-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--layer-content);
+}
+```
 
 ### Typografie a text
 
-- `font-family`, `font-size`, `font-style`, `font-weight` - vzhled písma.
-- `line-height` - výška řádku.
-- `letter-spacing` - mezery mezi písmeny.
-- `text-align` - zarovnání textu.
-- `text-decoration` - dekorace textu.
-- `text-shadow` - stín textu.
-- `text-transform` - změna velikosti písmen.
-- `text-overflow` - chování přetečeného textu.
-- `white-space` - zalamování mezer a řádků.
-- `word-break`, `word-wrap`, `overflow-wrap`, `hyphens` - dělení a lámání slov.
-- `vertical-align` - svislé zarovnání inline prvků.
-- `list-style` - styl odrážek/číslování seznamu.
+- `font-family`, `font-size`, `font-weight`, `letter-spacing`
+- `line-height`
+- `text-align`, `text-shadow`, `text-decoration`
 
-### Barvy, pozadí, rámečky
+Příklad:
 
-- `color` - barva textu.
-- `background`, `background-color`, `background-image` - pozadí prvku.
-- `background-position`, `background-size`, `background-repeat`, `background-attachment` - chování pozadí.
-- `background-blend-mode`, `background-clip`, `background-origin` - pokročilé efekty pozadí.
-- `border`, `border-width`, `border-style`, `border-color` - rámeček.
-- `border-top`, `border-right`, `border-bottom`, `border-left` - rámeček po stranách.
-- `border-radius` - zaoblení rohů.
-- `box-shadow` - stín prvku.
-- `opacity` - průhlednost.
+```css
+.parallax-content h2 {
+  font-family: 'Inknut Antiqua', serif;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+```
 
-### Interakce a chování
+### Barvy, pozadí a rámečky
 
-- `cursor` - tvar kurzoru myši.
-- `pointer-events` - zda prvek reaguje na kliknutí/hover.
-- `user-select`, `-webkit-user-select`, `-moz-user-select`, `-ms-user-select` - možnost označovat text.
-- `touch-action` - chování dotykových gest.
-- `visibility` - viditelnost prvku.
-- `overflow`, `overflow-x`, `overflow-y` - chování přetečení obsahu.
-- `scroll-behavior` - plynulost scrollu.
-- `scroll-padding-top` - offset při skoku na kotvu.
-- `scroll-snap-type`, `scroll-snap-align` - přichytávání při scrollování.
-- `scrollbar-width` - šířka scrollbarů.
+- `background`, `background-image`, `background-size`, `background-position`
+- `border`, `border-radius`, `box-shadow`, `opacity`
 
-### Animace, transformace, efekty
+Příklad:
 
-- `transition` - plynulé přechody stavů.
-- `transform`, `transform-origin` - posun, rotace, škálování.
-- `animation`, `animation-duration`, `animation-delay` - klíčové animace.
-- `will-change` - hint pro výkon prohlížeče.
-- `filter`, `backdrop-filter` - grafické filtry.
-- `mix-blend-mode` - způsob prolínání vrstev.
-- `backface-visibility` - viditelnost zadní strany při 3D transformacích.
+```css
+body {
+  background: url('galerie/papir_poz.webp') center/cover fixed no-repeat;
+  color: #3e2f2a;
+}
 
-### Masky a speciální grafika
+.parallax-section {
+  border-radius: 16px;
+  overflow: hidden;
+}
+```
 
-- `mask-image`, `mask-composite` - maskování prvků.
-- `-webkit-mask-image`, `-webkit-mask-composite` - webkit varianta masek.
-- `clip` - ořez obsahu.
-- `fill`, `stroke`, `stroke-width` - styly SVG tvarů.
-- `content` - obsah pseudo-prvků (`::before`, `::after`).
+### CSS proměnné (custom properties)
 
-### Výkon a rendering
+Tento projekt používá proměnné pro barvy, mezery, vrstvy a velikosti.
 
-- `content-visibility` - odložené vykreslení mimo viewport.
-- `contain-intrinsic-size` - rezervace prostoru pro odložený obsah.
-- `-webkit-font-smoothing`, `-moz-osx-font-smoothing` - vyhlazení písma.
-- `-webkit-overflow-scrolling` - plynulejší scroll na iOS.
-- `-webkit-text-stroke`, `-webkit-background-clip` - webkit textové efekty.
+```css
+:root {
+  --pad: 10px;
+  --accent: #7c4a27;
+  --dark: #3e2f2a;
+  --layer-nav: 200;
+  --layer-overlay: 260;
+}
+```
 
-### CSS proměnné (custom properties) použité v projektu
+Potom se používají například takto:
 
-- `--pad`, `--gap` - globální mezery/odsazení.
-- `--accent`, `--accent-2`, `--gold`, `--cream`, `--dark`, `--border` - barevné a stylové tokeny.
-- `--box-shadow-light`, `--box-shadow-medium`, `--box-shadow-heavy` - připravené stíny.
-- `--transition-speed` - jednotná rychlost přechodů.
-- `--nav-btn-height`, `--nav-btn-height-sm`, `--nav-btn-height-xs`, `--nav-title-width` - rozměry navigace.
-- `--layer-ground`, `--layer-content`, `--layer-floating`, `--layer-nav`, `--layer-dropdown`, `--layer-overlay`, `--layer-scroll-button`, `--layer-modal` - vrstvy (`z-index`) jako systém.
-- `--parallax-image`, `--parallax-overlay` - obrázek a overlay pro parallax sekce.
-- `--electric-border-color`, `--electric-light-color`, `--gradient-color` - efektové barvy.
-- `--svc2-accent`, `--svc2-accent-2`, `--svc2-border`, `--svc2-card`, `--svc2-deep`, `--svc2-ink`, `--svc2-muted`, `--svc2-shadow`, `--svc2-shell`, `--svc2-nav-safe-left`, `--svc2-nav-safe-right` - proměnné pro design sekce služeb (v2).
+```css
+body {
+  padding: 0 var(--pad) 40px;
+}
+
+.parallax-content {
+  z-index: var(--layer-content);
+}
+```
+
+### Pokročilé CSS efekty v projektu
+
+- `mask-image` a `-webkit-mask-image` - vytváří soft edge efekt u parallax sekcí.
+- `background-attachment: fixed` - efekt v pozadí.
+- `clamp(...)` - responzivní velikost písma.
+- `::before` - vytvoření dekorativní vrstvy, která je nad pozadím a pod obsahem.
+
+Příklad:
+
+```css
+.parallax-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--parallax-overlay), var(--parallax-image);
+  background-size: cover;
+  background-position: center;
+  -webkit-mask-image: linear-gradient(...);
+  mask-image: linear-gradient(...);
+}
+```
+
+To je velmi důležité: `::before` běžně přidává dekorativní vrstvu, bez nutnosti přidávat další HTML prvek.
 
 ## 4) JavaScript konstrukce a API (použité v projektu)
 
-- `const` - konstanta (nemění se reference).
-- `class`, `constructor`, `new` - objektově orientovaný zápis tříd.
-- `async` / `await` - asynchronní operace čitelněji než čisté Promise.
-- `try` / `catch` - zachycení chyb.
-- `document`, `window`, `Math` - globální browser objekty.
-- `addEventListener` - reakce na události (`click`, `DOMContentLoaded`, ...).
-- `querySelector`, `querySelectorAll`, `getElementById` - hledání prvků v DOM.
-- `classList` - přidání/odebrání CSS tříd.
-- `setAttribute`, `getAttribute` - práce s HTML atributy.
-- `dataset` - práce s `data-*` atributy.
-- `innerHTML`, `appendChild` - vkládání obsahu do DOM.
-- `fetch` - načtení dat/souboru přes HTTP.
-- `DOMParser` - převod textového HTML na DOM strukturu.
-- `matchMedia` - zjištění media query v JS.
-- `setTimeout`, `setInterval` - časování akcí.
-- `requestAnimationFrame` - plynulé animace podle vykreslování prohlížeče.
-- `IntersectionObserver` - sledování, jestli je prvek ve viewportu.
-- `forEach`, `map`, `filter`, `sort` - běžné metody pro práci s poli.
+### Základní JS nástroje
 
-## 5) Jak s tím pracovat při učení
+- `const` - konstanta, kterou nepřepisujeme.
+- `let` - proměnná, která se může měnit.
+- `document` - přístup k HTML dokumentu.
+- `window` - globální okno prohlížeče.
+- `addEventListener` - posluchač událostí.
+- `querySelector`, `querySelectorAll` - hledání prvků v DOM.
+- `classList.add`, `classList.remove`, `classList.toggle` - práce se třídami.
+- `setAttribute`, `getAttribute` - práce s atributy.
+- `dataset` - přístup k `data-*` atributům.
+- `requestAnimationFrame` - plynulá animace.
+- `matchMedia` - zjištění, zda je aktivní konkrétní media query.
+- `IntersectionObserver` - odhalení, když prvek vstoupí do viewportu.
+- `setTimeout`, `setInterval` - časování.
+
+### Typický vzor z projektu: kliknutí a přepnutí třídy
+
+```js
+const toggle = document.querySelector('.primary-nav__toggle');
+
+toggle.addEventListener('click', () => {
+  menu.classList.toggle('is-open');
+  toggle.setAttribute('aria-expanded', 'true');
+});
+```
+
+Tento vzor se používá pro menu, dropdowny a další interaktivní komponenty.
+
+### Typický vzor z projektu: práce s `data-*`
+
+```js
+const musicButton = document.querySelector('[data-music-toggle]');
+const musicIcon = document.querySelector('[data-music-icon]');
+
+musicButton.addEventListener('click', () => {
+  musicIcon.src = 'galerie/play.webp';
+});
+```
+
+### Typický vzor: zjištění viewportu a změna chování
+
+```js
+if (window.matchMedia('(min-width: 1100px)').matches) {
+  // nastavení složitějších efektů pro velké obrazovky
+}
+```
+
+### Typický vzor: IntersectionObserver
+
+```js
+const elements = document.querySelectorAll('.reveal-on-scroll');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+```
+
+Tento pattern se používá k tomu, aby se prvky animovaly při scrollování.
+
+### Specifické JS vzory z `main.js`
+
+#### 1. Navigace s otevřením a zavřením menu
+
+```js
+const nav = document.querySelector('.primary-nav');
+const menu = nav ? nav.querySelector('.primary-nav__menu') : null;
+const toggle = nav ? nav.querySelector('.primary-nav__toggle') : null;
+
+toggle.addEventListener('click', () => {
+  if (nav.classList.contains('is-open')) {
+    nav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+  } else {
+    nav.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+  }
+});
+```
+
+Příklad ukazuje typický projektový vzor:
+
+- element najdeme přes `querySelector`
+- měníme `classList`
+- upravujeme `aria-expanded` a `aria-hidden` pro přístupnost
+- reagujeme na kliknutí uživatele
+
+#### 2. Dynamická filtrace služeb a sortování
+
+V sekci služeb se používá filtrování podle jména, délky trvání a ceny:
+
+```js
+const cards = Array.from(serviceCatalog.querySelectorAll('.svc2-card'));
+let activeCategory = 'all';
+
+const updateFilters = () => {
+  const searchValue = searchInput.value.trim().toLowerCase();
+  const durationValue = durationSelect.value;
+
+  cards.forEach((card) => {
+    const cardName = (card.dataset.name || '').toLowerCase();
+    const cardDuration = Number(card.dataset.duration || 0);
+    const textMatch = !searchValue || cardName.includes(searchValue);
+    const durationMatch = durationValue === 'all' ||
+      (durationValue === 'short' && cardDuration <= 40);
+
+    card.hidden = !(textMatch && durationMatch);
+  });
+};
+```
+
+Důležité je, že projekt používá:
+
+- `dataset` pro čtení vlastních dat (`data-name`, `data-duration`)
+- `hidden` pro skrytí nevyhovujících karet
+- `sort` a `order` pro přehledné řazení
+- `classList` pro animaci vstupu nových výsledků
+
+#### 3. Lightbox pro galerie
+
+Galerie používá zobrazení většího obrázku přes overlay:
+
+```js
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+trigger.addEventListener('click', () => {
+  lightbox.classList.add('show');
+  lightboxImg.src = trigger.dataset.full || trigger.src;
+  document.body.style.overflow = 'hidden';
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    lightbox.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+});
+```
+
+To je praktický příklad:
+
+- overlay přes celou stránku
+- přepínání třídy `show`
+- práce s `dataset.full`
+- klávesová navigace `Escape`, `ArrowRight`, `ArrowLeft`
+
+#### 4. Hudba na pozadí a přepínání ikon
+
+```js
+const bgMusic = document.getElementById('bg-music');
+const musicIcons = Array.from(document.querySelectorAll('[data-music-icon]'));
+
+musicToggleButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    if (bgMusic.paused) {
+      bgMusic.play();
+    } else {
+      bgMusic.pause();
+    }
+  });
+});
+```
+
+Zajímavé je, že projekt:
+
+- mění obrázek podle stavu přehrávání (`play.webp` / `pause.webp`)
+- čeká na první interakci uživatele kvůli omezení autoplayu
+- používá `catch` k zpracování chyb, kdy prohlížeč hudbu zablokuje
+
+#### 5. Animace při scrollování a lazy loading
+
+```js
+const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+revealElements.forEach(element => revealObserver.observe(element));
+```
+
+a dále:
+
+```js
+const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+```
+
+Tady se projekt používá:
+
+- `IntersectionObserver` pro animaci po vstupu do viewportu
+- `loading="lazy"` pro zpožděné načtení obrázků
+- `prefers-reduced-motion` pro lepší přístupnost
+
+#### 6. SVG a animace loga
+
+Příklad z logo animace:
+
+```js
+const response = await fetch('logo-animace-ukazka.html');
+const html = await response.text();
+const parsed = new DOMParser().parseFromString(html, 'text/html');
+const sourceSvg = parsed.querySelector('svg');
+
+const svg = sourceSvg.cloneNode(true);
+svg.classList.add('hero-logo-draw__svg');
+logoHost.innerHTML = '';
+logoHost.appendChild(svg);
+```
+
+To znamená, že projekt:
+
+- načte externí SVG přes `fetch`
+- převádí HTML text do DOM přes `DOMParser`
+- dynamicky vloží SVG do stránky
+- používá `strokeDasharray` a `strokeDashoffset` pro animaci čar
+
+## 5) Reálné HTML/CSS/JS bloky z projektu
+
+### Navigace
+
+```html
+<nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
+  <div class="primary-nav__inner">
+    <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
+      Menu
+    </button>
+    <div class="primary-nav__menu" id="primary-nav-menu" aria-hidden="true">
+      <a href="msginfo.html" class="primary-nav__link">Služby a ceník</a>
+      <a href="ceremonie.html" class="primary-nav__link">Ceremonie</a>
+    </div>
+  </div>
+</nav>
+```
+
+### Hero sekce
+
+```html
+<section id="hero" class="hero-wrapper">
+  <div class="hero-brand">
+    <h1 class="main-title-text">AURA<br>MICHAELL<br>MASSAGE</h1>
+  </div>
+  <div class="hero-intro">
+    <h2>Nechte starosti odejít.</h2>
+    <p>V salonu vytvářím prostředí, kde se zavřou dveře před každodenním shonem.</p>
+  </div>
+</section>
+```
+
+### CSS pro hero a sekci
+
+```css
+.hero-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.main-title-text {
+  font-family: 'Inknut Antiqua', serif;
+  letter-spacing: 0.15em;
+}
+```
+
+### Karta s mapou
+
+```html
+<article class="home-offer-location__panel home-offer-location__panel--map">
+  <div class="home-offer-location__panel-head">
+    <h3 class="home-offer-location__panel-title">Kde mě najdete</h3>
+  </div>
+
+  <div class="home-offer-location__map">
+    <iframe src="..." allowfullscreen loading="lazy"></iframe>
+  </div>
+</article>
+```
+
+## 6) Co je důležité si pamatovat při učení
+
+- HTML určuje strukturu a obsah.
+- CSS určuje vzhled, rozložení a styl.
+- JavaScript určuje interakci a dynamické chování.
+- V projektu se často používají komponenty typu `nav`, `section`, `article`, `button`, `img`, `iframe`.
+- CSS proměnné (`--accent`, `--dark`, `--layer-*`) jsou klíčové pro jednotný design.
+- `::before` a `mask-image` jsou časté nástroje pro dekorativní efekty.
+- `aria-*` atributy se používají pro přístupnost a správné chování komponent.
+
+## 7) Jak s tím pracovat při učení
 
 - Když narazíš na neznámý HTML tag, podívej se nejdřív do sekce 1.
-- Když nevíš, co dělá nějaký styl (`margin`, `padding`, `z-index`), otevři sekci 3.
+- Když nevíš, co dělá nějaký styl (`margin`, `padding`, `z-index`, `display`, `position`), podívej se do sekce 3.
 - Když nevíš, co dělá JavaScript řádek, zkontroluj sekci 4.
-- Tip: Nejrychlejší učení je vzít jeden prvek (např. `display: flex`) a hned ho změnit v kódu, ať vidíš rozdíl na stránce.
+- Tip: nejrychlejší učení je vzít jeden konkrétní prvek a slepit ho do kódu, změnit vlastnost a hned vidět výsledek v prohlížeči.
+- Dobrý postup:
+  1. najdi prvek v HTML
+  2. najdi jeho třídu v CSS
+  3. zkus upravit jednu vlastnost
+  4. zkontroluj změnu v prohlížeči
 
 ---
 
-Pokud budeš chtít, můžu ti z toho udělat i verzi „pro začátečníka“ (kratší) a verzi „pro pokročilé“ (s příklady přímo z tvých souborů).
+Pokud budeš chtít, můžu ti z toho připravit i:
+
+- verzi „pro začátečníka“ (kratší a jednodušší),
+- verzi „pro pokročilé“ (s více technickými detaily),
+- nebo přepsat tahák přímo podle konkrétních souborů jako `index.html`, `style.css` a `main.js`.

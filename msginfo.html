@@ -31,6 +31,11 @@
    <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
       <button id="scrollTopBtn" title="Zpět nahoru" class="primary-nav__utility-btn primary-nav__utility-btn--scroll" type="button" aria-label="Zpět nahoru">↑</button>
+
+      <a href="index.html" class="primary-nav__brand" aria-label="Aura Michaell Massage - návrat na úvod">
+        <span class="premium-brand-text">Aura Michaell Massage</span>
+      </a>
+
       <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
         <span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-bar"></span>
@@ -39,7 +44,7 @@
       </button>
 
       <div class="primary-nav__menu" id="primary-nav-menu" aria-hidden="true">
-        <a href="index.html" class="primary-nav__link" data-tooltip="Hlavní stránka">Hlavní stránka</a>
+        <a href="index.html" class="primary-nav__link" data-tooltip="Hlavní stránka">Domů</a>
         <a href="ceremonie.html" class="primary-nav__link premium-link-ceremony" data-tooltip="Kakaová ceremonie a kruhy pro ženy">Ceremonie</a>
         <a href="obchod.html" class="primary-nav__link">Poukazy</a>
         <a href="about.html" class="primary-nav__link">O mně</a>
@@ -61,12 +66,18 @@
             <a href="tel:+420727836338" class="primary-nav__dropdown-link">
               Telefon
             </a>
-            <a href="#location" class="primary-nav__dropdown-link">
+            <a href="index.html#location" class="primary-nav__dropdown-link">
               Mapa
             </a>
           </div>
         </div>
+
+        <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="primary-nav__link primary-nav__link--cta">
+          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="primary-nav__cta-icon" alt="Rezervace"/>
+          Rezervace
+        </a>
       </div>
+
       <button id="music-toggle" class="music-toggle-btn primary-nav__utility-btn primary-nav__utility-btn--music" type="button" aria-label="Přehrát / Pozastavit hudbu" data-music-toggle>
         <img id="music-icon" class="music-toggle-icon" data-music-icon src="galerie/play.webp" alt="Play">
       </button>
@@ -115,12 +126,17 @@
         <button class="svc2-chip" type="button" data-category-filter="klasicke" aria-pressed="false">Klasické</button>
         <button class="svc2-chip" type="button" data-category-filter="sportovni" aria-pressed="false">Sportovní</button>
         <button class="svc2-chip" type="button" data-category-filter="zabaly" aria-pressed="false">Zábaly</button>
-        <button class="svc2-chip" type="button" data-category-filter="ritualy" aria-pressed="false">Rituály</button>
-        <button class="svc2-chip" type="button" data-category-filter="ostatni" aria-pressed="false">Doplňkové</button>
+        <button class="svc2-chip" type="button" data-category-filter="scratch" aria-pressed="false">Scratch Therapy</button>
+        <button class="svc2-chip" type="button" data-category-filter="vedomy" aria-pressed="false">Vědomý dotek</button>
+        <button class="svc2-chip" type="button" data-category-filter="motyli" aria-pressed="false">Motýlý dotek</button>
+        <button class="svc2-chip" type="button" data-category-filter="bankovani" aria-pressed="false">Baňkování</button>
+        <button class="svc2-chip" type="button" data-category-filter="fullbody" aria-pressed="false">Full body</button>
+        <button class="svc2-chip" type="button" data-category-filter="tarot" aria-pressed="false">Tarot</button>
+        <button class="svc2-chip" type="button" data-category-filter="ostatni" aria-pressed="false">Ostatní služby</button>
       </div>
 
       <!-- Live informace o počtu výsledků po filtrování -->
-      <p class="svc2-results" aria-live="polite"><strong id="serviceResultsCount">23 služeb</strong> odpovídá výběru.</p>
+      <p class="svc2-results" aria-live="polite"><strong id="serviceResultsCount">31 služeb</strong> odpovídá výběru.</p>
       <p class="svc2-empty" id="serviceEmptyState" hidden>Pro kombinaci filtrů nebyla nalezena žádná služba. Zkuste upravit hledání.</p>
 
       <!-- Přehled kategorií služeb -->
@@ -374,80 +390,199 @@
           </div>
         </section>
 
-        <!-- Kategorie: Rituály doteku -->
-        <section id="ritualy" class="svc2-group" data-group="ritualy" aria-labelledby="group-ritualy-title">
+        <!-- Kategorie: Scratch Therapy -->
+        <section id="scratch" class="svc2-group" data-group="scratch" aria-labelledby="group-scratch-title">
           <header class="svc2-group__header">
-            <h3 id="group-ritualy-title">Rituály doteku</h3>
-            <p>Jemnější péče, která propojuje relaxaci, teplo a hluboké zklidnění nervového systému.</p>
+            <h3 id="group-scratch-title">Scratch Therapy</h3>
+            <p>Jemný pomalý dotek pro zklidnění těla, hlavy a nervového systému.</p>
           </header>
           <div class="svc2-grid">
-            <article class="svc2-card" data-category="ritualy" data-duration="50" data-name="ritual stastna maminka" data-recommended="true">
-              <img src="masaze/rsm.webp" alt="Rituál šťastná maminka" loading="lazy">
-              <div class="svc2-card__body">
-                <span class="svc2-card__badge">Oblíbená novinka</span>
-                <h4>Rituál šťastná maminka</h4>
-                <p>Jemná péče pro ženy v těhotenství od 13. týdne i v poporodním období.</p>
-                <div class="svc2-meta"><span>50 min</span><span>800 Kč</span></div>
-                <a href="https://aura-michaell-massage.reservio.com/services/11e33b11-2e8f-4f07-af05-f4a830cf2a20" target="_blank" rel="noopener noreferrer">Rezervovat</a>
-              </div>
-            </article>
-            <article class="svc2-card" data-category="ritualy" data-duration="30" data-name="tichy dotek masaz hlavy" data-recommended="true">
-              <img src="masaze/vd.webp" alt="Tichý dotek masáž hlavy" loading="lazy">
+            <article class="svc2-card" data-category="scratch" data-duration="30" data-name="sepot doteku" data-recommended="true">
+              <img src="masaze/vd.webp" alt="Šepot doteku" loading="lazy">
               <div class="svc2-card__body">
                 <span class="svc2-card__badge">Nejjemnější péče</span>
-                <h4>Tichý dotek - masáž hlavy</h4>
+                <h4>Šepot doteku</h4>
                 <p>Pomalý rituál hlazení, škrábání a zklidnění celé nervové soustavy.</p>
                 <div class="svc2-meta"><span>30 min</span><span>400 Kč</span></div>
                 <a href="https://aura-michaell-massage.reservio.com/services/947a02c2-394e-4ec5-b067-8b36631e624f" target="_blank" rel="noopener noreferrer">Rezervovat</a>
               </div>
             </article>
+          </div>
+        </section>
 
-            <article class="svc2-card" data-category="ritualy" data-duration="90" data-name="vedomy dotek ritual">
-              <img src="masaze/vd2.webp" alt="Vědomý dotek rituál" loading="lazy">
+        <!-- Kategorie: Vědomý dotek - něco více -->
+        <section id="vedomy" class="svc2-group" data-group="vedomy" aria-labelledby="group-vedomy-title">
+          <header class="svc2-group__header">
+            <h3 id="group-vedomy-title">Vědomý dotek - něco více</h3>
+            <p>Prostor pro hluboké zpomalení, vědomou práci s tělem a návrat k vnitřnímu klidu.</p>
+          </header>
+          <div class="svc2-grid">
+            <article class="svc2-card" data-category="vedomy" data-duration="90" data-name="vedomy dotek">
+              <img src="masaze/vd2.webp" alt="Vědomý dotek" loading="lazy">
               <div class="svc2-card__body">
-                <h4>Vědomý dotek - rituál</h4>
+                <h4>Vědomý dotek</h4>
                 <p>Hluboké zpomalení, vědomá práce s tělem a návrat k vnitřnímu klidu.</p>
                 <div class="svc2-meta"><span>90 min</span><span>2 500 Kč</span></div>
                 <a href="https://aura-michaell-massage.reservio.com/services/5d8755a6-e69d-4497-8286-1898380ff92e" target="_blank" rel="noopener noreferrer">Rezervovat</a>
               </div>
             </article>
+            <article class="svc2-card" data-category="vedomy" data-duration="60" data-name="vedena hluboka meditace">
+              <img src="masaze/vd2.webp" alt="Vedená hluboká meditace" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Vedená hluboká meditace</h4>
+                <p>Individuálně vedená mluvená meditace pro zklidnění nervového systému a snížení stresu.</p>
+                <div class="svc2-meta"><span>60 min</span><span>690 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/dd854084-5247-49da-b097-b1b0a43fba13" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
           </div>
         </section>
 
-        <!-- Kategorie: Doplňkové služby -->
-        <section id="ostatni" class="svc2-group" data-group="ostatni" aria-labelledby="group-ostatni-title">
+        <!-- Kategorie: Motýlý dotek -->
+        <section id="motyli" class="svc2-group" data-group="motyli" aria-labelledby="group-motyli-title">
           <header class="svc2-group__header">
-            <h3 id="group-ostatni-title">Doplňkové služby</h3>
-            <p>Specializovaná péče, kterou lze volit samostatně nebo kombinovat s masážemi.</p>
+            <h3 id="group-motyli-title">Motýlý dotek</h3>
+            <p>Jemná a respektující péče pro děti a miminka, přizpůsobená jejich tempu a potřebám.</p>
           </header>
           <div class="svc2-grid">
-            <article class="svc2-card" data-category="ostatni" data-duration="50" data-name="bankovani">
-              <img src="masaze/banky.webp" alt="Baňkování" loading="lazy">
+            <article class="svc2-card" data-category="motyli" data-duration="60" data-name="baby motyli dotek">
+              <img src="masaze/rsm.webp" alt="Baby motýlí dotek" loading="lazy">
               <div class="svc2-card__body">
-                <h4>Baňkování</h4>
-                <p>Podtlaková metoda podporující prokrvení a uvolnění trigger bodů.</p>
-                <div class="svc2-meta"><span>50 min</span><span>800 Kč</span></div>
+                <h4>Baby motýlí dotek</h4>
+                <p>Láskyplný rituál vědomého doteku pro miminka a jejich rodiče.</p>
+                <div class="svc2-meta"><span>60 min</span><span>890 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/f807fbbd-29bb-4f24-9646-7f2aa02e4d7b" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+            <article class="svc2-card" data-category="motyli" data-duration="30" data-name="motyli dotek zada">
+              <img src="masaze/rsm.webp" alt="Motýlí dotek - záda" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Motýlí dotek - záda</h4>
+                <p>Jemná, respektující masáž zad pro dětské uvolnění a zklidnění.</p>
+                <div class="svc2-meta"><span>30 min</span><span>350 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/6096c4ac-fad9-4012-8dd6-63335a6063ae" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+            <article class="svc2-card" data-category="motyli" data-duration="30" data-name="motyli dotek dolni koncetiny">
+              <img src="masaze/rsm.webp" alt="Motýlí dotek - dolní končetiny" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Motýlí dotek - dolní končetiny</h4>
+                <p>Citlivá péče o nohy, která podporuje uvolnění těla a celkovou pohodu dítěte.</p>
+                <div class="svc2-meta"><span>30 min</span><span>300 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/72ecfbf6-812a-43b0-9d59-895eb25b9b0c" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Kategorie: Baňkování -->
+        <section id="bankovani" class="svc2-group" data-group="bankovani" aria-labelledby="group-bankovani-title">
+          <header class="svc2-group__header">
+            <h3 id="group-bankovani-title">Baňkování</h3>
+            <p>Tradiční technika s podtlakem pro podporu prokrvení a uvolnění svalového napětí.</p>
+          </header>
+          <div class="svc2-grid">
+            <article class="svc2-card" data-category="bankovani" data-duration="60" data-name="bankovani s masazi">
+              <img src="masaze/banky.webp" alt="Baňkování s masáží" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Baňkování s masáží</h4>
+                <p>35 minut masáže a 25 minut baňkování.</p>
+                <div class="svc2-meta"><span>60 min</span><span>900 Kč</span></div>
                 <a href="https://aura-michaell-massage.reservio.com/services/6be9b101-bbf4-40af-baf2-1f3fa1195b03" target="_blank" rel="noopener noreferrer">Rezervovat</a>
               </div>
             </article>
+            <article class="svc2-card" data-category="bankovani" data-duration="90" data-name="bankovani s masazi 90">
+              <img src="masaze/banky.webp" alt="Baňkování s masáží 90 min." loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Baňkování s masáží 90 min.</h4>
+                <p>60 minut masáže a 30 minut baňkování.</p>
+                <div class="svc2-meta"><span>90 min</span><span>1 050 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/19058041-2dfd-4b66-b48b-082c899df135" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+          </div>
+        </section>
 
-            <article class="svc2-card" data-category="ostatni" data-duration="50" data-name="lavove kameny">
-              <img src="masaze/lk.webp" alt="Masáž lávovými kameny" loading="lazy">
+        <!-- Kategorie: Full body -->
+        <section id="fullbody" class="svc2-group" data-group="fullbody" aria-labelledby="group-fullbody-title">
+          <header class="svc2-group__header">
+            <h3 id="group-fullbody-title">Full body</h3>
+            <p>Komplexní celotělový rituál pro dlouhou hlubokou relaxaci.</p>
+          </header>
+          <div class="svc2-grid">
+            <article class="svc2-card" data-category="fullbody" data-duration="180" data-name="signature full body ritual">
+              <img src="masaze/vd2.webp" alt="Signature Full Body Ritual 180 min." loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Signature Full Body Ritual 180 min.</h4>
+                <p>Dopřejte si tři hodiny hluboké relaxace a komplexní péče o celé tělo.</p>
+                <div class="svc2-meta"><span>180 min</span><span>3 200 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/3ae7f543-4de3-40e2-8c0d-82f005dd1a34" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Kategorie: Tarot -->
+        <section id="tarot" class="svc2-group" data-group="tarot" aria-labelledby="group-tarot-title">
+          <header class="svc2-group__header">
+            <h3 id="group-tarot-title">Tarot</h3>
+            <p>Prostor pro sebepoznání, nový pohled na životní situace a hledání vlastní cesty.</p>
+          </header>
+          <div class="svc2-grid">
+            <article class="svc2-card" data-category="tarot" data-duration="60" data-name="vyklad tarotu">
+              <img src="masaze/vd2.webp" alt="Výklad tarotu" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Výklad tarotu</h4>
+                <p>Výklad karet v bezpečné a respektující atmosféře.</p>
+                <div class="svc2-meta"><span>60 min</span><span>500 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/324e67c7-de15-455b-bd63-b9e04d0d4de6" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Kategorie: Ostatní služby -->
+        <section id="ostatni" class="svc2-group" data-group="ostatni" aria-labelledby="group-ostatni-title">
+          <header class="svc2-group__header">
+            <h3 id="group-ostatni-title">Ostatní služby</h3>
+            <p>Specializovaná péče a relaxační procedury pro samostatnou návštěvu nebo kombinaci s masáží.</p>
+          </header>
+          <div class="svc2-grid">
+            <article class="svc2-card" data-category="ostatni" data-duration="60" data-name="lavove kameny">
+              <img src="masaze/lk.webp" alt="Lávové kameny" loading="lazy">
               <div class="svc2-card__body">
                 <h4>Lávové kameny</h4>
                 <p>Hřejivé kameny zmírňují stres, ztuhlost a podporují tok energie.</p>
-                <div class="svc2-meta"><span>50 min</span><span>800 Kč</span></div>
+                <div class="svc2-meta"><span>60 min</span><span>900 Kč</span></div>
                 <a href="https://aura-michaell-massage.reservio.com/services/40f64f4e-c7d7-4656-bcaa-9c5f2ab7b188" target="_blank" rel="noopener noreferrer">Rezervovat</a>
               </div>
             </article>
-
+            <article class="svc2-card" data-category="ostatni" data-duration="30" data-name="antistresova masaz hlavy">
+              <img src="masaze/vd.webp" alt="Antistresová masáž hlavy" loading="lazy">
+              <div class="svc2-card__body">
+                <h4>Antistresová masáž hlavy</h4>
+                <p>Relaxační technika pro uvolnění napětí hlavy, šíje a temene.</p>
+                <div class="svc2-meta"><span>30 min</span><span>400 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/322423c0-bdda-49e4-bb01-dc289824e725" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
             <article class="svc2-card" data-category="ostatni" data-duration="30" data-name="relaxacni masaz obliceje dekoltu">
               <img src="masaze/amh.webp" alt="Relaxační masáž obličeje a dekoltu" loading="lazy">
               <div class="svc2-card__body">
-                <h4>Masáž obličeje a dekoltu</h4>
+                <h4>Relaxační masáž obličeje a dekoltu</h4>
                 <p>Jemná technika pro zklidnění mimiky, osvěžení pleti a odpočinek.</p>
                 <div class="svc2-meta"><span>30 min</span><span>400 Kč</span></div>
                 <a href="https://aura-michaell-massage.reservio.com/services/789051db-4d63-4b75-8e9a-bdd1e25814e3" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+              </div>
+            </article>
+            <article class="svc2-card" data-category="ostatni" data-duration="50" data-name="ritual stastna maminka" data-recommended="true">
+              <img src="masaze/rsm.webp" alt="Rituál šťastná maminka" loading="lazy">
+              <div class="svc2-card__body">
+                <span class="svc2-card__badge">Oblíbená péče</span>
+                <h4>Rituál šťastná maminka</h4>
+                <p>Jemná péče pro těhotné, maminky i každou ženu.</p>
+                <div class="svc2-meta"><span>50 min</span><span>800 Kč</span></div>
+                <a href="https://aura-michaell-massage.reservio.com/services/11e33b11-2e8f-4f07-af05-f4a830cf2a20" target="_blank" rel="noopener noreferrer">Rezervovat</a>
               </div>
             </article>
           </div>

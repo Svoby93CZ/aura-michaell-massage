@@ -2238,6 +2238,213 @@ footer img {
   height: 16px;
   object-fit: contain;
 }
+
+/* O mně: stejná vzdušná kompozice jako úvodní stránka, s menšími kartami pro mobil. */
+.page-about main.container {
+  max-width: 1240px;
+}
+
+.page-about .parallax-section {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  min-height: clamp(280px, 34vw, 390px);
+  margin: 34px 0 52px;
+  transform: translateX(-50%);
+  border-radius: 0;
+  isolation: isolate;
+  box-shadow: none;
+}
+
+.page-about .parallax-section::before {
+  inset: -2px;
+  border-radius: 0;
+  background-image:
+    linear-gradient(90deg, rgba(26, 12, 6, 0.12), rgba(26, 12, 6, 0.42)),
+    var(--parallax-image);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    rgba(0, 0, 0, 0.72) 84%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    rgba(0, 0, 0, 0.72) 84%,
+    transparent 100%
+  );
+}
+
+.page-about .about-hero__content {
+  position: relative;
+  width: min(100%, 760px);
+  height: 100%;
+  min-height: inherit;
+  box-sizing: border-box;
+  padding: 42px 34px;
+  text-align: center;
+}
+
+.page-about .about-hero__content .hero-logo-draw {
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  width: min(42vw, 330px);
+  height: min(35vw, 290px);
+  transform: translate(-50%, -50%);
+  opacity: 1 !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.page-about .about-hero__content .hero-logo-draw__svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 2px 4px rgba(255, 248, 242, 0.95))
+    drop-shadow(0 2px 4px rgb(26, 12, 6));
+}
+
+.page-about .about-hero__eyebrow {
+  margin: 0 0 12px;
+  color: #fff8f2;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.page-about .about-hero__content h1 {
+  position: relative;
+  z-index: 2;
+  color: #2b1c12;
+  font-family: 'Tenor Sans', serif;
+  font-size: clamp(2.3rem, 6vw, 4.8rem);
+  line-height: 1.08;
+  opacity: 1;
+  text-shadow: 2px 2px 10px rgba(255,255,255,0.95), 0 0 4px #fff;
+}
+
+.page-about .about-hero__intro {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  left: 24px;
+  max-width: 570px;
+  margin: 0 auto;
+  color: #ffffff;
+  font-size: clamp(1.5rem, 2vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.65;
+  text-shadow: 0 4px 8px rgb(0, 0, 0);
+  padding-bottom: 20px  ;
+}
+
+@media (min-width: 1200px) {
+  .page-about .about-hero__intro {
+    right: auto;
+    left: 50%;
+    width: max-content;
+    max-width: none;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+}
+
+.page-about #about {
+  margin-bottom: 72px;
+}
+
+.page-about .about-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 32px);
+  align-items: stretch;
+}
+
+.page-about .about-card {
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.page-about .about-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.page-about .about-card:hover img,
+.page-about .about-card:focus-within img {
+  transform: scale(1.025);
+}
+
+@media (max-width: 700px) {
+  .page-about .parallax-section {
+    min-height: 286px;
+    margin: 22px auto 32px;
+    border-radius: 0;
+  }
+
+  .page-about .about-hero__content {
+    padding: 26px 16px;
+  }
+
+  .page-about .about-hero__content .hero-logo-draw {
+    top: 53%;
+    width: min(66vw, 250px);
+    height: min(58vw, 210px);
+    opacity: 0.48;
+  }
+
+  .page-about .about-hero__eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+  }
+
+  .page-about .about-hero__content h1 {
+    font-size: clamp(2.15rem, 11.5vw, 3rem);
+    line-height: 1.03;
+  }
+
+  .page-about .about-hero__intro {
+    right: 16px;
+    bottom: 22px;
+    left: 16px;
+    max-width: 330px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .page-about .about-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .page-about .about-card img {
+    height: auto;
+  }
+
+  .page-about #about {
+    margin-bottom: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-about .about-card img {
+    transition: none;
+  }
+}
 .footer-widgets {
   display: flex; /* Nastaví způsob zobrazení prvku. */
   flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
@@ -5338,248 +5545,248 @@ body.night-mode .logo-bubble img:hover {
    ======================================== */
 
 .hero-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 40px auto 60px auto;
-  gap: 60px;
-  padding: 0 20px;
+  display: flex; /* Nastaví způsob zobrazení prvku. */
+  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
+  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
+  max-width: 1200px; /* Omezí maximální šířku prvku. */
+  margin: 40px auto 60px auto; /* Odsadí prvek od okolního obsahu. */
+  gap: 60px; /* Nastaví mezery mezi položkami. */
+  padding: 0 20px; /* Přidá vnitřní odsazení prvku. */
 }
 
 .hero-brand {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex: 1.2;
-  min-height: 380px;
+  position: relative; /* Určuje způsob pozicování prvku. */
+  display: flex; /* Nastaví způsob zobrazení prvku. */
+  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
+  justify-content: flex-start; /* Zarovná děti od začátku hlavní osy. */
+  flex: 1.2; /* Určuje poměrné roztažení položky. */
+  min-height: 380px; /* Nastaví minimální výšku prvku. */
 }
 
 .hero-logo-draw {
-  position: absolute;
-  left: -54px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: min(95%, 720px);
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.6;
+  position: absolute; /* Určuje způsob pozicování prvku. */
+  left: -54px; /* Umístí prvek směrem zleva. */
+  top: 50%; /* Umístí prvek směrem shora. */
+  transform: translateY(-50%); /* Posune prvek na střed svislé osy. */
+  width: min(95%, 720px); /* Nastaví šířku s horním limitem. */
+  pointer-events: none; /* Zabrání zachytávání událostí kurzoru. */
+  z-index: 1; /* Určuje pořadí překrytí prvku. */
+  opacity: 0.6; /* Nastaví průhlednost prvku. */
 }
 
 .hero-logo-draw__svg {
-  width: 100%;
-  height: auto;
-  display: block;
+  width: 100%; /* Definuje šířku prvku. */
+  height: auto; /* Zachová poměr stran prvku. */
+  display: block; /* Nastaví způsob zobrazení prvku. */
 }
 
 .hero-logo-draw__svg path {
-  fill: none;
-  stroke: rgb(46, 30, 19);
-  stroke-width: 2;
+  fill: none; /* Odstraní výplň kresby. */
+  stroke: rgb(46, 30, 19); /* Nastaví barvu obrysu kresby. */
+  stroke-width: 2; /* Nastaví tloušťku obrysu kresby. */
 }
 
 .main-title-text {
-  position: relative;
-  z-index: 2;
-  font-family: 'Tenor Sans', serif;
-  font-size: clamp(3.5rem, 6vw, 6rem);
-  line-height: 1.1;
-  color: #2b1c12;
-  text-shadow: 2px 2px 10px rgba(255,255,255,0.95), 0 0 4px #fff;
-  margin: 0;
-  text-align: left;
+  position: relative; /* Určuje způsob pozicování prvku. */
+  z-index: 2; /* Umístí nadpis nad dekorativní kresbu. */
+  font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
+  font-size: clamp(3.5rem, 6vw, 6rem); /* Nastaví responzivní velikost písma. */
+  line-height: 1.1; /* Nastaví výšku řádku. */
+  color: #2b1c12; /* Nastaví barvu textu. */
+  text-shadow: 2px 2px 10px rgba(255,255,255,0.95), 0 0 4px #fff; /* Přidá světlý stín textu. */
+  margin: 0; /* Odstraní vnější odsazení. */
+  text-align: left; /* Zarovná text doleva. */
 }
 
 .hero-intro {
-  flex: 1;
-  background-image: url('galerie/papir.webp');
-  background-size: cover;
-  background-position: center;
-  padding: 40px 50px;
-  border-radius: 24px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  border: 1px solid #c9a36f;
-  transform: rotate(1deg);
+  flex: 1; /* Umožní sloupci vyplnit dostupný prostor. */
+  background-image: url('galerie/papir.webp'); /* Nastaví obrázek papírového pozadí. */
+  background-size: cover; /* Přizpůsobí pozadí velikosti prvku. */
+  background-position: center; /* Zarovná pozadí na střed. */
+  padding: 40px 50px; /* Přidá vnitřní odsazení obsahu. */
+  border-radius: 24px; /* Zaoblí rohy prvku. */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Přidá stín prvku. */
+  border: 1px solid #c9a36f; /* Vykreslí jemný okraj prvku. */
+  transform: rotate(1deg); /* Lehce natočí papírový panel. */
 }
 
 .hero-intro h2 {
-  font-family: 'Inknut Antiqua', serif;
-  font-size: clamp(1.8rem, 1vw, 2.4rem);
-  color: #3e2f2a;
-  margin-top: 0;
-  margin-bottom: 20px;
+  font-family: 'Inknut Antiqua', serif; /* Určuje použité písmo nadpisu. */
+  font-size: clamp(1.8rem, 1vw, 2.4rem); /* Nastaví responzivní velikost nadpisu. */
+  color: #3e2f2a; /* Nastaví barvu nadpisu. */
+  margin-top: 0; /* Odstraní horní vnější odsazení. */
+  margin-bottom: 20px; /* Přidá prostor pod nadpisem. */
 }
 
 .hero-intro p {
-  font-family: 'Raleway', sans-serif;
-  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-  line-height: 1.7;
-  color: #3e2f2a;
-  margin: 0;
-  font-weight: 600;
+  font-family: 'Raleway', sans-serif; /* Určuje použité písmo odstavce. */
+  font-size: clamp(1.1rem, 1.5vw, 1.25rem); /* Nastaví responzivní velikost textu. */
+  line-height: 1.7; /* Nastaví výšku řádku. */
+  color: #3e2f2a; /* Nastaví barvu textu. */
+  margin: 0; /* Odstraní vnější odsazení odstavce. */
+  font-weight: 600; /* Nastaví zvýrazněnou tloušťku písma. */
 }
 
 .merged-parallax-content {
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-  max-width: 1200px;
-  width: 100%;
-  padding: 60px 20px;
-  align-items: stretch;
-  margin: 0 auto;
-  position: relative;
-  z-index: 10;
+  display: flex; /* Nastaví způsob zobrazení prvku. */
+  flex-direction: row; /* Uspořádá obsah do řádku. */
+  gap: 50px; /* Nastaví mezeru mezi sloupci. */
+  max-width: 1200px; /* Omezí maximální šířku prvku. */
+  width: 100%; /* Využije dostupnou šířku. */
+  padding: 60px 20px; /* Přidá vnitřní odsazení sekce. */
+  align-items: stretch; /* Roztáhne sloupce na stejnou výšku. */
+  margin: 0 auto; /* Zarovná sekci vodorovně na střed. */
+  position: relative; /* Vytvoří pozicovací kontext. */
+  z-index: 10; /* Umístí obsah nad pozadí. */
 }
 
 .merged-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 320px;
+  flex: 1; /* Rozdělí dostupný prostor mezi sloupce. */
+  display: flex; /* Nastaví flexboxové rozložení. */
+  flex-direction: column; /* Uspořádá obsah sloupce svisle. */
+  justify-content: center; /* Zarovná obsah sloupce na střed. */
+  min-width: 320px; /* Zachová čitelnost obsahu sloupce. */
 }
 
 @media (max-width: 900px) {
   .hero-wrapper {
-    flex-direction: column;
-    gap: 40px;
-    padding-top: 20px;
+    flex-direction: column; /* Přepne hero do jednoho sloupce. */
+    gap: 40px; /* Nastaví svislou mezeru mezi částmi hero. */
+    padding-top: 20px; /* Přidá prostor nad hero obsahem. */
   }
 
   .hero-brand {
-    min-height: 280px;
-    justify-content: center;
+    min-height: 280px; /* Zmenší minimální výšku pro menší displeje. */
+    justify-content: center; /* Zarovná značku na střed. */
   }
 
   .hero-logo-draw {
-    left: 50%;
-    top: 50%;
-    width: min(84vw, 540px);
-    transform: translate(-50%, -50%);
-    opacity: 0.6;
-    stroke-width: 2;
+    left: 50%; /* Umístí kresbu na střed vodorovné osy. */
+    top: 50%; /* Umístí kresbu na střed svislé osy. */
+    width: min(84vw, 540px); /* Přizpůsobí šířku obrazovce. */
+    transform: translate(-50%, -50%); /* Vycentruje kresbu podle obou os. */
+    opacity: 0.6; /* Zachová jemný dekorativní vzhled. */
+    stroke-width: 2; /* Nastaví tloušťku obrysu kresby. */
   }
 
   .main-title-text {
-    text-align: center;
-    font-size: 3.2rem;
+    text-align: center; /* Zarovná hlavní nadpis na střed. */
+    font-size: 3.2rem; /* Zmenší hlavní nadpis pro tablet. */
   }
 
   .hero-intro {
-    transform: rotate(0deg);
-    padding: 30px 24px;
-    text-align: center;
+    transform: rotate(0deg); /* Zruší natočení panelu na menších displejích. */
+    padding: 30px 24px; /* Zmenší vnitřní odsazení panelu. */
+    text-align: center; /* Zarovná text panelu na střed. */
   }
 
   .merged-parallax-content {
-    flex-direction: column;
-    gap: 60px;
-    padding: 40px 16px;
+    flex-direction: column; /* Přepne obsah do jednoho sloupce. */
+    gap: 60px; /* Nastaví svislou mezeru mezi bloky. */
+    padding: 40px 16px; /* Zmenší boční odsazení pro tablet. */
   }
 }
 
 .welcome-title-accent {
-  font-style: oblique;
-  -webkit-text-stroke: 2px #000000;
+  font-style: oblique; /* Nastaví šikmé písmo akcentu. */
+  -webkit-text-stroke: 2px #000000; /* Přidá tmavý obrys textu. */
 }
 
 .welcome-media-frame {
-  margin: 0;
-  min-height: auto;
-  box-shadow: none;
-  border-radius: 20px;
-  --parallax-image: url('galerie/navsteva.webp');
-  --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));
+  margin: 0; /* Odstraní vnější odsazení rámu. */
+  min-height: auto; /* Přizpůsobí výšku obsahu. */
+  box-shadow: none; /* Odstraní stín rámu. */
+  border-radius: 20px; /* Zaoblí rohy rámu. */
+  --parallax-image: url('galerie/navsteva.webp'); /* Nastaví obrázek pozadí rámu. */
+  --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)); /* Vypne překryv obrázku. */
 }
 
 .welcome-media-frame__content {
-  padding: 0;
-  max-width: none;
-  line-height: 0;
+  padding: 0; /* Odstraní vnitřní odsazení obsahu. */
+  max-width: none; /* Povolí využití celé šířky rámu. */
+  line-height: 0; /* Odstraní mezeru pod vloženým obrázkem. */
 }
 
 .welcome-image--ghost {
-  opacity: 0;
-  display: block;
-  width: 100%;
-  height: auto;
+  opacity: 0; /* Použije obrázek jen pro zachování rozměru. */
+  display: block; /* Zachová blokové rozložení obrázku. */
+  width: 100%; /* Vyplní šířku rodiče. */
+  height: auto; /* Zachová poměr stran obrázku. */
 }
 
 .home-offer-location {
-  margin: 40px auto 80px auto;
-  max-width: 1200px;
-  padding: 0 20px 20px;
+  margin: 40px auto 80px auto; /* Nastaví prostor kolem sekce nabídky. */
+  max-width: 1200px; /* Omezí maximální šířku sekce. */
+  padding: 0 20px 20px; /* Přidá boční a spodní odsazení. */
 }
 
 .home-offer-location__header {
-  text-align: center;
-  width: 100%;
-  max-width: none;
-  margin: 0 auto 32px;
-  padding: 0 16px;
+  text-align: center; /* Zarovná hlavičku sekce na střed. */
+  width: 100%; /* Využije celou dostupnou šířku. */
+  max-width: none; /* Neomezuje šířku hlavičky. */
+  margin: 0 auto 32px; /* Zarovná hlavičku a přidá spodní mezeru. */
+  padding: 0 16px; /* Přidá bezpečné boční odsazení. */
 }
 
 .home-offer-location__eyebrow {
-  margin: 0 0 12px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: #7c4a27;
+  margin: 0 0 12px; /* Přidá prostor pod pomocným nadpisem. */
+  font-size: 0.78rem; /* Nastaví kompaktní velikost textu. */
+  font-weight: 700; /* Zvýrazní pomocný nadpis. */
+  letter-spacing: 0.28em; /* Rozvolní kapitálky. */
+  text-transform: uppercase; /* Převede text na velká písmena. */
+  color: #7c4a27; /* Nastaví akcentní barvu textu. */
 }
 
 .home-offer-location__section-title {
-  margin: 0 0 12px;
-  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
-  font-size: clamp(1.55rem, 2.15vw, 2.2rem);
-  line-height: 1.3;
-  color: #3e2f2a;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
-  letter-spacing: 0.01em;
+  margin: 0 0 12px; /* Přidá prostor pod hlavním nadpisem. */
+  font-family: 'Inknut Antiqua', 'Tenor Sans', serif; /* Určuje ozdobné písmo nadpisu. */
+  font-size: clamp(1.55rem, 2.15vw, 2.2rem); /* Nastaví responzivní velikost nadpisu. */
+  line-height: 1.3; /* Nastaví výšku řádku nadpisu. */
+  color: #3e2f2a; /* Nastaví barvu nadpisu. */
+  text-align: center; /* Zarovná nadpis na střed. */
+  width: 100%; /* Využije celou šířku hlavičky. */
+  white-space: nowrap; /* Zabrání zalomení nadpisu. */
+  letter-spacing: 0.01em; /* Nastaví jemný rozestup písmen. */
 }
 
 .home-offer-location__section-copy {
-  margin: 0;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #5c4d44;
+  margin: 0; /* Odstraní vnější odsazení odstavce. */
+  font-family: 'Raleway', sans-serif; /* Určuje použité písmo textu. */
+  font-size: 1rem; /* Nastaví základní velikost textu. */
+  line-height: 1.7; /* Zlepší čitelnost řádkováním. */
+  color: #5c4d44; /* Nastaví tlumenou barvu textu. */
 }
 
 .home-offer-location__content {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  padding: 0;
+  display: grid; /* Nastaví mřížkové rozložení panelů. */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Vytvoří dva pružné sloupce. */
+  gap: 24px; /* Nastaví mezeru mezi panely. */
+  padding: 0; /* Odstraní vnitřní odsazení kontejneru. */
 }
 
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  opacity: 0; /* Skryje prvek před aktivací animace. */
+  transform: translateY(24px); /* Posune prvek před odhalením dolů. */
+  transition: opacity 0.7s ease, transform 0.7s ease; /* Nastaví plynulé odhalení. */
 }
 
 .reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; /* Zobrazí odhalený prvek. */
+  transform: translateY(0); /* Vrátí prvek na jeho místo. */
 }
 
 .home-offer-location__panel {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding: 28px;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 20px 45px rgba(25, 15, 9, 0.12);
-  background-size: cover;
-  background-blend-mode: normal;
+  position: relative; /* Vytvoří pozicovací kontext panelu. */
+  overflow: hidden; /* Ořízne obsah a pozadí u zaoblených rohů. */
+  display: flex; /* Nastaví flexboxové rozložení panelu. */
+  flex-direction: column; /* Uspořádá obsah panelu svisle. */
+  gap: 18px; /* Nastaví mezery mezi prvky panelu. */
+  padding: 28px; /* Přidá vnitřní odsazení panelu. */
+  border-radius: 28px; /* Zaoblí rohy panelu. */
+  border: 2px solid rgba(121, 42, 6, 0.35); /* Vykreslí jemný světlý okraj. */
+  box-shadow: 0 20px 45px rgba(25, 15, 9, 0.12); /* Přidá měkký stín panelu. */
+  background-size: cover; /* Přizpůsobí obrázkové pozadí panelu. */
+  background-blend-mode: normal; /* Zachová běžné prolnutí pozadí. */
 }
 
 /* Vypnutí parallaxu na mobilech pro lepší výkon */
@@ -5593,7 +5800,8 @@ body.night-mode .logo-bubble img:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255, 248, 238, 0.18);
+  background: url(galerie/latka.png) center/cover no-repeat;
+  opacity: 0.53;
   z-index: 0;
   pointer-events: none;
 }
@@ -6458,7 +6666,7 @@ html:has(body.page-services) {
   --svc2-ink: #21140b;
   --svc2-muted: #6d5746;
   --svc2-shell: #f4eadf;
-  --svc2-card: #fffaf3;
+  --svc2-card: #f1dfca;
   --svc2-border: #d2b89d;
   --svc2-accent: #b14b2d;
   --svc2-accent-2: #d68d32;
@@ -6516,41 +6724,29 @@ html:has(body.page-services) {
 }
 
 .page-services-v2 .primary-nav.premium-theme .primary-nav__brand {
-  position: absolute;
-  left: var(--svc2-nav-safe-left);
-  right: var(--svc2-nav-safe-right);
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  left: auto;
+  right: auto;
+  top: auto;
+  transform: none;
   display: flex !important;
   justify-content: flex-start;
   align-items: center;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 2;
+  flex: 0 0 auto;
+  overflow: visible;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 .page-services-v2 .primary-nav.premium-theme .premium-brand-text {
   display: inline-block;
-  position: relative;
-  padding-inline: 18px;
-  animation: svc2NavTicker 14s linear infinite;
+  position: static;
+  padding-inline: 0;
+  animation: none;
   color: #f8e7cb !important;
   text-shadow: 0 0 10px rgba(233, 183, 103, 0.34), 0 0 2px rgba(255, 255, 255, 0.18);
   letter-spacing: 0.08em;
-  will-change: transform;
-}
-
-.page-services-v2 .primary-nav.premium-theme .premium-brand-text::after {
-  content: "";
-  position: absolute;
-  top: -8%;
-  left: -25%;
-  width: 32%;
-  height: 116%;
-  background: linear-gradient(110deg, rgba(255, 255, 255, 0), rgba(255, 236, 203, 0.5), rgba(255, 255, 255, 0));
-  transform: skewX(-20deg);
-  animation: svc2TickerShimmer 2.8s ease-in-out infinite;
-  pointer-events: none;
+  will-change: auto;
 }
 
 @keyframes svc2TickerShimmer {
@@ -6719,7 +6915,7 @@ html:has(body.page-services) {
   padding: clamp(14px, 2vw, 22px);
   border-radius: 22px;
   border: 1px solid var(--svc2-border);
-  background: linear-gradient(180deg, rgba(255, 251, 244, 0.97), rgba(252, 244, 233, 0.95));
+  background: linear-gradient(180deg, rgba(243, 229, 211, 0.96), rgba(234, 214, 191, 0.94));
   box-shadow: 0 16px 34px rgba(64, 29, 16, 0.13);
 }
 
@@ -6830,6 +7026,9 @@ html:has(body.page-services) {
   border: 1px solid #d9c1a9;
   background: linear-gradient(170deg, rgba(255, 255, 255, 0.85), rgba(255, 249, 240, 0.96));
   padding: clamp(14px, 2vw, 22px);
+  background:
+    linear-gradient(rgba(243, 143, 30, 0.27), rgba(253, 222, 185, 0.56)),
+    url('galerie/latka.png') center/cover no-repeat;
 }
 
 .page-services-v2 .svc2-group__header h3 {
@@ -6841,6 +7040,8 @@ html:has(body.page-services) {
   color: #3d1e11;
   line-height: 1.35;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  text-align: center;
+  text-decoration: underline 1px;
 }
 
 .page-services-v2 .svc2-group__header p {
@@ -6884,9 +7085,9 @@ html:has(body.page-services) {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #5f4a3d;
-  background: #fff8ee;
-  border: 1px solid #d9bd9f;
+  color: #000000;
+  background: #fa6767;
+  border: 1px solid #000000;
   border-radius: 999px;
   padding: 4px 10px;
 }
@@ -6945,7 +7146,8 @@ html:has(body.page-services) {
   margin-top: 14px;
   display: grid;
   gap: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 360px));
+  justify-content: center;
 }
 
 .page-services-v2 .svc2-card {
@@ -6954,7 +7156,9 @@ html:has(body.page-services) {
   border: 1px solid #d8bda4;
   border-radius: 16px;
   overflow: hidden;
-  background: var(--svc2-card);
+  background:
+    linear-gradient(rgba(185, 127, 60, 0.45), rgba(185, 127, 60, 0.45)),
+    url('galerie/latka.png') center/cover no-repeat;
   box-shadow: 0 12px 24px rgba(63, 31, 17, 0.12);
   opacity: 1;
   transform: translateY(0);
@@ -7201,13 +7405,9 @@ html:has(body.page-services) {
   }
 
   .page-services-v2 .primary-nav.premium-theme .primary-nav__brand {
-    left: 14px;
-    right: 78px;
-    justify-content: center;
-  }
-
-  .page-services-v2 .primary-nav.premium-theme .premium-brand-text {
-    animation-duration: 10s;
+    left: auto;
+    right: auto;
+    justify-content: flex-start;
   }
 
   .page-services-v2 .svc2-info summary {
@@ -7424,5 +7624,66 @@ html:has(body.page-services) {
 @media (max-width: 520px) {
   .home-offer-location__map iframe {
     height: 260px;
+  }
+}
+
+/* Finální mobilní nastavení stránky O mně musí být za obecnými parallax breakpointy. */
+@media (max-width: 700px) {
+  .page-about .parallax-section {
+    min-height: 310px !important;
+    margin-top: 22px;
+    margin-bottom: 32px;
+  }
+
+  .page-about .about-hero__content {
+    padding: 30px 16px;
+  }
+
+  .page-about .about-hero__content .hero-logo-draw {
+    top: 51%;
+  }
+
+  .page-about #about {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .page-about .about-row {
+    width: min(100%, 360px);
+    margin: 0 auto;
+    justify-items: center;
+  }
+
+  .page-about .about-card {
+    width: 100%;
+  }
+}
+
+/* Na užších displejích se hero vrací do kontejneru, aby se jeho obsah neořezával. */
+@media (max-width: 920px) {
+  .page-about .parallax-section {
+    left: 50%;
+    width: 100vw;
+    min-height: 310px !important;
+    margin: 22px 0 32px;
+  }
+
+  .page-about .about-hero__content {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: 30px 16px;
+  }
+
+  .page-about .about-hero__content h1 {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .page-about .about-hero__intro {
+    max-width: min(100%, 360px);
   }
 }
