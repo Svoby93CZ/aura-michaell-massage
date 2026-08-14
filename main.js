@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!nav) {
       return;
     }
-    const isDesktop = window.matchMedia('(min-width: 921px)').matches;
+    const isDesktop = window.matchMedia('(min-width: 1101px)').matches;
     if (isDesktop) {
       nav.classList.remove('primary-nav--condensed');
       nav.classList.remove('primary-nav--show-title');

@@ -1028,7 +1028,7 @@ header { /* 04. Navigation & Hero Components */
   color: #ffe5e5; /* Nastaví barvu textu. */
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1100px) {
   .hero-nav .nav-btn {
     font-size: 0.9rem; /* Nastaví velikost písma. */
     padding: 0 10px; /* Přidá vnitřní odsazení prvku. */
@@ -3706,7 +3706,9 @@ body.nav-open {
 }
 
 .primary-nav__inner {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1440px;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 8px 20px;
   display: flex;
@@ -3732,6 +3734,7 @@ body.nav-open {
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.25s ease, width 0.25s ease,
     height 0.25s ease, padding 0.25s ease, border-width 0.25s ease;
+  min-width: 0;
 }
 
 .primary-nav__brand-logo {
@@ -3907,6 +3910,9 @@ body.nav-open {
 .primary-nav__menu {
   display: flex;
   align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: flex-end;
   gap: 12px;
   position: relative;
   z-index: var(--layer-dropdown);
@@ -4107,7 +4113,7 @@ body.night-mode .primary-nav__dropdown-panel {
 }
 
 /* Mobilní zobrazení */
-@media (max-width: 920px) {
+@media (max-width: 1100px) {
   .primary-nav__inner {
     padding: 8px 14px;
     gap: 10px;
@@ -7201,7 +7207,8 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-card__body {
   padding: 14px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
@@ -7253,19 +7260,37 @@ html:has(body.page-services) {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4px;
-  min-height: 42px;
+  margin-top: auto;
+  width: 100%;
+  height: 42px;
+  box-sizing: border-box;
   border-radius: 11px;
+  border: 2px solid rgba(255,248,242,0.4);
   text-decoration: none;
   font-weight: 700;
   font-family: 'Sora', sans-serif;
   color: #fff6ec;
-  background: linear-gradient(135deg, #7a301d, #ad5835 60%, #d28731);
+  background: linear-gradient(100deg, #7f0000 0%, #5c0000 100%);
+  box-shadow: 0 10px 28px rgba(127, 0, 0, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.page-services-v2 .svc2-card__body a::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  margin-right: 8px;
+  background: url("https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico") center / contain no-repeat;
 }
 
 .page-services-v2 .svc2-card__body a:hover,
 .page-services-v2 .svc2-card__body a:focus-visible {
-  filter: brightness(1.08);
+  transform: translateY(-1px) scale(1.01);
+  background: linear-gradient(100deg, #8f0000 0%, #6c0000 100%);
+  box-shadow: 0 12px 32px rgba(127, 0, 0, 0.55);
+  outline: none;
 }
 
 /* SEKCE POD KATALOGEM: aromaterapie + FAQ */
