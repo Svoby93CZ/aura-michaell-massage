@@ -7150,6 +7150,12 @@ html:has(body.page-services) {
   justify-content: center;
 }
 
+@media (min-width: 1025px) {
+  .page-services-v2 .svc2-group:has(.svc2-card:nth-child(3)) .svc2-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .page-services-v2 .svc2-card {
   display: grid;
   grid-template-rows: 190px 1fr;
@@ -7224,6 +7230,8 @@ html:has(body.page-services) {
   line-height: 1.4;
   letter-spacing: 0.01em;
   color: #2d180d;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .page-services-v2 .svc2-card__body p {
