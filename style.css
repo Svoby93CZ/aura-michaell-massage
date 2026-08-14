@@ -70,7 +70,8 @@ body { /* ZÁKLADNÍ STYLY */
 .page-about,
 .page-services,
 .page-privacy,
-.body_ceremonie {
+.body_ceremonie,
+.page-shop {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -80,15 +81,26 @@ body { /* ZÁKLADNÍ STYLY */
 .page-about main,
 .page-services main,
 .page-privacy main,
-.body_ceremonie main {
+.body_ceremonie main,
+.page-shop main {
   flex: 1 0 auto;
 }
 
 .page-about .site-footer,
 .page-services .site-footer,
 .page-privacy .site-footer,
-.body_ceremonie .site-footer {
+.body_ceremonie .site-footer,
+.page-shop .site-footer {
   margin-top: auto;
+}
+
+.page-shop {
+  padding-bottom: 0;
+}
+
+.page-shop main {
+  display: flex;
+  flex-direction: column;
 }
 
 .body_ceremonie { /* ZÁKLADNÍ STYLY */
@@ -2012,6 +2024,29 @@ footer img {
   gap: 0.35rem 0.85rem;
 }
 
+.page-shop .site-footer__bar {
+  width: min(100%, 1440px);
+  box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+  .page-shop .site-footer__bar {
+    justify-content: center;
+    padding: 0.7rem 1rem;
+    text-align: center;
+  }
+
+  .page-shop .site-footer__copy,
+  .page-shop .site-footer__links {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .page-shop .site-footer__links {
+    gap: 0.55rem 1rem;
+  }
+}
+
 .site-footer__link {
   display: inline-flex;
   align-items: center;
@@ -2235,6 +2270,264 @@ footer img {
     transition: none;
   }
 }
+
+/* Obchod: vizuálně navazuje na široký hero a vzdušnou kompozici stránky O mně. */
+.page-shop main.container {
+  max-width: 1240px;
+}
+
+.page-shop .parallax-section {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  min-height: clamp(280px, 34vw, 390px);
+  margin: 34px 0 58px;
+  transform: translateX(-50%);
+  border-radius: 0;
+  isolation: isolate;
+  box-shadow: none;
+}
+
+.page-shop .parallax-section::before {
+  inset: -2px;
+  border-radius: 0;
+  background-image:
+    linear-gradient(90deg, rgba(26, 12, 6, 0.12), rgba(26, 12, 6, 0.48)),
+    var(--parallax-image);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, rgba(0, 0, 0, 0.72) 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, rgba(0, 0, 0, 0.72) 84%, transparent 100%);
+}
+
+.page-shop__hero-content {
+  position: relative;
+  width: min(100%, 760px);
+  min-height: inherit;
+  box-sizing: border-box;
+  padding: 42px 34px;
+  text-align: center;
+}
+
+.page-shop__hero-content h1 {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 24px;
+  color: #2b1c12;
+  font-family: 'Tenor Sans', serif;
+  font-size: clamp(2.3rem, 6vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.08;
+  text-align: center;
+  text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.95), 0 0 4px #fff;
+}
+
+.page-shop .hero-logo-draw {
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  z-index: 1;
+  width: min(42vw, 330px);
+  transform: translate(-50%, -50%);
+  opacity: 0.62;
+}
+
+.page-shop .hero-logo-draw__svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(255, 248, 242, 0.95));
+}
+
+.page-shop .page-shop__hero-intro {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.55;
+  text-shadow: 0 3px 8px #000;
+}
+
+.page-shop #shop {
+  margin-bottom: 54px;
+  text-align: center;
+}
+
+.page-shop .shop-section-heading {
+  max-width: 680px;
+  margin: 0 auto 26px;
+}
+
+.page-shop .shop-section-kicker {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.page-shop .shop-section-heading h2 {
+  margin: 0 0 10px;
+  color: #2b1c12;
+  font-family: 'Inknut Antiqua', serif;
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
+}
+
+.page-shop .shop-section-heading p:last-child {
+  margin: 0;
+  color: #604839;
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.6;
+}
+
+.page-shop .shop-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  overflow: visible;
+  perspective: 900px;
+  content-visibility: visible;
+  contain: none;
+}
+
+.page-shop .shop-gallery img {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid rgba(124, 74, 39, 0.22);
+  border-radius: 16px;
+  background: transparent;
+  object-fit: cover;
+  transform-style: preserve-3d;
+  will-change: transform;
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.page-shop .shop-gallery img.is-3d-active {
+  z-index: 5;
+}
+
+.page-shop .shop-vouchers .shop-gallery {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  max-width: none;
+}
+
+.page-shop .shop-vouchers .shop-gallery img {
+  aspect-ratio: 1 / 1;
+}
+
+.page-shop .shop-gallery img:hover,
+.page-shop .shop-gallery img:focus-visible {
+  border-color: var(--accent);
+  transform: perspective(700px) rotateX(-4deg) rotateY(4deg) rotateZ(var(--hover-tilt, 0deg)) translateZ(34px) translateY(-10px) scale(1.1);
+  box-shadow: none;
+}
+
+.page-shop .shop-vouchers {
+  margin-top: 72px;
+}
+
+.page-shop .shop-voucher-note {
+  max-width: 860px;
+  margin: 68px auto 0;
+  padding: clamp(22px, 4vw, 34px);
+  box-sizing: border-box;
+  border: 1px solid rgba(124, 74, 39, 0.22);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 248, 242, 0.78), rgba(241, 226, 209, 0.82));
+  box-shadow: var(--box-shadow-light);
+  color: #604839;
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.65;
+}
+
+.page-shop .shop-voucher-note p {
+  margin: 0 0 10px;
+}
+
+.page-shop .shop-voucher-note p:last-child {
+  margin-bottom: 0;
+}
+
+.page-shop .shop-voucher-note__title {
+  color: #891915;
+  font-family: 'Inknut Antiqua', serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .page-shop .shop-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .page-shop .shop-vouchers .shop-gallery {
+    grid-template-columns: repeat(3, minmax(88px, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .page-shop .parallax-section {
+    min-height: 286px;
+    margin: 22px auto 38px;
+  }
+
+  .page-shop__hero-content {
+    padding: 34px 18px;
+  }
+
+  .page-shop__hero-content h1 {
+    font-size: clamp(2.15rem, 11.5vw, 3rem);
+    line-height: 1.03;
+  }
+
+  .page-shop .hero-logo-draw {
+    top: 53%;
+    width: min(66vw, 250px);
+  }
+
+  .page-shop .shop-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .page-shop .shop-gallery img {
+    border-radius: 13px;
+  }
+
+  .page-shop .shop-vouchers .shop-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-shop .shop-vouchers .shop-gallery img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .page-shop .shop-vouchers {
+    margin-top: 52px;
+  }
+
+  .page-shop .shop-voucher-note {
+    margin-top: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-shop .shop-gallery img {
+    transition: none;
+  }
+}
+
 .footer-widgets {
   display: flex; /* Nastaví způsob zobrazení prvku. */
   flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
@@ -2347,14 +2640,32 @@ footer img {
   display: none; /* Nastaví způsob zobrazení prvku. */
 }
 @media (max-width: 600px) {
+  .page-shop .modal {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    box-sizing: border-box;
+  }
+
+  .page-shop .modal img {
+    width: auto;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100dvh - 96px);
+    object-fit: contain;
+    border-radius: 8px;
+    touch-action: pan-y;
+  }
+
   .modal-close,
   .modal-nav {
     width: 36px; /* Definuje šířku prvku. */
     height: 36px; /* Definuje výšku prvku. */
     font-size: 20px; /* Nastaví velikost písma. */
   }
-  .modal-nav--prev { left: 12px; }
-  .modal-nav--next { right: 12px; }
+  .page-shop .modal-close {
+    top: max(12px, env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+  }
+  .page-shop .modal-nav--prev { left: max(8px, env(safe-area-inset-left)); }
+  .page-shop .modal-nav--next { right: max(8px, env(safe-area-inset-right)); }
 }
 #scrollTopBtn { /* SCROLL BUTTON */
   position: fixed; /* Určuje způsob pozicování prvku. */

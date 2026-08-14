@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="cs">
+<!-- 
+  Aura Michaell Massage - Obchod a dárkové poukazy
+  Popis: Obchod a dárkové poukazy - Aura Michaell Massage. Kvalitní kosmetika, šperky ruční výroby a doplňky pro vaši pohodu.
+  Autor: Aura Michaell
+  Datum: 2024-06-15
+-->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="description" content="Obchod a dárkové poukazy - Aura Michaell Massage. Kvalitní kosmetika, šperky ruční výroby a doplňky pro vaši pohodu." />
-
+  <!-- Titulek stránky -->
   <title>Obchod a poukazy - Aura Michaell Massage</title>
-
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,18 +20,16 @@
     gtag('js', new Date());
     gtag('config', 'G-732NT4QJEX');
   </script>
-
+  <!-- Ikona stránky, fonty a hlavní stylesheet -->
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montez&family=My+Soul&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page-home"> <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
+<body class="page-shop">
+  <!-- Hlavní navigační panel -->
+  <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
       <a href="index.html" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
         <span class="premium-brand-text">Aura Michaell Massage</span>
@@ -60,29 +64,32 @@
         </div>
 
         <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="primary-nav__link primary-nav__link--cta">
-          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" style="width: 16px; height: 16px; margin-right: 10px;" alt="Rezervace"/>
-          Rezervace</a>
+          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="primary-nav__cta-icon" alt="Rezervace" />
+          Rezervace
+        </a>
       </div>
     </div>
   </nav>
-
-  <div class="container">
-    <div style="padding-top: 40px;"></div>
-    <section class="parallax-section parallax-balance" aria-label="Harmonie a rovnováha">
-      <div class="parallax-content">
-        <p style="font-weight: bold; font-size: 3em;color: #ffffff; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-family: 'montez', cursive;">
-          Harmonie & Rovnováha<br>
-        </p>
-        <p style="font-size: 1.2em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-weight: bold;">
-          Každý produkt i služba v nabídce je vybraná s ohledem na kvalitu a autentický zážitek. Přijďte načerpat novou energii
-          a odneste si domů kousek klidu.<br>
-          Zde najdete kvalitní kosmetiku, šperky ruční výroby a další doplňky pro vaši pohodu.
-        </p>
+  <!-- Hlavní obsah stránky -->
+  <main class="container"> 
+    <!-- Hero sekce -->
+    <section class="parallax-section parallax-balance page-shop__hero"
+             style="--parallax-image: url('galerie/shop3.webp');"
+             aria-label="Harmonie a rovnováha">
+      <div class="parallax-content page-shop__hero-content">
+        <div class="hero-logo-draw" aria-hidden="true" style="padding-top: 20px;"></div>
+        <h1 class="main-title-text">Harmonie &amp; rovnováha</h1>
+        <p class="page-shop__hero-intro">Pečlivě vybrané produkty, dárkové poukazy a drobnosti pro chvíle klidu, péče a radosti.</p>
       </div>
     </section>
-
+    <!-- Sekce obchodu -->
     <section id="shop" aria-label="Obchod a dárkové poukazy">
-      <p style="font-weight: bold; font-size: 1.2em; color: #000;">K zakoupení jsou i ručně vyráběné produkty.</p>
+      <div class="shop-section-heading">
+        <p class="shop-section-kicker">Malé radosti pro každý den</p>
+        <h2>Ručně vyráběné produkty</h2>
+        <p>Vyberte si z kosmetiky, šperků a doplňků, které si můžete odnést domů.</p>
+      </div>
+      <!-- Galerie produktů -->
       <div class="shop-gallery" role="group" aria-label="Produkty v obchodě">
         <img src="galerie/shop1.webp" alt="Produkty v obchodě" data-lightbox="shop-products" data-full="galerie/shop1.webp" loading="lazy" decoding="async" fetchpriority="low"
           srcset="galerie/shop1.webp 400w, galerie/shop1.webp 800w, galerie/shop1.webp 1200w"
@@ -100,41 +107,49 @@
           srcset="galerie/shop5.webp 400w, galerie/shop5.webp 800w, galerie/shop5.webp 1200w"
           sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
       </div>
-
-      <section aria-label="Dárkové poukazy">
-        <p style="font-weight: bold; font-size: 1.2em; color: #000;">K zakoupení jsou i dárkové poukazy.</p>
+      <div class="shop-section-heading" style="padding-top: 10px;">
+        <p>..a mnoho dalších věcí ruční výroby.</p>
+      </div>
+      <!-- Dárkové poukazy -->
+      <section class="shop-vouchers" aria-label="Dárkové poukazy">
+        <div class="shop-section-heading">
+          <p class="shop-section-kicker">Darujte chvíli pro sebe</p>
+          <h2>Dárkové poukazy</h2>
+          <p>Poukaz můžete vybrat podle hodnoty a věnovat ho někomu, komu přejete odpočinek.</p>
+        </div>
         <div class="shop-gallery" role="group" aria-label="Poukazy k zakoupení">
-          <img src="Poukazy/Poukaz%20200%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%20200%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+          <img src="Poukazy/Poukaz%20200%2C-.webp" alt="Poukaz v hodnotě 200 Kč" data-lightbox="shop-vouchers" data-full="Poukazy/Poukaz%20200%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
             srcset="Poukazy/Poukaz%20200%2C-.webp 400w, Poukazy/Poukaz%20200%2C-.webp 800w, Poukazy/Poukaz%20200%2C-.webp 1200w"
             sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
-          <img src="Poukazy/Poukaz%20500%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%20500%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+          <img src="Poukazy/Poukaz%20500%2C-.webp" alt="Poukaz v hodnotě 500 Kč" data-lightbox="shop-vouchers" data-full="Poukazy/Poukaz%20500%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
             srcset="Poukazy/Poukaz%20500%2C-.webp 400w, Poukazy/Poukaz%20500%2C-.webp 800w, Poukazy/Poukaz%20500%2C-.webp 1200w"
             sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
-          <img src="Poukazy/Poukaz%201000%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%201000%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+          <img src="Poukazy/Poukaz%201000%2C-.webp" alt="Poukaz v hodnotě 1000 Kč" data-lightbox="shop-vouchers" data-full="Poukazy/Poukaz%201000%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
             srcset="Poukazy/Poukaz%201000%2C-.webp 400w, Poukazy/Poukaz%201000%2C-.webp 800w, Poukazy/Poukaz%201000%2C-.webp 1200w"
             sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
-          <img src="Poukazy/Poukaz%201500%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%201500%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+          <img src="Poukazy/Poukaz%201500%2C-.webp" alt="Poukaz v hodnotě 1500 Kč" data-lightbox="shop-vouchers" data-full="Poukazy/Poukaz%201500%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
             srcset="Poukazy/Poukaz%201500%2C-.webp 400w, Poukazy/Poukaz%201500%2C-.webp 800w, Poukazy/Poukaz%201500%2C-.webp 1200w"
             sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
-          <img src="Poukazy/Poukaz%202000%2C-.webp" alt="Poukazy k zakoupení" data-lightbox="shop-products" data-full="Poukazy/Poukaz%202000%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
+          <img src="Poukazy/Poukaz%202000%2C-.webp" alt="Poukaz v hodnotě 2000 Kč" data-lightbox="shop-vouchers" data-full="Poukazy/Poukaz%202000%2C-.webp" loading="lazy" decoding="async" fetchpriority="low"
             srcset="Poukazy/Poukaz%202000%2C-.webp 400w, Poukazy/Poukaz%202000%2C-.webp 800w, Poukazy/Poukaz%202000%2C-.webp 1200w"
             sizes="(max-width:720px) 180px, (max-width:1100px) 160px, 180px">
         </div>
       </section>
     </section>
-  </div>
 
-    <div style="padding-top: 20px;">
+    </div>
+<!-- Info o poukazech -->
+    <div style="padding-top: 20px; padding-bottom: 20px;">
       <section class="conteiner">
       <div style="background-image: url(galerie/papirek.webp); background-size: cover; border-radius: 30px; padding: 20px;text-align: center; font-weight: bold; font-size: 1em;border: 2px solid #00000084;">
-          <p style="color: #891915; text-align: center; font-weight: bold; font-size: 1.3em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">! Poukazy lze nyní zakoupit buď osobně v salonu, nebo nově elektronicky !</p>
-          <p style="color: #000;">Pro poukaz v elektronické podobě je nutné se domluvit po telefonu, nebo osobně při návštěvě salonu.<br>
-             V elektronické podobě si můžete sami zvolit <span style="font-size: 1.2em; color: #3f8915; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;-webkit-text-stroke: #000 0.001em;">libovolnou hodnotu</span> poukazu.</p>
-          <p style="color: #000;">Po domluvě Vám přes <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-weight: bold;">SMS</span> napíšu platební údaje a po zaplacení pošlu na <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">e-mail</span> poukaz ve formátu <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">PDF</span>, který si můžete vytisknout nebo uložit do telefonu.</p>
+        <p style="color: #891915; text-align: center; font-weight: bold; font-size: 1.3em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">! Poukazy lze nyní zakoupit buď osobně v salonu, nebo nově elektronicky !</p>
+        <p style="color: #000;">Pro poukaz v elektronické podobě je nutné se domluvit po telefonu, nebo osobně při návštěvě salonu.<br>
+           V elektronické podobě si můžete sami zvolit <span style="font-size: 1.2em; color: #3f8915; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;-webkit-text-stroke: #000 0.001em;">libovolnou hodnotu</span> poukazu.</p>
+        <p style="color: #000;">Po domluvě Vám přes <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;font-weight: bold;">SMS</span> napíšu platební údaje a po zaplacení pošlu na <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">e-mail</span> poukaz ve formátu <span style="font-size: 1em; text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;">PDF</span>, který si můžete vytisknout nebo uložit do telefonu.</p>
       </div>
       </section>
     </div>
-
+    <!-- Footer -->
     <div class="site-footer" role="contentinfo">
       <div class="site-footer__bar">
         <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
@@ -162,7 +177,7 @@
     <button type="button" class="modal-nav modal-nav--next" aria-label="Další obrázek">❯</button>
   </div>
 
-  <script src="main.js?v=1" defer></script>
-  <button id="scrollTopBtn" title="Zpět nahoru">↑</button>
+  <script src="main.js?v=2" defer></script>
+  <button id="scrollTopBtn" type="button" title="Zpět nahoru" aria-label="Zpět nahoru">↑</button>
 </body>
 </html>

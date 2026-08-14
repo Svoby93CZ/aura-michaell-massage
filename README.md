@@ -36,7 +36,7 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 ## 🛠️ Údržba
 
 Aktualizace ceníků probíhají v souboru [msginfo.html](msginfo.html) ve dvou variantách:
-1. desktop zobrazení,
+1. desktop zobrazení.
 2. mobilní karty.
 
 Nové obrázky přidávejte podle účelu do složek [galerie/](galerie/), [masaze/](masaze/) nebo [Poukazy/](Poukazy/).

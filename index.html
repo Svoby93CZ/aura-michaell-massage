@@ -32,7 +32,7 @@
     gtag('js', new Date());
     gtag('config', 'G-732NT4QJEX');
   </script>
-
+  <!-- Ikona stránky, fonty a hlavní stylesheet -->
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,24 +51,20 @@
    <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
       <button id="scrollTopBtn" title="Zpět nahoru" class="primary-nav__utility-btn primary-nav__utility-btn--scroll" type="button" aria-label="Zpět nahoru">↑</button>
-
       <a href="#hero" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
         <span class="premium-brand-text">Aura Michaell Massage</span>
       </a>
-
       <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
         <span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-label">Menu</span>
       </button>
-
       <div class="primary-nav__menu" id="primary-nav-menu" aria-hidden="true">
         <a href="msginfo.html" class="primary-nav__link" data-tooltip="Ceník masáží a procedur">Služby a ceník</a>
         <a href="ceremonie.html" class="primary-nav__link premium-link-ceremony" data-tooltip="Kakaová ceremonie a kruhy pro ženy">Ceremonie</a>
         <a href="obchod.html" class="primary-nav__link">Poukazy</a>
         <a href="about.html" class="primary-nav__link">O mně</a>
-
         <div class="primary-nav__dropdown">
           <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false">
             Kontakt
@@ -91,13 +87,11 @@
             </a>
           </div>
         </div>
-
         <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="primary-nav__link primary-nav__link--cta">
           <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="primary-nav__cta-icon" alt="Rezervace"/>
           Rezervace
         </a>
       </div>
-
       <button id="music-toggle" class="music-toggle-btn primary-nav__utility-btn primary-nav__utility-btn--music" type="button" aria-label="Přehrát / Pozastavit hudbu" data-music-toggle>
         <img id="music-icon" class="music-toggle-icon" data-music-icon src="galerie/play.webp" alt="Play">
       </button>
@@ -106,11 +100,10 @@
 
     <!-- Hlavní nadpis -->
     <div style="padding: 40px;"></div>
-      <section id="hero" class="hero-wrapper">
-        <div class="hero-brand">
-          <div class="hero-logo-draw" aria-hidden="true"></div>
-          <h1 class="main-title-text">
-          AURA<br>MICHAELL<br>MASSAGE</h1>
+    <section id="hero" class="hero-wrapper">
+      <div class="hero-brand">
+        <div class="hero-logo-draw" aria-hidden="true"></div>
+          <h1 class="main-title-text">AURA<br>MICHAELL<br>MASSAGE</h1>
         </div>
         <div style="height: 20px;"></div>
         <div class="hero-intro">
@@ -120,7 +113,8 @@
             Dopřejte si chvíli, ve které se tělo i mysl znovu sladí.
           </p>
         </div>
-      </section>
+      </div>
+    </section>
 
 <!-- Karta a mapa -->
     <section id="offer-location" class="home-offer-location" style="padding: 60px;">
@@ -130,8 +124,9 @@
           Každá návštěva je pro mě příležitost vytvořit klidný prostor. Zde najdete nejen naši adresu, ale také výhodu za opakované návštěvy.
         </p>
       </div>
-
+      <!-- Karta a mapa -->
       <div class="home-offer-location__content">
+        <!-- Věrnostní karta -->
         <article class="home-offer-location__panel home-offer-location__panel--card reveal-on-scroll">
           <div class="home-offer-location__panel-head">
             <div>
@@ -140,17 +135,14 @@
             </div>
             <span class="home-offer-location__pill">Sleva 200 Kč</span>
           </div>
-
           <div id="card-3d-container" class="card-3d-scene home-offer-location__card"></div>
-
           <div class="home-offer-location__text">
             <p>Každá další návštěva vás přibližuje k výhodné slevě.<br>
             Věrnostní karta je jednoduchá, bez zbytečných formalit.</p>
           </div>
-
           <a class="home-offer-location__link" href="msginfo.html">Prohlédnout služby</a>
         </article>
-
+        <!-- Mapa -->
         <article class="home-offer-location__panel home-offer-location__panel--map reveal-on-scroll">
           <div class="home-offer-location__panel-head">
             <div>
@@ -159,19 +151,14 @@
             </div>
             <span class="home-offer-location__pill home-offer-location__pill--accent">Bruntál</span>
           </div>
-
-          
             <div style="border: 2px solid rgb(0, 0, 0);" class="home-offer-location__map">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-
             <div class="home-offer-location__address">
               <span class="home-offer-location__address-line">Šmilovského 663/1</span>
               <span>792 01 Bruntál</span>
             </div>
-
             <a class="home-offer-location__link" href="https://maps.google.com/?q=Šmilovského+663%2F1+Bruntál" target="_blank" rel="noopener noreferrer">Otevřít v mapách</a>
-
         </article>
       </div>
     </section>
@@ -239,6 +226,7 @@
       </div>
     </div>
 
+    <!-- Lightbox modal pro zobrazení obrázků -->
   <div id="lightbox" class="modal" aria-hidden="true">
     <button type="button" class="modal-close" aria-label="Zavřít náhled">&times;</button>
     <button type="button" class="modal-nav modal-nav--prev" aria-label="Předchozí obrázek">&#10094;</button>

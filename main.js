@@ -3,6 +3,41 @@ console.log('[DEBUG] main.js loaded');
 document.addEventListener('DOMContentLoaded', () => {
   console.log('[DEBUG] DOMContentLoaded fired');
 
+  const shopThumbnails = document.querySelectorAll('.page-shop .shop-gallery img');
+  const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (shopThumbnails.length && supportsHover && !prefersReducedMotion) {
+    shopThumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener('pointerenter', () => {
+        thumbnail.classList.add('is-3d-active');
+        const hoverTilt = Math.random() < 0.5 ? -2 : 2;
+        thumbnail.style.setProperty('--hover-tilt', `${hoverTilt}deg`);
+        thumbnail.style.zIndex = '5';
+        thumbnail.style.transition = 'transform 0.22s ease-out, border-color 0.25s ease';
+        thumbnail.style.transform = 'perspective(700px) rotateX(-4deg) rotateY(4deg) rotateZ(var(--hover-tilt)) translateZ(34px) translateY(-10px) scale(1.1)';
+      });
+
+      thumbnail.addEventListener('pointermove', (event) => {
+        const bounds = thumbnail.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+        const rotateY = x * 14;
+        const rotateX = y * -14;
+
+        thumbnail.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(var(--hover-tilt, 0deg)) translateZ(34px) translateY(-10px) scale(1.1)`;
+      });
+
+      thumbnail.addEventListener('pointerleave', () => {
+        thumbnail.style.transition = 'transform 0.35s ease, border-color 0.25s ease';
+        thumbnail.style.transform = '';
+        thumbnail.style.zIndex = '';
+        thumbnail.style.removeProperty('--hover-tilt');
+        thumbnail.classList.remove('is-3d-active');
+      });
+    });
+  }
+
   const initHeroLogoDraw = async () => {
     const logoHost = document.querySelector('.hero-logo-draw');
     if (!logoHost) {
@@ -333,7 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Jemné animace při vstupu do viewportu
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (revealElements.length > 0) {
     if ('IntersectionObserver' in window && !prefersReducedMotion) {
@@ -624,6 +658,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const groups = new Map();
     let currentGroupKey = null;
     let currentIndex = 0;
+    let touchStartX = 0;
+    let touchStartY = 0;
 
     const updateNavVisibility = () => {
       if (!prevBtn || !nextBtn) {
@@ -750,6 +786,29 @@ document.addEventListener('DOMContentLoaded', () => {
         closeLightbox();
       }
     });
+
+    lightbox.addEventListener('touchstart', (event) => {
+      const touch = event.changedTouches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (event) => {
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+      const isHorizontalSwipe = Math.abs(deltaX) > 44 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2;
+
+      if (!isHorizontalSwipe) {
+        return;
+      }
+
+      if (deltaX < 0) {
+        showNext();
+      } else {
+        showPrev();
+      }
+    }, { passive: true });
 
     document.addEventListener('keydown', (event) => {
       if (!lightbox.classList.contains('show')) {

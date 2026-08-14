@@ -9,6 +9,9 @@
   path { fill:none; stroke:#e8e8f0; stroke-width:1.2; }
   button { margin-top:24px; padding:10px 20px; border-radius:8px; border:none; background:#e8e8f0; cursor:pointer; font-size:14px; }
   p { color:#888; font-size:13px; max-width:420px; text-align:center; margin-top:16px; }
+  body.logo-embed { background:transparent; height:100%; overflow:hidden; }
+  body.logo-embed button, body.logo-embed p { display:none; }
+  body.logo-embed svg { width:min(92vw, 420px); }
 </style>
 </head>
 <body>
@@ -167,6 +170,10 @@
   </g>
 </svg>
 <script>
+  if (new URLSearchParams(window.location.search).has('embed')) {
+    document.body.classList.add('logo-embed');
+  }
+
   function playAnimation() {
     const paths = document.querySelectorAll('path');
     paths.forEach((p, i) => {
