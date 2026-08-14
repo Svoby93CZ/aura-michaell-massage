@@ -97,7 +97,7 @@ Options -Indexes
 # ============================================
 RewriteEngine On
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https?://(www\.)?aura-michaell-massage\.cz [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?auramichaell\.cz [NC]
 RewriteCond %{HTTP_REFERER} !^https?://(www\.)?.*\.reservio\.com [NC]
 RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F,L]
 

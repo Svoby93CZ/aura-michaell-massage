@@ -22,14 +22,12 @@
   --nav-btn-height-sm: 48px; /* Proměnná pro menší výšku navigačních tlačítek. */
   --nav-btn-height-xs: 44px; /* Proměnná pro nejnižší výšku navigačních tlačítek. */
 
-  /* Přidané proměnné pro lepší správu */
-  --transition-speed: 0.2s;
+  --transition-speed: 0.2s; /* Přidané proměnné pro lepší správu */
   --box-shadow-light: 0 2px 8px rgba(60,30,10,0.12);
   --box-shadow-medium: 0 4px 16px rgba(60,30,10,0.18);
   --box-shadow-heavy: 0 8px 24px rgba(60,30,10,0.24);
 
-  /* Vrstvy rozhraní */
-  --layer-ground: 0;
+  --layer-ground: 0; /* Vrstvy rozhraní */
   --layer-content: 10;
   --layer-floating: 140;
   --layer-nav: 200;
@@ -44,8 +42,7 @@ html { /* 02. Base Elements */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
 }
 
-/* Performance optimalizace */
-* {
+* { /* Performance optimalizace */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -181,10 +178,7 @@ body { /* ZÁKLADNÍ STYLY */
   mask-composite: intersect; /* Nastaví, jak se kombinují masky ve standardních prohlížečích. */
 }
 
-/* Prefer performance: enable fixed attachment only on large viewports and
-   when user hasn't requested reduced motion. This avoids expensive repaints
-   on mobile and low-end devices. */
-@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
+@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) { /* Prefer performance: enable fixed attachment only on large viewports and when user hasn't requested reduced motion. This avoids expensive repaints on mobile and low-end devices. */
   .parallax-section::before {
     background-attachment: fixed, fixed;
   }
@@ -418,74 +412,6 @@ header { /* 04. Navigation & Hero Components */
   flex-direction: column;
 }
 
-.page-services .aroma-side-cards {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  margin-top: 12px;
-  position:relative;
-  z-index: 10;
-}
-
-.page-services .aroma-side-cards > div {
-  flex: 1;
-  box-sizing: center;
-}
-
-@media (max-width: 900px) {
-  .page-services .services-hero {
-    flex-direction: column;
-  }
-
-  .page-services .services-hero__header,
-  .page-services .services-hero__aroma,
-  .page-services .aroma-side-cards {
-    width: 100%;
-    flex: 1 1 100%;
-  }
-
-  .page-services .services-hero .logo-bubble {
-    margin-left: 12px;
-  }
-
-  .page-services .services-hero #aromaterapie-featured {
-    min-height: 420px;
-  }
-}
-.logo-bubble img {
-  width: 120%; /* Definuje šířku prvku. */
-}
-
-.page-services .back-home-banner {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  margin: 0 auto 24px; /* Odsadí prvek od okolního obsahu. */
-  max-width: 980px; /* Omezí maximální šířku prvku. */
-}
-
-.page-services .back-home-btn {
-  display: inline-flex; /* Nastaví způsob zobrazení prvku. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  gap: 8px; /* Nastaví mezery mezi položkami. */
-  background: linear-gradient(100deg, rgba(124,74,39,0.95), rgba(171,117,78,0.9)); /* Definuje pozadí prvku. */
-  color: #fff; /* Nastaví barvu textu. */
-  padding: 10px 26px; /* Přidá vnitřní odsazení prvku. */
-  border-radius: 999px; /* Zaoblí rohy prvku. */
-  text-decoration: none; /* Řídí dekoraci textu. */
-  font-family: 'Raleway', sans-serif; /* Určuje použité písmo. */
-  font-weight: 700; /* Určuje tloušťku písma. */
-  letter-spacing: 0.4px; /* Nastaví rozestupy mezi písmeny. */
-  font-size: 1rem; /* Nastaví velikost písma. */
-  box-shadow: 0 10px 24px rgba(60,30,10,0.18); /* Přidá stín prvku. */
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; /* Nastaví animaci změn vlastností. */
-}
-
-.page-services .back-home-btn:hover,
-.page-services .back-home-btn:focus {
-  transform: translateY(-3px); /* Transformuje prvek (posun, natočení, měřítko). */
-  box-shadow: 0 14px 32px rgba(60,30,10,0.25); /* Přidá stín prvku. */
-  background: linear-gradient(100deg, rgba(138,60,4,1), rgba(124,74,39,0.95)); /* Definuje pozadí prvku. */
-}
 #hero {
   text-align: center; /* Zarovná text. */
   margin-bottom: 40px; /* Odsazení zespodu pro prvek. */
@@ -611,8 +537,7 @@ header { /* 04. Navigation & Hero Components */
   transform: scale(1.04); /* Transformuje prvek (posun, natočení, měřítko). */
 }
 
-/* Responzivní úpravy pro welcome sekci */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) { /* Responzivní úpravy pro welcome sekci */
   .page-home .welcome-list {
     flex: 0 0 300px; /* Zmenšená šířka textu na tabletů */
   }
@@ -701,57 +626,7 @@ header { /* 04. Navigation & Hero Components */
   box-shadow: none; /* Přidá stín prvku. */
 }
 
-.page-home .bonus-card-box {
-  background: none; /* Definuje pozadí prvku. */
-  border-radius: 20px; /* Zaoblí rohy prvku. */
-  padding: 0; /* Přidá vnitřní odsazení prvku. */
-  margin: 0 auto; /* Odsadí prvek od okolního obsahu. */
-  max-width: 700px; /* Omezí maximální šířku prvku. */
-  border: none; /* Vykreslí rámeček kolem prvku. */
-  box-shadow: none; /* Přidá stín prvku. */
-  backdrop-filter: none; /* Aplikuje filtr na pozadí za prvkem. */
-}
-
-.page-home .bonus-card-box .discount-bubble {
-  margin-bottom: 18px; /* Odsazení zespodu pro prvek. */
-  display: inline-flex; /* Nastaví způsob zobrazení prvku. */
-  flex-direction: column; /* Určuje směr Flexboxu. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  padding: 14px 36px; /* Přidá vnitřní odsazení prvku. */
-  width: fit-content; /* Definuje šířku prvku. */
-  min-width: 0; /* Nastaví minimální šířku prvku. */
-  margin-left: auto; /* Odsazení zleva pro prvek. */
-  margin-right: auto; /* Odsazení zprava pro prvek. */
-}
-
-.page-home .bonus-card-box .card-info {
-  text-align: center; /* Zarovná text. */
-  font-weight: 700; /* Určuje tloušťku písma. */
-  margin: 0 auto 20px; /* Odsadí prvek od okolního obsahu. */
-  max-width: 520px; /* Omezí maximální šířku prvku. */
-  background: none; /* Definuje pozadí prvku. */
-  padding: 14px 0; /* Přidá vnitřní odsazení prvku. */
-  border-radius: 14px; /* Zaoblí rohy prvku. */
-  box-shadow: none; /* Přidá stín prvku. */
-}
-
-.page-home .bonus-card-box .cards {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  gap: 18px; /* Nastaví mezery mezi položkami. */
-  flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-  margin: 0 auto; /* Odsadí prvek od okolního obsahu. */
-  width: 100%; /* Definuje šířku prvku. */
-}
-
-.page-home .bonus-card-box .cards img {
-  width: clamp(160px, 45%, 260px); /* Definuje šířku prvku. */
-}
-
-/* 3D Karta s Three.js */
-.card-3d-scene {
+.card-3d-scene { /* 3D Karta s Three.js */
   width: clamp(300px, 80%, 500px);
   height: auto;
   min-width: 300px;
@@ -966,8 +841,7 @@ header { /* 04. Navigation & Hero Components */
   text-overflow: clip; /* Odstraní automatické zkracování textu při delších názvech */
 }
 
-/* --- Corner decor: světélkující rohy --- */
-.corner-decor{pointer-events:none;position:fixed;inset:0;z-index:var(--layer-floating)}
+.corner-decor{pointer-events:none;position:fixed;inset:0;z-index:var(--layer-floating)} /* --- Corner decor: světélkující rohy --- */
 .corner-decor .c{position:absolute;width:240px;height:240px;border-radius:50%;filter:blur(36px);opacity:.9;mix-blend-mode:screen;animation:corner-float 8s ease-in-out infinite;transform:translate3d(0,0,0)}
 .corner-decor .c.top-left{left:-80px;top:-80px;background:radial-gradient(circle,#ffd6e0 0%,transparent 60%)}
 .corner-decor .c.top-right{right:-100px;top:-100px;background:radial-gradient(circle,#d6f0ff 0%,transparent 60%)}
@@ -991,8 +865,7 @@ header { /* 04. Navigation & Hero Components */
     min-width: 0; /* Povolení zmenšení tlačítek, pokud je položek více */
   }
 
-  /* Grid layout pro navigaci - 3 sloupce, 2 řádky */
-  .page-services .services-nav--grid {
+  .page-services .services-nav--grid { /* Grid layout pro navigaci - 3 sloupce, 2 řádky */
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 sloupce stejné šířky */
     grid-template-rows: repeat(2, auto); /* 2 řádky automatické výšky */
@@ -1093,16 +966,6 @@ header { /* 04. Navigation & Hero Components */
     white-space: nowrap; /* Zabrání zalomení názvů kategorií. */
     justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
     box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
-  }
-
-  .page-services .back-home-banner {
-    padding: 0 14px; /* Přidá vnitřní odsazení prvku. */
-  }
-
-  .page-services .back-home-btn {
-    width: 100%; /* Definuje šířku prvku. */
-    justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-    font-size: clamp(1rem, 5.4vw, 1.35rem); /* Nastaví velikost písma s ohledem na šířku displeje. */
   }
 
   .page-services .services-nav .nav-btn {
@@ -1210,27 +1073,7 @@ header { /* 04. Navigation & Hero Components */
   border-radius: 16px; /* Zaoblí rohy prvku. */
   padding: 16px; /* Přidá vnitřní odsazení prvku. */
 }
-.discount-bubble {
-  color: #fff; /* Nastaví barvu textu. */
-  text-align: center; /* Zarovná text. */
-  font-family: 'Raleway', sans-serif; /* Určuje použité písmo. */
-  margin: 0 auto; /* Odsadí prvek od okolního obsahu. */
-}
-.discount-main {
-  font-size: 23px; /* Nastaví velikost písma. */
-  font-weight: 600; /* Určuje tloušťku písma. */
-  color: #000000; /* Nastaví barvu textu. */
-  text-shadow: 2px 2px 8px #ffffff; /* Přidá stín textu. */
-}
-.discount-sub {
-  font-size: 42px; /* Nastaví velikost písma. */
-  font-weight: 700; /* Určuje tloušťku písma. */
-  margin-top: 6px; /* Odsazení shora pro prvek. */
-  color: #891915; /* Nastaví barvu textu. */
-  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.411); /* Přidá stín textu. */
-  -webkit-text-stroke: 1px #000000; /* Přidá obrys textu (pro WebKit prohlížeče). */
-}
-.card-info {
+ .card-info {
   padding: 6px 8px; /* Přidá vnitřní odsazení prvku. */
   border-radius: 16px; /* Zaoblí rohy prvku. */
   text-align: center; /* Zarovná text. */
@@ -1375,8 +1218,7 @@ header { /* 04. Navigation & Hero Components */
   color: #e33333; /* Nastaví barvu textu. */
 }
 
-/* Kontejner pro zobrazení INDIKACE a KONTRAINDIKACE vedle sebe */
-.indikace-kontraindikace-container {
+.indikace-kontraindikace-container { /* Kontejner pro zobrazení INDIKACE a KONTRAINDIKACE vedle sebe */
   display: flex; /* Flexbox pro položky vedle sebe */
   gap: 16px; /* Mezera mezi sekcemi */
   margin-bottom: 24px; /* Spodní okraj */
@@ -1541,8 +1383,7 @@ header { /* 04. Navigation & Hero Components */
   }
 }
 
-/* Parallax efekt pro aromaterapii - s fade efektem jako na hlavní stránce */
-#aromaterapie-featured {
+#aromaterapie-featured { /* Parallax efekt pro aromaterapii - s fade efektem jako na hlavní stránce */
   position: relative;
   overflow: hidden;
   min-height: 600px;
@@ -1550,8 +1391,7 @@ header { /* 04. Navigation & Hero Components */
   border-radius: 16px;
 }
 
-/* Parallax pozadí s fade efektem */
-#aromaterapie-featured::before {
+#aromaterapie-featured::before { /* Parallax pozadí s fade efektem */
   content: "";
   position: absolute;
   inset: 0;
@@ -1563,8 +1403,7 @@ header { /* 04. Navigation & Hero Components */
   background-attachment: fixed, fixed;
   border-radius: inherit;
   pointer-events: none;
-  /* Fade efekt na okrajích - stejný jako na hlavní stránce */
-  -webkit-mask-image: linear-gradient(90deg,
+  -webkit-mask-image: linear-gradient(90deg, /* Fade efekt na okrajích - stejný jako na hlavní stránce */
       rgba(0,0,0,0) 0%,
       rgba(0,0,0,0.35) 6%,
       rgba(0,0,0,0.75) 18%,
@@ -1605,8 +1444,7 @@ header { /* 04. Navigation & Hero Components */
 }
 
 
-/* Mobilní verze s parallaxem */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Mobilní verze s parallaxem */
   #aromaterapie-featured {
     position: relative;
     overflow: hidden;
@@ -1616,8 +1454,7 @@ header { /* 04. Navigation & Hero Components */
     padding: 20px 8px 40px 8px !important;
   }
 
-  /* Parallax pozadí pro mobil */
-  #aromaterapie-featured::before {
+  #aromaterapie-featured::before { /* Parallax pozadí pro mobil */
     content: "";
     position: absolute;
     inset: 0;
@@ -1628,8 +1465,7 @@ header { /* 04. Navigation & Hero Components */
     background-size: cover;
     border-radius: inherit;
     pointer-events: none;
-    /* Fade efekt na okrajích */
-    -webkit-mask-image: linear-gradient(90deg,
+    -webkit-mask-image: linear-gradient(90deg, /* Fade efekt na okrajích */
         rgba(0,0,0,0) 0%,
         rgba(0,0,0,0.35) 6%,
         rgba(0,0,0,0.75) 18%,
@@ -1673,8 +1509,7 @@ header { /* 04. Navigation & Hero Components */
     padding: 12px 8px !important;
   }
 
-  /* Aromaterapie - na mobilu jeden sloupec (rámečky pod sebou) */
-  #aromaterapie {
+  #aromaterapie { /* Aromaterapie - na mobilu jeden sloupec (rámečky pod sebou) */
     display: flex !important;
     flex-direction: column !important;
     gap: 12px !important;
@@ -1682,8 +1517,7 @@ header { /* 04. Navigation & Hero Components */
     z-index: 1;
   }
 
-  /* Barevné rámečky - více obdélníkový tvar na mobilu */
-  #aromaterapie > div[style*="background: rgba(124,200,120"],
+  #aromaterapie > div[style*="background: rgba(124,200,120"], /* Barevné rámečky - více obdélníkový tvar na mobilu */
   #aromaterapie > div[style*="background: rgba(180,150,200"],
   #aromaterapie > div[style*="background: rgba(255,165,80"],
   #aromaterapie > div[style*="background: rgba(255, 200, 100"] {
@@ -1695,8 +1529,7 @@ header { /* 04. Navigation & Hero Components */
     overflow: visible !important;
   }
 
-  /* Nadpis a text v rámečcích - menší velikost na mobilu */
-  #aromaterapie h4 {
+  #aromaterapie h4 { /* Nadpis a text v rámečcích - menší velikost na mobilu */
     font-size: 0.95em !important;
     margin-bottom: 6px !important;
     line-height: 1.3 !important;
@@ -1713,8 +1546,7 @@ header { /* 04. Navigation & Hero Components */
     margin-bottom: 4px !important;
   }
 
-  /* Informativní text - menší na mobilu */
-  #aromaterapie .classic-massage-info {
+  #aromaterapie .classic-massage-info { /* Informativní text - menší na mobilu */
     font-size: 0.85em !important;
   }
 
@@ -1723,19 +1555,16 @@ header { /* 04. Navigation & Hero Components */
     line-height: 1.4 !important;
   }
 
-  /* Prázdný div před obrázkem - skrýt */
-  #aromaterapie > div[style*="padding-bottom: 16px"]:last-of-type {
+  #aromaterapie > div[style*="padding-bottom: 16px"]:last-of-type { /* Prázdný div před obrázkem - skrýt */
     display: none !important;
   }
 
-  /* Obrázek skrytý na mobilu - je v pozadí */
-  #aromaterapie .parallax-hidden-image {
+  #aromaterapie .parallax-hidden-image { /* Obrázek skrytý na mobilu - je v pozadí */
     display: none !important;
   }
 }
 
-/* Styly pro sekci "Ostatní služby" na PC - dvousloupcový layout */
-@media (min-width: 769px) {
+@media (min-width: 769px) { /* Styly pro sekci "Ostatní služby" na PC - dvousloupcový layout */
   #ostatni .service-accordion > div {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -1743,32 +1572,27 @@ header { /* 04. Navigation & Hero Components */
     align-items: start !important;
   }
 
-  /* Nadpis zůstane klasicky, titulek zůstává v summary */
-  #ostatni .service-accordion summary {
+  #ostatni .service-accordion summary { /* Nadpis zůstane klasicky, titulek zůstává v summary */
     grid-column: 1 / -1 !important;
     margin-bottom: 32px !important;
   }
 
-  /* Aromaterapie - grid layout pro barevné rámečky ve 2 sloupcích */
-  #aromaterapie {
+  #aromaterapie { /* Aromaterapie - grid layout pro barevné rámečky ve 2 sloupcích */
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 24px !important;
     align-items: start !important;
   }
 
-  /* Nadpis přes oba sloupce */
-  #aromaterapie > div:nth-child(1) {
+  #aromaterapie > div:nth-child(1) { /* Nadpis přes oba sloupce */
     grid-column: 1 / -1 !important;
   }
 
-  /* Informativní text přes oba sloupce */
-  #aromaterapie > div:nth-child(2) {
+  #aromaterapie > div:nth-child(2) { /* Informativní text přes oba sloupce */
     grid-column: 1 / -1 !important;
   }
 
-  /* Nadpisy v sekci Ostatní služby bez zalomení */
-  #ostatni .classic-massage-info h3 {
+  #ostatni .classic-massage-info h3 { /* Nadpisy v sekci Ostatní služby bez zalomení */
     width: 100%;
     text-align: center;
     white-space: nowrap;
@@ -1794,8 +1618,7 @@ header { /* 04. Navigation & Hero Components */
     overflow-wrap: normal !important;
   }
 
-  /* Barevné rámečky ve 2 sloupcích - automatické rozmístění */
-  #aromaterapie > div[style*="background: rgba(124,200,120"],
+  #aromaterapie > div[style*="background: rgba(124,200,120"], /* Barevné rámečky ve 2 sloupcích - automatické rozmístění */
   #aromaterapie > div[style*="background: rgba(180,150,200"],
   #aromaterapie > div[style*="background: rgba(255,165,80"],
   #aromaterapie > div[style*="background: rgba(255, 200, 100"] {
@@ -1803,13 +1626,11 @@ header { /* 04. Navigation & Hero Components */
     margin-bottom: 16px; /* Přidá spodní mezeru mezi rámečky */
   }
 
-  /* Prázdný div před obrázkem - skrýt */
-  #aromaterapie > div[style*="padding-bottom: 16px"]:last-of-type {
+  #aromaterapie > div[style*="padding-bottom: 16px"]:last-of-type { /* Prázdný div před obrázkem - skrýt */
     display: none !important;
   }
 
-  /* Obrázek skrytý v parallax módu */
-  #aromaterapie .parallax-hidden-image {
+  #aromaterapie .parallax-hidden-image { /* Obrázek skrytý v parallax módu */
     display: none !important;
   }
 
@@ -1820,21 +1641,18 @@ header { /* 04. Navigation & Hero Components */
     object-fit: cover !important;
   }
 
-  /* Skryjeme prázdné mezery uvnitř detailů */
-  #ostatni .service-accordion > div > div[style*="padding-bottom: 30px"] {
+  #ostatni .service-accordion > div > div[style*="padding-bottom: 30px"] { /* Skryjeme prázdné mezery uvnitř detailů */
     display: none !important;
   }
 
-  /* Každý div služby zabere jeden sloupec v gridu */
-  #ostatni .service-accordion > div > div[style*="background"] {
+  #ostatni .service-accordion > div > div[style*="background"] { /* Každý div služby zabere jeden sloupec v gridu */
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
     margin-bottom: 0 !important;
   }
 
-  /* Obrázky v sekcích */
-  #ostatni .cards {
+  #ostatni .cards { /* Obrázky v sekcích */
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -1880,26 +1698,21 @@ header { /* 04. Navigation & Hero Components */
   hyphens: none !important;
 }
 
-/* Mobilní optimalizace pro msginfo.html - max-width 768px */
-@media (max-width: 768px) {
-  /* Hlavní nadpis - zmenšit font size na mobilech */
-  .page-services h1[style*="font-size: 7rem"] {
+@media (max-width: 768px) { /* Mobilní optimalizace pro msginfo.html - max-width 768px */
+  .page-services h1[style*="font-size: 7rem"] { /* Hlavní nadpis - zmenšit font size na mobilech */
     font-size: 3rem !important;
     padding: 0.4em 0.8em !important;
   }
 
-  /* Nadpisy sekcí - zmenšit na mobilech */
-  .cenik-section-title {
+  .cenik-section-title { /* Nadpisy sekcí - zmenšit na mobilech */
     font-size: 2.5rem !important;
   }
 
-  /* Padding v headerech - zmenšit */
-  .page-services h1 {
+  .page-services h1 { /* Padding v headerech - zmenšit */
     padding: 0.4em 0.8em !important;
   }
 
-  /* Font size v service-info - zmenšit */
-  .classic-massage-info {
+  .classic-massage-info { /* Font size v service-info - zmenšit */
     font-size: 0.9em !important;
   }
 
@@ -1911,8 +1724,7 @@ header { /* 04. Navigation & Hero Components */
     font-size: 1.3em !important;
   }
 
-  /* Parallax section - zmenšit min-height */
-  .parallax-section {
+  .parallax-section { /* Parallax section - zmenšit min-height */
     min-height: 180px !important;
     margin: 24px 0 !important;
   }
@@ -1921,19 +1733,16 @@ header { /* 04. Navigation & Hero Components */
     padding: 16px 12px !important;
   }
 
-  /* Oil cards - zmenšit padding */
-  .services-hero__oil-cards {
+  .services-hero__oil-cards { /* Oil cards - zmenšit padding */
     padding-top: 60px !important;
   }
 
-  /* Service boxes - zmenšit padding a margin */
-  .page-services [style*="background: rgba"] {
+  .page-services [style*="background: rgba"] { /* Service boxes - zmenšit padding a margin */
     padding: 8px !important;
     margin-bottom: 12px !important;
   }
 
-  /* Font size pro seznamy v service info */
-  .page-services ul {
+  .page-services ul { /* Font size pro seznamy v service info */
     font-size: 0.85em !important;
   }
 
@@ -1941,20 +1750,17 @@ header { /* 04. Navigation & Hero Components */
     padding-bottom: 6px !important;
   }
 
-  /* Zmenšit spacing kolem sekce */
-  .page-services [style*="padding-bottom: 16px"],
+  .page-services [style*="padding-bottom: 16px"], /* Zmenšit spacing kolem sekce */
   .page-services [style*="padding-bottom: 20px"],
   .page-services [style*="padding-bottom: 30px"] {
     padding-bottom: 8px !important;
   }
 
-  /* Zmenšit service price tag */
-  .service-price-tag {
+  .service-price-tag { /* Zmenšit service price tag */
     padding: 4px 8px !important;
   }
 
-  /* Zmenšit gap v grid layoutech */
-  #ostatni .service-accordion > div {
+  #ostatni .service-accordion > div { /* Zmenšit gap v grid layoutech */
     gap: 12px !important;
   }
 
@@ -1965,13 +1771,11 @@ header { /* 04. Navigation & Hero Components */
     max-height: 300px !important;
   }
 
-  /* Intro text - zmenšit font */
-  .services-hero__intro-text p {
+  .services-hero__intro-text p { /* Intro text - zmenšit font */
     font-size: 0.9em !important;
   }
 
-  /* Indikace a kontraindikace - zmenšit */
-  .indikace-kontraindikace-container {
+  .indikace-kontraindikace-container { /* Indikace a kontraindikace - zmenšit */
     gap: 8px !important;
   }
 
@@ -1981,8 +1785,7 @@ header { /* 04. Navigation & Hero Components */
   }
 }
 
-/* Extra malé mobily - max-width 480px */
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* Extra malé mobily - max-width 480px */
   .page-services h1[style*="font-size"] {
     font-size: 2rem !important;
     padding: 0.3em 0.6em !important;
@@ -2013,8 +1816,7 @@ header { /* 04. Navigation & Hero Components */
   }
 }
 
-/* Jednoslovcový layout pro mobil */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Jednoslovcový layout pro mobil */
   #ostatni {
     display: block;
   }
@@ -2034,8 +1836,7 @@ header { /* 04. Navigation & Hero Components */
     gap: 24px; /* Nastaví mezery mezi položkami. */
   }
 
-  /* Zrušení speciálních stylů pro "Ostatní služby" na mobilech */
-  #ostatni .cards img {
+  #ostatni .cards img { /* Zrušení speciálních stylů pro "Ostatní služby" na mobilech */
     max-width: 100%;
   }
   .parallax-section {
@@ -2153,16 +1954,6 @@ header { /* 04. Navigation & Hero Components */
   height: 100%; /* Definuje výšku prvku. */
   border: 0; /* Vykreslí rámeček kolem prvku. */
 }
-.address-box {
-  margin-top: 8px; /* Odsazení shora pro prvek. */
-  background: rgba(255,255,255,.6); /* Definuje pozadí prvku. */
-  padding: 8px; /* Přidá vnitřní odsazení prvku. */
-  border-radius: 10px; /* Zaoblí rohy prvku. */
-  font-size: 23px; /* Nastaví velikost písma. */
-  text-align: center; /* Zarovná text. */
-  color: #3e2f2a; /* Nastaví barvu textu. */
-}
-
 footer { /* FOOTER */
   text-align: center; /* Zarovná text. */
   margin-top: 20px; /* Odsazení shora pro prvek. */
@@ -2239,8 +2030,7 @@ footer img {
   object-fit: contain;
 }
 
-/* O mně: stejná vzdušná kompozice jako úvodní stránka, s menšími kartami pro mobil. */
-.page-about main.container {
+.page-about main.container { /* O mně: stejná vzdušná kompozice jako úvodní stránka, s menšími kartami pro mobil. */
   max-width: 1240px;
 }
 
@@ -2484,11 +2274,6 @@ footer img {
   height: 18px; /* Definuje výšku prvku. */
   vertical-align: middle; /* Zarovná prvek vůči okolnímu textu na svislé ose. */
   display: inline-block; /* Nastaví způsob zobrazení prvku. */
-}
-.footer-copy {
-  margin-top: 12px; /* Odsazení shora pro prvek. */
-  text-align: center; /* Zarovná text. */
-  font-size: 0.95rem; /* Nastaví velikost písma. */
 }
 .site-footer > img {
   display: block; /* Nastaví způsob zobrazení prvku. */
@@ -2780,13 +2565,6 @@ footer img {
     padding-top: 60vw; /* Vnitřní odsazení shora. */
     min-height: 180px; /* Nastaví minimální výšku prvku. */
   }
-  .address-box {
-    font-size: 14px; /* Nastaví velikost písma. */
-  }
-  .discount-bubble {
-    font-size: 16px; /* Nastaví velikost písma. */
-    padding: 8px 10px; /* Přidá vnitřní odsazení prvku. */
-  }
   .discount-sub {
     font-size: 28px; /* Nastaví velikost písma. */
   }
@@ -2834,10 +2612,6 @@ footer img {
   .footer-widgets a {
     margin: 0 0.3rem; /* Odsadí prvek od okolního obsahu. */
     font-size: 1rem; /* Nastaví velikost písma. */
-  }
-  .footer-copy {
-    margin-top: 0.7rem; /* Odsazení shora pro prvek. */
-    font-size: 0.95em; /* Nastaví velikost písma. */
   }
   #impressum ul li {
     display: block;
@@ -3512,11 +3286,7 @@ footer img {
   }
 }
 
-/* ========================================
-   Elektrický border efekt pro aromaterapii
-   ======================================== */
-
-:root {
+:root { /* Elektrický border efekt pro aromaterapii */
   --electric-border-color: #dd8448;
   --electric-light-color: #f5a86b;
   --gradient-color: rgba(221, 132, 72, 0.4);
@@ -3535,8 +3305,7 @@ footer img {
   position: relative;
 }
 
-/* Animovaný border s filtrem - pouze pro okraj */
-.electric-animated-border {
+.electric-animated-border { /* Animovaný border s filtrem - pouze pro okraj */
   position: absolute;
   top: 0;
   left: 0;
@@ -3549,8 +3318,7 @@ footer img {
   z-index: 1;
 }
 
-/* Průhledná verze elektrického efektu pro aromaterapii */
-.electric-card-wrapper--transparent .electric-animated-border {
+.electric-card-wrapper--transparent .electric-animated-border { /* Průhledná verze elektrického efektu pro aromaterapii */
   opacity: 0.5;
 }
 
@@ -3568,8 +3336,7 @@ footer img {
   opacity: 0.15;
 }
 
-/* Hlavní karta s obsahem - BEZ filtru */
-.electric-main-card {
+.electric-main-card { /* Hlavní karta s obsahem - BEZ filtru */
   border-radius: 24px;
   position: relative;
   z-index: 2;
@@ -3677,15 +3444,7 @@ footer img {
   }
 }
 
-/* ========================================
-   Noční režim
-   ======================================== */
-
-/* ========================================
-   Hlavní navigace
-   ======================================== */
-
-body.nav-open {
+body.nav-open { /* Hlavní navigace */ /* Noční režim */
   overflow: hidden;
 }
 
@@ -4112,8 +3871,7 @@ body.night-mode .primary-nav__dropdown-panel {
   background: linear-gradient(135deg, rgba(20,40,70,0.98), rgba(40,70,110,0.95));
 }
 
-/* Mobilní zobrazení */
-@media (max-width: 1100px) {
+@media (max-width: 1100px) { /* Mobilní zobrazení */
   .primary-nav__inner {
     padding: 8px 14px;
     gap: 10px;
@@ -4235,17 +3993,11 @@ body.night-mode .primary-nav__dropdown-panel {
   }
 }
 
-/* ========================================
-   Noční režim - přepínač den/noc
-   ======================================== */
-
-/* Skrýt checkbox */
-#night-mode-toggle {
+#night-mode-toggle { /* Skrýt checkbox */ /* Noční režim - přepínač den/noc */
   display: none;
 }
 
-/* Přepínač v navbaru */
-#night-mode-toggle + label.night-mode-switch {
+#night-mode-toggle + label.night-mode-switch { /* Přepínač v navbaru */
   background-color: #040d1c;
   width: 80px;
   height: 32px;
@@ -4259,8 +4011,7 @@ body.night-mode .primary-nav__dropdown-panel {
   margin-left: 16px;
 }
 
-/* Kruh (měsíc/slunce) - ještě menší */
-.night-mode-circle {
+.night-mode-circle { /* Kruh (měsíc/slunce) - ještě menší */
   width: 32px;
   height: 32px;
   border-radius: 100px;
@@ -4270,8 +4021,7 @@ body.night-mode .primary-nav__dropdown-panel {
   position: relative;
 }
 
-/* Krátery na měsíci - ještě menší */
-.crater {
+.crater { /* Krátery na měsíci - ještě menší */
   background-color: rgba(0,0,0,0.1);
   border-radius: 100%;
   position: absolute;
@@ -4299,8 +4049,7 @@ body.night-mode .primary-nav__dropdown-panel {
   left: 16px;
 }
 
-/* Noční režim (CHECKED) */
-#night-mode-toggle:checked + label.night-mode-switch {
+#night-mode-toggle:checked + label.night-mode-switch { /* Noční režim (CHECKED) */
   background-color: #2a5fba;
 }
 
@@ -4314,16 +4063,14 @@ body.night-mode .primary-nav__dropdown-panel {
   opacity: 0;
 }
 
-/* Noční pozadí s hvězdami */
-body.night-mode {
+body.night-mode { /* Noční pozadí s hvězdami */
   background-color: #0f1f3a !important;
   background-image: none !important;
   position: relative;
   transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hvězdy na pozadí */
-body.night-mode::before {
+body.night-mode::before { /* Hvězdy na pozadí */
   content: '';
   position: fixed;
   top: 0;
@@ -4359,8 +4106,7 @@ body.night-mode::before {
   50% { opacity: 0.8; }
 }
 
-/* Container zůstává normální */
-body.night-mode .container {
+body.night-mode .container { /* Container zůstává normální */
   filter: none;
   position: relative;
   z-index: 2;
@@ -4394,22 +4140,19 @@ body.night-mode a:hover {
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-/* Speciální pravidla pro bílé boxy s černým textem */
-body.night-mode [style*="color: black"],
+body.night-mode [style*="color: black"], /* Speciální pravidla pro bílé boxy s černým textem */
 body.night-mode [style*="color:black"] {
   color: #f0f8ff !important;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Světlé pozadí v nočním režimu */
-body.night-mode [style*="background: rgba(255, 255, 255"],
+body.night-mode [style*="background: rgba(255, 255, 255"], /* Světlé pozadí v nočním režimu */
 body.night-mode [style*="background-color: #ae865e2c"] {
   background: rgba(30, 50, 80, 0.85) !important;
   border-color: rgba(100, 150, 200, 0.5) !important;
 }
 
-/* Zvýraznění slevy v nočním režimu */
-body.night-mode [style*="border-color: #891915"] {
+body.night-mode [style*="border-color: #891915"] { /* Zvýraznění slevy v nočním režimu */
   border-color: #ff6b6b !important;
   background-color: rgba(255, 107, 107, 0.3) !important;
   color: #ffdddd !important;
@@ -4437,8 +4180,7 @@ body.night-mode #about svg .praxe-graduation {
   fill: #f4d4a4 !important;
 }
 
-/* Logo v nočním režimu - průhledné */
-body.night-mode .logo-bubble img {
+body.night-mode .logo-bubble img { /* Logo v nočním režimu - průhledné */
   filter: none;
   opacity: 0.7;
   transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -4448,8 +4190,7 @@ body.night-mode .logo-bubble img:hover {
   opacity: 0.9;
 }
 
-/* Mobilní verze */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Mobilní verze */
   #night-mode-toggle + label.night-mode-switch {
     width: 70px;
     height: 28px;
@@ -4487,11 +4228,7 @@ body.night-mode .logo-bubble img:hover {
   }
 }
 
-/* ========================================
-   Úpravy navigace pro stránku služeb
-   ======================================== */
-
-.page-services .primary-nav__inner {
+.page-services .primary-nav__inner { /* Úpravy navigace pro stránku služeb */
   justify-content: center; /* Centrování navigace bez loga */
 }
 
@@ -4507,8 +4244,7 @@ body.night-mode .logo-bubble img:hover {
   margin-left: 0; /* Odstranění levého marginu */
 }
 
-/* Desktop navigace - zajištění stejné velikosti všech tlačítek */
-@media (min-width: 921px) {
+@media (min-width: 921px) { /* Desktop navigace - zajištění stejné velikosti všech tlačítek */
   .page-services .primary-nav__link {
     white-space: nowrap; /* Zabránění zalamování textu */
     min-width: fit-content; /* Minimální šířka podle obsahu */
@@ -4524,68 +4260,7 @@ body.night-mode .logo-bubble img:hover {
 }
 
 
-/* ===== STICKY MINI-NAVIGACE ===== */
-.mini-nav {
-  position: fixed;
-  top: -60px;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background: linear-gradient(135deg, rgba(124, 74, 39, 0.97), rgba(171, 117, 78, 0.95));
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: top 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
-}
-
-.mini-nav--visible {
-  top: 0;
-  opacity: 1;
-}
-
-.mini-nav__inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  max-width: 1200px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-
-.mini-nav__link {
-  color: #fff;
-  text-decoration: none;
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  transition: background 0.2s ease, transform 0.2s ease;
-  white-space: nowrap;
-}
-
-.mini-nav__link:hover,
-.mini-nav__link:focus {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
-}
-
-@media (max-width: 640px) {
-  .mini-nav__inner {
-    gap: 4px;
-    padding: 8px 12px;
-  }
-
-  .mini-nav__link {
-    padding: 5px 10px;
-    font-size: 0.75rem;
-  }
-}
-
-/* ===== REDUKOVANÉ PADDINGY SEKCÍ ===== */
-.page-services section[id] {
+.page-services section[id] { /* ===== REDUKOVANÉ PADDINGY SEKCÍ ===== */
   padding-bottom: 60px !important;
 }
 
@@ -4600,8 +4275,7 @@ body.night-mode .logo-bubble img:hover {
   }
 }
 
-/* ===== HOVER EFEKTY NA KARTY ===== */
-.card-info {
+.card-info { /* ===== HOVER EFEKTY NA KARTY ===== */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
@@ -4643,8 +4317,7 @@ body.night-mode .logo-bubble img:hover {
   }
 }
 
-/* ===== ČÍST VÍCE TLAČÍTKO ===== */
-.read-more-btn {
+.read-more-btn { /* ===== ČÍST VÍCE TLAČÍTKO ===== */
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
@@ -4668,12 +4341,7 @@ body.night-mode .logo-bubble img:hover {
   }
 }
 
-/* ========================================
-   CEREMONIE PAGE - MOBILNÍ OPTIMALIZACE
-   ======================================== */
-
-/* Responzivní h1 nadpis */
-.ceremonie-hero-title {
+.ceremonie-hero-title { /* Responzivní h1 nadpis */ /* CEREMONIE PAGE - MOBILNÍ OPTIMALIZACE */
   font-size: clamp(2.5rem, 8vw, 5rem) !important;
   -webkit-text-stroke: 0.15px #000000;
   color: #4a1f00;
@@ -4688,8 +4356,7 @@ body.night-mode .logo-bubble img:hover {
   padding-bottom: 23px !important;
 }
 
-/* Obsah sboxy - responzivní padding a font size */
-.ceremony-content-box {
+.ceremony-content-box { /* Obsah sboxy - responzivní padding a font size */
   font-size: clamp(1rem, 2.8vw, 1.25em);
   background-image: url(galerie/papir.webp);
   background-size: cover;
@@ -4714,8 +4381,7 @@ body.night-mode .logo-bubble img:hover {
   margin-bottom: clamp(6px, 1.5vw, 8px);
 }
 
-/* Galerie obrázků - responzivní layout */
-.ceremony-gallery {
+.ceremony-gallery { /* Galerie obrázků - responzivní layout */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: clamp(12px, 3vw, 18px);
@@ -4750,8 +4416,7 @@ body.night-mode .logo-bubble img:hover {
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));
 }
 
-/* Meta text - responzivní */
-.ceremony-meta-text {
+.ceremony-meta-text { /* Meta text - responzivní */
   font-style: italic;
   margin-bottom: clamp(16px, 3vw, 28px);
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.751);
@@ -4768,8 +4433,7 @@ body.night-mode .logo-bubble img:hover {
   font-size: clamp(0.85rem, 2.2vw, 1rem);
 }
 
-/* Mobil optimalizace */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Mobil optimalizace */
   .body_ceremonie {
     padding: 0 clamp(8px, 2vw, 12px) clamp(24px, 5vw, 40px);
     padding-top: 80px;
@@ -4848,11 +4512,7 @@ body.night-mode .logo-bubble img:hover {
   }
 }
 
-/* ========================================
-   LIGHTBOX MODAL PRO OBRÁZKY
-   ======================================== */
-
-.ceremony-gallery-img {
+.ceremony-gallery-img { /* LIGHTBOX MODAL PRO OBRÁZKY */
   cursor: pointer;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -4864,8 +4524,7 @@ body.night-mode .logo-bubble img:hover {
   outline: none;
 }
 
-/* Lightbox Modal */
-.lightbox-modal {
+.lightbox-modal { /* Lightbox Modal */
   position: fixed;
   top: 0;
   left: 0;
@@ -4905,8 +4564,7 @@ body.night-mode .logo-bubble img:hover {
   animation: lightboxSlideIn 0.3s ease;
 }
 
-/* Lightbox Header - Toolbar */
-.lightbox-header {
+.lightbox-header { /* Lightbox Header - Toolbar */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -4917,8 +4575,7 @@ body.night-mode .logo-bubble img:hover {
   border-radius: 6px;
 }
 
-/* Lightbox Content - Image s šipkami */
-.lightbox-content {
+.lightbox-content { /* Lightbox Content - Image s šipkami */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5025,8 +4682,7 @@ body.night-mode .logo-bubble img:hover {
   z-index: 3;
 }
 
-/* Lightbox Image Wrapper - pro zoom */
-.lightbox-image-wrapper {
+.lightbox-image-wrapper { /* Lightbox Image Wrapper - pro zoom */
   position: relative;
   display: flex;
   align-items: center;
@@ -5058,8 +4714,7 @@ body.night-mode .logo-bubble img:hover {
   cursor: grabbing;
 }
 
-/* Zoom Controls */
-.lightbox-controls {
+.lightbox-controls { /* Zoom Controls */
   position: relative;
   display: flex;
   flex-direction: row;
@@ -5109,8 +4764,7 @@ body.night-mode .logo-bubble img:hover {
   min-width: 40px;
 }
 
-/* Mobilní optimalizace lightboxu */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Mobilní optimalizace lightboxu */
   .lightbox-container {
     gap: 8px;
   }
@@ -5204,12 +4858,7 @@ body.night-mode .logo-bubble img:hover {
     font-size: 0.8rem;
   }
 }
-/* =========================================================
-   PREMIUM TEXTUROVANÁ NAVIGACE (Všechny úpravy spojeny)
-   ========================================================= */
-
-/* Základní barva a integrovaná SVG textura šumu */
-.primary-nav.premium-theme {
+.primary-nav.premium-theme { /* Základní barva a integrovaná SVG textura šumu */ /* PREMIUM TEXTUROVANÁ NAVIGACE (Všechny úpravy spojeny) */
   background-color: rgba(26, 15, 10, 0.95) !important;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E") !important;
   border-bottom: 1px solid rgba(197, 160, 89, 0.2) !important;
@@ -5217,13 +4866,11 @@ body.night-mode .logo-bubble img:hover {
   backdrop-filter: blur(12px) !important;
 }
 
-/* Povolit zobrazení loga na stránce s ceníkem */
-.page-services .primary-nav.premium-theme .primary-nav__brand {
+.page-services .primary-nav.premium-theme .primary-nav__brand { /* Povolit zobrazení loga na stránce s ceníkem */
   display: flex !important;
 }
 
-/* Úprava loga a textu vedle něj */
-.premium-theme .primary-nav__brand {
+.premium-theme .primary-nav__brand { /* Úprava loga a textu vedle něj */
   background: none !important;
   border: none !important;
   box-shadow: none !important;
@@ -5257,8 +4904,7 @@ body.night-mode .logo-bubble img:hover {
   line-height: 1 !important;
 }
 
-/* Odkazy v menu - elegantní minimalistický vzhled s prostorem */
-.premium-theme .primary-nav__menu {
+.premium-theme .primary-nav__menu { /* Odkazy v menu - elegantní minimalistický vzhled s prostorem */
   gap: 12px !important;
 }
 
@@ -5272,10 +4918,10 @@ body.night-mode .logo-bubble img:hover {
   letter-spacing: 0.5px;
   padding: 8px 16px !important; /* Prostor kolem textu, aby nesplýval */
   position: relative;
+  transition: color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease !important;
 }
 
-/* Hover efekt - decentní zlatá linka od spodu přizpůsobená mezerám */
-.premium-theme .primary-nav__link::after,
+.premium-theme .primary-nav__link::after, /* Hover efekt - decentní zlatá linka od spodu přizpůsobená mezerám */
 .premium-theme .primary-nav__dropdown-toggle::after {
   content: '';
   position: absolute;
@@ -5288,26 +4934,37 @@ body.night-mode .logo-bubble img:hover {
 }
 
 .premium-theme .primary-nav__link:hover::after,
-.premium-theme .primary-nav__dropdown-toggle:hover::after {
+.premium-theme .primary-nav__link:focus-visible::after,
+.premium-theme .primary-nav__dropdown-toggle:hover::after,
+.premium-theme .primary-nav__dropdown-toggle:focus-visible::after {
   width: calc(100% - 32px); /* Končí před prázdným prostorem */
 }
 
 .premium-theme .primary-nav__link:hover,
-.premium-theme .primary-nav__dropdown-toggle:hover {
+.premium-theme .primary-nav__link:focus-visible,
+.premium-theme .primary-nav__dropdown-toggle:hover,
+.premium-theme .primary-nav__dropdown-toggle:focus-visible {
   color: #c5a059 !important;
-  transform: none !important;
+  background: rgba(197, 160, 89, 0.1) !important;
+  box-shadow: inset 0 -2px 0 rgba(197, 160, 89, 0.45) !important;
+  transform: translateY(-1px) !important;
+  outline: none;
 }
 
-/* Zvýraznění sekce Ceremonie */
-.premium-theme .premium-link-ceremony {
+.premium-theme .primary-nav__link:active,
+.premium-theme .primary-nav__dropdown-toggle:active {
+  transform: translateY(0) !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+}
+
+.premium-theme .premium-link-ceremony { /* Zvýraznění sekce Ceremonie */
   color: #b97c4d !important;
 }
 .premium-theme .premium-link-ceremony::after {
   background-color: #b97c4d;
 }
 
-/* Tlačítko rezervace */
-.premium-theme .primary-nav__link--cta {
+.premium-theme .primary-nav__link--cta { /* Tlačítko rezervace */
   background: linear-gradient(135deg, #7c1a1a, #4a0000) !important;
   color: #fff !important;
   padding: 10px 24px !important;
@@ -5323,12 +4980,18 @@ body.night-mode .logo-bubble img:hover {
   box-shadow: 0 6px 20px rgba(0,0,0,0.6) !important;
   transform: translateY(-2px) !important;
 }
+
+.premium-theme .primary-nav__link--cta:focus-visible {
+  background: linear-gradient(135deg, #992222, #660000) !important;
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.45), 0 6px 20px rgba(0,0,0,0.6) !important;
+  transform: translateY(-2px) !important;
+  outline: none;
+}
 .premium-theme .primary-nav__link--cta::after {
   display: none !important; /* Vypnutí hover linky pro toto tlačítko */
 }
 
-/* Dropdown menu */
-.premium-theme .primary-nav__dropdown-panel {
+.premium-theme .primary-nav__dropdown-panel { /* Dropdown menu */
   background: rgba(26, 15, 10, 0.98) !important;
   border: 1px solid rgba(197, 160, 89, 0.2) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
@@ -5344,18 +5007,61 @@ body.night-mode .logo-bubble img:hover {
   color: #c5a059 !important;
 }
 
+.premium-theme .primary-nav__dropdown-link:focus-visible {
+  background: rgba(197, 160, 89, 0.16) !important;
+  color: #c5a059 !important;
+  box-shadow: inset 3px 0 0 #c5a059;
+  outline: none;
+}
+
 .premium-theme .primary-nav__dropdown-link::after {
   display: none !important;
 }
 
-/* Vypnutí těch velkých tooltip bublin z původního kódu na nové liště */
-.premium-theme .primary-nav__link[data-tooltip]::after,
-.premium-theme .primary-nav__link[data-tooltip]::before {
+.premium-theme .primary-nav__link[data-tooltip]::before { /* Vypnutí těch velkých tooltip bublin z původního kódu na nové liště */
   display: none !important;
 }
 
-/* Mobilní menu úprava barev */
-@media (max-width: 920px) {
+.premium-theme .primary-nav__link[data-tooltip]::after {
+  display: none !important;
+}
+
+.premium-theme .primary-nav__utility-btn:hover,
+.premium-theme .primary-nav__utility-btn:focus-visible {
+  background: rgba(197, 160, 89, 0.16) !important;
+  border-color: #c5a059 !important;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.32), 0 0 0 2px rgba(197, 160, 89, 0.2) !important;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.premium-theme .primary-nav__utility-btn:active {
+  transform: translateY(0);
+}
+
+@media (min-width: 1101px) { /* Všechny desktopové navigace mají stejné pořadí a zarovnání prvků. */
+  .primary-nav.premium-theme .primary-nav__inner {
+    justify-content: flex-start !important;
+  }
+
+  .primary-nav.premium-theme .primary-nav__brand {
+    order: 1;
+    flex: 0 0 auto;
+  }
+
+  .primary-nav.premium-theme .primary-nav__menu {
+    order: 2;
+    flex: 1 1 auto;
+    justify-content: flex-end !important;
+    margin-left: 0 !important;
+  }
+
+  .primary-nav.premium-theme .primary-nav__utility-btn {
+    order: 3;
+  }
+}
+
+@media (max-width: 920px) { /* Mobilní menu úprava barev */
   .premium-theme .premium-brand-text {
     display: none !important;
   }
@@ -5365,10 +5071,7 @@ body.night-mode .logo-bubble img:hover {
     border: 1px solid rgba(197, 160, 89, 0.2) !important;
   }
 }
-/* =========================================================
-   PLOVOUCÍ TLAČÍTKO PRO HUDBU
-   ========================================================= */
-.music-toggle-btn {
+.music-toggle-btn { /* PLOVOUCÍ TLAČÍTKO PRO HUDBU */
   position: fixed;
   bottom: 20px;
   left: 20px; /* Umístěno vlevo dole */
@@ -5446,8 +5149,7 @@ body.night-mode .logo-bubble img:hover {
   border-color: #c5a059; /* Zvýraznění okraje při najetí */
 }
 
-/* Velikost samotné ikonky uvnitř */
-.music-toggle-btn img {
+.music-toggle-btn img { /* Velikost samotné ikonky uvnitř */
   width: auto;
   height: auto;
   object-fit: contain;
@@ -5495,10 +5197,7 @@ body.night-mode .logo-bubble img:hover {
   box-shadow: 0 8px 18px rgba(0,0,0,0.32);
   outline: none;
 }
-/* =========================================================
-   3D PRÉMIOVÉ TLAČÍTKO (Ceremonie)
-   ========================================================= */
-.btn-3d-premium {
+.btn-3d-premium { /* 3D PRÉMIOVÉ TLAČÍTKO (Ceremonie) */
   display: inline-flex;
   padding: 14px 36px;
   font-family: 'Tenor Sans', serif;
@@ -5510,13 +5209,11 @@ body.night-mode .logo-bubble img:hover {
   letter-spacing: 1.5px;
   text-decoration: none;
 
-  /* Barva tlačítka - měděno/kakaový přechod */
-  background: linear-gradient(145deg, #b97c4d, #8a5a32);
+  background: linear-gradient(145deg, #b97c4d, #8a5a32); /* Barva tlačítka - měděno/kakaový přechod */
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 
-  /* 3D efekt - vrstvení stínů tvoří tloušťku tlačítka */
-  box-shadow:
+  box-shadow: /* 3D efekt - vrstvení stínů tvoří tloušťku tlačítka */
     0 6px 0 #4a2e18, /* Spodní "hrana" (tloušťka) tlačítka */
     0 12px 20px rgba(0, 0, 0, 0.4), /* Prostorový stín na zemi */
     inset 0 2px 5px rgba(255, 255, 255, 0.3); /* Vnitřní odlesk nahoře */
@@ -5527,8 +5224,7 @@ body.night-mode .logo-bubble img:hover {
   margin-bottom: 6px; /* Místo pro pohyb dolů */
 }
 
-/* Efekt při najetí myší - tlačítko se lehce zvedne a rozzáří */
-.btn-3d-premium:hover {
+.btn-3d-premium:hover { /* Efekt při najetí myší - tlačítko se lehce zvedne a rozzáří */
   transform: translateY(-2px);
   background: linear-gradient(145deg, #c5a059, #9b6b3b);
   box-shadow:
@@ -5537,8 +5233,7 @@ body.night-mode .logo-bubble img:hover {
     inset 0 2px 5px rgba(255, 255, 255, 0.4);
 }
 
-/* Efekt při kliknutí - tlačítko se zamáčkne dolů */
-.btn-3d-premium:active {
+.btn-3d-premium:active { /* Efekt při kliknutí - tlačítko se zamáčkne dolů */
   transform: translateY(6px); /* Zmáčknutí směrem dolů o velikost hrany */
   box-shadow:
     0 0 0 #4a2e18, /* Spodní hrana "zmizí", protože je tlačítko zamáčklé */
@@ -5546,11 +5241,7 @@ body.night-mode .logo-bubble img:hover {
     inset 0 4px 8px rgba(0, 0, 0, 0.4); /* Vnitřní stín pro efekt propadnutí */
 }
 
-/* ========================================
-   MIGROVANO Z index.html (<style>)
-   ======================================== */
-
-.hero-wrapper {
+.hero-wrapper { /* MIGROVANO Z index.html (<style>) */
   display: flex; /* Nastaví způsob zobrazení prvku. */
   align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
   justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
@@ -5795,8 +5486,7 @@ body.night-mode .logo-bubble img:hover {
   background-blend-mode: normal; /* Zachová běžné prolnutí pozadí. */
 }
 
-/* Vypnutí parallaxu na mobilech pro lepší výkon */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Vypnutí parallaxu na mobilech pro lepší výkon */
   [style*="background-attachment: fixed"] {
     background-attachment: scroll !important;
   }
@@ -6208,15 +5898,6 @@ html:has(body.page-services) {
   scroll-padding-top: 100px;
 }
 
-.page-services .main-title-wrapper {
-  padding: 10px 20px;
-  text-align: center;
-  font-family: 'Montez', cursive;
-  color: #3e2f2a;
-  -webkit-text-stroke: 0.001em #000000;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 0 2px #000;
-}
-
 .page-services .main-title {
   margin: 0;
   font-size: clamp(2.5rem, 8vw, 7rem);
@@ -6415,11 +6096,7 @@ html:has(body.page-services) {
   box-shadow: 0 16px 38px rgba(45, 25, 10, 0.42) !important;
 }
 
-/* ========================================
-   MSGINFO SHARED UTILITIES
-   ======================================== */
-
-.msginfo-top-padding {
+.msginfo-top-padding { /* MSGINFO SHARED UTILITIES */
   padding-top: 70px;
 }
 
@@ -6488,30 +6165,6 @@ html:has(body.page-services) {
 
 .msginfo-gap-16 {
   padding-bottom: 16px;
-}
-
-.msginfo-card-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.msginfo-card-row--wrap {
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 24px;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.msginfo-card-col {
-  max-width: 220px;
-  width: 100%;
-}
-
-.msginfo-card-col--wide {
-  max-width: 320px;
 }
 
 .msginfo-note {
@@ -6705,31 +6358,33 @@ html:has(body.page-services) {
 
 .page-services-v2 .primary-nav.premium-theme .primary-nav__inner {
   justify-content: flex-start;
-  min-height: 54px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  min-height: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .page-services-v2 .primary-nav.premium-theme .primary-nav__menu {
-  order: 1;
-  flex: 0 0 auto;
-  justify-content: flex-start;
-  margin-right: auto;
+  order: 2;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  margin-left: 0;
+  margin-right: 0;
   z-index: 4;
 }
 
 .page-services-v2 .primary-nav.premium-theme .primary-nav__link,
 .page-services-v2 .primary-nav.premium-theme .primary-nav__dropdown-toggle {
-  padding: 6px 14px !important;
-  font-size: 0.9rem;
+  padding: 8px 16px !important;
+  font-size: 0.95rem;
 }
 
 .page-services-v2 .primary-nav.premium-theme .primary-nav__link--cta {
-  padding: 8px 16px !important;
-  font-size: 0.78rem !important;
+  padding: 10px 24px !important;
+  font-size: 0.85rem !important;
 }
 
 .page-services-v2 .primary-nav.premium-theme .primary-nav__brand {
+  order: 1;
   position: relative;
   left: auto;
   right: auto;
@@ -6749,9 +6404,9 @@ html:has(body.page-services) {
   position: static;
   padding-inline: 0;
   animation: none;
-  color: #f8e7cb !important;
-  text-shadow: 0 0 10px rgba(233, 183, 103, 0.34), 0 0 2px rgba(255, 255, 255, 0.18);
-  letter-spacing: 0.08em;
+  color: #f4ecd8 !important;
+  text-shadow: none;
+  letter-spacing: 1px;
   will-change: auto;
 }
 
@@ -6788,8 +6443,7 @@ html:has(body.page-services) {
   pointer-events: none;
 }
 
-/* HERO: hlavní banner s nadpisem + rychlými statistikami */
-.page-services-v2 .svc2-hero {
+.page-services-v2 .svc2-hero { /* HERO: hlavní banner s nadpisem + rychlými statistikami */
   margin: 24px 0 30px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 28px;
@@ -6916,8 +6570,7 @@ html:has(body.page-services) {
   font-size: 0.92rem;
 }
 
-/* FILTRY: vyhledávání, délka, řazení, reset */
-.page-services-v2 .svc2-filters {
+.page-services-v2 .svc2-filters { /* FILTRY: vyhledávání, délka, řazení, reset */
   padding: clamp(14px, 2vw, 22px);
   border-radius: 22px;
   border: 1px solid var(--svc2-border);
@@ -7020,8 +6673,7 @@ html:has(body.page-services) {
   color: #7a3c1f;
 }
 
-/* KATEGORIE A KARTY: rozložení sekcí a vzhled jednotlivých služeb */
-.page-services-v2 .svc2-groups {
+.page-services-v2 .svc2-groups { /* KATEGORIE A KARTY: rozložení sekcí a vzhled jednotlivých služeb */
   margin-top: 18px;
   display: grid;
   gap: 16px;
@@ -7404,8 +7056,7 @@ html:has(body.page-services) {
   transform: translateY(-2px);
 }
 
-/* RESPONSIVE: tabletové rozložení */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) { /* RESPONSIVE: tabletové rozložení */
   .page-services-v2 {
     --svc2-nav-safe-left: clamp(170px, 38vw, 250px);
   }
@@ -7431,8 +7082,7 @@ html:has(body.page-services) {
   }
 }
 
-/* RESPONSIVE: mobilní rozložení */
-@media (max-width: 720px) {
+@media (max-width: 720px) { /* RESPONSIVE: mobilní rozložení */
   .page-services-v2 {
     padding-top: 86px;
   }
@@ -7465,8 +7115,7 @@ html:has(body.page-services) {
   }
 }
 
-/* --- Custom: styling pro Google mapu (ladění s layoutem stránky) --- */
-.home-offer-location__map-card {
+.home-offer-location__map-card { /* --- Custom: styling pro Google mapu (ladění s layoutem stránky) --- */
   border-radius: 16px;
   padding: 14px;
   box-shadow: var(--box-shadow-medium);
@@ -7501,8 +7150,7 @@ html:has(body.page-services) {
   }
 }
 
-/* --- Home page: optimalizace pro úzké displeje --- */
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* --- Home page: optimalizace pro úzké displeje --- */
   .hero-wrapper {
     margin: 20px auto 28px auto;
     gap: 22px;
@@ -7660,8 +7308,7 @@ html:has(body.page-services) {
   }
 }
 
-/* Finální mobilní nastavení stránky O mně musí být za obecnými parallax breakpointy. */
-@media (max-width: 700px) {
+@media (max-width: 700px) { /* Finální mobilní nastavení stránky O mně musí být za obecnými parallax breakpointy. */
   .page-about .parallax-section {
     min-height: 310px !important;
     margin-top: 22px;
@@ -7693,8 +7340,7 @@ html:has(body.page-services) {
   }
 }
 
-/* Na užších displejích se hero vrací do kontejneru, aby se jeho obsah neořezával. */
-@media (max-width: 920px) {
+@media (max-width: 920px) { /* Na užších displejích se hero vrací do kontejneru, aby se jeho obsah neořezával. */
   .page-about .parallax-section {
     left: 50%;
     width: 100vw;

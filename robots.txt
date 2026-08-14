@@ -32,8 +32,8 @@ Disallow: /.*
 # ============================================
 # SITEMAP (řekne Googlu kde najít seznam stránek)
 # ============================================
-# AKTIVNÍ - sitemap.xml vytvořena 28. října 2025
-Sitemap: https://aura-michaell-massage.cz/sitemap.xml
+# AKTIVNÍ - sitemap.xml aktualizována 14. srpna 2026
+Sitemap: https://auramichaell.cz/sitemap.xml
 
 # ============================================
 # PRAVIDLA PRO KONKRÉTNÍ ROBOTY
@@ -77,5 +77,5 @@ User-agent: *
 # Google: https://www.google.com/webmasters/tools/robots-testing-tool
 # Online: https://technicalseo.com/tools/robots-txt/
 #
-# Vytvořeno: 28. října 2025
-# Web: https://aura-michaell-massage.cz
+# Aktualizováno: 14. srpna 2026
+# Web: https://auramichaell.cz

@@ -60,4 +60,4 @@ python tools/inline_section_comments.py
 
 ---
 
-**Poslední aktualizace:** 18. června 2026
+**Poslední aktualizace:** 14. srpna 2026
