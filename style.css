@@ -227,6 +227,11 @@ body { /* ZÁKLADNÍ STYLY */
   --parallax-image: url('galerie/caj.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
 }
 
+.parallax-myths {
+  --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.32), rgba(26,12,6,0.55));
+  --parallax-image: url('galerie/salon.webp');
+}
+
 .parallax-bonus {
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.0), rgba(26,12,6,0.0)); /* Určuje překryvný gradient parallax sekce. */
   --parallax-image: url('galerie/karty.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
@@ -531,6 +536,7 @@ header { /* 04. Navigation & Hero Components */
   gap: 12px; /* Nastaví mezery mezi položkami. */
   width: 25%; /* Definuje šířku prvku. */
   max-width: 320px; /* Omezí maximální šířku prvku. */
+  perspective: 900px;
 }
 .page-home .welcome-gallery img {
   flex: 0 0 auto; /* Obrázky drží přirozenou výšku v rámci sloupce. */
@@ -540,13 +546,100 @@ header { /* 04. Navigation & Hero Components */
   border: 2px solid #ffffff; /* Vykreslí rámeček kolem prvku. */
   object-fit: cover; /* Řídí přizpůsobení média do boxu. */
   box-shadow: 0 2px 8px rgba(0,0,0,0.18); /* Přidá stín prvku. */
-  transition: transform 0.2s ease; /* Nastaví animaci změn vlastností. */
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; /* Nastaví animaci změn vlastností. */
   cursor: pointer; /* Nastaví tvar kurzoru. */
   
 }
 .page-home .welcome-gallery img:hover,
 .page-home .welcome-gallery img:focus {
-  transform: scale(1.04); /* Transformuje prvek (posun, natočení, měřítko). */
+  border-color: var(--accent);
+  transform: perspective(700px) rotateX(-4deg) rotateY(4deg) rotateZ(var(--hover-tilt, 0deg)) translateZ(34px) translateY(-10px) scale(1.05); /* Transformuje prvek (posun, natočení, měřítko). */
+}
+
+.page-home .home-myths-gallery {
+  max-width: 1180px;
+  margin: 0 auto 72px;
+  padding: 48px 24px 56px;
+  text-align: center;
+}
+
+.page-home .home-myths-gallery.parallax-section > * {
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+.page-home .home-myths-gallery.parallax-section {
+  display: block;
+  color: #ffffff;
+  text-shadow: #000000 1px 1px 10px;
+}
+
+.page-home .home-myths-gallery__intro {
+  max-width: 680px;
+  margin: 0 auto 28px;
+}
+
+.page-home .home-myths-gallery__eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.page-home .home-myths-gallery h2 {
+  margin: 0 0 10px;
+  color: var(--dark);
+  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+  font-style: oblique;
+}
+
+.page-home .home-myths-gallery.parallax-section h2 {
+  color: #ffffff;
+  -webkit-text-stroke: 2px #000000;
+}
+
+.page-home .home-myths-gallery.parallax-section .home-myths-gallery__eyebrow {
+  color: #ffffff;
+}
+
+.page-home .home-myths-gallery__intro > p:last-child {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.6;
+}
+
+.page-home .home-myths-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  perspective: 900px;
+}
+
+.page-home .home-myths-gallery__grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 2px solid #3e2f2a;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 14px rgba(60, 30, 10, 0.2);
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.page-home .home-myths-gallery__grid img:hover,
+.page-home .home-myths-gallery__grid img:focus {
+  border-color: var(--accent);
+  transform: perspective(700px) rotateX(-4deg) rotateY(4deg) rotateZ(var(--hover-tilt, 0deg)) translateZ(34px) translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(60, 30, 10, 0.3);
 }
 
 @media (max-width: 1024px) { /* Responzivní úpravy pro welcome sekci */
@@ -625,6 +718,16 @@ header { /* 04. Navigation & Hero Components */
   .page-home .welcome-section .parallax-content h2 {
     text-align: center; /* Nadpis na střed na mobilu */
   }
+
+  .page-home .home-myths-gallery {
+    margin-bottom: 48px;
+    padding: 36px 12px 40px;
+  }
+
+  .page-home .home-myths-gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
 }
 
 .page-home .bonus-card-section { /* Bonusová karta */
@@ -636,6 +739,16 @@ header { /* 04. Navigation & Hero Components */
   padding: 24px 36px; /* Přidá vnitřní odsazení prvku. */
   border-radius: 20px; /* Zaoblí rohy prvku. */
   box-shadow: none; /* Přidá stín prvku. */
+  width: 100%;
+  text-align: center;
+}
+
+.page-home .bonus-card-section__copy {
+  max-width: 680px;
+  margin: 24px auto 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.7;
 }
 
 .card-3d-scene { /* 3D Karta s Three.js */
@@ -5624,6 +5737,8 @@ body.night-mode .logo-bubble img:hover {
   color: #3e2f2a; /* Nastaví barvu nadpisu. */
   margin-top: 0; /* Odstraní horní vnější odsazení. */
   margin-bottom: 20px; /* Přidá prostor pod nadpisem. */
+  text-decoration: underline;
+  text-decoration-color: rgba(85, 67, 67, 0.48);
 }
 
 .hero-intro p {
@@ -5632,7 +5747,6 @@ body.night-mode .logo-bubble img:hover {
   line-height: 1.7; /* Nastaví výšku řádku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   margin: 0; /* Odstraní vnější odsazení odstavce. */
-  font-weight: 600; /* Nastaví zvýrazněnou tloušťku písma. */
 }
 
 .merged-parallax-content {
@@ -5767,9 +5881,11 @@ body.night-mode .logo-bubble img:hover {
 
 .home-offer-location__content {
   display: grid; /* Nastaví mřížkové rozložení panelů. */
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Vytvoří dva pružné sloupce. */
-  gap: 24px; /* Nastaví mezeru mezi panely. */
+  grid-template-columns: 1fr; /* Jeden sloupec - panel pod sebou. */
+  gap: 48px; /* Větší mezera mezi panely pro luxusní vzhled. */
   padding: 0; /* Odstraní vnitřní odsazení kontejneru. */
+  max-width: 900px; /* Omezení maximální šířky pro lepší vzhled. */
+  margin: 0 auto; /* Centrování obsahu. */
 }
 
 .reveal-on-scroll {
@@ -5785,32 +5901,158 @@ body.night-mode .logo-bubble img:hover {
 
 .home-offer-location__panel {
   position: relative; /* Vytvoří pozicovací kontext panelu. */
-  overflow: hidden; /* Ořízne obsah a pozadí u zaoblených rohů. */
+  overflow: visible; /* Povoluje efekty přes hranice. */
   display: flex; /* Nastaví flexboxové rozložení panelu. */
   flex-direction: column; /* Uspořádá obsah panelu svisle. */
-  gap: 18px; /* Nastaví mezery mezi prvky panelu. */
-  padding: 28px; /* Přidá vnitřní odsazení panelu. */
-  border-radius: 28px; /* Zaoblí rohy panelu. */
-  border: 2px solid rgba(121, 42, 6, 0.35); /* Vykreslí jemný světlý okraj. */
-  box-shadow: 0 20px 45px rgba(25, 15, 9, 0.12); /* Přidá měkký stín panelu. */
-  background-size: cover; /* Přizpůsobí obrázkové pozadí panelu. */
-  background-blend-mode: normal; /* Zachová běžné prolnutí pozadí. */
+  gap: 0; /* Odstraňuje mezery mezi prvky - panel-wrapper je podává správně. */
+  padding: 0; /* Žádné odsazení na panelu - wrapper má padding. */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 242, 238, 0.98) 100%); /* Elegantní gradient pozadí. */
+  border-radius: 24px; /* Zaoblují rohy. */
+  border: 1px solid rgba(124, 74, 39, 0.15); /* Jemná hnědá hranice. */
+  box-shadow: 
+    0 20px 50px rgba(62, 47, 42, 0.15),
+    0 8px 25px rgba(124, 74, 39, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6); /* Luxusní vícesystémové stíny. */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hladký přechod při interakci. */
 }
 
 @media (max-width: 768px) { /* Vypnutí parallaxu na mobilech pro lepší výkon */
   [style*="background-attachment: fixed"] {
     background-attachment: scroll !important;
   }
+
+}
+
+.home-offer-location__panel--card {
+  position: relative;
+  overflow: hidden;
+  background: url('galerie/karty.webp') center/cover fixed;
+  background-attachment: fixed;
+  -webkit-mask-image: linear-gradient(90deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.35) 6%,
+      rgba(0,0,0,0.75) 18%,
+      rgba(0,0,0,1) 32%,
+      rgba(0,0,0,1) 68%,
+      rgba(0,0,0,0.75) 82%,
+      rgba(0,0,0,0.35) 94%,
+      rgba(0,0,0,0) 100%)
+    , linear-gradient(180deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.35) 6%,
+      rgba(0,0,0,0.75) 18%,
+      rgba(0,0,0,1) 32%,
+      rgba(0,0,0,1) 68%,
+      rgba(0,0,0,0.75) 82%,
+      rgba(0,0,0,0.35) 94%,
+      rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(90deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.35) 6%,
+      rgba(0,0,0,0.75) 18%,
+      rgba(0,0,0,1) 32%,
+      rgba(0,0,0,1) 68%,
+      rgba(0,0,0,0.75) 82%,
+      rgba(0,0,0,0.35) 94%,
+      rgba(0,0,0,0) 100%)
+    , linear-gradient(180deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.35) 6%,
+      rgba(0,0,0,0.75) 18%,
+      rgba(0,0,0,1) 32%,
+      rgba(0,0,0,1) 68%,
+      rgba(0,0,0,0.75) 82%,
+      rgba(0,0,0,0.35) 94%,
+      rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: multiply; /* Určuje způsob skládání masek ve WebKit prohlížečích. */
+  mask-composite: intersect; /* Nastaví, jak se kombinují masky ve standardních prohlížečích. */
+}
+
+.home-offer-location__panel--card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.40) 0%,
+    rgba(0, 0, 0, 0.50) 50%,
+    rgba(0, 0, 0, 0.60) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.home-offer-location__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+.home-offer-location__panel--map {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 242, 238, 0.98) 100%);
+  background-attachment: scroll;
+}
+
+/* Text styling pro věrnostní kartu s parallax pozadím */
+.home-offer-location__panel--card .home-offer-location__label {
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.home-offer-location__panel--card .home-offer-location__panel-title {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.home-offer-location__panel--card .home-offer-location__text {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.home-offer-location__panel--card .home-offer-location__pill {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .home-offer-location__panel::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url(galerie/latka.png) center/cover no-repeat;
-  opacity: 0.53;
   z-index: 0;
   pointer-events: none;
+}
+
+.home-offer-location__panel--card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.home-offer-location__panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px; /* Větší padding pro luxusní vzhled. */
+  position: relative;
+  z-index: 2;
 }
 
 .home-offer-location__panel > * {
@@ -5823,6 +6065,12 @@ body.night-mode .logo-bubble img:hover {
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(124, 74, 39, 0.08);
+}
+
+.home-offer-location__panel--card .home-offer-location__panel-head {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
 }
 
 .home-offer-location__label {
@@ -5848,15 +6096,18 @@ body.night-mode .logo-bubble img:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(137, 25, 21, 0.12);
+  background: linear-gradient(135deg, rgba(137, 25, 21, 0.12) 0%, rgba(137, 25, 21, 0.08) 100%);
   color: #891915;
   font-family: 'Raleway', sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   white-space: nowrap;
   border: 1px solid rgba(137, 25, 21, 0.73);
+  box-shadow: 0 4px 12px rgba(137, 25, 21, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .home-offer-location__pill--accent {
@@ -5867,9 +6118,10 @@ body.night-mode .logo-bubble img:hover {
 
 .home-offer-location__card {
   align-self: center;
-  width: min(100%, 320px);
-  min-height: 220px;
-  margin: 0 auto;
+  width: min(100%, 280px);
+  min-height: 240px;
+  margin: 12px auto 0;
+  filter: drop-shadow(0 10px 30px rgba(124, 74, 39, 0.2)); /* Luxusní stín kolem karty. */
 }
 
 .home-offer-location__text {
@@ -5885,22 +6137,45 @@ body.night-mode .logo-bubble img:hover {
   width: fit-content;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
+  padding: 14px 28px;
   border-radius: 999px;
-  border: 1.5px solid rgba(90, 13, 11, 0.73);
-  background: linear-gradient(135deg, #891915, #a33d2f);
+  border: 1.5px solid rgba(137, 25, 21, 0.8);
+  background: linear-gradient(135deg, #891915 0%, #a33d2f 100%);
   color: #fff;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 10px 20px rgba(137, 25, 21, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 12px 28px rgba(137, 25, 21, 0.3),
+    0 4px 12px rgba(137, 25, 21, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-offer-location__link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+}
+
+.home-offer-location__link:hover::before {
+  animation: shine 0.5s ease;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .home-offer-location__link:hover,
 .home-offer-location__link:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 24px rgba(137, 25, 21, 0.26);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 16px 36px rgba(137, 25, 21, 0.4),
+    0 6px 16px rgba(137, 25, 21, 0.2);
 }
 
 .home-offer-location__map-card {
@@ -5921,17 +6196,16 @@ body.night-mode .logo-bubble img:hover {
 }
 
 .home-offer-location__map {
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.10);
+  box-shadow: 
+    0 12px 32px rgba(124, 74, 39, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
   width: 100%;
-  height: 260px;
+  height: 320px; /* Větší výška mapy. */
   position: relative;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.42), rgba(250,235,218,0.36)),
-    url('galerie/papir_poz.webp') center/cover no-repeat;
-  background-size: cover;
-  background-blend-mode: normal;
+  border: 1px solid rgba(124, 74, 39, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
 .home-offer-location__map iframe {
@@ -5953,14 +6227,231 @@ body.night-mode .logo-bubble img:hover {
   line-height: 1.6;
 }
 
+.home-offer-location__details {
+  display: block;
+}
+
+.home-offer-location__details > div {
+  min-width: 0;
+}
+
+.home-offer-location__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
 .home-offer-location__address-line {
   font-size: 1.15rem;
   color: #7c4a27;
 }
 
-@media (max-width: 900px) {
-  .home-offer-location__content {
+/* Sekce s recenzemi a mapou */
+.reviews-and-map-section {
+  padding: 72px 20px 88px;
+  margin: 40px auto 80px;
+}
+
+.reviews-and-map-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  max-width: 1240px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.reviews-panel {
+  min-width: 0;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: 20px;
+  background:rgba(124, 74, 39, 0.33);
+  border: 1px solid rgba(0, 0, 0, 0.67);
+  box-shadow: 0 18px 42px rgba(62, 47, 42, 0.10);
+}
+
+.reviews-panel-head {
+  padding-bottom: 20px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(124, 74, 39, 0.14);
+}
+
+.reviews-label,
+.map-label {
+  margin: 0 0 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a5835;
+}
+
+.reviews-title {
+  margin: 0;
+  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  line-height: 1.35;
+  color: #3e2f2a;
+  text-wrap: balance;
+}
+
+.map-panel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(24px, 3vw, 36px);
+  background:rgba(124, 74, 39, 0.33);
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.67);
+  box-shadow: 0 18px 42px rgba(62, 47, 42, 0.10);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-panel-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(124, 74, 39, 0.14);
+}
+
+.map-title {
+  margin: 0;
+  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  line-height: 1.35;
+  color: #3e2f2a;
+  text-wrap: balance;
+}
+
+.map-location {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 7px 11px;
+  border-radius: 6px;
+  background: rgba(124, 74, 39, 0.08);
+  color: #8a5835;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid rgba(124, 74, 39, 0.35);
+  box-shadow: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
+}
+
+.map-embed {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(62, 47, 42, 0.14);
+  width: 100%;
+  height: 300px;
+  position: relative;
+  border: 1px solid rgba(124, 74, 39, 0.1);
+}
+
+.map-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.map-address {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  color: #4f3d35;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.map-address-line {
+  font-size: 1.15rem;
+  color: #7c4a27;
+}
+
+.map-link {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 6px;
+  border: 1px solid #891915;
+  background: #891915;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 18px rgba(137, 25, 21, 0.20);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+}
+
+.map-link:hover::before {
+  animation: shine 0.5s ease;
+}
+
+.map-link:hover,
+.map-link:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(137, 25, 21, 0.28);
+}
+
+@media (max-width: 1024px) {
+  .reviews-and-map-container {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews-and-map-section {
+    padding: 48px 14px 60px;
+    margin: 24px auto 56px;
+  }
+
+  .reviews-panel,
+  .map-panel {
+    padding: 22px 16px;
+    border-radius: 16px;
+  }
+
+  .map-embed {
+    height: 240px;
+  }
+
+  .map-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+  .home-offer-location__panel--map {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .home-offer-location__section-title {
@@ -5968,7 +6459,7 @@ body.night-mode .logo-bubble img:hover {
     overflow-wrap: anywhere;
     text-wrap: balance;
   }
-}
+
 
 @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
   .home-offer-location__header.reveal-on-scroll {

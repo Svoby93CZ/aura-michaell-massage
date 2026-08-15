@@ -48,7 +48,7 @@
 </head>
 <body class="page-home">
   <!-- Hlavní navigační panel -->
-   <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
+  <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
       <button id="scrollTopBtn" title="Zpět nahoru" class="primary-nav__utility-btn primary-nav__utility-btn--scroll" type="button" aria-label="Zpět nahoru">↑</button>
       <a href="#hero" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
@@ -107,62 +107,14 @@
         </div>
         <div style="height: 20px;"></div>
         <div class="hero-intro">
-          <h2 style="text-decoration: underline; text-decoration-color: rgba(85, 67, 67, 0.48);">Nechte starosti odejít.</h2>
+          <h2>Nechte starosti odejít.</h2>
           <p>
-            V salonu vytvářím prostředí, kde se zavřou dveře před každodenním shonem a kde se staráte jen o sebe.
+            V salonu vytvářím prostředí, kde se zavřou dveře před každodenním shonem a kde se staráte jen o sebe.<br>
             Dopřejte si chvíli, ve které se tělo i mysl znovu sladí.
           </p>
         </div>
       </div>
     </section>
-
-<!-- Karta a mapa -->
-    <section id="offer-location" class="home-offer-location" style="padding: 60px;">
-      <div class="home-offer-location__header reveal-on-scroll">
-        <h2 class="home-offer-location__section-title">Věrnostní výhoda i pohodlné nalezení salonu</h2>
-        <p class="home-offer-location__section-copy" style="font-weight: bold;">
-          Každá návštěva je pro mě příležitost vytvořit klidný prostor. Zde najdete nejen naši adresu, ale také výhodu za opakované návštěvy.
-        </p>
-      </div>
-      <!-- Karta a mapa -->
-      <div class="home-offer-location__content">
-        <!-- Věrnostní karta -->
-        <article class="home-offer-location__panel home-offer-location__panel--card reveal-on-scroll">
-          <div class="home-offer-location__panel-head">
-            <div>
-              <p class="home-offer-location__label">Věrnostní karta</p>
-              <h3 class="home-offer-location__panel-title">Po deseti masážích</h3>
-            </div>
-            <span class="home-offer-location__pill">Sleva 200 Kč</span>
-          </div>
-          <div id="card-3d-container" class="card-3d-scene home-offer-location__card"></div>
-          <div class="home-offer-location__text">
-            <p>Každá další návštěva vás přibližuje k výhodné slevě.<br>
-            Věrnostní karta je jednoduchá, bez zbytečných formalit.</p>
-          </div>
-          <a class="home-offer-location__link" href="msginfo.html">Prohlédnout služby</a>
-        </article>
-        <!-- Mapa -->
-        <article class="home-offer-location__panel home-offer-location__panel--map reveal-on-scroll">
-          <div class="home-offer-location__panel-head">
-            <div>
-              <p class="home-offer-location__label">Najděte mě snadno</p>
-              <h3 class="home-offer-location__panel-title">Kde mě najdete</h3>
-            </div>
-            <span class="home-offer-location__pill home-offer-location__pill--accent">Bruntál</span>
-          </div>
-            <div style="border: 2px solid rgb(0, 0, 0);" class="home-offer-location__map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <div class="home-offer-location__address">
-              <span class="home-offer-location__address-line">Šmilovského 663/1</span>
-              <span>792 01 Bruntál</span>
-            </div>
-            <a class="home-offer-location__link" href="https://maps.google.com/?q=Šmilovského+663%2F1+Bruntál" target="_blank" rel="noopener noreferrer">Otevřít v mapách</a>
-        </article>
-      </div>
-    </section>
-
     <!-- Přivítání -->
     <section class="parallax-section parallax-welcome-intro welcome-section" aria-label="Přivítání v salonu">
       <h2 class="welcome-section__title">Přivítáme se</h2>
@@ -185,7 +137,58 @@
         </div>
       </div>
     </section>
-
+    <!-- Galerie mýtů o sportovní masáži -->
+    <section class="parallax-section parallax-myths home-myths-gallery" aria-labelledby="myths-gallery-title">
+      <div class="home-myths-gallery__intro reveal-on-scroll">
+        <h2 id="myths-gallery-title">Mýty o sportovní masáži</h2>
+        <p style="text-shadow: 2px 2px 2px rgb(0, 0, 0)">Prohlédněte si krátký přehled nejčastějších představ o sportovní masáži.</p>
+      </div>
+      <div class="home-myths-gallery__grid" role="group" aria-label="Mýty o sportovní masáži">
+        <img src="galerie/sm-m1.webp" alt="Mýtus o sportovní masáži" data-lightbox="sport-massage-myths" data-full="galerie/sm-m1.webp" loading="lazy" decoding="async">
+        <img src="galerie/sm-m2.webp" alt="Mýtus 1 o sportovní masáži" data-lightbox="sport-massage-myths" data-full="galerie/sm-m2.webp" loading="lazy" decoding="async">
+        <img src="galerie/sm-m3.webp" alt="Mýtus 2 o sportovní masáži" data-lightbox="sport-massage-myths" data-full="galerie/sm-m3.webp" loading="lazy" decoding="async">
+        <img src="galerie/sm-m4.webp" alt="Mýtus 3 o sportovní masáži" data-lightbox="sport-massage-myths" data-full="galerie/sm-m4.webp" loading="lazy" decoding="async">
+      </div>
+    </section>
+    <!-- Bonusová sekce s 3D kartou -->
+    <section class="parallax-section parallax-bonus bonus-card-section" aria-labelledby="bonus-card-title">
+      <div class="parallax-content">
+        <h2 id="bonus-card-title" style="-webkit-text-stroke: 0.1rem black;text-shadow: 2px 2px 4px rgb(255, 255, 255)">Věrnostní karta</h2>
+        <div id="card-3d-container" class="card-3d-scene" role="img" aria-label="Interaktivní 3D karta se sportovní masáží"></div>
+        <p style="text-shadow: 2px 2px 2px rgb(255, 255, 255); color: black;font-weight: bolder;">Každý zákazník získává věrnostní kartu, která mu přináší výhody při opakovaných návštěvách.</p>
+      </div>
+    </section>
+    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+    <section class="reviews-and-map-section" aria-labelledby="reviews-and-map-title">
+      <div class="reviews-and-map-container">
+        <!-- Google Reviews -->
+        <div class="reviews-panel">
+          <div class="reviews-panel-head">
+            <p class="reviews-label">Zkušenosti klientů</p>
+            <h2 id="reviews-and-map-title" class="reviews-title">Co říkají návštěvníci</h2>
+          </div>
+          <script src="https://elfsightcdn.com/platform.js" async></script>
+          <div class="elfsight-app-b275f04e-832a-452d-91ed-1fdc07117847" data-elfsight-app-lazy></div>
+        </div>
+        <!-- Mapa -->
+        <article class="map-panel">
+          <div class="map-panel-head">
+            <p class="map-label">Najděte mě snadno</p>
+            <h3 class="map-title">Kde mě najdete</h3>
+            <span class="map-location">Bruntál</span>
+          </div>
+          <div class="map-embed">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="map-address">
+            <span class="map-address-line">Šmilovského 663/1</span>
+            <span>792 01 Bruntál</span>
+          </div>
+          <a class="map-link" href="https://maps.google.com/?q=Šmilovského+663%2F1+Bruntál" target="_blank" rel="noopener noreferrer">Otevřít v mapách</a>
+        </article>
+      </div>
+    </section>
+    
     <!-- IMPRESSUM / PRÁVNÍ ÚDAJE -->
     <div style="padding: 50px;"></div>
     <section style="border: 1.5px solid rgb(0, 0, 0);" id="impressum" class="section imprint home-impressum" aria-label="Impressum a právní údaje">

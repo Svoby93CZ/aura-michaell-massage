@@ -3,19 +3,23 @@ console.log('[DEBUG] main.js loaded');
 document.addEventListener('DOMContentLoaded', () => {
   console.log('[DEBUG] DOMContentLoaded fired');
 
-  const shopThumbnails = document.querySelectorAll('.page-shop .shop-gallery img');
+  const shopThumbnails = document.querySelectorAll(
+    '.page-shop .shop-gallery img, .page-home .welcome-gallery img, .page-home .home-myths-gallery__grid img'
+  );
   const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (shopThumbnails.length && supportsHover && !prefersReducedMotion) {
     shopThumbnails.forEach((thumbnail) => {
+      const thumbnailScale = thumbnail.matches('.page-home .welcome-gallery img, .page-home .home-myths-gallery__grid img') ? 1.05 : 1.1;
+
       thumbnail.addEventListener('pointerenter', () => {
         thumbnail.classList.add('is-3d-active');
         const hoverTilt = Math.random() < 0.5 ? -2 : 2;
         thumbnail.style.setProperty('--hover-tilt', `${hoverTilt}deg`);
         thumbnail.style.zIndex = '5';
         thumbnail.style.transition = 'transform 0.22s ease-out, border-color 0.25s ease';
-        thumbnail.style.transform = 'perspective(700px) rotateX(-4deg) rotateY(4deg) rotateZ(var(--hover-tilt)) translateZ(34px) translateY(-10px) scale(1.1)';
+        thumbnail.style.transform = `perspective(700px) rotateX(-4deg) rotateY(4deg) rotateZ(var(--hover-tilt)) translateZ(34px) translateY(-10px) scale(${thumbnailScale})`;
       });
 
       thumbnail.addEventListener('pointermove', (event) => {
@@ -25,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const rotateY = x * 14;
         const rotateX = y * -14;
 
-        thumbnail.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(var(--hover-tilt, 0deg)) translateZ(34px) translateY(-10px) scale(1.1)`;
+        thumbnail.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(var(--hover-tilt, 0deg)) translateZ(34px) translateY(-10px) scale(${thumbnailScale})`;
       });
 
       thumbnail.addEventListener('pointerleave', () => {
