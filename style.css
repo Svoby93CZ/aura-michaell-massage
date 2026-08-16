@@ -105,13 +105,14 @@ body { /* ZÁKLADNÍ STYLY */
 
 .body_ceremonie { /* ZÁKLADNÍ STYLY */
   margin: 0; /* Odsadí prvek od okolního obsahu. */
-  padding: 0 var(--pad) 40px; /* Přidá vnitřní odsazení prvku. */
+  padding: 0 var(--pad); /* Přidá vnitřní odsazení prvku (bottom 0 kvůli sticky footeru, viz sdílené pravidlo výše). */
   padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
   font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
   background: url('ceremonie/pozadi.webp') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
 }
+
 .container {
   width: 100%; /* Definuje šířku prvku. */
   max-width: 1180px; /* Omezí maximální šířku prvku. */
@@ -4859,7 +4860,7 @@ body.night-mode .logo-bubble img:hover {
 
 @media (max-width: 768px) { /* Mobil optimalizace */
   .body_ceremonie {
-    padding: 0 clamp(8px, 2vw, 12px) clamp(24px, 5vw, 40px);
+    padding: 0 clamp(8px, 2vw, 12px);
     padding-top: 80px;
   }
 
@@ -4880,7 +4881,7 @@ body.night-mode .logo-bubble img:hover {
 
 @media (max-width: 480px) {
   .body_ceremonie {
-    padding: 0 8px 24px;
+    padding: 0 8px;
     padding-top: 70px;
   }
 
