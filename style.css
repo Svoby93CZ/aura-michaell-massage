@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
   Přehled stylového průvodce
   01. Proměnné tématu
   02. Základní prvky
@@ -108,7 +108,7 @@ body { /* ZÁKLADNÍ STYLY */
   padding: 0 var(--pad); /* Přidá vnitřní odsazení prvku (bottom 0 kvůli sticky footeru, viz sdílené pravidlo výše). */
   padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
   font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
-  background: url('ceremonie/pozadi.webp') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
+  background: url('galerie/ceremonie/pozadi.webp') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
 }
@@ -240,7 +240,7 @@ body { /* ZÁKLADNÍ STYLY */
 
 .parallax-vouchers {
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.0), rgba(26,12,6,0.0)); /* Určuje překryvný gradient parallax sekce. */
-  --parallax-image: url('Poukazy/Poukaz 1000,-.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
+  --parallax-image: url('galerie/Poukazy/Poukaz 1000,-.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
   margin-top: -40px; /* Posune parallax výše */
 }
 
@@ -3366,24 +3366,24 @@ footer img {
     display: block; /* Nastaví způsob zobrazení prvku. */
   }
 
-  .cenik-mobile-item.bg-masaz-zada      { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmz.webp') center/cover no-repeat; } /* Přidané definice obrázků pozadí pro mobilní zobrazení */
-  .cenik-mobile-item.bg-masaz-zada-sije { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmzs.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-zada-sije-dkz  { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmzsdkz.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-zada-sije-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmzsdkp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkz { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmdkz.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmdkp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-hk { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmhk.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-zs { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/smzs.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-s { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/sms.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-zs-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/smzsdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-smdkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/smdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-smhkr { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/smhkr.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-bankovani { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/banky.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-zada      { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmz.webp') center/cover no-repeat; } /* Přidané definice obrázků pozadí pro mobilní zobrazení */
+  .cenik-mobile-item.bg-masaz-zada-sije { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzs.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-zada-sije-dkz  { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzsdkz.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-zada-sije-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzsdkp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkzp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-dkz { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkz.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-dkp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-hk { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmhk.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-sportovni-zs { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smzs.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-sportovni-s { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/sms.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-sportovni-zs-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smzsdkzp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-smdkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smdkzp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-smhkr { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smhkr.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-bankovani { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/banky.webp') center/cover no-repeat; }
 
-  .cenik-mobile-item.bg-relaxacni-oblicej { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/rmod.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-parafinovy-zabal-rukou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/pzr.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-parafinovy-zabal-nohou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/pzn.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-relaxacni-oblicej { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/rmod.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-parafinovy-zabal-rukou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/pzr.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-parafinovy-zabal-nohou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/pzn.webp') center/cover no-repeat; }
 
   .cenik-mobile-item[class*="bg-"] { /* Společné styly pro položky s pozadím v mobilní verzi */
     color: #fff; /* Nastaví barvu textu. */
@@ -3507,25 +3507,25 @@ footer img {
     display: block; /* Nastaví způsob zobrazení prvku. */
   }
 
-  .cenik-mobile-item.bg-masaz-zada      { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmz.webp') center/cover no-repeat; } /* Přidané definice obrázků pozadí pro mobilní zobrazení */
-  .cenik-mobile-item.bg-masaz-zada-sije { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmzs.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-zada-sije-dkz  { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmzsdkz.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-zada-sije-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmzsdkp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkz { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmdkz.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmdkp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-hk { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/kmhk.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-zs { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/smzs.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-s { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/sms.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-zs-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/smzsdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-smdkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/smdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-smhkr { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/smhkr.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-bankovani { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/banky.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-lavove-kameny { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/lk.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-antistresova-hlava { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/amh.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-relaxacni-oblicej { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/rmod.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-parafinovy-zabal-rukou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/pzr.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-parafinovy-zabal-nohou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('masaze/pzn.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-zada      { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmz.webp') center/cover no-repeat; } /* Přidané definice obrázků pozadí pro mobilní zobrazení */
+  .cenik-mobile-item.bg-masaz-zada-sije { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzs.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-zada-sije-dkz  { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzsdkz.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-zada-sije-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzsdkp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkzp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-dkz { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkz.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-dkp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-hk { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmhk.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-sportovni-zs { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smzs.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-sportovni-s { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/sms.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-sportovni-zs-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smzsdkzp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-smdkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smdkzp.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-masaz-smhkr { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smhkr.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-bankovani { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/banky.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-lavove-kameny { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/lk.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-antistresova-hlava { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/amh.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-relaxacni-oblicej { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/rmod.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-parafinovy-zabal-rukou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/pzr.webp') center/cover no-repeat; }
+  .cenik-mobile-item.bg-parafinovy-zabal-nohou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/pzn.webp') center/cover no-repeat; }
 
   .cenik-mobile-item[class*="bg-"] { /* Společné styly pro položky s pozadím v mobilní verzi */
     color: #fff; /* Nastaví barvu textu. */

@@ -13,8 +13,8 @@ Allow: /index.html
 Allow: /msginfo.html
 Allow: /privacy-policy.html
 Allow: /galerie/
-Allow: /masaze/
-Allow: /Poukazy/
+Allow: /galerie/masaze/
+Allow: /galerie/Poukazy/
 
 # Zakázané stránky (indexovat NE)
 Disallow: /tools/
@@ -42,8 +42,8 @@ Sitemap: https://auramichaell.cz/sitemap.xml
 # Google Image Bot - povolte indexování obrázků
 User-agent: Googlebot-Image
 Allow: /galerie/
-Allow: /masaze/
-Allow: /Poukazy/
+Allow: /galerie/masaze/
+Allow: /galerie/Poukazy/
 Allow: /*.jpg
 Allow: /*.jpeg
 Allow: /*.png

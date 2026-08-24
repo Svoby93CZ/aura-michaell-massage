@@ -16,8 +16,9 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 ├── main.js                 # JavaScript funkcionalita
 ├── card-3d.js              # 3D karta / vizuální efekty
 ├── galerie/                # Obrázky pro galerii
-├── masaze/                 # Obrázky masáží
-├── Poukazy/                # Dárkové poukazy
+│   ├── masaze/             # Obrázky masáží
+│   ├── ceremonie/          # Obrázky ceremonií
+│   └── Poukazy/            # Dárkové poukazy
 └── tools/                  # Nástroje pro údržbu kódu
     ├── _audit-unused-css.ps1
     └── inline_section_comments.py
@@ -38,7 +39,7 @@ Aktualizace ceníků probíhají v souboru [msginfo.html](msginfo.html) ve dvou 
 1. desktop zobrazení.
 2. mobilní karty.
 
-Nové obrázky přidávejte podle účelu do složek [galerie/](galerie/), [masaze/](masaze/) nebo [Poukazy/](Poukazy/).
+Nové obrázky přidávejte podle účelu do složek [galerie/](galerie/), [galerie/masaze/](galerie/masaze/) nebo [galerie/Poukazy/](galerie/Poukazy/).
 
 Pro sjednocení inline komentářů v CSS použijte:
 
