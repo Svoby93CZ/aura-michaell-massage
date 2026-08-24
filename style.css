@@ -2109,11 +2109,6 @@ footer img {
   flex-wrap: wrap;
 }
 
-.site-footer__music-toggle {
-  order: 0;
-  flex: 0 0 auto;
-}
-
 .site-footer__counter {
   order: 1;
   display: inline-flex;
@@ -4337,12 +4332,6 @@ body.night-mode .primary-nav__dropdown-panel {
     order: 2;
   }
 
-  .primary-nav__utility-btn--music {
-    order: 4;
-    width: 40px;
-    height: 36px;
-  }
-
   .primary-nav__menu {
     position: absolute;
     top: calc(100% + 12px);
@@ -5496,25 +5485,6 @@ body.night-mode .logo-bubble img:hover {
     border: 1px solid rgba(197, 160, 89, 0.2) !important;
   }
 }
-.music-toggle-btn { /* PLOVOUCÍ TLAČÍTKO PRO HUDBU */
-  position: fixed;
-  bottom: 20px;
-  left: 20px; /* Umístěno vlevo dole */
-  z-index: 9999;
-  background: rgba(26, 15, 10, 0.85); /* Tmavý poloprůhledný základ */
-  border: 1px solid rgba(197, 160, 89, 0.5); /* Zlatavý okraj */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
 .primary-nav__utility-btn {
   border: 1px solid rgba(255,248,242,0.45);
   background: rgba(0,0,0,0.26);
@@ -5542,52 +5512,12 @@ body.night-mode .logo-bubble img:hover {
   z-index: auto;
 }
 
-.primary-nav__utility-btn--music {
-  position: static;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  width: 42px;
-  height: 38px;
-  z-index: auto;
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
-}
-
 .primary-nav__utility-btn--scroll:hover,
-.primary-nav__utility-btn--music:hover,
-.primary-nav__utility-btn--scroll:focus-visible,
-.primary-nav__utility-btn--music:focus-visible {
+.primary-nav__utility-btn--scroll:focus-visible {
   transform: translateY(-1px);
   background: rgba(0,0,0,0.4);
   box-shadow: 0 8px 18px rgba(0,0,0,0.32);
   outline: none;
-}
-
-.primary-nav__utility-btn--music img {
-  width: 20px;
-  height: 20px;
-}
-
-.music-toggle-btn:hover {
-  transform: scale(1.1);
-  border-color: #c5a059; /* Zvýraznění okraje při najetí */
-}
-
-.music-toggle-btn img { /* Velikost samotné ikonky uvnitř */
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  transition: opacity 0.2s ease;
-}
-
-.primary-nav .primary-nav__utility-btn--music img {
-  width: 20px;
-  height: 20px;
-}
-
-.primary-nav .primary-nav__utility-btn--music:hover {
-  transform: translateY(-1px) !important;
 }
 
 .primary-nav #scrollTopBtn.primary-nav__utility-btn--scroll {

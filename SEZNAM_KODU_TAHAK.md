@@ -106,7 +106,7 @@ Tady v projektu se používá hlavně `button` pro menu, zobrazení dropdownu, s
 ### Základní atributy
 
 - `class` - přiřazení CSS tříd. Např. `class="primary-nav__link"`.
-- `id` - unikátní identifikátor prvku. Např. `id="hero"`, `id="music-toggle"`.
+- `id` - unikátní identifikátor prvku. Např. `id="hero"`, `id="scrollTopBtn"`.
 - `style` - inline CSS přímo na prvku; používá se občas pro jednoduché jednorázové úpravy.
 - `lang` - jazyk dokumentu: `lang="cs"`
 - `charset` - znaková sada: `charset="UTF-8"`
@@ -158,12 +158,12 @@ Příklad z projektu:
 Příklady:
 
 ```html
-<button class="music-toggle-btn" data-music-toggle>
-  <img src="galerie/play.webp" data-music-icon alt="Play">
+<button class="primary-nav__toggle" data-nav-toggle>
+  <span class="primary-nav__toggle-icon"></span>
 </button>
 ```
 
-Díky `data-music-toggle` a `data-music-icon` JavaScript ví, který tlačítko ovládat a který obrázek změnit.
+Díky `data-nav-toggle` JavaScript ví, které tlačítko ovládat.
 
 ### SVG atributy
 
@@ -340,11 +340,10 @@ Tento vzor se používá pro menu, dropdowny a další interaktivní komponenty.
 ### Typický vzor z projektu: práce s `data-*`
 
 ```js
-const musicButton = document.querySelector('[data-music-toggle]');
-const musicIcon = document.querySelector('[data-music-icon]');
+const navToggle = document.querySelector('[data-nav-toggle]');
 
-musicButton.addEventListener('click', () => {
-  musicIcon.src = 'galerie/play.webp';
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('is-active');
 });
 ```
 
@@ -463,30 +462,7 @@ To je praktický příklad:
 - práce s `dataset.full`
 - klávesová navigace `Escape`, `ArrowRight`, `ArrowLeft`
 
-#### 4. Hudba na pozadí a přepínání ikon
-
-```js
-const bgMusic = document.getElementById('bg-music');
-const musicIcons = Array.from(document.querySelectorAll('[data-music-icon]'));
-
-musicToggleButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    if (bgMusic.paused) {
-      bgMusic.play();
-    } else {
-      bgMusic.pause();
-    }
-  });
-});
-```
-
-Zajímavé je, že projekt:
-
-- mění obrázek podle stavu přehrávání (`play.webp` / `pause.webp`)
-- čeká na první interakci uživatele kvůli omezení autoplayu
-- používá `catch` k zpracování chyb, kdy prohlížeč hudbu zablokuje
-
-#### 5. Animace při scrollování a lazy loading
+#### 4. Animace při scrollování a lazy loading
 
 ```js
 const revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -514,7 +490,7 @@ Tady se projekt používá:
 - `loading="lazy"` pro zpožděné načtení obrázků
 - `prefers-reduced-motion` pro lepší přístupnost
 
-#### 6. SVG a animace loga
+#### 5. SVG a animace loga
 
 Příklad z logo animace:
 

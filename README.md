@@ -18,7 +18,6 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 ├── galerie/                # Obrázky pro galerii
 ├── masaze/                 # Obrázky masáží
 ├── Poukazy/                # Dárkové poukazy
-├── sound/                  # Zvukové soubory
 └── tools/                  # Nástroje pro údržbu kódu
     ├── _audit-unused-css.ps1
     └── inline_section_comments.py
