@@ -56,9 +56,20 @@ body { /* ZÁKLADNÍ STYLY */
   padding: 0 var(--pad) 40px; /* Přidá vnitřní odsazení prvku. */
   padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
   font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
-  background: url('galerie/papir_poz.webp') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
+}
+
+body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rotací, aby pokrylo celou obrazovku. */
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vh;
+  height: 100vw;
+  transform: translate(-50%, -50%) rotate(90deg);
+  background: url('galerie/papir_poz.webp') center/cover no-repeat;
+  z-index: -1;
 }
 
 .page-home {
@@ -2854,7 +2865,6 @@ footer img {
 }
 
 .section { /* IMPRESSUM & PRIVACY */
-  padding: 3rem 1rem; /* Přidá vnitřní odsazení prvku. */
   max-width: 800px; /* Omezí maximální šířku prvku. */
   margin: 0 auto; /* Odsadí prvek od okolního obsahu. */
   color: #4b3a2e; /* Nastaví barvu textu. */
@@ -6180,6 +6190,10 @@ body.night-mode .logo-bubble img:hover {
 
 /* Sekce s recenzemi a mapou */
 .reviews-and-map-section {
+  /* Stejné proměnné pro efekt ražby jako má impressum */
+  --emboss-dark: rgba(28, 14, 5, 0.45);
+  --emboss-light: rgba(255, 255, 255, 0.85);
+  --emboss-text: rgba(0, 0, 0, 0.8);
   padding: 72px 20px 88px;
   margin: 40px auto 80px;
 }
@@ -6199,7 +6213,11 @@ body.night-mode .logo-bubble img:hover {
   border-radius: 20px;
   background:rgba(124, 74, 39, 0.33);
   border: 1px solid rgba(0, 0, 0, 0.67);
-  box-shadow: 0 18px 42px rgba(62, 47, 42, 0.10);
+  /* Vyražený/engraved efekt panelu shodný s .embossed-badge */
+  box-shadow:
+    0 18px 42px rgba(62, 47, 42, 0.10),
+    inset 2px 2px 5px var(--emboss-dark),
+    inset -2px -2px 5px var(--emboss-light);
 }
 
 .reviews-panel-head {
@@ -6216,7 +6234,11 @@ body.night-mode .logo-bubble img:hover {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #8a5835;
+  color: var(--emboss-text);
+  /* Vyražený text - stejný efekt jako .embossed-label */
+  text-shadow:
+    -1px -1px 1px var(--emboss-dark),
+    1px 1px 1px var(--emboss-light);
 }
 
 .reviews-title {
@@ -6224,8 +6246,12 @@ body.night-mode .logo-bubble img:hover {
   font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
   font-size: clamp(1.35rem, 2.2vw, 1.8rem);
   line-height: 1.35;
-  color: #3e2f2a;
+  color: var(--emboss-text);
   text-wrap: balance;
+  /* Vyražený text - stejný efekt jako .embossed-title */
+  text-shadow:
+    -1px -1px 1px var(--emboss-dark),
+    1px 1px 1px var(--emboss-light);
 }
 
 .map-panel {
@@ -6239,7 +6265,11 @@ body.night-mode .logo-bubble img:hover {
   background-position: center;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.67);
-  box-shadow: 0 18px 42px rgba(62, 47, 42, 0.10);
+  /* Vyražený/engraved efekt panelu shodný s .embossed-badge */
+  box-shadow:
+    0 18px 42px rgba(62, 47, 42, 0.10),
+    inset 2px 2px 5px var(--emboss-dark),
+    inset -2px -2px 5px var(--emboss-light);
   position: relative;
   overflow: hidden;
 }
@@ -6257,8 +6287,12 @@ body.night-mode .logo-bubble img:hover {
   font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
   font-size: clamp(1.35rem, 2.2vw, 1.8rem);
   line-height: 1.35;
-  color: #3e2f2a;
+  color: var(--emboss-text);
   text-wrap: balance;
+  /* Vyražený text - stejný efekt jako .embossed-title */
+  text-shadow:
+    -1px -1px 1px var(--emboss-dark),
+    1px 1px 1px var(--emboss-light);
 }
 
 .map-location {
@@ -6607,10 +6641,12 @@ body.night-mode .logo-bubble img:hover {
 
 .home-impressum__list {
   font-family: 'Roboto', Arial, sans-serif;
+  font-size: clamp(0.8rem, 0.55rem + 3.7cqw, 1.5rem);
 }
 
 .home-impressum__item {
   font-family: 'Roboto', Arial, sans-serif;
+  font-size: clamp(0.8rem, 0.55rem + 3.7cqw, 1.5rem);
 }
 
 /* ========================================
@@ -7070,8 +7106,19 @@ html:has(body.page-services) {
   background:
     radial-gradient(circle at 8% 6%, rgba(242, 197, 113, 0.23) 0%, rgba(242, 197, 113, 0) 30%),
     radial-gradient(circle at 90% 18%, rgba(143, 62, 39, 0.25) 0%, rgba(143, 62, 39, 0) 34%),
-    radial-gradient(circle at 75% 92%, rgba(214, 141, 50, 0.2) 0%, rgba(214, 141, 50, 0) 28%),
-    url('galerie/papir_poz.webp') center/cover fixed no-repeat;
+    radial-gradient(circle at 75% 92%, rgba(214, 141, 50, 0.2) 0%, rgba(214, 141, 50, 0) 28%);
+}
+
+.page-services-v2::before { /* Pozadí otočené o 90°, rozměry prohozené a rotací dorovnané na celou obrazovku */
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vh;
+  height: 100vw;
+  transform: translate(-50%, -50%) rotate(90deg);
+  background: url('galerie/papir_poz.webp') center/cover no-repeat;
+  z-index: -1;
 }
 
 .page-services-v2 .svc2 {
@@ -8097,5 +8144,147 @@ html:has(body.page-services) {
 
   .page-about .about-hero__intro {
     max-width: min(100%, 360px);
+  }
+}
+
+/* ==========================================================================
+   NOVA KOMPONENTA: LETTERPRESS / EMBOSSED IMPRESSUM
+   ========================================================================== */
+
+.embossed-impressum {
+  /* Globální nastavení barev pro efekt ražby */
+  --emboss-dark: rgba(28, 14, 5, 0.45);   /* Barva stínu - tmavá rýha */
+  --emboss-light: rgba(255, 255, 255, 0.85); /* Barva světla - odlesk na hraně */
+  --emboss-text: rgba(0, 0, 0, 0.8);   /* Vlastní barva textu, musí být velmi světlá */
+
+  max-width: 1040px;
+  margin: 0 auto 80px auto;
+  padding: 40px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  container-type: inline-size; /* Umožní škálování textu podle skutečné šířky boxu (cqw) */
+  container-name: impressum;
+}
+
+/* --- Dvojitý vyražený rámeček (Badge) --- */
+.embossed-badge {
+  padding: 10px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  /* Vnější prohlubeň */
+  box-shadow:
+    inset 1px 1px 3px var(--emboss-dark),
+    inset -1px -1px 3px var(--emboss-light),
+    1px 1px 1px var(--emboss-light),
+    -1px -1px 1px var(--emboss-dark);
+  background: rgba(88, 37, 2, 0.33); /* Jemný průhledný podklad pro text */
+  width: auto;
+  max-width: 100%;
+}
+
+.embossed-badge-inner {
+  padding: 14px 14px;
+  border-radius: 8px;
+  width: auto;
+  max-width: 100%;
+  /* Vnitřní ostřejší hrana */
+  box-shadow:
+    inset 1px 1px 2px var(--emboss-dark),
+    inset -1px -1px 2px var(--emboss-light),
+    1px 1px 1px var(--emboss-light),
+    -1px -1px 1px var(--emboss-dark);
+
+}
+
+.embossed-title {
+  font-family: 'Montez', cursive;
+  font-size: clamp(2.2rem, 1.3rem + 5.2cqw, 4.4rem); /* Fluidní velikost dle šířky kontejneru */
+  margin: 0;
+  color: var(--emboss-text);
+  text-align: center;
+  letter-spacing: 0.05em;
+  /* Kouzlo hlubokého textu */
+  text-shadow:
+    -1px -1px 1px var(--emboss-dark),
+    1px 1px 1px var(--emboss-light);
+}
+
+/* --- Obsah a řádky --- */
+.embossed-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.embossed-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: nowrap;
+  padding-bottom: 2px;
+  /* Vytvoření "vyražené" dělící linky */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 0 var(--emboss-light);
+}
+
+.embossed-label {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-weight: 800;
+  font-size: clamp(0.7rem, 0.5rem + 2.4cqw, 1.05rem); /* Fluidní velikost dle šířky kontejneru */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--emboss-text);
+  text-shadow:
+    -1px -1px 1px var(--emboss-dark),
+    1px 1px 1px var(--emboss-light);
+}
+
+.embossed-value {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1rem, 0.85rem + 0.8cqw, 1.3rem); /* Fluidní velikost dle šířky kontejneru */
+  color: var(--emboss-text);
+  text-align: right;
+  text-shadow:
+    -0.5px -0.5px 1px var(--emboss-dark),
+    1px 1px 1px var(--emboss-light);
+}
+
+.embossed-link {
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.embossed-link:hover,
+.embossed-link:focus-visible {
+  color: var(--emboss-text);
+  outline: none;
+}
+
+/* --- Responzivita pro mobilní telefony --- */
+@media (max-width: 600px) {
+  .embossed-impressum {
+    padding: 24px 16px;
+  }
+
+  .embossed-badge-inner {
+    padding: 10px 24px;
+  }
+
+  .embossed-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .embossed-value {
+    text-align: center;
   }
 }
