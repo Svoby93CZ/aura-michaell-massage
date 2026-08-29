@@ -55,7 +55,7 @@ body { /* ZÁKLADNÍ STYLY */
   margin: 0; /* Odsadí prvek od okolního obsahu. */
   padding: 0 var(--pad) 40px; /* Přidá vnitřní odsazení prvku. */
   padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
-  font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
+  font-family: "Tenor Sans", serif; /* Určuje použité písmo. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
 }
@@ -68,7 +68,7 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
   width: 100vh;
   height: 100vw;
   transform: translate(-50%, -50%) rotate(90deg);
-  background: url('galerie/papir_poz.webp') center/cover no-repeat;
+  background: url("galerie/papir_poz.webp") center/cover no-repeat;
   z-index: -1;
 }
 
@@ -118,8 +118,8 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
   margin: 0; /* Odsadí prvek od okolního obsahu. */
   padding: 0 var(--pad); /* Přidá vnitřní odsazení prvku (bottom 0 kvůli sticky footeru, viz sdílené pravidlo výše). */
   padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
-  font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
-  background: url('galerie/ceremonie/pozadi.webp') center/cover fixed no-repeat; /* Definuje pozadí prvku. */
+  font-family: "Tenor Sans", serif; /* Určuje použité písmo. */
+  background: url("galerie/ceremonie/pozadi.webp") center/cover fixed no-repeat; /* Definuje pozadí prvku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
 }
@@ -213,11 +213,11 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
   z-index: var(--layer-content); /* Určuje pořadí překrytí prvku. */
   max-width: 720px; /* Omezí maximální šířku prvku. */
   padding: 32px 28px; /* Přidá vnitřní odsazení prvku. */
-  font-family: 'Raleway', sans-serif; /* Určuje použité písmo. */
+  font-family: "Raleway", sans-serif; /* Určuje použité písmo. */
 }
 
 .parallax-content h2 {
-  font-family: 'Inknut Antiqua', serif; /* Určuje použité písmo. */
+  font-family: "Inknut Antiqua", serif; /* Určuje použité písmo. */
   font-size: clamp(1.9rem, 4vw, 2.6rem); /* Nastaví velikost písma. */
   margin-bottom: 12px; /* Odsazení zespodu pro prvek. */
   letter-spacing: 1px; /* Nastaví rozestupy mezi písmeny. */
@@ -229,39 +229,26 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
   margin: 0; /* Odsadí prvek od okolního obsahu. */
 }
 
-.parallax-welcome {
-  --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.35), rgba(26,12,6,0.6)); /* Určuje překryvný gradient parallax sekce. */
-  --parallax-image: url('galerie/shop3.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
-}
 
 .parallax-welcome-intro { /* Parallax variant for the welcome (intro) section */
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.32), rgba(26,12,6,0.55)); /* Určuje překryvný gradient parallax sekce. */
-  --parallax-image: url('galerie/caj.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
+  --parallax-image: url("galerie/caj.webp"); /* Vybere obrázek používaný pro parallax pozadí. */
 }
 
 .parallax-myths {
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.32), rgba(26,12,6,0.55));
-  --parallax-image: url('galerie/salon.webp');
+  --parallax-image: url("galerie/salon.webp");
 }
 
 .parallax-bonus {
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.0), rgba(26,12,6,0.0)); /* Určuje překryvný gradient parallax sekce. */
-  --parallax-image: url('galerie/karty.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
+  --parallax-image: url("galerie/karty.webp"); /* Vybere obrázek používaný pro parallax pozadí. */
 }
 
-.parallax-vouchers {
-  --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.0), rgba(26,12,6,0.0)); /* Určuje překryvný gradient parallax sekce. */
-  --parallax-image: url('galerie/Poukazy/Poukaz 1000,-.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
-  margin-top: -40px; /* Posune parallax výše */
-}
-
-.parallax-vouchers::before {
-  opacity: 0.3; /* Průhlednost pouze pozadí parallaxu */
-}
 
 .parallax-balance {
   --parallax-overlay: linear-gradient(180deg, rgba(18,10,4,0.25), rgba(18,10,4,0.55)); /* Určuje překryvný gradient parallax sekce. */
-  --parallax-image: url('galerie/shop5.webp'); /* Vybere obrázek používaný pro parallax pozadí. */
+  --parallax-image: url("galerie/shop5.webp"); /* Vybere obrázek používaný pro parallax pozadí. */
 }
 img, video, iframe {
   display: block; /* Nastaví způsob zobrazení prvku. */
@@ -275,9 +262,7 @@ header { /* 04. Navigation & Hero Components */
   padding: 0; /* Přidá vnitřní odsazení prvku. */
   margin: 0; /* Odsadí prvek od okolního obsahu. */
 }
-.header-banner {
-  display: none; /* Nastaví způsob zobrazení prvku. */
-}
+
 
 .hero-title { /* Hero Title */
   display: flex; /* Nastaví způsob zobrazení prvku. */
@@ -362,7 +347,7 @@ header { /* 04. Navigation & Hero Components */
   position: absolute;
   inset: 0;
   background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.45), rgba(255,255,255,0)),
-    url('galerie/logo.webp');
+    url("galerie/logo.webp");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 200px auto;
@@ -478,7 +463,7 @@ header { /* 04. Navigation & Hero Components */
   text-transform: uppercase;
   font-size: clamp(2rem, 4.2vw, 2.8rem);
   font-style: oblique;
-  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
   transform: rotate(-2deg);
   color: rgb(252, 252, 252);
   text-shadow: 0 2px 8px rgba(2, 2, 2, 0.25), 0 0 2px #6e3505;
@@ -596,7 +581,7 @@ header { /* 04. Navigation & Hero Components */
 .page-home .home-myths-gallery__eyebrow {
   margin: 0 0 8px;
   color: var(--accent);
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -606,7 +591,7 @@ header { /* 04. Navigation & Hero Components */
 .page-home .home-myths-gallery h2 {
   margin: 0 0 10px;
   color: var(--dark);
-  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
   font-size: clamp(1.7rem, 3.5vw, 2.5rem);
   font-style: oblique;
 }
@@ -622,7 +607,7 @@ header { /* 04. Navigation & Hero Components */
 
 .page-home .home-myths-gallery__intro > p:last-child {
   margin: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   line-height: 1.6;
 }
 
@@ -758,7 +743,7 @@ header { /* 04. Navigation & Hero Components */
 .page-home .bonus-card-section__copy {
   max-width: 680px;
   margin: 24px auto 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: clamp(1rem, 2.2vw, 1.2rem);
   line-height: 1.7;
 }
@@ -803,7 +788,7 @@ header { /* 04. Navigation & Hero Components */
 .page-home #shop p {
   margin: 0 auto 20px; /* Odsadí prvek od okolního obsahu. */
   max-width: 620px; /* Omezí maximální šířku prvku. */
-  font-family: 'Raleway', sans-serif; /* Určuje použité písmo. */
+  font-family: "Raleway", sans-serif; /* Určuje použité písmo. */
   font-size: 1.05rem; /* Nastaví velikost písma. */
 }
 .page-home .shop-gallery {
@@ -872,7 +857,7 @@ header { /* 04. Navigation & Hero Components */
 
 .page-about .parallax-content h1,
 .page-about .parallax-content h2 {
-  font-family: 'Lavishly Yours', 'Patrick Hand', cursive;
+  font-family: "Lavishly Yours", "Patrick Hand", cursive;
   letter-spacing: 0.04em;
   color: #000000;
   text-shadow:
@@ -881,7 +866,7 @@ header { /* 04. Navigation & Hero Components */
 }
 
 .page-about .parallax-content p {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .page-about .about-row {
@@ -904,64 +889,6 @@ header { /* 04. Navigation & Hero Components */
   text-shadow: 0 0 8px rgba(255,255,255,0.6), 0 0 4px rgba(255,255,255,0.8);
 }
 
-.hero-nav {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  gap: 14px; /* Nastaví mezery mezi položkami. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  flex-wrap: nowrap; /* Povolí zalomení Flexbox položek. */
-  padding: 6px 12px; /* Přidá vnitřní odsazení prvku. */
-  margin: 0 auto; /* Odsadí prvek od okolního obsahu. */
-  max-width: 980px; /* Omezí maximální šířku prvku. */
-  box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
-  overflow-x: auto; /* Řídí přetečení na ose X. */
-  -webkit-overflow-scrolling: touch; /* Aktivuje plynulé rolování ve WebKit prohlížečích. */
-  scrollbar-width: none; /* Nastaví tloušťku posuvníku v podporovaných prohlížečích. */
-}
-
-.hero-nav::-webkit-scrollbar {
-  display: none; /* Nastaví způsob zobrazení prvku. */
-}
-
-.hero-nav .nav-btn {
-  display: inline-flex; /* Nastaví způsob zobrazení prvku. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  padding: 0 12px; /* Přidá vnitřní odsazení prvku. */
-  flex: 0 0 auto; /* Rychle nastaví chování flex položky. */
-  min-width: 64px; /* Nastaví minimální šířku prvku. */
-  max-width: 220px; /* Omezí maximální šířku prvku. */
-  height: var(--nav-btn-height); /* Definuje výšku prvku. */
-  box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
-  background: #ab914e; /* Definuje pozadí prvku. */
-  color: #fff; /* Nastaví barvu textu. */
-  text-decoration: none; /* Řídí dekoraci textu. */
-  border-radius: 999px; /* Zaoblí rohy prvku. */
-  font-family: 'Raleway', sans-serif; /* Určuje použité písmo. */
-  font-weight: 800; /* Určuje tloušťku písma. */
-  letter-spacing: 0.2px; /* Nastaví rozestupy mezi písmeny. */
-  font-size: 0.95rem; /* Nastaví velikost písma. */
-  white-space: nowrap; /* Řídí zalamování textu. */
-  text-align: center; /* Zarovná text. */
-  line-height: 1.1; /* Nastaví výšku řádku. */
-  overflow: hidden; /* Řídí přetečení obsahu. */
-  text-overflow: ellipsis; /* Určuje, jak se zobrazí přetékající text. */
-  box-shadow: 0 6px 14px rgba(60,30,10,0.12); /* Přidá stín prvku. */
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s; /* Nastaví animaci změn vlastností. */
-}
-
-.hero-nav .nav-btn span {
-  display: inline-block; /* Nastaví způsob zobrazení prvku. */
-  text-align: center; /* Zarovná text. */
-}
-
-.hero-nav .nav-btn:hover,
-.hero-nav .nav-btn:focus {
-  transform: translateY(-4px); /* Transformuje prvek (posun, natočení, měřítko). */
-  box-shadow: 0 10px 20px rgba(60,30,10,0.18); /* Přidá stín prvku. */
-  background: #9b783f; /* Definuje pozadí prvku. */
-  outline: none; /* Vykreslí obrys prvku bez vlivu na rozměry. */
-}
 
 .page-services .services-nav { /* Page Specific: Services */
   margin: 32px auto 48px; /* Vytváří prostor nad i pod navigací, aby měla vlastní blok */
@@ -1018,34 +945,6 @@ header { /* 04. Navigation & Hero Components */
   }
 }
 
-.hero-nav--featured { /* Zvýrazněná „karta“ navigace v hero sekci */
-  background: rgba(138, 60, 4, 0.21); /* Definuje pozadí prvku. */
-  border: 2px solid #846844; /* Vykreslí rámeček kolem prvku. */
-  border-radius: 24px; /* Zaoblí rohy prvku. */
-  padding: 14px 16px; /* Přidá vnitřní odsazení prvku. */
-  gap: 16px; /* Nastaví mezery mezi položkami. */
-  box-shadow: 0 12px 40px rgba(60,30,10,0.18); /* Přidá stín prvku. */
-  backdrop-filter: blur(4px); /* Aplikuje filtr na pozadí za prvkem. */
-}
-
-.hero-nav .nav-btn.nav-btn--primary { /* Primární CTA tlačítko – přebarveno na červenou */
-  background: linear-gradient(100deg, #590000 60%, #560000 100%); /* Definuje pozadí prvku. */
-  border-color: #7f1212; /* Určuje barvu rámečku. */
-}
-.hero-nav .nav-btn.nav-btn--primary:hover,
-.hero-nav .nav-btn.nav-btn--primary:focus {
-  background: linear-gradient(100deg, #8b1111 60%, #7f0000 100%); /* Definuje pozadí prvku. */
-  color: #ffe5e5; /* Nastaví barvu textu. */
-}
-
-@media (max-width: 1100px) {
-  .hero-nav .nav-btn {
-    font-size: 0.9rem; /* Nastaví velikost písma. */
-    padding: 0 10px; /* Přidá vnitřní odsazení prvku. */
-    max-width: 180px; /* Omezí maximální šířku prvku. */
-    height: var(--nav-btn-height-sm); /* Definuje výšku prvku. */
-  }
-}
 
 @media (max-width: 540px) {
 
@@ -1053,23 +952,8 @@ header { /* 04. Navigation & Hero Components */
     background-attachment: scroll; /* Určuje, zda se pozadí posouvá se stránkou. */
   }
 
-  .parallax-vouchers::before {
-    content: none !important; /* Úplně odstraní pseudo element */
-    display: none !important; /* Vypne parallax pozadí v mobilním zobrazení */
-  }
 
-  .parallax-vouchers {
-    background: #fff8f0 !important; /* Jednoduchá světlá barva pozadí */
-    background-image: none !important; /* Vypne všechny background-image */
-    background-attachment: scroll !important;
-    margin: 20px 0 !important; /* Normální marginy */
-    padding: 20px 15px !important; /* Vnitřní padding */
-    min-height: auto !important; /* Vypne min-height */
-    height: auto !important;
-    position: static !important; /* Změní position */
-    overflow: visible !important;
-    border-radius: 12px;
-  }
+  
 
   .parallax-vouchers .parallax-content {
     color: #000 !important; /* Tmavý text */
@@ -1078,149 +962,23 @@ header { /* 04. Navigation & Hero Components */
     text-shadow: none !important;
   }
 
-  .parallax-vouchers p,
-  .parallax-vouchers span {
-    text-shadow: none !important; /* Odstraní všechny stíny textu */
-    color: inherit !important;
-  }
-  .hero-nav {
-    gap: 8px; /* Nastaví mezery mezi položkami. */
-    padding: 8px 10px; /* Přidá vnitřní odsazení prvku. */
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-    overflow-x: visible; /* Řídí přetečení na ose X. */
-    width: 100%; /* Definuje šířku prvku. */
-  }
 
-  .hero-nav .nav-btn {
-    font-size: clamp(1rem, 5vw, 1.3rem); /* Nastaví velikost písma s ohledem na šířku displeje. */
-    padding: 10px 14px; /* Přidá vnitřní odsazení prvku. */
-    max-width: 520px; /* Omezí maximální šířku prvku. */
-    height: auto; /* Definuje výšku prvku. */
-    width: 100%; /* Definuje šířku prvku. */
-    flex: none; /* Rychle nastaví chování flex položky. */
-    border-radius: 12px; /* Zaoblí rohy prvku. */
-    white-space: nowrap; /* Zabrání zalomení názvů kategorií. */
-    justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-    box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
-  }
+  
 
   .page-services .services-nav .nav-btn {
     font-size: clamp(1rem, 4.8vw, 1.25rem); /* Přizpůsobí velikost textu a udrží jej na jednom řádku. */
     white-space: nowrap; /* Zabrání zalomení textu kategorie. */
   }
 
-  .hero-nav > div {
-    width: 100%; /* Definuje šířku prvku. */
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  }
 
-  .hero-nav > div .nav-btn {
-    width: 100%; /* Definuje šířku prvku. */
-    max-width: 520px; /* Omezí maximální šířku prvku. */
-  }
+  
 
-  .hero-nav--featured {
-    width: 100%; /* Definuje šířku prvku. */
-    padding: 12px; /* Přidá vnitřní odsazení prvku. */
-    gap: 10px; /* Nastaví mezery mezi položkami. */
-  }
 
-  .hero-nav--featured .nav-btn {
-    width: 100%; /* Definuje šířku prvku. */
-    text-align: center; /* Zarovná text. */
-    padding: 13px 16px; /* Přidá vnitřní odsazení prvku. */
-  }
+  
 }
 
-.contact-group { /* KONTAKTNÍ SEKCE */
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  flex-direction: row; /* Určuje směr Flexboxu. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  gap: 16px; /* Nastaví mezery mezi položkami. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-}
-.order-box, .contact-box {
-  width: 240px; /* Definuje šířku prvku. */
-  padding: 8px 16px; /* Přidá vnitřní odsazení prvku. */
-  border-radius: 30px; /* Zaoblí rohy prvku. */
-  text-align: center; /* Zarovná text. */
-}
-.order-box {
-  background: var(--accent); /* Definuje pozadí prvku. */
-  color: #fff; /* Nastaví barvu textu. */
-  font-size: 23px; /* Nastaví velikost písma. */
-}
-.contact-box {
-  background: #fff; /* Definuje pozadí prvku. */
-  border: 2px solid var(--accent); /* Vykreslí rámeček kolem prvku. */
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  flex-direction: column; /* Určuje směr Flexboxu. */
-  align-items: flex-start; /* Zarovná děti v pomocné ose Flexboxu. */
-  gap: 8px; /* Nastaví mezery mezi položkami. */
-}
-.contact-item {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  font-size: 16px; /* Nastaví velikost písma. */
-  margin: 4px 0; /* Odsadí prvek od okolního obsahu. */
-}
-.contact-icon img {
-  width: 24px; /* Definuje šířku prvku. */
-  height: 24px; /* Definuje výšku prvku. */
-  object-fit: contain; /* Řídí přizpůsobení média do boxu. */
-}
-.contact-box a {
-  color: inherit; /* Nastaví barvu textu. */
-  text-decoration: none; /* Řídí dekoraci textu. */
-  position: relative; /* Určuje způsob pozicování prvku. */
-  padding-bottom: 2px; /* Vnitřní odsazení zespodu. */
-}
-.contact-box a::after {
-  content: ""; /* Vloží obsah pseudo prvku. */
-  position: absolute; /* Určuje způsob pozicování prvku. */
-  left: 0; /* Umístí prvek směrem zleva. */
-  bottom: 0; /* Umístí prvek směrem zdola. */
-  width: 100%; /* Definuje šířku prvku. */
-  height: 2px; /* Definuje výšku prvku. */
-  background: var(--accent); /* Definuje pozadí prvku. */
-  transform: scaleX(0); /* Transformuje prvek (posun, natočení, měřítko). */
-  transform-origin: left; /* Nastaví referenční bod transformace. */
-  transition: transform .3s; /* Nastaví animaci změn vlastností. */
-}
-.contact-box a:hover::after {
-  transform: scaleX(1); /* Transformuje prvek (posun, natočení, měřítko). */
-}
-.contact-ideal {
-  margin: 16px 0 0 0; /* Odsadí prvek od okolního obsahu. */
-  font-size: 1rem; /* Nastaví velikost písma. */
-  font-weight: 600; /* Určuje tloušťku písma. */
-  color: #7c4a27; /* Nastaví barvu textu. */
-  align-self: center; /* Zarovná konkrétní dětský prvek. */
-}
-.reservio-center {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  width: 100%; /* Definuje šířku prvku. */
-}
 
-.offer-box { /* 05. Cards, Pricing & Content Blocks */
-  border-radius: 16px; /* Zaoblí rohy prvku. */
-  padding: 16px; /* Přidá vnitřní odsazení prvku. */
-}
- .card-info {
-  padding: 6px 8px; /* Přidá vnitřní odsazení prvku. */
-  border-radius: 16px; /* Zaoblí rohy prvku. */
-  text-align: center; /* Zarovná text. */
-  text-shadow:#ffffff 1px 1px 6px; /* Přidá stín textu. */
-  font-size: 18px; /* Nastaví velikost písma. */
-  font-weight: 600; /* Určuje tloušťku písma. */
-  color: #000000; /* Nastaví barvu textu. */
-  margin: 10px auto; /* Odsadí prvek od okolního obsahu. */
-  max-width: 90%; /* Omezí maximální šířku prvku. */
-}
+ 
 .cards > * {
   flex: 1 1 0; /* Rychle nastaví chování flex položky. */
   display: flex; /* Zabrání různé výšce kvůli obsahu */
@@ -1235,99 +993,11 @@ header { /* 04. Navigation & Hero Components */
   transition: none; /* Nastaví animaci změn vlastností. */
 }
 
-.service-price-tag {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  gap: 12px; /* Nastaví mezery mezi položkami. */
-  width: 100%; /* Definuje šířku prvku. */
-  padding: 12px 18px; /* Přidá vnitřní odsazení prvku. */
-  margin: 16px auto 24px; /* Odsadí prvek od okolního obsahu. */
-  border-radius: 18px; /* Zaoblí rohy prvku. */
-  background: linear-gradient(-68deg, rgba(134, 59, 53, 0.96), rgba(184, 140, 140, 0.92)); /* Definuje pozadí prvku. */
-  color: #361000; /* Nastaví barvu textu. */
-  font-family: 'Raleway', sans-serif; /* Určuje použité písmo. */
-  font-size: 0.95rem; /* Nastaví velikost písma. */
-  font-weight: 800; /* Určuje tloušťku písma. */
-  letter-spacing: 0.4px; /* Nastaví rozestupy mezi písmeny. */
-  box-shadow: 0 8px 20px rgba(60,30,10,0.24); /* Přidá stín prvku. */
-  text-align: center; /* Zarovná text. */
-  flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-  box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
-}
-
-.service-price-tag::before {
-  content: ""; /* Vloží oficiální ikonu Reservio načtenou z jejich webu. */
-  display: inline-flex; /* Nastaví způsob zobrazení prvku. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  width: 28px; /* Definuje šířku prvku. */
-  height: 28px; /* Definuje výšku prvku. */
-  border-radius: 50%; /* Zaoblí rohy prvku. */
-  background-color: transparent; /* Načte oficiální faviconu Reservio z jejich CDN. */
-  background-image: url('https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  margin-right: 10px; /* Odsadí prvek od okolního obsahu. */
-  box-shadow: 0 4px 10px rgba(60,30,10,0.14); /* Přidá stín prvku. */
-  text-decoration: none; /* Řídí dekoraci textu. */
-}
-
-.service-price-tag span {
-  display: inline-block; /* Nastaví způsob zobrazení prvku. */
-}
-
-.service-price-tag .service-price {
-  font-size: 1.1em; /* Nastaví velikost písma. */
-  letter-spacing: 0.6px; /* Nastaví rozestupy mezi písmeny. */
-}
-
-.service-price-tag .service-duration {
-  font-size: 0.95em; /* Nastaví velikost písma. */
-  font-weight: 700; /* Určuje tloušťku písma. */
-  text-transform: uppercase; /* Transformuje text (např. na velká písmena). */
-  letter-spacing: 1px; /* Nastaví rozestupy mezi písmeny. */
-}
-
-.service-price-tag .service-price-divider {
-  display: none; /* Nastaví způsob zobrazení prvku. */
-}
-
-.service-price-tag-link {
-  text-decoration: none; /* Řídí dekoraci textu. */
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  width: 100%; /* Definuje šířku prvku. */
-  margin: 0 auto; /* Odsadí prvek od okolního obsahu. */
-}
-
-.service-price-tag-link .service-price-tag {
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Nastaví animaci změn vlastností. */
-}
-
-.service-price-tag-link:focus .service-price-tag,
-.service-price-tag-link:hover .service-price-tag {
-  transform: translateY(-2px); /* Transformuje prvek (posun, natočení, měřítko). */
-  box-shadow: 0 12px 28px rgba(60,30,10,0.28); /* Přidá stín prvku. */
-}
 
 @media (max-width: 640px) { /* 06. Responsive Tweaks */
-  .service-price-tag {
-    font-size: 0.9rem; /* Nastaví velikost písma. */
-  }
 
-  .service-price-tag .service-duration {
-    font-size: 0.85em; /* Nastaví velikost písma. */
-    letter-spacing: 0.6px; /* Nastaví rozestupy mezi písmeny. */
-  }
 
-  .service-price-tag::before {
-    width: 24px; /* Přizpůsobí ikonu menšímu displeji. */
-    height: 24px;
-    background-size: 100% 100%; /* Zmenší vloženou ikonu. */
-    margin-right: 8px; /* Odsadí prvek od okolního obsahu. */
-  }
+  
 }
 
 .page-services .classic-massage-info p { /* INFORMACE O SLUŽBÁCH */
@@ -1355,67 +1025,6 @@ header { /* 04. Navigation & Hero Components */
   color: #e33333; /* Nastaví barvu textu. */
 }
 
-.indikace-kontraindikace-container { /* Kontejner pro zobrazení INDIKACE a KONTRAINDIKACE vedle sebe */
-  display: flex; /* Flexbox pro položky vedle sebe */
-  gap: 16px; /* Mezera mezi sekcemi */
-  margin-bottom: 24px; /* Spodní okraj */
-  flex-wrap: wrap; /* Umožní zalomení na menších obrazovkách */
-  max-width: 100%;
-}
-
-.indikace-kontraindikace-container > div,
-.indikace-kontraindikace-container > details {
-  flex: 1; /* Obě sekce budou stejně široké */
-  min-width: 280px; /* Minimální šířka pro zachování čitelnosti */
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.indikace-kontraindikace-container summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  cursor: pointer;
-  list-style: none;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px dashed rgba(60,30,10,0.35);
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-  flex-wrap: wrap;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.indikace-kontraindikace-container summary::-webkit-details-marker {
-  display: none;
-}
-
-.indikace-kontraindikace-container summary h3 {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-}
-
-.indikace-kontraindikace-container summary h3 span {
-  display: block;
-  font-size: 0.95em;
-  margin-top: 4px;
-}
-
-.indikace-kontraindikace-container summary::after {
-  content: "Rozkliknout ▾";
-  font-size: 0.95em;
-  font-weight: bold;
-  letter-spacing: 0.2px;
-  transition: transform 0.2s ease, color 0.2s ease;
-  margin-left: auto;
-  white-space: nowrap;
-}
 
 .indikace-toggle summary::after {
   color: #92ab4e;
@@ -1425,39 +1034,6 @@ header { /* 04. Navigation & Hero Components */
   color: #e33333;
 }
 
-.indikace-kontraindikace-container details[open] summary::after {
-  content: "Skrýt ▴";
-  transform: none;
-}
-
-.indikace-kontraindikace-container summary:hover {
-  background: rgba(255, 255, 255, 0.32);
-  border-color: rgba(60,30,10,0.55);
-}
-
-.indikace-kontraindikace-container summary:focus-visible {
-  outline: 3px solid rgba(124, 74, 39, 0.55);
-  outline-offset: 2px;
-}
-
-.indikace-kontraindikace-container details > ul {
-  margin-top: 10px;
-}
-
-@media (max-width: 720px) {
-  .indikace-kontraindikace-container {
-    gap: 12px;
-  }
-
-  .indikace-kontraindikace-container > details {
-    min-width: 100%;
-    width: 100%;
-  }
-
-  .indikace-kontraindikace-container summary {
-    padding: 4px 0;
-  }
-}
 
 .service-accordion {
   border: 1px solid rgba(124, 90, 37, 0.25);
@@ -1520,185 +1096,25 @@ header { /* 04. Navigation & Hero Components */
   }
 }
 
-#aromaterapie-featured { /* Parallax efekt pro aromaterapii - s fade efektem jako na hlavní stránce */
-  position: relative;
-  overflow: hidden;
-  min-height: 600px;
-  margin: 60px auto;
-  border-radius: 16px;
-}
-
-#aromaterapie-featured::before { /* Parallax pozadí s fade efektem */
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: linear-gradient(180deg, rgba(255,248,240,0.3), rgba(255,248,240,0.5)), url('galerie/oleje.webp');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed, fixed;
-  border-radius: inherit;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(90deg, /* Fade efekt na okrajích - stejný jako na hlavní stránce */
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%)
-    , linear-gradient(180deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(90deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%)
-    , linear-gradient(180deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%);
-  -webkit-mask-composite: multiply;
-  mask-composite: intersect;
-}
-
 
 @media (max-width: 768px) { /* Mobilní verze s parallaxem */
-  #aromaterapie-featured {
-    position: relative;
-    overflow: hidden;
-    min-height: 500px;
-    margin: 20px 8px;
-    border-radius: 16px;
-    padding: 20px 8px 40px 8px !important;
-  }
 
-  #aromaterapie-featured::before { /* Parallax pozadí pro mobil */
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image: linear-gradient(180deg, rgba(255,248,240,0.3), rgba(255,248,240,0.5)), url('galerie/oleje.webp');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: inherit;
-    pointer-events: none;
-    -webkit-mask-image: linear-gradient(90deg, /* Fade efekt na okrajích */
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 6%,
-        rgba(0,0,0,0.75) 18%,
-        rgba(0,0,0,1) 32%,
-        rgba(0,0,0,1) 68%,
-        rgba(0,0,0,0.75) 82%,
-        rgba(0,0,0,0.35) 94%,
-        rgba(0,0,0,0) 100%)
-      , linear-gradient(180deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 6%,
-        rgba(0,0,0,0.75) 18%,
-        rgba(0,0,0,1) 32%,
-        rgba(0,0,0,1) 68%,
-        rgba(0,0,0,0.75) 82%,
-        rgba(0,0,0,0.35) 94%,
-        rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(90deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 6%,
-        rgba(0,0,0,0.75) 18%,
-        rgba(0,0,0,1) 32%,
-        rgba(0,0,0,1) 68%,
-        rgba(0,0,0,0.75) 82%,
-        rgba(0,0,0,0.35) 94%,
-        rgba(0,0,0,0) 100%)
-      , linear-gradient(180deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 6%,
-        rgba(0,0,0,0.75) 18%,
-        rgba(0,0,0,1) 32%,
-        rgba(0,0,0,1) 68%,
-        rgba(0,0,0,0.75) 82%,
-        rgba(0,0,0,0.35) 94%,
-        rgba(0,0,0,0) 100%);
-    -webkit-mask-composite: multiply;
-    mask-composite: intersect;
-  }
 
-  #aromaterapie {
-    padding: 12px 8px !important;
-  }
+  
 
-  #aromaterapie { /* Aromaterapie - na mobilu jeden sloupec (rámečky pod sebou) */
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    position: relative;
-    z-index: 1;
-  }
 
-  #aromaterapie > div[style*="background: rgba(124,200,120"], /* Barevné rámečky - více obdélníkový tvar na mobilu */
-  #aromaterapie > div[style*="background: rgba(180,150,200"],
-  #aromaterapie > div[style*="background: rgba(255,165,80"],
-  #aromaterapie > div[style*="background: rgba(255, 200, 100"] {
-    padding: 12px 14px !important;
-    border-radius: 12px !important;
-    margin-bottom: 0 !important;
-    min-height: auto !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
+  
 
-  #aromaterapie h4 { /* Nadpis a text v rámečcích - menší velikost na mobilu */
-    font-size: 0.95em !important;
-    margin-bottom: 6px !important;
-    line-height: 1.3 !important;
-  }
 
-  #aromaterapie ul {
-    font-size: 0.8em !important;
-    margin-left: 1em !important;
-    line-height: 1.4 !important;
-    padding-left: 0.2em !important;
-  }
+  
 
-  #aromaterapie li {
-    margin-bottom: 4px !important;
-  }
 
-  #aromaterapie .classic-massage-info { /* Informativní text - menší na mobilu */
-    font-size: 0.85em !important;
-  }
+  
 
-  #aromaterapie .classic-massage-info p {
-    font-size: 0.9em !important;
-    line-height: 1.4 !important;
-  }
 
-  #aromaterapie > div[style*="padding-bottom: 16px"]:last-of-type { /* Prázdný div před obrázkem - skrýt */
-    display: none !important;
-  }
+  
 
-  #aromaterapie .parallax-hidden-image { /* Obrázek skrytý na mobilu - je v pozadí */
-    display: none !important;
-  }
+  
 }
 
 @media (min-width: 769px) { /* Styly pro sekci "Ostatní služby" na PC - dvousloupcový layout */
@@ -1714,20 +1130,9 @@ header { /* 04. Navigation & Hero Components */
     margin-bottom: 32px !important;
   }
 
-  #aromaterapie { /* Aromaterapie - grid layout pro barevné rámečky ve 2 sloupcích */
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 24px !important;
-    align-items: start !important;
-  }
 
-  #aromaterapie > div:nth-child(1) { /* Nadpis přes oba sloupce */
-    grid-column: 1 / -1 !important;
-  }
+  
 
-  #aromaterapie > div:nth-child(2) { /* Informativní text přes oba sloupce */
-    grid-column: 1 / -1 !important;
-  }
 
   #ostatni .classic-massage-info h3 { /* Nadpisy v sekci Ostatní služby bez zalomení */
     width: 100%;
@@ -1755,21 +1160,9 @@ header { /* 04. Navigation & Hero Components */
     overflow-wrap: normal !important;
   }
 
-  #aromaterapie > div[style*="background: rgba(124,200,120"], /* Barevné rámečky ve 2 sloupcích - automatické rozmístění */
-  #aromaterapie > div[style*="background: rgba(180,150,200"],
-  #aromaterapie > div[style*="background: rgba(255,165,80"],
-  #aromaterapie > div[style*="background: rgba(255, 200, 100"] {
-    grid-column: span 1; /* Grid automaticky rozmístí do 2 sloupců */
-    margin-bottom: 16px; /* Přidá spodní mezeru mezi rámečky */
-  }
 
-  #aromaterapie > div[style*="padding-bottom: 16px"]:last-of-type { /* Prázdný div před obrázkem - skrýt */
-    display: none !important;
-  }
+  
 
-  #aromaterapie .parallax-hidden-image { /* Obrázek skrytý v parallax módu */
-    display: none !important;
-  }
 
   #aromaterapie .cards img {
     width: 100% !important;
@@ -1841,25 +1234,14 @@ header { /* 04. Navigation & Hero Components */
     padding: 0.4em 0.8em !important;
   }
 
-  .cenik-section-title { /* Nadpisy sekcí - zmenšit na mobilech */
-    font-size: 2.5rem !important;
-  }
 
   .page-services h1 { /* Padding v headerech - zmenšit */
     padding: 0.4em 0.8em !important;
   }
 
-  .classic-massage-info { /* Font size v service-info - zmenšit */
-    font-size: 0.9em !important;
-  }
 
-  .classic-massage-info h3 {
-    font-size: 1.1em !important;
-  }
+  
 
-  .classic-massage-info h3 span {
-    font-size: 1.3em !important;
-  }
 
   .parallax-section { /* Parallax section - zmenšit min-height */
     min-height: 180px !important;
@@ -1870,9 +1252,6 @@ header { /* 04. Navigation & Hero Components */
     padding: 16px 12px !important;
   }
 
-  .services-hero__oil-cards { /* Oil cards - zmenšit padding */
-    padding-top: 60px !important;
-  }
 
   .page-services [style*="background: rgba"] { /* Service boxes - zmenšit padding a margin */
     padding: 8px !important;
@@ -1893,28 +1272,19 @@ header { /* 04. Navigation & Hero Components */
     padding-bottom: 8px !important;
   }
 
-  .service-price-tag { /* Zmenšit service price tag */
-    padding: 4px 8px !important;
-  }
 
   #ostatni .service-accordion > div { /* Zmenšit gap v grid layoutech */
     gap: 12px !important;
   }
 
   /* Card images - zmenšit max-width */
-  #ostatni .cards img,
-  .classic-massage-info img {
+  #ostatni .cards img{
     max-width: 100% !important;
     max-height: 300px !important;
   }
 
-  .services-hero__intro-text p { /* Intro text - zmenšit font */
-    font-size: 0.9em !important;
-  }
 
-  .indikace-kontraindikace-container { /* Indikace a kontraindikace - zmenšit */
-    gap: 8px !important;
-  }
+  
 
   .indikace-toggle,
   .kontraindikace-toggle {
@@ -1928,17 +1298,9 @@ header { /* 04. Navigation & Hero Components */
     padding: 0.3em 0.6em !important;
   }
 
-  .cenik-section-title {
-    font-size: 1.8rem !important;
-  }
 
-  .classic-massage-info {
-    font-size: 0.8em !important;
-  }
+  
 
-  .classic-massage-info h3 span {
-    font-size: 1.1em !important;
-  }
 
   #ostatni .cards img {
     max-height: 250px !important;
@@ -1948,9 +1310,7 @@ header { /* 04. Navigation & Hero Components */
     min-height: 160px !important;
   }
 
-  .services-hero__oil-cards {
-    padding-top: 40px !important;
-  }
+  
 }
 
 @media (max-width: 768px) { /* Jednoslovcový layout pro mobil */
@@ -2005,12 +1365,7 @@ header { /* 04. Navigation & Hero Components */
     text-align: center; /* Zarovná text. */
   }
 }
-#pricing .video-frame {
-  width: 100%; /* Definuje šířku prvku. */
-  border-radius: 16px; /* Zaoblí rohy prvku. */
-  overflow: hidden; /* Řídí přetečení obsahu. */
-  box-shadow: 0 6px 16px rgba(0,0,0,.2); /* Přidá stín prvku. */
-}
+
 
 #about { margin-bottom: 60px; } /* O MNĚ */
 .about-row {
@@ -2024,73 +1379,8 @@ header { /* 04. Navigation & Hero Components */
 }
 
 #location { margin-bottom: 60px; } /* PROSTOR A MAPA */
-.prostor-map {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  flex-direction: column; /* Určuje směr Flexboxu. */
-  gap: 16px; /* Nastaví mezery mezi položkami. */
-}
-.prostor-img {
-  margin-bottom: 24px; /* Vytvoří mezeru pod obrázkem */
-}
-.prostor-img img {
-  width: 100%; /* Definuje šířku prvku. */
-  border-radius: 16px; /* Zaoblí rohy prvku. */
-  -webkit-mask-image: linear-gradient(90deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%)
-    , linear-gradient(180deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(90deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%)
-    , linear-gradient(180deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%);
-  -webkit-mask-composite: multiply; /* Určuje způsob skládání masek ve WebKit prohlížečích. */
-  mask-composite: intersect; /* Nastaví, jak se kombinují masky ve standardních prohlížečích. */
-}
-.map-container {
-  position: relative; /* Určuje způsob pozicování prvku. */
-  width: 100%; /* Definuje šířku prvku. */
-  padding-top: 56.25%; /* Vnitřní odsazení shora. */
-  border: 2px solid var(--border); /* Vykreslí rámeček kolem prvku. */
-  border-radius: 10px; /* Zaoblí rohy prvku. */
-  overflow: hidden; /* Řídí přetečení obsahu. */
-  background: #fff; /* Definuje pozadí prvku. */
-}
-.map-container iframe {
-  position: absolute; /* Určuje způsob pozicování prvku. */
-  top: 0; /* Umístí prvek směrem shora. */
-  left: 0; /* Umístí prvek směrem zleva. */
-  width: 100%; /* Definuje šířku prvku. */
-  height: 100%; /* Definuje výšku prvku. */
-  border: 0; /* Vykreslí rámeček kolem prvku. */
-}
+
+
 footer { /* FOOTER */
   text-align: center; /* Zarovná text. */
   margin-top: 20px; /* Odsazení shora pro prvek. */
@@ -2257,7 +1547,7 @@ footer img {
 .page-about .about-hero__eyebrow {
   margin: 0 0 12px;
   color: #fff8f2;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -2269,7 +1559,7 @@ footer img {
   position: relative;
   z-index: 2;
   color: #2b1c12;
-  font-family: 'Tenor Sans', serif;
+  font-family: "Tenor Sans", serif;
   font-size: clamp(2.3rem, 6vw, 4.8rem);
   line-height: 1.08;
   opacity: 1;
@@ -2432,7 +1722,7 @@ footer img {
   z-index: 2;
   margin: 0 0 24px;
   color: #2b1c12;
-  font-family: 'Tenor Sans', serif;
+  font-family: "Tenor Sans", serif;
   font-size: clamp(2.3rem, 6vw, 4.8rem);
   font-weight: 400;
   line-height: 1.08;
@@ -2481,7 +1771,7 @@ footer img {
 .page-shop .shop-section-kicker {
   margin: 0 0 8px;
   color: var(--accent);
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -2491,14 +1781,14 @@ footer img {
 .page-shop .shop-section-heading h2 {
   margin: 0 0 10px;
   color: #2b1c12;
-  font-family: 'Inknut Antiqua', serif;
+  font-family: "Inknut Antiqua", serif;
   font-size: clamp(1.45rem, 3vw, 2.1rem);
 }
 
 .page-shop .shop-section-heading p:last-child {
   margin: 0;
   color: #604839;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   line-height: 1.6;
 }
 
@@ -2567,7 +1857,7 @@ footer img {
   background: linear-gradient(135deg, rgba(255, 248, 242, 0.78), rgba(241, 226, 209, 0.82));
   box-shadow: var(--box-shadow-light);
   color: #604839;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   line-height: 1.65;
 }
 
@@ -2581,7 +1871,7 @@ footer img {
 
 .page-shop .shop-voucher-note__title {
   color: #891915;
-  font-family: 'Inknut Antiqua', serif;
+  font-family: "Inknut Antiqua", serif;
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 700;
 }
@@ -2648,46 +1938,7 @@ footer img {
   }
 }
 
-.footer-widgets {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  gap: 12px; /* Nastaví mezery mezi položkami. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  text-align: center; /* Zarovná text. */
-}
-.footer-widgets h2,
-.footer-widgets h4 {
-  flex-basis: 100%; /* Určí základní velikost flex položky. */
-  margin: 6px 0; /* Odsadí prvek od okolního obsahu. */
-}
-.footer-widgets a {
-  margin: 0 0.5rem; /* Odsadí prvek od okolního obsahu. */
-  text-decoration: none; /* Řídí dekoraci textu. */
-  color: #7c4a27; /* Nastaví barvu textu. */
-}
-.footer-widgets a:hover {
-  text-decoration: underline; /* Řídí dekoraci textu. */
-}
-.footer-social {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  gap: 10px; /* Nastaví mezery mezi položkami. */
-  flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-}
-.footer-social .social {
-  display: inline-flex; /* Nastaví způsob zobrazení prvku. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  gap: 6px; /* Nastaví mezery mezi položkami. */
-  margin: 0 6px; /* Odsadí prvek od okolního obsahu. */
-}
-.footer-social img {
-  width: 18px; /* Definuje šířku prvku. */
-  height: 18px; /* Definuje výšku prvku. */
-  vertical-align: middle; /* Zarovná prvek vůči okolnímu textu na svislé ose. */
-  display: inline-block; /* Nastaví způsob zobrazení prvku. */
-}
+
 .site-footer > img {
   display: block; /* Nastaví způsob zobrazení prvku. */
   margin: 12px auto 0; /* Odsadí prvek od okolního obsahu. */
@@ -2805,64 +2056,12 @@ footer img {
   z-index: var(--layer-scroll-button); /* Určuje pořadí překrytí prvku. */
 }
 
-.site-footer__scroll-top {
-  order: 4;
-  cursor: pointer;
-}
 
 #scrollTopBtn.show {
   opacity: 1; /* Nastaví průhlednost prvku. */
   visibility: visible; /* Rozhodne, zda je prvek viditelný, aniž by zabral místo. */
 }
 
-.voucher-btn { /* VOUCHERY */
-  background: linear-gradient(180deg, var(--accent), #5c3520); /* Definuje pozadí prvku. */
-  color: #fff; /* Nastaví barvu textu. */
-  border: 2px solid #3e2f2a; /* Vykreslí rámeček kolem prvku. */
-  border-radius: 24px; /* Zaoblí rohy prvku. */
-  padding: 14px 60px; /* Přidá vnitřní odsazení prvku. */
-  font-size: 40px; /* Nastaví velikost písma. */
-  font-family: 'Style Script', cursive; /* Určuje použité písmo. */
-  cursor: pointer; /* Nastaví tvar kurzoru. */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* Přidá stín prvku. */
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s; /* Nastaví animaci změn vlastností. */
-  letter-spacing: 2px; /* Nastaví rozestupy mezi písmeny. */
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Přidá stín textu. */
-}
-.voucher-btn:hover {
-  background: #3e2f2a; /* Definuje pozadí prvku. */
-  transform: scale(1.05); /* Transformuje prvek (posun, natočení, měřítko). */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); /* Přidá stín prvku. */
-}
-.voucher-gallery {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-  gap: 18px; /* Nastaví mezery mezi položkami. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  margin-top: 20px; /* Odsazení shora pro prvek. */
-}
-.voucher-img {
-  width: 180px; /* Definuje šířku prvku. */
-  border-radius: 12px; /* Zaoblí rohy prvku. */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12); /* Přidá stín prvku. */
-  transition: transform 0.2s; /* Nastaví animaci změn vlastností. */
-  cursor: pointer; /* Nastaví tvar kurzoru. */
-}
-.voucher-img:hover {
-  transform: scale(1.05); /* Transformuje prvek (posun, natočení, měřítko). */
-}
-.voucher-wrapper {
-  margin-top: 20px; /* Odsazení shora pro prvek. */
-  text-align: center; /* Zarovná text. */
-}
-.voucher-note {
-  font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
-  font-size: 15px; /* Nastaví velikost písma. */
-  color: #3e2f2a; /* Nastaví barvu textu. */
-  margin-top: 6px; /* Odsazení shora pro prvek. */
-  margin-bottom: 10px; /* Odsazení zespodu pro prvek. */
-  letter-spacing: 0.5px; /* Nastaví rozestupy mezi písmeny. */
-}
 
 .section { /* IMPRESSUM & PRIVACY */
   max-width: 800px; /* Omezí maximální šířku prvku. */
@@ -2890,32 +2089,16 @@ footer img {
   margin: 2.5rem auto; /* Odsadí prvek od okolního obsahu. */
   max-width: 800px; /* Omezí maximální šířku prvku. */
 }
-.cenik-section-title {
-  color: #7c4a27; /* Nastaví barvu textu. */
-  font-size: 1.35em; /* Nastaví velikost písma. */
-  margin: 36px 0 18px 0; /* Odsadí prvek od okolního obsahu. */
-  font-weight: 800; /* Určuje tloušťku písma. */
-  letter-spacing: 0.5px; /* Nastaví rozestupy mezi písmeny. */
-  border-bottom: 2px solid #e0d3c2; /* Vykreslí spodní rámeček. */
-  padding-bottom: 6px; /* Vnitřní odsazení zespodu. */
-  text-align: left; /* Zarovná text. */
-}
-.cenik-section-titlemini {
-  color: #7c4a27; /* Nastaví barvu textu. */
-  font-size: 1.35em; /* Nastaví velikost písma. */
-  margin: 36px 0 18px 0; /* Odsadí prvek od okolního obsahu. */
-  font-weight: 800; /* Určuje tloušťku písma. */
-  letter-spacing: 0.5px; /* Nastaví rozestupy mezi písmeny. */
-  padding-bottom: 6px; /* Vnitřní odsazení zespodu. */
-}
+
+
 @media (min-width: 601px) { /* --- DESKTOP ÚPRAVY --- */
   body { padding: 20px 80px 80px; font-size: 18px; }
   .hero-title h1 { font-size: 80px; }
   .logo-bubble { width: 250px; height: 250px; }
   .about-row { flex-direction: row; justify-content: center; }
   .about-row img { width: 45%; }
-  .prostor-map { flex-direction: row; gap: 30px; }
-  .prostor-img, .map-address { flex: 1; }
+  
+  .map-address{ flex: 1; }
 }
 
 @media (max-width: 600px) { /* --- MOBILNÍ REŽIM --- */
@@ -2947,16 +2130,8 @@ footer img {
   .logo-bubble img {
     width: 110%; /* Definuje šířku prvku. */
   }
-  .contact-group {
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    gap: 10px; /* Nastaví mezery mezi položkami. */
-    align-items: stretch; /* Zarovná děti v pomocné ose Flexboxu. */
-  }
-  .order-box, .contact-box {
-    width: 100%; /* Definuje šířku prvku. */
-    font-size: 18px; /* Nastaví velikost písma. */
-    padding: 8px 8px; /* Přidá vnitřní odsazení prvku. */
-  }
+  
+  
   .cards {
     flex-direction: column; /* Určuje směr Flexboxu. */
     gap: 10px; /* Nastaví mezery mezi položkami. */
@@ -2966,15 +2141,8 @@ footer img {
     width: 100%; /* Definuje šířku prvku. */
     max-width: 320px; /* Omezí maximální šířku prvku. */
   }
-  .voucher-gallery {
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    gap: 10px; /* Nastaví mezery mezi položkami. */
-    align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  }
-  .voucher-img {
-    width: 90vw; /* Definuje šířku prvku. */
-    max-width: 320px; /* Omezí maximální šířku prvku. */
-  }
+  
+  
   .about-row {
     flex-direction: column; /* Určuje směr Flexboxu. */
     gap: 10px; /* Nastaví mezery mezi položkami. */
@@ -2983,29 +2151,11 @@ footer img {
     width: 100%; /* Definuje šířku prvku. */
     max-width: 320px; /* Omezí maximální šířku prvku. */
   }
-  .prostor-map {
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    gap: 10px; /* Nastaví mezery mezi položkami. */
-  }
-  .prostor-img img {
-    width: 100%; /* Definuje šířku prvku. */
-    max-width: 320px; /* Omezí maximální šířku prvku. */
-  }
-  .map-container {
-    padding-top: 60vw; /* Vnitřní odsazení shora. */
-    min-height: 180px; /* Nastaví minimální výšku prvku. */
-  }
-  .discount-sub {
-    font-size: 28px; /* Nastaví velikost písma. */
-  }
-  .card-info {
-    font-size: 15px; /* Nastaví velikost písma. */
-    padding: 8px 8px; /* Přidá vnitřní odsazení prvku. */
-  }
-  .voucher-btn {
-    font-size: 20px; /* Nastaví velikost písma. */
-    padding: 10px 18px; /* Přidá vnitřní odsazení prvku. */
-  }
+
+
+  
+  
+  
   footer img {
     width: 60px; /* Definuje šířku prvku. */
   }
@@ -3039,10 +2189,7 @@ footer img {
     justify-content: center;
     gap: 0.3rem 0.65rem;
   }
-  .footer-widgets a {
-    margin: 0 0.3rem; /* Odsadí prvek od okolního obsahu. */
-    font-size: 1rem; /* Nastaví velikost písma. */
-  }
+  
   #impressum ul li {
     display: block;
     margin-bottom: 0.85rem;
@@ -3068,489 +2215,69 @@ footer img {
     margin: 0 auto; /* Odsadí prvek od okolního obsahu. */
   }
 }
-.reservio-box {
-  background: #fff; /* Definuje pozadí prvku. */
-  border: none; /* Odstraněna tmavá linka */
-  border-radius: 28px; /* Zaoblí rohy prvku. */
-  padding: 22px 0; /* Přidá vnitřní odsazení prvku. */
-  margin-bottom: 24px; /* Odsazení zespodu pro prvek. */
-  width: 340px; /* Definuje šířku prvku. */
-  max-width: 90vw; /* Omezí maximální šířku prvku. */
-  margin-left: auto; /* Odsazení zleva pro prvek. */
-  margin-right: auto; /* Odsazení zprava pro prvek. */
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  box-shadow: /* Silnější fade efekt na okrajích */
-    0 0 0 1px rgba(255,255,255,0.01),
-    0 0 64px 32px rgba(255,255,255,0.95) inset,
-    0 2px 28px 0 rgba(60,30,10,0.12);
-  position: relative; /* Určuje způsob pozicování prvku. */
-  overflow: hidden; /* Řídí přetečení obsahu. */
-}
+
 
 /* Silnější efekt stínu na tlačítku Reservio */
-.reservio-button-container button,
-.reservio-button-container .rv-btn {
-  box-shadow: 0 8px 32px rgba(60,30,10,0.28); /* Přidá stín prvku. */
-  transition: box-shadow 0.2s, transform 0.2s; /* Nastaví animaci změn vlastností. */
-}
-.reservio-button-container button:hover,
-.reservio-button-container .rv-btn:hover {
-  box-shadow: 0 16px 48px rgba(60,30,10,0.38); /* Přidá stín prvku. */
-  transform: translateY(-3px) scale(1.06); /* Transformuje prvek (posun, natočení, měřítko). */
-}
-.reservio-nav-btn {
-  display: inline-block; /* Nastaví způsob zobrazení prvku. */
-  background: linear-gradient(90deg, #7f0000 60%, #7f0000 100%); /* Definuje pozadí prvku. */
-  color: #fff; /* Nastaví barvu textu. */
-  font-family: 'Raleway', sans-serif; /* Určuje použité písmo. */
-  font-size: 1.18em; /* Nastaví velikost písma. */
-  font-weight: 800; /* Určuje tloušťku písma. */
-  padding: 13px 34px; /* Přidá vnitřní odsazení prvku. */
-  border-radius: 28px; /* Zaoblí rohy prvku. */
-  margin-left: 24px; /* Odsazení zleva pro prvek. */
-  box-shadow:
-    0 6px 28px 0 rgba(60,30,10,0.38),
-    0 2px 0 #3e2f2a inset;
-  text-decoration: none; /* Řídí dekoraci textu. */
-  letter-spacing: 0.7px; /* Nastaví rozestupy mezi písmeny. */
-  border: 2px solid #3e2f2a; /* Vykreslí rámeček kolem prvku. */
-  outline: none; /* Vykreslí obrys prvku bez vlivu na rozměry. */
-  cursor: pointer; /* Nastaví tvar kurzoru. */
-  position: relative; /* Určuje způsob pozicování prvku. */
-  transition:
-    background 0.2s,
-    color 0.2s,
-    box-shadow 0.2s,
-    transform 0.2s,
-    border-color 0.2s;
-}
-.reservio-nav-btn:hover,
-.reservio-nav-btn:focus {
-  background: linear-gradient(90deg, #8b1111 70%, #7f0000 100%); /* Definuje pozadí prvku. */
-  color: #ffe5e5; /* Nastaví barvu textu. */
-  border-color: #7f0000; /* Určuje barvu rámečku. */
-  transform: translateY(-3px) scale(1.07); /* Transformuje prvek (posun, natočení, měřítko). */
-}
-.cenik-table { /* --- Ceník masáží --- */
-  max-width: 750px; /* Omezí maximální šířku prvku. */
-  width: 100%; /* Definuje šířku prvku. */
-  margin: 0 auto 40px auto; /* Odsadí prvek od okolního obsahu. */
-  border-radius: 22px; /* Zaoblí rohy prvku. */
-  box-shadow: 0 8px 32px rgba(124,74,39,0.13); /* Přidá stín prvku. */
-  padding: 28px 0 32px 0; /* Přidá vnitřní odsazení prvku. */
-  background: linear-gradient(135deg, #ffead7 70%, #f7e3c6 100%); /* Definuje pozadí prvku. */
-  border: 2px solid #e0d3c2; /* Vykreslí rámeček kolem prvku. */
-  transition: box-shadow 0.2s, background 0.2s, min-height 0.3s; /* Nastaví animaci změn vlastností. */
-  overflow: visible; /* Řídí přetečení obsahu. */
-}
-.cenik-inner td {
-  white-space: nowrap; /* Řídí zalamování textu. */
-}
-.cenik-inner tr td:first-child {
-  width: 70%; /* Definuje šířku prvku. */
-  min-width: 320px; /* Nastaví minimální šířku prvku. */
-  white-space: nowrap; /* Řídí zalamování textu. */
-  overflow: hidden; /* Řídí přetečení obsahu. */
-  text-overflow: ellipsis; /* Určuje, jak se zobrazí přetékající text. */
-}
-.cenik-inner tr td:last-child {
-  width: 1%; /* Definuje šířku prvku. */
-  white-space: nowrap; /* Řídí zalamování textu. */
-  text-align: right; /* Zarovná text. */
-  background: #e9e0d6; /* Definuje pozadí prvku. */
-  color: #3e2f2a; /* Nastaví barvu textu. */
-  font-weight: 700; /* Určuje tloušťku písma. */
-  border-radius: 8px; /* Zaoblí rohy prvku. */
-  border-left: 2px solid #d2bfa7; /* Vykreslí levý rámeček. */
-}
-.masaz-row {
-  position: relative; /* Určuje způsob pozicování prvku. */
-  cursor: pointer; /* Nastaví tvar kurzoru. */
-  transition: background 0.15s; /* Nastaví animaci změn vlastností. */
-}
-.masaz-row:hover, .masaz-row.active {
-  background: #f7e3c6; /* Definuje pozadí prvku. */
-  box-shadow: 0 2px 12px rgba(124,74,39,0.07); /* Přidá stín prvku. */
-}
-.masaz-info-bubble {
-  display: none; /* Nastaví způsob zobrazení prvku. */
-  position: absolute; /* Určuje způsob pozicování prvku. */
-  left: 50%; /* Umístí prvek směrem zleva. */
-  top: 50%; /* Umístí prvek směrem shora. */
-  transform: translate(-50%, -60%); /* Transformuje prvek (posun, natočení, měřítko). */
-  z-index: 20; /* Určuje pořadí překrytí prvku. */
-  background: #fff8f2; /* Definuje pozadí prvku. */
-  color: #3e2f2a; /* Nastaví barvu textu. */
-  border: 1.5px solid #d2bfa7; /* Vykreslí rámeček kolem prvku. */
-  border-radius: 18px; /* Zaoblí rohy prvku. */
-  padding: 22px 32px 22px 22px; /* Přidá vnitřní odsazení prvku. */
-  font-size: 1.05em; /* Nastaví velikost písma. */
-  min-width: 260px; /* Nastaví minimální šířku prvku. */
-  max-width: 380px; /* Omezí maximální šířku prvku. */
-  box-shadow: 0 8px 32px rgba(124,74,39,0.18); /* Přidá stín prvku. */
-  box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
-  animation: fadeInBubble .2s; /* Definuje animaci a její průběh. */
-}
-.masaz-info-close {
-  position: absolute; /* Určuje způsob pozicování prvku. */
-  top: 8px; /* Umístí prvek směrem shora. */
-  right: 12px; /* Umístí prvek směrem zprava. */
-  background: none; /* Definuje pozadí prvku. */
-  border: none; /* Vykreslí rámeček kolem prvku. */
-  color: #7c4a27; /* Nastaví barvu textu. */
-  font-size: 1.3em; /* Nastaví velikost písma. */
-  font-weight: bold; /* Určuje tloušťku písma. */
-  cursor: pointer; /* Nastaví tvar kurzoru. */
-  padding: 0; /* Přidá vnitřní odsazení prvku. */
-  line-height: 1; /* Nastaví výšku řádku. */
-}
-.masaz-info-bubble ul {
-  margin: 6px 0 10px 18px; /* Odsadí prvek od okolního obsahu. */
-  padding: 0; /* Přidá vnitřní odsazení prvku. */
-  font-size: 0.98em; /* Nastaví velikost písma. */
-}
-@media (max-width: 700px) {
-  .masaz-info-bubble {
-    left: 50%; /* Umístí prvek směrem zleva. */
-    top: 100%; /* Umístí prvek směrem shora. */
-    transform: translate(-50%, 10px); /* Transformuje prvek (posun, natočení, měřítko). */
-    min-width: 0; /* Nastaví minimální šířku prvku. */
-    max-width: 95vw; /* Omezí maximální šířku prvku. */
-    padding: 14px 18px 14px 14px; /* Přidá vnitřní odsazení prvku. */
-  }
-}
-.masaz-info {
-  display: none; /* Nastaví způsob zobrazení prvku. */
-  position: absolute; /* Určuje způsob pozicování prvku. */
-  left: 0; /* Umístí prvek směrem zleva. */
-  top: 110%; /* Umístí prvek směrem shora. */
-  z-index: 10; /* Určuje pořadí překrytí prvku. */
-  background: #fff8f2; /* Definuje pozadí prvku. */
-  color: #3e2f2a; /* Nastaví barvu textu. */
-  border: 1px solid #d2bfa7; /* Vykreslí rámeček kolem prvku. */
-  border-radius: 8px; /* Zaoblí rohy prvku. */
-  padding: 12px 18px; /* Přidá vnitřní odsazení prvku. */
-  font-size: 0.98em; /* Nastaví velikost písma. */
-  min-width: 260px; /* Nastaví minimální šířku prvku. */
-  max-width: 340px; /* Omezí maximální šířku prvku. */
-  box-shadow: 0 4px 18px rgba(60,30,10,0.12); /* Přidá stín prvku. */
-}
-@media (max-width: 700px) {
-  .masaz-info {
-    position: static; /* Určuje způsob pozicování prvku. */
-    margin-top: 8px; /* Odsazení shora pro prvek. */
-    min-width: 0; /* Nastaví minimální šířku prvku. */
-    max-width: 100%; /* Omezí maximální šířku prvku. */
-  }
-}
-.cenik-toggle {
-  width: 100%; /* Definuje šířku prvku. */
-  background: #f7f2ed; /* Definuje pozadí prvku. */
-  color: #7c4a27; /* Nastaví barvu textu. */
-  font-size: 1.08em; /* Nastaví velikost písma. */
-  font-weight: 700; /* Určuje tloušťku písma. */
-  border: none; /* Vykreslí rámeček kolem prvku. */
-  outline: none; /* Vykreslí obrys prvku bez vlivu na rozměry. */
-  padding: 14px 0 14px 12px; /* Přidá vnitřní odsazení prvku. */
-  text-align: left; /* Zarovná text. */
-  cursor: pointer; /* Nastaví tvar kurzoru. */
-  transition: background 0.18s; /* Nastaví animaci změn vlastností. */
-  border-bottom: 1px solid #e0d3c2; /* Vykreslí spodní rámeček. */
-}
-.cenik-toggle:hover,
-.cenik-toggle:focus {
-  background: #e9e0d6; /* Definuje pozadí prvku. */
-}
-.cenik-toggle span {
-  display: inline-block; /* Nastaví způsob zobrazení prvku. */
-  width: 1.2em; /* Definuje šířku prvku. */
-  font-size: 1.1em; /* Nastaví velikost písma. */
-  transition: transform 0.2s; /* Nastaví animaci změn vlastností. */
-}
-.cenik-inner {
-  background: #ffe8d2; /* tmavší odstín než #ab754e */
-  border-radius: 0 0 12px 12px; /* Zaoblí rohy prvku. */
-  margin-bottom: 8px; /* Odsazení zespodu pro prvek. */
-  box-shadow: 0 2px 12px rgba(124,74,39,0.04); /* Přidá stín prvku. */
-}
 
-.cenik-inner.sportovni-oddeleni { /* Oddělení sekcí v ceníku tmavou linkou */
-  border-bottom: 3px solid #7c4a27; /* Vykreslí spodní rámeček. */
-  margin-bottom: 32px; /* Odsazení zespodu pro prvek. */
-}
-.masaz-info-bubble strong.indikace {
-  color: #92ab4e; /* Nastaví barvu textu. */
-}
-.masaz-info-bubble strong.kontraindikace {
-  color: #af4238; /* Nastaví barvu textu. */
-}
 
 @media (max-width: 700px) { /* --- MOBILNÍ REŽIM PRO CENÍK MASÁŽÍ --- */
-  .cenik-table {
-    display: none !important; /* Nastaví způsob zobrazení prvku. */
-  }
-  .cenik-mobile-list {
-    display: flex !important; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    gap: 14px; /* Nastaví mezery mezi položkami. */
-    margin-bottom: 24px; /* Odsazení zespodu pro prvek. */
-    width: 100%; /* Definuje šířku prvku. */
-    max-width: 100vw; /* Omezí maximální šířku prvku. */
-    padding: 0; /* Přidá vnitřní odsazení prvku. */
-  }
-  .cenik-mobile-item {
-    background: #fff8f2; /* Definuje pozadí prvku. */
-    border: 2px solid #e0d3c2; /* Vykreslí rámeček kolem prvku. */
-    border-radius: 14px; /* Zaoblí rohy prvku. */
-    box-shadow: 0 2px 8px rgba(124,74,39,0.07); /* Přidá stín prvku. */
-    padding: 16px 14px 12px 14px; /* Přidá vnitřní odsazení prvku. */
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    gap: 8px; /* Nastaví mezery mezi položkami. */
-    position: relative; /* Určuje způsob pozicování prvku. */
-    cursor: pointer; /* Nastaví tvar kurzoru. */
-    min-height: 100px; /* Definovaná minimální výška rámečku */
-    height: auto; /* Výška se přizpůsobí obsahu, ale bude minimálně 100px */
-    margin-bottom: 4px; /* Odsazení zespodu pro prvek. */
-  }
 
-  .cenik-mobile-item[class*="bg-"] { /* Pro rámečky s pozadím můžete nastavit konkrétnější výšku */
-    height: 150px; /* Pevná výška pro položky s obrázkem na pozadí */
-    min-height: 150px; /* Nastaví minimální výšku prvku. */
-  }
 
-  .cenik-mobile-title {
-    font-weight: 700; /* Určuje tloušťku písma. */
-    color: #7c4a27; /* Nastaví barvu textu. */
-    font-size: 1.1em; /* Nastaví velikost písma. */
-    margin-bottom: 4px; /* Odsazení zespodu pro prvek. */
-  }
+  
 
-  .cenik-mobile-price {
-    color: #fff; /* Nastaví barvu textu. */
-    font-size: 1.1em; /* Nastaví velikost písma. */
-    font-weight: 700; /* Určuje tloušťku písma. */
-    align-self: flex-end; /* Zarovná konkrétní dětský prvek. */
-    background: #3e2f2a; /* Definuje pozadí prvku. */
-    border-radius: 8px; /* Zaoblí rohy prvku. */
-    padding: 4px 12px; /* Přidá vnitřní odsazení prvku. */
-    margin-top: 2px; /* Odsazení shora pro prvek. */
-    box-shadow: 0 2px 8px rgba(124,74,39,0.07); /* Přidá stín prvku. */
-  }
 
-  .cenik-mobile-info-btn {
-    background: none; /* Definuje pozadí prvku. */
-    border: none; /* Vykreslí rámeček kolem prvku. */
-    color: #7c4a27; /* Nastaví barvu textu. */
-    font-size: 1.1em; /* Nastaví velikost písma. */
-    cursor: pointer; /* Nastaví tvar kurzoru. */
-    margin-left: 0; /* Odsazení zleva pro prvek. */
-    margin-top: 8px; /* Odsazení shora pro prvek. */
-    align-self: flex-start; /* Zarovná konkrétní dětský prvek. */
-    padding: 0; /* Přidá vnitřní odsazení prvku. */
-    font-weight: 600; /* Určuje tloušťku písma. */
-    transition: color 0.2s; /* Nastaví animaci změn vlastností. */
-  }
-  .cenik-mobile-info-btn:hover {
-    color: #ab754e; /* Nastaví barvu textu. */
-    text-decoration: underline; /* Řídí dekoraci textu. */
-  }
-  .cenik-mobile-info {
-    display: none; /* Nastaví způsob zobrazení prvku. */
-    background: #fff8f2; /* Definuje pozadí prvku. */
-    color: #3e2f2a; /* Nastaví barvu textu. */
-    border: 1.5px solid #d2bfa7; /* Vykreslí rámeček kolem prvku. */
-    border-radius: 12px; /* Zaoblí rohy prvku. */
-    padding: 12px 14px; /* Přidá vnitřní odsazení prvku. */
-    font-size: 1em; /* Nastaví velikost písma. */
-    margin-top: 8px; /* Odsazení shora pro prvek. */
-    box-shadow: 0 4px 18px rgba(60,30,10,0.10); /* Přidá stín prvku. */
-    position: static; /* bylo: relative */
-    z-index: 2; /* Určuje pořadí překrytí prvku. */
-    animation: fadeInBubble .2s; /* Definuje animaci a její průběh. */
-    overflow-y: visible; /* Řídí přetečení na ose Y. */
-    max-height: none; /* Omezí maximální výšku prvku. */
-  }
-  .cenik-mobile-item.active .cenik-mobile-info {
-    display: block; /* Nastaví způsob zobrazení prvku. */
-  }
+  
 
-  .cenik-mobile-item.bg-masaz-zada      { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmz.webp') center/cover no-repeat; } /* Přidané definice obrázků pozadí pro mobilní zobrazení */
-  .cenik-mobile-item.bg-masaz-zada-sije { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzs.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-zada-sije-dkz  { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzsdkz.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-zada-sije-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzsdkp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkz { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkz.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-hk { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmhk.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-zs { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smzs.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-s { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/sms.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-zs-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smzsdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-smdkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-smhkr { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smhkr.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-bankovani { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/banky.webp') center/cover no-repeat; }
 
-  .cenik-mobile-item.bg-relaxacni-oblicej { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/rmod.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-parafinovy-zabal-rukou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/pzr.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-parafinovy-zabal-nohou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/pzn.webp') center/cover no-repeat; }
+  
+  
 
-  .cenik-mobile-item[class*="bg-"] { /* Společné styly pro položky s pozadím v mobilní verzi */
-    color: #fff; /* Nastaví barvu textu. */
-    position: relative; /* Určuje způsob pozicování prvku. */
-    border: 2px solid #131313; /* Vykreslí rámeček kolem prvku. */
-    box-shadow: 0 2px 12px rgba(124,74,39,0.13); /* Přidá stín prvku. */
-  }
+   /* Přidané definice obrázků pozadí pro mobilní zobrazení */
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
 
   /* Zajištění čitelnosti textu na pozadí v mobilní verzi */
-  .cenik-mobile-item[class*="bg-"] .cenik-mobile-title,
-  .cenik-mobile-item[class*="bg-"] .cenik-mobile-price,
-  .cenik-mobile-item[class*="bg-"] .cenik-mobile-info-btn {
-    color: #fff; /* Nastaví barvu textu. */
-    text-shadow: 0 2px 8px rgba(60,30,10,0.25); /* Přidá stín textu. */
-  }
+  
 }
 @media (min-width: 701px) {
-  .cenik-mobile-list {
-    display: flex !important; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: row; /* Určuje směr Flexboxu. */
-    justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-    align-items: flex-start; /* Zarovná děti v pomocné ose Flexboxu. */
-    gap: 48px; /* Nastaví mezery mezi položkami. */
-    max-width: 1200px; /* Omezí maximální šířku prvku. */
-    margin: 0 auto 48px auto; /* Odsadí prvek od okolního obsahu. */
-    padding: 0 24px; /* Přidá vnitřní odsazení prvku. */
-  }
-  .cenik-column {
-    flex: 1 1 0; /* Rychle nastaví chování flex položky. */
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    gap: 18px; /* Nastaví mezery mezi položkami. */
-    min-width: 0; /* Nastaví minimální šířku prvku. */
-    max-width: 420px; /* Omezí maximální šířku prvku. */
-  }
-  .cenik-column + .cenik-column {
-    border-left: 3px solid #e0d3c2; /* Vykreslí levý rámeček. */
-    padding-left: 48px; /* Vnitřní odsazení zleva. */
-    margin-left: 0; /* Odsazení zleva pro prvek. */
-  }
-  .cenik-section-title {
-    font-size: 1.25em; /* Nastaví velikost písma. */
-    margin: 0 0 12px 0; /* Odsadí prvek od okolního obsahu. */
-    text-align: left; /* Zarovná text. */
-    background: none; /* Definuje pozadí prvku. */
-    border-bottom: 2px solid #e0d3c2; /* Vykreslí spodní rámeček. */
-    padding-bottom: 8px; /* Vnitřní odsazení zespodu. */
-    color: #7c4a27; /* Nastaví barvu textu. */
-    font-weight: 800; /* Určuje tloušťku písma. */
-    letter-spacing: 0.5px; /* Nastaví rozestupy mezi písmeny. */
-  }
-  .cenik-mobile-item {
-    background: #fff8f2; /* Definuje pozadí prvku. */
-    border: 2px solid #e0d3c2; /* Vykreslí rámeček kolem prvku. */
-    border-radius: 16px; /* Zaoblí rohy prvku. */
-    box-shadow: 0 2px 12px rgba(124,74,39,0.07); /* Přidá stín prvku. */
-    padding: 22px 18px 18px 18px; /* Přidá vnitřní odsazení prvku. */
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    gap: 10px; /* Nastaví mezery mezi položkami. */
-    min-width: 0; /* Nastaví minimální šířku prvku. */
-    min-height: 120px; /* Nastaví minimální výšku prvku. */
-    max-width: 100%; /* Omezí maximální šířku prvku. */
-    height: 120px; /* Definuje výšku prvku. */
-    justify-content: flex-start; /* Zarovná děti v hlavní ose Flexboxu. */
-    transition: box-shadow 0.2s, transform 0.2s; /* Nastaví animaci změn vlastností. */
-    cursor: pointer; /* Přidáno - ukazuje, že prvek je klikatelný */
-  }
-  .cenik-mobile-title {
-    font-weight: 800; /* Určuje tloušťku písma. */
-    color: #ffffff; /* Nastaví barvu textu. */
-    font-size: 1.08em; /* Nastaví velikost písma. */
-    margin-bottom: 2px; /* Odsazení zespodu pro prvek. */
-    letter-spacing: 0.2px; /* Nastaví rozestupy mezi písmeny. */
-  }
-  .cenik-mobile-price {
-    color: #fff; /* Nastaví barvu textu. */
-    font-size: 1.08em; /* Nastaví velikost písma. */
-    font-weight: 700; /* Určuje tloušťku písma. */
-    align-self: flex-end; /* Zarovná konkrétní dětský prvek. */
-    background: #3e2f2a; /* Definuje pozadí prvku. */
-    border-radius: 8px; /* Zaoblí rohy prvku. */
-    padding: 4px 14px; /* Přidá vnitřní odsazení prvku. */
-    margin-top: 2px; /* Odsazení shora pro prvek. */
-    box-shadow: 0 2px 8px rgba(124,74,39,0.07); /* Přidá stín prvku. */
-  }
-  .cenik-mobile-info-btn {
-    background: none; /* Definuje pozadí prvku. */
-    border: none; /* Vykreslí rámeček kolem prvku. */
-    color: #ffffff; /* Nastaví barvu textu. */
-    font-size: 1em; /* Nastaví velikost písma. */
-    cursor: pointer; /* Nastaví tvar kurzoru. */
-    margin-left: 0; /* Odsazení zleva pro prvek. */
-    margin-top: 8px; /* Odsazení shora pro prvek. */
-    align-self: flex-start; /* Zarovná konkrétní dětský prvek. */
-    padding: 0; /* Přidá vnitřní odsazení prvku. */
-    font-weight: 600; /* Určuje tloušťku písma. */
-    transition: color 0.2s; /* Nastaví animaci změn vlastností. */
-  }
-  .cenik-mobile-info-btn:hover {
-    color: #ab754e; /* Nastaví barvu textu. */
-    text-decoration: underline; /* Řídí dekoraci textu. */
-  }
-  .cenik-mobile-info {
-    display: none; /* Nastaví způsob zobrazení prvku. */
-    background: #fff8f2; /* Definuje pozadí prvku. */
-    color: #3e2f2a; /* Nastaví barvu textu. */
-    border: 1.5px solid #d2bfa7; /* Vykreslí rámeček kolem prvku. */
-    border-radius: 12px; /* Zaoblí rohy prvku. */
-    padding: 12px 14px; /* Přidá vnitřní odsazení prvku. */
-    font-size: 1em; /* Nastaví velikost písma. */
-    margin-top: 8px; /* Odsazení shora pro prvek. */
-    box-shadow: 0 4px 18px rgba(60,30,10,0.10); /* Přidá stín prvku. */
-    position: static; /* bylo: relative */
-    z-index: 2; /* Určuje pořadí překrytí prvku. */
-    animation: fadeInBubble .2s; /* Definuje animaci a její průběh. */
-    overflow-y: visible; /* Řídí přetečení na ose Y. */
-    max-height: none; /* Omezí maximální výšku prvku. */
-  }
-  .cenik-mobile-item.active .cenik-mobile-info {
-    display: block; /* Nastaví způsob zobrazení prvku. */
-  }
 
-  .cenik-mobile-item.bg-masaz-zada      { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmz.webp') center/cover no-repeat; } /* Přidané definice obrázků pozadí pro mobilní zobrazení */
-  .cenik-mobile-item.bg-masaz-zada-sije { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzs.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-zada-sije-dkz  { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzsdkz.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-zada-sije-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmzsdkp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkz { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkz.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-dkp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmdkp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-hk { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/kmhk.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-zs { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smzs.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-s { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/sms.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-sportovni-zs-dkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smzsdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-smdkzp { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smdkzp.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-masaz-smhkr { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/smhkr.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-bankovani { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/banky.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-lavove-kameny { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/lk.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-antistresova-hlava { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/amh.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-relaxacni-oblicej { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/rmod.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-parafinovy-zabal-rukou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/pzr.webp') center/cover no-repeat; }
-  .cenik-mobile-item.bg-parafinovy-zabal-nohou { background: linear-gradient(rgba(60,30,10,0.38),rgba(60,30,10,0.38)),url('galerie/masaze/pzn.webp') center/cover no-repeat; }
 
-  .cenik-mobile-item[class*="bg-"] { /* Společné styly pro položky s pozadím v mobilní verzi */
-    color: #fff; /* Nastaví barvu textu. */
-    position: relative; /* Určuje způsob pozicování prvku. */
-    border: 2px solid #131313; /* Vykreslí rámeček kolem prvku. */
-    box-shadow: 0 2px 12px rgba(124,74,39,0.13); /* Přidá stín prvku. */
-  }
+  
+
+
+  
+
+
+   /* Přidané definice obrázků pozadí pro mobilní zobrazení */
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
 
   /* Zajištění čitelnosti textu na pozadí v mobilní verzi */
-  .cenik-mobile-item[class*="bg-"] .cenik-mobile-title,
-  .cenik-mobile-item[class*="bg-"] .cenik-mobile-price,
-  .cenik-mobile-item[class*="bg-"] .cenik-mobile-info-btn {
-    color: #fff; /* Nastaví barvu textu. */
-    text-shadow: 0 2px 8px rgba(60,30,10,0.25); /* Přidá stín textu. */
-  }
+  
 }
 
 @media (min-width: 901px) { /* Desktop: max 4 karty v řadě */
@@ -3617,14 +2344,6 @@ footer img {
   }
 }
 
-.card-title { /* Nové třídy pro název a popis služby/masáže */
-  font-size: 1em; /* Nastaví velikost písma. */
-  font-weight: 700; /* Určuje tloušťku písma. */
-  color: #7c4a27; /* Nastaví barvu textu. */
-  margin: 10px 0 8px 0; /* Odsadí prvek od okolního obsahu. */
-  text-align: left; /* Zarovná text. */
-  letter-spacing: 0.2px; /* Nastaví rozestupy mezi písmeny. */
-}
 
 @media (min-width: 601px) { /* Desktop: obrázek vlevo, název pod obrázkem, informace vpravo */
   .cards {
@@ -3722,157 +2441,6 @@ footer img {
   --gradient-color: rgba(221, 132, 72, 0.4);
 }
 
-.electric-card-wrapper {
-  padding: 2px;
-  border-radius: 24px;
-  position: relative;
-  max-width: 1200px;
-  margin: 60px auto;
-  background: transparent;
-}
-
-.electric-inner-container {
-  position: relative;
-}
-
-.electric-animated-border { /* Animovaný border s filtrem - pouze pro okraj */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid var(--electric-border-color);
-  border-radius: 24px;
-  filter: url(#electric-border-filter);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.electric-card-wrapper--transparent .electric-animated-border { /* Průhledná verze elektrického efektu pro aromaterapii */
-  opacity: 0.5;
-}
-
-.electric-card-wrapper--transparent .electric-glow-layer-1,
-.electric-card-wrapper--transparent .electric-glow-layer-2 {
-  opacity: 0.5;
-}
-
-.electric-card-wrapper--transparent .electric-overlay-1,
-.electric-card-wrapper--transparent .electric-overlay-2 {
-  opacity: 0.25;
-}
-
-.electric-card-wrapper--transparent .electric-background-glow {
-  opacity: 0.15;
-}
-
-.electric-main-card { /* Hlavní karta s obsahem - BEZ filtru */
-  border-radius: 24px;
-  position: relative;
-  z-index: 2;
-}
-
-.electric-glow-layer-1 {
-  border: 2px solid rgba(221, 132, 72, 0.6);
-  border-radius: 24px;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  filter: blur(1px);
-  pointer-events: none;
-}
-
-.electric-glow-layer-2 {
-  border: 2px solid var(--electric-light-color);
-  border-radius: 24px;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  filter: blur(4px);
-  pointer-events: none;
-}
-
-.electric-overlay-1 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 24px;
-  opacity: 1;
-  mix-blend-mode: overlay;
-  transform: scale(1.1);
-  filter: blur(16px);
-  background: linear-gradient(
-    -30deg,
-    white,
-    transparent 30%,
-    transparent 70%,
-    white
-  );
-  pointer-events: none;
-}
-
-.electric-overlay-2 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 24px;
-  opacity: 0.5;
-  mix-blend-mode: overlay;
-  transform: scale(1.1);
-  filter: blur(16px);
-  background: linear-gradient(
-    -30deg,
-    white,
-    transparent 30%,
-    transparent 70%,
-    white
-  );
-  pointer-events: none;
-}
-
-.electric-background-glow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 24px;
-  filter: blur(32px);
-  transform: scale(1.1);
-  opacity: 0.3;
-  z-index: -1;
-  background: linear-gradient(
-    -30deg,
-    var(--electric-light-color),
-    transparent,
-    var(--electric-border-color)
-  );
-  pointer-events: none;
-}
-
-@media (max-width: 768px) {
-  .electric-card-wrapper {
-    margin: 20px 8px;
-  }
-}
 
 body.nav-open { /* Hlavní navigace */ /* Noční režim */
   overflow: hidden;
@@ -3926,13 +2494,6 @@ body.nav-open { /* Hlavní navigace */ /* Noční režim */
   min-width: 0;
 }
 
-.primary-nav__brand-logo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
-}
 
 .primary-nav__brand:hover,
 .primary-nav__brand:focus-visible {
@@ -3945,7 +2506,7 @@ body.nav-open { /* Hlavní navigace */ /* Noční režim */
   top: 50%;
   left: clamp(22px, 4vw, 36px);
   transform: translateY(-50%);
-  font-family: 'Inknut Antiqua', serif;
+  font-family: "Inknut Antiqua", serif;
   font-size: 1rem;
   letter-spacing: 0.6px;
   color: #2b1c12;
@@ -4035,7 +2596,6 @@ body.nav-open { /* Hlavní navigace */ /* Noční režim */
 }
 
 
-
 .primary-nav__toggle {
   display: none;
   flex-direction: column; /* Nastaví směr Flexboxu. */
@@ -4116,7 +2676,7 @@ body.nav-open { /* Hlavní navigace */ /* Noční režim */
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 600;
   font-size: 0.95rem;
   color: #fff8f2;
@@ -4133,13 +2693,6 @@ body.nav-open { /* Hlavní navigace */ /* Noční režim */
   backface-visibility: hidden; /* Zabránění blikání při animacích */
 }
 
-.primary-nav__icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  margin-right: 8px;
-  vertical-align: middle;
-}
 
 .primary-nav__dropdown-toggle {
   cursor: pointer;
@@ -4257,7 +2810,7 @@ body.nav-open { /* Hlavní navigace */ /* Noční režim */
   gap: 12px;
   padding: 10px 12px;
   color: #fff8f2;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 600;
   text-decoration: none;
   -webkit-text-stroke: 0.1px #000000;
@@ -4272,14 +2825,6 @@ body.nav-open { /* Hlavní navigace */ /* Noční režim */
   outline: none;
 }
 
-.primary-nav__dropdown-icon {
-  width: 20px;
-  height: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  filter: brightness(1.05);
-}
 
 body.night-mode .primary-nav {
   background: linear-gradient(135deg, rgba(15,31,58,0.96), rgba(30,50,80,0.94));
@@ -4417,75 +2962,6 @@ body.night-mode .primary-nav__dropdown-panel {
   }
 }
 
-#night-mode-toggle { /* Skrýt checkbox */ /* Noční režim - přepínač den/noc */
-  display: none;
-}
-
-#night-mode-toggle + label.night-mode-switch { /* Přepínač v navbaru */
-  background-color: #040d1c;
-  width: 80px;
-  height: 32px;
-  border-radius: 20px;
-  display: block;
-  padding: 4px;
-  box-shadow: inset 2px 2px 8px rgba(0,0,0,0.5);
-  cursor: pointer;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  flex-shrink: 0;
-  margin-left: 16px;
-}
-
-.night-mode-circle { /* Kruh (měsíc/slunce) - ještě menší */
-  width: 32px;
-  height: 32px;
-  border-radius: 100px;
-  background-color: #f0f0f0;
-  box-shadow: 0 0 40px rgba(255,255,255,0.8);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.crater { /* Krátery na měsíci - ještě menší */
-  background-color: rgba(0,0,0,0.1);
-  border-radius: 100%;
-  position: absolute;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.crater1 {
-  width: 4px;
-  height: 4px;
-  top: 20px;
-  left: 8px;
-}
-
-.crater2 {
-  width: 4px;
-  height: 4px;
-  top: 20px;
-  left: 16px;
-}
-
-.crater3 {
-  width: 8px;
-  height: 8px;
-  top: 4px;
-  left: 16px;
-}
-
-#night-mode-toggle:checked + label.night-mode-switch { /* Noční režim (CHECKED) */
-  background-color: #2a5fba;
-}
-
-#night-mode-toggle:checked + label.night-mode-switch .night-mode-circle {
-  background-color: #f4e94e;
-  margin-left: calc(100% - 32px);
-  box-shadow: 0 0 40px rgba(249, 240, 104, 0.8);
-}
-
-#night-mode-toggle:checked + label.night-mode-switch .crater {
-  opacity: 0;
-}
 
 body.night-mode { /* Noční pozadí s hvězdami */
   background-color: #0f1f3a !important;
@@ -4495,7 +2971,7 @@ body.night-mode { /* Noční pozadí s hvězdami */
 }
 
 body.night-mode::before { /* Hvězdy na pozadí */
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -4570,8 +3046,7 @@ body.night-mode [style*="color:black"] {
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.5) !important;
 }
 
-body.night-mode [style*="background: rgba(255, 255, 255"], /* Světlé pozadí v nočním režimu */
-body.night-mode [style*="background-color: #ae865e2c"] {
+body.night-mode [style*="background: rgba(255, 255, 255"]{
   background: rgba(30, 50, 80, 0.85) !important;
   border-color: rgba(100, 150, 200, 0.5) !important;
 }
@@ -4615,41 +3090,14 @@ body.night-mode .logo-bubble img:hover {
 }
 
 @media (max-width: 768px) { /* Mobilní verze */
-  #night-mode-toggle + label.night-mode-switch {
-    width: 70px;
-    height: 28px;
-    padding: 3px;
-  }
 
-  .night-mode-circle {
-    width: 28px;
-    height: 28px;
-  }
 
-  #night-mode-toggle:checked + label.night-mode-switch .night-mode-circle {
-    margin-left: calc(100% - 28px);
-  }
+  
 
-  .crater1 {
-    width: 3px;
-    height: 3px;
-    top: 18px;
-    left: 7px;
-  }
 
-  .crater2 {
-    width: 3px;
-    height: 3px;
-    top: 18px;
-    left: 14px;
-  }
+  
 
-  .crater3 {
-    width: 6px;
-    height: 6px;
-    top: 3px;
-    left: 14px;
-  }
+  
 }
 
 .page-services .primary-nav__inner { /* Úpravy navigace pro stránku služeb */
@@ -4699,10 +3147,6 @@ body.night-mode .logo-bubble img:hover {
   }
 }
 
-.card-info { /* ===== HOVER EFEKTY NA KARTY ===== */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
 
 .cards {
   display: flex;
@@ -4741,29 +3185,7 @@ body.night-mode .logo-bubble img:hover {
   }
 }
 
-.read-more-btn { /* ===== ČÍST VÍCE TLAČÍTKO ===== */
-  transition: background 0.2s ease, transform 0.2s ease;
-}
 
-.read-more-btn:hover {
-  background: rgba(124, 74, 39, 0.6);
-  transform: translateY(-1px);
-}
-
-.read-more-content {
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    max-height: 0;
-  }
-  to {
-    opacity: 1;
-    max-height: 500px;
-  }
-}
 
 .ceremonie-hero-title { /* Responzivní h1 nadpis */ /* CEREMONIE PAGE - MOBILNÍ OPTIMALIZACE */
   font-size: clamp(2.5rem, 8vw, 5rem) !important;
@@ -4821,24 +3243,6 @@ body.night-mode .logo-bubble img:hover {
   aspect-ratio: 1 / 1;
 }
 
-
-.ceremony-btn:hover,
-.ceremony-btn:focus {
-  background: linear-gradient(90deg, #b97c4d 0%, #9b5c2e 100%);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 32px rgba(60,30,10,0.28), 0 1.5px 0 #491e00 inset;
-}
-
-.ceremony-btn:active {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 6px 16px rgba(60,30,10,0.2), 0 1.5px 0 #491e00 inset;
-}
-
-.ceremony-btn img {
-  width: clamp(20px, 3vw, 28px);
-  height: auto;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));
-}
 
 .ceremony-meta-text { /* Meta text - responzivní */
   font-style: italic;
@@ -4920,15 +3324,8 @@ body.night-mode .logo-bubble img:hover {
     max-height: 250px;
   }
 
-  .ceremony-btn {
-    padding: 10px 16px;
-    font-size: 1rem;
-    gap: 8px;
-  }
 
-  .ceremony-btn img {
-    width: 20px;
-  }
+  
 
   .ceremony-meta-text {
     font-size: 0.8rem;
@@ -5320,7 +3717,7 @@ body.night-mode .logo-bubble img:hover {
 
 .premium-theme .premium-brand-text {
   color: #f4ecd8 !important;
-  font-family: 'Tenor Sans', serif !important;
+  font-family: "Tenor Sans", serif !important;
   font-size: 1.1rem !important;
   letter-spacing: 1px !important;
   text-transform: uppercase !important;
@@ -5347,7 +3744,7 @@ body.night-mode .logo-bubble img:hover {
 
 .premium-theme .primary-nav__link::after, /* Hover efekt - decentní zlatá linka od spodu přizpůsobená mezerám */
 .premium-theme .primary-nav__dropdown-toggle::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 16px; /* Začíná až za prázdným prostorem */
@@ -5565,7 +3962,7 @@ body.night-mode .logo-bubble img:hover {
 .btn-3d-premium { /* 3D PRÉMIOVÉ TLAČÍTKO (Ceremonie) */
   display: inline-flex;
   padding: 14px 36px;
-  font-family: 'Tenor Sans', serif;
+  font-family: "Tenor Sans", serif;
   font-size: 1.5rem;
   font-weight: bold;
   width: fit-content;
@@ -5651,7 +4048,7 @@ body.night-mode .logo-bubble img:hover {
 .main-title-text {
   position: relative; /* Určuje způsob pozicování prvku. */
   z-index: 2; /* Umístí nadpis nad dekorativní kresbu. */
-  font-family: 'Tenor Sans', serif; /* Určuje použité písmo. */
+  font-family: "Tenor Sans", serif; /* Určuje použité písmo. */
   font-size: clamp(3.5rem, 6vw, 6rem); /* Nastaví responzivní velikost písma. */
   line-height: 1.1; /* Nastaví výšku řádku. */
   color: #2b1c12; /* Nastaví barvu textu. */
@@ -5662,7 +4059,7 @@ body.night-mode .logo-bubble img:hover {
 
 .hero-intro {
   flex: 1; /* Umožní sloupci vyplnit dostupný prostor. */
-  background-image: url('galerie/papir.webp'); /* Nastaví obrázek papírového pozadí. */
+  background-image: url("galerie/papir.webp"); /* Nastaví obrázek papírového pozadí. */
   background-size: cover; /* Přizpůsobí pozadí velikosti prvku. */
   background-position: center; /* Zarovná pozadí na střed. */
   padding: 40px 50px; /* Přidá vnitřní odsazení obsahu. */
@@ -5673,7 +4070,7 @@ body.night-mode .logo-bubble img:hover {
 }
 
 .hero-intro h2 {
-  font-family: 'Inknut Antiqua', serif; /* Určuje použité písmo nadpisu. */
+  font-family: "Inknut Antiqua", serif; /* Určuje použité písmo nadpisu. */
   font-size: clamp(1.8rem, 1vw, 2.4rem); /* Nastaví responzivní velikost nadpisu. */
   color: #3e2f2a; /* Nastaví barvu nadpisu. */
   margin-top: 0; /* Odstraní horní vnější odsazení. */
@@ -5683,33 +4080,13 @@ body.night-mode .logo-bubble img:hover {
 }
 
 .hero-intro p {
-  font-family: 'Raleway', sans-serif; /* Určuje použité písmo odstavce. */
+  font-family: "Raleway", sans-serif; /* Určuje použité písmo odstavce. */
   font-size: clamp(1.1rem, 1.5vw, 1.25rem); /* Nastaví responzivní velikost textu. */
   line-height: 1.7; /* Nastaví výšku řádku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   margin: 0; /* Odstraní vnější odsazení odstavce. */
 }
 
-.merged-parallax-content {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  flex-direction: row; /* Uspořádá obsah do řádku. */
-  gap: 50px; /* Nastaví mezeru mezi sloupci. */
-  max-width: 1200px; /* Omezí maximální šířku prvku. */
-  width: 100%; /* Využije dostupnou šířku. */
-  padding: 60px 20px; /* Přidá vnitřní odsazení sekce. */
-  align-items: stretch; /* Roztáhne sloupce na stejnou výšku. */
-  margin: 0 auto; /* Zarovná sekci vodorovně na střed. */
-  position: relative; /* Vytvoří pozicovací kontext. */
-  z-index: 10; /* Umístí obsah nad pozadí. */
-}
-
-.merged-col {
-  flex: 1; /* Rozdělí dostupný prostor mezi sloupce. */
-  display: flex; /* Nastaví flexboxové rozložení. */
-  flex-direction: column; /* Uspořádá obsah sloupce svisle. */
-  justify-content: center; /* Zarovná obsah sloupce na střed. */
-  min-width: 320px; /* Zachová čitelnost obsahu sloupce. */
-}
 
 @media (max-width: 900px) {
   .hero-wrapper {
@@ -5743,91 +4120,9 @@ body.night-mode .logo-bubble img:hover {
     text-align: center; /* Zarovná text panelu na střed. */
   }
 
-  .merged-parallax-content {
-    flex-direction: column; /* Přepne obsah do jednoho sloupce. */
-    gap: 60px; /* Nastaví svislou mezeru mezi bloky. */
-    padding: 40px 16px; /* Zmenší boční odsazení pro tablet. */
-  }
+  
 }
 
-.welcome-title-accent {
-  font-style: oblique; /* Nastaví šikmé písmo akcentu. */
-  -webkit-text-stroke: 2px #000000; /* Přidá tmavý obrys textu. */
-}
-
-.welcome-media-frame {
-  margin: 0; /* Odstraní vnější odsazení rámu. */
-  min-height: auto; /* Přizpůsobí výšku obsahu. */
-  box-shadow: none; /* Odstraní stín rámu. */
-  border-radius: 20px; /* Zaoblí rohy rámu. */
-  --parallax-image: url('galerie/navsteva.webp'); /* Nastaví obrázek pozadí rámu. */
-  --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)); /* Vypne překryv obrázku. */
-}
-
-.welcome-media-frame__content {
-  padding: 0; /* Odstraní vnitřní odsazení obsahu. */
-  max-width: none; /* Povolí využití celé šířky rámu. */
-  line-height: 0; /* Odstraní mezeru pod vloženým obrázkem. */
-}
-
-.welcome-image--ghost {
-  opacity: 0; /* Použije obrázek jen pro zachování rozměru. */
-  display: block; /* Zachová blokové rozložení obrázku. */
-  width: 100%; /* Vyplní šířku rodiče. */
-  height: auto; /* Zachová poměr stran obrázku. */
-}
-
-.home-offer-location {
-  margin: 40px auto 80px auto; /* Nastaví prostor kolem sekce nabídky. */
-  max-width: 1200px; /* Omezí maximální šířku sekce. */
-  padding: 0 20px 20px; /* Přidá boční a spodní odsazení. */
-}
-
-.home-offer-location__header {
-  text-align: center; /* Zarovná hlavičku sekce na střed. */
-  width: 100%; /* Využije celou dostupnou šířku. */
-  max-width: none; /* Neomezuje šířku hlavičky. */
-  margin: 0 auto 32px; /* Zarovná hlavičku a přidá spodní mezeru. */
-  padding: 0 16px; /* Přidá bezpečné boční odsazení. */
-}
-
-.home-offer-location__eyebrow {
-  margin: 0 0 12px; /* Přidá prostor pod pomocným nadpisem. */
-  font-size: 0.78rem; /* Nastaví kompaktní velikost textu. */
-  font-weight: 700; /* Zvýrazní pomocný nadpis. */
-  letter-spacing: 0.28em; /* Rozvolní kapitálky. */
-  text-transform: uppercase; /* Převede text na velká písmena. */
-  color: #7c4a27; /* Nastaví akcentní barvu textu. */
-}
-
-.home-offer-location__section-title {
-  margin: 0 0 12px; /* Přidá prostor pod hlavním nadpisem. */
-  font-family: 'Inknut Antiqua', 'Tenor Sans', serif; /* Určuje ozdobné písmo nadpisu. */
-  font-size: clamp(1.55rem, 2.15vw, 2.2rem); /* Nastaví responzivní velikost nadpisu. */
-  line-height: 1.3; /* Nastaví výšku řádku nadpisu. */
-  color: #3e2f2a; /* Nastaví barvu nadpisu. */
-  text-align: center; /* Zarovná nadpis na střed. */
-  width: 100%; /* Využije celou šířku hlavičky. */
-  white-space: nowrap; /* Zabrání zalomení nadpisu. */
-  letter-spacing: 0.01em; /* Nastaví jemný rozestup písmen. */
-}
-
-.home-offer-location__section-copy {
-  margin: 0; /* Odstraní vnější odsazení odstavce. */
-  font-family: 'Raleway', sans-serif; /* Určuje použité písmo textu. */
-  font-size: 1rem; /* Nastaví základní velikost textu. */
-  line-height: 1.7; /* Zlepší čitelnost řádkováním. */
-  color: #5c4d44; /* Nastaví tlumenou barvu textu. */
-}
-
-.home-offer-location__content {
-  display: grid; /* Nastaví mřížkové rozložení panelů. */
-  grid-template-columns: 1fr; /* Jeden sloupec - panel pod sebou. */
-  gap: 48px; /* Větší mezera mezi panely pro luxusní vzhled. */
-  padding: 0; /* Odstraní vnitřní odsazení kontejneru. */
-  max-width: 900px; /* Omezení maximální šířky pro lepší vzhled. */
-  margin: 0 auto; /* Centrování obsahu. */
-}
 
 .reveal-on-scroll {
   opacity: 0; /* Skryje prvek před aktivací animace. */
@@ -5840,22 +4135,6 @@ body.night-mode .logo-bubble img:hover {
   transform: translateY(0); /* Vrátí prvek na jeho místo. */
 }
 
-.home-offer-location__panel {
-  position: relative; /* Vytvoří pozicovací kontext panelu. */
-  overflow: visible; /* Povoluje efekty přes hranice. */
-  display: flex; /* Nastaví flexboxové rozložení panelu. */
-  flex-direction: column; /* Uspořádá obsah panelu svisle. */
-  gap: 0; /* Odstraňuje mezery mezi prvky - panel-wrapper je podává správně. */
-  padding: 0; /* Žádné odsazení na panelu - wrapper má padding. */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 242, 238, 0.98) 100%); /* Elegantní gradient pozadí. */
-  border-radius: 24px; /* Zaoblují rohy. */
-  border: 1px solid rgba(124, 74, 39, 0.15); /* Jemná hnědá hranice. */
-  box-shadow: 
-    0 20px 50px rgba(62, 47, 42, 0.15),
-    0 8px 25px rgba(124, 74, 39, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6); /* Luxusní vícesystémové stíny. */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hladký přechod při interakci. */
-}
 
 @media (max-width: 768px) { /* Vypnutí parallaxu na mobilech pro lepší výkon */
   [style*="background-attachment: fixed"] {
@@ -5864,271 +4143,15 @@ body.night-mode .logo-bubble img:hover {
 
 }
 
-.home-offer-location__panel--card {
-  position: relative;
-  overflow: hidden;
-  background: url('galerie/karty.webp') center/cover fixed;
-  background-attachment: fixed;
-  -webkit-mask-image: linear-gradient(90deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%)
-    , linear-gradient(180deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(90deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%)
-    , linear-gradient(180deg,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0.35) 6%,
-      rgba(0,0,0,0.75) 18%,
-      rgba(0,0,0,1) 32%,
-      rgba(0,0,0,1) 68%,
-      rgba(0,0,0,0.75) 82%,
-      rgba(0,0,0,0.35) 94%,
-      rgba(0,0,0,0) 100%);
-  -webkit-mask-composite: multiply; /* Určuje způsob skládání masek ve WebKit prohlížečích. */
-  mask-composite: intersect; /* Nastaví, jak se kombinují masky ve standardních prohlížečích. */
-}
-
-.home-offer-location__panel--card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.40) 0%,
-    rgba(0, 0, 0, 0.50) 50%,
-    rgba(0, 0, 0, 0.60) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: multiply;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.home-offer-location__card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.55) 50%,
-    rgba(0, 0, 0, 0.65) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: multiply;
-}
-
-.home-offer-location__panel--map {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 242, 238, 0.98) 100%);
-  background-attachment: scroll;
-}
 
 /* Text styling pro věrnostní kartu s parallax pozadím */
-.home-offer-location__panel--card .home-offer-location__label {
-  color: #fff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-}
 
-.home-offer-location__panel--card .home-offer-location__panel-title {
-  color: #fff;
-  text-decoration-color: rgba(255, 255, 255, 0.5);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-}
-
-.home-offer-location__panel--card .home-offer-location__text {
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-}
-
-.home-offer-location__panel--card .home-offer-location__pill {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.home-offer-location__panel::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.home-offer-location__panel--card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.home-offer-location__panel-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 40px; /* Větší padding pro luxusní vzhled. */
-  position: relative;
-  z-index: 2;
-}
-
-.home-offer-location__panel > * {
-  position: relative;
-  z-index: 1;
-}
-
-.home-offer-location__panel-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid rgba(124, 74, 39, 0.08);
-}
-
-.home-offer-location__panel--card .home-offer-location__panel-head {
-  border-bottom-color: rgba(255, 255, 255, 0.2);
-}
-
-.home-offer-location__label {
-  margin: 0 0 6px;
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: #7c4a27;
-}
-
-.home-offer-location__panel-title {
-  margin: 0;
-  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
-  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-  color: #3e2f2a;
-  text-decoration: underline;
-  text-decoration-color: rgba(85, 67, 67, 0.5)
-}
-
-.home-offer-location__pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(137, 25, 21, 0.12) 0%, rgba(137, 25, 21, 0.08) 100%);
-  color: #891915;
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  white-space: nowrap;
-  border: 1px solid rgba(137, 25, 21, 0.73);
-  box-shadow: 0 4px 12px rgba(137, 25, 21, 0.1);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.home-offer-location__pill--accent {
-  background: rgba(124, 74, 39, 0.14);
-  color: #7c4a27;
-  border: 1px solid rgba(124, 74, 39, 0.73);
-}
-
-.home-offer-location__card {
-  align-self: center;
-  width: min(100%, 280px);
-  min-height: 240px;
-  margin: 12px auto 0;
-  filter: drop-shadow(0 10px 30px rgba(124, 74, 39, 0.2)); /* Luxusní stín kolem karty. */
-}
-
-.home-offer-location__text {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  font-weight: bolder;
-  line-height: 1.7;
-  color: #5a4f49;
-}
-
-.home-offer-location__link {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  border-radius: 999px;
-  border: 1.5px solid rgba(137, 25, 21, 0.8);
-  background: linear-gradient(135deg, #891915 0%, #a33d2f 100%);
-  color: #fff;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 
-    0 12px 28px rgba(137, 25, 21, 0.3),
-    0 4px 12px rgba(137, 25, 21, 0.15);
-  position: relative;
-  overflow: hidden;
-}
-
-.home-offer-location__link::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transform: translateX(-100%);
-}
-
-.home-offer-location__link:hover::before {
-  animation: shine 0.5s ease;
-}
 
 @keyframes shine {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
 
-.home-offer-location__link:hover,
-.home-offer-location__link:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 
-    0 16px 36px rgba(137, 25, 21, 0.4),
-    0 6px 16px rgba(137, 25, 21, 0.2);
-}
-
-.home-offer-location__map-card {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  height: 100%;
-  padding: 14px;
-  background: rgba(255, 255, 255, 0.55);
-  border-radius: 24px;
-  box-shadow: 0 18px 40px rgba(24, 20, 15, 0.06);
-}
 
 .primary-nav__cta-icon {
   width: 16px;
@@ -6136,57 +4159,6 @@ body.night-mode .logo-bubble img:hover {
   margin-right: 10px;
 }
 
-.home-offer-location__map {
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 
-    0 12px 32px rgba(124, 74, 39, 0.15),
-    inset 0 1px 2px rgba(255, 255, 255, 0.4);
-  width: 100%;
-  height: 320px; /* Větší výška mapy. */
-  position: relative;
-  border: 1px solid rgba(124, 74, 39, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.home-offer-location__map iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.home-offer-location__address {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  color: #4f3d35;
-  font-weight: 600;
-  line-height: 1.6;
-}
-
-.home-offer-location__details {
-  display: block;
-}
-
-.home-offer-location__details > div {
-  min-width: 0;
-}
-
-.home-offer-location__actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-
-.home-offer-location__address-line {
-  font-size: 1.15rem;
-  color: #7c4a27;
-}
 
 /* Sekce s recenzemi a mapou */
 .reviews-and-map-section {
@@ -6229,7 +4201,7 @@ body.night-mode .logo-bubble img:hover {
 .reviews-label,
 .map-label {
   margin: 0 0 10px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -6243,7 +4215,7 @@ body.night-mode .logo-bubble img:hover {
 
 .reviews-title {
   margin: 0;
-  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
   font-size: clamp(1.35rem, 2.2vw, 1.8rem);
   line-height: 1.35;
   color: var(--emboss-text);
@@ -6284,7 +4256,7 @@ body.night-mode .logo-bubble img:hover {
 
 .map-title {
   margin: 0;
-  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
   font-size: clamp(1.35rem, 2.2vw, 1.8rem);
   line-height: 1.35;
   color: var(--emboss-text);
@@ -6303,7 +4275,7 @@ body.night-mode .logo-bubble img:hover {
   border-radius: 6px;
   background: rgba(124, 74, 39, 0.08);
   color: #8a5835;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   white-space: nowrap;
@@ -6336,7 +4308,7 @@ body.night-mode .logo-bubble img:hover {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1rem;
   color: #4f3d35;
   font-weight: 600;
@@ -6358,7 +4330,7 @@ body.night-mode .logo-bubble img:hover {
   border: 1px solid #891915;
   background: #891915;
   color: #fff;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -6368,7 +4340,7 @@ body.night-mode .logo-bubble img:hover {
 }
 
 .map-link::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
@@ -6414,251 +4386,15 @@ body.night-mode .logo-bubble img:hover {
   }
 }
 
-  .home-offer-location__panel--map {
-    grid-column: 1;
-    grid-row: auto;
-  }
 
-  .home-offer-location__section-title {
-    white-space: normal;
-    overflow-wrap: anywhere;
-    text-wrap: balance;
-  }
+  
 
-
-@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
-  .home-offer-location__header.reveal-on-scroll {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    padding: 28px 18px;
-    margin: 0 auto 24px;
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-shadow: #000000 1px 1px 10px;
-    --offer-header-parallax-image: url('galerie/sand.jpg');
-    --offer-header-parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));
-  }
-
-  .home-offer-location__header.reveal-on-scroll::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image: var(--offer-header-parallax-overlay), var(--offer-header-parallax-image);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed, fixed;
-    border-radius: inherit;
-    pointer-events: none;
-    transform: translateZ(0);
-    will-change: transform;
-    -webkit-mask-image: linear-gradient(90deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 6%,
-        rgba(0,0,0,0.75) 18%,
-        rgba(0,0,0,1) 32%,
-        rgba(0,0,0,1) 68%,
-        rgba(0,0,0,0.75) 82%,
-        rgba(0,0,0,0.35) 94%,
-        rgba(0,0,0,0) 100%)
-      , linear-gradient(180deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 6%,
-        rgba(0,0,0,0.75) 18%,
-        rgba(0,0,0,1) 32%,
-        rgba(0,0,0,1) 68%,
-        rgba(0,0,0,0.75) 82%,
-        rgba(0,0,0,0.35) 94%,
-        rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(90deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 6%,
-        rgba(0,0,0,0.75) 18%,
-        rgba(0,0,0,1) 32%,
-        rgba(0,0,0,1) 68%,
-        rgba(0,0,0,0.75) 82%,
-        rgba(0,0,0,0.35) 94%,
-        rgba(0,0,0,0) 100%)
-      , linear-gradient(180deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0.35) 6%,
-        rgba(0,0,0,0.75) 18%,
-        rgba(0,0,0,1) 32%,
-        rgba(0,0,0,1) 68%,
-        rgba(0,0,0,0.75) 82%,
-        rgba(0,0,0,0.35) 94%,
-        rgba(0,0,0,0) 100%);
-    -webkit-mask-composite: multiply;
-    mask-composite: intersect;
-  }
-
-  .home-offer-location__header.reveal-on-scroll > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .home-offer-location__header.reveal-on-scroll .home-offer-location__eyebrow,
-  .home-offer-location__header.reveal-on-scroll .home-offer-location__section-title,
-  .home-offer-location__header.reveal-on-scroll .home-offer-location__section-copy {
-    color: #331c14;
-    text-shadow:#ffffff 1px 1px 10px, #000000 0px 0px 2px;
-  }
-}
-
-@media (max-width: 600px) {
-  .home-offer-location {
-    padding: 0 10px 20px;
-  }
-
-  .home-offer-location__header {
-    padding: 0 4px;
-  }
-
-  .home-offer-location__panel {
-    padding: 22px 18px;
-  }
-
-  .home-offer-location__panel-head {
-    flex-direction: column;
-  }
-
-  .home-offer-location__map {
-    height: 220px;
-  }
-}
-
-.home-reviews {
-  max-width: 1200px;
-  margin: 0 auto 52px auto;
-  padding: 0 20px;
-}
-
-.home-reviews__header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 24px;
-}
-
-.home-reviews__eyebrow {
-  margin: 0 0 10px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: #7c4a27;
-}
-
-.home-reviews__title {
-  margin: 0 0 10px;
-  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  color: #3e2f2a;
-}
-
-.home-reviews__copy {
-  margin: 0;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #5c4d44;
-}
-
-.home-reviews__accordion {
-  margin-bottom: 0 !important;
-  background: linear-gradient(135deg, rgba(242, 228, 209, 0.96), rgba(235, 214, 192, 0.95));
-  border: 1px solid rgba(201, 163, 111, 0.35);
-  border-radius: 24px;
-  box-shadow: 0 18px 40px rgba(25, 15, 9, 0.10);
-  overflow: hidden;
-}
-
-.home-reviews__summary {
-  justify-content: center;
-  min-height: 70px !important;
-  padding: 0 24px;
-  cursor: pointer;
-  list-style: none;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 700;
-  color: #3e2f2a;
-}
-
-.home-reviews__summary::-webkit-details-marker {
-  display: none;
-}
-
-.home-reviews__content {
-  background: linear-gradient(135deg, rgba(249, 238, 222, 0.92), rgba(236, 216, 195, 0.92));
-  padding: 24px;
-  text-align: left;
-  font-family: 'Raleway', sans-serif;
-  border-top: 1px solid rgba(201, 163, 111, 0.25);
-}
-
-@media (max-width: 600px) {
-  .home-reviews {
-    padding: 0 14px;
-  }
-
-  .home-reviews__summary {
-    min-height: 62px !important;
-    padding: 0 18px;
-  }
-
-  .home-reviews__content {
-    padding: 18px;
-  }
-}
-
-.home-spacer {
-  padding: 10px;
-}
-
-.home-spacer--large {
-  padding: 20px;
-}
-
-.home-impressum {
-  background-image: url(galerie/papirek.webp) !important;
-  background-size: cover;
-  background-position: center;
-  border-radius: 8px;
-  padding: 20px 30px 12px !important;
-  margin-bottom: 24px !important;
-  margin-top: -30px !important;
-  filter: drop-shadow(0px 8px 12px rgb(0, 0, 0));
-}
-
-.home-impressum__title {
-  font-family: 'Montez', cursive;
-  text-align: left;
-  margin: 0 0 20px 0;
-}
-
-.home-impressum__list {
-  font-family: 'Roboto', Arial, sans-serif;
-  font-size: clamp(0.8rem, 0.55rem + 3.7cqw, 1.5rem);
-}
-
-.home-impressum__item {
-  font-family: 'Roboto', Arial, sans-serif;
-  font-size: clamp(0.8rem, 0.55rem + 3.7cqw, 1.5rem);
-}
 
 /* ========================================
    MIGROVANO Z msginfo.html (<style>)
    ======================================== */
 
-#klasicke,
-#sportovni,
-#zabaly,
-#slowtouch,
-#vedomy,
-#ostatni {
+#klasicke, #sportovni, #zabaly, #vedomy, #ostatni{
   padding-bottom: 6px !important;
   border-bottom: none !important;
 }
@@ -6678,7 +4414,7 @@ html:has(body.page-services) {
   line-height: 1.1;
   box-sizing: border-box;
   max-width: 100%;
-  background-image: url('galerie/papir_bily.webp');
+  background-image: url("galerie/papir_bily.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -6729,7 +4465,7 @@ html:has(body.page-services) {
 }
 
 .page-services .fee-notification-box {
-  background-image: url('galerie/papir_bily.webp');
+  background-image: url("galerie/papir_bily.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -6742,7 +4478,7 @@ html:has(body.page-services) {
 }
 
 .page-services .fee-text-warning {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1.1em;
   font-weight: 700;
   color: #3e2f2a;
@@ -6750,7 +4486,7 @@ html:has(body.page-services) {
 }
 
 .page-services .fee-price {
-  font-family: 'Montez', cursive;
+  font-family: "Montez", cursive;
   font-size: 3.5rem;
   color: #874f00;
   margin: 0;
@@ -6865,219 +4601,6 @@ html:has(body.page-services) {
   box-shadow: 0 16px 38px rgba(45, 25, 10, 0.42) !important;
 }
 
-.msginfo-top-padding { /* MSGINFO SHARED UTILITIES */
-  padding-top: 70px;
-}
-
-.msginfo-hidden-nav {
-  display: none;
-}
-
-.msginfo-hero-panel {
-  margin: 0;
-  min-height: auto;
-  box-shadow: none;
-  text-shadow: none;
-  border-radius: 23px;
-}
-
-.msginfo-hero-panel--paper3 {
-  --parallax-image: url('galerie/papir3.webp');
-  --parallax-overlay: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0));
-}
-
-.msginfo-hero-copy {
-  background: transparent;
-  box-shadow: none;
-  border-radius: 0;
-  max-width: none;
-  width: 100%;
-  padding-top: 32px;
-  padding-bottom: 32px;
-}
-
-.msginfo-hero-copy p {
-  color: #3e2f2a;
-  text-shadow: none;
-  font-weight: 600;
-}
-
-.msginfo-section {
-  border-bottom: 3px solid #e0d3c2;
-  padding-bottom: 80px;
-}
-
-.msginfo-section-title {
-  font-size: 5em;
-  text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000;
-  font-family: 'Montez', cursive;
-  -webkit-text-stroke: 0.001em #361801;
-}
-
-.msginfo-info-block {
-  font-size: 1em;
-  font-weight: bold;
-}
-
-.msginfo-info-block--sm {
-  font-size: 0.8em;
-  font-weight: bold;
-}
-
-.msginfo-info-block--md {
-  font-size: 1.3em;
-}
-
-.msginfo-gap-20 {
-  padding-bottom: 20px;
-}
-
-.msginfo-gap-16 {
-  padding-bottom: 16px;
-}
-
-.msginfo-note {
-  text-align: center;
-  font-weight: bold;
-}
-
-.msginfo-note__line {
-  border-bottom: 2px solid #403e3e;
-}
-
-.msginfo-inline-black {
-  color: #000000;
-}
-
-.msginfo-list {
-  font-size: 1em;
-  font-weight: bold;
-  margin-left: 1.2em;
-}
-
-.msginfo-list--small {
-  font-size: 0.9em;
-  font-weight: bold;
-  margin-left: 1.2em;
-}
-
-.msginfo-centered-title {
-  text-align: center;
-  text-decoration: underline;
-}
-
-.msginfo-paper-panel {
-  background-image: url(galerie/papir.webp);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  padding: 10px 20px;
-  box-sizing: border-box;
-}
-
-.msginfo-paper-panel--shadow {
-  filter: drop-shadow(0px 8px 8px rgb(0, 0, 0));
-}
-
-.msginfo-paper-panel--shadow-lg {
-  filter: drop-shadow(8px 8px 8px rgb(0, 0, 0));
-}
-
-.msginfo-paper-panel--center {
-  margin-top: 16px;
-}
-
-.msginfo-paper-panel--centered {
-  text-align: center;
-}
-
-.msginfo-paper-panel--rotated {
-  transform: rotate(-1.6deg);
-}
-
-.msginfo-inline-subtle {
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.751);
-}
-
-.msginfo-inline-highlight {
-  background: rgba(255, 215, 100, 0.3);
-  padding: 8px 16px;
-  border-radius: 8px;
-  display: inline-block;
-  margin-top: 8px;
-}
-
-.msginfo-emphasis-green {
-  font-size: 1.3em;
-  color: #228b22;
-  -webkit-text-stroke: 0.2px #000;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.msginfo-emphasis-green-dark {
-  font-size: 1.3em;
-  color: #006400;
-  -webkit-text-stroke: 0.2px #000;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.msginfo-emphasis-orange {
-  font-size: 1.3em;
-  color: #ff8c00;
-  -webkit-text-stroke: 0.2px #000;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.msginfo-emphasis-lime {
-  font-size: 1.3em;
-  color: #32cd32;
-  -webkit-text-stroke: 0.2px #000;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.msginfo-emphasis-brown {
-  font-size: 1.3em;
-  color: #8b4513;
-  -webkit-text-stroke: 0.2px #000;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.msginfo-emphasis-teal {
-  font-size: 1.3em;
-  color: #227f8b;
-  -webkit-text-stroke: 0.2px #000;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.msginfo-emphasis-purple {
-  font-size: 1.3em;
-  color: #8b226b;
-  -webkit-text-stroke: 0.2px #000;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.msginfo-emphasis-olive {
-  color: #364804;
-  font-size: large;
-}
-
-.msginfo-emphasis-green-strong {
-  color: #055100;
-  text-shadow: 0 2px 8px rgba(63, 211, 0, 0.25), 0 0 2px #000;
-  font-size: large;
-}
-
-.msginfo-emphasis-border {
-  border-bottom: 2px solid #585046;
-}
-
-.msginfo-emphasis-border-dark {
-  border-bottom: 2px solid #000000;
-}
-
-.msginfo-emphasis-border-note {
-  border-bottom: 2px solid #403e3e;
-}
 
 /* ========================================
    SERVICES PAGE REDESIGN V2
@@ -7117,7 +4640,7 @@ html:has(body.page-services) {
   width: 100vh;
   height: 100vw;
   transform: translate(-50%, -50%) rotate(90deg);
-  background: url('galerie/papir_poz.webp') center/cover no-repeat;
+  background: url("galerie/papir_poz.webp") center/cover no-repeat;
   z-index: -1;
 }
 
@@ -7127,14 +4650,6 @@ html:has(body.page-services) {
   padding-bottom: 72px;
 }
 
-@keyframes svc2NavTicker {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
 
 .page-services-v2 .primary-nav.premium-theme .primary-nav__inner {
   justify-content: flex-start;
@@ -7190,22 +4705,6 @@ html:has(body.page-services) {
   will-change: auto;
 }
 
-@keyframes svc2TickerShimmer {
-  0% {
-    transform: translateX(-220%) skewX(-20deg);
-    opacity: 0;
-  }
-  18% {
-    opacity: 1;
-  }
-  58% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateX(440%) skewX(-20deg);
-    opacity: 0;
-  }
-}
 
 .page-services-v2 .primary-nav.premium-theme .primary-nav__toggle {
   margin-left: auto;
@@ -7229,7 +4728,7 @@ html:has(body.page-services) {
   border-radius: 28px;
   background:
     linear-gradient(120deg, rgba(95, 41, 25, 0.9), rgba(177, 75, 45, 0.86) 58%, rgba(214, 141, 50, 0.9)),
-    url('galerie/papir3.webp') center/cover no-repeat;
+    url("galerie/papir3.webp") center/cover no-repeat;
   box-shadow: var(--svc2-shadow);
   width: 100%;
   max-width: 100%;
@@ -7261,7 +4760,7 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-eyebrow {
   margin: 0 0 10px;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-weight: 700;
@@ -7271,7 +4770,7 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-hero h1 {
   margin: 0;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(1.8rem, 4.2vw, 3.2rem);
   line-height: 1.16;
   color: #fff8ef;
@@ -7302,7 +4801,7 @@ html:has(body.page-services) {
   padding: 11px 18px;
   text-decoration: none;
   font-weight: 700;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
@@ -7339,7 +4838,7 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-stat__value {
   display: block;
-  font-family: 'Inknut Antiqua', serif;
+  font-family: "Inknut Antiqua", serif;
   font-size: clamp(1rem, 2.3vw, 1.35rem);
 }
 
@@ -7360,7 +4859,7 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-filters__header h2 {
   margin: 0;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(1.25rem, 2vw, 1.9rem);
 }
 
@@ -7396,7 +4895,7 @@ html:has(body.page-services) {
   background: #fffefb;
   min-height: 44px;
   padding: 0 12px;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1rem;
   color: #2f1b11;
 }
@@ -7429,7 +4928,7 @@ html:has(body.page-services) {
   border-radius: 999px;
   padding: 8px 12px;
   font-weight: 700;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   cursor: pointer;
 }
 
@@ -7466,12 +4965,12 @@ html:has(body.page-services) {
   padding: clamp(14px, 2vw, 22px);
   background:
     linear-gradient(rgba(243, 143, 30, 0.27), rgba(253, 222, 185, 0.56)),
-    url('galerie/latka.png') center/cover no-repeat;
+    url("galerie/latka.png") center/cover no-repeat;
 }
 
 .page-services-v2 .svc2-group__header h3 {
   margin: 0;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(1.14rem, 1.95vw, 1.74rem);
   font-weight: 800;
   letter-spacing: 0.015em;
@@ -7502,7 +5001,7 @@ html:has(body.page-services) {
   text-align: center;
   font-weight: 700;
   letter-spacing: 0.02em;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   color: #5f2f1a;
   display: flex;
   align-items: center;
@@ -7551,7 +5050,7 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-info__grid h4 {
   margin: 0;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1rem;
   text-align: center;
   color: #5f2919;
@@ -7602,7 +5101,7 @@ html:has(body.page-services) {
   overflow: hidden;
   background:
     linear-gradient(rgba(185, 127, 60, 0.45), rgba(185, 127, 60, 0.45)),
-    url('galerie/latka.png') center/cover no-repeat;
+    url("galerie/latka.png") center/cover no-repeat;
   box-shadow: 0 12px 24px rgba(63, 31, 17, 0.12);
   opacity: 1;
   transform: translateY(0);
@@ -7653,7 +5152,7 @@ html:has(body.page-services) {
   border: 1px solid #c18459;
   background: linear-gradient(120deg, #fff1da, #ffd79f);
   color: #6e3116;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-weight: 700;
   font-size: 0.72rem;
   letter-spacing: 0.03em;
@@ -7663,7 +5162,7 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-card__body h4 {
   margin: 0;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(1.03rem, 1.3vw, 1.16rem);
   font-weight: 700;
   line-height: 1.4;
@@ -7700,7 +5199,7 @@ html:has(body.page-services) {
   border: 2px solid rgba(255,248,242,0.4);
   text-decoration: none;
   font-weight: 700;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   color: #fff6ec;
   background: linear-gradient(100deg, #7f0000 0%, #5c0000 100%);
   box-shadow: 0 10px 28px rgba(127, 0, 0, 0.45);
@@ -7738,7 +5237,7 @@ html:has(body.page-services) {
 .page-services-v2 .svc2-aroma__lead h2,
 .page-services-v2 .svc2-faq h2 {
   margin: 0;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(1.15rem, 2.2vw, 1.8rem);
 }
 
@@ -7763,7 +5262,7 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-aroma__lists h3 {
   margin: 0;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1rem;
 }
 
@@ -7799,7 +5298,7 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-faq__grid h3 {
   margin: 0;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1rem;
   color: #5c2f1a;
 }
@@ -7895,40 +5394,6 @@ html:has(body.page-services) {
   }
 }
 
-.home-offer-location__map-card { /* --- Custom: styling pro Google mapu (ladění s layoutem stránky) --- */
-  border-radius: 16px;
-  padding: 14px;
-  box-shadow: var(--box-shadow-medium);
-}
-
-.home-offer-location__map-title {
-  margin-bottom: 8px;
-  color: var(--dark);
-  font-family: 'Inknut Antiqua', serif;
-}
-
-.home-offer-location__map {
-  border-radius: 12px;
-  overflow: hidden; /* zajistí zaoblené rohy i pro iframe */
-  border: 2px solid rgba(124,74,39,0.06);
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.32), rgba(255,255,255,0.18)),
-    url('galerie/papir_poz.webp') center/cover no-repeat;
-  background-color: #ece0cf;
-}
-
-.home-offer-location__map iframe {
-  display: block;
-  width: 100%;
-  height: 320px;
-  border: 0; /* odstraní defaultní rámeček */
-}
-
-@media (min-width: 900px) {
-  .home-offer-location__map iframe {
-    height: 420px;
-  }
-}
 
 @media (max-width: 480px) { /* --- Home page: optimalizace pro úzké displeje --- */
   .hero-wrapper {
@@ -7986,25 +5451,9 @@ html:has(body.page-services) {
     line-height: 1.55;
   }
 
-  .home-impressum {
-    margin-top: -16px !important;
-    margin-bottom: 14px !important;
-    margin-left: 14px !important;
-    margin-right: 14px !important;
-    padding: 14px 12px 8px !important;
-   
-  }
 
-  .home-impressum__title {
-    margin-bottom: 12px;
-    font-size: clamp(2.4rem, 13.2vw, 3.15rem) !important;
-    text-align: center !important;
-  }
+  
 
-  .home-impressum__list li {
-    margin-bottom: 6px;
-    line-height: 1.25;
-  }
 
   .page-home #impressum .home-impressum__list {
     padding: 0 0.35rem;
@@ -8082,11 +5531,6 @@ html:has(body.page-services) {
   }
 }
 
-@media (max-width: 520px) {
-  .home-offer-location__map iframe {
-    height: 260px;
-  }
-}
 
 @media (max-width: 700px) { /* Finální mobilní nastavení stránky O mně musí být za obecnými parallax breakpointy. */
   .page-about .parallax-section {
@@ -8198,7 +5642,7 @@ html:has(body.page-services) {
 }
 
 .embossed-title {
-  font-family: 'Montez', cursive;
+  font-family: "Montez", cursive;
   font-size: clamp(2.2rem, 1.3rem + 5.2cqw, 4.4rem); /* Fluidní velikost dle šířky kontejneru */
   margin: 0;
   color: var(--emboss-text);
@@ -8233,7 +5677,7 @@ html:has(body.page-services) {
 .embossed-label {
   flex: 0 0 auto;
   white-space: nowrap;
-  font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
   font-weight: 800;
   font-size: clamp(0.7rem, 0.5rem + 2.4cqw, 1.05rem); /* Fluidní velikost dle šířky kontejneru */
   text-transform: uppercase;
@@ -8247,7 +5691,7 @@ html:has(body.page-services) {
 .embossed-value {
   flex: 1 1 auto;
   min-width: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 600;
   font-size: clamp(1rem, 0.85rem + 0.8cqw, 1.3rem); /* Fluidní velikost dle šířky kontejneru */
   color: var(--emboss-text);
