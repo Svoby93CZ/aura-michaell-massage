@@ -67,7 +67,8 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
   left: 50%;
   width: 100vh;
   height: 100vw;
-  transform: translate(-50%, -50%) rotate(90deg);
+  /* scale(1.05) - přesah proti mezeře na okraji způsobené zaokrouhlováním vh/vw na mobilu */
+  transform: translate(-50%, -50%) rotate(90deg) scale(1.05);
   background: url("galerie/papir_poz.webp") center/cover no-repeat;
   z-index: -1;
 }
