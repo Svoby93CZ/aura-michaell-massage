@@ -41,61 +41,32 @@
 </head>
 <body class="body_ceremonie">
   <!-- Hlavní navigační panel -->
-  <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
-    <div class="primary-nav__inner">
-      <a href="index.html" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
-        <span class="premium-brand-text">Aura Michaell Massage</span>
-      </a>
-
-      <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-label">Menu</span>
-      </button>
-
-      <div class="primary-nav__menu" id="primary-nav-menu" aria-hidden="true">
-        <a href="index.html" class="primary-nav__link">Domů</a>
-        <a href="msginfo.html" class="primary-nav__link" data-tooltip="Ceník masáží a procedur">Služby a ceník</a>
-        <a href="obchod.html" class="primary-nav__link">Poukazy</a>
-        <a href="about.html" class="primary-nav__link">O mně</a>
-
-        <div class="primary-nav__dropdown">
-          <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false">
-            Kontakt
-            <svg class="primary-nav__dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true" focusable="false">
-              <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </button>
-          <div class="primary-nav__dropdown-panel" aria-hidden="true">
-            <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">
-              Instagram
-            </a>
-            <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">
-              Facebook
-            </a>
-            <a href="tel:+420727836338" class="primary-nav__dropdown-link">
-              Telefon
-            </a>
-            <a href="index.html#location" class="primary-nav__dropdown-link">
-              Mapa
-            </a>
-          </div>
-        </div>
-
-        <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="primary-nav__link primary-nav__link--cta">
-          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" style="width: 16px; height: 16px; margin-right: 10px;" alt="Rezervace"/>
-          Rezervace
-        </a>
-      </div>
+  <nav class="paper-tabs-nav" aria-label="Hlavní navigace">
+    <div class="paper-tabs-container">
+      <ul class="paper-tabs-list">
+        <li class="paper-tab active"><a href="index.html" class="paper-tab-link">Úvod</a></li>
+        <li class="paper-tab"><a href="msginfo.html" class="paper-tab-link">Služby a ceník</a></li>
+        <li class="paper-tab"><a href="ceremonie.html" class="paper-tab-link ceremony-tab">Ceremonie</a></li>
+        <li class="paper-tab"><a href="obchod.html" class="paper-tab-link">Poukazy</a></li>
+        <li class="paper-tab"><a href="about.html" class="paper-tab-link">O mně</a></li>
+        <li class="paper-tab cta-tab">
+          <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="paper-tab-link">
+            <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="tab-cta-icon" alt="Rezervace"/>
+            Rezervace
+          </a>
+        </li>
+      </ul>
     </div>
   </nav>
 
   <main class="container">
-    <section aria-label="Aura ceremonie">
-      <h1 class="ceremonie-hero-title">
-        Co je Aura ceremonie?
-      </h1>
+    <section class="parallax-section parallax-ceremony-hero" style="--parallax-image: url('galerie/ceremonie/ceremonie (3).jpg');" aria-label="Aura ceremonie">
+      <div class="parallax-content ceremonie-hero-content">
+        <div class="hero-logo-draw" aria-hidden="true"></div>
+        <h1 class="ceremonie-hero-title">
+          Co je Aura ceremonie?
+        </h1>
+      </div>
     </section>
       <div style="padding-bottom: 42px;"></div>
       <div class="ceremony-content-box" style="text-align: center;">
@@ -104,7 +75,58 @@
         <p><strong>Kakao</strong> nám pomáhá ztišit mysl a vstoupit hlouběji do prožívání.</p>
         <p>Nejde o výkon ani o „správnost“. Jde o autenticitu, pravdivost a bezpečí.</p>
       </div>
-
+      <!-- Fotografie z minulých ceremonií -->
+      <div class="ceremony-photo-heading">
+        <div class="embossed-badge">
+          <div class="embossed-badge-inner">
+            <h3 class="embossed-title">Fotografie z minulých ceremonií</h3>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <div class="ceremony-carousel" aria-label="Karusel fotografií z ceremonie">
+          <button type="button" class="ceremony-carousel__nav ceremony-carousel__nav--prev" aria-label="Předchozí obrázek">&#10094;</button>
+          <div class="ceremony-carousel__track">
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (1).jpg" alt="Výběr barev pro arteterapii" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (2).jpg" alt="Rituál sdílení kakaa" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (3).jpg" alt="Připravený rituální kruh se svícemi" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (4).jpg" alt="Sdílení v ženském kruhu" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (5).jpg" alt="Malby vytvořené během ceremonie" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (6).jpg" alt="Vědomý dotek mezi účastnicemi" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (7).jpg" alt="Koláž momentek z ceremonie" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (8).jpg" alt="Práce s tarotovými kartami" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (9).jpg" alt="Meditace v kruhu" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (10).jpg" alt="Hrnečky s kakaem a tarotové karty v rituálním kruhu" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (11).jpg" alt="Připravený prostor pro ceremonii" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+            <div class="ceremony-carousel__slide">
+              <img src="galerie/ceremonie/ceremonie (12).jpg" alt="Intuitivní kresba během arteterapie" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
+            </div>
+          </div>
+          <button type="button" class="ceremony-carousel__nav ceremony-carousel__nav--next" aria-label="Další obrázek">&#10095;</button>
+        </div>
+      </div>
 
     <section style="max-width: 920px; margin: 0 auto; padding: 36px 0;">
       <div class="ceremony-content-box">
@@ -136,12 +158,6 @@
         <a href="https://aura-ceremonie.reservio.com" target="_blank" rel="noopener noreferrer" class="btn-3d-premium">
           <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" style="width: 32px; height: 32px; margin-right: 10px;" alt="Rezervace" />
           Chci se zůčastnit</a>
-      </div>
-      <div style="background-image: url(galerie/papir.webp); background-size: cover; background-position: center; padding-bottom: 20px; padding-top: 20px; border-radius: 23px; margin-top: 42px;">
-        <div class="ceremony-gallery">
-          <img src="galerie/ceremonie/ceremonie.webp" alt="Kakaová ceremonie" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
-          <img src="galerie/ceremonie/vzor.webp" alt="Dekorace ceremonie" loading="lazy" class="ceremony-gallery-img" data-lightbox="ceremonie" />
-        </div>
       </div>
     </section>
 
@@ -223,6 +239,7 @@
 
   <script src="main.js"></script>
   <script src="JS/3D_hover.js"></script>
+  <script src="JS/ceremony-carousel.js"></script>
   <!-- LIGHTBOX S ZOOMEM A DRAG/PAN FUNKCIONALITOU - AUTORSKÁ IMPLEMENTACE -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -314,9 +331,11 @@
       };
 
       // ===== EVENT LISTENERY =====
-      galleryImages.forEach((img, index) => {
-        img.addEventListener('click', () => openLightbox(index));
-      });
+      // Otevření z karuselu řeší JS/ceremony-carousel.js přes toto rozhraní
+      window.openCeremonyLightbox = (imgEl) => {
+        const index = Array.from(galleryImages).indexOf(imgEl);
+        if (index > -1) openLightbox(index);
+      };
 
       closeBtn.addEventListener('click', closeLightbox);
       prevBtn.addEventListener('click', showPrevImage);

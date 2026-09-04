@@ -119,9 +119,20 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
   padding: 0 var(--pad); /* Přidá vnitřní odsazení prvku (bottom 0 kvůli sticky footeru, viz sdílené pravidlo výše). */
   padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
   font-family: "Tenor Sans", serif; /* Určuje použité písmo. */
-  background: url("galerie/ceremonie/pozadi.webp") center/cover fixed no-repeat; /* Definuje pozadí prvku. */
+  background: url("galerie/ceremonie/pozadi.webp") center/cover fixed no-repeat; /* Definuje pozadí prvku (fallback, reálně vidět je vrstva níže). */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
+}
+
+/* body::before (papir_poz.webp) leží nad skutečným pozadím <body>, proto je nutné jej pro tuto stránku přepsat.
+   Zároveň se ruší rotace/prohozené rozměry z obecného pravidla - obrázek ceremonie má být v původní orientaci. */
+.body_ceremonie::before {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: none;
+  background: url("galerie/ceremonie/pozadi.webp") center/cover no-repeat;
 }
 
 .container {
@@ -461,13 +472,15 @@ header { /* 04. Navigation & Hero Components */
   padding: 0 16px;
   text-align: center;
   text-transform: uppercase;
-  font-size: clamp(2rem, 4.2vw, 2.8rem);
+  font-size: clamp(1rem, 4.2vw, 2.8rem);
   font-style: oblique;
   font-family: "Inknut Antiqua", "Tenor Sans", serif;
   transform: rotate(-2deg);
-  color: rgb(252, 252, 252);
-  text-shadow: 0 2px 8px rgba(2, 2, 2, 0.25), 0 0 2px #6e3505;
+  color: #2b1c12;
+  text-shadow: 0 2px 4px #ffffff, 0 0 2px #6e3505;
   -webkit-text-stroke: 2px #000;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .page-home .welcome-section .parallax-content {
@@ -1243,12 +1256,12 @@ header { /* 04. Navigation & Hero Components */
   
 
 
-  .parallax-section { /* Parallax section - zmenšit min-height */
+  .page-services .parallax-section { /* Parallax section - zmenšit min-height */
     min-height: 180px !important;
     margin: 24px 0 !important;
   }
 
-  .parallax-content {
+  .page-services .parallax-content {
     padding: 16px 12px !important;
   }
 
@@ -1306,7 +1319,7 @@ header { /* 04. Navigation & Hero Components */
     max-height: 250px !important;
   }
 
-  .parallax-section {
+  .page-services .parallax-section {
     min-height: 160px !important;
   }
 
@@ -1336,13 +1349,13 @@ header { /* 04. Navigation & Hero Components */
   #ostatni .cards img { /* Zrušení speciálních stylů pro "Ostatní služby" na mobilech */
     max-width: 100%;
   }
-  .parallax-section {
+  .page-services .parallax-section {
     margin: 36px 0; /* Odsadí prvek od okolního obsahu. */
     min-height: 220px; /* Nastaví minimální výšku prvku. */
     border-radius: 12px; /* Zaoblí rohy prvku. */
     background-attachment: scroll; /* Určuje, zda se pozadí posouvá se stránkou. */
   }
-  .parallax-content {
+  .page-services .parallax-content {
     padding: 24px 18px; /* Přidá vnitřní odsazení prvku. */
   }
 
@@ -3187,19 +3200,65 @@ body.night-mode .logo-bubble img:hover {
 
 
 
-.ceremonie-hero-title { /* Responzivní h1 nadpis */ /* CEREMONIE PAGE - MOBILNÍ OPTIMALIZACE */
+/* Foto pozadí za titulním nadpisem - stejný efekt (fade mask) jako u obchodu (page-shop__hero) */
+.body_ceremonie .parallax-section.parallax-ceremony-hero {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  min-height: clamp(280px, 34vw, 390px);
+  margin: -60px 0 58px;
+  transform: translateX(-50%);
+  border-radius: 0;
+  isolation: isolate;
+  box-shadow: none;
+}
+
+.body_ceremonie .parallax-section.parallax-ceremony-hero::before {
+  inset: -2px;
+  border-radius: 0;
+  background-image:
+    linear-gradient(90deg, rgba(26, 12, 6, 0.12), rgba(26, 12, 6, 0.48)),
+    var(--parallax-image);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, rgba(0, 0, 0, 0.72) 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, rgba(0, 0, 0, 0.72) 84%, transparent 100%);
+}
+
+/* Kreslící logo za nadpisem - stejné umístění jako na hlavní stránce (o mně/obchod) */
+.ceremonie-hero-content {
+  position: relative;
+  width: min(100%, 760px);
+  min-height: inherit;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 42px 34px;
+}
+
+.ceremonie-hero-content .hero-logo-draw {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(60vw, 420px);
+  opacity: 0.55;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ceremonie-hero-content .hero-logo-draw__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ceremonie-hero-title { /* Responzivní h1 nadpis - sjednoceno s fontem a barvou hlavní stránky */
+  position: relative;
+  z-index: 2;
+  font-family: "Tenor Sans", serif;
   font-size: clamp(2.5rem, 8vw, 5rem) !important;
-  -webkit-text-stroke: 0.15px #000000;
-  color: #4a1f00;
-  text-shadow: 0 4px 8px rgba(209, 209, 209, 0.751);
+  color: #2b1c12;
+  text-shadow: 2px 2px 10px rgba(255,255,255,0.95), 0 0 4px #fff;
   text-align: center;
-  background: rgba(174, 174, 174, 0.315);
-  padding: 16px !important;
-  border-radius: 42px;
-  box-shadow: 0 2px 8px rgba(60,30,10,0.25);
-  max-width: fit-content;
   margin: 0 auto !important;
-  padding-bottom: 23px !important;
 }
 
 .ceremony-content-box { /* Obsah sboxy - responzivní padding a font size */
@@ -3210,6 +3269,7 @@ body.night-mode .logo-bubble img:hover {
   padding: clamp(12px, 4vw, 20px);
   border-radius: 23px;
   margin-bottom: clamp(16px, 4vw, 40px);
+  border: #000 solid 2px;
 }
 
 .ceremony-content-box p {
@@ -3241,6 +3301,84 @@ body.night-mode .logo-bubble img:hover {
   box-shadow: 0 4px 20px rgba(0,0,0,0.25);
   object-fit: cover;
   aspect-ratio: 1 / 1;
+}
+
+.ceremony-carousel { /* Točivý karusel fotografií - hlavní obrázek uprostřed */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 2vw, 16px);
+  padding: clamp(16px, 3vw, 32px) clamp(4px, 2vw, 12px);
+  outline: none;
+}
+
+.ceremony-carousel__track {
+  position: relative;
+  flex: 1 1 auto;
+  max-width: 900px;
+  height: clamp(220px, 36vw, 380px);
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.ceremony-carousel__slide {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: clamp(150px, 32vw, 300px);
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.45s ease, opacity 0.45s ease;
+  will-change: transform, opacity;
+}
+
+.ceremony-carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  display: block;
+  pointer-events: none;
+}
+
+.ceremony-carousel__slide.is-active img {
+  box-shadow: 0 10px 34px rgba(0,0,0,0.5);
+  outline: 3px solid rgba(255,255,255,0.75);
+  outline-offset: 2px;
+}
+
+.ceremony-carousel__nav {
+  flex-shrink: 0;
+  width: clamp(36px, 6vw, 46px);
+  height: clamp(36px, 6vw, 46px);
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 20;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.ceremony-carousel__nav:hover,
+.ceremony-carousel__nav:focus-visible {
+  background: rgba(0,0,0,0.7);
+  transform: scale(1.08);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .ceremony-carousel__track {
+    height: clamp(180px, 44vw, 260px);
+  }
+
+  .ceremony-carousel__slide {
+    width: clamp(120px, 44vw, 200px);
+  }
 }
 
 
@@ -3290,9 +3428,19 @@ body.night-mode .logo-bubble img:hover {
 
   .ceremonie-hero-title {
     font-size: 2rem;
-    padding: 12px;
-    padding-bottom: 16px;
-    border-radius: 24px;
+  }
+
+  .body_ceremonie .parallax-section.parallax-ceremony-hero {
+    min-height: 286px;
+    margin: -20px auto 38px;
+  }
+
+  .ceremonie-hero-content {
+    padding: 34px 18px;
+  }
+
+  .ceremonie-hero-content .hero-logo-draw {
+    width: min(70vw, 260px);
   }
 
   .ceremony-content-box {
@@ -4064,8 +4212,8 @@ body.night-mode .logo-bubble img:hover {
   background-position: center; /* Zarovná pozadí na střed. */
   padding: 40px 50px; /* Přidá vnitřní odsazení obsahu. */
   border-radius: 24px; /* Zaoblí rohy prvku. */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Přidá stín prvku. */
-  border: 1px solid #c9a36f; /* Vykreslí jemný okraj prvku. */
+  box-shadow: 0 8px 20px rgb(0, 0, 0); /* Přidá stín prvku. */
+  border: 2px solid #2b1c12; /* Vykreslí jemný okraj prvku. */
   transform: rotate(1deg); /* Lehce natočí papírový panel. */
 }
 
@@ -4311,13 +4459,15 @@ body.night-mode .logo-bubble img:hover {
   font-family: "Raleway", sans-serif;
   font-size: 1rem;
   color: #4f3d35;
-  font-weight: 600;
+  font-weight: bolder;
   line-height: 1.6;
+  text-align: center;
 }
 
 .map-address-line {
   font-size: 1.15rem;
   color: #7c4a27;
+  font-weight: bolder;
 }
 
 .map-link {
@@ -5595,6 +5745,25 @@ html:has(body.page-services) {
    NOVA KOMPONENTA: LETTERPRESS / EMBOSSED IMPRESSUM
    ========================================================================== */
 
+/* Stejný embossed box/efekt jako Impressum, jen zmenšený a pro delší text nadpisu galerie ceremonie */
+.ceremony-photo-heading {
+  --emboss-dark: rgba(28, 14, 5, 0.45);
+  --emboss-light: rgba(255, 255, 255, 0.85);
+  --emboss-text: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  margin: 48px auto 12px;
+  container-type: inline-size;
+  container-name: ceremony-photo-heading;
+}
+
+.ceremony-photo-heading .embossed-title {
+  margin: 0;
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
+  font-size: clamp(1.2rem, 1rem + 2.2cqw, 2rem);
+  letter-spacing: 0.03em;
+}
+
 .embossed-impressum {
   /* Globální nastavení barev pro efekt ražby */
   --emboss-dark: rgba(28, 14, 5, 0.45);   /* Barva stínu - tmavá rýha */
@@ -5730,5 +5899,208 @@ html:has(body.page-services) {
 
   .embossed-value {
     text-align: center;
+  }
+}
+
+/* ==========================================================================
+   PAPER TABS NAVIGATION (STYL ADRESÁŘE - KOREKCE)
+   ========================================================================== */
+
+/* Kontejner nahoře - absolute zajistí, že odscroluje pryč s textem */
+.paper-tabs-nav {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 500;
+  background: linear-gradient(to bottom, #000000, #0f0600); /* Tmavé elegantní pozadí */
+  border-bottom: 2px solid #2b1c12;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+  pointer-events: auto;
+}
+
+/* Obal pro samotné záložky */
+.paper-tabs-container {
+  position: relative; /* ukotvení fade indikátorů posunu */
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 16px 20px 0 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.paper-tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fade indikátory posunu - viditelnost řídí JS třídami can-scroll-left/can-scroll-right */
+.paper-tabs-container::before,
+.paper-tabs-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.paper-tabs-container::before {
+  left: 0;
+  background: linear-gradient(to left, transparent, rgba(15, 6, 0, 0.95));
+}
+
+.paper-tabs-container::after {
+  right: 0;
+  background: linear-gradient(to right, transparent, rgba(15, 6, 0, 0.95));
+}
+
+.paper-tabs-container.can-scroll-left::before {
+  opacity: 1;
+}
+
+.paper-tabs-container.can-scroll-right::after {
+  opacity: 1;
+}
+
+/* Tlačítka se šipkou pro posun záložek - viditelná i na tmavém pozadí navigace */
+.paper-tabs-scroll-btn {
+  display: none; /* zapíná se jen na úzkých displejích, viz media query níže */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 220, 174, 0.4);
+  border-radius: 50%;
+  background: rgba(15, 6, 0, 0.85);
+  color: var(--gold);
+  font-size: 0.85rem;
+  line-height: 1;
+  z-index: 6;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.paper-tabs-scroll-btn--left {
+  left: 4px;
+}
+
+.paper-tabs-scroll-btn--right {
+  right: 4px;
+}
+
+.paper-tabs-nav.can-scroll-left .paper-tabs-scroll-btn--left,
+.paper-tabs-nav.can-scroll-right .paper-tabs-scroll-btn--right {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Seznam záložek */
+.paper-tabs-list {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0 10px 0 10px;
+  list-style: none;
+  gap: 6px;
+  min-width: max-content;
+  position: relative;
+}
+
+
+/* Neaktivní záložky */
+.paper-tab {
+  position: relative;
+  background: url("galerie/papir.webp") center/cover;
+  border: 2px solid #2b1c12;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  z-index: 2;
+  margin-bottom: 2px; /* Zvednuto přesně o výšku čáry, aby na ní záložka seděla */
+  filter: brightness(0.8) contrast(1.1); /* Výrazné ztmavení pro 3D efekt */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.paper-tab:hover {
+  filter: brightness(0.95);
+}
+
+.paper-tab-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 22px;
+  color: #3e2f2a;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+/* AKTIVNÍ ZÁLOŽKA - Dokonale překryje spodní čáru */
+.paper-tab.active {
+  z-index: 3; /* Zaručeně nad čárou */
+  filter: brightness(1.1) contrast(1.05); /* Prosvětlení */
+  margin-bottom: 0; /* Klesne přesně přes čáru */
+  padding-bottom: 4px; /* Spodní okraj se protáhne, aby čáru fyzicky "zamáznul" papírem */
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.5); /* Silnější stín na tmavém pozadí */
+}
+
+/* Specifické záložky */
+.ceremony-tab {
+  color: #891915 !important;
+}
+
+.paper-tab.cta-tab {
+  background: linear-gradient(135deg, #800000, #440000);
+  border-color: #410000;
+  margin-left: 12px;
+  filter: none;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+}
+
+.paper-tab.cta-tab .paper-tab-link {
+  color: #fff8f2 !important;
+}
+
+.tab-cta-icon {
+  width: 16px;
+  margin-right: 8px;
+}
+
+/* --- Responzivita pro mobil --- */
+@media (max-width: 768px) {
+  .paper-tabs-container {
+    padding: 12px 10px 0 10px;
+  }
+  .paper-tab-link {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+  .paper-tabs-scroll-btn {
+    display: flex;
+  }
+}
+
+/* --- Velmi úzké displeje: zmenšíme záložky, aby jich bylo vidět víc naráz --- */
+@media (max-width: 420px) {
+  .paper-tabs-list {
+    gap: 4px;
+  }
+  .paper-tab-link {
+    padding: 9px 12px;
+    font-size: 0.78rem;
+  }
+  .tab-cta-icon {
+    width: 14px;
+    margin-right: 6px;
   }
 }

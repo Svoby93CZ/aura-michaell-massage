@@ -29,45 +29,21 @@
 </head>
 <body class="page-shop">
   <!-- Hlavní navigační panel -->
-  <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
-    <div class="primary-nav__inner">
-      <a href="index.html" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
-        <span class="premium-brand-text">Aura Michaell Massage</span>
-      </a>
-
-      <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-label">Menu</span>
-      </button>
-
-      <div class="primary-nav__menu" id="primary-nav-menu" aria-hidden="true">
-        <a href="index.html" class="primary-nav__link">Domů</a>
-        <a href="msginfo.html" class="primary-nav__link" data-tooltip="Ceník masáží a procedur">Služby a ceník</a>
-        <a href="ceremonie.html" class="primary-nav__link premium-link-ceremony" data-tooltip="Kakaová ceremonie a kruhy pro ženy">Ceremonie</a>
-        <a href="about.html" class="primary-nav__link">O mně</a>
-
-        <div class="primary-nav__dropdown">
-          <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false">
-            Kontakt
-            <svg class="primary-nav__dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true" focusable="false">
-              <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </button>
-          <div class="primary-nav__dropdown-panel" aria-hidden="true">
-            <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">Instagram</a>
-            <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">Facebook</a>
-            <a href="tel:+420727836338" class="primary-nav__dropdown-link">Telefon</a>
-            <a href="index.html#location" class="primary-nav__dropdown-link">Mapa</a>
-          </div>
-        </div>
-
-        <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="primary-nav__link primary-nav__link--cta">
-          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="primary-nav__cta-icon" alt="Rezervace" />
-          Rezervace
-        </a>
-      </div>
+  <nav class="paper-tabs-nav" aria-label="Hlavní navigace">
+    <div class="paper-tabs-container">
+      <ul class="paper-tabs-list">
+        <li class="paper-tab active"><a href="index.html" class="paper-tab-link">Úvod</a></li>
+        <li class="paper-tab"><a href="msginfo.html" class="paper-tab-link">Služby a ceník</a></li>
+        <li class="paper-tab"><a href="ceremonie.html" class="paper-tab-link ceremony-tab">Ceremonie</a></li>
+        <li class="paper-tab"><a href="obchod.html" class="paper-tab-link">Poukazy</a></li>
+        <li class="paper-tab"><a href="about.html" class="paper-tab-link">O mně</a></li>
+        <li class="paper-tab cta-tab">
+          <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="paper-tab-link">
+            <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="tab-cta-icon" alt="Rezervace"/>
+            Rezervace
+          </a>
+        </li>
+      </ul>
     </div>
   </nav>
   <!-- Hlavní obsah stránky -->

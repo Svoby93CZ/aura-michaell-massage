@@ -48,53 +48,24 @@
 </head>
 <body class="page-home">
   <!-- Hlavní navigační panel -->
-  <nav class="primary-nav premium-theme" aria-label="Hlavní navigace">
-    <div class="primary-nav__inner">
-      <button id="scrollTopBtn" title="Zpět nahoru" class="primary-nav__utility-btn primary-nav__utility-btn--scroll" type="button" aria-label="Zpět nahoru">↑</button>
-      <a href="#hero" class="primary-nav__brand" aria-label="Aura Michaell Massage – návrat na úvod">
-        <span class="premium-brand-text">Aura Michaell Massage</span>
-      </a>
-      <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav-menu">
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-label">Menu</span>
-      </button>
-      <div class="primary-nav__menu" id="primary-nav-menu" aria-hidden="true">
-        <a href="msginfo.html" class="primary-nav__link" data-tooltip="Ceník masáží a procedur">Služby a ceník</a>
-        <a href="ceremonie.html" class="primary-nav__link premium-link-ceremony" data-tooltip="Kakaová ceremonie a kruhy pro ženy">Ceremonie</a>
-        <a href="obchod.html" class="primary-nav__link">Poukazy</a>
-        <a href="about.html" class="primary-nav__link">O mně</a>
-        <div class="primary-nav__dropdown">
-          <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false">
-            Kontakt
-            <svg class="primary-nav__dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true" focusable="false">
-              <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </button>
-          <div class="primary-nav__dropdown-panel" aria-hidden="true">
-            <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">
-              Instagram
-            </a>
-            <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="primary-nav__dropdown-link">
-              Facebook
-            </a>
-            <a href="tel:+420727836338" class="primary-nav__dropdown-link">
-              Telefon
-            </a>
-            <a href="#location" class="primary-nav__dropdown-link">
-              Mapa
-            </a>
-          </div>
-        </div>
-        <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="primary-nav__link primary-nav__link--cta">
-          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="primary-nav__cta-icon" alt="Rezervace"/>
-          Rezervace
-        </a>
-      </div>
+  <nav class="paper-tabs-nav" aria-label="Hlavní navigace">
+    <div class="paper-tabs-container">
+      <ul class="paper-tabs-list">
+        <li class="paper-tab active"><a href="index.html" class="paper-tab-link">Úvod</a></li>
+        <li class="paper-tab"><a href="msginfo.html" class="paper-tab-link">Služby a ceník</a></li>
+        <li class="paper-tab"><a href="ceremonie.html" class="paper-tab-link ceremony-tab">Ceremonie</a></li>
+        <li class="paper-tab"><a href="obchod.html" class="paper-tab-link">Poukazy</a></li>
+        <li class="paper-tab"><a href="about.html" class="paper-tab-link">O mně</a></li>
+        <li class="paper-tab"><a href="#impressum" class="paper-tab-link">Kontakt</a></li>
+        <li class="paper-tab cta-tab">
+          <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="paper-tab-link">
+            <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="tab-cta-icon" alt="Rezervace"/>
+            Rezervace
+          </a>
+        </li>
+      </ul>
     </div>
   </nav>
-
     <!-- Hlavní nadpis -->
     <div style="padding: 40px;"></div>
     <section id="hero" class="hero-wrapper">
@@ -135,9 +106,22 @@
       </div>
     </section>
     <!-- Galerie mýtů o sportovní masáži -->
-    <section class="parallax-section parallax-myths home-myths-gallery" aria-labelledby="myths-gallery-title">
+    <section class="parallax-section parallax-myths home-myths-gallery" aria-labelledby="myths-gallery-title"> 
+      <h2 style="
+        margin: 48px auto 0;
+        padding: 0 16px;text-align: center;
+        text-transform: uppercase;
+        font-size: clamp(1rem, 4.2vw, 2.8rem);
+        font-style: oblique;
+        font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
+        transform: rotate(-2deg);
+        color: #2b1c12;
+        text-shadow: 0 2px 4px #ffffff, 0 0 2px #6e3505;
+        -webkit-text-stroke: 2px #000;
+        white-space: nowrap;
+        text-overflow: ellipsis;">
+        Mýty o sportovní masáži</h2>
       <div class="home-myths-gallery__intro reveal-on-scroll">
-        <h2 id="myths-gallery-title">Mýty o sportovní masáži</h2>
         <p style="text-shadow: 2px 2px 2px rgb(0, 0, 0)">Prohlédněte si krátký přehled nejčastějších představ o sportovní masáži.</p>
       </div>
       <div class="home-myths-gallery__grid" role="group" aria-label="Mýty o sportovní masáži">
@@ -148,9 +132,9 @@
       </div>
     </section>
     <!-- Bonusová sekce s 3D kartou -->
+    <h2 class="welcome-section__title">Věrnostní karta</h2>
     <section class="parallax-section parallax-bonus bonus-card-section" aria-labelledby="bonus-card-title">
       <div class="parallax-content">
-        <h2 id="bonus-card-title" style="-webkit-text-stroke: 0.1rem black;text-shadow: 2px 2px 4px rgb(255, 255, 255)">Věrnostní karta</h2>
         <div id="card-3d-container" class="card-3d-scene" role="img" aria-label="Interaktivní 3D karta se sportovní masáží"></div>
         <p style="text-shadow: 2px 2px 2px rgb(255, 255, 255); color: black;font-weight: bolder;">Každý zákazník získává věrnostní kartu, která mu přináší výhody při opakovaných návštěvách.</p>
       </div>
@@ -162,7 +146,11 @@
         <div class="reviews-panel">
           <div class="reviews-panel-head">
             <p class="reviews-label">Zkušenosti klientů</p>
+                      <div class="embossed-badge">
+        <div class="embossed-badge-inner">
             <h2 id="reviews-and-map-title" class="reviews-title">Co říkají návštěvníci</h2>
+        </div>
+      </div>
           </div>
           <script src="https://elfsightcdn.com/platform.js" async></script>
           <div class="elfsight-app-b275f04e-832a-452d-91ed-1fdc07117847" data-elfsight-app-lazy></div>
@@ -171,16 +159,24 @@
         <article class="map-panel">
           <div class="map-panel-head">
             <p class="map-label">Najděte mě snadno</p>
+                      <div class="embossed-badge">
+        <div class="embossed-badge-inner">
             <h3 class="map-title">Kde mě najdete</h3>
+        </div>
+      </div>
             <span class="map-location">Bruntál</span>
           </div>
           <div class="map-embed">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
+          <div class="embossed-badge">
+        <div class="embossed-badge-inner">
           <div class="map-address">
             <span class="map-address-line">Šmilovského 663/1</span>
             <span>792 01 Bruntál</span>
           </div>
+        </div>
+      </div>
           <a class="map-link" href="https://maps.google.com/?q=Šmilovského+663%2F1+Bruntál" target="_blank" rel="noopener noreferrer">Otevřít v mapách</a>
         </article>
       </div>
