@@ -6108,8 +6108,9 @@ html:has(body.page-services) {
   filter: brightness(1.15);
 }
 
-.tab-cta-icon {
+.paper-tabs-nav .tab-cta-icon {
   width: 16px;
+  height: 16px;
   margin-right: 8px;
 }
 
@@ -6139,8 +6140,9 @@ html:has(body.page-services) {
     padding: 9px 12px;
     font-size: 0.78rem;
   }
-  .tab-cta-icon {
+  .paper-tabs-nav .tab-cta-icon {
     width: 14px;
+    height: 14px;
     margin-right: 6px;
   }
 }
