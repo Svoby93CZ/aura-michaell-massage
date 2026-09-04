@@ -676,7 +676,8 @@ function syncTabHole() {
 
 // Přepočítání při změně okna nebo posouvání záložek
 window.addEventListener('resize', syncTabHole);
-const tabContainer = document.querySelector('.paper-tabs-container');
+// tabContainer = skutečně posuvný prvek; fade/tlačítka se však vkládají do nadaného .paper-tabs-scroll ramečku, aby se s obsahem neposouvaly.
+const tabContainer = document.querySelector('.paper-tabs-track');
 if (tabContainer) {
   tabContainer.addEventListener('scroll', syncTabHole);
 }
@@ -691,11 +692,12 @@ document.addEventListener('DOMContentLoaded', () => {
    PAPER TABS NAV - ZVÝRAZNĚNÍ MOŽNOSTI POSUNU NA ÚZKÝCH DISPLEJÍCH
    ========================================================================== */
 const tabNav = document.querySelector('.paper-tabs-nav');
+const tabScrollFrame = document.querySelector('.paper-tabs-scroll');
 
 // Šipky pro posun přidáme dynamicky, ať je stačí udržovat jen v main.js
 let scrollBtnLeft = null;
 let scrollBtnRight = null;
-if (tabNav && tabContainer) {
+if (tabScrollFrame && tabContainer) {
   scrollBtnLeft = document.createElement('button');
   scrollBtnLeft.type = 'button';
   scrollBtnLeft.className = 'paper-tabs-scroll-btn paper-tabs-scroll-btn--left';
@@ -708,8 +710,8 @@ if (tabNav && tabContainer) {
   scrollBtnRight.setAttribute('aria-label', 'Posunout záložky doprava');
   scrollBtnRight.innerHTML = '&#10095;';
 
-  tabNav.appendChild(scrollBtnLeft);
-  tabNav.appendChild(scrollBtnRight);
+  tabScrollFrame.appendChild(scrollBtnLeft);
+  tabScrollFrame.appendChild(scrollBtnRight);
 
   const scrollByAmount = () => Math.round(tabContainer.clientWidth * 0.6);
   scrollBtnLeft.addEventListener('click', () => {
@@ -721,16 +723,12 @@ if (tabNav && tabContainer) {
 }
 
 function updateTabScrollFades() {
-  if (!tabContainer) return;
+  if (!tabContainer || !tabScrollFrame) return;
   const maxScroll = tabContainer.scrollWidth - tabContainer.clientWidth;
   const canLeft = tabContainer.scrollLeft > 4;
   const canRight = tabContainer.scrollLeft < maxScroll - 4;
-  tabContainer.classList.toggle('can-scroll-left', canLeft);
-  tabContainer.classList.toggle('can-scroll-right', canRight);
-  if (tabNav) {
-    tabNav.classList.toggle('can-scroll-left', canLeft);
-    tabNav.classList.toggle('can-scroll-right', canRight);
-  }
+  tabScrollFrame.classList.toggle('can-scroll-left', canLeft);
+  tabScrollFrame.classList.toggle('can-scroll-right', canRight);
 }
 
 // Při prvním načtení vycentrujeme aktivní záložku, ať je vidět i na úzkém displeji

@@ -5907,9 +5907,9 @@ html:has(body.page-services) {
    PAPER TABS NAVIGATION (STYL ADRESÁŘE - KOREKCE)
    ========================================================================== */
 
-/* Kontejner nahoře - absolute zajistí, že odscroluje pryč s textem */
+/* Fixní pozice - navigace zůstává viditelná i po odscrollování (klíčové pro mobil) */
 .paper-tabs-nav {
-  position: absolute; 
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -5920,25 +5920,43 @@ html:has(body.page-services) {
   pointer-events: auto;
 }
 
-/* Obal pro samotné záložky */
+/* Obal pro záložky i připnuté tlačítko Rezervace - centrováno stejně jako dřív na desktopu */
 .paper-tabs-container {
-  position: relative; /* ukotvení fade indikátorů posunu */
+  position: relative;
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 16px 20px 0 20px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 16px max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+  box-sizing: border-box;
+}
+
+/* Neposuvný rámeček kolem záložek - drží fade indikátory a šipky pevně na okraji,
+   samotné posouvání obstarává vnitřní .paper-tabs-track (jinak by se posouvaly s obsahem). */
+.paper-tabs-scroll {
+  position: relative; /* ukotvení fade indikátorů posunu a tlačítek */
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Skutečně posuvný prvek se seznamem záložek */
+.paper-tabs-track {
+  width: 100%;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.paper-tabs-container::-webkit-scrollbar {
+.paper-tabs-track::-webkit-scrollbar {
   display: none;
 }
 
 /* Fade indikátory posunu - viditelnost řídí JS třídami can-scroll-left/can-scroll-right */
-.paper-tabs-container::before,
-.paper-tabs-container::after {
+.paper-tabs-scroll::before,
+.paper-tabs-scroll::after {
   content: '';
   position: absolute;
   top: 0;
@@ -5950,21 +5968,21 @@ html:has(body.page-services) {
   transition: opacity 0.2s ease;
 }
 
-.paper-tabs-container::before {
+.paper-tabs-scroll::before {
   left: 0;
   background: linear-gradient(to left, transparent, rgba(15, 6, 0, 0.95));
 }
 
-.paper-tabs-container::after {
+.paper-tabs-scroll::after {
   right: 0;
   background: linear-gradient(to right, transparent, rgba(15, 6, 0, 0.95));
 }
 
-.paper-tabs-container.can-scroll-left::before {
+.paper-tabs-scroll.can-scroll-left::before {
   opacity: 1;
 }
 
-.paper-tabs-container.can-scroll-right::after {
+.paper-tabs-scroll.can-scroll-right::after {
   opacity: 1;
 }
 
@@ -5998,8 +6016,8 @@ html:has(body.page-services) {
   right: 4px;
 }
 
-.paper-tabs-nav.can-scroll-left .paper-tabs-scroll-btn--left,
-.paper-tabs-nav.can-scroll-right .paper-tabs-scroll-btn--right {
+.paper-tabs-scroll.can-scroll-left .paper-tabs-scroll-btn--left,
+.paper-tabs-scroll.can-scroll-right .paper-tabs-scroll-btn--right {
   opacity: 1;
   pointer-events: auto;
 }
@@ -6038,6 +6056,8 @@ html:has(body.page-services) {
 .paper-tab-link {
   display: flex;
   align-items: center;
+  min-height: var(--nav-btn-height-xs); /* Zajistí dostatečně velkou dotykovou plochu i na mobilu */
+  box-sizing: border-box;
   padding: 12px 22px;
   color: #3e2f2a;
   font-family: "Raleway", sans-serif;
@@ -6060,16 +6080,32 @@ html:has(body.page-services) {
   color: #891915 !important;
 }
 
-.paper-tab.cta-tab {
+/* Připnuté tlačítko Rezervace - mimo posuvnou oblast, vždy viditelné i na mobilu */
+.paper-tabs-cta {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  min-height: var(--nav-btn-height-xs);
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  padding: 12px 22px;
   background: linear-gradient(135deg, #800000, #440000);
-  border-color: #410000;
-  margin-left: 12px;
-  filter: none;
+  border: 2px solid #410000;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  color: #fff8f2 !important;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  white-space: nowrap;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+  transition: filter 0.2s ease;
 }
 
-.paper-tab.cta-tab .paper-tab-link {
-  color: #fff8f2 !important;
+.paper-tabs-cta:hover,
+.paper-tabs-cta:focus-visible {
+  filter: brightness(1.15);
 }
 
 .tab-cta-icon {
@@ -6080,9 +6116,11 @@ html:has(body.page-services) {
 /* --- Responzivita pro mobil --- */
 @media (max-width: 768px) {
   .paper-tabs-container {
-    padding: 12px 10px 0 10px;
+    gap: 6px;
+    padding: 12px max(10px, env(safe-area-inset-right)) 0 max(10px, env(safe-area-inset-left));
   }
-  .paper-tab-link {
+  .paper-tab-link,
+  .paper-tabs-cta {
     padding: 10px 16px;
     font-size: 0.85rem;
   }
@@ -6091,12 +6129,13 @@ html:has(body.page-services) {
   }
 }
 
-/* --- Velmi úzké displeje: zmenšíme záložky, aby jich bylo vidět víc naráz --- */
+/* --- Velmi úzké displeje: zmenšíme záložky i CTA, aby jich bylo vidět víc naráz --- */
 @media (max-width: 420px) {
   .paper-tabs-list {
     gap: 4px;
   }
-  .paper-tab-link {
+  .paper-tab-link,
+  .paper-tabs-cta {
     padding: 9px 12px;
     font-size: 0.78rem;
   }
