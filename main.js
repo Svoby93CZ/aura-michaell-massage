@@ -621,131 +621,46 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 /* ==========================================================================
-   PAPER TABS NAV - AUTOMATICKÉ NASTAVENÍ AKTIVNÍ ZÁLOŽKY
+   SITE NAV - HAMBURGER MENU (mobil) A AKTIVNÍ ODKAZ
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-  const currentPath = window.location.pathname;
-  // Získáme název souboru (např. 'msginfo.html' nebo prázdný řetězec pro index)
-  const currentPage = currentPath.split("/").pop() || "index.html"; 
-  
-  const tabs = document.querySelectorAll('.paper-tab');
-  
-  tabs.forEach(tab => {
-    // Nejdříve všem odebereme třídu active
-    tab.classList.remove('active');
-    
-    // Zjistíme, kam odkaz v záložce vede
-    const link = tab.querySelector('a').getAttribute('href');
-    
-    // Pokud se href shoduje s aktuální URL, přidáme třídu active
-    if (link.includes(currentPage)) {
-      tab.classList.add('active');
+  const toggleBtn = document.querySelector('.site-nav__toggle');
+  const links = document.querySelector('.site-nav__links');
+
+  if (toggleBtn && links) {
+    const toggleMenu = () => {
+      const isExpanded = links.classList.contains('is-active');
+      links.classList.toggle('is-active');
+      toggleBtn.innerHTML = isExpanded ? '☰' : '✕';
+      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+    };
+
+    toggleBtn.addEventListener('click', toggleMenu);
+
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (links.classList.contains('is-active')) {
+          toggleMenu();
+        }
+      });
+    });
+  }
+
+  // Zvýraznění odkazu odpovídajícího aktuální stránce
+  const currentPage = (window.location.pathname.split('/').pop() || 'index.html');
+  document.querySelectorAll('.site-nav__link').forEach(link => {
+    const href = link.getAttribute('href');
+    link.classList.remove('active');
+    if (href && href.split('#')[0] === currentPage) {
+      link.classList.add('active');
     }
   });
 
-  // Ošetření speciálního případu: Pokud někdo klikne na anchor link (#kontakt) na úvodní straně
-  const anchorLinks = document.querySelectorAll('.paper-tab-link[href^="#"]');
-  anchorLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      // Vizuálně přepneme záložku
-      tabs.forEach(t => t.classList.remove('active'));
-      this.parentElement.classList.add('active');
+  // Anchor odkaz na Kontakt na úvodní stránce se vizuálně přepne po kliknutí
+  document.querySelectorAll('.site-nav__link[href^="#"]').forEach(link => {
+    link.addEventListener('click', function () {
+      document.querySelectorAll('.site-nav__link').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
     });
   });
 });
-
-/* ==========================================================================
-   PAPER TABS NAV - VYKROJENÍ DÍRY PRO AKTIVNÍ ZÁLOŽKU (SPLYNUTÍ S POZADÍM)
-   ========================================================================== */
-function syncTabHole() {
-  const nav = document.querySelector('.paper-tabs-nav');
-  const activeTab = document.querySelector('.paper-tab.active');
-  if (!nav || !activeTab) return;
-
-  const navRect = nav.getBoundingClientRect();
-  const tabRect = activeTab.getBoundingClientRect();
-
-  // Vypočítáme pozici záložky vůči obrazovce
-  // (+2 a -2px schovají hrany výřezu bezpečně za okrajový rámeček záložky)
-  const left = (tabRect.left - navRect.left) + 2;
-  const right = (tabRect.right - navRect.left) - 2;
-
-  nav.style.setProperty('--hole-left', `${left}px`);
-  nav.style.setProperty('--hole-right', `${right}px`);
-}
-
-// Přepočítání při změně okna nebo posouvání záložek
-window.addEventListener('resize', syncTabHole);
-// tabContainer = skutečně posuvný prvek; fade/tlačítka se však vkládají do nadaného .paper-tabs-scroll ramečku, aby se s obsahem neposouvaly.
-const tabContainer = document.querySelector('.paper-tabs-track');
-if (tabContainer) {
-  tabContainer.addEventListener('scroll', syncTabHole);
-}
-
-// Spuštění po načtení DOM a jako pojistka i o chvilku později (pro načtení fontů)
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(syncTabHole, 50);
-  setTimeout(syncTabHole, 300);
-});
-
-/* ==========================================================================
-   PAPER TABS NAV - ZVÝRAZNĚNÍ MOŽNOSTI POSUNU NA ÚZKÝCH DISPLEJÍCH
-   ========================================================================== */
-const tabNav = document.querySelector('.paper-tabs-nav');
-const tabScrollFrame = document.querySelector('.paper-tabs-scroll');
-
-// Šipky pro posun přidáme dynamicky, ať je stačí udržovat jen v main.js
-let scrollBtnLeft = null;
-let scrollBtnRight = null;
-if (tabScrollFrame && tabContainer) {
-  scrollBtnLeft = document.createElement('button');
-  scrollBtnLeft.type = 'button';
-  scrollBtnLeft.className = 'paper-tabs-scroll-btn paper-tabs-scroll-btn--left';
-  scrollBtnLeft.setAttribute('aria-label', 'Posunout záložky doleva');
-  scrollBtnLeft.innerHTML = '&#10094;';
-
-  scrollBtnRight = document.createElement('button');
-  scrollBtnRight.type = 'button';
-  scrollBtnRight.className = 'paper-tabs-scroll-btn paper-tabs-scroll-btn--right';
-  scrollBtnRight.setAttribute('aria-label', 'Posunout záložky doprava');
-  scrollBtnRight.innerHTML = '&#10095;';
-
-  tabScrollFrame.appendChild(scrollBtnLeft);
-  tabScrollFrame.appendChild(scrollBtnRight);
-
-  const scrollByAmount = () => Math.round(tabContainer.clientWidth * 0.6);
-  scrollBtnLeft.addEventListener('click', () => {
-    tabContainer.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
-  });
-  scrollBtnRight.addEventListener('click', () => {
-    tabContainer.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
-  });
-}
-
-function updateTabScrollFades() {
-  if (!tabContainer || !tabScrollFrame) return;
-  const maxScroll = tabContainer.scrollWidth - tabContainer.clientWidth;
-  const canLeft = tabContainer.scrollLeft > 4;
-  const canRight = tabContainer.scrollLeft < maxScroll - 4;
-  tabScrollFrame.classList.toggle('can-scroll-left', canLeft);
-  tabScrollFrame.classList.toggle('can-scroll-right', canRight);
-}
-
-// Při prvním načtení vycentrujeme aktivní záložku, ať je vidět i na úzkém displeji
-function centerActiveTab() {
-  const activeTab = document.querySelector('.paper-tab.active');
-  if (!tabContainer || !activeTab) return;
-  const target = activeTab.offsetLeft - (tabContainer.clientWidth / 2 - activeTab.offsetWidth / 2);
-  tabContainer.scrollLeft = Math.max(0, target);
-}
-
-if (tabContainer) {
-  tabContainer.addEventListener('scroll', updateTabScrollFades);
-  window.addEventListener('resize', updateTabScrollFades);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    centerActiveTab();
-    updateTabScrollFades();
-    setTimeout(updateTabScrollFades, 300); // pojistka po načtení fontů
-  });
-}

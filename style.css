@@ -5904,245 +5904,179 @@ html:has(body.page-services) {
 }
 
 /* ==========================================================================
-   PAPER TABS NAVIGATION (STYL ADRESÁŘE - KOREKCE)
+   SITE NAV (nový navigační panel: hamburger vlevo, logo uprostřed, CTA vpravo)
    ========================================================================== */
 
-/* Fixní pozice - navigace zůstává viditelná i po odscrollování (klíčové pro mobil) */
-.paper-tabs-nav {
+.site-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 500;
-  background: linear-gradient(to bottom, #000000, #0f0600); /* Tmavé elegantní pozadí */
+  z-index: var(--layer-nav);
+  background: linear-gradient(to bottom, #000000, #0f0600);
   border-bottom: 2px solid #2b1c12;
   box-shadow: 0 4px 18px rgba(0,0,0,0.6);
-  pointer-events: auto;
-}
-
-/* Obal pro záložky i připnuté tlačítko Rezervace - centrováno stejně jako dřív na desktopu */
-.paper-tabs-container {
-  position: relative;
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  padding: 16px max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
-  box-sizing: border-box;
-}
-
-/* Neposuvný rámeček kolem záložek - drží fade indikátory a šipky pevně na okraji,
-   samotné posouvání obstarává vnitřní .paper-tabs-track (jinak by se posouvaly s obsahem). */
-.paper-tabs-scroll {
-  position: relative; /* ukotvení fade indikátorů posunu a tlačítek */
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow: hidden;
-}
-
-/* Skutečně posuvný prvek se seznamem záložek */
-.paper-tabs-track {
-  width: 100%;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.paper-tabs-track::-webkit-scrollbar {
-  display: none;
-}
-
-/* Fade indikátory posunu - viditelnost řídí JS třídami can-scroll-left/can-scroll-right */
-.paper-tabs-scroll::before,
-.paper-tabs-scroll::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  pointer-events: none;
-  z-index: 4;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.paper-tabs-scroll::before {
-  left: 0;
-  background: linear-gradient(to left, transparent, rgba(15, 6, 0, 0.95));
-}
-
-.paper-tabs-scroll::after {
-  right: 0;
-  background: linear-gradient(to right, transparent, rgba(15, 6, 0, 0.95));
-}
-
-.paper-tabs-scroll.can-scroll-left::before {
-  opacity: 1;
-}
-
-.paper-tabs-scroll.can-scroll-right::after {
-  opacity: 1;
-}
-
-/* Tlačítka se šipkou pro posun záložek - viditelná i na tmavém pozadí navigace */
-.paper-tabs-scroll-btn {
-  display: none; /* zapíná se jen na úzkých displejích, viz media query níže */
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 26px;
-  height: 26px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 220, 174, 0.4);
-  border-radius: 50%;
-  background: rgba(15, 6, 0, 0.85);
-  color: var(--gold);
-  font-size: 0.85rem;
-  line-height: 1;
-  z-index: 6;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-
-.paper-tabs-scroll-btn--left {
-  left: 4px;
-}
-
-.paper-tabs-scroll-btn--right {
-  right: 4px;
-}
-
-.paper-tabs-scroll.can-scroll-left .paper-tabs-scroll-btn--left,
-.paper-tabs-scroll.can-scroll-right .paper-tabs-scroll-btn--right {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Seznam záložek */
-.paper-tabs-list {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  margin: 0;
-  padding: 0 10px 0 10px;
-  list-style: none;
-  gap: 6px;
-  min-width: max-content;
-  position: relative;
-}
-
-
-/* Neaktivní záložky */
-.paper-tab {
-  position: relative;
-  background: url("galerie/papir.webp") center/cover;
-  border: 2px solid #2b1c12;
-  border-bottom: none;
-  border-radius: 12px 12px 0 0;
-  z-index: 2;
-  margin-bottom: 2px; /* Zvednuto přesně o výšku čáry, aby na ní záložka seděla */
-  filter: brightness(0.8) contrast(1.1); /* Výrazné ztmavení pro 3D efekt */
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.paper-tab:hover {
-  filter: brightness(0.95);
-}
-
-.paper-tab-link {
-  display: flex;
-  align-items: center;
-  min-height: var(--nav-btn-height-xs); /* Zajistí dostatečně velkou dotykovou plochu i na mobilu */
-  box-sizing: border-box;
-  padding: 12px 22px;
-  color: #3e2f2a;
   font-family: "Raleway", sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
+}
+
+.site-nav__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.9rem max(16px, env(safe-area-inset-right)) 0.9rem max(16px, env(safe-area-inset-left));
+  box-sizing: border-box;
+}
+
+/* --- Levá část: odkazy --- */
+.site-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.site-nav__link {
   text-decoration: none;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: color var(--transition-speed) ease;
 }
 
-/* AKTIVNÍ ZÁLOŽKA - Dokonale překryje spodní čáru */
-.paper-tab.active {
-  z-index: 3; /* Zaručeně nad čárou */
-  filter: brightness(1.1) contrast(1.05); /* Prosvětlení */
-  margin-bottom: 0; /* Klesne přesně přes čáru */
-  padding-bottom: 4px; /* Spodní okraj se protáhne, aby čáru fyzicky "zamáznul" papírem */
-  box-shadow: 0 -4px 15px rgba(0,0,0,0.5); /* Silnější stín na tmavém pozadí */
+.site-nav__link:hover,
+.site-nav__link:focus-visible {
+  color: #fff;
 }
 
-/* Specifické záložky */
-.ceremony-tab {
-  color: #891915 !important;
+.site-nav__link.active {
+  color: #fff;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 2px;
 }
 
-/* Připnuté tlačítko Rezervace - mimo posuvnou oblast, vždy viditelné i na mobilu */
-.paper-tabs-cta {
+.site-nav__link--ceremony {
+  color: #e07a6f;
+}
+
+/* --- Střed: logo --- */
+.site-nav__logo {
   flex: 0 0 auto;
+  font-family: "Tenor Sans", serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* --- Pravá část: rezervace --- */
+.site-nav__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.site-nav__cta {
   display: flex;
   align-items: center;
   min-height: var(--nav-btn-height-xs);
   box-sizing: border-box;
-  margin-bottom: 2px;
-  padding: 12px 22px;
+  padding: 0.6rem 1.2rem;
   background: linear-gradient(135deg, #800000, #440000);
-  border: 2px solid #410000;
-  border-bottom: none;
-  border-radius: 12px 12px 0 0;
-  color: #fff8f2 !important;
-  font-family: "Raleway", sans-serif;
+  border: 1px solid #410000;
+  border-radius: 50px;
+  color: var(--cream) !important;
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
-  transition: filter 0.2s ease;
+  transition: filter var(--transition-speed) ease;
 }
 
-.paper-tabs-cta:hover,
-.paper-tabs-cta:focus-visible {
-  filter: brightness(1.15);
+.site-nav__cta:hover,
+.site-nav__cta:focus-visible {
+  filter: brightness(1.2);
 }
 
-.paper-tabs-nav .tab-cta-icon {
+.site-nav__cta-icon {
   width: 16px;
   height: 16px;
   margin-right: 8px;
 }
 
-/* --- Responzivita pro mobil --- */
-@media (max-width: 768px) {
-  .paper-tabs-container {
-    gap: 6px;
-    padding: 12px max(10px, env(safe-area-inset-right)) 0 max(10px, env(safe-area-inset-left));
+.site-nav__toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--gold);
+}
+
+/* --- Responzivita (tablet/mobil) --- */
+@media (max-width: 900px) {
+  .site-nav__container {
+    position: relative;
+    padding: 0.8rem max(12px, env(safe-area-inset-right)) 0.8rem max(12px, env(safe-area-inset-left));
   }
-  .paper-tab-link,
-  .paper-tabs-cta {
-    padding: 10px 16px;
-    font-size: 0.85rem;
-  }
-  .paper-tabs-scroll-btn {
+
+  .site-nav__toggle {
     display: flex;
+    flex: 1;
+  }
+
+  .site-nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    background: linear-gradient(to bottom, #0f0600, #000000);
+    border-bottom: 2px solid #2b1c12;
+    padding: 0.5rem 0 1rem;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: var(--transition-speed) ease;
+  }
+
+  .site-nav__links.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .site-nav__link {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    text-align: center;
+    font-size: 1.05rem;
+  }
+
+  .site-nav__link.active {
+    border-bottom: none;
+    background: rgba(255, 220, 174, 0.08);
   }
 }
 
-/* --- Velmi úzké displeje: zmenšíme záložky i CTA, aby jich bylo vidět víc naráz --- */
-@media (max-width: 420px) {
-  .paper-tabs-list {
-    gap: 4px;
+@media (max-width: 480px) {
+  .site-nav__logo {
+    font-size: 1.1rem;
   }
-  .paper-tab-link,
-  .paper-tabs-cta {
-    padding: 9px 12px;
-    font-size: 0.78rem;
-  }
-  .paper-tabs-nav .tab-cta-icon {
-    width: 14px;
-    height: 14px;
-    margin-right: 6px;
+
+  .site-nav__cta {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
   }
 }

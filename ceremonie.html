@@ -41,25 +41,26 @@
 </head>
 <body class="body_ceremonie">
   <!-- Hlavní navigační panel -->
-  <nav class="paper-tabs-nav" aria-label="Hlavní navigace">
-    <div class="paper-tabs-container">
-      <div class="paper-tabs-scroll">
-        <div class="paper-tabs-track">
-          <ul class="paper-tabs-list">
-            <li class="paper-tab active"><a href="index.html" class="paper-tab-link">Úvod</a></li>
-            <li class="paper-tab"><a href="msginfo.html" class="paper-tab-link">Služby a ceník</a></li>
-            <li class="paper-tab"><a href="ceremonie.html" class="paper-tab-link ceremony-tab">Ceremonie</a></li>
-            <li class="paper-tab"><a href="obchod.html" class="paper-tab-link">Poukazy</a></li>
-            <li class="paper-tab"><a href="about.html" class="paper-tab-link">O mně</a></li>
-          </ul>
-        </div>
+  <header class="site-nav">
+    <div class="site-nav__container">
+      <button type="button" class="site-nav__toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+      <nav class="site-nav__links" aria-label="Hlavní navigace">
+        <a href="index.html" class="site-nav__link">Úvod</a>
+        <a href="msginfo.html" class="site-nav__link">Služby a ceník</a>
+        <a href="ceremonie.html" class="site-nav__link site-nav__link--ceremony">Ceremonie</a>
+        <a href="obchod.html" class="site-nav__link">Poukazy</a>
+        <a href="about.html" class="site-nav__link">O mně</a>
+        <a href="index.html#impressum" class="site-nav__link">Kontakt</a>
+      </nav>
+      <a href="index.html" class="site-nav__logo">Aura Michaell</a>
+      <div class="site-nav__actions">
+        <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="site-nav__cta">
+          <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="site-nav__cta-icon" alt=""/>
+          Rezervace
+        </a>
       </div>
-      <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="paper-tabs-cta">
-        <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="tab-cta-icon" alt=""/>
-        Rezervace
-      </a>
     </div>
-  </nav>
+  </header>
   <!-- Hlavní obsah stránky -->
   <main class="container">
     <section class="parallax-section parallax-ceremony-hero" style="--parallax-image: url('galerie/ceremonie/ceremonie (3).jpg');" aria-label="Aura ceremonie">
