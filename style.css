@@ -4234,6 +4234,41 @@ body.night-mode .logo-bubble img:hover {
   line-height: 1.7; /* Nastaví výšku řádku. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   margin: 0; /* Odstraní vnější odsazení odstavce. */
+  font-weight: bold;
+}
+
+.rezervace {
+  margin-top: 28px; /* Oddělí tlačítko od textu nad ním. */
+}
+
+.hero-intro .welcome-section__cta {
+  display: inline-flex; /* Zarovná ikonu a text vedle sebe. */
+  align-items: center;
+  gap: 8px;
+  padding: 1.1rem 2.4rem; /* Vytvoří pohodlnou velikost tlačítka. */
+  background: linear-gradient(135deg, #a80000, #4d0000); /* Červený gradient tlačítka. */
+  border: none;
+  border-radius: 50px;
+  color: #fdf3e7 !important; /* Zajistí čitelný text na tmavě červeném pozadí. */
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 6px 14px rgb(77, 0, 0);
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.hero-intro .welcome-section__cta:hover,
+.hero-intro .welcome-section__cta:focus-visible {
+  filter: brightness(1.2);
+  transform: translateY(-2px);
+}
+
+.hero-intro .welcome-section__cta .site-nav__cta-icon {
+  width: 26px;
+  height: 26px;
+  margin-right: 0; /* Mezeru mezi ikonou a textem řeší gap kontejneru. */
 }
 
 
@@ -4267,6 +4302,7 @@ body.night-mode .logo-bubble img:hover {
     transform: rotate(0deg); /* Zruší natočení panelu na menších displejích. */
     padding: 30px 24px; /* Zmenší vnitřní odsazení panelu. */
     text-align: center; /* Zarovná text panelu na střed. */
+    transform: rotate(1deg); /* Jemné natočení panelu pro menší displeje. */
   }
 
   
@@ -5003,9 +5039,9 @@ html:has(body.page-services) {
 .page-services-v2 .svc2-filters { /* FILTRY: vyhledávání, délka, řazení, reset */
   padding: clamp(14px, 2vw, 22px);
   border-radius: 22px;
-  border: 1px solid var(--svc2-border);
+  border: 2px solid rgba(102, 48, 1, 0.59);
   background: linear-gradient(180deg, rgba(243, 229, 211, 0.96), rgba(234, 214, 191, 0.94));
-  box-shadow: 0 16px 34px rgba(64, 29, 16, 0.13);
+  box-shadow: rgb(0, 0, 0) 0px 4px 6px 1px, rgb(0, 0, 0) 0px 2px 4px 1px;
 }
 
 .page-services-v2 .svc2-filters__header h2 {
@@ -5073,7 +5109,7 @@ html:has(body.page-services) {
 }
 
 .page-services-v2 .svc2-chip {
-  border: 1px solid #c89f79;
+  border: 2px solid #c89f79;
   background: #fffaef;
   color: #5f3b24;
   border-radius: 999px;
@@ -5107,6 +5143,8 @@ html:has(body.page-services) {
   margin-top: 18px;
   display: grid;
   gap: 16px;
+  border: 2px solid rgba(56, 26, 0, 0.6);
+  border-radius: inherit;
 }
 
 .page-services-v2 .svc2-group {
@@ -5281,6 +5319,12 @@ html:has(body.page-services) {
   box-shadow: 0 20px 32px rgba(63, 31, 17, 0.2);
 }
 
+.svc2-card__body {
+  border: 2px solid rgba(56, 26, 0, 0.87);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
 .page-services-v2 .svc2-card img {
   width: 100%;
   height: 100%;
@@ -5380,21 +5424,24 @@ html:has(body.page-services) {
 .page-services-v2 .svc2-faq {
   margin-top: 20px;
   border-radius: 18px;
-  border: 1px solid #d6bea4;
-  background: linear-gradient(180deg, #fffdf7, #fff6e8);
+  border: 2px solid rgba(102, 48, 1, 0.59);
+  background: linear-gradient(180deg, rgba(243, 229, 211, 0.96), rgba(234, 214, 191, 0.94));
   padding: clamp(14px, 2vw, 22px);
+  box-shadow: rgb(0, 0, 0) 0px 4px 6px 1px, rgb(0, 0, 0) 0px 2px 4px 1px;
 }
 
 .page-services-v2 .svc2-aroma__lead h2,
 .page-services-v2 .svc2-faq h2 {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.15rem, 2.2vw, 1.8rem);
+  font-size: clamp(2rem, 2.2vw, 2.3rem);
+  font-weight: bold;
 }
 
 .page-services-v2 .svc2-aroma__lead p {
   margin-top: 8px;
   color: #664f3f;
+  font-weight: 700;
 }
 
 .page-services-v2 .svc2-aroma__lists {
@@ -5406,7 +5453,7 @@ html:has(body.page-services) {
 
 .page-services-v2 .svc2-aroma__lists article {
   border-radius: 14px;
-  border: 1px solid #ddc4ab;
+  border: 2px solid #000000;
   padding: 12px;
   background: #fffcf6;
 }

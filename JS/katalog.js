@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const groups = Array.from(serviceCatalog.querySelectorAll('.svc2-group'));
     const chips = Array.from(serviceCatalog.querySelectorAll('[data-category-filter]'));
 
-    let activeCategory = 'all';
+    let activeCategory = 'klasicke';
 
     // Predzpracovani dat karet pro razeni a vykon filtrovani
     cards.forEach((card, index) => {
