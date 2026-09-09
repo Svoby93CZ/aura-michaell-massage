@@ -2455,10 +2455,11 @@ footer img {
   left: 0;
   right: 0;
   z-index: var(--layer-floating);
-  background: linear-gradient(135deg, rgba(124,74,39,0.96), rgba(171,117,78,0.92));
-  border-bottom: 1px solid rgba(255,248,242,0.12);
-  box-shadow: 0 12px 28px rgba(60,30,10,0.32);
-  backdrop-filter: blur(10px);
+  isolation: isolate;
+  background: linear-gradient(135deg, rgba(55, 35, 24, 0.97), rgba(119, 72, 42, 0.96));
+  border-bottom: 1px solid rgba(244, 206, 145, 0.42);
+  box-shadow: 0 14px 34px rgba(48, 27, 16, 0.38);
+  backdrop-filter: blur(18px) saturate(1.2);
   pointer-events: none;
   transition: background 0.3s ease, box-shadow 0.3s ease;
   will-change: transform; /* GPU acceleration */
@@ -2470,7 +2471,9 @@ footer img {
   max-width: 1440px;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 8px 20px;
+  padding: 8px clamp(16px, 3vw, 42px);
+  min-height: 62px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2624,10 +2627,10 @@ footer img {
   gap: 6px;
   width: 44px;
   height: 38px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,248,242,0.35);
-  background: rgba(0,0,0,0.18);
-  color: #fff8f2;
+  border-radius: 14px;
+  border: 1px solid rgba(244, 206, 145, 0.58);
+  background: rgba(55, 35, 24, 0.32);
+  color: #fff8ed;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -2827,9 +2830,10 @@ footer img {
   gap: 6px;
   padding: 12px;
   min-width: 220px;
-  background: linear-gradient(135deg, rgba(82, 47, 2, 0.98)), rgba(171,117,78,0.96);
-  border-radius: 12px;
-  box-shadow: 0 18px 40px rgba(60,30,10,0.45);
+  background: rgba(9, 17, 21, 0.94);
+  border: 1px solid rgba(240, 201, 138, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 20px 48px rgba(4, 10, 13, 0.46);
   backdrop-filter: blur(12px);
   z-index: var(--layer-dropdown);
 }
@@ -2843,25 +2847,26 @@ footer img {
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
-  color: #fff8f2;
+  color: #edf6f1;
   font-family: "Raleway", sans-serif;
   font-weight: 600;
   text-decoration: none;
-  -webkit-text-stroke: 0.1px #000000;
-  border-radius: 8px;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  text-shadow: none;
+  border-radius: 10px;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .primary-nav__dropdown-link:hover,
 .primary-nav__dropdown-link:focus-visible {
-  background: rgba(255,248,242,0.18);
+  color: #10191b;
+  background: #f0c98a;
   transform: translateX(4px);
   outline: none;
 }
 
 
 body.night-mode .primary-nav {
-  background: linear-gradient(135deg, rgba(15,31,58,0.96), rgba(30,50,80,0.94));
+  background: rgba(5, 12, 22, 0.82);
   border-bottom: 1px solid rgba(120,160,220,0.35);
   box-shadow: 0 12px 32px rgba(10,20,40,0.45);
 }
@@ -5945,21 +5950,7 @@ body.night-mode .logo-bubble img:hover {
   outline: none;
 }
 
-/* Moderní navigace s jemnou Three.js vrstvou */
-.primary-nav {
-  isolation: isolate;
-  background: rgba(9, 17, 21, 0.78);
-  border-bottom: 1px solid rgba(240, 201, 138, 0.24);
-  box-shadow: 0 14px 34px rgba(4, 10, 13, 0.3);
-  backdrop-filter: blur(18px) saturate(1.2);
-}
-
-.primary-nav__inner {
-  min-height: 62px;
-  padding: 8px clamp(16px, 3vw, 42px);
-  overflow: hidden;
-}
-
+/* Moderní navigace s jemnou Three.js vrstvou (canvas skryt níže, pravidla zůstávají pro pozicování) */
 .primary-nav__scene {
   position: absolute;
   inset: 0;
@@ -5978,76 +5969,14 @@ body.night-mode .logo-bubble img:hover {
   box-shadow: 0 0 0 4px rgba(240, 201, 138, 0.08), 0 8px 22px rgba(0, 0, 0, 0.35);
 }
 
-.primary-nav__link,
-.primary-nav__dropdown-toggle {
-  padding: 9px 15px;
-  color: #edf6f1;
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: rgba(237, 246, 241, 0.055);
-  border: 1px solid rgba(237, 246, 241, 0.18);
-  border-radius: 999px;
-  box-shadow: none;
-  text-shadow: none;
-}
-
-.primary-nav__link:hover,
-.primary-nav__link:focus-visible,
-.primary-nav__dropdown-toggle:hover,
-.primary-nav__dropdown-toggle:focus-visible {
-  color: #10191b;
-  background: #f0c98a;
-  border-color: #f0c98a;
-  box-shadow: 0 8px 22px rgba(240, 201, 138, 0.24);
-}
-
-.primary-nav__link--cta,
-.primary-nav__link--cta:hover,
-.primary-nav__link--cta:focus-visible {
-  color: #10191b;
-  background: #83d8cb;
-  border-color: #83d8cb;
-  box-shadow: 0 8px 24px rgba(131, 216, 203, 0.28);
-}
-
-.primary-nav__dropdown-panel {
-  background: rgba(9, 17, 21, 0.94);
-  border: 1px solid rgba(240, 201, 138, 0.28);
-  border-radius: 16px;
-  box-shadow: 0 20px 48px rgba(4, 10, 13, 0.46);
-}
-
-.primary-nav__dropdown-link {
-  color: #edf6f1;
-  border-radius: 10px;
-  text-shadow: none;
-}
-
-.primary-nav__dropdown-link:hover,
-.primary-nav__dropdown-link:focus-visible {
-  color: #10191b;
-  background: #f0c98a;
-}
-
-.primary-nav__toggle {
-  border-color: rgba(240, 201, 138, 0.42);
-  background: rgba(237, 246, 241, 0.08);
-  border-radius: 14px;
-}
-
-body.night-mode .primary-nav {
-  background: rgba(5, 12, 22, 0.82);
-}
-
 @media (max-width: 1100px) {
   .primary-nav__menu {
     width: min(88vw, 340px);
     padding: 20px 16px;
-    background: rgba(9, 17, 21, 0.94);
-    border: 1px solid rgba(240, 201, 138, 0.26);
+    background: linear-gradient(135deg, rgba(55, 35, 24, 0.98), rgba(119, 72, 42, 0.96));
+    border: 1px solid rgba(244, 206, 145, 0.38);
     border-radius: 22px;
-    box-shadow: 0 24px 54px rgba(4, 10, 13, 0.52);
+    box-shadow: 0 24px 54px rgba(48, 27, 16, 0.52);
   }
 
   .primary-nav__link,
@@ -6056,6 +5985,7 @@ body.night-mode .primary-nav {
     min-width: 0;
     max-width: none;
     padding: 12px 16px;
+    font-size: 1rem;
   }
 
   .primary-nav__dropdown {
@@ -6314,73 +6244,7 @@ body.night-mode .primary-nav {
   }
 }
 
-/* Teplejsi paleta navbaru navazuje na papir, kakao a zlate akcenty webu. */
-.primary-nav {
-  background: linear-gradient(135deg, rgba(55, 35, 24, 0.97), rgba(119, 72, 42, 0.96));
-  border-bottom-color: rgba(244, 206, 145, 0.42);
-  box-shadow: 0 14px 34px rgba(48, 27, 16, 0.38);
-}
-
-/* Plochý "neobrutalistický" 3D styl - plná barva, silný obrys, plná spodní hrana */
-.primary-nav__link,
-.primary-nav__dropdown-toggle {
-  color: #fff8ed;
-  font-size: clamp(1rem, 0.92rem + 0.25vw, 1.15rem);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  padding: 10px 18px;
-  border-radius: 10px;
-  background: #c17a3f;
-  border: 3px solid #2b1c12;
-  box-shadow: 0 6px 0 0 #2b1c12;
-  text-shadow: none;
-  transform: translateY(0);
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
-}
-
-.primary-nav__link:hover,
-.primary-nav__link:focus-visible,
-.primary-nav__dropdown-toggle:hover,
-.primary-nav__dropdown-toggle:focus-visible {
-  color: #392117;
-  background: #f4ce91;
-  border-color: #2b1c12;
-  text-shadow: none;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 0 0 #2b1c12;
-}
-
-.primary-nav__link:active,
-.primary-nav__dropdown-toggle:active {
-  transform: translateY(6px);
-  box-shadow: 0 0 0 0 #2b1c12;
-}
-
-.primary-nav__link--cta {
-  color: #32170d;
-  background: #b5342f;
-  border: 3px solid #2b1c12;
-  box-shadow: 0 6px 0 0 #2b1c12;
-  transform: translateY(0);
-}
-
-.primary-nav__link--cta:hover,
-.primary-nav__link--cta:focus-visible {
-  color: #fff8ed;
-  background: #c73e38;
-  border-color: #2b1c12;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 0 0 #2b1c12;
-}
-
-.primary-nav__link--cta:active {
-  transform: translateY(6px);
-  box-shadow: 0 0 0 0 #2b1c12;
-}
-
-
-
+/* Barevný akcent názvu stránky ve vystředěném (mobilním/zúženém) zobrazení navigace */
 .primary-nav__title-link,
 .primary-nav--show-title .primary-nav__title-link,
 .primary-nav--show-title .primary-nav__title-link:not(.is-typing) {
@@ -6388,23 +6252,4 @@ body.night-mode .primary-nav {
   font-size: clamp(1rem, 1.25vw, 1.2rem);
   font-weight: 700;
   text-shadow: 0 0 18px rgba(244, 206, 145, 0.38);
-}
-
-.primary-nav__toggle {
-  color: #fff8ed;
-  border-color: rgba(244, 206, 145, 0.58);
-  background: rgba(55, 35, 24, 0.32);
-}
-
-@media (max-width: 1100px) {
-  .primary-nav__menu {
-    background: rgba(55, 35, 24, 0.98);
-    border-color: rgba(244, 206, 145, 0.38);
-    box-shadow: 0 24px 54px rgba(48, 27, 16, 0.52);
-  }
-
-  .primary-nav__link,
-  .primary-nav__dropdown-toggle {
-    font-size: 1rem;
-  }
 }
