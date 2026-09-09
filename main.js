@@ -90,6 +90,112 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initHeroLogoDraw();
 
+  const initNavigationScene = () => {
+    const nav = document.querySelector('.primary-nav');
+    const navInner = nav ? nav.querySelector('.primary-nav__inner') : null;
+    if (!navInner) {
+      return;
+    }
+
+    let canvas = navInner.querySelector('.primary-nav__scene');
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.className = 'primary-nav__scene';
+      canvas.setAttribute('aria-hidden', 'true');
+      navInner.prepend(canvas);
+    }
+
+    const startScene = () => {
+      if (!window.THREE || canvas.dataset.initialized === 'true') {
+        return;
+      }
+
+      try {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(24, 1, 0.1, 20);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        const group = new THREE.Group();
+        const particleCount = 180;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+        const champagne = new THREE.Color('#f0c98a');
+        const aqua = new THREE.Color('#83d8cb');
+
+        for (let index = 0; index < particleCount; index += 1) {
+          const offset = index * 3;
+          const progress = index / particleCount;
+          positions[offset] = (progress - 0.5) * 8;
+          positions[offset + 1] = Math.sin(progress * Math.PI * 5) * 0.26 + (Math.random() - 0.5) * 0.42;
+          positions[offset + 2] = (Math.random() - 0.5) * 1.8;
+          const color = index % 4 === 0 ? aqua : champagne;
+          colors[offset] = color.r;
+          colors[offset + 1] = color.g;
+          colors[offset + 2] = color.b;
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        const material = new THREE.PointsMaterial({
+          size: 0.045,
+          transparent: true,
+          opacity: 0.68,
+          vertexColors: true,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false
+        });
+
+        group.add(new THREE.Points(geometry, material));
+        scene.add(group);
+        camera.position.z = 4.6;
+        canvas.dataset.initialized = 'true';
+
+        const resize = () => {
+          const width = Math.max(navInner.clientWidth, 1);
+          const height = Math.max(navInner.clientHeight, 1);
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+          renderer.setSize(width, height, false);
+        };
+
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        const render = (time) => {
+          group.rotation.y = time * 0.00008;
+          group.rotation.x = Math.sin(time * 0.00018) * 0.08;
+          renderer.render(scene, camera);
+          if (!prefersReducedMotion) {
+            window.requestAnimationFrame(render);
+          }
+        };
+
+        render(0);
+      } catch (error) {
+        canvas.remove();
+        console.warn('Navigation 3D scene unavailable:', error);
+      }
+    };
+
+    if (window.THREE) {
+      startScene();
+      return;
+    }
+
+    const existingThreeScript = document.querySelector('script[src*="three.min.js"]');
+    if (existingThreeScript) {
+      existingThreeScript.addEventListener('load', startScene, { once: true });
+      return;
+    }
+
+    const threeScript = document.createElement('script');
+    threeScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    threeScript.async = true;
+    threeScript.addEventListener('load', startScene, { once: true });
+    document.head.appendChild(threeScript);
+  };
+
   // ===== Primární navigace =====
   const nav = document.querySelector('.primary-nav');
   const body = document.body;
@@ -97,8 +203,114 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = nav ? nav.querySelector('.primary-nav__toggle') : null;
   const brand = nav ? nav.querySelector('.primary-nav__brand') : null;
   const titleLink = nav ? nav.querySelector('.primary-nav__title-link') : null;
-  const dropdowns = nav ? Array.from(nav.querySelectorAll('.primary-nav__dropdown')) : [];
+  let dropdowns = nav ? Array.from(nav.querySelectorAll('.primary-nav__dropdown')) : [];
   let heroOutOfView = false;
+  const currentPath = window.location.pathname.replace(/\\/g, '/');
+
+  const pageTitles = {
+    '/index.html': 'Aura Michaell Massage',
+    '/': 'Aura Michaell Massage',
+    '/about.html': 'O mně',
+    '/msginfo.html': 'Masáže a ceník',
+    '/ceremonie.html': 'Aura ceremonie',
+    '/obchod.html': 'Obchod a poukazy',
+    '/privacy-policy.html': 'Ochrana osobních údajů'
+  };
+
+  if (titleLink) {
+    const pageKey = Object.keys(pageTitles).find(path => currentPath.endsWith(path));
+    titleLink.textContent = pageTitles[pageKey] || 'Aura Michaell Massage';
+    titleLink.setAttribute('aria-hidden', 'false');
+    titleLink.tabIndex = 0;
+  }
+
+  if (nav && menu && dropdowns.length) {
+    dropdowns.forEach(dropdown => {
+      const links = Array.from(dropdown.querySelectorAll('.primary-nav__dropdown-link'));
+      links.forEach(link => {
+        link.className = 'primary-nav__link';
+        menu.insertBefore(link, dropdown);
+      });
+      dropdown.remove();
+    });
+    dropdowns = [];
+  }
+
+  if (menu) {
+    menu.querySelectorAll('.primary-nav__link').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http')) {
+        return;
+      }
+
+      const linkPath = new URL(href, window.location.href).pathname.replace(/\\/g, '/');
+      if (linkPath === currentPath) {
+        link.hidden = true;
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+  }
+
+  const initNavButton3d = () => {
+    if (!menu || prefersReducedMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return;
+    }
+
+    menu.querySelectorAll('.primary-nav__link:not([hidden])').forEach(link => {
+      link.classList.add('nav-3d-button');
+      let isPressed = false;
+
+      const applyButtonTransform = event => {
+        const bounds = link.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+        const rotateY = x * 10;
+        const rotateX = y * -10;
+        const glowX = 50 + x * 55;
+        const glowY = 50 + y * 55;
+
+        link.style.transform = isPressed
+          ? `perspective(700px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(1px) translateZ(-3px) scale(0.96)`
+          : `perspective(700px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px) translateZ(12px) scale(1.03)`;
+        link.style.setProperty('--nav-glow-x', `${glowX}%`);
+        link.style.setProperty('--nav-glow-y', `${glowY}%`);
+      };
+
+      link.addEventListener('pointerenter', () => {
+        link.classList.add('nav-3d-button--active');
+      });
+
+      link.addEventListener('pointermove', event => {
+        applyButtonTransform(event);
+      });
+
+      link.addEventListener('pointerdown', event => {
+        isPressed = true;
+        link.classList.add('nav-3d-button--pressed');
+        applyButtonTransform(event);
+      });
+
+      link.addEventListener('pointerup', event => {
+        isPressed = false;
+        link.classList.remove('nav-3d-button--pressed');
+        applyButtonTransform(event);
+      });
+
+      const resetButton = () => {
+        isPressed = false;
+        link.classList.remove('nav-3d-button--active');
+        link.classList.remove('nav-3d-button--pressed');
+        link.style.removeProperty('transform');
+        link.style.removeProperty('--nav-glow-x');
+        link.style.removeProperty('--nav-glow-y');
+      };
+
+      link.addEventListener('pointercancel', resetButton);
+      link.addEventListener('pointerleave', resetButton);
+    });
+  };
+
+  initNavButton3d();
 
   const closeAllDropdowns = (exception = null) => {
     dropdowns.forEach(dropdown => {
@@ -136,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     const previouslyVisible = nav.classList.contains('primary-nav--show-title');
-    const shouldShow = heroOutOfView && nav.classList.contains('primary-nav--condensed') && !nav.classList.contains('is-open');
+    const shouldShow = Boolean(titleLink);
     nav.classList.toggle('primary-nav--show-title', shouldShow);
 
     if (titleLink) {
@@ -203,7 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.setAttribute('aria-expanded', 'false');
       menu.setAttribute('aria-hidden', 'true');
       menu.scrollTop = 0;
-      body.classList.remove('nav-open');
       closeAllDropdowns();
       updateNavCondensed();
     };
@@ -213,7 +424,6 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.setAttribute('aria-expanded', 'true');
       menu.setAttribute('aria-hidden', 'false');
       menu.scrollTop = 0;
-      body.classList.add('nav-open');
       nav.classList.remove('primary-nav--condensed');
       if (brand) {
         brand.setAttribute('aria-hidden', 'false');
@@ -223,13 +433,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     syncForViewport = () => {
-      const isDesktop = window.matchMedia('(min-width: 921px)').matches;
+      const isDesktop = window.matchMedia('(min-width: 1101px)').matches;
       if (isDesktop) {
         nav.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
         menu.setAttribute('aria-hidden', 'false');
         menu.scrollTop = 0;
-        body.classList.remove('nav-open');
         closeAllDropdowns();
       } else {
         if (!nav.classList.contains('is-open')) {
@@ -250,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nav.querySelectorAll('.primary-nav__link').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.matchMedia('(max-width: 920px)').matches) {
+        if (window.matchMedia('(max-width: 1100px)').matches) {
           closeMenu();
         }
       });
@@ -619,48 +828,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.addEventListener('resize', () => { w = window.innerWidth; h = window.innerHeight; });
 })();
-
-/* ==========================================================================
-   SITE NAV - HAMBURGER MENU (mobil) A AKTIVNÍ ODKAZ
-   ========================================================================== */
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleBtn = document.querySelector('.site-nav__toggle');
-  const links = document.querySelector('.site-nav__links');
-
-  if (toggleBtn && links) {
-    const toggleMenu = () => {
-      const isExpanded = links.classList.contains('is-active');
-      links.classList.toggle('is-active');
-      toggleBtn.innerHTML = isExpanded ? '☰' : '✕';
-      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
-    };
-
-    toggleBtn.addEventListener('click', toggleMenu);
-
-    links.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (links.classList.contains('is-active')) {
-          toggleMenu();
-        }
-      });
-    });
-  }
-
-  // Zvýraznění odkazu odpovídajícího aktuální stránce
-  const currentPage = (window.location.pathname.split('/').pop() || 'index.html');
-  document.querySelectorAll('.site-nav__link').forEach(link => {
-    const href = link.getAttribute('href');
-    link.classList.remove('active');
-    if (href && href.split('#')[0] === currentPage) {
-      link.classList.add('active');
-    }
-  });
-
-  // Anchor odkaz na Kontakt na úvodní stránce se vizuálně přepne po kliknutí
-  document.querySelectorAll('.site-nav__link[href^="#"]').forEach(link => {
-    link.addEventListener('click', function () {
-      document.querySelectorAll('.site-nav__link').forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-    });
-  });
-});

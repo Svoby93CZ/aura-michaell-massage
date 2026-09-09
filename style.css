@@ -18,9 +18,6 @@
   --dark: #3e2f2a; /* Proměnná pro tmavou barvu. */
   --cream: #fff8f2; /* Proměnná pro světlou krémovou barvu. */
   --gold: #ffdcae; /* Proměnná pro zlatý odstín. */
-  --nav-btn-height: 56px; /* Proměnná pro výšku navigačních tlačítek. */
-  --nav-btn-height-sm: 48px; /* Proměnná pro menší výšku navigačních tlačítek. */
-  --nav-btn-height-xs: 44px; /* Proměnná pro nejnižší výšku navigačních tlačítek. */
 
   --transition-speed: 0.2s; /* Přidané proměnné pro lepší správu */
   --box-shadow-light: 0 2px 8px rgba(60,30,10,0.12);
@@ -30,7 +27,6 @@
   --layer-ground: 0; /* Vrstvy rozhraní */
   --layer-content: 10;
   --layer-floating: 140;
-  --layer-nav: 200;
   --layer-dropdown: 240;
   --layer-overlay: 260;
   --layer-scroll-button: 320;
@@ -54,7 +50,6 @@ img, video, iframe {
 body { /* ZÁKLADNÍ STYLY */
   margin: 0; /* Odsadí prvek od okolního obsahu. */
   padding: 0 var(--pad) 40px; /* Přidá vnitřní odsazení prvku. */
-  padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
   font-family: "Tenor Sans", serif; /* Určuje použité písmo. */
   color: #3e2f2a; /* Nastaví barvu textu. */
   overflow-x: hidden; /* Řídí přetečení na ose X. */
@@ -118,7 +113,6 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
 .body_ceremonie { /* ZÁKLADNÍ STYLY */
   margin: 0; /* Odsadí prvek od okolního obsahu. */
   padding: 0 var(--pad); /* Přidá vnitřní odsazení prvku (bottom 0 kvůli sticky footeru, viz sdílené pravidlo výše). */
-  padding-top: 100px; /* Větší mezera mezi navbarem a obsahem */
   font-family: "Tenor Sans", serif; /* Určuje použité písmo. */
   background: url("galerie/ceremonie/pozadi.webp") center/cover fixed no-repeat; /* Definuje pozadí prvku (fallback, reálně vidět je vrstva níže). */
   color: #3e2f2a; /* Nastaví barvu textu. */
@@ -249,7 +243,7 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
 
 .parallax-myths {
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.32), rgba(26,12,6,0.55));
-  --parallax-image: url("galerie/salon.webp");
+  --parallax-image: url("galerie/sand.jpg");
 }
 
 .parallax-bonus {
@@ -911,7 +905,6 @@ header { /* 04. Navigation & Hero Components */
 
 .page-services .services-nav .nav-btn {
   height: auto; /* Umožní tlačítkům roztáhnout se na výšku podle obsahu */
-  min-height: var(--nav-btn-height); /* Zachová minimální výšku přebíranou z globálních proměnných */
   padding: 12px 20px; /* Přidá pohodlnější vnitřní odsazení pro víceřádkové popisky */
   white-space: normal; /* Povolení zalomení textu na více řádků */
   line-height: 1.25; /* Zvětší řádkování, aby vícerádkové texty nebyly stísněné */
@@ -2456,16 +2449,12 @@ footer img {
 }
 
 
-body.nav-open { /* Hlavní navigace */ /* Noční režim */
-  overflow: hidden;
-}
-
 .primary-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: var(--layer-nav);
+  z-index: var(--layer-floating);
   background: linear-gradient(135deg, rgba(124,74,39,0.96), rgba(171,117,78,0.92));
   border-bottom: 1px solid rgba(255,248,242,0.12);
   box-shadow: 0 12px 28px rgba(60,30,10,0.32);
@@ -2521,7 +2510,7 @@ body.nav-open { /* Hlavní navigace */ /* Noční režim */
   left: clamp(22px, 4vw, 36px);
   transform: translateY(-50%);
   font-family: "Inknut Antiqua", serif;
-  font-size: 1rem;
+  font-size: 2rem;
   letter-spacing: 0.6px;
   color: #2b1c12;
   text-decoration: none;
@@ -4265,7 +4254,7 @@ body.night-mode .logo-bubble img:hover {
   transform: translateY(-2px);
 }
 
-.hero-intro .welcome-section__cta .site-nav__cta-icon {
+.hero-intro .welcome-section__cta .reservation-cta-icon {
   width: 26px;
   height: 26px;
   margin-right: 0; /* Mezeru mezi ikonou a textem řeší gap kontejneru. */
@@ -4584,10 +4573,6 @@ body.night-mode .logo-bubble img:hover {
 #klasicke, #sportovni, #zabaly, #vedomy, #ostatni{
   padding-bottom: 6px !important;
   border-bottom: none !important;
-}
-
-html:has(body.page-services) {
-  scroll-padding-top: 100px;
 }
 
 .page-services .main-title {
@@ -5929,6 +5914,335 @@ html:has(body.page-services) {
   outline: none;
 }
 
+/* Moderní navigace s jemnou Three.js vrstvou */
+.primary-nav {
+  isolation: isolate;
+  background: rgba(9, 17, 21, 0.78);
+  border-bottom: 1px solid rgba(240, 201, 138, 0.24);
+  box-shadow: 0 14px 34px rgba(4, 10, 13, 0.3);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.primary-nav__inner {
+  min-height: 62px;
+  padding: 8px clamp(16px, 3vw, 42px);
+  overflow: hidden;
+}
+
+.primary-nav__scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.82;
+  pointer-events: none;
+}
+
+.primary-nav__brand {
+  width: 42px;
+  height: 42px;
+  background: rgba(240, 201, 138, 0.16);
+  border: 1px solid rgba(240, 201, 138, 0.72);
+  box-shadow: 0 0 0 4px rgba(240, 201, 138, 0.08), 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.primary-nav__link,
+.primary-nav__dropdown-toggle {
+  padding: 9px 15px;
+  color: #edf6f1;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(237, 246, 241, 0.055);
+  border: 1px solid rgba(237, 246, 241, 0.18);
+  border-radius: 999px;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.primary-nav__link:hover,
+.primary-nav__link:focus-visible,
+.primary-nav__dropdown-toggle:hover,
+.primary-nav__dropdown-toggle:focus-visible {
+  color: #10191b;
+  background: #f0c98a;
+  border-color: #f0c98a;
+  box-shadow: 0 8px 22px rgba(240, 201, 138, 0.24);
+}
+
+.primary-nav__link--cta,
+.primary-nav__link--cta:hover,
+.primary-nav__link--cta:focus-visible {
+  color: #10191b;
+  background: #83d8cb;
+  border-color: #83d8cb;
+  box-shadow: 0 8px 24px rgba(131, 216, 203, 0.28);
+}
+
+.primary-nav__dropdown-panel {
+  background: rgba(9, 17, 21, 0.94);
+  border: 1px solid rgba(240, 201, 138, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 20px 48px rgba(4, 10, 13, 0.46);
+}
+
+.primary-nav__dropdown-link {
+  color: #edf6f1;
+  border-radius: 10px;
+  text-shadow: none;
+}
+
+.primary-nav__dropdown-link:hover,
+.primary-nav__dropdown-link:focus-visible {
+  color: #10191b;
+  background: #f0c98a;
+}
+
+.primary-nav__toggle {
+  border-color: rgba(240, 201, 138, 0.42);
+  background: rgba(237, 246, 241, 0.08);
+  border-radius: 14px;
+}
+
+body.night-mode .primary-nav {
+  background: rgba(5, 12, 22, 0.82);
+}
+
+@media (max-width: 1100px) {
+  .primary-nav__menu {
+    width: min(88vw, 340px);
+    padding: 20px 16px;
+    background: rgba(9, 17, 21, 0.94);
+    border: 1px solid rgba(240, 201, 138, 0.26);
+    border-radius: 22px;
+    box-shadow: 0 24px 54px rgba(4, 10, 13, 0.52);
+  }
+
+  .primary-nav__link,
+  .primary-nav__dropdown-toggle {
+    width: min(100%, 280px);
+    min-width: 0;
+    max-width: none;
+    padding: 12px 16px;
+  }
+
+  .primary-nav__dropdown {
+    width: min(100%, 280px);
+  }
+
+  .primary-nav__dropdown-toggle {
+    width: 100%;
+  }
+
+  .primary-nav__dropdown-panel {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(237, 246, 241, 0.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-nav__scene {
+    opacity: 0.45;
+  }
+}
+
+/* Jednotny odstup od fixni navigace a stredovy nazev aktualni stranky. */
+.page-home,
+.page-about,
+.page-services,
+.page-shop,
+.page-privacy,
+.body_ceremonie {
+  --nav-content-offset: 84px;
+  padding-top: var(--nav-content-offset);
+}
+
+.page-home > nav.primary-nav + div,
+.page-services > nav.primary-nav + div {
+  display: none;
+}
+
+.page-about,
+.page-shop {
+  --nav-content-offset: 66px;
+  padding-top: var(--nav-content-offset);
+}
+
+.page-about .parallax-section,
+.page-shop .parallax-section {
+  margin-top: 0;
+}
+
+.primary-nav__title-link,
+.primary-nav--show-title .primary-nav__title-link,
+.primary-nav--show-title .primary-nav__title-link:not(.is-typing) {
+  left: 50%;
+  top: 50%;
+  width: auto;
+  max-width: min(30vw, 280px);
+  transform: translate(-50%, -50%) !important;
+  display: inline-flex !important;
+  justify-content: center;
+  opacity: 1;
+  pointer-events: auto;
+  color: #f0c98a;
+  font-family: "Sora", "Raleway", sans-serif;
+  font-size: clamp(0.72rem, 1.15vw, 0.94rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 18px rgba(240, 201, 138, 0.34);
+  white-space: nowrap;
+  z-index: 1;
+  animation: navPageTitlePulse 4s ease-in-out infinite;
+}
+
+.primary-nav__title-link.is-typing {
+  animation: navPageTitlePulse 4s ease-in-out infinite;
+}
+
+.primary-nav__scene {
+  display: none;
+}
+
+.primary-nav__menu {
+  gap: 7px;
+}
+
+@keyframes navPageTitlePulse {
+  0%, 100% { opacity: 0.72; text-shadow: 0 0 12px rgba(240, 201, 138, 0.18); }
+  50% { opacity: 1; text-shadow: 0 0 22px rgba(240, 201, 138, 0.5); }
+}
+
+@media (min-width: 1101px) {
+  .primary-nav__link,
+  .primary-nav__dropdown-toggle {
+    padding-left: 11px;
+    padding-right: 11px;
+    font-size: 0.74rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .primary-nav__title-link,
+  .primary-nav--show-title .primary-nav__title-link,
+  .primary-nav--show-title .primary-nav__title-link:not(.is-typing) {
+    left: 50%;
+    display: inline-flex !important;
+    max-width: 45vw;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-nav__title-link,
+  .primary-nav__title-link.is-typing {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1101px) {
+  .primary-nav__inner {
+    display: grid;
+    grid-template-columns: minmax(170px, 1fr) auto;
+    align-items: center;
+    column-gap: clamp(12px, 2vw, 28px);
+  }
+
+  .primary-nav__brand {
+    display: none !important;
+  }
+
+  .primary-nav__title-link,
+  .primary-nav--show-title .primary-nav__title-link,
+  .primary-nav--show-title .primary-nav__title-link:not(.is-typing) {
+    position: static;
+    grid-column: 1;
+    justify-self: center;
+    width: auto !important;
+    max-width: 100%;
+    overflow: hidden;
+    transform: none !important;
+    animation: navPageTitlePulse 4s ease-in-out infinite;
+  }
+
+  .primary-nav__menu,
+  .primary-nav--show-title .primary-nav__menu,
+  .primary-nav--show-title.primary-nav--condensed .primary-nav__menu {
+    grid-column: 3;
+    min-width: max-content;
+    margin-left: 0 !important;
+    justify-content: flex-end;
+  }
+}
+
+/* Navbar bez loga: vice prostoru pro nazev a odkazy. */
+.primary-nav__brand {
+  display: none !important;
+}
+
+.primary-nav__link[hidden] {
+  display: none !important;
+}
+
+.primary-nav__link.nav-3d-button {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 120ms ease-out, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.primary-nav__link.nav-3d-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--nav-glow-x, 50%) var(--nav-glow-y, 50%), rgba(255, 255, 255, 0.32), transparent 58%);
+  opacity: 0;
+  transition: opacity 180ms ease;
+  pointer-events: none;
+}
+
+.primary-nav__link.nav-3d-button--active {
+  z-index: 2;
+  box-shadow: 0 14px 28px rgba(4, 10, 13, 0.3), 0 0 22px rgba(240, 201, 138, 0.2);
+}
+
+.primary-nav__link.nav-3d-button--active::after {
+  opacity: 1;
+}
+
+.primary-nav__link.nav-3d-button--pressed {
+  box-shadow: inset 0 4px 10px rgba(48, 27, 16, 0.42), 0 2px 6px rgba(48, 27, 16, 0.24);
+  transition-duration: 70ms;
+}
+
+.primary-nav__link,
+.primary-nav__dropdown-toggle {
+  font-size: clamp(0.78rem, 0.72rem + 0.12vw, 0.88rem);
+}
+
+.primary-nav__title-link,
+.primary-nav--show-title .primary-nav__title-link,
+.primary-nav--show-title .primary-nav__title-link:not(.is-typing) {
+  font-size: clamp(0.78rem, 1.1vw, 0.98rem);
+}
+
+@media (min-width: 1101px) {
+  .primary-nav__menu,
+  .primary-nav--show-title .primary-nav__menu,
+  .primary-nav--show-title.primary-nav--condensed .primary-nav__menu {
+    grid-column: 2;
+  }
+}
+
 /* --- Responzivita pro mobilní telefony --- */
 @media (max-width: 600px) {
   .embossed-impressum {
@@ -5950,180 +6264,87 @@ html:has(body.page-services) {
   }
 }
 
-/* ==========================================================================
-   SITE NAV (nový navigační panel: hamburger vlevo, logo uprostřed, CTA vpravo)
-   ========================================================================== */
+@media (max-width: 700px) {
+  .page-about,
+  .page-shop {
+    --nav-content-offset: 66px;
+    padding-top: var(--nav-content-offset);
+  }
 
-.site-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: var(--layer-nav);
-  background: linear-gradient(to bottom, #000000, #0f0600);
-  border-bottom: 2px solid #2b1c12;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
-  font-family: "Raleway", sans-serif;
+  .page-about .parallax-section,
+  .page-shop .parallax-section {
+    margin-top: 0;
+  }
 }
 
-.site-nav__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0.9rem max(16px, env(safe-area-inset-right)) 0.9rem max(16px, env(safe-area-inset-left));
-  box-sizing: border-box;
+@media (max-width: 1100px) {
+  .primary-nav__inner {
+    overflow: visible;
+  }
 }
 
-/* --- Levá část: odkazy --- */
-.site-nav__links {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex: 1;
+/* Teplejsi paleta navbaru navazuje na papir, kakao a zlate akcenty webu. */
+.primary-nav {
+  background: linear-gradient(135deg, rgba(55, 35, 24, 0.97), rgba(119, 72, 42, 0.96));
+  border-bottom-color: rgba(244, 206, 145, 0.42);
+  box-shadow: 0 14px 34px rgba(48, 27, 16, 0.38);
 }
 
-.site-nav__link {
-  text-decoration: none;
-  color: var(--gold);
-  font-weight: 600;
-  font-size: 0.95rem;
-  white-space: nowrap;
-  transition: color var(--transition-speed) ease;
-}
-
-.site-nav__link:hover,
-.site-nav__link:focus-visible {
-  color: #fff;
-}
-
-.site-nav__link.active {
-  color: #fff;
-  border-bottom: 2px solid var(--gold);
-  padding-bottom: 2px;
-}
-
-.site-nav__link--ceremony {
-  color: #e07a6f;
-}
-
-/* --- Střed: logo --- */
-.site-nav__logo {
-  flex: 0 0 auto;
-  font-family: "Tenor Sans", serif;
-  font-size: 1.35rem;
+.primary-nav__link,
+.primary-nav__dropdown-toggle {
+  color: #fff8ed;
+  font-size: clamp(1rem, 0.92rem + 0.25vw, 1.15rem);
   font-weight: 700;
-  color: var(--cream);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  text-align: center;
-  white-space: nowrap;
+  letter-spacing: 0.055em;
+  background: rgba(255, 248, 237, 0.1);
+  border-color: rgba(244, 206, 145, 0.38);
+  text-shadow: 0 1px 2px rgba(44, 25, 15, 0.55);
 }
 
-/* --- Pravá část: rezervace --- */
-.site-nav__actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1;
+.primary-nav__link:hover,
+.primary-nav__link:focus-visible,
+.primary-nav__dropdown-toggle:hover,
+.primary-nav__dropdown-toggle:focus-visible {
+  color: #392117;
+  background: #f4ce91;
+  border-color: #f4ce91;
+  text-shadow: none;
+  box-shadow: 0 10px 24px rgba(244, 206, 145, 0.3);
 }
 
-.site-nav__cta {
-  display: flex;
-  align-items: center;
-  min-height: var(--nav-btn-height-xs);
-  box-sizing: border-box;
-  padding: 0.6rem 1.2rem;
-  background: linear-gradient(135deg, #800000, #440000);
-  border: 1px solid #410000;
-  border-radius: 50px;
-  color: var(--cream) !important;
+.primary-nav__link--cta,
+.primary-nav__link--cta:hover,
+.primary-nav__link--cta:focus-visible {
+  color: #32170d;
+  background: linear-gradient(135deg, #f3c47c, #db8d58);
+  border-color: #f8d79f;
+  box-shadow: 0 10px 26px rgba(143, 65, 31, 0.38);
+}
+
+.primary-nav__title-link,
+.primary-nav--show-title .primary-nav__title-link,
+.primary-nav--show-title .primary-nav__title-link:not(.is-typing) {
+  color: #f4ce91;
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
   font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: filter var(--transition-speed) ease;
+  text-shadow: 0 0 18px rgba(244, 206, 145, 0.38);
 }
 
-.site-nav__cta:hover,
-.site-nav__cta:focus-visible {
-  filter: brightness(1.2);
+.primary-nav__toggle {
+  color: #fff8ed;
+  border-color: rgba(244, 206, 145, 0.58);
+  background: rgba(55, 35, 24, 0.32);
 }
 
-.site-nav__cta-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-}
-
-.site-nav__toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  line-height: 1;
-  cursor: pointer;
-  color: var(--gold);
-}
-
-/* --- Responzivita (tablet/mobil) --- */
-@media (max-width: 900px) {
-  .site-nav__container {
-    position: relative;
-    padding: 0.8rem max(12px, env(safe-area-inset-right)) 0.8rem max(12px, env(safe-area-inset-left));
+@media (max-width: 1100px) {
+  .primary-nav__menu {
+    background: rgba(55, 35, 24, 0.98);
+    border-color: rgba(244, 206, 145, 0.38);
+    box-shadow: 0 24px 54px rgba(48, 27, 16, 0.52);
   }
 
-  .site-nav__toggle {
-    display: flex;
-    flex: 1;
-  }
-
-  .site-nav__links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    background: linear-gradient(to bottom, #0f0600, #000000);
-    border-bottom: 2px solid #2b1c12;
-    padding: 0.5rem 0 1rem;
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: var(--transition-speed) ease;
-  }
-
-  .site-nav__links.is-active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .site-nav__link {
-    width: 100%;
-    padding: 0.9rem 1rem;
-    text-align: center;
-    font-size: 1.05rem;
-  }
-
-  .site-nav__link.active {
-    border-bottom: none;
-    background: rgba(255, 220, 174, 0.08);
-  }
-}
-
-@media (max-width: 480px) {
-  .site-nav__logo {
-    font-size: 1.1rem;
-  }
-
-  .site-nav__cta {
-    padding: 0.5rem 0.9rem;
-    font-size: 0.85rem;
+  .primary-nav__link,
+  .primary-nav__dropdown-toggle {
+    font-size: 1rem;
   }
 }

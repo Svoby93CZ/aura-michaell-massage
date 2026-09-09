@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="description" content="Profesionální masáže v Bruntále. Klasické masáže, sportovní masáže, relaxační procedury. Online rezervace. Vědomý dotek." />
-  <meta name="keywords" content="masáže Bruntál, klasické masáže, sportovní masáže, relaxace, wellness, Vědomý dotek, slow touch" />
+  <meta name="keywords" content="masáže Bruntál, klasické masáže, sportovní masáže, relaxace, wellness, Vědomý dotek, slow touch, auramichaell, aura michaell," />
 
   <!-- Open Graph / Social -->
   <meta property="og:title" content="Aura Michaell Massage - Profesionální masáže v Bruntále" />
@@ -48,21 +48,32 @@
 </head>
 <body class="page-home">
   <!-- Hlavní navigační panel -->
-  <header class="site-nav">
-    <div class="site-nav__container">
-      <button type="button" class="site-nav__toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
-      <nav class="site-nav__links" aria-label="Hlavní navigace">
-        <a href="index.html" class="site-nav__link">Úvod</a>
-        <a href="msginfo.html" class="site-nav__link">Služby a ceník</a>
-        <a href="ceremonie.html" class="site-nav__link site-nav__link--ceremony">Ceremonie</a>
-        <a href="obchod.html" class="site-nav__link">Poukazy</a>
-        <a href="about.html" class="site-nav__link">O mně</a>
-        <a href="#impressum" class="site-nav__link">Kontakt</a>
-      </nav>
-      <a href="index.html" class="site-nav__logo">Aura Michaell</a>
-      <div class="site-nav__actions"></div>
+  <nav class="primary-nav" aria-label="Hlavní navigace">
+    <div class="primary-nav__inner">
+      <a class="primary-nav__brand" href="index.html" aria-label="Aura Michaell Massage - úvod">
+        <img src="galerie/logo.webp" alt="Aura Michaell Massage" width="40" height="40">
+      </a>
+      <a class="primary-nav__title-link" href="index.html" aria-hidden="true" tabindex="-1">Aura Michaell Massage</a>
+      <div class="primary-nav__menu" id="primary-menu" aria-hidden="false">
+        <a class="primary-nav__link" href="index.html">Úvod</a>
+        <a class="primary-nav__link" href="about.html">O mně</a>
+        <div class="primary-nav__dropdown">
+          <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-offer-panel">Nabídka <span class="primary-nav__dropdown-arrow" aria-hidden="true">⌄</span></button>
+          <div class="primary-nav__dropdown-panel" id="nav-offer-panel" aria-hidden="true">
+            <a class="primary-nav__dropdown-link" href="msginfo.html">Masáže a ceník</a>
+            <a class="primary-nav__dropdown-link" href="ceremonie.html">Ceremonie</a>
+            <a class="primary-nav__dropdown-link" href="obchod.html">Obchod a poukazy</a>
+          </div>
+        </div>
+      </div>
+      <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="primary-nav__toggle-bar"></span>
+        <span class="primary-nav__toggle-bar"></span>
+        <span class="primary-nav__toggle-bar"></span>
+        <span class="primary-nav__toggle-label">Otevřít navigaci</span>
+      </button>
     </div>
-  </header>
+  </nav>
     <!-- Hlavní nadpis -->
     <div style="padding: 40px;"></div>
     <section id="hero" class="hero-wrapper">
@@ -79,7 +90,7 @@
           </p>
           <div class="rezervace">
             <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="welcome-section__cta">
-              <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="site-nav__cta-icon" alt=""/>
+              <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="reservation-cta-icon" alt=""/>
               Rezervace
               </a>
           </div>
