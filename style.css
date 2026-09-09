@@ -2572,22 +2572,39 @@ footer img {
 .primary-nav--condensed .primary-nav__link,
 .primary-nav--condensed .primary-nav__dropdown-toggle {
   padding: 6px 14px;
-  background: linear-gradient(120deg, rgba(255,248,242,0.08) 0%, rgba(255,248,242,0.2) 100%);
-  border-color: rgba(255,248,242,0.28);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.24);
+  background: #c17a3f;
+  border: 3px solid #2b1c12;
+  box-shadow: 0 4px 0 0 #2b1c12;
 }
 
 .primary-nav--condensed .primary-nav__link--cta {
-  background: linear-gradient(100deg, #7f0000 0%, #5c0000 100%);
-  border: 2px solid rgba(255,248,242,0.4);
-  box-shadow: 0 8px 22px rgba(127, 0, 0, 0.4);
+  background: #b5342f;
+  border: 3px solid #2b1c12;
+  box-shadow: 0 4px 0 0 #2b1c12;
 }
 
 .primary-nav--condensed .primary-nav__link--cta:hover,
 .primary-nav--condensed .primary-nav__link--cta:focus-visible {
-  background: linear-gradient(100deg, #8f0000 0%, #6c0000 100%);
-  box-shadow: 0 10px 26px rgba(127, 0, 0, 0.5);
+  background: #c73e38;
+  box-shadow: 0 6px 0 0 #2b1c12;
 }
+
+.primary-nav--condensed .primary-nav__link:hover,
+.primary-nav--condensed .primary-nav__dropdown-toggle:hover,
+.primary-nav--condensed .primary-nav__link:focus-visible,
+.primary-nav--condensed .primary-nav__dropdown-toggle:focus-visible {
+  background: #d08a4c;
+  box-shadow: 0 6px 0 0 #2b1c12;
+}
+
+.primary-nav--condensed .primary-nav__link:active,
+.primary-nav--condensed .primary-nav__dropdown-toggle:active,
+.primary-nav--condensed .primary-nav__link--cta:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 0 #2b1c12;
+}
+
+
 
 .primary-nav--condensed .primary-nav__menu {
   gap: 8px;
@@ -2680,20 +2697,22 @@ footer img {
   gap: 8px;
   padding: 10px 18px;
   font-family: "Raleway", sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   color: #fff8f2;
   text-decoration: none;
   border-radius: 10px;
-  background: linear-gradient(130deg, rgba(255,248,242,0.14) 0%, rgba(255,248,242,0.32) 100%);
-  border: 1px solid rgba(255,248,242,0.36);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, padding 0.2s ease, border-color 0.3s ease, color 0.3s ease;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
-  -webkit-text-stroke: 0.1px #000000;
+  /* Plná barva + silný obrys + plná spodní "hrana" = neobrutalistický 3D blok */
+  background: #c17a3f;
+  border: 3px solid #2b1c12;
+  box-shadow: 0 6px 0 0 #2b1c12;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
+  text-shadow: none;
+  -webkit-text-stroke: 0;
   white-space: nowrap; /* Zabránění zalamování textu pro konzistentní velikost */
   will-change: transform; /* Optimalizace pro animace */
   backface-visibility: hidden; /* Zabránění blikání při animacích */
+  position: relative;
 }
 
 
@@ -2705,11 +2724,17 @@ footer img {
 .primary-nav__link:focus-visible,
 .primary-nav__dropdown-toggle:hover,
 .primary-nav__dropdown-toggle:focus-visible {
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.32);
-  background: linear-gradient(135deg, rgba(255,248,242,0.4) 0%, rgba(255,248,242,0.68) 100%);
-  border-color: rgba(255,248,242,0.62);
+  transform: translateY(-2px);
+  background: #d08a4c;
+  border-color: #2b1c12;
+  box-shadow: 0 8px 0 0 #2b1c12;
   outline: none;
+}
+
+.primary-nav__link:active,
+.primary-nav__dropdown-toggle:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 0 #2b1c12;
 }
 
 .primary-nav__link[data-tooltip] {
@@ -2758,16 +2783,22 @@ footer img {
 }
 
 .primary-nav__link--cta {
-  background: linear-gradient(100deg, #7f0000 0%, #5c0000 100%);
-  border: 2px solid rgba(255,248,242,0.4);
-  box-shadow: 0 10px 28px rgba(127, 0, 0, 0.45);
+  background: #b5342f;
+  border: 3px solid #2b1c12;
+  box-shadow: 0 6px 0 0 #2b1c12;
   font-weight: 700;
 }
 
 .primary-nav__link--cta:hover,
 .primary-nav__link--cta:focus-visible {
-  background: linear-gradient(100deg, #8f0000 0%, #6c0000 100%);
-  box-shadow: 0 12px 32px rgba(127, 0, 0, 0.55);
+  transform: translateY(-2px);
+  background: #c73e38;
+  box-shadow: 0 8px 0 0 #2b1c12;
+}
+
+.primary-nav__link--cta:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 0 #2b1c12;
 }
 
 .primary-nav__dropdown {
@@ -6290,15 +6321,22 @@ body.night-mode .primary-nav {
   box-shadow: 0 14px 34px rgba(48, 27, 16, 0.38);
 }
 
+/* Plochý "neobrutalistický" 3D styl - plná barva, silný obrys, plná spodní hrana */
 .primary-nav__link,
 .primary-nav__dropdown-toggle {
   color: #fff8ed;
   font-size: clamp(1rem, 0.92rem + 0.25vw, 1.15rem);
   font-weight: 700;
-  letter-spacing: 0.055em;
-  background: rgba(255, 248, 237, 0.1);
-  border-color: rgba(244, 206, 145, 0.38);
-  text-shadow: 0 1px 2px rgba(44, 25, 15, 0.55);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #c17a3f;
+  border: 3px solid #2b1c12;
+  box-shadow: 0 6px 0 0 #2b1c12;
+  text-shadow: none;
+  transform: translateY(0);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
 }
 
 .primary-nav__link:hover,
@@ -6307,19 +6345,41 @@ body.night-mode .primary-nav {
 .primary-nav__dropdown-toggle:focus-visible {
   color: #392117;
   background: #f4ce91;
-  border-color: #f4ce91;
+  border-color: #2b1c12;
   text-shadow: none;
-  box-shadow: 0 10px 24px rgba(244, 206, 145, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 0 #2b1c12;
 }
 
-.primary-nav__link--cta,
+.primary-nav__link:active,
+.primary-nav__dropdown-toggle:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 0 #2b1c12;
+}
+
+.primary-nav__link--cta {
+  color: #32170d;
+  background: #b5342f;
+  border: 3px solid #2b1c12;
+  box-shadow: 0 6px 0 0 #2b1c12;
+  transform: translateY(0);
+}
+
 .primary-nav__link--cta:hover,
 .primary-nav__link--cta:focus-visible {
-  color: #32170d;
-  background: linear-gradient(135deg, #f3c47c, #db8d58);
-  border-color: #f8d79f;
-  box-shadow: 0 10px 26px rgba(143, 65, 31, 0.38);
+  color: #fff8ed;
+  background: #c73e38;
+  border-color: #2b1c12;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 0 #2b1c12;
 }
+
+.primary-nav__link--cta:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 0 #2b1c12;
+}
+
+
 
 .primary-nav__title-link,
 .primary-nav--show-title .primary-nav__title-link,
