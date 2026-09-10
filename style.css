@@ -6453,8 +6453,8 @@ body.night-mode .logo-bubble img:hover {
   .primary-nav--show-title .primary-nav__title-link:not(.is-typing) {
     left: 50%;
     display: inline-flex !important;
-    max-width: 45vw;
-    font-size: 0.7rem;
+    max-width: calc(100vw - 112px);
+    font-size: clamp(0.78rem, 3.6vw, 1rem);
     letter-spacing: 0.08em;
   }
 }
