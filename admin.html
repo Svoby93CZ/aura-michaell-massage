@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Správa knihy návštěv | Aura Michaell Massage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="guestbook-admin-page">
+  <main class="guestbook-admin" data-admin-app>
+    <a class="admin-back-link" href="index.html">← Zpět na web</a>
+    <p class="guestbook-label">Aura Michaell Massage</p>
+    <h1>Správa knihy návštěv</h1>
+
+    <section class="admin-login-panel" data-admin-login-panel>
+      <h2>Přihlášení správce</h2>
+      <p>Přihlašovací odkaz přijde na e-mail správce.</p>
+      <form data-admin-login-form>
+        <label for="admin-email">E-mail správce</label>
+        <input id="admin-email" type="email" name="email" required autocomplete="email">
+        <button class="admin-action" type="submit">Poslat přihlašovací odkaz</button>
+      </form>
+    </section>
+
+    <section class="admin-dashboard" data-admin-dashboard hidden>
+      <div class="admin-dashboard__header">
+        <div>
+          <h2>Čekající vzkazy</h2>
+          <p data-admin-user></p>
+        </div>
+        <button class="admin-action admin-action--secondary" type="button" data-admin-logout>Odhlásit</button>
+      </div>
+      <p class="admin-status" data-admin-status role="status" aria-live="polite"></p>
+      <div class="admin-entry-list" data-admin-entry-list></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

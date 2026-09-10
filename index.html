@@ -194,6 +194,44 @@
         </article>
       </div>
     </section>
+
+    <!-- Kniha návštěv -->
+    <section class="guestbook-section" data-guestbook aria-labelledby="guestbook-title">
+      <div class="guestbook-container">
+        <div class="guestbook-intro">
+          <p class="guestbook-label">Osobní vzkazy</p>
+          <h2 id="guestbook-title" class="guestbook-title">Kniha návštěv</h2>
+          <p class="guestbook-description">Napište, jak jste se u mě cítili. Vzkaz se po odeslání nejprve schválí a potom se objeví zde.</p>
+          <form class="guestbook-form" data-guestbook-form>
+            <label for="guestbook-nickname">Jméno nebo přezdívka <span aria-hidden="true">*</span></label>
+            <input id="guestbook-nickname" name="nickname" type="text" minlength="2" maxlength="60" required autocomplete="nickname">
+
+            <label for="guestbook-rating">Hodnocení</label>
+            <select id="guestbook-rating" name="rating">
+              <option value="">Bez hodnocení</option>
+              <option value="5">5 - výborné</option>
+              <option value="4">4 - velmi dobré</option>
+              <option value="3">3 - dobré</option>
+              <option value="2">2 - průměrné</option>
+              <option value="1">1 - slabé</option>
+            </select>
+
+            <label for="guestbook-message">Vzkaz <span aria-hidden="true">*</span></label>
+            <textarea id="guestbook-message" name="message" rows="5" minlength="3" maxlength="1000" required></textarea>
+
+            <label class="guestbook-consent">
+              <input name="consent" type="checkbox" required>
+              <span>Souhlasím se zveřejněním svého vzkazu pod uvedeným jménem nebo přezdívkou.</span>
+            </label>
+            <button type="submit" class="guestbook-submit">Odeslat vzkaz</button>
+            <p class="guestbook-status" data-guestbook-status role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="guestbook-list" data-guestbook-list aria-live="polite">
+          <p class="guestbook-empty">Načítám vzkazy…</p>
+        </div>
+      </div>
+    </section>
     
     <!-- IMPRESSUM / PRÁVNÍ ÚDAJE (Letterpress Design) -->
     <section id="impressum" class="embossed-impressum" aria-label="Impressum a právní údaje">
@@ -261,7 +299,10 @@
     <button type="button" class="modal-nav modal-nav--next" aria-label="Další obrázek">&#10095;</button>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-config.js" defer></script>
   <script src="main.js?v=2" defer></script>
+  <script src="guestbook.js" defer></script>
   <script src="JS/3D_hover.js?v=1" defer></script>
   <script src="JS/card-3d.js?v=6" defer></script>
 </body>

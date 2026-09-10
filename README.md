@@ -31,6 +31,7 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 - Přehled služeb a ceníků v desktop i mobilním zobrazení
 - Galerie a vizuální doplňky včetně 3D efektů
 - Stránku zásad ochrany osobních údajů
+- Moderovanou Knihu návštěv napojenou na Supabase
 - Statický web bez front-end závislostí
 
 ## 🛠️ Údržba
@@ -40,6 +41,21 @@ Aktualizace ceníků probíhají v souboru [msginfo.html](msginfo.html) ve dvou 
 2. mobilní karty.
 
 Nové obrázky přidávejte podle účelu do složek [galerie/](galerie/), [galerie/masaze/](galerie/masaze/) nebo [galerie/Poukazy/](galerie/Poukazy/).
+
+### Nastavení Knihy návštěv
+
+1. V Supabase vytvořte projekt a spusťte celý soubor [supabase-guestbook.sql](supabase-guestbook.sql) v SQL Editoru.
+2. Do [supabase-config.js](supabase-config.js) vložte URL projektu a veřejný `anon` klíč.
+3. V Supabase Authentication povolte e-mailové přihlášení a nastavte Redirect URL na `https://auramichaell.cz/admin.html`.
+4. Otevřete [admin.html](admin.html), požádejte o přihlašovací odkaz a přihlaste se e-mailem správce.
+5. V Supabase SQL Editoru přiřaďte přihlášený účet jako správce. ID uživatele najdete v Authentication > Users:
+
+```sql
+insert into public.guestbook_admins (user_id)
+values ('ID_UZIVATELE_Z_AUTH_USERS');
+```
+
+Nové vzkazy jsou nejprve skryté. Zobrazí se až po schválení v administraci; záznamy lze také trvale smazat.
 
 Pro sjednocení inline komentářů v CSS použijte:
 

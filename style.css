@@ -4380,6 +4380,230 @@ body.night-mode .logo-bubble img:hover {
   margin: 40px auto 80px;
 }
 
+/* Kniha návštěv */
+.guestbook-section {
+  --guestbook-ink: #2b1c12;
+  --guestbook-muted: #6f5748;
+  --guestbook-paper: rgba(255, 249, 232, 0.84);
+  padding: 24px 20px 88px;
+}
+
+.guestbook-container {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(28px, 5vw, 72px);
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 56px);
+  border: 1px solid rgba(68, 37, 18, 0.28);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(235, 211, 170, 0.72), rgba(255, 249, 232, 0.64));
+  box-shadow: 0 18px 42px rgba(62, 47, 42, 0.1), inset 2px 2px 5px rgba(28, 14, 5, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+}
+
+.guestbook-label {
+  margin: 0 0 10px;
+  color: var(--guestbook-muted);
+  font-family: "Raleway", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.guestbook-title {
+  margin: 0;
+  color: var(--guestbook-ink);
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1.25;
+}
+
+.guestbook-description {
+  max-width: 38rem;
+  margin: 16px 0 26px;
+  color: var(--guestbook-muted);
+  font-family: "Raleway", sans-serif;
+  line-height: 1.65;
+}
+
+.guestbook-form {
+  display: grid;
+  gap: 10px;
+  color: var(--guestbook-ink);
+  font-family: "Raleway", sans-serif;
+}
+
+.guestbook-form label:not(.guestbook-consent) {
+  margin-top: 8px;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.guestbook-form input:not([type="checkbox"]),
+.guestbook-form select,
+.guestbook-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(68, 37, 18, 0.38);
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--guestbook-ink);
+  font: inherit;
+}
+
+.guestbook-form textarea {
+  min-height: 126px;
+  resize: vertical;
+}
+
+.guestbook-form input:focus-visible,
+.guestbook-form select:focus-visible,
+.guestbook-form textarea:focus-visible {
+  outline: 3px solid rgba(137, 25, 21, 0.24);
+  border-color: #891915;
+}
+
+.guestbook-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 8px;
+  color: var(--guestbook-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.guestbook-consent input {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  accent-color: #891915;
+}
+
+.guestbook-submit,
+.admin-action {
+  width: fit-content;
+  margin-top: 8px;
+  border: 1px solid #891915;
+  border-radius: 7px;
+  padding: 11px 18px;
+  background: #891915;
+  color: #fff;
+  cursor: pointer;
+  font: 700 0.88rem "Raleway", sans-serif;
+}
+
+.guestbook-submit:disabled,
+.admin-action:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.guestbook-status,
+.admin-status {
+  min-height: 1.3em;
+  margin: 5px 0 0;
+  color: var(--guestbook-muted);
+  font-size: 0.82rem;
+}
+
+.guestbook-status[data-state="error"],
+.admin-status[data-state="error"] {
+  color: #891915;
+}
+
+.guestbook-status[data-state="success"],
+.admin-status[data-state="success"] {
+  color: #286341;
+}
+
+.guestbook-list {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  max-height: 760px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.guestbook-entry {
+  padding: 22px 24px;
+  border: 1px solid rgba(124, 74, 39, 0.24);
+  border-radius: 12px;
+  background: var(--guestbook-paper);
+  box-shadow: 0 8px 20px rgba(62, 47, 42, 0.08);
+}
+
+.guestbook-entry__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.guestbook-entry__author {
+  color: var(--guestbook-ink);
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
+  font-size: 1.05rem;
+}
+
+.guestbook-entry__date {
+  color: var(--guestbook-muted);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.guestbook-entry__message {
+  margin: 14px 0 12px;
+  color: var(--guestbook-ink);
+  font-family: "Raleway", sans-serif;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.guestbook-entry__rating {
+  color: #a15d19;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+}
+
+.guestbook-empty {
+  margin: 0;
+  color: var(--guestbook-muted);
+  font-family: "Raleway", sans-serif;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .guestbook-section {
+    padding: 12px 14px 56px;
+  }
+
+  .guestbook-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 28px 18px;
+    border-radius: 16px;
+  }
+
+  .guestbook-list {
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .guestbook-entry {
+    padding: 18px;
+  }
+
+  .guestbook-entry__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+}
+
 .reviews-and-map-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -4717,6 +4941,141 @@ body.night-mode .logo-bubble img:hover {
 .page-services .service-accordion {
   margin: 0 auto 16px !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.guestbook-admin-page {
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #ead3aa, #fff9e8);
+  color: #2b1c12;
+}
+
+.guestbook-admin {
+  max-width: 860px;
+  margin: 0 auto;
+  font-family: "Raleway", sans-serif;
+}
+
+.guestbook-admin h1,
+.guestbook-admin h2 {
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
+}
+
+.guestbook-admin h1 {
+  margin: 8px 0 30px;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+}
+
+.guestbook-admin h2 {
+  margin-top: 0;
+}
+
+.admin-back-link {
+  color: #891915;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-login-panel,
+.admin-dashboard {
+  padding: clamp(22px, 4vw, 38px);
+  border: 1px solid rgba(68, 37, 18, 0.28);
+  border-radius: 16px;
+  background: rgba(255, 249, 232, 0.76);
+  box-shadow: 0 18px 42px rgba(62, 47, 42, 0.1);
+}
+
+.admin-login-panel form {
+  display: grid;
+  max-width: 440px;
+  gap: 10px;
+}
+
+.admin-login-panel input {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid rgba(68, 37, 18, 0.38);
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #2b1c12;
+  font: inherit;
+}
+
+.admin-dashboard__header,
+.admin-entry__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.admin-dashboard__header p {
+  margin: 0;
+  color: #6f5748;
+  font-size: 0.85rem;
+}
+
+.admin-action--secondary {
+  border-color: #6f5748;
+  background: transparent;
+  color: #6f5748;
+}
+
+.admin-entry-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.admin-entry {
+  padding: 20px;
+  border: 1px solid rgba(124, 74, 39, 0.24);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.admin-entry__heading time {
+  color: #6f5748;
+  font-size: 0.75rem;
+}
+
+.admin-entry > p:not(.admin-entry__rating) {
+  margin: 14px 0 8px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.admin-entry__rating {
+  margin: 0;
+  color: #a15d19;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.admin-entry__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.admin-action--danger {
+  border-color: #6f211c;
+  background: transparent;
+  color: #6f211c;
+}
+
+@media (max-width: 560px) {
+  .guestbook-admin-page {
+    padding: 26px 14px;
+  }
+
+  .admin-dashboard__header,
+  .admin-entry__heading {
+    flex-direction: column;
+  }
 }
 
 .page-services .service-accordion:hover {
