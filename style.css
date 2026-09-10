@@ -256,6 +256,11 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
   --parallax-overlay: linear-gradient(180deg, rgba(18,10,4,0.25), rgba(18,10,4,0.55)); /* Určuje překryvný gradient parallax sekce. */
   --parallax-image: url("galerie/shop5.webp"); /* Vybere obrázek používaný pro parallax pozadí. */
 }
+
+.parallax-aroma {
+  --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.3), rgba(26,12,6,0.62));
+  --parallax-image: url("galerie/oleje.webp");
+}
 img, video, iframe {
   display: block; /* Nastaví způsob zobrazení prvku. */
   max-width: 100%; /* Omezí maximální šířku prvku. */
@@ -275,7 +280,6 @@ header { /* 04. Navigation & Hero Components */
   flex-direction: row; /* Určuje směr Flexboxu. */
   align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
   justify-content: flex-start; /* Zarovná děti v hlavní ose Flexboxu. */
-  margin-top: 40px; /* Odsazení shora pro prvek. */
   margin-bottom: 40px; /* Odsazení zespodu pro prvek. */
 }
 .hero-title h1 {
@@ -570,6 +574,27 @@ header { /* 04. Navigation & Hero Components */
   text-align: center;
 }
 
+.page-home .home-ceremony-gallery {
+  max-width: 1180px;
+  margin: 0 auto 36px;
+  padding: 20px 24px 32px;
+  text-align: center;
+}
+
+.page-home .home-ceremony-gallery__intro {
+  max-width: 680px;
+  margin: 14px auto 0;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.6;
+  text-shadow: 0 2px 6px #000000;
+}
+
+.page-home .home-ceremony-gallery .ceremony-carousel {
+  margin-top: 4px;
+}
+
 .page-home .home-myths-gallery.parallax-section > * {
   position: relative;
   z-index: var(--layer-content);
@@ -727,6 +752,10 @@ header { /* 04. Navigation & Hero Components */
   .page-home .home-myths-gallery {
     margin-bottom: 48px;
     padding: 36px 12px 40px;
+  }
+
+  .page-home .home-ceremony-gallery {
+    padding: 16px 12px 24px;
   }
 
   .page-home .home-myths-gallery__grid {
@@ -4190,6 +4219,7 @@ body.night-mode .logo-bubble img:hover {
 .hero-brand {
   position: relative; /* Určuje způsob pozicování prvku. */
   display: flex; /* Nastaví způsob zobrazení prvku. */
+  flex-direction: column;
   align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
   justify-content: flex-start; /* Zarovná děti od začátku hlavní osy. */
   flex: 1.2; /* Určuje poměrné roztažení položky. */
@@ -4229,6 +4259,52 @@ body.night-mode .logo-bubble img:hover {
   text-shadow: 2px 2px 10px rgba(255,255,255,0.95), 0 0 4px #fff; /* Přidá světlý stín textu. */
   margin: 0; /* Odstraní vnější odsazení. */
   text-align: left; /* Zarovná text doleva. */
+}
+
+.hero-actions {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.hero-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 15px; /* Nastaví minimální výšku tlačítka. */
+  max-width: fit-content; /* Omezí maximální šířku tlačítka. */
+  padding: 12px 22px;
+  border: 3px solid #2b1c12;
+  border-radius: 10px;
+  background: #c17a3f;
+  box-shadow: 0 6px 0 0 #2b1c12;
+  color: #fff8f2;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
+  text-shadow: 0 1px 2px rgb(0, 0, 0);
+}
+
+.hero-action-button:hover,
+.hero-action-button:focus-visible {
+  transform: translateY(-2px);
+  background: #d08a4c;
+  box-shadow: 0 8px 0 0 #2b1c12;
+  outline: none;
+}
+
+.hero-action-button:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 0 #2b1c12;
 }
 
 .hero-intro {
@@ -4323,6 +4399,10 @@ body.night-mode .logo-bubble img:hover {
     font-size: 3.2rem; /* Zmenší hlavní nadpis pro tablet. */
   }
 
+  .hero-actions {
+    width: min(100%, 560px);
+  }
+
   .hero-intro {
     transform: rotate(0deg); /* Zruší natočení panelu na menších displejích. */
     padding: 30px 24px; /* Zmenší vnitřní odsazení panelu. */
@@ -4377,7 +4457,6 @@ body.night-mode .logo-bubble img:hover {
   --emboss-light: rgba(255, 255, 255, 0.85);
   --emboss-text: rgba(0, 0, 0, 0.8);
   padding: 72px 20px 88px;
-  margin: 40px auto 80px;
 }
 
 /* Kniha návštěv */
@@ -5810,20 +5889,46 @@ body.night-mode .logo-bubble img:hover {
   box-shadow: rgb(0, 0, 0) 0px 4px 6px 1px, rgb(0, 0, 0) 0px 2px 4px 1px;
 }
 
+.page-services-v2 .svc2-aroma.parallax-section {
+  margin-top: 60px;
+  margin-left: calc(25% - 25vw);
+  margin-right: calc(25% - 25vw);
+  min-height: 420px;
+  box-sizing: border-box;
+  padding: 48px 40px 56px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #2b1c12;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  text-align: left;
+}
+
+.page-services-v2 .svc2-aroma.parallax-section > * {
+  position: relative;
+  z-index: var(--layer-content);
+}
+
 .page-services-v2 .svc2-aroma__lead h2,
 .page-services-v2 .svc2-faq h2 {
   margin: 0;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Inknut Antiqua", "Tenor Sans", serif;
   font-size: clamp(2rem, 2.2vw, 2.3rem);
   font-weight: bold;
+   -webkit-text-stroke: 0.2px rgb(0, 0, 0);
+   text-shadow: 0 2px 4px rgba(255, 255, 255, 0.6), 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .page-services-v2 .svc2-aroma__lead p {
   margin-top: 8px;
-  color: #664f3f;
+  color: #ffffff;
   font-weight: 700;
-}
-
+  }
+  
 .page-services-v2 .svc2-aroma__lists {
   margin-top: 12px;
   display: grid;
@@ -5833,9 +5938,10 @@ body.night-mode .logo-bubble img:hover {
 
 .page-services-v2 .svc2-aroma__lists article {
   border-radius: 14px;
-  border: 2px solid #000000;
+  border: 1px solid rgba(255, 255, 255, 0.48);
   padding: 12px;
-  background: #fffcf6;
+  background: rgba(26, 12, 6, 0.48) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.24);
 }
 
 .page-services-v2 .svc2-aroma__lists h3 {
@@ -5847,15 +5953,15 @@ body.night-mode .logo-bubble img:hover {
 .page-services-v2 .svc2-aroma__lists ul {
   margin: 8px 0 0;
   padding-left: 16px;
-  color: #624b3c;
+  color: #ffffff;
 }
 
 .page-services-v2 .svc2-aroma__fee {
   margin: 12px 0 0;
   border-radius: 12px;
-  border: 1px solid #c8895d;
-  background: #ffe6c8;
-  color: #6f3214;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(26, 12, 6, 0.55);
+  color: #ffffff;
   padding: 10px 12px;
   font-weight: 700;
 }
@@ -6011,6 +6117,18 @@ body.night-mode .logo-bubble img:hover {
     text-align: center;
     font-size: clamp(2.45rem, 13.5vw, 3.45rem);
     line-height: 1.03;
+  }
+
+  .hero-actions {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .hero-action-button {
+    flex: 1 1 140px;
+    min-height: 15px;
+    padding: 11px 14px;
+    font-size: 0.92rem;
   }
 
   .hero-intro {

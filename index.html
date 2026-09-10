@@ -47,40 +47,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body class="page-home">
-  <!-- Hlavní navigační panel -->
-  <nav class="primary-nav" aria-label="Hlavní navigace">
-    <div class="primary-nav__inner">
-      <a class="primary-nav__brand" href="index.html" aria-label="Aura Michaell Massage - úvod">
-        <img src="galerie/logo.webp" alt="Aura Michaell Massage" width="40" height="40">
-      </a>
-      <a class="primary-nav__title-link" href="index.html" aria-hidden="true" tabindex="-1">Aura Michaell Massage</a>
-      <div class="primary-nav__menu" id="primary-menu" aria-hidden="false">
-        <a class="primary-nav__link" href="index.html">Úvod</a>
-        <a class="primary-nav__link" href="about.html">O mně</a>
-        <div class="primary-nav__dropdown">
-          <button class="primary-nav__dropdown-toggle" type="button" aria-expanded="false" aria-controls="nav-offer-panel">Nabídka <span class="primary-nav__dropdown-arrow" aria-hidden="true">⌄</span></button>
-          <div class="primary-nav__dropdown-panel" id="nav-offer-panel" aria-hidden="true">
-            <a class="primary-nav__dropdown-link" href="msginfo.html">Masáže a ceník</a>
-            <a class="primary-nav__dropdown-link" href="ceremonie.html">Ceremonie</a>
-            <a class="primary-nav__dropdown-link" href="obchod.html">Obchod a poukazy</a>
-          </div>
-        </div>
-        <a class="primary-nav__link primary-nav__link--cta" href="#guestbook-title">Kniha návštěv</a>
-      </div>
-      <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-bar"></span>
-        <span class="primary-nav__toggle-label">Otevřít navigaci</span>
-      </button>
-    </div>
-  </nav>
     <!-- Hlavní nadpis -->
-    <div style="padding: 40px;"></div>
     <section id="hero" class="hero-wrapper">
       <div class="hero-brand">
         <div class="hero-logo-draw" aria-hidden="true"></div>
           <h1 class="main-title-text">AURA<br>MICHAELL<br>MASSAGE</h1>
+          <div class="hero-actions" aria-label="Rychlá navigace nabídky">
+            <a class="hero-action-button" href="msginfo.html">Ceník masáží</a>
+            <a class="hero-action-button" href="ceremonie.html">Ceremonie kakaa</a>
+            <a class="hero-action-button" href="obchod.html">Poukazy</a>
+          </div>
         </div>
         <div style="height: 20px;"></div>
         <div class="hero-intro">
@@ -93,14 +69,14 @@
             <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="welcome-section__cta">
               <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="reservation-cta-icon" alt=""/>
               Rezervace
-              </a>
+            </a>
+            <a class="hero-action-button" href="about.html">Něco málo o mně</a>
           </div>
         </div>
       </div>
     </section>
     <!-- Přivítání -->
     <section class="parallax-section parallax-welcome-intro welcome-section" aria-label="Přivítání v salonu">
-      <h2 class="welcome-section__title">Přivítáme se</h2>
       <div class="parallax-content">
         <div class="welcome-content"> 
           <ul class="welcome-list">
@@ -119,23 +95,20 @@
             </div>
         </div>
       </div>
+      <!-- Galerie prostoru a ceremonie -->
+    <section class="home-ceremony-gallery" aria-labelledby="home-ceremony-gallery-title">
+      <div class="ceremony-carousel" aria-label="Galerie prostoru a ceremonie">
+        <div class="ceremony-carousel__track">
+          <div class="ceremony-carousel__slide"><img src="galerie/lampa(1).webp" alt="Masážní lampa osvětluje lehátko" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
+          <div class="ceremony-carousel__slide"><img src="galerie/navsteva.webp" alt="Návštěva salonu Aura Michaell Massage" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
+          <div class="ceremony-carousel__slide"><img src="galerie/oleje.webp" alt="Masážní oleje" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
+          <div class="ceremony-carousel__slide"><img src="galerie/shop3.webp" alt="Produkt Aura Michaell Massage" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
+          <div class="ceremony-carousel__slide"><img src="galerie/caj.webp" alt="Čajový koutek v salonu" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
+          <div class="ceremony-carousel__slide"><img src="galerie/kakao.webp" alt="Produkt Aura Michaell Massage" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
+          <div class="ceremony-carousel__slide"><img src="galerie/prostor.webp" alt="Masáž jako prostor pro uvolnění" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
+        </div>
+      </div>
     </section>
-    <!-- Galerie mýtů o sportovní masáži -->
-    <section class="parallax-section parallax-myths home-myths-gallery" aria-labelledby="myths-gallery-title"> 
-      <h2 style="
-        margin: 48px auto 0;
-        padding: 0 16px;text-align: center;
-        text-transform: uppercase;
-        font-size: clamp(1rem, 4.2vw, 2.8rem);
-        font-style: oblique;
-        font-family: 'Inknut Antiqua', 'Tenor Sans', serif;
-        transform: rotate(-2deg);
-        color: #2b1c12;
-        text-shadow: 0 2px 4px #ffffff, 0 0 2px #6e3505;
-        -webkit-text-stroke: 2px #000;
-        white-space: nowrap;
-        text-overflow: ellipsis;">
-        Mýty o sportovní masáži</h2>
       <div class="home-myths-gallery__intro reveal-on-scroll">
         <p style="text-shadow: 2px 2px 2px rgb(0, 0, 0)">Prohlédněte si krátký přehled nejčastějších představ o sportovní masáži.</p>
       </div>
@@ -150,7 +123,7 @@
     <section class="parallax-section parallax-bonus bonus-card-section" aria-labelledby="bonus-card-title">
       <div class="parallax-content">
         <div id="card-3d-container" class="card-3d-scene" role="img" aria-label="Interaktivní 3D karta se sportovní masáží"></div>
-        <p style="text-shadow: 2px 2px 2px rgb(255, 255, 255); color: black;font-weight: bolder;">Každý zákazník získává věrnostní kartu, která mu přináší výhody při opakovaných návštěvách.</p>
+        <p style="text-shadow: 2px 2px 2px rgb(255, 255, 255); color: black;font-weight: bolder;">Každý zákazník získává věrnostní kartu, která mu přináší výhody při opakovaných návštěvách.<br>Každá desátá masáž je zlevněna o <span style="color: #ff0000;font-size: 1.5em;text-shadow: 2px 2px 2px rgb(0, 0, 0);">200 Kč</span></p>
       </div>
     </section>
     <!-- Elfsight Google Reviews | Untitled Google Reviews -->
@@ -308,5 +281,6 @@
   <script src="JS/guestbook.js" defer></script>
   <script src="JS/3D_hover.js?v=1" defer></script>
   <script src="JS/card-3d.js?v=6" defer></script>
+  <script src="JS/ceremony-carousel.js" defer></script>
 </body>
 </html>

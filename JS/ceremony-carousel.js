@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const img = slide.querySelector('img');
         if (img && typeof window.openCeremonyLightbox === 'function') {
           window.openCeremonyLightbox(img);
+        } else if (img) {
+          img.click();
         }
       } else {
         goTo(i);
