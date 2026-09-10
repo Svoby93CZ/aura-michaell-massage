@@ -150,7 +150,7 @@
     const email = new FormData(loginForm).get('email');
     const { error } = await client.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: window.location.href }
+      options: { emailRedirectTo: window.SUPABASE_CONFIG.adminRedirectUrl }
     });
     setStatus(error ? 'Přihlašovací odkaz se nepodařilo odeslat.' : 'Odkaz byl odeslán na zadaný e-mail.', error ? 'error' : 'success');
   });
