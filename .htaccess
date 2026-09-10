@@ -16,7 +16,7 @@ Header always set X-Content-Type-Options "nosniff"
 Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
 # Content Security Policy - pokročilá ochrana
-Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://counter.websiteout.com https://widgets.sociablekit.com https://static.elfsight.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-src https://www.google.com https://aura-michaell-massage.reservio.com;"
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://elfsightcdn.com https://counter.websiteout.com https://widgets.sociablekit.com https://static.elfsight.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://dcojkzsekqctzlegrzdd.supabase.co; frame-src https://www.google.com https://aura-michaell-massage.reservio.com;"
 
 # Referrer Policy
 Header always set Referrer-Policy "strict-origin-when-cross-origin"

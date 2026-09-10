@@ -373,7 +373,7 @@ elements.forEach(el => observer.observe(el));
 
 Tento pattern se používá k tomu, aby se prvky animovaly při scrollování.
 
-### Specifické JS vzory z `main.js`
+### Specifické JS vzory z `JS/main.js`
 
 #### 1. Navigace s otevřením a zavřením menu
 
@@ -603,4 +603,4 @@ Pokud budeš chtít, můžu ti z toho připravit i:
 
 - verzi „pro začátečníka“ (kratší a jednodušší),
 - verzi „pro pokročilé“ (s více technickými detaily),
-- nebo přepsat tahák přímo podle konkrétních souborů jako `index.html`, `style.css` a `main.js`.
+- nebo přepsat tahák přímo podle konkrétních souborů jako `index.html`, `style.css` a `JS/main.js`.

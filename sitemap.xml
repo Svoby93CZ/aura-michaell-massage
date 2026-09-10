@@ -6,7 +6,7 @@
 
   <!--
     Sitemap pro Aura Michaell Massage
-    Aktualizováno: 14. srpna 2026
+    Aktualizováno: 10. září 2026
 
     Priority (0.0 - 1.0):
     1.0 = Nejvyšší priorita (hlavní stránka)
@@ -26,22 +26,37 @@
   <!-- HLAVNÍ STRÁNKA -->
   <url>
     <loc>https://auramichaell.cz/</loc>
-    <lastmod>2025-10-28</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- VEŘEJNÉ STRÁNKY -->
   <url>
-    <loc>https://auramichaell.cz/index.html</loc>
-    <lastmod>2025-10-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://auramichaell.cz/about.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://auramichaell.cz/ceremonie.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://auramichaell.cz/obchod.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- SLUŽBY A CENÍKY -->
   <url>
     <loc>https://auramichaell.cz/msginfo.html</loc>
-    <lastmod>2025-10-28</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -49,7 +64,7 @@
   <!-- OCHRANA OSOBNÍCH ÚDAJŮ -->
   <url>
     <loc>https://auramichaell.cz/privacy-policy.html</loc>
-    <lastmod>2025-10-28</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

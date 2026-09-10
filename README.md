@@ -13,8 +13,15 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 ├── msginfo.html            # Přehled služeb a ceníky
 ├── privacy-policy.html     # Ochrana osobních údajů (GDPR)
 ├── style.css               # Hlavní CSS styly
-├── main.js                 # JavaScript funkcionalita
-├── card-3d.js              # 3D karta / vizuální efekty
+├── JS/                     # JavaScript funkcionalita
+│   ├── 3D_hover.js         # 3D efekty navigace a prvků
+│   ├── admin.js             # Administrace knihy návštěv
+│   ├── card-3d.js           # 3D karta / vizuální efekty
+│   ├── ceremony-carousel.js # Karusel ceremonií
+│   ├── guestbook.js         # Veřejná kniha návštěv
+│   ├── katalog.js            # Filtrování katalogu služeb
+│   ├── main.js              # Hlavní JavaScript funkcionalita
+│   └── supabase-config.js   # Konfigurace Supabase
 ├── galerie/                # Obrázky pro galerii
 │   ├── masaze/             # Obrázky masáží
 │   ├── ceremonie/          # Obrázky ceremonií
@@ -45,7 +52,7 @@ Nové obrázky přidávejte podle účelu do složek [galerie/](galerie/), [gale
 ### Nastavení Knihy návštěv
 
 1. V Supabase vytvořte projekt a spusťte celý soubor [supabase-guestbook.sql](supabase-guestbook.sql) v SQL Editoru.
-2. Do [supabase-config.js](supabase-config.js) vložte URL projektu a veřejný `anon` klíč.
+2. Do [JS/supabase-config.js](JS/supabase-config.js) vložte URL projektu a veřejný `anon` klíč.
 3. V Supabase Authentication povolte e-mailové přihlášení a nastavte Redirect URL na `https://auramichaell.cz/admin.html`.
 4. Otevřete [admin.html](admin.html), požádejte o přihlašovací odkaz a přihlaste se e-mailem správce.
 5. V Supabase SQL Editoru přiřaďte přihlášený účet jako správce. ID uživatele najdete v Authentication > Users:

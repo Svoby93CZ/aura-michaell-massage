@@ -10,7 +10,10 @@ User-agent: *
 # Povolené stránky (indexovat ANO)
 Allow: /
 Allow: /index.html
+Allow: /about.html
+Allow: /ceremonie.html
 Allow: /msginfo.html
+Allow: /obchod.html
 Allow: /privacy-policy.html
 Allow: /galerie/
 Allow: /galerie/masaze/
@@ -18,6 +21,8 @@ Allow: /galerie/Poukazy/
 
 # Zakázané stránky (indexovat NE)
 Disallow: /tools/
+Disallow: /admin.html
+Disallow: /JS/
 Disallow: /*.bak$
 Disallow: /*.backup$
 Disallow: /*.old$
@@ -32,7 +37,7 @@ Disallow: /.*
 # ============================================
 # SITEMAP (řekne Googlu kde najít seznam stránek)
 # ============================================
-# AKTIVNÍ - sitemap.xml aktualizována 14. srpna 2026
+# AKTIVNÍ - sitemap.xml aktualizována 10. září 2026
 Sitemap: https://auramichaell.cz/sitemap.xml
 
 # ============================================
@@ -77,5 +82,5 @@ User-agent: *
 # Google: https://www.google.com/webmasters/tools/robots-testing-tool
 # Online: https://technicalseo.com/tools/robots-txt/
 #
-# Aktualizováno: 14. srpna 2026
+# Aktualizováno: 10. září 2026
 # Web: https://auramichaell.cz

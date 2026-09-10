@@ -141,7 +141,7 @@
 
   if (!client) {
     showLogin();
-    setStatus('Nejprve nastavte údaje Supabase v souboru supabase-config.js.', 'error');
+    setStatus('Nejprve nastavte údaje Supabase v souboru JS/supabase-config.js.', 'error');
     return;
   }
 
@@ -150,7 +150,7 @@
     const email = String(new FormData(loginForm).get('email') || '').trim();
     const redirectUrl = window.SUPABASE_CONFIG.adminRedirectUrl;
     if (!redirectUrl) {
-      setStatus('Chybí návratová adresa administrace v supabase-config.js.', 'error');
+      setStatus('Chybí návratová adresa administrace v JS/supabase-config.js.', 'error');
       return;
     }
 
