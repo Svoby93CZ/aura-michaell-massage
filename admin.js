@@ -147,12 +147,23 @@
 
   loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const email = new FormData(loginForm).get('email');
-    const { error } = await client.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: window.SUPABASE_CONFIG.adminRedirectUrl }
-    });
-    setStatus(error ? 'Přihlašovací odkaz se nepodařilo odeslat.' : 'Odkaz byl odeslán na zadaný e-mail.', error ? 'error' : 'success');
+    const email = String(new FormData(loginForm).get('email') || '').trim();
+    const redirectUrl = window.SUPABASE_CONFIG.adminRedirectUrl;
+    if (!redirectUrl) {
+      setStatus('Chybí návratová adresa administrace v supabase-config.js.', 'error');
+      return;
+    }
+
+    setStatus('Odesílám přihlašovací odkaz…');
+    try {
+      const { error } = await client.auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: redirectUrl }
+      });
+      setStatus(error ? `Odeslání selhalo: ${error.message}` : 'Odkaz byl odeslán na zadaný e-mail.', error ? 'error' : 'success');
+    } catch (error) {
+      setStatus(`Odeslání selhalo: ${error.message}`, 'error');
+    }
   });
 
   app.querySelector('[data-admin-logout]').addEventListener('click', async () => {
