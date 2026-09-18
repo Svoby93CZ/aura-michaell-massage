@@ -32,12 +32,34 @@
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&family=Lavishly+Yours&family=Montez&family=My+Soul&family=Patrick+Hand&family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&family=Lavishly+Yours&family=Montez&family=My+Soul&family=Patrick+Hand&family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico">
 </head>
-<body class="page-services page-services-v2">
+<body class="page-services">
+  <!-- Hlavní navigační panel -->
+  <nav class="primary-nav" aria-label="Hlavní navigace">
+    <div class="primary-nav__inner">
+      <a class="primary-nav__brand" href="index.html">
+        <img src="galerie/logo.webp" alt="Aura Michaell Massage" width="42" height="42">
+        <span class="primary-nav__brand-text">Aura Michaell<span>Massage</span></span>
+      </a>
+      <div class="primary-nav__menu" id="primary-menu">
+        <a class="primary-nav__link" href="index.html">Úvod</a>
+        <a class="primary-nav__link" href="about.html">O mně</a>
+        <a class="primary-nav__link" href="msginfo.html">Masáže a ceník</a>
+        <a class="primary-nav__link" href="ceremonie.html">Ceremonie</a>
+        <a class="primary-nav__link" href="obchod.html">Obchod a poukazy</a>
+        <a class="primary-nav__link" href="index.html#guestbook-title">Kniha návštěv</a>
+        <a class="primary-nav__link primary-nav__link--cta" href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+      </div>
+      <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="primary-nav__toggle-bar"></span><span class="primary-nav__toggle-bar"></span><span class="primary-nav__toggle-bar"></span>
+        <span class="primary-nav__toggle-label">Otevřít navigaci</span>
+      </button>
+    </div>
+  </nav>
   <!-- Hlavní obsah stránky služeb -->
   <main class="svc2">
     <!-- =====================================================

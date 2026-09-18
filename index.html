@@ -46,12 +46,33 @@
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&family=Lavishly+Yours&family=Montez&family=My+Soul&family=Patrick+Hand&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inknut+Antiqua:wght@700&family=Raleway:wght@400;600;700&family=Style+Script&family=Neonderthaw&family=Lavishly+Yours&family=Montez&family=My+Soul&family=Patrick+Hand&display=swap" rel="stylesheet" /></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body class="page-home">
+    <nav class="primary-nav" aria-label="Hlavní navigace">
+      <div class="primary-nav__inner">
+        <a class="primary-nav__brand" href="index.html">
+          <img src="galerie/logo.webp" alt="Aura Michaell Massage" width="42" height="42">
+          <span class="primary-nav__brand-text">Aura Michaell<span>Massage</span></span>
+        </a>
+        <div class="primary-nav__menu" id="primary-menu">
+          <a class="primary-nav__link" href="index.html">Úvod</a>
+          <a class="primary-nav__link" href="about.html">O mně</a>
+          <a class="primary-nav__link" href="msginfo.html">Masáže a ceník</a>
+          <a class="primary-nav__link" href="ceremonie.html">Ceremonie</a>
+          <a class="primary-nav__link" href="obchod.html">Obchod a poukazy</a>
+          <a class="primary-nav__link" href="#guestbook-title">Kniha návštěv</a>
+          <a class="primary-nav__link primary-nav__link--cta" href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+        </div>
+        <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+          <span class="primary-nav__toggle-bar"></span><span class="primary-nav__toggle-bar"></span><span class="primary-nav__toggle-bar"></span>
+          <span class="primary-nav__toggle-label">Otevřít navigaci</span>
+        </button>
+      </div>
+    </nav>
     <!-- Hlavní nadpis -->
     <section id="hero" class="hero-wrapper">
       <div class="hero-brand">
@@ -83,7 +104,7 @@
     <!-- Přivítání -->
     <section class="parallax-section parallax-welcome-intro welcome-section" aria-label="Přivítání v salonu">
       <div class="parallax-content">
-        <div class="welcome-content"> 
+        <div class="welcome-content">
           <ul class="welcome-list">
             <li>Usadím Vás, nabídnu šálek lahodného sypaného čaje, kávy či vody.</li>
             <li>Společně si popovídáme, strávíme spolu chvilku v naprostém klidu a vzájemném poznání.</li>
@@ -100,8 +121,14 @@
             </div>
         </div>
       </div>
-      <!-- Galerie prostoru a ceremonie -->
+    </section>
+
+    <!-- Galerie prostoru a ceremonie -->
     <section class="home-ceremony-gallery" aria-labelledby="home-ceremony-gallery-title">
+      <div class="shop-section-heading">
+        <p class="shop-section-kicker">Nahlédněte dovnitř</p>
+        <h2 id="home-ceremony-gallery-title">Prostor a atmosféra salonu</h2>
+      </div>
       <div class="ceremony-carousel" aria-label="Galerie prostoru a ceremonie">
         <div class="ceremony-carousel__track">
           <div class="ceremony-carousel__slide"><img src="galerie/lampa(1).webp" alt="Masážní lampa osvětluje lehátko" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
@@ -114,8 +141,15 @@
         </div>
       </div>
     </section>
-      <div class="home-myths-gallery__intro reveal-on-scroll">
-        <p style="text-shadow: 2px 2px 2px rgb(0, 0, 0)">Prohlédněte si krátký přehled nejčastějších představ o sportovní masáži.</p>
+
+    <!-- Mýty o sportovní masáži -->
+    <section class="home-myths-gallery" aria-labelledby="home-myths-gallery-title">
+      <div class="shop-section-heading">
+        <p class="shop-section-kicker">Než se rozhodnete</p>
+        <h2 id="home-myths-gallery-title">Mýty o sportovní masáži</h2>
+        <div class="home-myths-gallery__intro reveal-on-scroll">
+          <p>Prohlédněte si krátký přehled nejčastějších představ o sportovní masáži.</p>
+        </div>
       </div>
       <div class="home-myths-gallery__grid" role="group" aria-label="Mýty o sportovní masáži">
         <img src="galerie/sm-m1.webp" alt="Mýtus o sportovní masáži" data-lightbox="sport-massage-myths" data-full="galerie/sm-m1.webp" loading="lazy" decoding="async">
@@ -128,7 +162,7 @@
     <section class="parallax-section parallax-bonus bonus-card-section" aria-labelledby="bonus-card-title">
       <div class="parallax-content">
         <div id="card-3d-container" class="card-3d-scene" role="img" aria-label="Interaktivní 3D karta se sportovní masáží"></div>
-        <p style="text-shadow: 2px 2px 2px rgb(255, 255, 255); color: black;font-weight: bolder;">Každý zákazník získává věrnostní kartu, která mu přináší výhody při opakovaných návštěvách.<br>Každá desátá masáž je zlevněna o <span style="color: #ff0000;font-size: 1.5em;text-shadow: 2px 2px 2px rgb(0, 0, 0);">200 Kč</span></p>
+        <p style="font-weight: bolder;">Každý zákazník získává věrnostní kartu, která mu přináší výhody při opakovaných návštěvách.<br>Každá desátá masáž je zlevněna o <span style="color: #ffb199;font-size: 1.5em;">200 Kč</span></p>
       </div>
     </section>
     <!-- Elfsight Google Reviews | Untitled Google Reviews -->
