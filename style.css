@@ -2331,6 +2331,13 @@ header {
   text-align: left;
 }
 
+.svc2-aroma__lead,
+.svc2-aroma__lists,
+.svc2-aroma__fee {
+  position: relative;
+  z-index: var(--layer-content);
+}
+
 .svc2-aroma__lead h2 {
   margin: 0;
   font-family: var(--font-heading);
