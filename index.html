@@ -184,6 +184,10 @@
             Pokud máte nápady na zlepšení, budu ráda, když se o ně podělíte.<br></span>
             <span  style="font-size: smaller;">Vzkaz se po odeslání nejprve schválí a potom se objeví zde.</span></p>
           <form class="guestbook-form" data-guestbook-form>
+            <div class="guestbook-honeypot" aria-hidden="true">
+              <label for="guestbook-website">Web</label>
+              <input id="guestbook-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
             <label for="guestbook-nickname">Jméno nebo přezdívka <span aria-hidden="true">*</span></label>
             <input id="guestbook-nickname" name="nickname" type="text" minlength="2" maxlength="60" required autocomplete="nickname">
 

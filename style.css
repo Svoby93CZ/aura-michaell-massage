@@ -5191,3 +5191,16 @@ body.night-mode [style*="border-color: #891915"] { /* Zvýraznění slevy v noč
 .cookie-settings-btn:hover {
   background: #f4ce91;
 }
+
+/* ============================================
+   GUESTBOOK HONEYPOT (skryte pole proti botum)
+   ============================================ */
+.guestbook-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  left: -9999px;
+}
