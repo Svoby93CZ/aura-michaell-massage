@@ -241,11 +241,6 @@ body::before { /* Pozadí otočené o 90°; rozměry prohozené a doplněné rot
   --parallax-image: url("galerie/caj.webp"); /* Vybere obrázek používaný pro parallax pozadí. */
 }
 
-.parallax-myths {
-  --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.32), rgba(26,12,6,0.55));
-  --parallax-image: url("galerie/sand.jpg");
-}
-
 .parallax-bonus {
   --parallax-overlay: linear-gradient(180deg, rgba(26,12,6,0.0), rgba(26,12,6,0.0)); /* Určuje překryvný gradient parallax sekce. */
   --parallax-image: url("galerie/karty.webp"); /* Vybere obrázek používaný pro parallax pozadí. */
@@ -273,184 +268,15 @@ header { /* 04. Navigation & Hero Components */
   padding: 0; /* Přidá vnitřní odsazení prvku. */
   margin: 0; /* Odsadí prvek od okolního obsahu. */
 }
-
-
-.hero-title { /* Hero Title */
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  flex-direction: row; /* Určuje směr Flexboxu. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  justify-content: flex-start; /* Zarovná děti v hlavní ose Flexboxu. */
-  margin-bottom: 40px; /* Odsazení zespodu pro prvek. */
-}
-.hero-title h1 {
-  font-size: 2.5rem; /* Nastaví velikost písma. */
-  text-transform: uppercase; /* Transformuje text (např. na velká písmena). */
-  letter-spacing: 1px; /* Nastaví rozestupy mezi písmeny. */
-  background: linear-gradient(90deg, var(--accent), #3e2f2a, var(--accent)); /* Definuje pozadí prvku. */
-  -webkit-background-clip: text; /* Omezí vykreslení pozadí na text ve WebKit prohlížečích. */
-  background-clip: text; /* Určuje oblast vykreslení pozadí. */
-  color:#2b1c12; /* Nastaví barvu textu. */
-  text-shadow: 2px 2px 6px rgba(60,30,10,0.25), 0 0 1px #2b1c12; /* Přidá stín textu. */
-  margin: 0; /* Odsadí prvek od okolního obsahu. */
-  animation: shine 4s infinite; /* Definuje animaci a její průběh. */
-  text-align: left; /* Zarovná text. */
-  line-height: 1.1; /* Nastaví výšku řádku. */
-  max-width: 420px; /* Omezí maximální šířku prvku. */
-  margin-left: 0; /* Odsazení zleva pro prvek. */
-}
 @keyframes shine {
   from { background-position: -200% 0 }
   to { background-position: 200% 0 }
 }
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 4px 15px rgba(0,0,0,.5);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 6px 25px rgba(0,0,0,.6);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 4px 15px rgba(0,0,0,.5);
-  }
-}
 
-.logo-bubble {
-  margin-left: 80px; /* Odsazení zleva pro prvek. */
-  width: auto; /* Definuje šířku prvku. */
-  height: auto; /* Definuje výšku prvku. */
-  border-radius: 50%; /* Zaoblí rohy prvku. */
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  flex-shrink: 0; /* Určuje, jak moc se položka zmenší. */
-  animation: pulse 3s infinite ease-in-out; /* Přidá pulzující animaci */
-}
-
-.page-services .services-hero {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 92px 8px 12px;
-}
-
-.page-services .services-hero__header {
-  flex: 0 1 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.page-services .services-hero__intro {
-  position: relative;
-  padding: 20px 18px 24px;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.page-services .services-hero__intro::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.45), rgba(255,255,255,0)),
-    url("galerie/logo.webp");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 200px auto;
-  background-attachment: scroll;
-  opacity: 0.22;
-  pointer-events: none;
-}
-
-.page-services .services-hero__intro > * {
-  position: relative;
-  z-index: 1;
-}
-
-.page-services .services-hero__intro-text {
-  font-size: 1.15rem;
-  line-height: 1.6;
-  font-weight: 600;
-  color: #3e2f2a;
-  box-shadow: 0 8px 24px rgba(60,30,10,0.18);
-  border-radius: 16px;
-  padding: 8px 7px;
-}
-
-.page-services .services-hero__intro-text p {
-  margin: 8px 0;
-}
-
-.page-services .services-hero .hero-title {
-  margin: 0 0 16px;
-  justify-content: flex-start;
-}
-
-.page-services .services-hero .hero-title h1 {
-  font-size: clamp(2rem, 3.2vw, 3.2rem);
-  max-width: none;
-  text-align: left;
-}
-
-.page-services .services-hero .logo-bubble {
-  margin-left: 20px;
-  width: 76px;
-  height: 76px;
-}
-
-.page-services .services-hero .logo-bubble img {
-  width: 80%;
-  height: auto;
-}
-
-.page-services .services-hero #aromaterapie-featured {
-  margin: 0;
-  min-height: 200px;
-}
-
-.page-services .services-hero__aroma-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.page-services .services-hero #aromaterapie-featured::before {
-  background-position: center center;
-  background-attachment: scroll;
-}
-
-.page-services .services-hero__oil-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.page-services .services-hero__aroma {
-  flex: 0 1 50%;
-  display: flex;
-  flex-direction: column;
-}
 
 #hero {
   text-align: center; /* Zarovná text. */
   margin-bottom: 40px; /* Odsazení zespodu pro prvek. */
-}
-#hero .intro,
-#poukazy .intro {
-  font-size: 1.35em; /* Nastaví velikost písma. */
-  color: #000000; /* Nastaví barvu textu. */
-  text-align: center; /* Zarovná text. */
-  margin-bottom: 40px; /* Odsazení zespodu pro prvek. */
-  text-shadow:
-    0 2px 8px rgba(60,30,10,0.25),
-    0 0 2px #000;
-  letter-spacing: 0.2px; /* Nastaví rozestupy mezi písmeny. */
-  line-height: 1.5; /* Nastaví výšku řádku. */
 }
 
 .page-home .welcome-section { /* Page Specific: Home | Přivítání */
@@ -464,22 +290,6 @@ header { /* 04. Navigation & Hero Components */
   flex-direction: column; /* Nadpis nahoře, obsah pod ním. */
   justify-content: flex-start; /* Zarovná obsah od horní hrany sekce. */
   align-items: stretch; /* Obsah může využít plnou šířku sekce. */
-}
-
-.page-home .welcome-section__title {
-  margin: 48px auto 0;
-  padding: 0 16px;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: clamp(1rem, 4.2vw, 2.8rem);
-  font-style: oblique;
-  font-family: "Inknut Antiqua", "Tenor Sans", serif;
-  transform: rotate(-2deg);
-  color: #2b1c12;
-  text-shadow: 0 2px 4px #ffffff, 0 0 2px #6e3505;
-  -webkit-text-stroke: 2px #000;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .page-home .welcome-section .parallax-content {
@@ -520,23 +330,6 @@ header { /* 04. Navigation & Hero Components */
 .page-home .welcome-list li {
   margin-bottom: 8px; /* Odsazení zespodu pro prvek. */
 }
-.page-home .welcome-image {
-  width: 100%; /* Definuje šířku prvku. */
-  max-width: 100%; /* Žádné omezení - obsadí celou šířku */
-  height: 100%; /* Obsadí plnou výšku kontejneru */
-  border-radius: 8px; /* Zaoblí rohy prvku. */
-  object-fit: cover; /* Řídí přizpůsobení média do boxu. */
-  margin-bottom: 0; /* Žádné odsazení. */
-}
-.page-home .welcome-media {
-  flex: 1 1 auto; /* Zabere všechna zbývající místa. */
-  max-width: none; /* Žádné omezení maximální šířky. */
-  width: 100%; /* Definuje šířku prvku. */
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  flex-direction: column; /* Určuje směr Flexboxu. */
-  align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  gap: 16px; /* Nastaví mezery mezi položkami. */
-}
 .page-home .welcome-gallery {
   display: flex; /* Nastaví způsob zobrazení prvku. */
   flex-direction: row; /* Určuje směr Flexboxu. */
@@ -567,13 +360,6 @@ header { /* 04. Navigation & Hero Components */
   transform: perspective(700px) rotateX(-4deg) rotateY(4deg) rotateZ(var(--hover-tilt, 0deg)) translateZ(34px) translateY(-10px) scale(1.05); /* Transformuje prvek (posun, natočení, měřítko). */
 }
 
-.page-home .home-myths-gallery {
-  max-width: 1180px;
-  margin: 0 auto 72px;
-  padding: 48px 24px 56px;
-  text-align: center;
-}
-
 .page-home .home-ceremony-gallery {
   max-width: 1180px;
   margin: 0 auto 36px;
@@ -581,61 +367,13 @@ header { /* 04. Navigation & Hero Components */
   text-align: center;
 }
 
-.page-home .home-ceremony-gallery__intro {
-  max-width: 680px;
-  margin: 14px auto 0;
-  color: #ffffff;
-  font-family: "Raleway", sans-serif;
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
-  line-height: 1.6;
-  text-shadow: 0 2px 6px #000000;
-}
-
 .page-home .home-ceremony-gallery .ceremony-carousel {
   margin-top: 4px;
-}
-
-.page-home .home-myths-gallery.parallax-section > * {
-  position: relative;
-  z-index: var(--layer-content);
-}
-
-.page-home .home-myths-gallery.parallax-section {
-  display: block;
-  color: #ffffff;
-  text-shadow: #000000 1px 1px 10px;
 }
 
 .page-home .home-myths-gallery__intro {
   max-width: 680px;
   margin: 0 auto 28px;
-}
-
-.page-home .home-myths-gallery__eyebrow {
-  margin: 0 0 8px;
-  color: var(--accent);
-  font-family: "Raleway", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.page-home .home-myths-gallery h2 {
-  margin: 0 0 10px;
-  color: var(--dark);
-  font-family: "Inknut Antiqua", "Tenor Sans", serif;
-  font-size: clamp(1.7rem, 3.5vw, 2.5rem);
-  font-style: oblique;
-}
-
-.page-home .home-myths-gallery.parallax-section h2 {
-  color: #ffffff;
-  -webkit-text-stroke: 2px #000000;
-}
-
-.page-home .home-myths-gallery.parallax-section .home-myths-gallery__eyebrow {
-  color: #ffffff;
 }
 
 .page-home .home-myths-gallery__intro > p:last-child {
@@ -705,11 +443,6 @@ header { /* 04. Navigation & Hero Components */
     padding-right: 20px; /* Padding zprava */
   }
 
-  .page-home .welcome-media {
-    width: 100%; /* Plná šířka */
-    margin-top: 10px;
-  }
-
   .page-home .welcome-gallery {
     align-self: center; /* Zarovná děti na střed vodorovně. */
     max-width: 100%;
@@ -741,17 +474,8 @@ header { /* 04. Navigation & Hero Components */
     max-width: 100%;
   }
 
-  .page-home .welcome-media {
-    min-height: auto;
-  }
-
   .page-home .welcome-section .parallax-content h2 {
     text-align: center; /* Nadpis na střed na mobilu */
-  }
-
-  .page-home .home-myths-gallery {
-    margin-bottom: 48px;
-    padding: 36px 12px 40px;
   }
 
   .page-home .home-ceremony-gallery {
@@ -777,14 +501,6 @@ header { /* 04. Navigation & Hero Components */
   text-align: center;
 }
 
-.page-home .bonus-card-section__copy {
-  max-width: 680px;
-  margin: 24px auto 0;
-  font-family: "Raleway", sans-serif;
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
-  line-height: 1.7;
-}
-
 .card-3d-scene { /* 3D Karta s Three.js */
   width: clamp(300px, 80%, 500px);
   height: auto;
@@ -800,18 +516,6 @@ header { /* 04. Navigation & Hero Components */
 @media (max-width: 640px) {
   .page-home .bonus-card-section .parallax-content {
     padding: 32px 22px; /* Přidá vnitřní odsazení prvku. */
-  }
-
-  .page-home .bonus-card-box {
-    padding: 24px 20px; /* Přidá vnitřní odsazení prvku. */
-  }
-
-  .page-home .bonus-card-box .cards {
-    gap: 12px; /* Nastaví mezery mezi položkami. */
-  }
-
-  .page-home .bonus-card-box .cards img {
-    width: clamp(140px, 48%, 220px); /* Definuje šířku prvku. */
   }
 }
 
@@ -927,60 +631,6 @@ header { /* 04. Navigation & Hero Components */
 }
 
 
-.page-services .services-nav { /* Page Specific: Services */
-  margin: 32px auto 48px; /* Vytváří prostor nad i pod navigací, aby měla vlastní blok */
-  max-width: min(1100px, 100%); /* Omezí šířku navigace na hodnotu příjemnou pro desktop */
-}
-
-.page-services .services-nav .nav-btn {
-  height: auto; /* Umožní tlačítkům roztáhnout se na výšku podle obsahu */
-  padding: 12px 20px; /* Přidá pohodlnější vnitřní odsazení pro víceřádkové popisky */
-  white-space: normal; /* Povolení zalomení textu na více řádků */
-  line-height: 1.25; /* Zvětší řádkování, aby vícerádkové texty nebyly stísněné */
-  overflow: visible; /* Zruší clamping šířky, aby text mohl dýchat */
-  text-overflow: clip; /* Odstraní automatické zkracování textu při delších názvech */
-}
-
-.corner-decor{pointer-events:none;position:fixed;inset:0;z-index:var(--layer-floating)} /* --- Corner decor: světélkující rohy --- */
-.corner-decor .c{position:absolute;width:240px;height:240px;border-radius:50%;filter:blur(36px);opacity:.9;mix-blend-mode:screen;animation:corner-float 8s ease-in-out infinite;transform:translate3d(0,0,0)}
-.corner-decor .c.top-left{left:-80px;top:-80px;background:radial-gradient(circle,#ffd6e0 0%,transparent 60%)}
-.corner-decor .c.top-right{right:-100px;top:-100px;background:radial-gradient(circle,#d6f0ff 0%,transparent 60%)}
-.corner-decor .c.bottom-left{left:-90px;bottom:-90px;background:radial-gradient(circle,#e6ffd6 0%,transparent 60%)}
-.corner-decor .c.bottom-right{right:-80px;bottom:-80px;background:radial-gradient(circle,#fff3d6 0%,transparent 60%)}
-@keyframes corner-float{0%{transform:translateY(0)}50%{transform:translateY(18px)}100%{transform:translateY(0)}}
-@media (max-width:640px){.corner-decor .c{width:160px;height:160px;filter:blur(30px);}}
-@media (prefers-reduced-motion:reduce){.corner-decor .c{animation:none;transition:none}}
-
-@media (min-width: 900px) {
-  .page-services .services-nav {
-    display: flex; /* Na větších obrazovkách se tlačítka srovnají do řádku */
-    gap: 18px; /* Nastaví jednotné mezery mezi tlačítky */
-    padding: 18px 24px; /* Přidá větší vnitřní odsazení celé navigaci pro lepší rámec */
-    overflow: visible; /* Vypne horizontální rolování, protože tlačítka už tvoří řádek */
-  }
-
-  .page-services .services-nav .nav-btn {
-    flex: 1 1 0; /* Dovolí tlačítkům pružně vyplnit dostupný prostor */
-    max-width: none; /* Zruší maximální šířku, aby se přizpůsobila dostupnému místu */
-    min-width: 0; /* Povolení zmenšení tlačítek, pokud je položek více */
-  }
-
-  .page-services .services-nav--grid { /* Grid layout pro navigaci - 3 sloupce, 2 řádky */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 sloupce stejné šířky */
-    grid-template-rows: repeat(2, auto); /* 2 řádky automatické výšky */
-    gap: 18px; /* Mezera mezi tlačítky */
-    max-width: 100%; /* Přes celou šířku stránky */
-    width: 100%; /* Plná šířka */
-    padding: 18px 24px;
-  }
-
-  .page-services .services-nav--grid .nav-btn {
-    flex: none; /* Vypnutí flex vlastností pro grid */
-    width: auto; /* Automatická šířka podle gridu */
-  }
-}
-
 
 @media (max-width: 540px) {
 
@@ -991,258 +641,9 @@ header { /* 04. Navigation & Hero Components */
 
   
 
-  .parallax-vouchers .parallax-content {
-    color: #000 !important; /* Tmavý text */
-    position: static !important;
-    z-index: auto !important;
-    text-shadow: none !important;
-  }
-
-
-  
-
-  .page-services .services-nav .nav-btn {
-    font-size: clamp(1rem, 4.8vw, 1.25rem); /* Přizpůsobí velikost textu a udrží jej na jednom řádku. */
-    white-space: nowrap; /* Zabrání zalomení textu kategorie. */
-  }
-
-
-  
-
 
   
 }
-
-
- 
-.cards > * {
-  flex: 1 1 0; /* Rychle nastaví chování flex položky. */
-  display: flex; /* Zabrání různé výšce kvůli obsahu */
-  flex-direction: column; /* Určuje směr Flexboxu. */
-  justify-content: stretch; /* Zarovná děti v hlavní ose Flexboxu. */
-}
-.cards img {
-  width: calc((100% - var(--gap)) / 2); /* Definuje šířku prvku. */
-  border-radius: 12px; /* Zaoblí rohy prvku. */
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,.5)); /* Aplikuje grafický filtr na prvek. */
-  cursor: default; /* Nastaví tvar kurzoru. */
-  transition: none; /* Nastaví animaci změn vlastností. */
-}
-
-
-@media (max-width: 640px) { /* 06. Responsive Tweaks */
-
-
-  
-}
-
-.page-services .classic-massage-info p { /* INFORMACE O SLUŽBÁCH */
-  margin-bottom: 6px; /* Odsazení zespodu pro prvek. */
-  margin-top: 6px; /* Odsazení shora pro prvek. */
-}
-
-.page-services .indikace,
-.page-services .kontraindikace {
-  display: flex; /* Nastaví způsob zobrazení prvku. */
-  flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-  justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-  gap: 24px; /* Nastaví mezery mezi položkami. */
-  font-size: 1.1em; /* Nastaví velikost písma. */
-  font-weight: bold; /* Určuje tloušťku písma. */
-  text-shadow: 0 2px 8px rgba(60,30,10,0.25), 0 0 2px #000; /* Přidá stín textu. */
-  text-align: center; /* Zarovná text na střed */
-}
-
-.page-services .indikace {
-  color: #92ab4e; /* Nastaví barvu textu. */
-}
-
-.page-services .kontraindikace {
-  color: #e33333; /* Nastaví barvu textu. */
-}
-
-
-.indikace-toggle summary::after {
-  color: #92ab4e;
-}
-
-.kontraindikace-toggle summary::after {
-  color: #e33333;
-}
-
-
-.service-accordion {
-  border: 1px solid rgba(124, 90, 37, 0.25);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
-  margin: 0 auto 24px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.service-accordion summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 24px;
-  cursor: pointer;
-  list-style: none;
-  background: rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(124, 74, 39, 0.18);
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.service-accordion summary h2 {
-  margin: 0;
-  font-size: 2.5rem;
-  letter-spacing: 0.04em;
-  text-transform: none;
-}
-
-.service-accordion summary::-webkit-details-marker {
-  display: none;
-}
-
-.service-accordion summary::after {
-  content: "Rozbalit ▾";
-  font-size: 0.95em;
-  font-weight: 700;
-  color: #3b2611;
-  white-space: nowrap;
-}
-
-.service-accordion[open] summary::after {
-  content: "Sbalit ▴";
-}
-
-.service-accordion > div {
-  padding: 20px 24px 24px;
-}
-
-@media (max-width: 720px) {
-  .service-accordion summary {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px 18px;
-  }
-
-  .service-accordion summary h2 {
-    font-size: 2.2rem;
-  }
-}
-
-
-@media (max-width: 768px) { /* Mobilní verze s parallaxem */
-
-
-  
-
-
-  
-
-
-  
-
-
-  
-
-
-  
-
-  
-}
-
-@media (min-width: 769px) { /* Styly pro sekci "Ostatní služby" na PC - dvousloupcový layout */
-  #ostatni .service-accordion > div {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 32px !important;
-    align-items: start !important;
-  }
-
-  #ostatni .service-accordion summary { /* Nadpis zůstane klasicky, titulek zůstává v summary */
-    grid-column: 1 / -1 !important;
-    margin-bottom: 32px !important;
-  }
-
-
-  
-
-
-  #ostatni .classic-massage-info h3 { /* Nadpisy v sekci Ostatní služby bez zalomení */
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  #ostatni .classic-massage-info h3 span {
-    display: inline-block;
-    width: auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* Make service titles non-wrapping on all screen sizes */
-  #ostatni .classic-massage-info h3,
-  #ostatni .classic-massage-info h3 span {
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    word-break: keep-all !important;
-    overflow-wrap: normal !important;
-  }
-
-
-  
-
-
-  #aromaterapie .cards img {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    object-fit: cover !important;
-  }
-
-  #ostatni .service-accordion > div > div[style*="padding-bottom: 30px"] { /* Skryjeme prázdné mezery uvnitř detailů */
-    display: none !important;
-  }
-
-  #ostatni .service-accordion > div > div[style*="background"] { /* Každý div služby zabere jeden sloupec v gridu */
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important;
-    margin-bottom: 0 !important;
-  }
-
-  #ostatni .cards { /* Obrázky v sekcích */
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin: 0 !important;
-  }
-
-  #ostatni .cards img {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    border-radius: 12px !important;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,.5)) !important;
-    transition: transform 0.3s ease !important;
-  }
-
-  #ostatni .cards img:hover {
-    transform: scale(1.02) !important;
-  }
-}
-
-/* Make all headings in Ostatní služby non-wrapping on all screens */
-#ostatni .service-accordion summary h2,
-#ostatni .classic-massage-info h3,
-#ostatni .classic-massage-info h3 span,
 #ostatni h4 {
   display: inline-flex !important;
   justify-content: center !important;
@@ -1252,16 +653,6 @@ header { /* 04. Navigation & Hero Components */
   text-overflow: ellipsis !important;
   word-break: keep-all !important;
   overflow-wrap: normal !important;
-}
-
-#ostatni .classic-massage-info h3 span {
-  width: max-content !important;
-}
-
-#ostatni .classic-massage-info p {
-  word-break: keep-all !important;
-  overflow-wrap: normal !important;
-  hyphens: none !important;
 }
 
 @media (max-width: 768px) { /* Mobilní optimalizace pro msginfo.html - max-width 768px */
@@ -1307,39 +698,12 @@ header { /* 04. Navigation & Hero Components */
   .page-services [style*="padding-bottom: 30px"] {
     padding-bottom: 8px !important;
   }
-
-
-  #ostatni .service-accordion > div { /* Zmenšit gap v grid layoutech */
-    gap: 12px !important;
-  }
-
-  /* Card images - zmenšit max-width */
-  #ostatni .cards img{
-    max-width: 100% !important;
-    max-height: 300px !important;
-  }
-
-
-  
-
-  .indikace-toggle,
-  .kontraindikace-toggle {
-    padding: 8px !important;
-  }
 }
 
 @media (max-width: 480px) { /* Extra malé mobily - max-width 480px */
   .page-services h1[style*="font-size"] {
     font-size: 2rem !important;
     padding: 0.3em 0.6em !important;
-  }
-
-
-  
-
-
-  #ostatni .cards img {
-    max-height: 250px !important;
   }
 
   .page-services .parallax-section {
@@ -1353,24 +717,14 @@ header { /* 04. Navigation & Hero Components */
   #ostatni {
     display: block;
   }
-
-  #ostatni .cards img {
-    max-width: 100%;
-  }
 }
 
 @media (max-width: 768px) {
-  .page-services .hero-title,
-  .page-services .about-row,
-  .page-services .cards {
+.page-services .about-row {
     flex-direction: column; /* Určuje směr Flexboxu. */
     display: flex; /* Nastaví způsob zobrazení prvku. */
     align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
     gap: 24px; /* Nastaví mezery mezi položkami. */
-  }
-
-  #ostatni .cards img { /* Zrušení speciálních stylů pro "Ostatní služby" na mobilech */
-    max-width: 100%;
   }
   .page-services .parallax-section {
     margin: 36px 0; /* Odsadí prvek od okolního obsahu. */
@@ -1381,11 +735,8 @@ header { /* 04. Navigation & Hero Components */
   .page-services .parallax-content {
     padding: 24px 18px; /* Přidá vnitřní odsazení prvku. */
   }
-
-  .page-services .card-info,
-  .page-services .card-img-col img,
-  .page-services iframe,
-  .page-services img {
+.page-services iframe,
+.page-services img {
     width: 100%; /* Definuje šířku prvku. */
     max-width: 100%; /* Omezí maximální šířku prvku. */
     height: auto; /* Definuje výšku prvku. */
@@ -1580,17 +931,6 @@ footer img {
     drop-shadow(0 2px 4px rgb(26, 12, 6));
 }
 
-.page-about .about-hero__eyebrow {
-  margin: 0 0 12px;
-  color: #fff8f2;
-  font-family: "Raleway", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
 .page-about .about-hero__content h1 {
   position: relative;
   z-index: 2;
@@ -1675,11 +1015,6 @@ footer img {
     width: min(66vw, 250px);
     height: min(58vw, 210px);
     opacity: 0.48;
-  }
-
-  .page-about .about-hero__eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
   }
 
   .page-about .about-hero__content h1 {
@@ -1883,35 +1218,6 @@ footer img {
   margin-top: 72px;
 }
 
-.page-shop .shop-voucher-note {
-  max-width: 860px;
-  margin: 68px auto 0;
-  padding: clamp(22px, 4vw, 34px);
-  box-sizing: border-box;
-  border: 1px solid rgba(124, 74, 39, 0.22);
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255, 248, 242, 0.78), rgba(241, 226, 209, 0.82));
-  box-shadow: var(--box-shadow-light);
-  color: #604839;
-  font-family: "Raleway", sans-serif;
-  line-height: 1.65;
-}
-
-.page-shop .shop-voucher-note p {
-  margin: 0 0 10px;
-}
-
-.page-shop .shop-voucher-note p:last-child {
-  margin-bottom: 0;
-}
-
-.page-shop .shop-voucher-note__title {
-  color: #891915;
-  font-family: "Inknut Antiqua", serif;
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  font-weight: 700;
-}
-
 @media (max-width: 800px) {
   .page-shop .shop-gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1961,10 +1267,6 @@ footer img {
 
   .page-shop .shop-vouchers {
     margin-top: 52px;
-  }
-
-  .page-shop .shop-voucher-note {
-    margin-top: 48px;
   }
 }
 
@@ -2129,8 +1431,6 @@ footer img {
 
 @media (min-width: 601px) { /* --- DESKTOP ÚPRAVY --- */
   body { padding: 20px 80px 80px; font-size: 18px; }
-  .hero-title h1 { font-size: 80px; }
-  .logo-bubble { width: 250px; height: 250px; }
   .about-row { flex-direction: row; justify-content: center; }
   .about-row img { width: 45%; }
   
@@ -2145,37 +1445,6 @@ footer img {
   .container {
     width: 100%; /* Definuje šířku prvku. */
     padding: 0 16px; /* Přidá vnitřní odsazení prvku. */
-  }
-  .hero-title {
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    align-items: flex-start; /* Zarovná děti v pomocné ose Flexboxu. */
-    gap: 16px; /* Nastaví mezery mezi položkami. */
-    margin-top: 18px; /* Odsazení shora pro prvek. */
-    margin-bottom: 18px; /* Odsazení zespodu pro prvek. */
-  }
-  .hero-title h1 {
-    font-size: 32px; /* Nastaví velikost písma. */
-    max-width: 100%; /* Omezí maximální šířku prvku. */
-    text-align: left; /* Zarovná text. */
-  }
-  .logo-bubble {
-    width: 160px !important; /* Definuje šířku prvku. */
-    height: 160px !important; /* Definuje výšku prvku. */
-    margin: 0 0 0 0; /* Odsadí prvek od okolního obsahu. */
-  }
-  .logo-bubble img {
-    width: 110%; /* Definuje šířku prvku. */
-  }
-  
-  
-  .cards {
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    gap: 10px; /* Nastaví mezery mezi položkami. */
-    align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  }
-  .cards img {
-    width: 100%; /* Definuje šířku prvku. */
-    max-width: 320px; /* Omezí maximální šířku prvku. */
   }
   
   
@@ -2285,190 +1554,6 @@ footer img {
 
   /* Zajištění čitelnosti textu na pozadí v mobilní verzi */
   
-}
-@media (min-width: 701px) {
-
-
-  
-
-
-  
-
-
-   /* Přidané definice obrázků pozadí pro mobilní zobrazení */
-
-
-  
-
-
-  
-
-
-  
-
-
-  
-
-
-  
-
-  /* Zajištění čitelnosti textu na pozadí v mobilní verzi */
-  
-}
-
-@media (min-width: 901px) { /* Desktop: max 4 karty v řadě */
-  .cards {
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: row; /* Určuje směr Flexboxu. */
-    flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-    gap: 16px; /* Nastaví mezery mezi položkami. */
-    justify-content: flex-start; /* Zarovná děti v hlavní ose Flexboxu. */
-    margin-top: 12px; /* Odsazení shora pro prvek. */
-  }
-  .cards .card-info {
-    flex: 0 1 20%; /* Rychle nastaví chování flex položky. */
-    max-width: 20%; /* Omezí maximální šířku prvku. */
-    min-width: 200px; /* Nastaví minimální šířku prvku. */
-    box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
-    margin: 0; /* Odsadí prvek od okolního obsahu. */
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: row; /* Určuje směr Flexboxu. */
-  }
-}
-
-@media (min-width: 601px) and (max-width: 900px) { /* Tablet/menší desktop: max 3 karty v řadě */
-  .cards {
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: row; /* Určuje směr Flexboxu. */
-    flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-    gap: 24px; /* Nastaví mezery mezi položkami. */
-    justify-content: flex-start; /* Zarovná děti v hlavní ose Flexboxu. */
-    margin-top: 12px; /* Odsazení shora pro prvek. */
-  }
-  .cards .card-info {
-    flex: 0 1 32%; /* Rychle nastaví chování flex položky. */
-    max-width: 32%; /* Omezí maximální šířku prvku. */
-    min-width: 180px; /* Nastaví minimální šířku prvku. */
-    box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
-    margin: 0; /* Odsadí prvek od okolního obsahu. */
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: row; /* Určuje směr Flexboxu. */
-  }
-}
-
-@media (max-width: 600px) { /* Mobil: max 2 karty v řadě */
-  .cards {
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: row; /* Určuje směr Flexboxu. */
-    flex-wrap: wrap; /* Povolí zalomení Flexbox položek. */
-    gap: 10px; /* Nastaví mezery mezi položkami. */
-    justify-content: center; /* Zarovná děti v hlavní ose Flexboxu. */
-    align-items: stretch; /* Zarovná děti v pomocné ose Flexboxu. */
-  }
-  .cards .card-info {
-    flex: 0 1 48%; /* Rychle nastaví chování flex položky. */
-    max-width: 48%; /* Omezí maximální šířku prvku. */
-    min-width: 140px; /* Nastaví minimální šířku prvku. */
-    box-sizing: border-box; /* Určuje započítání hran a výplní do rozměrů. */
-    margin: 0; /* Odsadí prvek od okolního obsahu. */
-  }
-  @media (max-width: 400px) { /* Pokud chcete na opravdu malých mobilech jen 1 kartu v řadě, můžete přidat další media query */
-    .cards .card-info {
-      flex: 0 1 100%; /* Rychle nastaví chování flex položky. */
-      max-width: 100%; /* Omezí maximální šířku prvku. */
-    }
-  }
-}
-
-
-@media (min-width: 601px) { /* Desktop: obrázek vlevo, název pod obrázkem, informace vpravo */
-  .cards {
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: row; /* Určuje směr Flexboxu. */
-    gap: var(--gap); /* Nastaví mezery mezi položkami. */
-    margin-top: 12px; /* Odsazení shora pro prvek. */
-  }
-  .cards .card-info {
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: row; /* Určuje směr Flexboxu. */
-    align-items: flex-start; /* Zarovná děti v pomocné ose Flexboxu. */
-    gap: 32px; /* Nastaví mezery mezi položkami. */
-    background: rgba(124,74,39,.2); /* Definuje pozadí prvku. */
-    padding: 12px 16px; /* Přidá vnitřní odsazení prvku. */
-    border-radius: 16px; /* Zaoblí rohy prvku. */
-    margin: 20px auto; /* Odsadí prvek od okolního obsahu. */
-    max-width: 90%; /* Omezí maximální šířku prvku. */
-  }
-  .cards .card-info .card-img-col {
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-    min-width: 160px; /* Nastaví minimální šířku prvku. */
-    max-width: 160px; /* Omezí maximální šířku prvku. */
-    flex-shrink: 0; /* Určuje, jak moc se položka zmenší. */
-  }
-  .cards .card-info img {
-    width: 160px; /* Definuje šířku prvku. */
-    max-width: 160px; /* Omezí maximální šířku prvku. */
-    height: auto; /* Definuje výšku prvku. */
-    border-radius: 12px; /* Zaoblí rohy prvku. */
-    margin: 0; /* Odsadí prvek od okolního obsahu. */
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,.5)); /* Aplikuje grafický filtr na prvek. */
-    display: block; /* Nastaví způsob zobrazení prvku. */
-  }
-  .cards .card-info .card-title {
-    margin-top: 10px; /* Odsazení shora pro prvek. */
-    margin-bottom: 8px; /* Odsazení zespodu pro prvek. */
-    text-align: center; /* Zarovná text. */
-    width: 100%; /* Definuje šířku prvku. */
-  }
-}
-
-@media (max-width: 600px) { /* Mobil: obrázek nahoře, název pod ním, informace pod názvem */
-  .cards {
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    gap: 10px; /* Nastaví mezery mezi položkami. */
-    align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  }
-  .cards .card-info {
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-    text-align: left; /* Zarovná text. */
-    gap: 8px; /* Nastaví mezery mezi položkami. */
-    padding: 8px 8px; /* Přidá vnitřní odsazení prvku. */
-    font-size: 15px; /* Nastaví velikost písma. */
-    background: rgba(124,74,39,.2); /* Definuje pozadí prvku. */
-    border-radius: 16px; /* Zaoblí rohy prvku. */
-    margin: 12px 0; /* Odsadí prvek od okolního obsahu. */
-    max-width: 100%; /* Omezí maximální šířku prvku. */
-  }
-  .cards .card-info .card-img-col {
-    width: 100%; /* Definuje šířku prvku. */
-    max-width: 320px; /* Omezí maximální šířku prvku. */
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: column; /* Určuje směr Flexboxu. */
-    align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  }
-  .cards .card-info .card-img-col2 {
-    width: 100%; /* Definuje šířku prvku. */
-    max-width: 320px; /* Omezí maximální šířku prvku. */
-    display: flex; /* Nastaví způsob zobrazení prvku. */
-    flex-direction: left; /* Určuje směr Flexboxu. */
-    align-items: center; /* Zarovná děti v pomocné ose Flexboxu. */
-  }
-  .cards .card-info img {
-    width: 100%; /* Definuje šířku prvku. */
-    max-width: 320px; /* Omezí maximální šířku prvku. */
-    margin-bottom: 8px; /* Odsazení zespodu pro prvek. */
-    border-radius: 12px; /* Zaoblí rohy prvku. */
-  }
-  .cards .card-info .card-title {
-    margin-top: 8px; /* Odsazení shora pro prvek. */
-    margin-bottom: 6px; /* Odsazení zespodu pro prvek. */
-    text-align: center; /* Zarovná text. */
-    width: 100%; /* Definuje šířku prvku. */
-  }
 }
 
 :root { /* Elektrický border efekt pro aromaterapii */
@@ -2945,12 +2030,6 @@ body.night-mode .primary-nav__dropdown-panel {
     display: flex;
   }
 
-  .primary-nav__utility-btn--scroll {
-    order: 1;
-    width: 40px;
-    height: 36px;
-  }
-
   .primary-nav__brand {
     order: 2;
   }
@@ -3126,48 +2205,6 @@ body.night-mode [style*="border-color: #891915"] { /* Zvýraznění slevy v noč
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* SVG obrázky v nočním režimu */
-body.night-mode #about svg .info-bg,
-body.night-mode #about svg .praxe-bg {
-  fill: #1a2a3a !important;
-}
-
-body.night-mode #about svg .info-title,
-body.night-mode #about svg .praxe-year,
-body.night-mode #about svg .praxe-school {
-  fill: #e8f4f8 !important;
-}
-
-body.night-mode #about svg .info-text,
-body.night-mode #about svg .praxe-text {
-  fill: #d4e8f0 !important;
-}
-
-body.night-mode #about svg .praxe-graduation {
-  fill: #f4d4a4 !important;
-}
-
-body.night-mode .logo-bubble img { /* Logo v nočním režimu - průhledné */
-  filter: none;
-  opacity: 0.7;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body.night-mode .logo-bubble img:hover {
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) { /* Mobilní verze */
-
-
-  
-
-
-  
-
-  
-}
-
 .page-services .primary-nav__inner { /* Úpravy navigace pro stránku služeb */
   justify-content: center; /* Centrování navigace bez loga */
 }
@@ -3204,52 +2241,9 @@ body.night-mode .logo-bubble img:hover {
   padding-bottom: 60px !important;
 }
 
-.page-services .services-hero {
-  padding-top: 80px !important;
-  padding-bottom: 40px !important;
-}
-
 @media (min-width: 921px) {
   .page-services section[id] {
     padding-bottom: 80px !important;
-  }
-}
-
-
-.cards {
-  display: flex;
-  gap: 20px;
-  align-items: stretch;
-}
-
-.cards .card-img-col {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.cards .card-img-col img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  object-position: center;
-}
-
-.cards .card-title {
-  min-height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-@media (max-width: 768px) {
-  .cards .card-img-col img {
-    height: 180px;
-  }
-
-  .cards .card-title {
-    min-height: 45px;
   }
 }
 
@@ -3342,22 +2336,6 @@ body.night-mode .logo-bubble img:hover {
   margin-bottom: clamp(6px, 1.5vw, 8px);
 }
 
-.ceremony-gallery { /* Galerie obrázků - responzivní layout */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(12px, 3vw, 18px);
-  padding: clamp(12px, 2vw, 20px);
-}
-
-.ceremony-gallery img {
-  max-width: 100%;
-  width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
-}
-
 .ceremony-carousel { /* Točivý karusel fotografií - hlavní obrázek uprostřed */
   position: relative;
   display: flex;
@@ -3373,6 +2351,7 @@ body.night-mode .logo-bubble img:hover {
   flex: 1 1 auto;
   max-width: 900px;
   height: clamp(220px, 36vw, 380px);
+  overflow: hidden;
   user-select: none;
   touch-action: pan-y;
 }
@@ -3464,15 +2443,6 @@ body.night-mode .logo-bubble img:hover {
     font-size: clamp(0.95rem, 3vw, 1.1rem);
     padding: clamp(10px, 3vw, 16px);
   }
-
-  .ceremony-gallery {
-    grid-template-columns: 1fr;
-    gap: clamp(10px, 2vw, 14px);
-  }
-
-  .ceremony-gallery img {
-    aspect-ratio: 1 / 1;
-  }
 }
 
 @media (max-width: 480px) {
@@ -3514,17 +2484,6 @@ body.night-mode .logo-bubble img:hover {
   .ceremony-content-box ul {
     margin-left: 1em;
     font-size: 0.9rem;
-  }
-
-  .ceremony-gallery {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .ceremony-gallery img {
-    aspect-ratio: auto;
-    max-height: 250px;
   }
 
 
@@ -3918,16 +2877,6 @@ body.night-mode .logo-bubble img:hover {
   filter: none !important;
 }
 
-.premium-theme .premium-brand-text {
-  color: #f4ecd8 !important;
-  font-family: "Tenor Sans", serif !important;
-  font-size: 1.1rem !important;
-  letter-spacing: 1px !important;
-  text-transform: uppercase !important;
-  white-space: nowrap !important;
-  line-height: 1 !important;
-}
-
 .premium-theme .primary-nav__menu { /* Odkazy v menu - elegantní minimalistický vzhled s prostorem */
   gap: 12px !important;
 }
@@ -4050,19 +2999,6 @@ body.night-mode .logo-bubble img:hover {
   display: none !important;
 }
 
-.premium-theme .primary-nav__utility-btn:hover,
-.premium-theme .primary-nav__utility-btn:focus-visible {
-  background: rgba(197, 160, 89, 0.16) !important;
-  border-color: #c5a059 !important;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.32), 0 0 0 2px rgba(197, 160, 89, 0.2) !important;
-  transform: translateY(-1px);
-  outline: none;
-}
-
-.premium-theme .primary-nav__utility-btn:active {
-  transform: translateY(0);
-}
-
 @media (min-width: 1101px) { /* Všechny desktopové navigace mají stejné pořadí a zarovnání prvků. */
   .primary-nav.premium-theme .primary-nav__inner {
     justify-content: flex-start !important;
@@ -4079,88 +3015,14 @@ body.night-mode .logo-bubble img:hover {
     justify-content: flex-end !important;
     margin-left: 0 !important;
   }
-
-  .primary-nav.premium-theme .primary-nav__utility-btn {
-    order: 3;
-  }
 }
 
-@media (max-width: 920px) { /* Mobilní menu úprava barev */
-  .premium-theme .premium-brand-text {
-    display: none !important;
-  }
+@media (max-width: 920px) {
   .premium-theme .primary-nav__menu {
     background-color: rgba(26, 15, 10, 0.98) !important;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E") !important;
     border: 1px solid rgba(197, 160, 89, 0.2) !important;
   }
-}
-.primary-nav__utility-btn {
-  border: 1px solid rgba(255,248,242,0.45);
-  background: rgba(0,0,0,0.26);
-  color: #fff8f2;
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.28);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-}
-
-.primary-nav__utility-btn--scroll {
-  position: static;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  width: 42px;
-  height: 38px;
-  font-size: 22px;
-  line-height: 1;
-  opacity: 1;
-  visibility: visible;
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-  z-index: auto;
-}
-
-.primary-nav__utility-btn--scroll:hover,
-.primary-nav__utility-btn--scroll:focus-visible {
-  transform: translateY(-1px);
-  background: rgba(0,0,0,0.4);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.32);
-  outline: none;
-}
-
-.primary-nav #scrollTopBtn.primary-nav__utility-btn--scroll {
-  position: static;
-  inset: auto;
-  width: 42px;
-  height: 38px;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.26);
-  color: #fff8f2;
-  border: 1px solid rgba(255,248,242,0.45);
-  font-size: 22px;
-  line-height: 1;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.28);
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-  z-index: auto;
-}
-
-.primary-nav #scrollTopBtn.primary-nav__utility-btn--scroll.show {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.primary-nav #scrollTopBtn.primary-nav__utility-btn--scroll:hover,
-.primary-nav #scrollTopBtn.primary-nav__utility-btn--scroll:focus-visible {
-  transform: translateY(-1px);
-  background: rgba(0,0,0,0.4);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.32);
-  outline: none;
 }
 .btn-3d-premium { /* 3D PRÉMIOVÉ TLAČÍTKO (Ceremonie) */
   display: inline-flex;
@@ -4440,13 +3302,6 @@ body.night-mode .logo-bubble img:hover {
 @keyframes shine {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
-}
-
-
-.primary-nav__cta-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 10px;
 }
 
 
@@ -4914,112 +3769,9 @@ body.night-mode .logo-bubble img:hover {
   border-bottom: none !important;
 }
 
-.page-services .main-title {
-  margin: 0;
-  font-size: clamp(2.5rem, 8vw, 7rem);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.6em 1em;
-  border-radius: 22px;
-  line-height: 1.1;
-  box-sizing: border-box;
-  max-width: 100%;
-  background-image: url("galerie/papir_bily.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-origin: padding-box;
-  background-clip: padding-box;
-  opacity: 0.9;
-  filter: drop-shadow(0px 8px 12px rgb(0, 0, 0));
-  transform: rotate(-1.5deg);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.page-services .main-title:hover {
-  transform: rotate(0deg) scale(1.02) translateY(-4px);
-}
-
-.page-services .info-box {
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(60,30,10,0.25);
-  box-sizing: border-box;
-}
-
-.page-services .info-box--brown {
-  background: rgba(124,74,39,.2);
-  margin-bottom: 24px;
-}
-
-.page-services .info-box--brown-no-margin {
-  background: rgba(124,74,39,.2);
-  margin-bottom: 0;
-}
-
-.page-services .info-box--green {
-  background: rgba(69, 135, 38, 0.2);
-  border: 1px solid #92ab4e;
-}
-
-.page-services .info-box--red {
-  background: rgba(154, 51, 51, 0.2);
-  border: 1px solid #e33333;
-}
-
-.page-services .fee-notification-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 8px;
-  box-sizing: border-box;
-}
-
-.page-services .fee-notification-box {
-  background-image: url("galerie/papir_bily.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  filter: drop-shadow(0px 8px 12px rgb(0, 0, 0));
-  padding: 60px 60px;
-  text-align: center;
-  margin: 10px auto 24px auto;
-  max-width: 550px;
-  transform: rotate(1deg);
-}
-
-.page-services .fee-text-warning {
-  font-family: "Raleway", sans-serif;
-  font-size: 1.1em;
-  font-weight: 700;
-  color: #3e2f2a;
-  margin: 0 0 6px 0;
-}
-
-.page-services .fee-price {
-  font-family: "Montez", cursive;
-  font-size: 3.5rem;
-  color: #874f00;
-  margin: 0;
-  line-height: 1;
-}
-
-.page-services .info-box--dark {
-  background: rgba(0, 0, 0, 0.2);
-  padding: 4px;
-  margin: 0 auto 4px auto;
-  max-width: 800px;
-  text-align: center;
-}
-
 .page-services section[id] {
   padding-bottom: 24px !important;
   border-bottom: none !important;
-}
-
-.page-services .service-accordion {
-  margin: 0 auto 16px !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
 }
 
 .guestbook-admin-page {
@@ -5157,127 +3909,6 @@ body.night-mode .logo-bubble img:hover {
   }
 }
 
-.page-services .service-accordion:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(60, 30, 10, 0.18) !important;
-  border-color: rgba(124, 74, 39, 0.5) !important;
-}
-
-.page-services .indikace-toggle,
-.page-services .kontraindikace-toggle {
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-.page-services .indikace-toggle:hover,
-.page-services .kontraindikace-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(60, 30, 10, 0.15) !important;
-}
-
-.page-services #ostatni .service-accordion summary h2 {
-  width: auto !important;
-  display: block !important;
-}
-
-@media (min-width: 769px) {
-  .page-services .service-accordion summary {
-    padding: 4px 24px !important;
-  }
-
-  .page-services .service-accordion summary h2 {
-    font-size: 4rem !important;
-    line-height: 1 !important;
-    margin-top: 10px !important;
-  }
-}
-
-.page-services .services-hero {
-  display: block !important;
-  padding-top: 20px !important;
-}
-
-.page-services .services-hero__header {
-  max-width: 850px !important;
-  margin: 0 auto !important;
-  width: 100% !important;
-}
-
-.page-services .service-accordion summary {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  position: relative !important;
-  padding: 12px 24px !important;
-  min-height: 70px !important;
-}
-
-.page-services .service-accordion summary h2 {
-  width: auto !important;
-  margin: 0 !important;
-  text-align: center !important;
-  font-size: clamp(2rem, 6vw, 3.8rem) !important;
-  line-height: 1 !important;
-  display: block !important;
-}
-
-.page-services .service-accordion summary::after {
-  position: absolute !important;
-  right: 24px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  margin-left: 0 !important;
-}
-
-.page-services .service-accordion[open] summary::after {
-  transform: translateY(-50%) !important;
-}
-
-@media (max-width: 720px) {
-  .page-services .service-accordion summary::after {
-    right: 16px !important;
-    font-size: 0.85em !important;
-  }
-}
-
-.page-services .service-accordion {
-  box-shadow: 0 6px 22px rgba(45, 25, 10, 0.25) !important;
-}
-
-.page-services .service-accordion:hover {
-  box-shadow: 0 16px 38px rgba(45, 25, 10, 0.42) !important;
-}
-
-
-/* ========================================
-   SERVICES PAGE REDESIGN V2
-   ======================================== */
-
-/* EDITOR GUIDE (MSGINFO V2)
-  1) Hero (vrchní rámeček): .svc2-hero
-  2) Filtry a toolbar: .svc2-filters, .svc2-controls, .svc2-chip-row
-  3) Karty služeb: .svc2-grid, .svc2-card, .svc2-meta
-  4) Doplňkové sekce: .svc2-aroma, .svc2-faq
-  5) Mobilní chování: media query bloky níže */
-
-.page-services-v2 {
-  --svc2-ink: #21140b;
-  --svc2-muted: #6d5746;
-  --svc2-shell: #f4eadf;
-  --svc2-card: #f1dfca;
-  --svc2-border: #d2b89d;
-  --svc2-accent: #b14b2d;
-  --svc2-accent-2: #d68d32;
-  --svc2-deep: #5f2919;
-  --svc2-shadow: 0 22px 42px rgba(41, 22, 11, 0.2);
-  --svc2-nav-safe-left: clamp(210px, 30vw, 320px);
-  --svc2-nav-safe-right: clamp(16px, 3vw, 28px);
-  color: var(--svc2-ink);
-  background:
-    radial-gradient(circle at 8% 6%, rgba(242, 197, 113, 0.23) 0%, rgba(242, 197, 113, 0) 30%),
-    radial-gradient(circle at 90% 18%, rgba(143, 62, 39, 0.25) 0%, rgba(143, 62, 39, 0) 34%),
-    radial-gradient(circle at 75% 92%, rgba(214, 141, 50, 0.2) 0%, rgba(214, 141, 50, 0) 28%);
-}
-
 .page-services-v2::before { /* Pozadí otočené o 90°, rozměry prohozené a rotací dorovnané na celou obrazovku */
   content: "";
   position: fixed;
@@ -5340,17 +3971,6 @@ body.night-mode .logo-bubble img:hover {
   z-index: 1;
 }
 
-.page-services-v2 .primary-nav.premium-theme .premium-brand-text {
-  display: inline-block;
-  position: static;
-  padding-inline: 0;
-  animation: none;
-  color: #f4ecd8 !important;
-  text-shadow: none;
-  letter-spacing: 1px;
-  will-change: auto;
-}
-
 
 .page-services-v2 .primary-nav.premium-theme .primary-nav__toggle {
   margin-left: auto;
@@ -5366,133 +3986,6 @@ body.night-mode .logo-bubble img:hover {
   box-shadow: none;
   transform: translateY(-50%);
   pointer-events: none;
-}
-
-.page-services-v2 .svc2-hero { /* HERO: hlavní banner s nadpisem + rychlými statistikami */
-  margin: 24px 0 30px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 28px;
-  background:
-    linear-gradient(120deg, rgba(95, 41, 25, 0.9), rgba(177, 75, 45, 0.86) 58%, rgba(214, 141, 50, 0.9)),
-    url("galerie/papir3.webp") center/cover no-repeat;
-  box-shadow: var(--svc2-shadow);
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  color: #fff7ee;
-  padding: clamp(20px, 4vw, 44px);
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: clamp(16px, 3vw, 34px);
-  position: relative;
-  overflow: hidden;
-}
-
-.page-services-v2 .svc2-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 12% 20%, rgba(255, 248, 236, 0.26), transparent 38%),
-    radial-gradient(circle at 82% 80%, rgba(41, 17, 9, 0.28), transparent 42%);
-  pointer-events: none;
-}
-
-.page-services-v2 .svc2-hero__copy,
-.page-services-v2 .svc2-hero__meta {
-  position: relative;
-  z-index: 1;
-}
-
-.page-services-v2 .svc2-eyebrow {
-  margin: 0 0 10px;
-  font-family: "Sora", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-weight: 700;
-  font-size: 0.76rem;
-  color: rgba(255, 238, 220, 0.92);
-}
-
-.page-services-v2 .svc2-hero h1 {
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.8rem, 4.2vw, 3.2rem);
-  line-height: 1.16;
-  color: #fff8ef;
-}
-
-.page-services-v2 .svc2-lead {
-  margin: 16px 0 0;
-  max-width: 62ch;
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
-  line-height: 1.64;
-  color: rgba(255, 241, 227, 0.95);
-}
-
-.page-services-v2 .svc2-hero__actions {
-  margin-top: 22px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.page-services-v2 .svc2-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  padding: 11px 18px;
-  text-decoration: none;
-  font-weight: 700;
-  font-family: "Sora", sans-serif;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
-}
-
-.page-services-v2 .svc2-btn:hover,
-.page-services-v2 .svc2-btn:focus-visible {
-  transform: translateY(-2px);
-}
-
-.page-services-v2 .svc2-btn--primary {
-  color: #2f180e;
-  background: linear-gradient(135deg, #ffe5be, #f7c777);
-  box-shadow: 0 10px 18px rgba(20, 8, 4, 0.26);
-}
-
-.page-services-v2 .svc2-btn--ghost {
-  color: #fff4e7;
-  border-color: rgba(255, 236, 219, 0.62);
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.page-services-v2 .svc2-hero__meta {
-  display: grid;
-  gap: 12px;
-  align-content: center;
-}
-
-.page-services-v2 .svc2-stat {
-  border-radius: 18px;
-  padding: 12px 14px;
-  border: 1px solid rgba(255, 237, 221, 0.42);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08));
-  backdrop-filter: blur(2px);
-}
-
-.page-services-v2 .svc2-stat__value {
-  display: block;
-  font-family: "Inknut Antiqua", serif;
-  font-size: clamp(1rem, 2.3vw, 1.35rem);
-}
-
-.page-services-v2 .svc2-stat__label {
-  display: block;
-  margin-top: 2px;
-  color: rgba(255, 244, 233, 0.86);
-  font-size: 0.92rem;
 }
 
 .page-services-v2 .svc2-filters { /* FILTRY: vyhledávání, délka, řazení, reset */
@@ -5512,52 +4005,6 @@ body.night-mode .logo-bubble img:hover {
 .page-services-v2 .svc2-filters__header p {
   margin: 6px 0 0;
   color: var(--svc2-muted);
-}
-
-.page-services-v2 .svc2-controls {
-  margin-top: 16px;
-  display: grid;
-  gap: 12px;
-  grid-template-columns: 2fr minmax(170px, 1fr) minmax(200px, 1fr) auto;
-  align-items: end;
-}
-
-.page-services-v2 .svc2-control {
-  display: grid;
-  gap: 6px;
-}
-
-.page-services-v2 .svc2-control span {
-  font-size: 0.9rem;
-  color: var(--svc2-muted);
-  font-weight: 700;
-}
-
-.page-services-v2 .svc2-control input,
-.page-services-v2 .svc2-control select {
-  width: 100%;
-  border-radius: 12px;
-  border: 1px solid #cda988;
-  background: #fffefb;
-  min-height: 44px;
-  padding: 0 12px;
-  font-family: "Sora", sans-serif;
-  font-size: 1rem;
-  color: #2f1b11;
-}
-
-.page-services-v2 .svc2-control input:focus,
-.page-services-v2 .svc2-control select:focus {
-  outline: 2px solid rgba(214, 141, 50, 0.28);
-  border-color: #b56433;
-}
-
-.page-services-v2 .svc2-btn--reset {
-  border: 1px solid #cb9b72;
-  background: linear-gradient(180deg, #fff0df, #f8ddbf);
-  color: #4f2916;
-  min-height: 44px;
-  cursor: pointer;
 }
 
 .page-services-v2 .svc2-chip-row {
@@ -5877,10 +4324,8 @@ body.night-mode .logo-bubble img:hover {
   box-shadow: 0 12px 32px rgba(127, 0, 0, 0.55);
   outline: none;
 }
-
 /* SEKCE POD KATALOGEM: aromaterapie + FAQ */
-.page-services-v2 .svc2-aroma,
-.page-services-v2 .svc2-faq {
+.page-services-v2 .svc2-aroma {
   margin-top: 20px;
   border-radius: 18px;
   border: 2px solid rgba(102, 48, 1, 0.59);
@@ -5912,9 +4357,7 @@ body.night-mode .logo-bubble img:hover {
   position: relative;
   z-index: var(--layer-content);
 }
-
-.page-services-v2 .svc2-aroma__lead h2,
-.page-services-v2 .svc2-faq h2 {
+.page-services-v2 .svc2-aroma__lead h2 {
   margin: 0;
   font-family: "Inknut Antiqua", "Tenor Sans", serif;
   font-size: clamp(2rem, 2.2vw, 2.3rem);
@@ -5966,32 +4409,6 @@ body.night-mode .logo-bubble img:hover {
   font-weight: 700;
 }
 
-.page-services-v2 .svc2-faq__grid {
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 12px;
-}
-
-.page-services-v2 .svc2-faq__grid article {
-  border-radius: 12px;
-  border: 1px solid #dcbfa4;
-  background: #fffef9;
-  padding: 12px;
-}
-
-.page-services-v2 .svc2-faq__grid h3 {
-  margin: 0;
-  font-family: "Sora", sans-serif;
-  font-size: 1rem;
-  color: #5c2f1a;
-}
-
-.page-services-v2 .svc2-faq__grid p {
-  margin: 8px 0 0;
-  color: #604c3c;
-}
-
 .page-services-v2 #scrollTopBtn {
   position: fixed;
   right: 20px;
@@ -6023,26 +4440,6 @@ body.night-mode .logo-bubble img:hover {
   .page-services-v2 {
     --svc2-nav-safe-left: clamp(170px, 38vw, 250px);
   }
-
-  .page-services-v2 .svc2-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .page-services-v2 .svc2-controls {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .page-services-v2 .svc2-control--search {
-    grid-column: 1 / -1;
-  }
-
-  .page-services-v2 .svc2-control--sort {
-    grid-column: 1 / -1;
-  }
-
-  .page-services-v2 .svc2-btn--reset {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 720px) { /* RESPONSIVE: mobilní rozložení */
@@ -6063,10 +4460,6 @@ body.night-mode .logo-bubble img:hover {
 
   .page-services-v2 .svc2 {
     width: calc(100% - 12px);
-  }
-
-  .page-services-v2 .svc2-controls {
-    grid-template-columns: 1fr;
   }
 
   .page-services-v2 .svc2-info__grid {
@@ -6145,25 +4538,6 @@ body.night-mode .logo-bubble img:hover {
   .hero-intro p {
     font-size: 0.98rem;
     line-height: 1.55;
-  }
-
-
-  
-
-
-  .page-home #impressum .home-impressum__list {
-    padding: 0 0.35rem;
-  }
-
-  .page-home #impressum .home-impressum__list li {
-    font-size: 0.9rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .page-home #impressum .home-impressum__list li strong {
-    display: block;
-    width: auto;
-    margin-bottom: 0.15rem;
   }
 
   .page-home .site-footer {
@@ -6816,4 +5190,17 @@ body.night-mode .logo-bubble img:hover {
 
 .cookie-settings-btn:hover {
   background: #f4ce91;
+}
+
+/* ============================================
+   GUESTBOOK HONEYPOT (skryte pole proti botum)
+   ============================================ */
+.guestbook-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  left: -9999px;
 }

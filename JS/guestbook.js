@@ -12,6 +12,15 @@
   const status = section.querySelector('[data-guestbook-status]');
   const submitButton = form ? form.querySelector('button[type="submit"]') : null;
 
+  // Bezpecnostni pojistky proti jednoduchym botum - honeypot pole, ktere
+  // vidi jen boti (skryte pred lidmi CSS + tabindex -1), a minimalni cas
+  // od nacteni stranky do odeslani (bot obvykle vyplni a odesle formular
+  // za desetiny sekundy). Obe tise "uspeji" bez skutecneho odeslani, aby
+  // bot nezjistil, ze byl odhalen. Skutecnou ochranu proti odeslani pres
+  // primy API pozadavek (mimo tento formular) resi rate-limit v databazi.
+  const formLoadedAt = Date.now();
+  const MIN_SUBMIT_DELAY_MS = 3000;
+
   const setStatus = (message, type = '') => {
     status.textContent = message;
     status.dataset.state = type;
@@ -97,9 +106,20 @@
       return;
     }
 
+    const formData = new FormData(form);
+
+    // Honeypot vyplneny nebo formular odeslan podezrele rychle - tise
+    // predstirame uspech, aniz bychom cokoliv odeslali do databaze.
+    const honeypotFilled = formData.get('website');
+    const submittedTooFast = Date.now() - formLoadedAt < MIN_SUBMIT_DELAY_MS;
+    if (honeypotFilled || submittedTooFast) {
+      form.reset();
+      setStatus('Děkuji. Vzkaz se zobrazí po schválení.', 'success');
+      return;
+    }
+
     submitButton.disabled = true;
     setStatus('Odesílám vzkaz…');
-    const formData = new FormData(form);
     const ratingValue = formData.get('rating');
     const { error } = await client.from('guestbook_entries').insert({
       nickname: formData.get('nickname').trim(),
@@ -110,7 +130,8 @@
 
     submitButton.disabled = false;
     if (error) {
-      setStatus('Vzkaz se nepodařilo odeslat. Zkuste to prosím později.', 'error');
+      const isRateLimit = /příliš mnoho vzkazů|denního limitu/i.test(error.message || '');
+      setStatus(isRateLimit ? error.message : 'Vzkaz se nepodařilo odeslat. Zkuste to prosím později.', 'error');
       return;
     }
 
