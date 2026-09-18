@@ -61,6 +61,39 @@
   --layer-overlay: 260;
   --layer-scroll-button: 320;
   --layer-modal: 400;
+
+  color-scheme: light;
+}
+
+/* Noční režim — tmavá paleta navazující na tóny sekce Ceremonie -------- */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --ink: #f1e4d2;
+  --ink-soft: #cbb59c;
+  --cream: #1c0f09;
+  --cream-2: #140a06;
+  --surface: #2b170e;
+  --accent: #e3a463;
+  --accent-dark: #f0b978;
+  --accent-soft: #4a2f1c;
+  --accent-tint: #3a2416;
+  --gold: #e3bb74;
+  --line: #4a3524;
+  --success: #7cc088;
+  --danger: #e2685a;
+  --danger-dark: #ff8a75;
+  --overlay-dark: linear-gradient(180deg, rgba(10,6,3,.45), rgba(10,6,3,.72));
+
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
+  --shadow-md: 0 10px 26px rgba(0,0,0,.4);
+  --shadow-lg: 0 20px 46px rgba(0,0,0,.5);
+}
+
+:root[data-theme="dark"] body::after {
+  opacity: .07;
+  mix-blend-mode: overlay;
 }
 
 * {
@@ -81,6 +114,7 @@ body {
   color: var(--ink);
   background: var(--cream);
   overflow-x: hidden;
+  transition: background-color .5s ease, color .5s ease;
 }
 
 body::before {
@@ -200,6 +234,14 @@ header {
 .primary-nav--scrolled {
   box-shadow: var(--shadow-md);
   background: rgba(255, 252, 247, .98);
+}
+
+:root[data-theme="dark"] .primary-nav {
+  background: rgba(43, 23, 14, .92);
+}
+
+:root[data-theme="dark"] .primary-nav--scrolled {
+  background: rgba(43, 23, 14, .98);
 }
 
 .primary-nav__inner {
@@ -345,10 +387,131 @@ header {
 .primary-nav.is-open .primary-nav__toggle-bar:nth-child(2) { opacity: 0; }
 .primary-nav.is-open .primary-nav__toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Přepínač denní/noční obloha ---------------------------------------------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  padding: 2px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 3px;
+}
+
+.theme-toggle__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.theme-toggle__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 58px;
+  height: 30px;
+  padding: 0 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: linear-gradient(90deg, var(--accent-tint), var(--accent-soft) 130%);
+  overflow: hidden;
+  transition: background .5s ease, border-color .5s ease;
+}
+
+.theme-toggle__stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .5s ease;
+  background-image:
+    radial-gradient(1.4px 1.4px at 20% 28%, #fff 100%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 36% 68%, #fff 100%, transparent 100%),
+    radial-gradient(1px 1px at 52% 22%, #fff 100%, transparent 100%),
+    radial-gradient(1.4px 1.4px at 70% 60%, #fff 100%, transparent 100%),
+    radial-gradient(1px 1px at 83% 32%, #fff 100%, transparent 100%);
+}
+
+.theme-toggle__icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  color: var(--accent-dark);
+  transition: color .5s ease, opacity .4s ease, transform .5s ease;
+}
+
+.theme-toggle__icon--sun {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.theme-toggle__icon--moon {
+  opacity: .5;
+  color: var(--ink-soft);
+  transform: scale(.8) rotate(-25deg);
+}
+
+.theme-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff8ea, var(--gold) 65%, var(--accent) 100%);
+  box-shadow: var(--shadow-sm);
+  transition: transform .45s cubic-bezier(.62,-0.08,.35,1.4), background .5s ease;
+}
+
+:root[data-theme="dark"] .theme-toggle__thumb {
+  transform: translateX(28px);
+  background: radial-gradient(circle at 65% 32%, #f5f0ff, #d3d9f5 60%, #9aa3d1 100%);
+}
+
+:root[data-theme="dark"] .theme-toggle__stars { opacity: 1; }
+
+:root[data-theme="dark"] .theme-toggle__icon--sun {
+  opacity: .4;
+  color: var(--ink-soft);
+  transform: scale(.8) rotate(25deg);
+}
+
+:root[data-theme="dark"] .theme-toggle__icon--moon {
+  opacity: 1;
+  color: #eef0ff;
+  transform: scale(1) rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__thumb,
+  .theme-toggle__track,
+  .theme-toggle__stars,
+  .theme-toggle__icon,
+  body {
+    transition-duration: .01ms !important;
+  }
+}
+
 @media (max-width: 900px) {
   .primary-nav__toggle {
     display: flex;
     order: 2;
+  }
+
+  .theme-toggle {
+    order: 1;
   }
 
   .primary-nav__brand-text {
