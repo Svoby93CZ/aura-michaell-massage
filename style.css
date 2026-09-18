@@ -1482,6 +1482,7 @@ header {
   overflow: hidden;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  aspect-ratio: 4 / 5;
 }
 
 .about-card img {
