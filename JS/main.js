@@ -1,6 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const initThemeToggle = () => {
+    const toggle = document.getElementById('themeToggle');
+    if (!toggle) {
+      return;
+    }
+
+    const root = document.documentElement;
+
+    const applyTheme = (theme) => {
+      if (theme === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+      } else {
+        root.removeAttribute('data-theme');
+      }
+      toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    };
+
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+    toggle.addEventListener('click', () => {
+      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      try {
+        localStorage.setItem('theme', nextTheme);
+      } catch (e) {}
+    });
+  };
+
+  initThemeToggle();
+
   const initHeroLogoDraw = async () => {
     const logoHost = document.querySelector('.hero-logo-draw');
     if (!logoHost) {

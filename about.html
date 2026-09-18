@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <!-- Základní metadata stránky -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -67,6 +78,31 @@
         <a class="primary-nav__link" href="index.html#guestbook-title">Kniha návštěv</a>
         <a class="primary-nav__link primary-nav__link--cta" href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer">Rezervovat</a>
       </div>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false">
+        <span class="theme-toggle__track" aria-hidden="true">
+          <span class="theme-toggle__icon theme-toggle__icon--sun">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4.5" fill="currentColor" stroke="none"/>
+              <line x1="12" y1="2" x2="12" y2="4.5"/>
+              <line x1="12" y1="19.5" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="4.5" y2="12"/>
+              <line x1="19.5" y1="12" x2="22" y2="12"/>
+              <line x1="4.9" y1="4.9" x2="6.6" y2="6.6"/>
+              <line x1="17.4" y1="17.4" x2="19.1" y2="19.1"/>
+              <line x1="4.9" y1="19.1" x2="6.6" y2="17.4"/>
+              <line x1="17.4" y1="6.6" x2="19.1" y2="4.9"/>
+            </svg>
+          </span>
+          <span class="theme-toggle__stars"></span>
+          <span class="theme-toggle__icon theme-toggle__icon--moon">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+              <path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z"/>
+            </svg>
+          </span>
+          <span class="theme-toggle__thumb"></span>
+        </span>
+        <span class="theme-toggle__label">Přepnout noční režim</span>
+      </button>
       <button class="primary-nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
         <span class="primary-nav__toggle-bar"></span><span class="primary-nav__toggle-bar"></span><span class="primary-nav__toggle-bar"></span>
         <span class="primary-nav__toggle-label">Otevřít navigaci</span>
