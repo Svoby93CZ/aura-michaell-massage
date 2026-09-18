@@ -169,6 +169,19 @@ header {
   padding-right: 0;
 }
 
+/* Ceremonie má vlastní, tmavší a atmosférickější pozadí - teplé kakaové
+   odstíny se zákmitem svíce místo světlé krémové plochy ostatních stránek. */
+.body_ceremonie::before {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(199, 130, 66, .22), transparent 68%),
+    linear-gradient(180deg, #2b170e 0%, #1c0f09 55%, #140a06 100%);
+}
+
+.body_ceremonie::after {
+  opacity: .05;
+  mix-blend-mode: soft-light;
+}
+
 /* 03. Navigace ------------------------------------------------------------- */
 
 .primary-nav {
@@ -647,6 +660,15 @@ header {
   background-size: cover;
   border-radius: inherit;
   pointer-events: none;
+  /* Jemné vinětové "vytrácení" do okolí místo tvrdé hrany. */
+  -webkit-mask-image:
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.55) 10%, #000 26%, #000 74%, rgba(0,0,0,.55) 90%, transparent 100%),
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 6%, #000 18%, #000 82%, rgba(0,0,0,.55) 94%, transparent 100%);
+  mask-image:
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.55) 10%, #000 26%, #000 74%, rgba(0,0,0,.55) 90%, transparent 100%),
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 6%, #000 18%, #000 82%, rgba(0,0,0,.55) 94%, transparent 100%);
+  -webkit-mask-composite: multiply;
+  mask-composite: intersect;
 }
 
 @media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
@@ -699,6 +721,16 @@ header {
   margin: 0 0 52px;
   transform: translateX(-50%);
   border-radius: 0;
+}
+
+/* Tyto úvodní fotografické pásy jedou přes celou šířku - vytrácení chceme
+   jen dole, do stránky pod nimi, ne po stranách ani nahoře. */
+.parallax-balance::before,
+.parallax-ceremony-hero::before {
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 68%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 68%, transparent 100%);
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
 }
 
 .about-hero__content,
