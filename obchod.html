@@ -10,13 +10,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="description" content="Obchod a dárkové poukazy - Aura Michaell Massage. Kvalitní kosmetika, šperky ruční výroby a doplňky pro vaši pohodu." />
+
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
   <!-- Titulek stránky -->
   <title>Obchod a poukazy - Aura Michaell Massage</title>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
+  <!-- Google Consent Mode - výchozí stav (musí běžet před načtením gtag.js) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', 'G-732NT4QJEX');
   </script>
@@ -141,6 +158,7 @@
 
   <script src="JS/main.js?v=2" defer></script>
   <script src="JS/3D_hover.js?v=1" defer></script>
+  <script src="JS/cookie-consent.js" defer></script>
   <button id="scrollTopBtn" type="button" title="Zpět nahoru" aria-label="Zpět nahoru">↑</button>
 </body>
 </html>

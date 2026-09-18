@@ -12,10 +12,20 @@
 
   <title>Přehled masáží a služeb | Aura Michaell Massage</title>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
+  <!-- Google Consent Mode - výchozí stav (musí běžet před načtením gtag.js) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', 'G-732NT4QJEX');
   </script>
@@ -601,5 +611,6 @@
   <script src="JS/main.js" defer></script>
   <script src="JS/3D_hover.js" defer></script>
   <script src="JS/katalog.js" defer></script>
+  <script src="JS/cookie-consent.js" defer></script>
 </body>
 </html>

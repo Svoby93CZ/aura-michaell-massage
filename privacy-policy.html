@@ -12,11 +12,21 @@
 
   <title>Zásady ochrany osobních údajů | Aura Michaell Massage</title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
+  <!-- Google Consent Mode - výchozí stav (musí běžet před načtením gtag.js) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', 'G-732NT4QJEX');
   </script>
@@ -51,15 +61,19 @@
     </section>
 
     <section class="section">
-      <h2>Cookies</h2>
-      <p>Tato stránka nepoužívá žádné cookies či jiné sledovací technologie.</p>
-    </section>
-
-    <section class="section">
-      <h2>Analytika</h2>
+      <h2>Cookies a Google Analytics</h2>
       <p>
-        Na stránce je pouze základní anonymní počítadlo návštěvnosti, které nijak nezpracovává osobní údaje.
-        Nepoužíváme žádné pokročilé analytické nástroje ani služby třetích stran ke sledování chování návštěvníků.
+        Používáme službu Google Analytics (Google Ireland Limited) k anonymní statistice návštěvnosti.
+        Tato služba využívá cookies, které se ale aktivují až po vašem souhlasu prostřednictvím lišty
+        zobrazené při první návštěvě. Bez souhlasu se žádné analytické cookies neukládají.
+      </p>
+      <p>
+        Svou volbu můžete kdykoliv změnit tlačítkem níže:
+      </p>
+      <p>
+        <button type="button" class="cookie-settings-btn" onclick="window.reopenCookieBanner && window.reopenCookieBanner()">
+          Nastavení cookies
+        </button>
       </p>
     </section>
 
@@ -92,5 +106,6 @@
     </div>
   </div>
   <script src="JS/main.js" defer></script>
+  <script src="JS/cookie-consent.js" defer></script>
 </body>
 </html>
