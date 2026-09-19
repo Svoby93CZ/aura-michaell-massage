@@ -49,6 +49,7 @@ class Card3D {
     this.renderer.setSize(this.width, this.height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+    this.container.querySelector('.card-3d-scene__fallback')?.remove();
     this.container.appendChild(this.renderer.domElement);
 
     // Lighting (lehce upraveno pro lepší hloubku)
@@ -166,10 +167,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('card-3d-container');
   if (container) {
     setTimeout(() => {
-      new Card3D('card-3d-container', {
-        front: 'galerie/karta1.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
-        back: 'galerie/karta2.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
-      });
+      // Když chybí WebGL nebo se nenačte knihovna, zůstane v kontejneru statický obrázek karty.
+      try {
+        new Card3D('card-3d-container', {
+          front: 'galerie/karta1.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
+          back: 'galerie/karta2.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
+        });
+      } catch (error) {
+        console.warn('3D karta se nespustila, zobrazuje se statický náhled.', error);
+      }
     }, 100);
   }
 });

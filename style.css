@@ -275,6 +275,11 @@ header {
   flex-shrink: 0;
 }
 
+/* Logo je tmavá kresba - na tmavém podkladu by zmizelo, proto mu kolečko zůstává světlé. */
+:root[data-theme="dark"] .primary-nav__brand img {
+  background: #fbf3e8;
+}
+
 .primary-nav__brand-text {
   font-family: var(--font-heading);
   font-weight: 600;
@@ -749,10 +754,10 @@ header {
   font-size: 1.1rem;
 }
 
-.hero-intro .welcome-section__cta .reservation-cta-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+.reservation-cta-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
 }
 
 @media (max-width: 900px) {
@@ -1062,17 +1067,19 @@ header {
 
 .page-home .home-myths-gallery__grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* Grafiky nesou vlastní text - ve čtyřech sloupcích je nečitelný. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+  max-width: 880px;
+  margin: 0 auto;
   perspective: 900px;
 }
 
 .page-home .home-myths-gallery__grid img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: auto;
   border: 3px solid var(--surface);
   border-radius: var(--radius-sm);
-  object-fit: cover;
   box-shadow: var(--shadow-sm);
   transform-style: preserve-3d;
   cursor: pointer;
@@ -1098,14 +1105,27 @@ header {
 
   .page-home .welcome-gallery {
     align-self: center;
-    max-width: 100%;
+    width: 100%;
+    max-width: 520px;
   }
 }
 
 @media (max-width: 600px) {
   .page-home .welcome-section .parallax-content h2 { text-align: center; }
-  .page-home .welcome-gallery img { flex: 1 1 100%; }
-  .page-home .home-myths-gallery__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+
+  /* Infografiky nesou hustý text - na mobilu je potřeba plná šířka, ne dva náhledy vedle sebe. */
+  .page-home .welcome-gallery {
+    flex-direction: column;
+    max-width: 380px;
+  }
+
+  .page-home .welcome-gallery img { flex: 1 1 auto; }
+
+  .page-home .home-myths-gallery__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    max-width: 380px;
+  }
 }
 
 .page-home .bonus-card-section .parallax-content {
@@ -1123,6 +1143,14 @@ header {
   aspect-ratio: 1.545 / 1;
   margin: 0 auto;
   touch-action: manipulation;
+}
+
+/* Zůstane vidět, pokud se 3D scéna nespustí (chybí WebGL nebo se nenačte knihovna). */
+.card-3d-scene__fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
 }
 
 .page-home .shop-gallery {
@@ -1620,6 +1648,11 @@ header {
   gap: .35rem;
   font-weight: 600;
   white-space: nowrap;
+}
+
+/* Bez [hidden] pravidla by display výše přebil skrytí a zůstal by viset popisek bez hodnoty. */
+.site-footer__counter[hidden] {
+  display: none;
 }
 
 .site-footer__copy {

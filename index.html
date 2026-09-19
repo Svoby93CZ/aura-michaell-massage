@@ -124,7 +124,11 @@
           </p>
           <div class="rezervace">
             <a href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer" class="welcome-section__cta">
-              <img src="https://1874966808.rsc.cdn77.org/_next/static/media/favicon.e934896c.ico" class="reservation-cta-icon" alt=""/>
+              <svg class="reservation-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="3" y="5" width="18" height="16" rx="3"/>
+                <path d="M3 10h18M8 3v4M16 3v4"/>
+                <path d="m9.5 15.5 1.8 1.8 3.4-3.6"/>
+              </svg>
               Rezervace
             </a>
             <a class="hero-action-button" href="about.html">Něco málo o mně</a>
@@ -147,8 +151,8 @@
             <li>Následně už jenom přijímáte, hýčkáte svou schránku a svoji duševní pohodu.</li>
           </ul>
             <div class="welcome-gallery" role="group" aria-label="Rozhovor před masáží">
-              <img src="galerie/rozhovor1.webp" alt="Rozhovor před masáží" data-lightbox="welcome-talk" data-full="galerie/rozhovor1.webp" loading="lazy">
-              <img src="galerie/rozhovor2.webp" alt="Rozhovor před masáží" data-lightbox="welcome-talk" data-full="galerie/rozhovor2.webp" loading="lazy">
+              <img src="galerie/rozhovor1.webp" width="1080" height="1350" alt="Proč je úvodní rozhovor žádoucí" data-lightbox="welcome-talk" data-full="galerie/rozhovor1.webp" loading="lazy">
+              <img src="galerie/rozhovor2.webp" width="1080" height="1350" alt="Proč je úvodní rozhovor nutný" data-lightbox="welcome-talk" data-full="galerie/rozhovor2.webp" loading="lazy">
             </div>
         </div>
       </div>
@@ -183,17 +187,19 @@
         </div>
       </div>
       <div class="home-myths-gallery__grid" role="group" aria-label="Mýty o sportovní masáži">
-        <img src="galerie/sm-m1.webp" alt="Mýtus o sportovní masáži" data-lightbox="sport-massage-myths" data-full="galerie/sm-m1.webp" loading="lazy" decoding="async">
-        <img src="galerie/sm-m2.webp" alt="Mýtus 1 o sportovní masáži" data-lightbox="sport-massage-myths" data-full="galerie/sm-m2.webp" loading="lazy" decoding="async">
-        <img src="galerie/sm-m3.webp" alt="Mýtus 2 o sportovní masáži" data-lightbox="sport-massage-myths" data-full="galerie/sm-m3.webp" loading="lazy" decoding="async">
-        <img src="galerie/sm-m4.webp" alt="Mýtus 3 o sportovní masáži" data-lightbox="sport-massage-myths" data-full="galerie/sm-m4.webp" loading="lazy" decoding="async">
+        <img src="galerie/sm-m1.webp" width="1440" height="1800" alt="Mýty o sportovní masáži: sportovní masáž není o výkonu, je o péči o tělo." data-lightbox="sport-massage-myths" data-full="galerie/sm-m1.webp" loading="lazy" decoding="async">
+        <img src="galerie/sm-m2.webp" width="1440" height="1800" alt="Mýtus 1 - mýtus: sportovní masáž je jen pro sportovce. Fakta: masáž je vhodná pro každého, kdo má ztuhlé svaly, sedí celý den u počítače, kdo chce, aby jeho tělo lépe fungovalo a regenerovalo." data-lightbox="sport-massage-myths" data-full="galerie/sm-m2.webp" loading="lazy" decoding="async">
+        <img src="galerie/sm-m3.webp" width="1440" height="1800" alt="Mýtus 2 - mýtus: sportovní masáž vždy bolí. Fakta: správně provedená masáž má být účinná, ale přiměřená. Bolest není měřítkem kvality." data-lightbox="sport-massage-myths" data-full="galerie/sm-m3.webp" loading="lazy" decoding="async">
+        <img src="galerie/sm-m4.webp" width="1440" height="1800" alt="Mýtus 3 - mýtus: stačí jít na masáž, když mě něco bolí. Fakta: lepší je prevence. Pravidelná masáž pomáhá uvolnit napětí a předchází zraněním." data-lightbox="sport-massage-myths" data-full="galerie/sm-m4.webp" loading="lazy" decoding="async">
       </div>
     </section>
     <!-- Bonusová sekce s 3D kartou -->
     <section class="parallax-section parallax-bonus bonus-card-section" aria-labelledby="bonus-card-title">
       <div class="parallax-content">
-        <div id="card-3d-container" class="card-3d-scene" role="img" aria-label="Interaktivní 3D karta se sportovní masáží"></div>
-        <p style="font-weight: bolder;">Každý zákazník získává věrnostní kartu, která mu přináší výhody při opakovaných návštěvách.<br>Každá desátá masáž je zlevněna o <span style="color: #ffb199;font-size: 1.5em;">200 Kč</span></p>
+        <div id="card-3d-container" class="card-3d-scene" role="img" aria-label="Věrnostní karta Aura Michaell Massage">
+          <img class="card-3d-scene__fallback" src="galerie/karta1.webp" width="1050" height="600" alt="Věrnostní karta Aura Michaell Massage" loading="lazy" decoding="async">
+        </div>
+        <p style="font-weight: bolder;">Každý zákazník získává věrnostní kartu, která mu přináší výhody při opakovaných návštěvách.<br>Každá desátá masáž je zlevněna o <span style="color: #ffb199;font-size: 1.5em;">200&nbsp;Kč</span></p>
       </div>
     </section>
     <!-- Elfsight Google Reviews | Untitled Google Reviews -->
@@ -319,9 +325,18 @@
     <!-- Footer lišta -->
     <div class="site-footer home-footer" role="contentinfo">
       <div class="site-footer__bar">
-        <div class="site-footer__counter" aria-label="Počítadlo návštěv">
+        <div class="site-footer__counter" aria-label="Počítadlo návštěv" hidden>
           <strong>Návštěvy:</strong>
-          <script type="text/javascript" src="https://counter.websiteout.com/js/16/6/0/1"></script>
+          <script>
+            /* Počítadlo je služba třetí strany, načítáme ho stejně jako Analytics až po souhlasu.
+               Zápis během parsování je záměrný - skript počítadla sám používá document.write. */
+            try {
+              var amConsent = JSON.parse(localStorage.getItem('am_cookie_consent') || 'null');
+              if (amConsent && amConsent.granted) {
+                document.write('<scr' + 'ipt src="https://counter.websiteout.com/js/16/6/0/1"><\/scr' + 'ipt>');
+              }
+            } catch (e) {}
+          </script>
         </div>
         <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
         <div class="site-footer__links" aria-label="Rychlé odkazy">

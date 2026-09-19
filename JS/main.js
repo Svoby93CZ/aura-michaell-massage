@@ -31,6 +31,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initThemeToggle();
 
+  const initVisitCounter = () => {
+    const counter = document.querySelector('.site-footer__counter');
+    if (!counter) {
+      return;
+    }
+
+    const label = counter.querySelector('strong');
+    const hasValue = [...counter.childNodes].some((node) => {
+      if (node === label) {
+        return false;
+      }
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        return node.tagName !== 'SCRIPT';
+      }
+      return node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0;
+    });
+
+    if (hasValue) {
+      counter.hidden = false;
+    }
+  };
+
+  initVisitCounter();
+
   const initHeroLogoDraw = async () => {
     const logoHost = document.querySelector('.hero-logo-draw');
     if (!logoHost) {
