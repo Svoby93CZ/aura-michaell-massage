@@ -297,7 +297,8 @@ header {
 .primary-nav__menu {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  /* Lišta má pevnou výšku --nav-h, druhý řádek odkazů by z ní přetekl. */
+  flex-wrap: nowrap;
   justify-content: flex-end;
   gap: 6px;
   flex: 1 1 auto;
@@ -504,6 +505,26 @@ header {
   }
 }
 
+/* Kompaktní lišta mezi plnou verzí a hamburgerem (901-1160 px). */
+@media (max-width: 1160px) {
+  .primary-nav__brand-text {
+    display: none;
+  }
+
+  .primary-nav__menu {
+    gap: 2px;
+  }
+
+  .primary-nav__link {
+    padding: 8px 9px;
+    font-size: .8rem;
+  }
+
+  .primary-nav__link--cta {
+    margin-left: 4px;
+  }
+}
+
 @media (max-width: 900px) {
   .primary-nav__toggle {
     display: flex;
@@ -542,6 +563,7 @@ header {
   .primary-nav__link {
     padding: 14px 16px;
     border-radius: var(--radius-sm);
+    font-size: .88rem;
     text-align: center;
   }
 
