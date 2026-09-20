@@ -127,14 +127,14 @@ body::before {
   inset: 0;
   background:
     linear-gradient(rgba(26, 14, 6, .15), rgba(26, 14, 6, .15)),
-    url("galerie/papir.webp") center / cover no-repeat;
+    url("galerie/papir_poz.webp") center / cover no-repeat;
   z-index: -2;
 }
 
 :root[data-theme="dark"] body::before {
   background:
     linear-gradient(rgba(12, 6, 3, .8), rgba(12, 6, 3, .8)),
-    url("galerie/papir.webp") center / cover no-repeat;
+    url("galerie/papir_poz.webp") center / cover no-repeat;
 }
 
 img, video, iframe {
@@ -2634,13 +2634,13 @@ header {
 .admin-page--login::before {
   background:
     linear-gradient(rgba(26, 14, 6, .38), rgba(26, 14, 6, .38)),
-    url("galerie/papir.webp") center / cover no-repeat;
+    url("galerie/papir_poz.webp") center / cover no-repeat;
 }
 
 :root[data-theme="dark"] .admin-page--login::before {
   background:
     linear-gradient(rgba(12, 6, 3, .78), rgba(12, 6, 3, .78)),
-    url("galerie/papir.webp") center / cover no-repeat;
+    url("galerie/papir_poz.webp") center / cover no-repeat;
 }
 
 .admin-login {
