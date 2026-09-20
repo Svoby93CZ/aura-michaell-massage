@@ -4,10 +4,11 @@
  */
 
 class Card3D {
-  constructor(containerId, textureUrls) {
+  constructor(containerId, textureUrls, signal) {
     this.containerId = containerId;
     this.container = document.getElementById(containerId);
     this.textureUrls = textureUrls; // { front: 'url1', back: 'url2' }
+    this.signal = signal; // odpojí se při odchodu z pohledu
 
     // Scene setup
     this.scene = null;
@@ -69,7 +70,10 @@ class Card3D {
     this.createCard();
 
     // Handle window resize
-    window.addEventListener('resize', () => this.onWindowResize());
+    window.addEventListener('resize', () => this.onWindowResize(), { signal: this.signal });
+
+    // Při odchodu z pohledu uvolníme WebGL kontext (jejich počet je v prohlížeči omezený)
+    this.signal?.addEventListener('abort', () => this.dispose(), { once: true });
 
     // Start animation loop
     this.animate();
@@ -126,6 +130,9 @@ class Card3D {
   }
 
   animate() {
+    if (this.signal?.aborted) {
+      return;
+    }
     requestAnimationFrame(() => this.animate());
 
     // Čas od spuštění v sekundách - garantuje plynulost bez ohledu na FPS
@@ -146,6 +153,22 @@ class Card3D {
     this.renderer.render(this.scene, this.camera);
   }
 
+  dispose() {
+    this.scene?.traverse((object) => {
+      object.geometry?.dispose();
+      const materials = Array.isArray(object.material) ? object.material : [object.material];
+      materials.forEach((material) => {
+        material?.map?.dispose();
+        material?.dispose?.();
+      });
+    });
+    this.renderer?.dispose();
+    this.renderer?.forceContextLoss?.();
+    this.renderer?.domElement?.remove();
+    this.scene = null;
+    this.card = null;
+  }
+
   onWindowResize() {
     const newWidth = this.container.clientWidth;
     const newHeight = this.container.clientHeight;
@@ -162,20 +185,78 @@ class Card3D {
   }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('card-3d-container');
-  if (container) {
-    setTimeout(() => {
-      // Když chybí WebGL nebo se nenačte knihovna, zůstane v kontejneru statický obrázek karty.
-      try {
-        new Card3D('card-3d-container', {
-          front: 'galerie/karta1.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
-          back: 'galerie/karta2.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
-        });
-      } catch (error) {
-        console.warn('3D karta se nespustila, zobrazuje se statický náhled.', error);
-      }
-    }, 100);
+// ===== Start: three.js se stahuje až u stránky, která kartu opravdu zobrazuje =====
+const THREE_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+
+let threePromise = null;
+
+const loadThree = () => {
+  if (window.THREE) {
+    return Promise.resolve(window.THREE);
   }
-});
+  if (threePromise) {
+    return threePromise;
+  }
+
+  threePromise = new Promise((resolve, reject) => {
+    const existing = document.querySelector(`script[src="${THREE_CDN}"]`);
+    const script = existing || document.createElement('script');
+
+    script.addEventListener('load', () => resolve(window.THREE), { once: true });
+    script.addEventListener('error', () => reject(new Error('three.js se nepodařilo načíst')), {
+      once: true
+    });
+
+    if (!existing) {
+      script.src = THREE_CDN;
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  });
+
+  return threePromise;
+};
+
+// Inicializace běží při prvním načtení i po každém přepnutí pohledu routerem.
+const initCard3D = async (signal) => {
+  if (!document.getElementById('card-3d-container')) {
+    return;
+  }
+
+  try {
+    await loadThree();
+  } catch (error) {
+    console.warn('3D karta se nespustila, zobrazuje se statický náhled.', error);
+    return;
+  }
+
+  // Mezitím mohl uživatel přejít na jinou stránku
+  if (signal.aborted || !document.getElementById('card-3d-container')) {
+    return;
+  }
+
+  // Když chybí WebGL, zůstane v kontejneru statický obrázek karty.
+  try {
+    new Card3D(
+      'card-3d-container',
+      {
+        front: 'galerie/karta1.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
+        back: 'galerie/karta2.webp', // Používáme moderní formát pro lepší kvalitu a menší velikost
+      },
+      signal
+    );
+  } catch (error) {
+    console.warn('3D karta se nespustila, zobrazuje se statický náhled.', error);
+  }
+};
+
+(() => {
+  const register =
+    window.AuraView?.register ??
+    ((init) =>
+      document.addEventListener('DOMContentLoaded', () =>
+        init(new AbortController().signal)
+      ));
+
+  register(initCard3D);
+})();

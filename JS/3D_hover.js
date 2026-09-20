@@ -1,4 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * 3D efekty pro náhledy galerie
+ *
+ * Inicializace běží při prvním načtení i po každém přepnutí pohledu routerem.
+ */
+const init3DHover = (signal) => {
   // Grafiky s mýty o sportovní masáži jsou zde záměrně vynechané -
   // nesou text, který se má v klidu číst, proto zůstávají statické.
   const shopThumbnails = document.querySelectorAll(
@@ -39,4 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-});
+};
+
+(() => {
+  const register =
+    window.AuraView?.register ??
+    ((init) =>
+      document.addEventListener('DOMContentLoaded', () =>
+        init(new AbortController().signal)
+      ));
+
+  register(init3DHover);
+})();

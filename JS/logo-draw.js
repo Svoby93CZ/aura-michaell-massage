@@ -5,7 +5,8 @@
 // každým prvkem .hero-logo-draw, takže ji stačí do stránky vložit a načíst
 // tenhle soubor - používá ji veřejný web i přihlašovací stránka administrace.
 
-document.addEventListener('DOMContentLoaded', () => {
+// Inicializace běží při prvním načtení i po každém přepnutí pohledu routerem.
+const initLogoDraw = (signal) => {
   const initHeroLogoDraw = async () => {
     const logoHost = document.querySelector('.hero-logo-draw');
     if (!logoHost) {
@@ -86,11 +87,23 @@ document.addEventListener('DOMContentLoaded', () => {
           holdErasedMs;
 
         runLoop();
-        window.setInterval(runLoop, cycleDurationMs);
+        const logoLoopTimer = window.setInterval(runLoop, cycleDurationMs);
+        signal.addEventListener('abort', () => window.clearInterval(logoLoopTimer), { once: true });
       }
     } catch (error) {
       console.error('Hero logo animation failed:', error);
     }
   };
   initHeroLogoDraw();
-});
+};
+
+(() => {
+  const register =
+    window.AuraView?.register ??
+    ((init) =>
+      document.addEventListener('DOMContentLoaded', () =>
+        init(new AbortController().signal)
+      ));
+
+  register(initLogoDraw);
+})();

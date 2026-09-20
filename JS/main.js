@@ -1,4 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Hlavní interaktivita webu
+ *
+ * Funkce initMainView se spouští při prvním načtení i při každém přepnutí
+ * pohledu routerem (JS/router.js). Globální listenery se proto navazují přes
+ * onWindow/onDocument se signálem, aby se při odchodu z pohledu odpojily.
+ */
+const initMainView = (signal) => {
+  const onWindow = (type, handler, options) =>
+    window.addEventListener(type, handler, { ...(options || {}), signal });
+  const onDocument = (type, handler, options) =>
+    document.addEventListener(type, handler, { ...(options || {}), signal });
+
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const initThemeToggle = () => {
@@ -134,19 +146,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    window.addEventListener('resize', () => {
+    onWindow('resize', () => {
       if (window.matchMedia('(min-width: 901px)').matches) {
         closeMenu();
       }
     });
 
-    document.addEventListener('keydown', (event) => {
+    onDocument('keydown', (event) => {
       if (event.key === 'Escape' && nav.classList.contains('is-open')) {
         closeMenu();
       }
     });
 
-    document.addEventListener('click', (event) => {
+    onDocument('click', (event) => {
       if (nav.classList.contains('is-open') && !nav.contains(event.target)) {
         closeMenu();
       }
@@ -157,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateNavScrolled = () => {
       nav.classList.toggle('primary-nav--scrolled', window.scrollY > 12);
     };
-    window.addEventListener('scroll', updateNavScrolled, { passive: true });
+    onWindow('scroll', updateNavScrolled, { passive: true });
     updateNavScrolled();
   }
 
@@ -191,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollBtn.classList.toggle('show', window.scrollY > 300);
     };
 
-    window.addEventListener('scroll', updateScrollBtn);
+    onWindow('scroll', updateScrollBtn);
     updateScrollBtn();
 
     scrollBtn.addEventListener('click', () => {
@@ -381,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, { passive: true });
 
-    document.addEventListener('keydown', (event) => {
+    onDocument('keydown', (event) => {
       if (!lightbox.classList.contains('show')) {
         return;
       }
@@ -394,4 +406,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
+};
+
+(() => {
+  const register =
+    window.AuraView?.register ??
+    ((init) =>
+      document.addEventListener('DOMContentLoaded', () =>
+        init(new AbortController().signal)
+      ));
+
+  register(initMainView);
+})();

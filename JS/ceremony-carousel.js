@@ -5,7 +5,7 @@
 // v HTML zůstávají jako záloha pro výpadek databáze nebo vypnutý JavaScript.
 // Karusel na ceremonie.html tohle neřeší a jede čistě ze statického HTML.
 
-const initCeremonyCarousel = (carousel) => {
+const initCeremonyCarousel = (carousel, signal) => {
   const track = carousel.querySelector('.ceremony-carousel__track');
   const slides = Array.from(track.querySelectorAll('.ceremony-carousel__slide'));
   const prevBtn = carousel.querySelector('.ceremony-carousel__nav--prev');
@@ -91,7 +91,7 @@ const initCeremonyCarousel = (carousel) => {
   });
   window.addEventListener('mouseup', (e) => {
     if (isDragging) dragEnd(e.clientX);
-  });
+  }, { signal });
 
   // ===== ŠIPKY NA KLÁVESNICI =====
   carousel.setAttribute('tabindex', '0');
@@ -123,7 +123,15 @@ const buildSlide = (image) => {
 };
 
 const loadHomeGallery = async (carousel) => {
-  if (!window.supabase || !window.SUPABASE_CONFIG) return false;
+  if (!window.SUPABASE_CONFIG) return false;
+
+  try {
+    await window.ensureSupabase();
+  } catch (error) {
+    return false;
+  }
+
+  if (!window.supabase) return false;
 
   const { url, anonKey } = window.SUPABASE_CONFIG;
   if (!url || !anonKey || url.includes('YOUR-PROJECT') || anonKey.includes('YOUR_SUPABASE')) {
@@ -151,16 +159,31 @@ const loadHomeGallery = async (carousel) => {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+// Inicializace běží při prvním načtení i po každém přepnutí pohledu routerem.
+const initCarouselView = (signal) => {
   const carousel = document.querySelector('.ceremony-carousel');
   if (!carousel || !carousel.querySelector('.ceremony-carousel__track')) return;
 
   // Karusel se inicializuje až nad konečnou sadou snímků - přepočítává
   // pozice podle jejich počtu, takže výměna za běhu by ho rozhodila.
   if (carousel.hasAttribute('data-home-gallery')) {
-    loadHomeGallery(carousel).finally(() => initCeremonyCarousel(carousel));
+    loadHomeGallery(carousel).finally(() => {
+      // Mezitím mohl uživatel přejít na jinou stránku
+      if (!signal.aborted) initCeremonyCarousel(carousel, signal);
+    });
     return;
   }
 
-  initCeremonyCarousel(carousel);
-});
+  initCeremonyCarousel(carousel, signal);
+};
+
+(() => {
+  const register =
+    window.AuraView?.register ??
+    ((init) =>
+      document.addEventListener('DOMContentLoaded', () =>
+        init(new AbortController().signal)
+      ));
+
+  register(initCarouselView);
+})();

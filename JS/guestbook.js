@@ -1,6 +1,24 @@
-(() => {
+/**
+ * Veřejná Kniha návštěv
+ *
+ * Inicializace běží při prvním načtení i po každém přepnutí pohledu routerem.
+ * Knihovna Supabase se dotahuje až tady, ostatní stránky ji nepotřebují.
+ */
+const initGuestbook = async (signal) => {
   const section = document.querySelector('[data-guestbook]');
-  if (!section || !window.supabase || !window.SUPABASE_CONFIG) {
+  if (!section || !window.SUPABASE_CONFIG) {
+    return;
+  }
+
+  try {
+    await window.ensureSupabase();
+  } catch (error) {
+    console.warn('Kniha návštěv není dostupná:', error);
+    return;
+  }
+
+  // Mezitím mohl uživatel přejít na jinou stránku
+  if (signal.aborted || !window.supabase) {
     return;
   }
 
@@ -140,4 +158,15 @@
   });
 
   loadEntries();
+};
+
+(() => {
+  const register =
+    window.AuraView?.register ??
+    ((init) =>
+      document.addEventListener('DOMContentLoaded', () =>
+        init(new AbortController().signal)
+      ));
+
+  register(initGuestbook);
 })();
