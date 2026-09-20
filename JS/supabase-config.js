@@ -12,7 +12,7 @@ window.SUPABASE_CONFIG = {
   // Tenhle soubor je veřejný, takže sem nepatří ani osobní adresy.
   adminLoginAliases: {
     myska: 'aura@michaell.cz',
-    svoby: 'admin@micheall.cz'
+    svoby: 'admin@michaell.cz'
   }
 };
 
