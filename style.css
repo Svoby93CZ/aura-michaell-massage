@@ -2528,14 +2528,66 @@ header {
 /* display: grid vyse by jinak prebilo atribut hidden z prohlizece. */
 .admin-login[hidden] { display: none; }
 
+/* Rámeček přihlašovací karty pomalu obíhá světlo.
+   Úhel je registrovaná vlastnost, aby ho šlo animovat - bez @property
+   by prohlížeč custom property neuměl plynule dopočítat. */
+@property --admin-login-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .admin-login__card {
+  --admin-login-angle: 0deg;
+
+  position: relative;
   width: min(440px, 100%);
   padding: clamp(26px, 5vw, 40px);
-  border: 1px solid var(--line);
+  border: 2px solid transparent;
   border-radius: var(--radius-lg);
-  background: var(--surface);
+  /* Výplň se kreslí po okraj obsahu, gradient jen do rámečku. */
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    conic-gradient(
+      from var(--admin-login-angle),
+      var(--line) 0deg,
+      var(--accent) 55deg,
+      var(--gold) 90deg,
+      var(--accent) 125deg,
+      var(--line) 200deg,
+      var(--line) 360deg
+    ) border-box;
   box-shadow: var(--shadow-lg);
   text-align: center;
+  animation: admin-login-glow 7s linear infinite;
+}
+
+@keyframes admin-login-glow {
+  to { --admin-login-angle: 360deg; }
+}
+
+/* Jemná záře pod kartou, aby efekt nepůsobil jen jako čára. */
+.admin-login__card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--admin-login-angle),
+    transparent 0deg,
+    var(--accent) 70deg,
+    var(--gold) 120deg,
+    transparent 210deg,
+    transparent 360deg
+  );
+  filter: blur(16px);
+  opacity: .5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-login__card { animation: none; }
+  .admin-login__card::after { display: none; }
 }
 
 .admin-login__label {
