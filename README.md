@@ -34,6 +34,7 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 │   ├── masaze/             # Obrázky masáží
 │   ├── ceremonie/          # Obrázky ceremonií
 │   └── Poukazy/            # Dárkové poukazy
+├── .github/workflows/      # Automatická údržba souborů na GitHubu
 └── tools/                  # Nástroje pro údržbu kódu
     ├── _audit-unused-css.ps1
     ├── extract_services.py           # Vytáhne ceník z msginfo.html do SQL
@@ -107,29 +108,37 @@ se ho netýká.
 ### Obrázky
 
 Obrázky masáží se vybírají ze složky `galerie/masaze/`, fotky galerie
-ze složky `galerie/`. Po přidání nového souboru je potřeba obnovit jejich
-seznam:
-
-```bash
-python3 tools/generate_gallery_manifest.py
-```
+ze složky `galerie/`. Nový soubor tam stačí nahrát přes web GitHubu —
+seznam pro administraci si obnoví workflow sám (viz *Automatická údržba*).
 
 Kategorie ceníku (Klasické, Sportovní, …) a texty Indikace/Kontraindikace
 se stále upravují ručně v `msginfo.html`; seznam kategorií je navíc
 v `JS/supabase-config.js`.
 
-## 🚀 Před nasazením
+## 🤖 Automatická údržba
 
-`.htaccess` nechává prohlížeč držet si CSS a JS až měsíc. Po změně těchto
-souborů proto spusťte:
+Po každé změně v `galerie/`, `JS/`, `style.css` nebo v HTML souborech na větvi
+`main` se sám spustí workflow `.github/workflows/aktualizace-souboru.yml`, který:
+
+1. obnoví seznam obrázků pro administraci (`generate_gallery_manifest.py`),
+2. doplní k CSS a JS značku verze (`stamp_assets.py`),
+3. výsledek uloží zpět do repozitáře.
+
+**Nové obrázky proto stačí nahrát přes web GitHubu — nic se nespouští ručně.**
+Průběh je vidět na GitHubu v záložce *Actions*; tamtéž jde workflow spustit
+ručně tlačítkem *Run workflow*.
+
+Proč to je potřeba: `.htaccess` nechává prohlížeč držet si CSS a JS až měsíc.
+Bez značky verze by si návštěvníci i vy načetli novou HTML stránku se starým
+skriptem — stránka by vypadala nově, ale nefungovala. A složku `galerie/`
+si prohlížeč sám přečíst neumí (`Options -Indexes`), proto ten seznam.
+
+Když byste přesto chtěl skripty spustit u sebe, jdou zavolat odkudkoli:
 
 ```bash
-python3 tools/stamp_assets.py
+python3 ~/aura-michaell-massage/tools/generate_gallery_manifest.py
+python3 ~/aura-michaell-massage/tools/stamp_assets.py
 ```
-
-Skript doplní ke každému odkazu na vlastní `.css` a `.js` značku `?v=<hash>`
-spočítanou z obsahu souboru. Bez toho si návštěvníci i vy načtete novou HTML
-stránku se starým skriptem — stránka pak vypadá nově, ale nefunguje.
 
 Pro sjednocení inline komentářů v CSS použijte:
 
