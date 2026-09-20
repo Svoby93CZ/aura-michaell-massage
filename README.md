@@ -10,12 +10,18 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 ├── about.html              # O salonu
 ├── ceremonie.html          # Ceremoniální a rituální služby
 ├── obchod.html             # Obchod / doplňkové nabídky
-├── msginfo.html            # Přehled služeb a ceníky
+├── msginfo.html            # Přehled služeb a ceníky (načítá se z databáze)
 ├── privacy-policy.html     # Ochrana osobních údajů (GDPR)
+├── admin.html              # Administrace: ceník + kniha návštěv
+├── supabase-guestbook.sql  # Schéma knihy návštěv pro Supabase
+├── supabase-services.sql   # Schéma ceníku pro Supabase
+├── supabase-services-seed.sql # Prvotní naplnění ceníku (31 masáží)
 ├── style.css               # Hlavní CSS styly
 ├── JS/                     # JavaScript funkcionalita
 │   ├── 3D_hover.js         # 3D efekty navigace a prvků
-│   ├── admin.js             # Administrace knihy návštěv
+│   ├── admin.js             # Administrace: přihlášení, záložky, kniha návštěv
+│   ├── admin-services.js    # Administrace: správa ceníku masáží
+│   ├── gallery-manifest.js  # Seznam obrázků masáží (generovaný)
 │   ├── card-3d.js           # 3D karta / vizuální efekty
 │   ├── ceremony-carousel.js # Karusel ceremonií
 │   ├── guestbook.js         # Veřejná kniha návštěv
@@ -28,6 +34,8 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 │   └── Poukazy/            # Dárkové poukazy
 └── tools/                  # Nástroje pro údržbu kódu
     ├── _audit-unused-css.ps1
+    ├── extract_services.py           # Vytáhne ceník z msginfo.html do SQL
+    ├── generate_gallery_manifest.py  # Obnoví seznam obrázků masáží
     └── inline_section_comments.py
 ```
 
@@ -39,7 +47,54 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 - Galerie a vizuální doplňky včetně 3D efektů
 - Stránku zásad ochrany osobních údajů
 - Moderovanou Knihu návštěv napojenou na Supabase
+- Ceník masáží editovatelný z administrace (admin.html)
 - Statický web bez front-end závislostí
+
+## 🔐 Administrace (admin.html)
+
+Přihlášení jménem a heslem přes Supabase Auth. Stránka má dvě záložky:
+**Ceník** (přidání, úprava a mazání masáží včetně cen a obrázků) a
+**Kniha návštěv** (schvalování a mazání vzkazů).
+
+### První nastavení
+
+1. V Supabase SQL Editoru spusťte `supabase-services.sql` a poté
+   `supabase-services-seed.sql`.
+2. V Supabase → Authentication → Users nastavte účtu správce heslo.
+3. V Supabase → Authentication → Sign In / Providers **vypněte registraci
+   nových uživatelů** („Allow new users to sign up"). Bez toho si může
+   kdokoli s veřejným klíčem založit účet.
+4. Tamtéž doporučujeme zapnout **Leaked password protection** a minimální
+   délku hesla 12 znaků.
+5. Krátké přihlašovací jméno se nastavuje v `JS/supabase-config.js`
+   v sekci `adminLoginAliases` (překládá se na e-mail účtu).
+
+Oprávnění správce se řídí tabulkou `guestbook_admins` — samotné přihlášení
+nestačí, účet musí mít v této tabulce řádek. Přístup k datům hlídá RLS
+přímo v databázi, přihlašovací formulář je jen pohodlí.
+
+### Ceník a jeho záloha
+
+Ceník se na `msginfo.html` načítá z tabulky `services`, takže změny
+v administraci jsou na webu vidět okamžitě. Statické karty přímo
+v `msginfo.html` zůstávají jako **záloha** pro případ, že by databáze
+nebo JavaScript neodpověděly.
+
+Tato záloha se sama neaktualizuje — po větších změnách ceníku ji nechte
+přegenerovat, jinak by při výpadku ukázala staré ceny.
+
+### Obrázky masáží
+
+Obrázky se vybírají ze složky `galerie/masaze/`. Po přidání nového souboru
+je potřeba obnovit jejich seznam:
+
+```bash
+python3 tools/generate_gallery_manifest.py
+```
+
+Kategorie ceníku (Klasické, Sportovní, …) a texty Indikace/Kontraindikace
+se stále upravují ručně v `msginfo.html`; seznam kategorií je navíc
+v `JS/supabase-config.js`.
 
 Pro sjednocení inline komentářů v CSS použijte:
 
@@ -60,4 +115,4 @@ python tools/inline_section_comments.py
 
 ---
 
-**Poslední aktualizace:** 10.09.2026
+**Poslední aktualizace:** 20.09.2026

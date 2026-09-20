@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow" />
@@ -11,43 +22,225 @@
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <title>Správa knihy návštěv | Aura Michaell Massage</title>
+  <title>Administrace | Aura Michaell Massage</title>
+  <link rel="icon" href="galerie/logo.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="guestbook-admin-page">
-  <main class="guestbook-admin" data-admin-app>
-    <a class="admin-back-link" href="index.html">← Zpět na web</a>
-    <p class="guestbook-label">Aura Michaell Massage</p>
-    <h1>Správa knihy návštěv</h1>
+<body class="admin-page">
+  <div class="admin-shell" data-admin-app>
 
-    <section class="admin-login-panel" data-admin-login-panel>
-      <h2>Přihlášení správce</h2>
-      <p>Přihlašovací odkaz přijde na e-mail správce.</p>
-      <form data-admin-login-form>
-        <label for="admin-email">E-mail správce</label>
-        <input id="admin-email" type="email" name="email" required autocomplete="email">
-        <button class="admin-action" type="submit">Poslat přihlašovací odkaz</button>
-      </form>
-    </section>
+    <!-- ============ Přihlášení ============ -->
+    <section class="admin-login" data-admin-login-panel>
+      <div class="admin-login__card">
+        <p class="admin-login__label">Aura Michaell Massage</p>
+        <h1>Administrace</h1>
+        <p class="admin-login__lead">Přihlaste se svým jménem nebo e-mailem a heslem.</p>
 
-    <section class="admin-dashboard" data-admin-dashboard hidden>
-      <div class="admin-dashboard__header">
-        <div>
-          <h2>Čekající vzkazy</h2>
-          <p data-admin-user></p>
-        </div>
-        <button class="admin-action admin-action--secondary" type="button" data-admin-logout>Odhlásit</button>
+        <form class="admin-login__form" data-admin-login-form>
+          <div class="admin-field">
+            <label for="admin-login">Přihlašovací jméno nebo e-mail</label>
+            <input id="admin-login" type="text" name="login" required autocomplete="username" autocapitalize="none" spellcheck="false">
+          </div>
+
+          <div class="admin-field">
+            <label for="admin-password">Heslo</label>
+            <div class="admin-password">
+              <input id="admin-password" type="password" name="password" required autocomplete="current-password">
+              <button class="admin-password__toggle" type="button" data-password-toggle aria-label="Zobrazit heslo" aria-pressed="false">Zobrazit</button>
+            </div>
+          </div>
+
+          <button class="admin-action admin-action--block" type="submit">Přihlásit se</button>
+        </form>
+
+        <p class="admin-status" data-admin-login-status role="status" aria-live="polite"></p>
+        <a class="admin-login__back" href="index.html">← Zpět na web</a>
       </div>
-      <p class="admin-status" data-admin-status role="status" aria-live="polite"></p>
-      <div class="admin-entry-list" data-admin-entry-list></div>
     </section>
-  </main>
+
+    <!-- ============ Administrace ============ -->
+    <div class="admin-layout" data-admin-dashboard hidden>
+
+      <header class="admin-topbar">
+        <div class="admin-topbar__brand">
+          <span class="admin-topbar__label">Aura Michaell Massage</span>
+          <strong>Administrace</strong>
+        </div>
+        <div class="admin-topbar__tools">
+          <button class="admin-icon-button" type="button" data-theme-toggle aria-label="Přepnout noční režim" title="Přepnout noční režim">
+            <span data-theme-toggle-icon aria-hidden="true">🌙</span>
+          </button>
+          <a class="admin-icon-button" href="index.html" title="Zpět na web" aria-label="Zpět na web">↩</a>
+          <span class="admin-topbar__user" data-admin-user></span>
+          <button class="admin-action admin-action--secondary" type="button" data-admin-logout>Odhlásit</button>
+        </div>
+      </header>
+
+      <!-- Interaktivní navigační panel -->
+      <nav class="admin-tabs" aria-label="Sekce administrace">
+        <button class="admin-tab is-active" type="button" data-admin-tab="cenik" aria-selected="true" aria-controls="panel-cenik" role="tab">
+          <span class="admin-tab__icon" aria-hidden="true">💆</span>
+          <span class="admin-tab__text">
+            <strong>Ceník</strong>
+            <small data-services-tab-count>Masáže a ceny</small>
+          </span>
+        </button>
+        <button class="admin-tab" type="button" data-admin-tab="kniha" aria-selected="false" aria-controls="panel-kniha" role="tab">
+          <span class="admin-tab__icon" aria-hidden="true">✍️</span>
+          <span class="admin-tab__text">
+            <strong>Kniha návštěv</strong>
+            <small data-entries-tab-count>Vzkazy návštěvníků</small>
+          </span>
+        </button>
+      </nav>
+
+      <!-- ---------- Panel: Ceník ---------- -->
+      <section class="admin-panel is-active" id="panel-cenik" role="tabpanel" data-admin-panel="cenik">
+        <div class="admin-panel__header">
+          <div>
+            <h2>Ceník masáží</h2>
+            <p>Změny se na webu projeví okamžitě po uložení.</p>
+          </div>
+          <button class="admin-action" type="button" data-service-new>+ Přidat masáž</button>
+        </div>
+
+        <div class="admin-toolbar">
+          <div class="admin-field admin-field--inline">
+            <label for="service-filter-category">Kategorie</label>
+            <select id="service-filter-category" data-service-filter-category>
+              <option value="all">Všechny kategorie</option>
+            </select>
+          </div>
+          <div class="admin-field admin-field--inline admin-field--grow">
+            <label for="service-search">Hledat</label>
+            <input id="service-search" type="search" data-service-search placeholder="Název masáže…">
+          </div>
+        </div>
+
+        <p class="admin-status" data-services-status role="status" aria-live="polite"></p>
+        <div class="admin-service-list" data-service-list></div>
+      </section>
+
+      <!-- ---------- Panel: Kniha návštěv ---------- -->
+      <section class="admin-panel" id="panel-kniha" role="tabpanel" data-admin-panel="kniha" hidden>
+        <div class="admin-panel__header">
+          <div>
+            <h2>Kniha návštěv</h2>
+            <p>Schvalujte nebo mažte vzkazy od návštěvníků.</p>
+          </div>
+        </div>
+
+        <div class="admin-toolbar">
+          <div class="admin-segmented" role="group" aria-label="Filtr vzkazů">
+            <button class="admin-segmented__item is-active" type="button" data-entry-filter="pending">Čekající</button>
+            <button class="admin-segmented__item" type="button" data-entry-filter="approved">Schválené</button>
+            <button class="admin-segmented__item" type="button" data-entry-filter="all">Vše</button>
+          </div>
+        </div>
+
+        <p class="admin-status" data-admin-status role="status" aria-live="polite"></p>
+        <div class="admin-entry-list" data-admin-entry-list></div>
+      </section>
+    </div>
+
+    <!-- ============ Editor masáže ============ -->
+    <div class="admin-modal" data-service-modal hidden>
+      <div class="admin-modal__backdrop" data-service-modal-close></div>
+      <div class="admin-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="service-modal-title">
+        <header class="admin-modal__header">
+          <h3 id="service-modal-title">Nová masáž</h3>
+          <button class="admin-icon-button" type="button" data-service-modal-close aria-label="Zavřít">✕</button>
+        </header>
+
+        <form class="admin-form" data-service-form>
+          <div class="admin-form__grid">
+            <div class="admin-field">
+              <label for="service-name">Název masáže *</label>
+              <input id="service-name" name="name" type="text" required maxlength="120">
+            </div>
+
+            <div class="admin-field">
+              <label for="service-category">Kategorie *</label>
+              <select id="service-category" name="category" required></select>
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="service-description">Popis</label>
+              <textarea id="service-description" name="description" rows="3" maxlength="400"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <label for="service-duration">Délka (minuty) *</label>
+              <input id="service-duration" name="duration_minutes" type="number" min="1" max="600" step="1" required>
+            </div>
+
+            <div class="admin-field">
+              <label for="service-price">Cena (Kč) *</label>
+              <input id="service-price" name="price_czk" type="number" min="0" max="100000" step="1" required>
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="service-image">Obrázek</label>
+              <select id="service-image" name="image_path" data-service-image-select></select>
+              <p class="admin-field__hint">Obrázky se berou ze složky <code>galerie/masaze/</code>. Nový obrázek tam nahrajte přes GitHub a spusťte <code>tools/generate_gallery_manifest.py</code>.</p>
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="service-image-alt">Popis obrázku (alt text)</label>
+              <input id="service-image-alt" name="image_alt" type="text" maxlength="160">
+            </div>
+
+            <div class="admin-field admin-field--preview">
+              <span class="admin-field__label">Náhled</span>
+              <img class="admin-image-preview" data-service-image-preview alt="" hidden>
+              <p class="admin-image-preview__empty" data-service-image-empty>Bez obrázku</p>
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="service-reservio">Odkaz na rezervaci</label>
+              <input id="service-reservio" name="reservio_url" type="url" placeholder="https://aura-michaell-massage.reservio.com/services/…">
+            </div>
+
+            <div class="admin-field">
+              <label for="service-badge">Štítek na kartě</label>
+              <input id="service-badge" name="badge_text" type="text" maxlength="40" placeholder="např. Doporučujeme">
+            </div>
+
+            <div class="admin-field">
+              <label for="service-order">Pořadí v kategorii</label>
+              <input id="service-order" name="sort_order" type="number" step="1" value="0">
+            </div>
+
+            <div class="admin-field admin-field--full admin-field--checks">
+              <label class="admin-check">
+                <input type="checkbox" name="recommended" value="1">
+                <span>Zvýraznit jako doporučenou</span>
+              </label>
+              <label class="admin-check">
+                <input type="checkbox" name="active" value="1" checked>
+                <span>Zobrazovat na webu</span>
+              </label>
+            </div>
+          </div>
+
+          <p class="admin-status" data-service-form-status role="status" aria-live="polite"></p>
+
+          <footer class="admin-modal__footer">
+            <button class="admin-action admin-action--secondary" type="button" data-service-modal-close>Zrušit</button>
+            <button class="admin-action" type="submit" data-service-submit>Uložit</button>
+          </footer>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="JS/supabase-config.js"></script>
+  <script src="JS/gallery-manifest.js"></script>
   <script src="JS/admin.js"></script>
+  <script src="JS/admin-services.js"></script>
 </body>
 </html>

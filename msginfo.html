@@ -100,11 +100,17 @@
   <main class="svc2">
     <!-- =====================================================
          EDITORSKÉ ZNAČKY
-         1) HERO TEXTY: upravujte v sekci .svc2-hero
-         2) TEXTY KATEGORIÍ: .svc2-group__header + .svc2-card__body p
-         3) CENY A DÉLKY: .svc2-meta (1. span = minuty, 2. span = cena)
-         4) REZERVAČNÍ ODKAZY: tlačítko "Rezervovat" (atribut href)
-         5) FILTROVATELNOST: data-category, data-duration, data-name
+
+         POZOR: jednotlivé masáže (názvy, ceny, délky, obrázky,
+         rezervační odkazy) se NEUPRAVUJÍ tady, ale v administraci
+         na admin.html v záložce "Ceník". Karty níže jsou jen
+         záloha pro případ, že by databáze nebo JS neodpověděly.
+
+         Tady se pořád ručně upravuje:
+         1) HERO TEXTY: sekce .svc2-hero
+         2) NÁZVY A POPISY KATEGORIÍ: .svc2-group__header
+         3) INDIKACE A KONTRAINDIKACE: <details class="svc2-info">
+         4) SEZNAM KATEGORIÍ: .svc2-chip-row (+ JS/supabase-config.js)
          ===================================================== -->
 
     <!-- Hlavní nadpis -->
@@ -130,7 +136,7 @@
 
       <!-- Rychlé přepínání kategorií pomocí chip tlačítek -->
       <div class="svc2-chip-row" role="toolbar" aria-label="Filtr podle kategorie">
-        <button class="svc2-chip is-active" type="button" data-category-filter="klasicke" aria-pressed="false">Klasické</button>
+        <button class="svc2-chip is-active" type="button" data-category-filter="klasicke" aria-pressed="true">Klasické</button>
         <button class="svc2-chip" type="button" data-category-filter="sportovni" aria-pressed="false">Sportovní</button>
         <button class="svc2-chip" type="button" data-category-filter="zabaly" aria-pressed="false">Zábaly</button>
         <button class="svc2-chip" type="button" data-category-filter="scratch" aria-pressed="false">Scratch Therapy</button>
@@ -655,6 +661,10 @@
   <!-- Sdílený JavaScript pro navigaci, filtry a interakce -->
   <script src="JS/main.js" defer></script>
   <script src="JS/3D_hover.js" defer></script>
+  <!-- Ceník se načítá z databáze, aby šel spravovat z admin.html.
+       Statické karty výše zůstávají jako záloha bez JS. -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="JS/supabase-config.js" defer></script>
   <script src="JS/katalog.js" defer></script>
   <script src="JS/cookie-consent.js" defer></script>
 </body>
