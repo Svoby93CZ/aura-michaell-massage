@@ -35,6 +35,7 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 └── tools/                  # Nástroje pro údržbu kódu
     ├── _audit-unused-css.ps1
     ├── extract_services.py           # Vytáhne ceník z msginfo.html do SQL
+    ├── stamp_assets.py               # Verzování CSS a JS proti staré cache
     ├── generate_gallery_manifest.py  # Obnoví seznam obrázků masáží
     └── inline_section_comments.py
 ```
@@ -102,6 +103,19 @@ python3 tools/generate_gallery_manifest.py
 Kategorie ceníku (Klasické, Sportovní, …) a texty Indikace/Kontraindikace
 se stále upravují ručně v `msginfo.html`; seznam kategorií je navíc
 v `JS/supabase-config.js`.
+
+## 🚀 Před nasazením
+
+`.htaccess` nechává prohlížeč držet si CSS a JS až měsíc. Po změně těchto
+souborů proto spusťte:
+
+```bash
+python3 tools/stamp_assets.py
+```
+
+Skript doplní ke každému odkazu na vlastní `.css` a `.js` značku `?v=<hash>`
+spočítanou z obsahu souboru. Bez toho si návštěvníci i vy načtete novou HTML
+stránku se starým skriptem — stránka pak vypadá nově, ale nefunguje.
 
 Pro sjednocení inline komentářů v CSS použijte:
 
