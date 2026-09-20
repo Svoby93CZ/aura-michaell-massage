@@ -74,8 +74,13 @@ na copyright v patičce** kterékoli stránky webu.
 3. V Supabase → Authentication → Sign In / Providers **vypněte registraci
    nových uživatelů** („Allow new users to sign up"). Bez toho si může
    kdokoli s veřejným klíčem založit účet.
-4. Tamtéž doporučujeme zapnout **Leaked password protection** a minimální
-   délku hesla 12 znaků.
+4. Tamtéž nastavte **minimální délku hesla** na 12 znaků.
+
+   Supabase umí odmítat hesla z úniků dat, ale až od placeného tarifu.
+   Na bezplatném tarifu to za něj dělá administrace sama: před uložením
+   porovná heslo s veřejnou databází HaveIBeenPwned. Samotné heslo přitom
+   prohlížeč neposílá — odejde jen prvních pět znaků jeho SHA-1 otisku
+   a shoda se hledá až v prohlížeči.
 5. Krátké přihlašovací jméno se nastavuje v `JS/supabase-config.js`
    v sekci `adminLoginAliases` (překládá se na e-mail účtu).
 

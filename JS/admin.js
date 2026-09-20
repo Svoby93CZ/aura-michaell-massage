@@ -409,6 +409,48 @@
     newPasswordToggle.setAttribute('aria-label', show ? 'Skrýt heslo' : 'Zobrazit heslo');
   });
 
+  /* Kontrola proti uniklým heslům.
+
+     Supabase tohle umí sám, ale až od placeného tarifu. Děláme proto totéž
+     přímo tady - přes stejné veřejné API HaveIBeenPwned, které používá i on.
+
+     Heslo se nikam neposílá: spočítá se z něj SHA-1 otisk a odejde jen jeho
+     prvních pět znaků. Server vrátí všechny otisky s tímto začátkem (jsou
+     jich tisíce) a shoda se hledá až v prohlížeči. Z odeslaného útržku tak
+     nejde poznat, o které heslo šlo.
+
+     Když API neodpoví, změnu hesla nezablokujeme - je to pomoc, ne ochrana
+     přístupu. Tou zůstává samotné heslo a pravidla v databázi. */
+  const pocetUniku = async (password) => {
+    if (!window.crypto || !window.crypto.subtle) {
+      return null;
+    }
+
+    const bajty = new TextEncoder().encode(password);
+    const otisk = await window.crypto.subtle.digest('SHA-1', bajty);
+    const hex = Array.from(new Uint8Array(otisk))
+      .map((b) => b.toString(16).padStart(2, '0'))
+      .join('')
+      .toUpperCase();
+
+    const zacatek = hex.slice(0, 5);
+    const zbytek = hex.slice(5);
+
+    const odpoved = await fetch(`https://api.pwnedpasswords.com/range/${zacatek}`);
+    if (!odpoved.ok) {
+      throw new Error(`HaveIBeenPwned odpovědělo ${odpoved.status}`);
+    }
+
+    const radky = (await odpoved.text()).split('\n');
+    for (const radek of radky) {
+      const [pripona, pocet] = radek.trim().split(':');
+      if (pripona === zbytek) {
+        return Number(pocet) || 0;
+      }
+    }
+    return 0;
+  };
+
   passwordForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const password = passwordForm.elements.password.value;
@@ -421,6 +463,28 @@
     }
 
     submitButton.disabled = true;
+    setStatus(passwordStatus, 'Ověřuji heslo…');
+
+    let kontrolaProbehla = true;
+    try {
+      const uniky = await pocetUniku(password);
+      if (uniky === null) {
+        kontrolaProbehla = false;
+      } else if (uniky) {
+        const kolikrat = new Intl.NumberFormat('cs-CZ').format(uniky);
+        setStatus(
+          passwordStatus,
+          `Tohle heslo se objevilo v únicích dat (${kolikrat}×). Zvolte prosím jiné.`,
+          'error'
+        );
+        submitButton.disabled = false;
+        return;
+      }
+    } catch (error) {
+      // Kontrola je pomoc, ne ochrana přístupu - výpadek změnu hesla nezastaví.
+      kontrolaProbehla = false;
+    }
+
     setStatus(passwordStatus, 'Ukládám nové heslo…');
 
     try {
@@ -430,7 +494,13 @@
         return;
       }
       passwordForm.reset();
-      setStatus(passwordStatus, 'Heslo bylo změněno. Příště se jím přihlásíte.', 'success');
+      setStatus(
+        passwordStatus,
+        kontrolaProbehla
+          ? 'Heslo bylo změněno. Příště se jím přihlásíte.'
+          : 'Heslo bylo změněno, ale kontrolu uniklých hesel se nepodařilo provést.',
+        'success'
+      );
     } catch (error) {
       setStatus(passwordStatus, 'Heslo se nepodařilo změnit. Zkuste to prosím znovu.', 'error');
     } finally {
