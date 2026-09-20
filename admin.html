@@ -27,13 +27,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9037e61e">
+  <link rel="stylesheet" href="style.css?v=a99c1265">
 </head>
-<body class="admin-page">
+<!-- Třídu admin-page--login odebere JS po přihlášení. Je tu rovnou od začátku,
+     aby papírové pozadí neproblikávalo a drželo i bez načteného JS. -->
+<body class="admin-page admin-page--login">
   <div class="admin-shell" data-admin-app>
 
     <!-- ============ Přihlášení ============ -->
     <section class="admin-login" data-admin-login-panel>
+      <div class="hero-logo-draw admin-login__logo" aria-hidden="true"></div>
       <div class="admin-login__card">
         <p class="admin-login__label">Aura Michaell Massage</p>
         <h1>Administrace</h1>
@@ -342,10 +345,11 @@
     </div>
   </div>
 
+  <script src="JS/logo-draw.js?v=61a20900" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="JS/supabase-config.js?v=db044412"></script>
   <script src="JS/gallery-manifest.js?v=81a5b478"></script>
-  <script src="JS/admin.js?v=bc9adab7"></script>
+  <script src="JS/admin.js?v=f809b1d8"></script>
   <script src="JS/admin-services.js?v=ad33c9b5"></script>
   <script src="JS/admin-gallery.js?v=711c1ee7"></script>
 </body>

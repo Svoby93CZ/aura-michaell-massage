@@ -2518,7 +2518,22 @@ header {
 
 /* --- Prihlaseni ------------------------------------------------------ */
 
+/* Přihlašovací obrazovka stojí na staré papírové textuře. Ztmavení
+   překryvem drží papír teplý - filtr brightness by ho vybělil do šeda. */
+.admin-page--login {
+  background:
+    linear-gradient(rgba(26, 14, 6, .25), rgba(26, 14, 6, .25)),
+    url("galerie/papir.webp") center / cover no-repeat fixed;
+}
+
+:root[data-theme="dark"] .admin-page--login {
+  background:
+    linear-gradient(rgba(12, 6, 3, .72), rgba(12, 6, 3, .72)),
+    url("galerie/papir.webp") center / cover no-repeat fixed;
+}
+
 .admin-login {
+  position: relative;
   display: grid;
   place-items: center;
   min-height: 100vh;
@@ -2527,6 +2542,22 @@ header {
 
 /* display: grid vyse by jinak prebilo atribut hidden z prohlizece. */
 .admin-login[hidden] { display: none; }
+
+/* Kreslící logo se obtahuje za kartou jako vodoznak na papíře. */
+.admin-login__logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(112%, 720px);
+  z-index: 0;
+  opacity: .28;
+  pointer-events: none;
+}
+
+.admin-login__logo .hero-logo-draw__svg path { stroke: var(--admin-login-cold); }
+
+:root[data-theme="dark"] .admin-login__logo { opacity: .34; }
 
 /* Rámeček přihlašovací karty pomalu obíhá světlo.
    Úhel je registrovaná vlastnost, aby ho šlo animovat - bez @property
@@ -2539,50 +2570,65 @@ header {
 
 .admin-login__card {
   --admin-login-angle: 0deg;
+  /* Kontrast k teplému papíru: studená noční modř, do ní teplé zlato.
+     Odkazuje to na slunce a měsíc v logu i na denní a noční režim webu. */
+  --admin-login-cold: #1d3f6b;
+  --admin-login-warm: #e8ae4c;
+  --admin-login-base: #6d5a44;
 
+  /* Bez z-indexu záměrně: karta nesmí vytvořit vrstvící kontext, jinak by
+     se záře z ::after (z-index -1) kreslila přes její vlastní pozadí. */
   position: relative;
   width: min(440px, 100%);
   padding: clamp(26px, 5vw, 40px);
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   border-radius: var(--radius-lg);
   /* Výplň se kreslí po okraj obsahu, gradient jen do rámečku. */
   background:
     linear-gradient(var(--surface), var(--surface)) padding-box,
     conic-gradient(
       from var(--admin-login-angle),
-      var(--line) 0deg,
-      var(--accent) 55deg,
-      var(--gold) 90deg,
-      var(--accent) 125deg,
-      var(--line) 200deg,
-      var(--line) 360deg
+      var(--admin-login-base) 0deg,
+      var(--admin-login-cold) 35deg,
+      var(--admin-login-warm) 95deg,
+      var(--admin-login-cold) 155deg,
+      var(--admin-login-base) 215deg,
+      var(--admin-login-base) 360deg
     ) border-box;
   box-shadow: var(--shadow-lg);
   text-align: center;
   animation: admin-login-glow 7s linear infinite;
 }
 
+:root[data-theme="dark"] .admin-login__card {
+  --admin-login-cold: #4f86c6;
+  --admin-login-warm: #f5c674;
+  --admin-login-base: #4a3524;
+}
+
 @keyframes admin-login-glow {
   to { --admin-login-angle: 360deg; }
 }
 
-/* Jemná záře pod kartou, aby efekt nepůsobil jen jako čára. */
+/* Záře pod kartou, aby efekt nepůsobil jen jako tenká čára. */
 .admin-login__card::after {
   content: "";
   position: absolute;
-  inset: -1px;
+  /* Záře musí přesahovat kartu, jinak se rozmazání schová pod ní. */
+  inset: -16px;
   z-index: -1;
-  border-radius: inherit;
+  border-radius: calc(var(--radius-lg) + 16px);
   background: conic-gradient(
     from var(--admin-login-angle),
     transparent 0deg,
-    var(--accent) 70deg,
-    var(--gold) 120deg,
-    transparent 210deg,
+    var(--admin-login-cold) 35deg,
+    var(--admin-login-warm) 95deg,
+    var(--admin-login-cold) 155deg,
+    transparent 225deg,
     transparent 360deg
   );
-  filter: blur(16px);
-  opacity: .5;
+  filter: blur(26px);
+  opacity: .85;
 }
 
 @media (prefers-reduced-motion: reduce) {

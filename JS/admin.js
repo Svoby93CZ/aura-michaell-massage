@@ -265,15 +265,20 @@
      Přihlášení jménem/e-mailem a heslem
      --------------------------------------------------------------- */
 
+  // Papírové pozadí patří jen přihlašovací obrazovce, proto se přepíná
+  // třídou na body - kdyby leželo na samotné sekci, překrylo by záři,
+  // která se kolem karty kreslí pseudoelementem pod ní.
   const showLogin = () => {
     loginPanel.hidden = false;
     dashboard.hidden = true;
+    document.body.classList.add('admin-page--login');
   };
 
   const showDashboard = (user) => {
     loginPanel.hidden = true;
     dashboard.hidden = false;
     userLabel.textContent = user.email || '';
+    document.body.classList.remove('admin-page--login');
   };
 
   // Krátké přihlašovací jméno přeložíme na e-mail účtu v Supabase.
