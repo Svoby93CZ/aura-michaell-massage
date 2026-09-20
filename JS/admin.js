@@ -358,6 +358,81 @@
     }
   });
 
+  /* ---------------------------------------------------------------
+     Změna hesla
+
+     Přihlásit se jde i odkazem „Reset password“ ze Supabase, který
+     ale heslo nemění - jen pustí dovnitř. Tady si ho správce nastaví.
+     --------------------------------------------------------------- */
+
+  const passwordModal = app.querySelector('[data-password-modal]');
+  const passwordForm = app.querySelector('[data-password-form]');
+  const passwordStatus = app.querySelector('[data-password-status]');
+  const passwordChangeButton = app.querySelector('[data-password-change]');
+
+  const closePasswordModal = () => {
+    passwordModal.hidden = true;
+    passwordForm.reset();
+    setStatus(passwordStatus, '');
+    document.body.classList.remove('admin-modal-open');
+  };
+
+  passwordChangeButton.addEventListener('click', () => {
+    setStatus(passwordStatus, '');
+    passwordModal.hidden = false;
+    document.body.classList.add('admin-modal-open');
+    passwordForm.elements.password.focus();
+  });
+
+  app.querySelectorAll('[data-password-modal-close]').forEach((button) => {
+    button.addEventListener('click', closePasswordModal);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !passwordModal.hidden) {
+      closePasswordModal();
+    }
+  });
+
+  const newPasswordToggle = app.querySelector('[data-new-password-toggle]');
+  const newPasswordInput = app.querySelector('#new-password');
+  newPasswordToggle.addEventListener('click', () => {
+    const show = newPasswordInput.type === 'password';
+    newPasswordInput.type = show ? 'text' : 'password';
+    newPasswordToggle.textContent = show ? 'Skrýt' : 'Zobrazit';
+    newPasswordToggle.setAttribute('aria-pressed', show ? 'true' : 'false');
+    newPasswordToggle.setAttribute('aria-label', show ? 'Skrýt heslo' : 'Zobrazit heslo');
+  });
+
+  passwordForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const password = passwordForm.elements.password.value;
+    const passwordAgain = passwordForm.elements.passwordAgain.value;
+    const submitButton = passwordForm.querySelector('[data-password-submit]');
+
+    if (password !== passwordAgain) {
+      setStatus(passwordStatus, 'Hesla se neshodují.', 'error');
+      return;
+    }
+
+    submitButton.disabled = true;
+    setStatus(passwordStatus, 'Ukládám nové heslo…');
+
+    try {
+      const { error } = await client.auth.updateUser({ password });
+      if (error) {
+        setStatus(passwordStatus, `Heslo se nepodařilo změnit: ${error.message}`, 'error');
+        return;
+      }
+      passwordForm.reset();
+      setStatus(passwordStatus, 'Heslo bylo změněno. Příště se jím přihlásíte.', 'success');
+    } catch (error) {
+      setStatus(passwordStatus, 'Heslo se nepodařilo změnit. Zkuste to prosím znovu.', 'error');
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+
   app.querySelector('[data-admin-logout]').addEventListener('click', async () => {
     await client.auth.signOut();
     adminReady = false;

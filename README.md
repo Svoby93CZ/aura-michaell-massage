@@ -60,7 +60,9 @@ Přihlášení jménem a heslem přes Supabase Auth. Stránka má dvě záložky
 
 1. V Supabase SQL Editoru spusťte `supabase-services.sql` a poté
    `supabase-services-seed.sql`.
-2. V Supabase → Authentication → Users nastavte účtu správce heslo.
+2. Nastavte účtu správce heslo. Buď v Supabase → Authentication → Users,
+   nebo se přihlaste odkazem „Reset password" z e-mailu a heslo si zadejte
+   v administraci tlačítkem **Změnit heslo** v horní liště.
 3. V Supabase → Authentication → Sign In / Providers **vypněte registraci
    nových uživatelů** („Allow new users to sign up"). Bez toho si může
    kdokoli s veřejným klíčem založit účet.
@@ -68,6 +70,11 @@ Přihlášení jménem a heslem přes Supabase Auth. Stránka má dvě záložky
    délku hesla 12 znaků.
 5. Krátké přihlašovací jméno se nastavuje v `JS/supabase-config.js`
    v sekci `adminLoginAliases` (překládá se na e-mail účtu).
+
+Pozor: odkaz „Reset password" ze Supabase sám o sobě přihlašuje, ale heslo
+**nemění** — nové heslo je potřeba zadat. Proto má administrace v horní liště
+tlačítko **Změnit heslo**. Odkaz z toho e-mailu má stejnou moc jako heslo,
+takže ho nikomu nepřeposílejte.
 
 Oprávnění správce se řídí tabulkou `guestbook_admins` — samotné přihlášení
 nestačí, účet musí mít v této tabulce řádek. Přístup k datům hlídá RLS
