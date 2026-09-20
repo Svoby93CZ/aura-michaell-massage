@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=a99c1265">
+  <link rel="stylesheet" href="style.css?v=72a0a422">
 </head>
 <!-- Třídu admin-page--login odebere JS po přihlášení. Je tu rovnou od začátku,
      aby papírové pozadí neproblikávalo a drželo i bez načteného JS. -->
@@ -36,8 +36,14 @@
 
     <!-- ============ Přihlášení ============ -->
     <section class="admin-login" data-admin-login-panel>
-      <div class="hero-logo-draw admin-login__logo" aria-hidden="true"></div>
       <div class="admin-login__card">
+        <!-- Kreslící logo jako vodoznak uvnitř rámečku. Obsah karty je
+             v samostatné vrstvě, jinak by ho vodoznak překryl. -->
+        <div class="admin-login__watermark" aria-hidden="true">
+          <div class="hero-logo-draw admin-login__logo"></div>
+        </div>
+
+        <div class="admin-login__content">
         <p class="admin-login__label">Aura Michaell Massage</p>
         <h1>Administrace</h1>
         <p class="admin-login__lead">Přihlaste se svým jménem nebo e-mailem a heslem.</p>
@@ -61,6 +67,7 @@
 
         <p class="admin-status" data-admin-login-status role="status" aria-live="polite"></p>
         <a class="admin-login__back" href="index.html">← Zpět na web</a>
+        </div>
       </div>
     </section>
 
