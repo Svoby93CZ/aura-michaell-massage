@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=63544933">
+  <link rel="stylesheet" href="style.css?v=9037e61e">
 </head>
 <body class="admin-page">
   <div class="admin-shell" data-admin-app>
@@ -89,6 +89,13 @@
             <small data-services-tab-count>Masáže a ceny</small>
           </span>
         </button>
+        <button class="admin-tab" type="button" data-admin-tab="galerie" aria-selected="false" aria-controls="panel-galerie" role="tab">
+          <span class="admin-tab__icon" aria-hidden="true">🖼️</span>
+          <span class="admin-tab__text">
+            <strong>Galerie</strong>
+            <small data-gallery-tab-count>Fotky salonu</small>
+          </span>
+        </button>
         <button class="admin-tab" type="button" data-admin-tab="kniha" aria-selected="false" aria-controls="panel-kniha" role="tab">
           <span class="admin-tab__icon" aria-hidden="true">✍️</span>
           <span class="admin-tab__text">
@@ -125,6 +132,25 @@
         <div class="admin-service-list" data-service-list></div>
       </section>
 
+      <!-- ---------- Panel: Galerie ---------- -->
+      <section class="admin-panel" id="panel-galerie" role="tabpanel" data-admin-panel="galerie" hidden>
+        <div class="admin-panel__header">
+          <div>
+            <h2>Galerie salonu</h2>
+            <p>Fotky v sekci „Prostor a atmosféra salonu“ na hlavní stránce.</p>
+          </div>
+          <button class="admin-action" type="button" data-gallery-new>+ Přidat fotku</button>
+        </div>
+
+        <p class="admin-field__hint">
+          Fotky se berou ze složky <code>galerie/</code>. Novou tam nahrajte přes GitHub
+          a spusťte <code>tools/generate_gallery_manifest.py</code>.
+        </p>
+
+        <p class="admin-status" data-gallery-status role="status" aria-live="polite"></p>
+        <div class="admin-gallery-list" data-gallery-list></div>
+      </section>
+
       <!-- ---------- Panel: Kniha návštěv ---------- -->
       <section class="admin-panel" id="panel-kniha" role="tabpanel" data-admin-panel="kniha" hidden>
         <div class="admin-panel__header">
@@ -145,6 +171,47 @@
         <p class="admin-status" data-admin-status role="status" aria-live="polite"></p>
         <div class="admin-entry-list" data-admin-entry-list></div>
       </section>
+    </div>
+
+    <!-- ============ Editor fotky galerie ============ -->
+    <div class="admin-modal" data-gallery-modal hidden>
+      <div class="admin-modal__backdrop" data-gallery-modal-close></div>
+      <div class="admin-modal__dialog admin-modal__dialog--narrow" role="dialog" aria-modal="true" aria-labelledby="gallery-modal-title">
+        <header class="admin-modal__header">
+          <h3 id="gallery-modal-title">Nová fotka</h3>
+          <button class="admin-icon-button" type="button" data-gallery-modal-close aria-label="Zavřít">✕</button>
+        </header>
+
+        <form class="admin-form admin-form--stacked" data-gallery-form>
+          <div class="admin-field">
+            <label for="gallery-image">Obrázek *</label>
+            <select id="gallery-image" name="image_path" required data-gallery-image-select></select>
+          </div>
+
+          <div class="admin-field">
+            <label for="gallery-alt">Popis obrázku (alt text)</label>
+            <input id="gallery-alt" name="alt_text" type="text" maxlength="160" placeholder="Co je na fotce vidět">
+          </div>
+
+          <div class="admin-field admin-field--preview">
+            <span class="admin-field__label">Náhled</span>
+            <img class="admin-image-preview" data-gallery-image-preview alt="" hidden>
+            <p class="admin-image-preview__empty" data-gallery-image-empty>Vyberte obrázek</p>
+          </div>
+
+          <label class="admin-check">
+            <input type="checkbox" name="active" value="1" checked>
+            <span>Zobrazovat na webu</span>
+          </label>
+
+          <p class="admin-status" data-gallery-form-status role="status" aria-live="polite"></p>
+
+          <footer class="admin-modal__footer">
+            <button class="admin-action admin-action--secondary" type="button" data-gallery-modal-close>Zrušit</button>
+            <button class="admin-action" type="submit" data-gallery-submit>Uložit</button>
+          </footer>
+        </form>
+      </div>
     </div>
 
     <!-- ============ Změna hesla ============ -->
@@ -277,8 +344,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="JS/supabase-config.js?v=db044412"></script>
-  <script src="JS/gallery-manifest.js?v=993c1363"></script>
+  <script src="JS/gallery-manifest.js?v=81a5b478"></script>
   <script src="JS/admin.js?v=bc9adab7"></script>
-  <script src="JS/admin-services.js?v=01b79800"></script>
+  <script src="JS/admin-services.js?v=ad33c9b5"></script>
+  <script src="JS/admin-gallery.js?v=711c1ee7"></script>
 </body>
 </html>

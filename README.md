@@ -16,11 +16,13 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 ├── supabase-guestbook.sql  # Schéma knihy návštěv pro Supabase
 ├── supabase-services.sql   # Schéma ceníku pro Supabase
 ├── supabase-services-seed.sql # Prvotní naplnění ceníku (31 masáží)
+├── supabase-gallery.sql    # Schéma galerie salonu pro Supabase
 ├── style.css               # Hlavní CSS styly
 ├── JS/                     # JavaScript funkcionalita
 │   ├── 3D_hover.js         # 3D efekty navigace a prvků
 │   ├── admin.js             # Administrace: přihlášení, záložky, kniha návštěv
 │   ├── admin-services.js    # Administrace: správa ceníku masáží
+│   ├── admin-gallery.js     # Administrace: správa galerie salonu
 │   ├── gallery-manifest.js  # Seznam obrázků masáží (generovaný)
 │   ├── card-3d.js           # 3D karta / vizuální efekty
 │   ├── ceremony-carousel.js # Karusel ceremonií
@@ -53,14 +55,18 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 
 ## 🔐 Administrace (admin.html)
 
-Přihlášení jménem a heslem přes Supabase Auth. Stránka má dvě záložky:
-**Ceník** (přidání, úprava a mazání masáží včetně cen a obrázků) a
-**Kniha návštěv** (schvalování a mazání vzkazů).
+Přihlášení jménem a heslem přes Supabase Auth. Stránka má tři záložky:
+**Ceník** (přidání, úprava a mazání masáží; cena se edituje rovnou v seznamu,
+pořadí mění šipky), **Galerie** (fotky v sekci „Prostor a atmosféra salonu“
+na hlavní stránce) a **Kniha návštěv** (schvalování a mazání vzkazů).
+
+Do administrace se dostanete buď přímo přes `admin.html`, nebo **trojklikem
+na copyright v patičce** kterékoli stránky webu.
 
 ### První nastavení
 
-1. V Supabase SQL Editoru spusťte `supabase-services.sql` a poté
-   `supabase-services-seed.sql`.
+1. V Supabase SQL Editoru spusťte `supabase-services.sql`, poté
+   `supabase-services-seed.sql` a nakonec `supabase-gallery.sql`.
 2. Nastavte účtu správce heslo. Buď v Supabase → Authentication → Users,
    nebo se přihlaste odkazem „Reset password" z e-mailu a heslo si zadejte
    v administraci tlačítkem **Změnit heslo** v horní liště.
@@ -91,10 +97,18 @@ nebo JavaScript neodpověděly.
 Tato záloha se sama neaktualizuje — po větších změnách ceníku ji nechte
 přegenerovat, jinak by při výpadku ukázala staré ceny.
 
-### Obrázky masáží
+### Galerie salonu
 
-Obrázky se vybírají ze složky `galerie/masaze/`. Po přidání nového souboru
-je potřeba obnovit jejich seznam:
+Karusel „Prostor a atmosféra salonu“ na hlavní stránce se načítá z tabulky
+`gallery_images`. Statické snímky v `index.html` zůstávají jako záloha, stejně
+jako u ceníku. Karusel na `ceremonie.html` je čistě statický a administrace
+se ho netýká.
+
+### Obrázky
+
+Obrázky masáží se vybírají ze složky `galerie/masaze/`, fotky galerie
+ze složky `galerie/`. Po přidání nového souboru je potřeba obnovit jejich
+seznam:
 
 ```bash
 python3 tools/generate_gallery_manifest.py

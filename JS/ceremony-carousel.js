@@ -1,8 +1,11 @@
 // Točivý karusel fotografií - prostřední snímek je "hlavní", šipky/tažení/klik posouvají řadu
-document.addEventListener('DOMContentLoaded', () => {
-  const carousel = document.querySelector('.ceremony-carousel');
-  if (!carousel) return;
+//
+// Karusel na hlavní stránce (označený data-home-gallery) se plní z tabulky
+// gallery_images v Supabase, aby šel spravovat z admin.html. Statické snímky
+// v HTML zůstávají jako záloha pro výpadek databáze nebo vypnutý JavaScript.
+// Karusel na ceremonie.html tohle neřeší a jede čistě ze statického HTML.
 
+const initCeremonyCarousel = (carousel) => {
   const track = carousel.querySelector('.ceremony-carousel__track');
   const slides = Array.from(track.querySelectorAll('.ceremony-carousel__slide'));
   const prevBtn = carousel.querySelector('.ceremony-carousel__nav--prev');
@@ -98,4 +101,66 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   render();
+};
+
+/* -------------------------------------------------------------------
+   Načtení fotek galerie z databáze
+   ------------------------------------------------------------------- */
+
+const buildSlide = (image) => {
+  const slide = document.createElement('div');
+  slide.className = 'ceremony-carousel__slide';
+
+  const img = document.createElement('img');
+  img.src = image.image_path;
+  img.alt = image.alt_text || '';
+  img.loading = 'lazy';
+  img.className = 'ceremony-gallery-img';
+  img.dataset.lightbox = 'home-ceremony-gallery';
+
+  slide.appendChild(img);
+  return slide;
+};
+
+const loadHomeGallery = async (carousel) => {
+  if (!window.supabase || !window.SUPABASE_CONFIG) return false;
+
+  const { url, anonKey } = window.SUPABASE_CONFIG;
+  if (!url || !anonKey || url.includes('YOUR-PROJECT') || anonKey.includes('YOUR_SUPABASE')) {
+    return false;
+  }
+
+  try {
+    const client = window.supabase.createClient(url, anonKey);
+    const { data, error } = await client
+      .from('gallery_images')
+      .select('image_path, alt_text, sort_order')
+      .eq('gallery', carousel.dataset.homeGallery || 'home-prostor')
+      .eq('active', true)
+      .order('sort_order', { ascending: true });
+
+    // Prázdná odpověď by galerii vyprázdnila - raději necháme statické snímky.
+    if (error || !data || !data.length) return false;
+
+    const track = carousel.querySelector('.ceremony-carousel__track');
+    track.replaceChildren(...data.map(buildSlide));
+    carousel.dataset.source = 'database';
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('.ceremony-carousel');
+  if (!carousel || !carousel.querySelector('.ceremony-carousel__track')) return;
+
+  // Karusel se inicializuje až nad konečnou sadou snímků - přepočítává
+  // pozice podle jejich počtu, takže výměna za běhu by ho rozhodila.
+  if (carousel.hasAttribute('data-home-gallery')) {
+    loadHomeGallery(carousel).finally(() => initCeremonyCarousel(carousel));
+    return;
+  }
+
+  initCeremonyCarousel(carousel);
 });
