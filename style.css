@@ -2528,14 +2528,66 @@ header {
 /* display: grid vyse by jinak prebilo atribut hidden z prohlizece. */
 .admin-login[hidden] { display: none; }
 
+/* Rámeček přihlašovací karty pomalu obíhá světlo.
+   Úhel je registrovaná vlastnost, aby ho šlo animovat - bez @property
+   by prohlížeč custom property neuměl plynule dopočítat. */
+@property --admin-login-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .admin-login__card {
+  --admin-login-angle: 0deg;
+
+  position: relative;
   width: min(440px, 100%);
   padding: clamp(26px, 5vw, 40px);
-  border: 1px solid var(--line);
+  border: 2px solid transparent;
   border-radius: var(--radius-lg);
-  background: var(--surface);
+  /* Výplň se kreslí po okraj obsahu, gradient jen do rámečku. */
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    conic-gradient(
+      from var(--admin-login-angle),
+      var(--line) 0deg,
+      var(--accent) 55deg,
+      var(--gold) 90deg,
+      var(--accent) 125deg,
+      var(--line) 200deg,
+      var(--line) 360deg
+    ) border-box;
   box-shadow: var(--shadow-lg);
   text-align: center;
+  animation: admin-login-glow 7s linear infinite;
+}
+
+@keyframes admin-login-glow {
+  to { --admin-login-angle: 360deg; }
+}
+
+/* Jemná záře pod kartou, aby efekt nepůsobil jen jako čára. */
+.admin-login__card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--admin-login-angle),
+    transparent 0deg,
+    var(--accent) 70deg,
+    var(--gold) 120deg,
+    transparent 210deg,
+    transparent 360deg
+  );
+  filter: blur(16px);
+  opacity: .5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-login__card { animation: none; }
+  .admin-login__card::after { display: none; }
 }
 
 .admin-login__label {
@@ -2662,7 +2714,7 @@ header {
 
 .admin-tabs {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin: 20px 0;
 }
@@ -3006,7 +3058,114 @@ header {
   background: var(--surface);
 }
 
-.admin-service__price { color: var(--accent-dark); font-weight: 700; }
+/* Cena je editovatelné pole, ale má vypadat jako zbytek štítků v řádku. */
+.admin-service__price {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 11px 2px 6px;
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.admin-service__price input {
+  width: 6.5ch;
+  padding: 2px 4px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: right;
+  -moz-appearance: textfield;
+}
+
+.admin-service__price input::-webkit-outer-spin-button,
+.admin-service__price input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.admin-service__price input:hover { border-color: var(--line); }
+
+.admin-service__price input:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+.admin-service__price input:disabled { opacity: .5; }
+
+.admin-icon-button--small {
+  width: 30px;
+  height: 30px;
+  font-size: .85rem;
+}
+
+.admin-icon-button:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Galerie salonu -------------------------------------------------- */
+
+.admin-gallery-list { display: grid; gap: 10px; }
+
+.admin-gallery-item {
+  display: grid;
+  grid-template-columns: auto 92px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--cream);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.admin-gallery-item:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+.admin-gallery-item[data-active="false"] { opacity: .62; }
+
+.admin-gallery-item__position {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent-tint);
+  color: var(--accent-dark);
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.admin-gallery-item__thumb {
+  width: 92px;
+  height: 66px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--cream-2);
+}
+
+.admin-gallery-item__thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.admin-gallery-item__body { min-width: 0; display: grid; gap: 3px; justify-items: start; }
+.admin-gallery-item__body strong { font-size: .92rem; word-break: break-word; }
+
+.admin-gallery-item__alt {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: .8rem;
+  line-height: 1.45;
+}
+
+.admin-gallery-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
 
 .admin-service__actions {
   display: flex;
@@ -3134,9 +3293,20 @@ header {
 
 /* --- Responzivita ---------------------------------------------------- */
 
-@media (max-width: 760px) {
+@media (max-width: 980px) {
   .admin-tabs { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
   .admin-form__grid { grid-template-columns: 1fr; }
+
+  .admin-gallery-item {
+    grid-template-columns: auto 70px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .admin-gallery-item__thumb { width: 70px; height: 54px; }
+  .admin-gallery-item__actions { grid-column: 1 / -1; justify-content: flex-start; }
 
   .admin-service {
     grid-template-columns: 70px minmax(0, 1fr);

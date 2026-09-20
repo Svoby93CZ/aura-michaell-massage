@@ -59,7 +59,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="style.css?v=c65e4302" />
+  <link rel="stylesheet" href="style.css?v=9037e61e" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body class="page-home">
@@ -162,7 +162,9 @@
         <p class="shop-section-kicker">Nahlédněte dovnitř</p>
         <h2 id="home-ceremony-gallery-title">Prostor a atmosféra salonu</h2>
       </div>
-      <div class="ceremony-carousel" aria-label="Galerie prostoru a ceremonie">
+      <!-- Snímky se načítají z databáze (spravuje se v admin.html).
+           Ty níže jsou záloha, kdyby databáze nebo JS neodpověděly. -->
+      <div class="ceremony-carousel" aria-label="Galerie prostoru a ceremonie" data-home-gallery="home-prostor">
         <div class="ceremony-carousel__track">
           <div class="ceremony-carousel__slide"><img src="galerie/lampa(1).webp" alt="Masážní lampa osvětluje lehátko" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
           <div class="ceremony-carousel__slide"><img src="galerie/navsteva.webp" alt="Návštěva salonu Aura Michaell Massage" loading="lazy" class="ceremony-gallery-img" data-lightbox="home-ceremony-gallery" /></div>
@@ -364,11 +366,11 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="JS/supabase-config.js?v=db044412" defer></script>
-  <script src="JS/main.js?v=72bbbce0" defer></script>
+  <script src="JS/main.js?v=4f1056a2" defer></script>
   <script src="JS/guestbook.js?v=2c0db868" defer></script>
   <script src="JS/3D_hover.js?v=6ba0ef6a" defer></script>
   <script src="JS/card-3d.js?v=a634beec" defer></script>
-  <script src="JS/ceremony-carousel.js?v=1e56467d" defer></script>
+  <script src="JS/ceremony-carousel.js?v=4a7b88bc" defer></script>
   <script src="JS/cookie-consent.js?v=11f68f21" defer></script>
 </body>
 </html>

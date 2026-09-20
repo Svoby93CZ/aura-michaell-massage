@@ -55,6 +55,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initVisitCounter();
 
+  // Skrytý vstup do administrace: trojklik na copyright v patičce.
+  // Záměrně bez viditelného odkazu - admin.html je noindex a v robots.txt,
+  // tak ať na něj nevede nic, co by šlo najít náhodou. Není to ochrana
+  // (tou je přihlášení a pravidla v databázi), jen ať to nepřekáží návštěvníkům.
+  const initHiddenAdminEntry = () => {
+    const trigger = document.querySelector('.site-footer__copy');
+    if (!trigger) {
+      return;
+    }
+
+    const RESET_MS = 700;
+    let clicks = 0;
+    let timer = null;
+
+    trigger.addEventListener('click', () => {
+      clicks += 1;
+      window.clearTimeout(timer);
+
+      if (clicks >= 3) {
+        clicks = 0;
+        window.location.href = 'admin.html';
+        return;
+      }
+
+      timer = window.setTimeout(() => {
+        clicks = 0;
+      }, RESET_MS);
+    });
+  };
+
+  initHiddenAdminEntry();
+
   const initHeroLogoDraw = async () => {
     const logoHost = document.querySelector('.hero-logo-draw');
     if (!logoHost) {

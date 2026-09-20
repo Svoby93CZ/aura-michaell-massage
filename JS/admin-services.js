@@ -166,15 +166,53 @@
     const duration = document.createElement('span');
     duration.textContent = `${service.duration_minutes} min`;
 
-    const price = document.createElement('span');
+    // Cena se edituje rovnou v řádku - při úpravě ceníku je to ta jediná
+    // hodnota, která se mění často, a otvírat kvůli ní okno by zdržovalo.
+    const price = document.createElement('label');
     price.className = 'admin-service__price';
-    price.textContent = formatPrice(service.price_czk);
 
+    const priceInput = document.createElement('input');
+    priceInput.type = 'number';
+    priceInput.min = '0';
+    priceInput.max = '100000';
+    priceInput.step = '1';
+    priceInput.value = String(service.price_czk);
+    priceInput.setAttribute('aria-label', `Cena masáže ${service.name} v korunách`);
+    priceInput.addEventListener('change', () => savePriceFromInput(service, priceInput));
+
+    const currency = document.createElement('span');
+    currency.textContent = 'Kč';
+
+    price.append(priceInput, currency);
     meta.append(duration, price);
     body.append(title, description, meta);
 
     const actions = document.createElement('div');
     actions.className = 'admin-service__actions';
+
+    // Šipky mění pořadí v rámci kategorie, ne v celém ceníku.
+    const siblings = categorySiblings(service.category);
+    const position = siblings.findIndex((item) => item.id === service.id);
+
+    const up = document.createElement('button');
+    up.className = 'admin-icon-button admin-icon-button--small';
+    up.type = 'button';
+    up.textContent = '↑';
+    up.title = 'Posunout výš v kategorii';
+    up.setAttribute('aria-label', `Posunout „${service.name}“ výš`);
+    up.disabled = position <= 0;
+    up.addEventListener('click', () => moveService(service, -1));
+
+    const down = document.createElement('button');
+    down.className = 'admin-icon-button admin-icon-button--small';
+    down.type = 'button';
+    down.textContent = '↓';
+    down.title = 'Posunout níž v kategorii';
+    down.setAttribute('aria-label', `Posunout „${service.name}“ níž`);
+    down.disabled = position === -1 || position === siblings.length - 1;
+    down.addEventListener('click', () => moveService(service, 1));
+
+    actions.append(up, down);
 
     const edit = document.createElement('button');
     edit.className = 'admin-action admin-action--small';
@@ -278,6 +316,65 @@
     services = data || [];
     render();
     setStatus(statusEl, '');
+  };
+
+  // Masáže jedné kategorie v pořadí, v jakém jsou na webu.
+  const categorySiblings = (category) => services
+    .filter((item) => item.category === category)
+    .sort((left, right) => left.sort_order - right.sort_order);
+
+  const savePriceFromInput = async (service, input) => {
+    const price = Number(input.value);
+
+    if (!Number.isInteger(price) || price < 0 || price > 100000) {
+      setStatus(statusEl, 'Cena musí být celé číslo od 0 do 100 000.', 'error');
+      input.value = String(service.price_czk);
+      return;
+    }
+    if (price === service.price_czk) {
+      return;
+    }
+
+    input.disabled = true;
+    const { error } = await client.from('services').update({ price_czk: price }).eq('id', service.id);
+    input.disabled = false;
+
+    if (error) {
+      setStatus(statusEl, 'Cenu se nepodařilo uložit.', 'error');
+      input.value = String(service.price_czk);
+      return;
+    }
+
+    // Jen si poznamenáme novou hodnotu - překreslovat celý seznam by
+    // odebralo zaměření z pole a přepisování více cen za sebou by drhlo.
+    service.price_czk = price;
+    setStatus(statusEl, `Cena „${service.name}“ uložena: ${formatPrice(price)}.`, 'success');
+  };
+
+  const moveService = async (service, direction) => {
+    const siblings = categorySiblings(service.category);
+    const index = siblings.findIndex((item) => item.id === service.id);
+    const target = index + direction;
+
+    if (index === -1 || target < 0 || target >= siblings.length) {
+      return;
+    }
+
+    const reordered = siblings.slice();
+    [reordered[index], reordered[target]] = [reordered[target], reordered[index]];
+
+    setStatus(statusEl, 'Ukládám pořadí…');
+
+    // Přečíslujeme celou kategorii na 10, 20, 30… ať v pořadí nevznikají
+    // díry ani shodné hodnoty, které by vedly k náhodnému řazení.
+    const results = await Promise.all(reordered.map((item, position) => (
+      client.from('services').update({ sort_order: (position + 1) * 10 }).eq('id', item.id)
+    )));
+
+    if (results.some((result) => result.error)) {
+      setStatus(statusEl, 'Pořadí se nepodařilo uložit celé. Zkuste to prosím znovu.', 'error');
+    }
+    await loadServices();
   };
 
   const saveChanges = async (id, changes) => {

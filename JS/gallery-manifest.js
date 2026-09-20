@@ -1,5 +1,6 @@
 // Automaticky vygenerovano skriptem tools/generate_gallery_manifest.py.
-// Needitujte rucne - pri pridani obrazku do galerie/masaze/ skript spustte znovu.
+// Needitujte rucne - pri pridani obrazku do galerie skript spustte znovu.
+
 window.GALLERY_MASAZE = [
   "galerie/masaze/amh.webp",
   "galerie/masaze/banky.webp",
@@ -34,4 +35,47 @@ window.GALLERY_MASAZE = [
   "galerie/masaze/vd2.webp",
   "galerie/masaze/vhm.webp",
   "galerie/masaze/vt.webp"
+];
+
+window.GALLERY_PROSTOR = [
+  "galerie/GDPR.png",
+  "galerie/GDPRlogo.png",
+  "galerie/caj.webp",
+  "galerie/fb.png",
+  "galerie/info.webp",
+  "galerie/instalogo.png",
+  "galerie/kakao.webp",
+  "galerie/karta1.webp",
+  "galerie/karta2.webp",
+  "galerie/karty.webp",
+  "galerie/lampa(1).webp",
+  "galerie/lampa(2).webp",
+  "galerie/lampa(3).webp",
+  "galerie/latka.png",
+  "galerie/logo.webp",
+  "galerie/navsteva.webp",
+  "galerie/oleje.webp",
+  "galerie/papir.webp",
+  "galerie/papir2.webp",
+  "galerie/papir3.webp",
+  "galerie/papirA4.webp",
+  "galerie/papirA42.webp",
+  "galerie/papir_bily.webp",
+  "galerie/papir_poz.webp",
+  "galerie/papirek.webp",
+  "galerie/praxe.webp",
+  "galerie/prostor.webp",
+  "galerie/rozhovor1.webp",
+  "galerie/rozhovor2.webp",
+  "galerie/salon.webp",
+  "galerie/sand.jpg",
+  "galerie/shop1.webp",
+  "galerie/shop2.webp",
+  "galerie/shop3.webp",
+  "galerie/shop4.webp",
+  "galerie/shop5.webp",
+  "galerie/sm-m1.webp",
+  "galerie/sm-m2.webp",
+  "galerie/sm-m3.webp",
+  "galerie/sm-m4.webp"
 ];
