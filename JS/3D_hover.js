@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Grafiky s mýty o sportovní masáži jsou zde záměrně vynechané -
+  // nesou text, který se má v klidu číst, proto zůstávají statické.
   const shopThumbnails = document.querySelectorAll(
-    '.page-shop .shop-gallery img, .page-home .welcome-gallery img, .page-home .home-myths-gallery__grid img'
+    '.page-shop .shop-gallery img, .page-home .welcome-gallery img'
   );
   const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (shopThumbnails.length && supportsHover && !prefersReducedMotion) {
     shopThumbnails.forEach((thumbnail) => {
-      const thumbnailScale = thumbnail.matches('.page-home .welcome-gallery img, .page-home .home-myths-gallery__grid img') ? 1.05 : 1.1;
+      const thumbnailScale = thumbnail.matches('.page-home .welcome-gallery img') ? 1.05 : 1.1;
 
       thumbnail.addEventListener('pointerenter', () => {
         thumbnail.classList.add('is-3d-active');

@@ -24,15 +24,15 @@
 :root {
   --ink: #3b2a1e;
   --ink-soft: #6b5647;
-  --cream: #fbf3e8;
-  --cream-2: #f1e1cc;
-  --surface: #fffcf7;
+  --cream: #f1e6d5;
+  --cream-2: #e5d4bb;
+  --surface: #faf2e5;
   --accent: #b4642e;
   --accent-dark: #8c4a22;
-  --accent-soft: #ead2ae;
-  --accent-tint: #f6e7d4;
+  --accent-soft: #dfc7a0;
+  --accent-tint: #eddcc4;
   --gold: #c79a56;
-  --line: #dfc7a4;
+  --line: #d3b997;
   --success: #3f6b45;
   --danger: #8b2e22;
   --danger-dark: #6b2016;
@@ -225,7 +225,7 @@ header {
   right: 0;
   z-index: var(--layer-floating);
   height: var(--nav-h);
-  background: rgba(255, 252, 247, .92);
+  background: rgba(250, 242, 229, .92);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(10px) saturate(1.1);
   transition: box-shadow .25s ease, background-color .25s ease;
@@ -233,7 +233,7 @@ header {
 
 .primary-nav--scrolled {
   box-shadow: var(--shadow-md);
-  background: rgba(255, 252, 247, .98);
+  background: rgba(250, 242, 229, .98);
 }
 
 :root[data-theme="dark"] .primary-nav {
@@ -1110,25 +1110,17 @@ header {
   gap: 16px;
   max-width: 880px;
   margin: 0 auto;
-  perspective: 900px;
 }
 
+/* Záměrně bez hover efektu - grafiky nesou text, který se má jen číst.
+   Kliknutím se pořád otevřou ve zvětšenině (lightbox). */
 .page-home .home-myths-gallery__grid img {
   width: 100%;
   height: auto;
   border: 3px solid var(--surface);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
-  transform-style: preserve-3d;
   cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-
-.page-home .home-myths-gallery__grid img:hover,
-.page-home .home-myths-gallery__grid img:focus {
-  border-color: var(--gold);
-  transform: perspective(700px) rotateX(-4deg) rotateY(4deg) rotateZ(var(--hover-tilt, 0deg)) translateZ(34px) translateY(-10px) scale(1.05);
-  box-shadow: var(--shadow-md);
 }
 
 @media (max-width: 768px) {
