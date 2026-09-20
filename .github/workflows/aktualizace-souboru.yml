@@ -1,0 +1,62 @@
+# Po nahrání obrázku nebo jiné změně souborů webu tenhle workflow sám
+# obnoví seznam obrázků pro administraci a doplní verze k CSS a JS.
+#
+# Díky tomu není potřeba nic spouštět ručně na vlastním počítači:
+# stačí nahrát obrázek do složky galerie/ přes web GitHubu a chvíli počkat.
+
+name: Obnovení seznamu obrázků a verzí souborů
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'galerie/**'
+      - 'JS/**'
+      - 'style.css'
+      - '*.html'
+      - 'tools/generate_gallery_manifest.py'
+      - 'tools/stamp_assets.py'
+  # Umožní spustit workflow i ručně z GitHubu (záložka Actions).
+  workflow_dispatch:
+
+# Dva souběžné běhy by si navzájem přepisovaly commity.
+concurrency:
+  group: aktualizace-souboru
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  aktualizace:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Stáhnout repozitář
+        uses: actions/checkout@v4
+
+      - name: Obnovit seznam obrázků pro administraci
+        run: python3 tools/generate_gallery_manifest.py
+
+      - name: Doplnit verze k CSS a JS
+        run: python3 tools/stamp_assets.py
+
+      - name: Uložit změny zpět do repozitáře
+        run: |
+          # git diff neuvidí nově vzniklé soubory, proto git status.
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nic se nezměnilo, není co ukládat."
+            exit 0
+          fi
+
+          echo "Změněné soubory:"
+          git status --short
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Obnovení seznamu obrázků a verzí souborů"
+
+          # Mezitím mohl přijít další push, proto nejdřív srovnat s větví.
+          git pull --rebase origin main
+          git push

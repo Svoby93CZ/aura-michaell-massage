@@ -1,15 +1,18 @@
 window.SUPABASE_CONFIG = {
   url: 'https://dcojkzsekqctzlegrzdd.supabase.co',
   anonKey: 'sb_publishable_lSgBJenvr6GIsb4IWT0W1A_O1E6wqnI',
-  adminRedirectUrl: 'https://auramichaell.cz/admin.html',
-
   // Krátké přihlašovací jméno -> e-mail účtu v Supabase.
-  // Do přihlašovacího pole v admin.html tak stačí napsat "michaell"
+  // Do přihlašovacího pole v admin.html tak stačí napsat "myska"
   // místo celé e-mailové adresy. Samotný e-mail funguje pořád taky.
+  //
+  // Klíče musí být malými písmeny, zadané jméno se převádí na malá.
+  // Na velikosti písmen při přihlašování proto nezáleží.
+  //
   // Heslo se NIKDY nenastavuje tady - spravuje ho Supabase.
+  // Tenhle soubor je veřejný, takže sem nepatří ani osobní adresy.
   adminLoginAliases: {
-    michaell: 'thrica.ms@gmail.com',
-    admin: 'thrica.ms@gmail.com'
+    myska: 'aura@michaell.cz',
+    svoby: 'admin@michaell.cz'
   }
 };
 

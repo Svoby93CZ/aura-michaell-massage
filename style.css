@@ -2518,7 +2518,28 @@ header {
 
 /* --- Prihlaseni ------------------------------------------------------ */
 
+/* Přihlašovací obrazovka stojí na staré papírové textuře. Ztmavení
+   překryvem drží papír teplý - filtr brightness by ho vybělil do šeda. */
+/* Web překrývá celé okno dvěma pevnými vrstvami (body::before s plnou
+   barvou a body::after se starou texturou). Pozadí samotného body je pod
+   nimi neviditelné, proto se papír přihlašovací obrazovky musí nasadit
+   přímo na ::before a druhá textura vypnout, ať se nenásobí přes sebe. */
+.admin-page--login::before {
+  background:
+    linear-gradient(rgba(26, 14, 6, .38), rgba(26, 14, 6, .38)),
+    url("galerie/papir.webp") center / cover no-repeat;
+}
+
+.admin-page--login::after { display: none; }
+
+:root[data-theme="dark"] .admin-page--login::before {
+  background:
+    linear-gradient(rgba(12, 6, 3, .78), rgba(12, 6, 3, .78)),
+    url("galerie/papir.webp") center / cover no-repeat;
+}
+
 .admin-login {
+  position: relative;
   display: grid;
   place-items: center;
   min-height: 100vh;
@@ -2527,6 +2548,46 @@ header {
 
 /* display: grid vyse by jinak prebilo atribut hidden z prohlizece. */
 .admin-login[hidden] { display: none; }
+
+/* Kreslící logo jako vodoznak uvnitř karty. Vrstva ořezává přetékající
+   kresbu; ořez nejde dát na samotnou kartu, protože by uťal i záři. */
+.admin-login__watermark {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: calc(var(--radius-lg) - 3px);
+  pointer-events: none;
+}
+
+.admin-login__logo {
+  position: absolute;
+  /* Přebíjí umístění a šířku ze sdíleného .hero-logo-draw. */
+  inset: 0;
+  left: 0;
+  top: 0;
+  width: auto;
+  transform: none;
+  display: grid;
+  place-items: center;
+  opacity: .13;
+}
+
+.admin-login__logo .hero-logo-draw__svg {
+  width: auto;
+  height: 126%;
+  max-width: none;
+}
+
+.admin-login__logo .hero-logo-draw__svg path {
+  stroke: var(--admin-login-deep);
+  stroke-width: 3;
+}
+
+:root[data-theme="dark"] .admin-login__logo { opacity: .2; }
+
+/* Obsah karty musí být nad vodoznakem - ten je pozicovaný, takže by
+   se jinak kreslil přes statický text. */
+.admin-login__content { position: relative; }
 
 /* Rámeček přihlašovací karty pomalu obíhá světlo.
    Úhel je registrovaná vlastnost, aby ho šlo animovat - bez @property
@@ -2539,50 +2600,64 @@ header {
 
 .admin-login__card {
   --admin-login-angle: 0deg;
+  /* Rudá záře: z tmavé vínové do žhavé červené. */
+  --admin-login-deep: #6e1b12;
+  --admin-login-bright: #d4402a;
+  --admin-login-base: #6d5a44;
 
+  /* Bez z-indexu záměrně: karta nesmí vytvořit vrstvící kontext, jinak by
+     se záře z ::after (z-index -1) kreslila přes její vlastní pozadí. */
   position: relative;
   width: min(440px, 100%);
   padding: clamp(26px, 5vw, 40px);
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   border-radius: var(--radius-lg);
   /* Výplň se kreslí po okraj obsahu, gradient jen do rámečku. */
   background:
     linear-gradient(var(--surface), var(--surface)) padding-box,
     conic-gradient(
       from var(--admin-login-angle),
-      var(--line) 0deg,
-      var(--accent) 55deg,
-      var(--gold) 90deg,
-      var(--accent) 125deg,
-      var(--line) 200deg,
-      var(--line) 360deg
+      var(--admin-login-base) 0deg,
+      var(--admin-login-deep) 35deg,
+      var(--admin-login-bright) 95deg,
+      var(--admin-login-deep) 155deg,
+      var(--admin-login-base) 215deg,
+      var(--admin-login-base) 360deg
     ) border-box;
   box-shadow: var(--shadow-lg);
   text-align: center;
   animation: admin-login-glow 7s linear infinite;
 }
 
+:root[data-theme="dark"] .admin-login__card {
+  --admin-login-deep: #a32a1c;
+  --admin-login-bright: #ff6a4d;
+  --admin-login-base: #4a3524;
+}
+
 @keyframes admin-login-glow {
   to { --admin-login-angle: 360deg; }
 }
 
-/* Jemná záře pod kartou, aby efekt nepůsobil jen jako čára. */
+/* Záře pod kartou, aby efekt nepůsobil jen jako tenká čára. */
 .admin-login__card::after {
   content: "";
   position: absolute;
-  inset: -1px;
+  /* Záře musí přesahovat kartu, jinak se rozmazání schová pod ní. */
+  inset: -16px;
   z-index: -1;
-  border-radius: inherit;
+  border-radius: calc(var(--radius-lg) + 16px);
   background: conic-gradient(
     from var(--admin-login-angle),
     transparent 0deg,
-    var(--accent) 70deg,
-    var(--gold) 120deg,
-    transparent 210deg,
+    var(--admin-login-deep) 35deg,
+    var(--admin-login-bright) 95deg,
+    var(--admin-login-deep) 155deg,
+    transparent 225deg,
     transparent 360deg
   );
-  filter: blur(16px);
-  opacity: .5;
+  filter: blur(26px);
+  opacity: .85;
 }
 
 @media (prefers-reduced-motion: reduce) {

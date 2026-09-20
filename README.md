@@ -34,6 +34,7 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 │   ├── masaze/             # Obrázky masáží
 │   ├── ceremonie/          # Obrázky ceremonií
 │   └── Poukazy/            # Dárkové poukazy
+├── .github/workflows/      # Automatická údržba souborů na GitHubu
 └── tools/                  # Nástroje pro údržbu kódu
     ├── _audit-unused-css.ps1
     ├── extract_services.py           # Vytáhne ceník z msginfo.html do SQL
@@ -73,10 +74,35 @@ na copyright v patičce** kterékoli stránky webu.
 3. V Supabase → Authentication → Sign In / Providers **vypněte registraci
    nových uživatelů** („Allow new users to sign up"). Bez toho si může
    kdokoli s veřejným klíčem založit účet.
-4. Tamtéž doporučujeme zapnout **Leaked password protection** a minimální
-   délku hesla 12 znaků.
+4. Tamtéž nastavte **minimální délku hesla** na 12 znaků.
+
+   Supabase umí odmítat hesla z úniků dat, ale až od placeného tarifu.
+   Na bezplatném tarifu to za něj dělá administrace sama: před uložením
+   porovná heslo s veřejnou databází HaveIBeenPwned. Samotné heslo přitom
+   prohlížeč neposílá — odejde jen prvních pět znaků jeho SHA-1 otisku
+   a shoda se hledá až v prohlížeči.
 5. Krátké přihlašovací jméno se nastavuje v `JS/supabase-config.js`
-   v sekci `adminLoginAliases` (překládá se na e-mail účtu).
+   v sekci `adminLoginAliases` (překládá se na e-mail účtu). Klíče pište
+   malými písmeny; na velikosti písmen při přihlašování pak nezáleží.
+   Soubor je veřejný, takže do něj nepatří osobní e-mailové adresy.
+
+### Přidání dalšího správce
+
+1. V Supabase → Authentication → Users → **Add user** → *Create new user*
+   založte účet a zaškrtněte **Auto Confirm User** (jinak čeká na
+   potvrzovací e-mail).
+2. Dejte účtu oprávnění:
+
+   ```sql
+   insert into public.guestbook_admins (user_id)
+   select id from auth.users where email = 'novy@priklad.cz'
+   on conflict do nothing;
+   ```
+
+3. Volitelně přidejte krátké jméno do `adminLoginAliases`.
+
+Odebrání správce: smazáním účtu v Supabase zmizí i jeho oprávnění,
+tabulka má na účty vazbu `on delete cascade`.
 
 Pozor: odkaz „Reset password" ze Supabase sám o sobě přihlašuje, ale heslo
 **nemění** — nové heslo je potřeba zadat. Proto má administrace v horní liště
@@ -107,29 +133,37 @@ se ho netýká.
 ### Obrázky
 
 Obrázky masáží se vybírají ze složky `galerie/masaze/`, fotky galerie
-ze složky `galerie/`. Po přidání nového souboru je potřeba obnovit jejich
-seznam:
-
-```bash
-python3 tools/generate_gallery_manifest.py
-```
+ze složky `galerie/`. Nový soubor tam stačí nahrát přes web GitHubu —
+seznam pro administraci si obnoví workflow sám (viz *Automatická údržba*).
 
 Kategorie ceníku (Klasické, Sportovní, …) a texty Indikace/Kontraindikace
 se stále upravují ručně v `msginfo.html`; seznam kategorií je navíc
 v `JS/supabase-config.js`.
 
-## 🚀 Před nasazením
+## 🤖 Automatická údržba
 
-`.htaccess` nechává prohlížeč držet si CSS a JS až měsíc. Po změně těchto
-souborů proto spusťte:
+Po každé změně v `galerie/`, `JS/`, `style.css` nebo v HTML souborech na větvi
+`main` se sám spustí workflow `.github/workflows/aktualizace-souboru.yml`, který:
+
+1. obnoví seznam obrázků pro administraci (`generate_gallery_manifest.py`),
+2. doplní k CSS a JS značku verze (`stamp_assets.py`),
+3. výsledek uloží zpět do repozitáře.
+
+**Nové obrázky proto stačí nahrát přes web GitHubu — nic se nespouští ručně.**
+Průběh je vidět na GitHubu v záložce *Actions*; tamtéž jde workflow spustit
+ručně tlačítkem *Run workflow*.
+
+Proč to je potřeba: `.htaccess` nechává prohlížeč držet si CSS a JS až měsíc.
+Bez značky verze by si návštěvníci i vy načetli novou HTML stránku se starým
+skriptem — stránka by vypadala nově, ale nefungovala. A složku `galerie/`
+si prohlížeč sám přečíst neumí (`Options -Indexes`), proto ten seznam.
+
+Když byste přesto chtěl skripty spustit u sebe, jdou zavolat odkudkoli:
 
 ```bash
-python3 tools/stamp_assets.py
+python3 ~/aura-michaell-massage/tools/generate_gallery_manifest.py
+python3 ~/aura-michaell-massage/tools/stamp_assets.py
 ```
-
-Skript doplní ke každému odkazu na vlastní `.css` a `.js` značku `?v=<hash>`
-spočítanou z obsahu souboru. Bez toho si návštěvníci i vy načtete novou HTML
-stránku se starým skriptem — stránka pak vypadá nově, ale nefunguje.
 
 Pro sjednocení inline komentářů v CSS použijte:
 
