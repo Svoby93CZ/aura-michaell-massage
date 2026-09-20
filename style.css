@@ -15,7 +15,7 @@
    12. Ceremonie
    13. Přehled masáží a služeb (svc2)
    14. Ochrana osobních údajů
-   15. Administrace knihy návštěv
+   15. Administrace (ceník + kniha návštěv)
    16. Cookie lišta, scroll-to-top, modály, drobnosti
    ========================================================================== */
 
@@ -646,18 +646,34 @@ header {
   transform: none;
 }
 
+/* Barva musí být !important, protože ji sdílené pravidlo .admin-action výše
+   nastavuje na světlou s !important kvůli plným tlačítkům. */
 .admin-action--secondary {
   background: transparent;
   border-color: var(--ink-soft);
-  color: var(--ink-soft);
+  color: var(--ink-soft) !important;
   box-shadow: none;
+}
+
+.admin-action--secondary:hover,
+.admin-action--secondary:focus-visible {
+  background: var(--cream-2);
+  border-color: var(--ink);
+  color: var(--ink) !important;
 }
 
 .admin-action--danger {
   background: transparent;
   border-color: var(--danger);
-  color: var(--danger);
+  color: var(--danger) !important;
   box-shadow: none;
+}
+
+.admin-action--danger:hover,
+.admin-action--danger:focus-visible {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff8f0 !important;
 }
 
 .cookie-settings-btn {
@@ -1415,8 +1431,7 @@ header {
 
 .guestbook-form input:not([type="checkbox"]),
 .guestbook-form select,
-.guestbook-form textarea,
-.admin-login-panel input {
+.guestbook-form textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
@@ -1433,8 +1448,7 @@ header {
 
 .guestbook-form input:focus-visible,
 .guestbook-form select:focus-visible,
-.guestbook-form textarea:focus-visible,
-.admin-login-panel input:focus-visible {
+.guestbook-form textarea:focus-visible {
   outline: 3px solid var(--accent-soft);
   border-color: var(--accent);
 }
@@ -2479,79 +2493,668 @@ header {
 
 .section h2 { font-size: 1.6rem; margin-bottom: 1rem; }
 
-/* 15. Administrace knihy návštěv ---------------------------------------------- */
+/* 15. Administrace (ceník + kniha návštěv) ------------------------------------ */
 
-.guestbook-admin-page {
+/* Administrace (admin.html) - samostatna mini-aplikace mimo hlavni layout webu.
+   Pouziva stejne tokeny jako zbytek webu, takze funguje i nocni rezim. */
+
+.admin-page {
   min-height: 100vh;
   margin: 0;
-  padding: 40px 20px;
-  background: var(--cream-2);
+  padding: 0;
+  background:
+    radial-gradient(1200px 520px at 12% -8%, var(--accent-tint), transparent 62%),
+    var(--cream-2);
   color: var(--ink);
-}
-
-.guestbook-admin {
-  max-width: 860px;
-  margin: 0 auto;
   font-family: var(--font-ui);
 }
 
-.guestbook-admin h1,
-.guestbook-admin h2 {
+.admin-page.admin-modal-open { overflow: hidden; }
+
+.admin-shell {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 22px clamp(14px, 3vw, 30px) 60px;
+}
+
+.admin-page h1,
+.admin-page h2,
+.admin-page h3 {
   font-family: var(--font-heading);
   font-weight: 600;
 }
 
-.guestbook-admin h1 {
-  margin: 8px 0 30px;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+/* --- Prihlaseni ------------------------------------------------------ */
+
+.admin-login {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 30px 16px;
 }
 
-.guestbook-admin h2 { margin-top: 0; }
+/* display: grid vyse by jinak prebilo atribut hidden z prohlizece. */
+.admin-login[hidden] { display: none; }
 
-.admin-back-link {
+.admin-login__card {
+  width: min(440px, 100%);
+  padding: clamp(26px, 5vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.admin-login__label {
+  margin: 0;
+  color: var(--accent);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.admin-login__card h1 {
+  margin: 10px 0 6px;
+  font-size: clamp(1.8rem, 5vw, 2.3rem);
+}
+
+.admin-login__lead {
+  margin: 0 0 26px;
+  color: var(--ink-soft);
+  font-size: .88rem;
+}
+
+.admin-login__form {
+  display: grid;
+  gap: 16px;
+  text-align: left;
+}
+
+.admin-login__back {
+  display: inline-block;
+  margin-top: 22px;
   color: var(--accent-dark);
+  font-size: .84rem;
   font-weight: 700;
   text-decoration: none;
 }
 
-.admin-login-panel,
-.admin-dashboard {
-  padding: clamp(22px, 4vw, 38px);
+.admin-login__back:hover { text-decoration: underline; }
+
+.admin-password { position: relative; }
+
+.admin-password input { padding-right: 84px; }
+
+.admin-password__toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: .74rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-password__toggle:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+/* --- Horni lista ----------------------------------------------------- */
+
+.admin-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px clamp(16px, 3vw, 26px);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
 }
 
-.admin-login-panel form { display: grid; max-width: 440px; gap: 10px; }
+.admin-topbar__brand { display: grid; gap: 2px; }
 
-.admin-dashboard__header,
-.admin-entry__heading {
+.admin-topbar__label {
+  color: var(--accent);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.admin-topbar__brand strong {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.admin-topbar__tools {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-topbar__user {
+  color: var(--ink-soft);
+  font-size: .8rem;
+}
+
+.admin-icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .15s ease, transform .15s ease;
+}
+
+.admin-icon-button:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+/* --- Navigacni panel (zalozky) --------------------------------------- */
+
+.admin-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.admin-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+.admin-tab:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.admin-tab.is-active {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-tab__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cream);
+  font-size: 1.3rem;
+}
+
+.admin-tab.is-active .admin-tab__icon { background: var(--surface); }
+
+.admin-tab__text { display: grid; gap: 2px; min-width: 0; }
+
+.admin-tab__text strong {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.admin-tab__text small {
+  color: var(--ink-soft);
+  font-size: .76rem;
+}
+
+.admin-tab__text small[data-highlight="true"] {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+/* --- Panely ---------------------------------------------------------- */
+
+.admin-panel {
+  padding: clamp(20px, 3.4vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-panel__header {
+  display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-panel__header h2 { margin: 0 0 4px; font-size: clamp(1.4rem, 3vw, 1.85rem); }
+.admin-panel__header p { margin: 0; color: var(--ink-soft); font-size: .84rem; }
+
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-segmented {
+  display: inline-flex;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--cream);
+}
+
+.admin-segmented__item {
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.admin-segmented__item.is-active {
+  background: var(--surface);
+  color: var(--accent-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Formularove prvky ----------------------------------------------- */
+
+.admin-field { display: grid; gap: 6px; }
+
+.admin-field > label,
+.admin-field__label {
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.admin-field input:not([type="checkbox"]),
+.admin-field select,
+.admin-field textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--ink);
+  font: inherit;
+}
+
+.admin-field textarea { resize: vertical; }
+
+.admin-field input:focus-visible,
+.admin-field select:focus-visible,
+.admin-field textarea:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.admin-field--inline { min-width: 180px; }
+.admin-field--grow { flex: 1 1 220px; }
+.admin-field--full { grid-column: 1 / -1; }
+
+.admin-field__hint {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: .74rem;
+  line-height: 1.5;
+}
+
+.admin-field__hint code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--cream);
+  font-size: .72rem;
+}
+
+.admin-field--checks {
+  display: flex;
+  flex-wrap: wrap;
   gap: 18px;
 }
 
-.admin-dashboard__header p { margin: 0; color: var(--ink-soft); font-size: .85rem; }
+.admin-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
 
-.admin-entry-list { display: grid; gap: 14px; margin-top: 18px; }
+.admin-check input { accent-color: var(--accent); width: 17px; height: 17px; }
+
+.admin-field--preview {
+  align-content: start;
+  justify-items: start;
+}
+
+.admin-image-preview {
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.admin-image-preview__empty {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: .78rem;
+}
+
+.admin-action--block { width: 100%; }
+
+.admin-action--small {
+  padding: 8px 15px;
+  font-size: .8rem;
+}
+
+/* --- Stavove hlasky a stitky ----------------------------------------- */
+
+.admin-status {
+  margin: 0 0 14px;
+  min-height: 1.2em;
+  font-size: .84rem;
+  font-weight: 600;
+}
+
+.admin-status:empty { margin: 0; min-height: 0; }
+.admin-status[data-state="error"] { color: var(--danger); }
+.admin-status[data-state="success"] { color: var(--success); }
+
+.admin-empty {
+  margin: 0;
+  padding: 34px 20px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  color: var(--ink-soft);
+  font-size: .88rem;
+  text-align: center;
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.admin-badge--ok { background: var(--accent-tint); color: var(--success); }
+.admin-badge--wait { background: var(--accent-soft); color: var(--accent-dark); }
+.admin-badge--gold { background: var(--accent-tint); color: var(--gold); }
+.admin-badge--muted { background: var(--cream-2); color: var(--ink-soft); }
+
+/* --- Cenik: seznam masazi -------------------------------------------- */
+
+.admin-service-list { display: grid; gap: 26px; }
+
+.admin-service-group { display: grid; gap: 10px; }
+
+.admin-service-group h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.15rem;
+}
+
+.admin-service-group__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-tint);
+  color: var(--accent-dark);
+  font-family: var(--font-ui);
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.admin-service {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--cream);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.admin-service:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+.admin-service[data-active="false"] { opacity: .62; }
+
+.admin-service__thumb {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--cream-2);
+  color: var(--ink-soft);
+}
+
+.admin-service__thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.admin-service__body { min-width: 0; display: grid; gap: 5px; }
+
+.admin-service__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-service__title strong {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.admin-service__description {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.admin-service__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: .8rem;
+}
+
+.admin-service__meta span {
+  padding: 3px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+}
+
+.admin-service__price { color: var(--accent-dark); font-weight: 700; }
+
+.admin-service__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* --- Kniha navstev --------------------------------------------------- */
+
+.admin-entry-list { display: grid; gap: 14px; }
 
 .admin-entry {
   padding: 20px;
   border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   background: var(--cream);
 }
 
-.admin-entry__heading time { color: var(--ink-soft); font-size: .75rem; }
-.admin-entry > p:not(.admin-entry__rating) { margin: 14px 0 8px; line-height: 1.6; white-space: pre-wrap; }
-.admin-entry__rating { margin: 0; color: var(--gold); font-size: .84rem; font-weight: 700; }
+.admin-entry[data-approved="false"] { border-left: 4px solid var(--accent); }
+
+.admin-entry__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-entry__heading strong {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.admin-entry__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-entry__meta time { color: var(--ink-soft); font-size: .75rem; }
+
+.admin-entry__message {
+  margin: 14px 0 8px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.admin-entry__rating { margin: 0; color: var(--gold); font-size: .9rem; letter-spacing: .08em; }
 .admin-entry__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
+/* --- Editor masaze (modal) ------------------------------------------- */
+
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--layer-modal);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.admin-modal[hidden] { display: none; }
+
+.admin-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 15, 9, .6);
+  backdrop-filter: blur(3px);
+}
+
+.admin-modal__dialog {
+  position: relative;
+  width: min(760px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.admin-modal__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 20px clamp(18px, 3vw, 28px);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.admin-modal__header h3 { margin: 0; font-size: 1.4rem; }
+
+.admin-form { padding: clamp(18px, 3vw, 28px); }
+
+.admin-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.admin-modal__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+/* --- Responzivita ---------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .admin-tabs { grid-template-columns: 1fr; }
+  .admin-form__grid { grid-template-columns: 1fr; }
+
+  .admin-service {
+    grid-template-columns: 70px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .admin-service__thumb { width: 70px; height: 56px; }
+  .admin-service__actions { grid-column: 1 / -1; justify-content: flex-start; }
+}
+
 @media (max-width: 560px) {
-  .guestbook-admin-page { padding: 26px 14px; }
-  .admin-dashboard__header, .admin-entry__heading { flex-direction: column; }
+  .admin-shell { padding: 14px 12px 46px; }
+  .admin-topbar { align-items: flex-start; }
+  .admin-topbar__tools { width: 100%; }
+  .admin-topbar__user { flex: 1 1 100%; order: 3; }
+  .admin-panel__header { flex-direction: column; }
+  .admin-panel__header .admin-action { width: 100%; }
+  .admin-segmented { width: 100%; justify-content: space-between; }
+  .admin-service__actions .admin-action { flex: 1 1 auto; }
 }
 
 /* 16. Cookie lišta, scroll-to-top, modály, drobnosti -------------------------- */
