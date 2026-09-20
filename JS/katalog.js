@@ -1,4 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Katalog služeb
+ *
+ * Inicializace běží při prvním načtení i po každém přepnutí pohledu routerem.
+ */
+const initServiceCatalog = (signal) => {
   // Katalog sluzeb na msginfo.html.
   //
   // Karty se primarne nacitaji z tabulky `services` v Supabase, aby sly
@@ -199,7 +204,17 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const loadServices = async () => {
-    if (!window.supabase || !window.SUPABASE_CONFIG) {
+    if (!window.SUPABASE_CONFIG) {
+      return false;
+    }
+
+    try {
+      await window.ensureSupabase();
+    } catch (error) {
+      return false;
+    }
+
+    if (!window.supabase || signal.aborted) {
       return false;
     }
 
@@ -235,4 +250,15 @@ document.addEventListener('DOMContentLoaded', () => {
       updateFilters();
     }
   });
-});
+};
+
+(() => {
+  const register =
+    window.AuraView?.register ??
+    ((init) =>
+      document.addEventListener('DOMContentLoaded', () =>
+        init(new AbortController().signal)
+      ));
+
+  register(initServiceCatalog);
+})();

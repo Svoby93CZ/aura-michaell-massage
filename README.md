@@ -27,9 +27,12 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 │   ├── card-3d.js           # 3D karta / vizuální efekty
 │   ├── ceremony-carousel.js # Karusel ceremonií
 │   ├── guestbook.js         # Veřejná kniha návštěv
-│   ├── katalog.js            # Filtrování katalogu služeb
+│   ├── katalog.js           # Filtrování katalogu služeb
+│   ├── logo-draw.js         # Kreslící animace loga
 │   ├── main.js              # Hlavní JavaScript funkcionalita
-│   └── supabase-config.js   # Konfigurace Supabase
+│   ├── ceremony-lightbox.js # Lightbox se zoomem pro galerii ceremonií
+│   ├── router.js            # Přepínání stránek bez znovunačtení
+│   └── supabase-config.js   # Konfigurace Supabase a načtení knihovny
 ├── galerie/                # Obrázky pro galerii
 │   ├── masaze/             # Obrázky masáží
 │   ├── ceremonie/          # Obrázky ceremonií
@@ -170,6 +173,31 @@ Pro sjednocení inline komentářů v CSS použijte:
 ```powershell
 python tools/inline_section_comments.py
 ```
+
+## 🔀 Přepínání stránek bez znovunačtení
+
+Veřejné stránky se mezi sebou přepínají plynule, podobně jako záložky
+v administraci. Obsah každé stránky je zabalený v `<div id="spa-root" data-view="...">`;
+`JS/router.js` zachytí kliknutí na interní odkaz, stáhne cílovou stránku,
+vymění obsah tohoto obalu a přepíše adresu v prohlížeči.
+
+Co zůstává beze změny:
+
+- Každá stránka má dál vlastní adresu (`msginfo.html`, `ceremonie.html`, ...),
+  vlastní `title` a meta popisky - sitemap i vyhledávače fungují stejně jako dřív.
+- Bez JavaScriptu (nebo když se něco nepovede) se odkazy chovají klasicky.
+- `admin.html` je z přepínání vyňatý a funguje samostatně.
+
+Při úpravách stránek je potřeba dodržet dvě věci:
+
+1. Veškerý obsah patří dovnitř `#spa-root`, skripty naopak zůstávají až za ním.
+2. Skript, který se má spustit i po přepnutí pohledu, se registruje přes
+   `window.AuraView.register((signal) => { ... })`. Globální listenery, intervaly
+   a animační smyčky navažte na `signal`, aby se při odchodu ze stránky uklidily.
+
+Widgety třetích stran uvnitř obsahu se řídí dvěma atributy: `data-spa-once`
+spustí skript jen jednou za návštěvu, `data-spa-write="capture"` odchytí jeho
+zápis přes `document.write`, aby nepřepsal celou stránku.
 
 ## 📞 Kontakt
 

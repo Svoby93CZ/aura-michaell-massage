@@ -45,10 +45,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="style.css?v=bd791363" />
+  <link rel="stylesheet" href="style.css?v=e45296b0" />
   <link rel="icon" href="favicon.ico">
 </head>
 <body class="page-services">
+<div id="spa-root" data-view="sluzby">
   <!-- Hlavní navigační panel -->
   <nav class="primary-nav" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
@@ -658,18 +659,21 @@
       </div>
     </div>
   </div>
-
   <!-- Plovoucí tlačítko návratu nahoru -->
-  <button id="scrollTopBtn" title="Zpět nahoru">↑</button>
-  <!-- Sdílený JavaScript pro navigaci, filtry a interakce -->
-  <script src="JS/logo-draw.js?v=61a20900" defer></script>
-  <script src="JS/main.js?v=1aafb838" defer></script>
-  <script src="JS/3D_hover.js?v=6ba0ef6a" defer></script>
-  <!-- Ceník se načítá z databáze, aby šel spravovat z admin.html.
-       Statické karty výše zůstávají jako záloha bez JS. -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-  <script src="JS/supabase-config.js?v=56db64a6" defer></script>
-  <script src="JS/katalog.js?v=06e3cdb6" defer></script>
+  <button id="scrollTopBtn" type="button" title="Zpět nahoru" aria-label="Zpět nahoru">↑</button>
+</div>
+
+  <!-- Sdílená interaktivita: router pohledů + funkce jednotlivých stránek -->
+  <script src="JS/router.js?v=8d59aa88" defer></script>
+  <script src="JS/supabase-config.js?v=6a67ae93" defer></script>
+  <script src="JS/logo-draw.js?v=9480dca5" defer></script>
+  <script src="JS/main.js?v=9ceb63a0" defer></script>
+  <script src="JS/guestbook.js?v=8cad648d" defer></script>
+  <script src="JS/3D_hover.js?v=acb24cd7" defer></script>
+  <script src="JS/card-3d.js?v=4150dc6c" defer></script>
+  <script src="JS/ceremony-carousel.js?v=3804635f" defer></script>
+  <script src="JS/ceremony-lightbox.js?v=c7303432" defer></script>
+  <script src="JS/katalog.js?v=24d5f879" defer></script>
   <script src="JS/cookie-consent.js?v=11f68f21" defer></script>
 </body>
 </html>

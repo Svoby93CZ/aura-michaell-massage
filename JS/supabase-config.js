@@ -30,3 +30,41 @@ window.SERVICE_CATEGORIES = [
   { slug: 'tarot', label: 'Tarot' },
   { slug: 'ostatni', label: 'Ostatní služby' }
 ];
+
+// Knihovna Supabase se stahuje až ve chvíli, kdy ji stránka opravdu potřebuje
+// (kniha návštěv, ceník z databáze, galerie na úvodu). Díky routeru se pohled
+// může objevit i bez znovunačtení stránky, proto je načtení společné.
+window.SUPABASE_CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+
+let supabaseLibraryPromise = null;
+
+window.ensureSupabase = () => {
+  if (window.supabase) {
+    return Promise.resolve(window.supabase);
+  }
+  if (supabaseLibraryPromise) {
+    return supabaseLibraryPromise;
+  }
+
+  supabaseLibraryPromise = new Promise((resolve, reject) => {
+    const existing = document.querySelector(`script[src="${window.SUPABASE_CDN}"]`);
+    const script = existing || document.createElement('script');
+
+    script.addEventListener('load', () => resolve(window.supabase), { once: true });
+    script.addEventListener('error', () => reject(new Error('Supabase se nepodařilo načíst')), {
+      once: true
+    });
+
+    if (!existing) {
+      script.src = window.SUPABASE_CDN;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  }).catch((error) => {
+    // Další pokus smí proběhnout znovu, výpadek sítě nemá knihovnu zablokovat.
+    supabaseLibraryPromise = null;
+    throw error;
+  });
+
+  return supabaseLibraryPromise;
+};

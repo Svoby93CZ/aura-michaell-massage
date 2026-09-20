@@ -59,10 +59,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="style.css?v=bd791363" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="style.css?v=e45296b0" />
 </head>
 <body class="page-home">
+<div id="spa-root" data-view="home">
     <nav class="primary-nav" aria-label="Hlavní navigace">
       <div class="primary-nav__inner">
         <a class="primary-nav__brand" href="index.html">
@@ -132,7 +132,6 @@
             <a class="hero-action-button" href="#guestbook-title">Kniha návštěv</a>
           </div>
         </div>
-      </div>
     </section>
     <!-- Přivítání -->
     <section class="parallax-section parallax-welcome-intro welcome-section" aria-label="Přivítání v salonu">
@@ -215,7 +214,7 @@
         </div>
       </div>
           </div>
-          <script src="https://elfsightcdn.com/platform.js" async></script>
+          <script src="https://elfsightcdn.com/platform.js" async data-spa-once></script>
           <div class="elfsight-app-b275f04e-832a-452d-91ed-1fdc07117847" data-elfsight-app-lazy></div>
         </div>
         <!-- Mapa -->
@@ -327,7 +326,7 @@
       <div class="site-footer__bar">
         <div class="site-footer__counter" aria-label="Počítadlo návštěv" hidden>
           <strong>Návštěvy:</strong>
-          <script>
+          <script data-spa-write="capture" data-spa-once="visit-counter">
             /* Počítadlo je služba třetí strany, načítáme ho stejně jako Analytics až po souhlasu.
                Zápis během parsování je záměrný - skript počítadla sám používá document.write. */
             try {
@@ -363,15 +362,19 @@
     <img src="" alt="Rozšířený náhled" id="lightbox-img">
     <button type="button" class="modal-nav modal-nav--next" aria-label="Další obrázek">&#10095;</button>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-  <script src="JS/supabase-config.js?v=56db64a6" defer></script>
-  <script src="JS/logo-draw.js?v=61a20900" defer></script>
-  <script src="JS/main.js?v=1aafb838" defer></script>
-  <script src="JS/guestbook.js?v=2c0db868" defer></script>
-  <script src="JS/3D_hover.js?v=6ba0ef6a" defer></script>
-  <script src="JS/card-3d.js?v=a634beec" defer></script>
-  <script src="JS/ceremony-carousel.js?v=4a7b88bc" defer></script>
+  <!-- Sdílená interaktivita: router pohledů + funkce jednotlivých stránek -->
+  <script src="JS/router.js?v=8d59aa88" defer></script>
+  <script src="JS/supabase-config.js?v=6a67ae93" defer></script>
+  <script src="JS/logo-draw.js?v=9480dca5" defer></script>
+  <script src="JS/main.js?v=9ceb63a0" defer></script>
+  <script src="JS/guestbook.js?v=8cad648d" defer></script>
+  <script src="JS/3D_hover.js?v=acb24cd7" defer></script>
+  <script src="JS/card-3d.js?v=4150dc6c" defer></script>
+  <script src="JS/ceremony-carousel.js?v=3804635f" defer></script>
+  <script src="JS/ceremony-lightbox.js?v=c7303432" defer></script>
+  <script src="JS/katalog.js?v=24d5f879" defer></script>
   <script src="JS/cookie-consent.js?v=11f68f21" defer></script>
 </body>
 </html>

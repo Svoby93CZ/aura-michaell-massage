@@ -3635,3 +3635,96 @@ header {
 @media (prefers-reduced-motion: reduce) {
   .reveal-on-scroll { opacity: 1; transform: none; transition: none; }
 }
+
+/* ==========================================================================
+   SPA přechody mezi stránkami (JS/router.js)
+   Fallback pro prohlížeče bez View Transitions API + indikace načítání.
+   ========================================================================== */
+#spa-root {
+  transition: opacity 220ms ease;
+}
+
+/* Stránky mají sloupcové rozvržení, ve kterém se <main> roztahuje a drží
+   patičku dole. Obal se mezi ně vložil, takže musí tu roli převzít -
+   jinak by se obsah posunul a patička vyskočila nahoru. */
+.page-about #spa-root,
+.page-services #spa-root,
+.page-privacy #spa-root,
+.body_ceremonie #spa-root,
+.page-shop #spa-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+/* Záložní přechod pro prohlížeče bez View Transitions.
+   Posun přes transform by z obalu udělal vztažný rámec a fixní navigace
+   by se během přechodu utrhla od okna - proto jen průhlednost. */
+#spa-root.spa-view--leaving {
+  opacity: 0;
+}
+
+#spa-root.spa-view--entering {
+  opacity: 0;
+  transition: none;
+}
+
+/* Tenký ukazatel průběhu při načítání další stránky */
+html.spa-busy::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 2147483000;
+  background: linear-gradient(90deg, rgba(137, 25, 21, 0) 0%, rgba(137, 25, 21, 0.95) 50%, rgba(137, 25, 21, 0) 100%);
+  animation: spa-progress 900ms ease-in-out infinite;
+}
+
+html.spa-busy {
+  cursor: progress;
+}
+
+@keyframes spa-progress {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Nadpis dostává po přepnutí fokus kvůli čtečkám - bez viditelného rámečku */
+#spa-root > :focus:not(:focus-visible),
+#spa-root h1:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Cross-fade přes View Transitions API (Chrome, Edge, Safari) */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: spa-fade-out 200ms ease both;
+  }
+
+  ::view-transition-new(root) {
+    animation: spa-fade-in 260ms ease both;
+  }
+}
+
+@keyframes spa-fade-out {
+  to { opacity: 0; transform: translateY(-6px); }
+}
+
+@keyframes spa-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #spa-root,
+  #spa-root.spa-view--leaving,
+  #spa-root.spa-view--entering {
+    transition: none;
+    opacity: 1;
+  }
+
+  html.spa-busy::after {
+    animation: none;
+  }
+}
