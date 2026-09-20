@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=72a0a422">
+  <link rel="stylesheet" href="style.css?v=c6307bb5">
 </head>
 <!-- Třídu admin-page--login odebere JS po přihlášení. Je tu rovnou od začátku,
      aby papírové pozadí neproblikávalo a drželo i bez načteného JS. -->
@@ -44,6 +44,10 @@
         </div>
 
         <div class="admin-login__content">
+        <button class="admin-icon-button admin-login__theme" type="button" data-theme-toggle
+                aria-label="Přepnout noční režim" title="Přepnout noční režim">
+          <span data-theme-toggle-icon aria-hidden="true">🌙</span>
+        </button>
         <p class="admin-login__label">Aura Michaell Massage</p>
         <h1>Administrace</h1>
         <p class="admin-login__lead">Přihlaste se svým jménem nebo e-mailem a heslem.</p>
@@ -358,7 +362,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="JS/supabase-config.js?v=56db64a6"></script>
   <script src="JS/gallery-manifest.js?v=81a5b478"></script>
-  <script src="JS/admin.js?v=f094db41"></script>
+  <script src="JS/admin.js?v=9b422ea1"></script>
   <script src="JS/admin-services.js?v=ad33c9b5"></script>
   <script src="JS/admin-gallery.js?v=711c1ee7"></script>
 </body>
