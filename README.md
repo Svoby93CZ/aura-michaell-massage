@@ -82,7 +82,27 @@ na copyright v patičce** kterékoli stránky webu.
    prohlížeč neposílá — odejde jen prvních pět znaků jeho SHA-1 otisku
    a shoda se hledá až v prohlížeči.
 5. Krátké přihlašovací jméno se nastavuje v `JS/supabase-config.js`
-   v sekci `adminLoginAliases` (překládá se na e-mail účtu).
+   v sekci `adminLoginAliases` (překládá se na e-mail účtu). Klíče pište
+   malými písmeny; na velikosti písmen při přihlašování pak nezáleží.
+   Soubor je veřejný, takže do něj nepatří osobní e-mailové adresy.
+
+### Přidání dalšího správce
+
+1. V Supabase → Authentication → Users → **Add user** → *Create new user*
+   založte účet a zaškrtněte **Auto Confirm User** (jinak čeká na
+   potvrzovací e-mail).
+2. Dejte účtu oprávnění:
+
+   ```sql
+   insert into public.guestbook_admins (user_id)
+   select id from auth.users where email = 'novy@priklad.cz'
+   on conflict do nothing;
+   ```
+
+3. Volitelně přidejte krátké jméno do `adminLoginAliases`.
+
+Odebrání správce: smazáním účtu v Supabase zmizí i jeho oprávnění,
+tabulka má na účty vazbu `on delete cascade`.
 
 Pozor: odkaz „Reset password" ze Supabase sám o sobě přihlašuje, ale heslo
 **nemění** — nové heslo je potřeba zadat. Proto má administrace v horní liště
