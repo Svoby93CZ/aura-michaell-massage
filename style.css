@@ -3115,6 +3115,15 @@ header {
 
 .admin-form { padding: clamp(18px, 3vw, 28px); }
 
+.admin-form--stacked { display: grid; gap: 16px; }
+
+.admin-modal__dialog--narrow { width: min(460px, 100%); }
+
+.admin-field__hint--lead {
+  margin: 0;
+  font-size: .82rem;
+}
+
 .admin-form__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

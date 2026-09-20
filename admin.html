@@ -75,6 +75,7 @@
           </button>
           <a class="admin-icon-button" href="index.html" title="Zpět na web" aria-label="Zpět na web">↩</a>
           <span class="admin-topbar__user" data-admin-user></span>
+          <button class="admin-action admin-action--secondary" type="button" data-password-change>Změnit heslo</button>
           <button class="admin-action admin-action--secondary" type="button" data-admin-logout>Odhlásit</button>
         </div>
       </header>
@@ -144,6 +145,43 @@
         <p class="admin-status" data-admin-status role="status" aria-live="polite"></p>
         <div class="admin-entry-list" data-admin-entry-list></div>
       </section>
+    </div>
+
+    <!-- ============ Změna hesla ============ -->
+    <div class="admin-modal" data-password-modal hidden>
+      <div class="admin-modal__backdrop" data-password-modal-close></div>
+      <div class="admin-modal__dialog admin-modal__dialog--narrow" role="dialog" aria-modal="true" aria-labelledby="password-modal-title">
+        <header class="admin-modal__header">
+          <h3 id="password-modal-title">Změna hesla</h3>
+          <button class="admin-icon-button" type="button" data-password-modal-close aria-label="Zavřít">✕</button>
+        </header>
+
+        <form class="admin-form admin-form--stacked" data-password-form>
+          <p class="admin-field__hint admin-field__hint--lead">
+            Nové heslo platí okamžitě. Zvolte alespoň 12 znaků, které nepoužíváte nikde jinde.
+          </p>
+
+          <div class="admin-field">
+            <label for="new-password">Nové heslo</label>
+            <div class="admin-password">
+              <input id="new-password" name="password" type="password" required minlength="8" autocomplete="new-password">
+              <button class="admin-password__toggle" type="button" data-new-password-toggle aria-label="Zobrazit heslo" aria-pressed="false">Zobrazit</button>
+            </div>
+          </div>
+
+          <div class="admin-field">
+            <label for="new-password-again">Nové heslo znovu</label>
+            <input id="new-password-again" name="passwordAgain" type="password" required minlength="8" autocomplete="new-password">
+          </div>
+
+          <p class="admin-status" data-password-status role="status" aria-live="polite"></p>
+
+          <footer class="admin-modal__footer">
+            <button class="admin-action admin-action--secondary" type="button" data-password-modal-close>Zrušit</button>
+            <button class="admin-action" type="submit" data-password-submit>Uložit heslo</button>
+          </footer>
+        </form>
+      </div>
     </div>
 
     <!-- ============ Editor masáže ============ -->
