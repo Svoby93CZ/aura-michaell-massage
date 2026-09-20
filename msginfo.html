@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="style.css?v=72a0a422" />
+  <link rel="stylesheet" href="style.css?v=bea27538" />
   <link rel="icon" href="favicon.ico">
 </head>
 <body class="page-services">
@@ -606,33 +606,36 @@
     <!-- Aromaterapie jako doplňková sekce mimo katalogové karty -->
     <section id="aroma" class="parallax-section parallax-aroma svc2-aroma" aria-labelledby="aroma-title">
       <div class="svc2-aroma__lead">
+        <p class="svc2-aroma__kicker">Doplněk k péči</p>
         <h2 id="aroma-title">Aromaterapie ke každé masáži</h2>
         <p>
-          K vybraným procedurám můžete přidat aromaterapeutický olej nebo emulzi značek <span style="font-size: 1.25em; font-weight: bolder; color: rgb(223, 91, 3);text-shadow: 2px 2px 4px rgb(0, 0, 0);">TOMFIT</span> a <span style="font-size: 1.25em; font-weight: bolder; color: rgb(3, 62, 223);text-shadow: 2px 2px 4px rgb(0, 0, 0);">VERANA</span>.<br>
+          K vybraným procedurám můžete přidat aromaterapeutický olej nebo emulzi
+          značek <strong>TOMFIT</strong> a <strong>VERANA</strong>.
           Výběr vůně i účinků doladíme před masáží podle nálady a aktuální potřeby těla.
         </p>
       </div>
-      <!-- EDITOR: Seznamy vůní a emulzí upravujte pouze v bodech li níže -->
+      <!-- EDITOR: Seznamy vůní a emulzí upravujte pouze v bodech li níže.
+           Název vůně patří do <strong>, popis za pomlčku. -->
       <div class="svc2-aroma__lists">
-        <article style="background: rgba(223, 91, 3, 0.18);">
-          <h3 style="font-size: 1.25em; font-weight: bolder; color: rgb(223, 91, 3);">Aroma oleje TOMFIT</h3>
+        <article class="aroma-card aroma-card--tomfit">
+          <h3>Aroma oleje <span class="aroma-card__brand">TOMFIT</span></h3>
           <ul>
-            <li><span style="font-weight: bolder; font-size: 1.1em;">Zelený čaj</span> - osvěžení a revitalizace</li>
-            <li><span style="font-weight: bolder; font-size: 1.1em;">Tea tree</span> - očista a podpora pokožky</li>
-            <li><span style="font-weight: bolder; font-size: 1.1em;">Pomeranč</span> - lehkost a pozitivní energie</li>
-            <li><span style="font-weight: bolder; font-size: 1.1em;">Aloe vera</span> - hydratace a zklidnění</li>
-            <li><span style="font-weight: bolder; font-size: 1.1em;">Čokoláda</span> - hřejivá relaxace</li>
-            <li><span style="font-weight: bolder; font-size: 1.1em;">Měsíčková emulze</span> - citlivá a unavená pokožka</li>
+            <li><strong>Zelený čaj</strong> — osvěžení a revitalizace</li>
+            <li><strong>Tea tree</strong> — očista a podpora pokožky</li>
+            <li><strong>Pomeranč</strong> — lehkost a pozitivní energie</li>
+            <li><strong>Aloe vera</strong> — hydratace a zklidnění</li>
+            <li><strong>Čokoláda</strong> — hřejivá relaxace</li>
+            <li><strong>Měsíčková emulze</strong> — citlivá a unavená pokožka</li>
           </ul>
         </article>
-        <article style="background: rgba(3, 62, 223, 0.18);">
-          <h3 style="font-size: 1.25em; font-weight: bolder; color: rgb(3, 62, 223);">Emulze a specialni olej</h3>
+        <article class="aroma-card aroma-card--verana">
+          <h3>Emulze a speciální olej</h3>
           <ul>
-            <li><span style="font-weight: bolder; font-size: 1.1em;">Stop Cellulite VERANA</span> - podpora pevnosti pokožky</li>
+            <li><strong>Stop Cellulite <span class="aroma-card__brand">VERANA</span></strong> — podpora pevnosti pokožky</li>
           </ul>
         </article>
       </div>
-      <p class="svc2-aroma__fee">Příplatek za aromaterapii: + 50 Kč</p>
+      <p class="svc2-aroma__fee">Příplatek za aromaterapii <strong>+ 50 Kč</strong></p>
     </section>
   </main>
   <!-- Footer -->

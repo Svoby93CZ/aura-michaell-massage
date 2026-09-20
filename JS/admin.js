@@ -52,8 +52,10 @@
      Noční režim - stejná logika jako na ostatních stránkách webu.
      --------------------------------------------------------------- */
 
-  const themeToggle = app.querySelector('[data-theme-toggle]');
-  const themeIcon = app.querySelector('[data-theme-toggle-icon]');
+  // Přepínač je na dvou místech - v kartě přihlášení a v liště administrace.
+  // Oba musí přepínat i překreslit svou ikonu, proto pracujeme se všemi.
+  const themeToggles = Array.from(app.querySelectorAll('[data-theme-toggle]'));
+  const themeIcons = Array.from(app.querySelectorAll('[data-theme-toggle-icon]'));
 
   const applyTheme = (theme) => {
     if (theme === 'dark') {
@@ -61,15 +63,15 @@
     } else {
       document.documentElement.removeAttribute('data-theme');
     }
-    if (themeIcon) {
-      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
+    themeIcons.forEach((icon) => {
+      icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    });
   };
 
   const currentTheme = () => (document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
   applyTheme(currentTheme());
 
-  if (themeToggle) {
+  themeToggles.forEach((themeToggle) => {
     themeToggle.addEventListener('click', () => {
       const next = currentTheme() === 'dark' ? 'light' : 'dark';
       applyTheme(next);
@@ -79,7 +81,7 @@
         /* Soukromý režim prohlížeče - volbu prostě neuložíme. */
       }
     });
-  }
+  });
 
   /* ---------------------------------------------------------------
      Přepínání sekcí Ceník / Kniha návštěv

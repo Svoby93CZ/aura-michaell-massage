@@ -23,7 +23,7 @@
 
 :root {
   --ink: #3b2a1e;
-  --ink-soft: #6b5647;
+  --ink-soft: #5c4838;
   --cream: #f1e6d5;
   --cream-2: #e5d4bb;
   --surface: #faf2e5;
@@ -117,23 +117,24 @@ body {
   transition: background-color .5s ease, color .5s ease;
 }
 
+/* Papírová textura pod celým webem. Je to pevná vrstva přes celé okno,
+   ne pozadí body - to by se při rolování posouvalo a na dlouhých
+   stránkách opakovalo. Ztmavení dělá překryv, ne filtr brightness,
+   který by papír vybělil do šeda. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: var(--cream);
+  background:
+    linear-gradient(rgba(26, 14, 6, .15), rgba(26, 14, 6, .15)),
+    url("galerie/papir.webp") center / cover no-repeat;
   z-index: -2;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url("galerie/papir_poz.webp") center/cover no-repeat;
-  opacity: .16;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  z-index: -1;
+:root[data-theme="dark"] body::before {
+  background:
+    linear-gradient(rgba(12, 6, 3, .8), rgba(12, 6, 3, .8)),
+    url("galerie/papir.webp") center / cover no-repeat;
 }
 
 img, video, iframe {
@@ -914,7 +915,11 @@ header {
 .parallax-welcome-intro { --parallax-image: url("galerie/caj.webp"); }
 .parallax-bonus { --parallax-overlay: linear-gradient(180deg, rgba(43,28,18,0), rgba(43,28,18,0)); --parallax-image: url("galerie/karty.webp"); }
 .parallax-balance { --parallax-image: url("galerie/shop5.webp"); }
-.parallax-aroma { --parallax-image: url("galerie/oleje.webp"); }
+.parallax-aroma {
+  --parallax-image: url("galerie/oleje.webp");
+  /* Fotka olejů je barevná a členitá - výchozí překryv na ní text neudrží. */
+  --parallax-overlay: linear-gradient(180deg, rgba(26, 14, 6, .84), rgba(26, 14, 6, .9));
+}
 
 /* Hero "fotografický pás" varianta (o mně / obchod / ceremonie) ------------ */
 
@@ -2285,14 +2290,18 @@ header {
 .svc2-grid {
   margin-top: 14px;
   display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 360px));
-  justify-content: center;
+  gap: 12px;
+  /* auto-fill místo auto-fit: při jedné kartě v kategorii se nerozlije
+     přes celou šířku, ale zůstane v rozměru ostatních. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
 }
 
+/* Karta je na šířku - obrázek vlevo, text vpravo. Na výšku zabere
+   zhruba polovinu oproti dřívějšku, takže se jich na obrazovku vejde
+   víc a katalog se tolik neroluje. */
 .svc2-card {
   display: grid;
-  grid-template-rows: 190px 1fr;
+  grid-template-columns: 112px minmax(0, 1fr);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -2320,14 +2329,15 @@ header {
 .svc2-card img {
   width: 100%;
   height: 100%;
+  min-height: 132px;
   object-fit: cover;
 }
 
 .svc2-card__body {
-  padding: 16px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .svc2-card__badge {
@@ -2349,37 +2359,51 @@ header {
   margin: 0;
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+  font-size: 1.08rem;
+  line-height: 1.25;
   color: var(--ink);
 }
 
+/* Popis na dva řádky, aby karty v řadě držely stejnou výšku. */
 .svc2-card__body p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin: 0;
   color: var(--ink-soft);
   font-family: var(--font-ui);
-  font-size: .95rem;
-  line-height: 1.5;
+  font-size: .85rem;
+  line-height: 1.45;
 }
 
 .svc2-meta {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  font-weight: 700;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
   font-family: var(--font-ui);
+  font-size: .85rem;
+  font-weight: 700;
   color: var(--accent-dark);
 }
 
-.svc2-card__body a {
-  margin-top: auto;
-  width: 100%;
-  height: 44px;
+.svc2-meta span:first-child {
+  padding: 2px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--cream);
+  color: var(--ink-soft);
+  font-weight: 600;
 }
 
-#ostatni h4 {
-  display: inline-flex;
-  justify-content: center;
+.svc2-meta span:last-child { margin-left: auto; font-size: .95rem; }
+
+.svc2-card__body a {
   width: 100%;
+  height: 36px;
+  padding: 0 14px;
+  font-size: .85rem;
 }
 
 .svc2-aroma.parallax-section {
@@ -2399,53 +2423,137 @@ header {
   z-index: var(--layer-content);
 }
 
+.svc2-aroma__kicker {
+  margin: 0 0 6px;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
 .svc2-aroma__lead h2 {
   margin: 0;
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: clamp(1.8rem, 2.2vw, 2.2rem);
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
   color: #fff;
 }
 
 .svc2-aroma__lead p {
-  margin-top: 8px;
-  color: #fff;
+  max-width: 62ch;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, .92);
+  font-family: var(--font-ui);
+  font-size: .95rem;
+  line-height: 1.6;
+}
+
+.svc2-aroma__lead strong {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: .04em;
 }
 
 .svc2-aroma__lists {
-  margin-top: 16px;
+  margin-top: 22px;
   display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: start;
 }
 
-.svc2-aroma__lists article {
+/* Karty stojí na tmavém skle, aby text nad fotkou olejů zůstal čitelný.
+   Značku nese jen barevný proužek vlevo, ne svítící text se stínem. */
+.aroma-card {
+  position: relative;
+  overflow: hidden;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, .22);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255,255,255,.4);
-  padding: 14px;
-  background: rgba(43,28,18,.5);
+  background: rgba(28, 16, 8, .62);
+  backdrop-filter: blur(3px);
 }
 
-.svc2-aroma__lists h3 {
-  margin: 0;
+.aroma-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: var(--aroma-brand, var(--gold));
+}
+
+.aroma-card--tomfit { --aroma-brand: #e07a2c; }
+.aroma-card--verana { --aroma-brand: #5b86d6; }
+
+.aroma-card h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.aroma-card__brand {
+  color: var(--aroma-brand, var(--gold));
   font-family: var(--font-ui);
-  font-size: 1rem;
-  color: #fff;
+  font-size: .9em;
+  font-weight: 700;
+  letter-spacing: .08em;
 }
 
-.svc2-aroma__lists ul {
-  margin: 8px 0 0;
-  padding-left: 16px;
-  color: #fff;
+.aroma-card ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
+.aroma-card li {
+  padding-left: 16px;
+  color: rgba(255, 255, 255, .84);
+  font-family: var(--font-ui);
+  font-size: .88rem;
+  line-height: 1.45;
+  text-shadow: none;
+}
+
+/* Odrážka kreslená pseudoelementem, aby šla obarvit podle značky. */
+.aroma-card li::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  margin: .55em 0 0 -16px;
+  border-radius: 50%;
+  background: var(--aroma-brand, var(--gold));
+}
+
+.aroma-card li strong { color: #fff; font-weight: 700; }
 
 .svc2-aroma__fee {
-  margin: 14px 0 0;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255,255,255,.4);
-  background: rgba(43,28,18,.55);
-  color: #fff;
-  padding: 10px 14px;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 11px 20px;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-pill);
+  background: rgba(28, 16, 8, .62);
+  color: rgba(255, 255, 255, .92);
+  font-family: var(--font-ui);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.svc2-aroma__fee strong {
+  color: var(--gold);
+  font-size: 1.05rem;
   font-weight: 700;
 }
 
@@ -2520,17 +2628,14 @@ header {
 
 /* Přihlašovací obrazovka stojí na staré papírové textuře. Ztmavení
    překryvem drží papír teplý - filtr brightness by ho vybělil do šeda. */
-/* Web překrývá celé okno dvěma pevnými vrstvami (body::before s plnou
-   barvou a body::after se starou texturou). Pozadí samotného body je pod
-   nimi neviditelné, proto se papír přihlašovací obrazovky musí nasadit
-   přímo na ::before a druhá textura vypnout, ať se nenásobí přes sebe. */
+/* Přihlašovací obrazovka má stejný papír jako zbytek webu, jen výrazněji
+   ztmavený. Papír leží na body::before, ne na pozadí body - to je pod
+   pevnou vrstvou neviditelné. */
 .admin-page--login::before {
   background:
     linear-gradient(rgba(26, 14, 6, .38), rgba(26, 14, 6, .38)),
     url("galerie/papir.webp") center / cover no-repeat;
 }
-
-.admin-page--login::after { display: none; }
 
 :root[data-theme="dark"] .admin-page--login::before {
   background:
@@ -2549,13 +2654,13 @@ header {
 /* display: grid vyse by jinak prebilo atribut hidden z prohlizece. */
 .admin-login[hidden] { display: none; }
 
-/* Kreslící logo jako vodoznak uvnitř karty. Vrstva ořezává přetékající
-   kresbu; ořez nejde dát na samotnou kartu, protože by uťal i záři. */
+/* Kreslící logo jako vodoznak uvnitř karty. Ořez přetékající kresby má
+   vlastní vrstvu, aby se nemusel dávat na kartu samotnou. */
 .admin-login__watermark {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  border-radius: calc(var(--radius-lg) - 3px);
+  border-radius: calc(var(--radius-lg) - 4px);
   pointer-events: none;
 }
 
@@ -2589,6 +2694,16 @@ header {
    se jinak kreslil přes statický text. */
 .admin-login__content { position: relative; }
 
+/* Přepínač nočního režimu v rohu karty, aby nerozbíjel odsazení obsahu. */
+.admin-login__theme {
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  width: 34px;
+  height: 34px;
+  font-size: .9rem;
+}
+
 /* Rámeček přihlašovací karty pomalu obíhá světlo.
    Úhel je registrovaná vlastnost, aby ho šlo animovat - bez @property
    by prohlížeč custom property neuměl plynule dopočítat. */
@@ -2600,17 +2715,16 @@ header {
 
 .admin-login__card {
   --admin-login-angle: 0deg;
-  /* Rudá záře: z tmavé vínové do žhavé červené. */
+  /* Rudá záře: z tmavé vínové přes žhavou červeň po světlé jádro. */
   --admin-login-deep: #6e1b12;
-  --admin-login-bright: #d4402a;
+  --admin-login-bright: #e0361c;
+  --admin-login-hot: #ff8a5c;
   --admin-login-base: #6d5a44;
 
-  /* Bez z-indexu záměrně: karta nesmí vytvořit vrstvící kontext, jinak by
-     se záře z ::after (z-index -1) kreslila přes její vlastní pozadí. */
   position: relative;
   width: min(440px, 100%);
   padding: clamp(26px, 5vw, 40px);
-  border: 3px solid transparent;
+  border: 4px solid transparent;
   border-radius: var(--radius-lg);
   /* Výplň se kreslí po okraj obsahu, gradient jen do rámečku. */
   background:
@@ -2618,20 +2732,24 @@ header {
     conic-gradient(
       from var(--admin-login-angle),
       var(--admin-login-base) 0deg,
-      var(--admin-login-deep) 35deg,
-      var(--admin-login-bright) 95deg,
-      var(--admin-login-deep) 155deg,
+      var(--admin-login-deep) 30deg,
+      var(--admin-login-bright) 72deg,
+      var(--admin-login-hot) 95deg,
+      var(--admin-login-bright) 118deg,
+      var(--admin-login-deep) 160deg,
       var(--admin-login-base) 215deg,
       var(--admin-login-base) 360deg
     ) border-box;
-  box-shadow: var(--shadow-lg);
+  /* Menší stín než dřív - velký tmavý halo soupeřil s obíhajícím světlem. */
+  box-shadow: var(--shadow-md);
   text-align: center;
-  animation: admin-login-glow 7s linear infinite;
+  animation: admin-login-glow 6s linear infinite;
 }
 
 :root[data-theme="dark"] .admin-login__card {
   --admin-login-deep: #a32a1c;
-  --admin-login-bright: #ff6a4d;
+  --admin-login-bright: #ff5533;
+  --admin-login-hot: #ffc4ad;
   --admin-login-base: #4a3524;
 }
 
@@ -2639,30 +2757,8 @@ header {
   to { --admin-login-angle: 360deg; }
 }
 
-/* Záře pod kartou, aby efekt nepůsobil jen jako tenká čára. */
-.admin-login__card::after {
-  content: "";
-  position: absolute;
-  /* Záře musí přesahovat kartu, jinak se rozmazání schová pod ní. */
-  inset: -16px;
-  z-index: -1;
-  border-radius: calc(var(--radius-lg) + 16px);
-  background: conic-gradient(
-    from var(--admin-login-angle),
-    transparent 0deg,
-    var(--admin-login-deep) 35deg,
-    var(--admin-login-bright) 95deg,
-    var(--admin-login-deep) 155deg,
-    transparent 225deg,
-    transparent 360deg
-  );
-  filter: blur(26px);
-  opacity: .85;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .admin-login__card { animation: none; }
-  .admin-login__card::after { display: none; }
 }
 
 .admin-login__label {
