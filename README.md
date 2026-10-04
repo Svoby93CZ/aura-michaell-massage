@@ -14,6 +14,7 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 ├── privacy-policy.html     # Ochrana osobních údajů (GDPR)
 ├── admin.html              # Administrace: ceník + kniha návštěv
 ├── supabase-guestbook.sql  # Schéma knihy návštěv pro Supabase
+├── supabase-guestbook-notify.sql # Upozornění e-mailem na nový vzkaz
 ├── supabase-services.sql   # Schéma ceníku pro Supabase
 ├── supabase-services-seed.sql # Prvotní naplnění ceníku (31 masáží)
 ├── supabase-gallery.sql    # Schéma galerie salonu pro Supabase
@@ -54,6 +55,7 @@ Profesionální webová stránka pro masážní salon v Bruntále.
 - Galerie a vizuální doplňky včetně 3D efektů
 - Stránku zásad ochrany osobních údajů
 - Moderovanou Knihu návštěv napojenou na Supabase
+- Upozornění e-mailem, když do knihy návštěv přijde nový vzkaz
 - Ceník masáží editovatelný z administrace (admin.html)
 - Statický web bez front-end závislostí
 
@@ -115,6 +117,60 @@ takže ho nikomu nepřeposílejte.
 Oprávnění správce se řídí tabulkou `guestbook_admins` — samotné přihlášení
 nestačí, účet musí mít v této tabulce řádek. Přístup k datům hlídá RLS
 přímo v databázi, přihlašovací formulář je jen pohodlí.
+
+### Upozornění na nový vzkaz
+
+Když návštěvník napíše do knihy návštěv, přijde vám e-mail s přezdívkou,
+hodnocením, textem vzkazu a odkazem do administrace. E-mail posílá přímo
+databáze přes službu [Resend](https://resend.com) (zdarma do 100 e-mailů
+denně), na webu se nic nemění.
+
+Nastavení (jednou):
+
+1. Zaregistrujte se na resend.com **adresou, na kterou chcete upozornění
+   dostávat**. Dokud v Resend neověříte vlastní doménu, posílá jen na
+   adresu, se kterou jste se registrovali.
+2. V Resend → **API Keys** → *Create API Key* (stačí oprávnění
+   *Sending access*). Klíč začíná `re_` a ukáže se jen jednou.
+3. V Supabase SQL Editoru spusťte `supabase-guestbook-notify.sql`.
+4. Tamtéž uložte klíč a adresu do trezoru (Vault). Do souborů v repozitáři
+   je nepište, ty jsou veřejné:
+
+   ```sql
+   select vault.create_secret('re_VAS_KLIC', 'guestbook_resend_api_key');
+   select vault.create_secret('vas@email.cz', 'guestbook_notify_to');
+   ```
+
+5. Napište zkušební vzkaz na webu. E-mail přijde do minuty, případně
+   se podívejte do spamu.
+
+Když e-mail nepřišel, odpověď od Resend je v databázi ještě 6 hodin:
+
+```sql
+select created, status_code, content from net._http_response
+order by created desc limit 5;
+```
+
+Změna adresy:
+
+```sql
+select vault.update_secret(id, 'nova@adresa.cz')
+from vault.secrets where name = 'guestbook_notify_to';
+```
+
+Upozornění na víc adres (třeba pro oba správce) zapíšete oddělené čárkou,
+ale Resend to dovolí až s ověřenou doménou: v Resend → **Domains** přidejte
+`auramichaell.cz`, DNS záznamy, které vypíše, vložte u správce domény a pak
+nastavte i odesílatele:
+
+```sql
+select vault.create_secret('Kniha návštěv <web@auramichaell.cz>', 'guestbook_notify_from');
+```
+
+Vypnutí: `delete from vault.secrets where name = 'guestbook_resend_api_key';`
+
+Pojistka proti spamu: když za poslední hodinu přijde víc než 10 vzkazů,
+další se uloží bez e-mailu. Uvidíte je normálně v administraci.
 
 ### Ceník a jeho záloha
 
@@ -212,4 +268,4 @@ zápis přes `document.write`, aby nepřepsal celou stránku.
 
 ---
 
-**Poslední aktualizace:** 20.09.2026
+**Poslední aktualizace:** 03.10.2026
