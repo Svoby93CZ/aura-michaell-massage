@@ -3,8 +3,7 @@
 --
 -- Po každém novém vzkazu databáze sama pošle e-mail přes službu Resend
 -- (resend.com, zdarma do 100 e-mailů denně). Dokud nejsou v trezoru (Vault)
--- uložené klíč a adresa, trigger nic neposílá - viz README, sekce
--- „Upozornění na nový vzkaz“.
+-- uložené klíč a adresa, trigger nic neposílá.
 --
 -- Klíč a adresy se ukládají do Supabase Vault, ne sem - tenhle soubor je
 -- veřejný na GitHubu:
