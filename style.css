@@ -58,7 +58,6 @@
   --layer-ground: 0;
   --layer-content: 10;
   --layer-floating: 140;
-  --layer-overlay: 260;
   --layer-scroll-button: 320;
   --layer-modal: 400;
 
@@ -89,11 +88,6 @@
   --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
   --shadow-md: 0 10px 26px rgba(0,0,0,.4);
   --shadow-lg: 0 20px 46px rgba(0,0,0,.5);
-}
-
-:root[data-theme="dark"] body::after {
-  opacity: .07;
-  mix-blend-mode: overlay;
 }
 
 * {
@@ -151,14 +145,6 @@ a { color: var(--accent-dark); }
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 20px;
-  box-sizing: border-box;
-}
-
-header {
-  position: relative;
-  min-height: 0;
-  padding: 0;
-  margin: 0;
 }
 
 /* 02. Stránkové kostry ----------------------------------------------------- */
@@ -198,23 +184,12 @@ header {
   margin-top: auto;
 }
 
-.body_ceremonie {
-  margin: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
 /* Ceremonie má vlastní, tmavší a atmosférickější pozadí - teplé kakaové
    odstíny se zákmitem svíce místo světlé krémové plochy ostatních stránek. */
 .body_ceremonie::before {
   background:
     radial-gradient(ellipse 70% 45% at 50% 0%, rgba(199, 130, 66, .22), transparent 68%),
     linear-gradient(180deg, #2b170e 0%, #1c0f09 55%, #140a06 100%);
-}
-
-.body_ceremonie::after {
-  opacity: .05;
-  mix-blend-mode: soft-light;
 }
 
 /* 03. Navigace ------------------------------------------------------------- */
@@ -348,12 +323,10 @@ header {
 .primary-nav__link--cta:hover,
 .primary-nav__link--cta:focus-visible {
   background: var(--danger-dark);
-  color: #fff8f0 !important;
 }
 
 .primary-nav__link--cta[aria-current="page"] {
   background: var(--danger);
-  color: #fff8f0 !important;
 }
 
 .primary-nav__toggle {
@@ -381,7 +354,8 @@ header {
   transition: transform .25s ease, opacity .25s ease;
 }
 
-.primary-nav__toggle-label {
+.primary-nav__toggle-label,
+.theme-toggle__label {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -412,15 +386,6 @@ header {
 .theme-toggle:focus-visible {
   outline: 2px solid var(--accent-dark);
   outline-offset: 3px;
-}
-
-.theme-toggle__label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
 }
 
 .theme-toggle__track {
@@ -539,10 +504,6 @@ header {
 
   .theme-toggle {
     order: 1;
-  }
-
-  .primary-nav__brand-text {
-    display: none;
   }
 
   .primary-nav__menu {
@@ -744,17 +705,6 @@ header {
   text-align: left;
 }
 
-.hero-actions {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  margin-top: 24px;
-}
-
 .hero-intro {
   flex: 1;
   background: var(--surface);
@@ -884,12 +834,6 @@ header {
   }
 }
 
-@media (max-width: 768px) {
-  .parallax-section::before {
-    background-attachment: scroll !important;
-  }
-}
-
 .parallax-content {
   position: relative;
   z-index: var(--layer-content);
@@ -913,7 +857,7 @@ header {
 }
 
 .parallax-welcome-intro { --parallax-image: url("galerie/caj.webp"); }
-.parallax-bonus { --parallax-overlay: linear-gradient(180deg, rgba(43,28,18,0), rgba(43,28,18,0)); --parallax-image: url("galerie/karty.webp"); }
+.parallax-bonus { --parallax-overlay: none; --parallax-image: url("galerie/karty.webp"); }
 .parallax-balance { --parallax-image: url("galerie/shop5.webp"); }
 .parallax-aroma {
   --parallax-image: url("galerie/oleje.webp");
@@ -951,7 +895,6 @@ header {
   width: min(100%, 760px);
   min-height: inherit;
   margin: 0 auto;
-  box-sizing: border-box;
   padding: 42px 34px;
   text-align: center;
 }
@@ -959,13 +902,11 @@ header {
 .about-hero__content .hero-logo-draw,
 .page-shop .hero-logo-draw,
 .ceremonie-hero-content .hero-logo-draw {
-  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: min(46vw, 340px);
   opacity: .35;
-  z-index: 1;
 }
 
 .about-hero__content h1,
@@ -1027,7 +968,6 @@ header {
   max-width: 100%;
   width: 100%;
   padding: 44px clamp(20px, 6vw, 60px);
-  box-shadow: none;
   display: flex;
 }
 
@@ -1121,7 +1061,6 @@ header {
    Kliknutím se pořád otevřou ve zvětšenině (lightbox). */
 .page-home .home-myths-gallery__grid img {
   width: 100%;
-  height: auto;
   border: 3px solid var(--surface);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
@@ -1166,7 +1105,6 @@ header {
 .page-home .bonus-card-section .parallax-content {
   max-width: min(920px, 100%);
   padding: 32px 36px;
-  box-shadow: none;
   width: 100%;
   text-align: center;
 }
@@ -1728,7 +1666,8 @@ header {
 
 /* 10. O mně ------------------------------------------------------------------ */
 
-.page-about main.container { max-width: 1240px; }
+.page-about main.container,
+.page-shop main.container { max-width: 1240px; }
 
 #about { margin-bottom: 60px; }
 
@@ -1767,8 +1706,6 @@ header {
 }
 
 /* 11. Obchod a poukazy ------------------------------------------------------- */
-
-.page-shop main.container { max-width: 1240px; }
 
 .page-shop #shop { margin-bottom: 54px; text-align: center; }
 
@@ -1971,11 +1908,9 @@ header {
   display: none;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity .3s ease;
 }
 
-.lightbox-modal[aria-hidden="false"] { display: flex; opacity: 1; }
+.lightbox-modal[aria-hidden="false"] { display: flex; }
 
 .lightbox-overlay {
   position: absolute;
@@ -2242,10 +2177,8 @@ header {
 .svc2-info summary::after {
   content: "Rozklikněte pro detail";
   font-size: .74rem;
-  font-weight: 700;
   letter-spacing: .04em;
   text-transform: uppercase;
-  color: var(--accent-dark);
   background: var(--accent-tint);
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
@@ -2408,7 +2341,6 @@ header {
 
 .svc2-aroma.parallax-section {
   margin: 40px auto 0;
-  min-height: 320px;
   padding: 48px 40px 56px;
   flex-direction: column;
   justify-content: flex-start;
@@ -2626,8 +2558,6 @@ header {
 
 /* --- Prihlaseni ------------------------------------------------------ */
 
-/* Přihlašovací obrazovka stojí na staré papírové textuře. Ztmavení
-   překryvem drží papír teplý - filtr brightness by ho vybělil do šeda. */
 /* Přihlašovací obrazovka má stejný papír jako zbytek webu, jen výrazněji
    ztmavený. Papír leží na body::before, ne na pozadí body - to je pod
    pevnou vrstvou neviditelné. */
@@ -2668,8 +2598,6 @@ header {
   position: absolute;
   /* Přebíjí umístění a šířku ze sdíleného .hero-logo-draw. */
   inset: 0;
-  left: 0;
-  top: 0;
   width: auto;
   transform: none;
   display: grid;
@@ -3106,8 +3034,6 @@ header {
 }
 
 .admin-status:empty { margin: 0; min-height: 0; }
-.admin-status[data-state="error"] { color: var(--danger); }
-.admin-status[data-state="success"] { color: var(--success); }
 
 .admin-empty {
   margin: 0;
