@@ -25,3 +25,7 @@ temp/
 # Python
 __pycache__/
 *.pyc
+
+# graphify - vygenerovaný graf a zálohy nastavení
+graphify-out/
+*.graphify-bak
