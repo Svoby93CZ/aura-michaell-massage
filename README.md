@@ -26,7 +26,11 @@ o open-source projekt — podrobnosti v sekci [Autorská práva](#-autorská-pr�
   Kdo smí data číst a měnit, hlídají pravidla RLS přímo v databázi.
 - **[Resend](https://resend.com)** — e-mailové upozornění na nový vzkaz
 - **GitHub Actions** — automatická údržba souborů (viz níže)
-- **Apache** (`.htaccess`) — cache, bezpečnostní hlavičky a Content Security Policy
+- **Content Security Policy** — `<meta>` značka v hlavičce každé HTML stránky
+  určuje, odkud smí web načítat skripty, styly a data. Novou službu třetí strany
+  je potřeba přidat do pravidla na všech stránkách, jinak ji prohlížeč zablokuje.
+- **Apache** (`.htaccess`) — cache a bezpečnostní hlavičky pro hosting na Apachi.
+  GitHub Pages, na kterých web běží, tento soubor ignorují.
 
 V repozitáři nejsou žádná hesla ani tajné klíče. Klíč Supabase
 v `JS/supabase-config.js` je veřejný (*publishable*) klíč určený pro prohlížeč;
