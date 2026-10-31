@@ -224,7 +224,7 @@ const initServiceCatalog = (signal) => {
     }
 
     try {
-      const client = window.createPublicSupabaseClient();
+      const client = window.getPublicSupabaseClient();
       const { data, error } = await client
         .from('services')
         .select('category, name, slug, description, duration_minutes, price_czk, image_path, image_alt, reservio_url, recommended, badge_text, sort_order')

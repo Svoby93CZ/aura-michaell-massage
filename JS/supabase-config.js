@@ -24,7 +24,7 @@ window.SERVICE_CATEGORIES = [
   { slug: 'zabaly', label: 'Zábaly' },
   { slug: 'scratch', label: 'Scratch Therapy' },
   { slug: 'vedomy', label: 'Vědomý dotek' },
-  { slug: 'motyli', label: 'Motýlý dotek' },
+  { slug: 'motyli', label: 'Motýlí dotek' },
   { slug: 'bankovani', label: 'Baňkování' },
   { slug: 'fullbody', label: 'Full body' },
   { slug: 'tarot', label: 'Tarot' },
@@ -74,14 +74,20 @@ window.ensureSupabase = () => {
 
 // Veřejné stránky se nikdy nepřihlašují. Jejich klient proto nesahá do úložiště
 // prohlížeče, takže přihlášení z administrace nemůže přečíst ani uložit.
-// Volat až po window.ensureSupabase().
-window.createPublicSupabaseClient = () => {
-  const { url, anonKey } = window.SUPABASE_CONFIG;
-  return window.supabase.createClient(url, anonKey, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-      detectSessionInUrl: false
-    }
-  });
+// Kniha návštěv, ceník i galerie sdílí jednoho klienta po celou návštěvu,
+// i když se pohledy přepínají. Volat až po window.ensureSupabase().
+let publicSupabaseClient = null;
+
+window.getPublicSupabaseClient = () => {
+  if (!publicSupabaseClient) {
+    const { url, anonKey } = window.SUPABASE_CONFIG;
+    publicSupabaseClient = window.supabase.createClient(url, anonKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+      }
+    });
+  }
+  return publicSupabaseClient;
 };

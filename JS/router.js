@@ -19,11 +19,13 @@
   const viewInits = [];
   const executedOnce = new Set();
   const htmlCache = new Map();
-  const scrollPositions = new Map();
 
   let controller = new AbortController();
   let booted = false;
   let navigationToken = 0;
+  // Cesta stránky, jejíž obsah je právě vykreslený. Při popstate už
+  // location ukazuje na cíl, takže ji nejde zjistit odtud.
+  let renderedPath = location.pathname;
 
   const supportsRouting = Boolean(
     window.fetch && window.DOMParser && window.history && window.history.pushState
@@ -296,6 +298,12 @@
     settleScroll(typeof savedPosition === 'number' ? savedPosition : 0);
   };
 
+  // Pozice se ukládá do záznamu historie, který opouštíme. Tlačítko Zpět
+  // se pak vrátí přesně tam, kde návštěvník byl - i v rámci jedné stránky.
+  const rememberScroll = () => {
+    history.replaceState({ ...(history.state || {}), scrollY: window.scrollY }, '', location.href);
+  };
+
   const moveFocus = () => {
     const root = getRoot();
     if (!root) {
@@ -343,7 +351,6 @@
       return;
     }
 
-    scrollPositions.set(location.pathname, window.scrollY);
     document.documentElement.classList.add('spa-busy');
 
     let doc;
@@ -368,6 +375,7 @@
     }
 
     if (push) {
+      rememberScroll();
       history.pushState({ path: url.pathname }, '', url.href);
     }
 
@@ -380,6 +388,7 @@
       document.body.className = doc.body.className;
       syncHead(doc);
     });
+    renderedPath = url.pathname;
 
     document.documentElement.classList.remove('spa-busy');
 
@@ -387,7 +396,9 @@
     await runContentScripts(getRoot());
     runViewInits();
 
-    restoreScroll(url.hash, push ? null : savedPosition);
+    // Při návratu má uložená pozice přednost před kotvou v adrese.
+    const returning = !push && typeof savedPosition === 'number';
+    restoreScroll(returning ? '' : url.hash, returning ? savedPosition : null);
     moveFocus();
 
     // Bez souhlasu by se událost jen hromadila ve frontě a odešla by se
@@ -434,8 +445,10 @@
     }
 
     const href = link.getAttribute('href') || '';
-    // Kotvy a jiná schémata (mailto:, tel:) necháváme prohlížeči
-    if (href.startsWith('#') || /^(mailto|tel|sms|javascript):/i.test(href)) {
+    // Prázdnou kotvu a jiná schémata (mailto:, tel:) necháváme prohlížeči.
+    // Kotvy v rámci stránky (#…) zpracujeme níže, jinak by je prohlížeč
+    // ohlásil jako popstate a stránka by se zbytečně vykreslila znovu.
+    if (href === '#' || /^(mailto|tel|sms|javascript):/i.test(href)) {
       return null;
     }
 
@@ -457,15 +470,18 @@
       return;
     }
 
-    // Odkaz v rámci aktuální stránky - jen doscrollovat
+    // Odkaz v rámci aktuální stránky - jen doscrollovat, nic nevykreslovat.
+    // Kotvu, která na stránce není, necháme prohlížeči.
     if (url.pathname === location.pathname && url.hash) {
       const target = document.getElementById(url.hash.slice(1));
-      if (target) {
-        event.preventDefault();
-        history.pushState({ path: url.pathname }, '', url.href);
-        restoreScroll(url.hash, null);
+      if (!target) {
         return;
       }
+      event.preventDefault();
+      rememberScroll();
+      history.pushState({ path: url.pathname }, '', url.href);
+      restoreScroll(url.hash, null);
+      return;
     }
 
     if (url.href === location.href) {
@@ -492,12 +508,21 @@
     { capture: true }
   );
 
-  window.addEventListener('popstate', () => {
+  window.addEventListener('popstate', (event) => {
     const url = new URL(location.href);
     if (!isRoutable(url)) {
       return;
     }
-    navigate(url, { push: false, savedPosition: scrollPositions.get(url.pathname) ?? 0 });
+    const savedPosition = event.state?.scrollY;
+
+    // Zpět/Vpřed mezi kotvami téže stránky - obsah zůstává, jen se posune.
+    // Uložená pozice má přednost před kotvou v adrese.
+    if (url.pathname === renderedPath) {
+      const hasSaved = typeof savedPosition === 'number';
+      restoreScroll(hasSaved ? '' : url.hash, savedPosition);
+      return;
+    }
+    navigate(url, { push: false, savedPosition });
   });
 
   if ('scrollRestoration' in history) {

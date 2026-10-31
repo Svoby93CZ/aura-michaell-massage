@@ -139,7 +139,7 @@ const loadHomeGallery = async (carousel) => {
   }
 
   try {
-    const client = window.createPublicSupabaseClient();
+    const client = window.getPublicSupabaseClient();
     const { data, error } = await client
       .from('gallery_images')
       .select('image_path, alt_text, sort_order')

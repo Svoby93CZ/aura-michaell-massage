@@ -1659,6 +1659,16 @@ header {
   font-size: .8rem;
 }
 
+.guestbook-more {
+  justify-self: center;
+  margin: 4px 0 8px;
+}
+
+/* .hero-action-button nastavuje display, bez tohoto by [hidden] nezabral. */
+.guestbook-more[hidden] {
+  display: none;
+}
+
 .guestbook-empty {
   margin: 0;
   color: var(--ink-soft);

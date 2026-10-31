@@ -24,7 +24,7 @@ const initGuestbook = async (signal) => {
 
   const { url, anonKey } = window.SUPABASE_CONFIG;
   const hasConfiguration = url && anonKey && !url.includes('YOUR-PROJECT') && !anonKey.includes('YOUR_SUPABASE');
-  const client = hasConfiguration ? window.createPublicSupabaseClient() : null;
+  const client = hasConfiguration ? window.getPublicSupabaseClient() : null;
   const form = section.querySelector('[data-guestbook-form]');
   const list = section.querySelector('[data-guestbook-list]');
   const status = section.querySelector('[data-guestbook-status]');
@@ -54,64 +54,101 @@ const initGuestbook = async (signal) => {
     ? `${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}`
     : 'Bez hodnocení';
 
-  const renderEntries = (entries) => {
-    list.replaceChildren();
+  // Vzkazy se načítají po stránkách, ať kniha s přibývajícími vzkazy
+  // nezdržuje úvodní stránku.
+  const PAGE_SIZE = 10;
+  let loadedCount = 0;
 
-    if (!entries.length) {
-      const empty = document.createElement('p');
-      empty.className = 'guestbook-empty';
-      empty.textContent = 'Kniha zatím čeká na první vzkaz.';
-      list.appendChild(empty);
-      return;
+  const moreButton = document.createElement('button');
+  moreButton.type = 'button';
+  moreButton.className = 'hero-action-button guestbook-more';
+  moreButton.textContent = 'Načíst další vzkazy';
+
+  const buildEntry = (entry) => {
+    const article = document.createElement('article');
+    article.className = 'guestbook-entry';
+
+    const header = document.createElement('div');
+    header.className = 'guestbook-entry__header';
+    const author = document.createElement('strong');
+    author.className = 'guestbook-entry__author';
+    author.textContent = entry.nickname;
+    const date = document.createElement('time');
+    date.className = 'guestbook-entry__date';
+    date.dateTime = entry.created_at;
+    date.textContent = formatDate(entry.created_at);
+    header.append(author, date);
+
+    const message = document.createElement('p');
+    message.className = 'guestbook-entry__message';
+    message.textContent = entry.message;
+    const rating = document.createElement('span');
+    rating.className = 'guestbook-entry__rating';
+    rating.setAttribute('aria-label', entry.rating ? `Hodnocení ${entry.rating} z 5` : 'Bez hodnocení');
+    rating.textContent = renderStars(entry.rating);
+
+    article.append(header, message, rating);
+    return article;
+  };
+
+  const renderEntries = (entries, hasMore) => {
+    if (loadedCount === 0) {
+      list.replaceChildren();
+
+      if (!entries.length) {
+        const empty = document.createElement('p');
+        empty.className = 'guestbook-empty';
+        empty.textContent = 'Kniha zatím čeká na první vzkaz.';
+        list.appendChild(empty);
+        return [];
+      }
+      list.appendChild(moreButton);
     }
 
-    entries.forEach((entry) => {
-      const article = document.createElement('article');
-      article.className = 'guestbook-entry';
-
-      const header = document.createElement('div');
-      header.className = 'guestbook-entry__header';
-      const author = document.createElement('strong');
-      author.className = 'guestbook-entry__author';
-      author.textContent = entry.nickname;
-      const date = document.createElement('time');
-      date.className = 'guestbook-entry__date';
-      date.dateTime = entry.created_at;
-      date.textContent = formatDate(entry.created_at);
-      header.append(author, date);
-
-      const message = document.createElement('p');
-      message.className = 'guestbook-entry__message';
-      message.textContent = entry.message;
-      const rating = document.createElement('span');
-      rating.className = 'guestbook-entry__rating';
-      rating.setAttribute('aria-label', entry.rating ? `Hodnocení ${entry.rating} z 5` : 'Bez hodnocení');
-      rating.textContent = renderStars(entry.rating);
-
-      article.append(header, message, rating);
-      list.appendChild(article);
-    });
+    const articles = entries.map(buildEntry);
+    moreButton.before(...articles);
+    loadedCount += entries.length;
+    moreButton.hidden = !hasMore;
+    return articles;
   };
 
   const loadEntries = async () => {
     if (!client) {
       setStatus('Kniha návštěv čeká na nastavení Supabase.', 'error');
-      return;
+      return [];
     }
 
+    // O jeden vzkaz víc, než se zobrazí - podle něj se pozná, jestli jsou další.
     const { data, error } = await client
       .from('guestbook_entries')
       .select('nickname, rating, message, created_at')
       .eq('approved', true)
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false })
+      .order('id', { ascending: true })
+      .range(loadedCount, loadedCount + PAGE_SIZE);
 
+    if (signal.aborted) {
+      return [];
+    }
     if (error) {
       setStatus('Vzkazy se momentálně nepodařilo načíst.', 'error');
-      return;
+      return [];
     }
 
-    renderEntries(data || []);
+    const rows = data || [];
+    return renderEntries(rows.slice(0, PAGE_SIZE), rows.length > PAGE_SIZE);
   };
+
+  moreButton.addEventListener('click', async () => {
+    moreButton.disabled = true;
+    const added = await loadEntries();
+    moreButton.disabled = false;
+    // Fokus na první nový vzkaz - tlačítko se mohlo po poslední stránce skrýt.
+    if (added.length) {
+      added[0].tabIndex = -1;
+      added[0].focus();
+    }
+  });
 
   if (!client) {
     setStatus('Kniha návštěv čeká na nastavení Supabase.', 'error');

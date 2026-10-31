@@ -84,7 +84,8 @@ const initMainView = (signal) => {
   if (menu) {
     menu.querySelectorAll('.primary-nav__link').forEach(link => {
       const href = link.getAttribute('href');
-      if (!href || href.startsWith('#') || href.startsWith('http')) {
+      // Odkaz s kotvou (Kniha návštěv) vede na část stránky, ne na stránku samotnou.
+      if (!href || href.includes('#') || href.startsWith('http')) {
         return;
       }
 

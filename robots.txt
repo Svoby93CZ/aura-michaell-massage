@@ -1,86 +1,29 @@
 # robots.txt pro Aura Michaell Massage
-# Tento soubor říká vyhledávačům, které stránky mohou indexovat
-
-# ============================================
-# PRAVIDLA PRO VŠECHNY ROBOTY
-# ============================================
+#
+# Říká vyhledávačům, které části webu nemají procházet. Není to zabezpečení
+# (to řeší .htaccess, přihlášení a pravidla v databázi), jen doporučení,
+# které slušní roboti dodržují.
+#
+# Jedna společná skupina pro všechny roboty. Robot, který má v souboru
+# vlastní skupinu (dřív Googlebot-Image a SeznamBot), se řídí jen jí
+# a pravidla níže by pro něj neplatila.
+#
+# Složka JS/ je povolená záměrně: Google i Seznam stránky vykreslují
+# s JavaScriptem a bez něj by neviděly ceník ani galerii z databáze.
 
 User-agent: *
 
-# Povolené stránky (indexovat ANO)
-Allow: /
-Allow: /index.html
-Allow: /about.html
-Allow: /ceremonie.html
-Allow: /msginfo.html
-Allow: /obchod.html
-Allow: /privacy-policy.html
-Allow: /galerie/
-Allow: /galerie/masaze/
-Allow: /galerie/Poukazy/
-
-# Zakázané stránky (indexovat NE)
-Disallow: /tools/
+# Administrace a pomocné soubory (admin.html má navíc noindex)
 Disallow: /admin.html
-Disallow: /JS/
+Disallow: /tools/
 Disallow: /*.bak$
 Disallow: /*.backup$
 Disallow: /*.old$
 Disallow: /*.log$
-Disallow: /cgi-bin/
-Disallow: /tmp/
-Disallow: /temp/
 
-# Zakázat indexování skrytých souborů
+# Skryté soubory (.htaccess, .git apod.)
 Disallow: /.*
 
-# ============================================
-# SITEMAP (řekne Googlu kde najít seznam stránek)
-# ============================================
-# AKTIVNÍ - sitemap.xml aktualizována 10. září 2026
 Sitemap: https://auramichaell.cz/sitemap.xml
 
-# ============================================
-# PRAVIDLA PRO KONKRÉTNÍ ROBOTY
-# ============================================
-
-# Google Image Bot - povolte indexování obrázků
-User-agent: Googlebot-Image
-Allow: /galerie/
-Allow: /galerie/masaze/
-Allow: /galerie/Poukazy/
-Allow: /*.jpg
-Allow: /*.jpeg
-Allow: /*.png
-Allow: /*.gif
-Allow: /*.webp
-
-# Seznam.cz robot
-User-agent: SeznamBot
-Allow: /
-
-# ============================================
-# RYCHLOST PROCHÁZENÍ (crawl-delay)
-# ============================================
-# Některé roboty respektují tento parametr
-# Číslo = sekundy mezi požadavky
-
-User-agent: *
-# Crawl-delay: 1
-
-# ============================================
-# POZNÁMKY
-# ============================================
-#
-# Tento soubor:
-# - NENAHRAZUJE zabezpečení (.htaccess)
-# - Je pouze DOPORUČENÍ pro slušné roboty
-# - Škodlivé roboty ho ignorují
-# - Musí být v KOŘENOVÉ složce webu
-#
-# Testování:
-# Google: https://www.google.com/webmasters/tools/robots-testing-tool
-# Online: https://technicalseo.com/tools/robots-txt/
-#
-# Aktualizováno: 10. září 2026
-# Web: https://auramichaell.cz
+# Aktualizováno: 31. října 2026
