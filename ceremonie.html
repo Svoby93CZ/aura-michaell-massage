@@ -64,7 +64,8 @@
       });
     })();
   </script>
-  <!-- Google Consent Mode - výchozí stav (musí běžet před načtením gtag.js) -->
+  <!-- Google Analytics se stáhne až po souhlasu návštěvníka (JS/cookie-consent.js).
+       Tady jen fronta příkazů pro gtag a výchozí stav: vše odmítnuto. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -76,19 +77,9 @@
       wait_for_update: 500
     });
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-732NT4QJEX');
-  </script>
 
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="style.css?v=c4225de0" />
+  <link rel="stylesheet" href="style.css?v=d8581192" />
 </head>
 <body class="body_ceremonie">
 <div id="spa-root" data-view="ceremonie">
@@ -332,7 +323,7 @@
 </div>
 
   <!-- Sdílená interaktivita: router pohledů + funkce jednotlivých stránek -->
-  <script src="JS/router.js?v=8d59aa88" defer></script>
+  <script src="JS/router.js?v=318635f3" defer></script>
   <script src="JS/supabase-config.js?v=214f9a35" defer></script>
   <script src="JS/logo-draw.js?v=9480dca5" defer></script>
   <script src="JS/main.js?v=577ed73b" defer></script>
@@ -342,6 +333,6 @@
   <script src="JS/ceremony-carousel.js?v=f5ef56bb" defer></script>
   <script src="JS/ceremony-lightbox.js?v=c7303432" defer></script>
   <script src="JS/katalog.js?v=b7700499" defer></script>
-  <script src="JS/cookie-consent.js?v=11f68f21" defer></script>
+  <script src="JS/cookie-consent.js?v=d4753220" defer></script>
 </body>
 </html>

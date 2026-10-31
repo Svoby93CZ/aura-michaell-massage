@@ -390,7 +390,9 @@
     restoreScroll(url.hash, push ? null : savedPosition);
     moveFocus();
 
-    if (typeof window.gtag === 'function') {
+    // Bez souhlasu by se událost jen hromadila ve frontě a odešla by se
+    // dodatečně, kdyby návštěvník souhlas dal později.
+    if (window.AuraConsent?.has('analytics') && typeof window.gtag === 'function') {
       window.gtag('event', 'page_view', {
         page_path: url.pathname + url.search,
         page_title: document.title

@@ -15,7 +15,8 @@ o open-source projekt — podrobnosti v sekci [Autorská práva](#-autorská-pr�
 - Moderovaná kniha návštěv — vzkazy se zobrazí až po schválení
 - Plynulé přepínání stránek bez znovunačtení
 - Rezervace termínů přes Reservio
-- Souhlas s cookies a stránka zásad ochrany osobních údajů (GDPR)
+- Souhlas s cookies a stránka zásad ochrany osobních údajů (GDPR). Google Analytics,
+  mapa a recenze se načtou až se souhlasem, fonty jsou uložené přímo na webu
 - Neveřejná administrace ceníku, galerie a knihy návštěv
 
 ## 🛠️ Technologie
@@ -65,6 +66,7 @@ třetích stran (Analytics, recenze), proto ho tyto stránky při načtení maž
 │   ├── gallery-manifest.js  # Seznam obrázků (generovaný)
 │   ├── vendor/              # Supabase a three.js v pevné verzi (bez CDN)
 │   └── admin*.js            # Administrace
+├── fonts/                  # Fonty webu (místo Google Fonts)
 ├── galerie/                # Obrázky
 │   ├── masaze/             # Masáže
 │   ├── ceremonie/          # Ceremonie

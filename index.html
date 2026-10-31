@@ -65,7 +65,8 @@
       });
     })();
   </script>
-  <!-- Google Consent Mode - výchozí stav (musí běžet před načtením gtag.js) -->
+  <!-- Google Analytics se stáhne až po souhlasu návštěvníka (JS/cookie-consent.js).
+       Tady jen fronta příkazů pro gtag a výchozí stav: vše odmítnuto. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -77,19 +78,9 @@
       wait_for_update: 500
     });
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-732NT4QJEX');
-  </script>
   <!-- Ikona stránky, fonty a hlavní stylesheet -->
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="style.css?v=c4225de0" />
+  <link rel="stylesheet" href="style.css?v=d8581192" />
 </head>
 <body class="page-home">
 <div id="spa-root" data-view="home">
@@ -231,7 +222,7 @@
         <p style="font-weight: bolder;">Každý zákazník získává věrnostní kartu, která mu přináší výhody při opakovaných návštěvách.<br>Každá desátá masáž je zlevněna o <span style="color: #ffb199;font-size: 1.5em;">200&nbsp;Kč</span></p>
       </div>
     </section>
-    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+    <!-- Recenze z Googlu (Elfsight) a mapa -->
     <section class="reviews-and-map-section" aria-labelledby="reviews-and-map-title">
       <div class="reviews-and-map-container">
         <!-- Google Reviews -->
@@ -244,8 +235,19 @@
         </div>
       </div>
           </div>
-          <script src="https://elfsightcdn.com/platform.js" async data-spa-once></script>
-          <div class="elfsight-app-b275f04e-832a-452d-91ed-1fdc07117847" data-elfsight-app-lazy></div>
+          <!-- Recenze se načtou až se souhlasem nebo po kliknutí (JS/cookie-consent.js) -->
+          <div class="consent-embed reviews-embed" data-consent-embed="external" data-embed-script="https://elfsightcdn.com/platform.js">
+            <div class="consent-embed__placeholder">
+              <p>Recenze z Googlu zobrazujeme přes službu Elfsight. Po jejich načtení získají Elfsight a Google vaši IP adresu.</p>
+              <div class="consent-embed__actions">
+                <button type="button" class="hero-action-button" data-consent-embed-load>Zobrazit recenze</button>
+                <button type="button" class="consent-embed__settings" data-cookie-settings>Nastavení cookies</button>
+              </div>
+            </div>
+            <template data-consent-embed-content>
+              <div class="elfsight-app-b275f04e-832a-452d-91ed-1fdc07117847" data-elfsight-app-lazy></div>
+            </template>
+          </div>
         </div>
         <!-- Mapa -->
         <article class="map-panel">
@@ -258,8 +260,18 @@
       </div>
             <span class="map-location">Bruntál</span>
           </div>
-          <div class="map-embed">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <!-- Mapa se načte až se souhlasem nebo po kliknutí (JS/cookie-consent.js) -->
+          <div class="map-embed consent-embed" data-consent-embed="external">
+            <div class="consent-embed__placeholder">
+              <p>Mapa se načítá ze serverů Google, který tím získá vaši IP adresu.</p>
+              <div class="consent-embed__actions">
+                <button type="button" class="hero-action-button" data-consent-embed-load>Zobrazit mapu</button>
+                <button type="button" class="consent-embed__settings" data-cookie-settings>Nastavení cookies</button>
+              </div>
+            </div>
+            <template data-consent-embed-content>
+              <iframe title="Mapa: Šmilovského 663/1, Bruntál" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d226.74581884242613!2d17.462552845607366!3d49.98630789486496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712285169d61c8b%3A0xa978d6a65dfe54fd!2zxaBtaWxvdnNrw6lobyA2NjMvMSwgNzkyIDAxIEJydW50w6FsIDE!5e0!3m2!1scs!2scz!4v1750242381221!5m2!1scs!2scz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </template>
           </div>
           <div class="embossed-badge">
         <div class="embossed-badge-inner">
@@ -306,7 +318,7 @@
 
             <label class="guestbook-consent">
               <input name="consent" type="checkbox" required>
-              <span>Souhlasím se zveřejněním svého vzkazu pod uvedeným jménem nebo přezdívkou.</span>
+              <span>Souhlasím se zveřejněním svého vzkazu pod uvedeným jménem nebo přezdívkou. <a href="privacy-policy.html">Jak s údaji zacházím</a></span>
             </label>
             <button type="submit" class="guestbook-submit">Odeslat vzkaz</button>
             <p class="guestbook-status" data-guestbook-status role="status" aria-live="polite"></p>
@@ -382,7 +394,7 @@
 </div>
 
   <!-- Sdílená interaktivita: router pohledů + funkce jednotlivých stránek -->
-  <script src="JS/router.js?v=8d59aa88" defer></script>
+  <script src="JS/router.js?v=318635f3" defer></script>
   <script src="JS/supabase-config.js?v=214f9a35" defer></script>
   <script src="JS/logo-draw.js?v=9480dca5" defer></script>
   <script src="JS/main.js?v=577ed73b" defer></script>
@@ -392,6 +404,6 @@
   <script src="JS/ceremony-carousel.js?v=f5ef56bb" defer></script>
   <script src="JS/ceremony-lightbox.js?v=c7303432" defer></script>
   <script src="JS/katalog.js?v=b7700499" defer></script>
-  <script src="JS/cookie-consent.js?v=11f68f21" defer></script>
+  <script src="JS/cookie-consent.js?v=d4753220" defer></script>
 </body>
 </html>
