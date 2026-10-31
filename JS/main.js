@@ -43,30 +43,6 @@ const initMainView = (signal) => {
 
   initThemeToggle();
 
-  const initVisitCounter = () => {
-    const counter = document.querySelector('.site-footer__counter');
-    if (!counter) {
-      return;
-    }
-
-    const label = counter.querySelector('strong');
-    const hasValue = [...counter.childNodes].some((node) => {
-      if (node === label) {
-        return false;
-      }
-      if (node.nodeType === Node.ELEMENT_NODE) {
-        return node.tagName !== 'SCRIPT';
-      }
-      return node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0;
-    });
-
-    if (hasValue) {
-      counter.hidden = false;
-    }
-  };
-
-  initVisitCounter();
-
   // Skrytý vstup do administrace: trojklik na copyright v patičce.
   // Záměrně bez viditelného odkazu - admin.html je noindex a v robots.txt,
   // tak ať na něj nevede nic, co by šlo najít náhodou. Není to ochrana

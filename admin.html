@@ -16,10 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Security Headers -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <!-- Ostatní bezpečnostní hlavičky posílá server (.htaccess), z <meta> by je prohlížeč ignoroval -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Administrace | Aura Michaell Massage</title>
@@ -27,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=e45296b0">
+  <link rel="stylesheet" href="style.css?v=c4225de0">
 </head>
 <!-- Třídu admin-page--login odebere JS po přihlášení. Je tu rovnou od začátku,
      aby papírové pozadí neproblikávalo a drželo i bez načteného JS. -->
@@ -87,7 +84,9 @@
           <button class="admin-icon-button" type="button" data-theme-toggle aria-label="Přepnout noční režim" title="Přepnout noční režim">
             <span data-theme-toggle-icon aria-hidden="true">🌙</span>
           </button>
-          <a class="admin-icon-button" href="index.html" title="Zpět na web" aria-label="Zpět na web">↩</a>
+          <!-- Web se otevírá v nové kartě: přihlášení zůstává jen v této kartě
+               a veřejné stránky ho při načtení mažou (viz JS/admin.js). -->
+          <a class="admin-icon-button" href="index.html" target="_blank" rel="noopener" title="Otevřít web v nové kartě" aria-label="Otevřít web v nové kartě">↗</a>
           <span class="admin-topbar__user" data-admin-user></span>
           <button class="admin-action admin-action--secondary" type="button" data-password-change>Změnit heslo</button>
           <button class="admin-action admin-action--secondary" type="button" data-admin-logout>Odhlásit</button>
@@ -359,10 +358,10 @@
   </div>
 
   <script src="JS/logo-draw.js?v=9480dca5" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="JS/supabase-config.js?v=6a67ae93"></script>
+  <script src="JS/vendor/supabase-2.118.0.js?v=ee3be8de"></script>
+  <script src="JS/supabase-config.js?v=214f9a35"></script>
   <script src="JS/gallery-manifest.js?v=81a5b478"></script>
-  <script src="JS/admin.js?v=9b422ea1"></script>
+  <script src="JS/admin.js?v=4178f47a"></script>
   <script src="JS/admin-services.js?v=ad33c9b5"></script>
   <script src="JS/admin-gallery.js?v=711c1ee7"></script>
 </body>

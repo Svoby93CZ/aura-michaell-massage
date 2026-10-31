@@ -27,14 +27,44 @@
   <meta name="twitter:image" content="https://auramichaell.cz/galerie/logo.webp" />
   <meta name="twitter:image:alt" content="Aura Michaell Massage - interiér salonu" />
 
-  <!-- Security Headers -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <!-- Ostatní bezpečnostní hlavičky posílá server (.htaccess), z <meta> by je prohlížeč ignoroval -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Aura Michaell Massage - Profesionální masáže v Bruntále</title>
 
+  <!-- Ochrana přihlášení do administrace - musí běžet dřív než skripty třetích stran -->
+  <script>
+    (function () {
+      // Odkaz z e-mailu na obnovu hesla vede na úvodní stránku s přihlášením
+      // v adrese. Pošleme ho rovnou do administrace, ať ho tu nevidí Analytics.
+      if (/(^#|&)access_token=/.test(location.hash)) {
+        location.replace('admin.html' + location.hash);
+        return;
+      }
+
+      // Přihlášení z administrace na veřejné stránce nemá co dělat: běží tu
+      // skripty třetích stran, které by ho mohly přečíst. Smažeme ho.
+      var clearAdminSession = function () {
+        try {
+          [localStorage, sessionStorage].forEach(function (storage) {
+            Object.keys(storage).forEach(function (key) {
+              if (/^sb-.+-auth-token/.test(key)) {
+                storage.removeItem(key);
+              }
+            });
+          });
+        } catch (e) {}
+      };
+
+      clearAdminSession();
+      // Tlačítko Zpět obnoví stránku z paměti bez nového spuštění skriptů.
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+          clearAdminSession();
+        }
+      });
+    })();
+  </script>
   <!-- Google Consent Mode - výchozí stav (musí běžet před načtením gtag.js) -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -59,7 +89,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="style.css?v=e45296b0" />
+  <link rel="stylesheet" href="style.css?v=c4225de0" />
 </head>
 <body class="page-home">
 <div id="spa-root" data-view="home">
@@ -324,19 +354,6 @@
     <!-- Footer lišta -->
     <div class="site-footer home-footer" role="contentinfo">
       <div class="site-footer__bar">
-        <div class="site-footer__counter" aria-label="Počítadlo návštěv" hidden>
-          <strong>Návštěvy:</strong>
-          <script data-spa-write="capture" data-spa-once="visit-counter">
-            /* Počítadlo je služba třetí strany, načítáme ho stejně jako Analytics až po souhlasu.
-               Zápis během parsování je záměrný - skript počítadla sám používá document.write. */
-            try {
-              var amConsent = JSON.parse(localStorage.getItem('am_cookie_consent') || 'null');
-              if (amConsent && amConsent.granted) {
-                document.write('<scr' + 'ipt src="https://counter.websiteout.com/js/16/6/0/1"><\/scr' + 'ipt>');
-              }
-            } catch (e) {}
-          </script>
-        </div>
         <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
         <div class="site-footer__links" aria-label="Rychlé odkazy">
           <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="site-footer__link">
@@ -366,15 +383,15 @@
 
   <!-- Sdílená interaktivita: router pohledů + funkce jednotlivých stránek -->
   <script src="JS/router.js?v=8d59aa88" defer></script>
-  <script src="JS/supabase-config.js?v=6a67ae93" defer></script>
+  <script src="JS/supabase-config.js?v=214f9a35" defer></script>
   <script src="JS/logo-draw.js?v=9480dca5" defer></script>
-  <script src="JS/main.js?v=9ceb63a0" defer></script>
-  <script src="JS/guestbook.js?v=8cad648d" defer></script>
+  <script src="JS/main.js?v=577ed73b" defer></script>
+  <script src="JS/guestbook.js?v=2d579b84" defer></script>
   <script src="JS/3D_hover.js?v=acb24cd7" defer></script>
-  <script src="JS/card-3d.js?v=4150dc6c" defer></script>
-  <script src="JS/ceremony-carousel.js?v=3804635f" defer></script>
+  <script src="JS/card-3d.js?v=372f0b9b" defer></script>
+  <script src="JS/ceremony-carousel.js?v=f5ef56bb" defer></script>
   <script src="JS/ceremony-lightbox.js?v=c7303432" defer></script>
-  <script src="JS/katalog.js?v=24d5f879" defer></script>
+  <script src="JS/katalog.js?v=b7700499" defer></script>
   <script src="JS/cookie-consent.js?v=11f68f21" defer></script>
 </body>
 </html>

@@ -24,7 +24,7 @@ const initGuestbook = async (signal) => {
 
   const { url, anonKey } = window.SUPABASE_CONFIG;
   const hasConfiguration = url && anonKey && !url.includes('YOUR-PROJECT') && !anonKey.includes('YOUR_SUPABASE');
-  const client = hasConfiguration ? window.supabase.createClient(url, anonKey) : null;
+  const client = hasConfiguration ? window.createPublicSupabaseClient() : null;
   const form = section.querySelector('[data-guestbook-form]');
   const list = section.querySelector('[data-guestbook-list]');
   const status = section.querySelector('[data-guestbook-status]');

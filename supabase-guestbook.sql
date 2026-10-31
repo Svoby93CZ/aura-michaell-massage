@@ -33,6 +33,17 @@ create policy "Anyone can submit an entry"
   to anon, authenticated
   with check (approved = false);
 
+-- Při vkládání smí návštěvník vyplnit jen tyto sloupce, id a created_at
+-- doplní databáze sama. Jinak by šlo vzkazu podstrčit libovolné datum:
+-- připnout ho po schválení navždy nahoru, nebo vzkazy s budoucím datem
+-- vypnout e-mailová upozornění (pojistka proti záplavě v souboru
+-- supabase-guestbook-notify.sql počítá vzkazy podle created_at).
+-- Sloupec approved zůstává, formulář posílá approved = false a pravidlo
+-- výše to kontroluje.
+revoke insert on public.guestbook_entries from anon, authenticated;
+grant insert (nickname, rating, message, approved)
+  on public.guestbook_entries to anon, authenticated;
+
 drop policy if exists "Admins can update entries" on public.guestbook_entries;
 create policy "Admins can update entries"
   on public.guestbook_entries for update

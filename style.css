@@ -1674,20 +1674,6 @@ header {
   flex-wrap: wrap;
 }
 
-.site-footer__counter {
-  order: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-/* Bez [hidden] pravidla by display výše přebil skrytí a zůstal by viset popisek bez hodnoty. */
-.site-footer__counter[hidden] {
-  display: none;
-}
-
 .site-footer__copy {
   order: 2;
   font-weight: 500;

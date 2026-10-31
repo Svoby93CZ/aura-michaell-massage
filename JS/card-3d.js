@@ -186,7 +186,8 @@ class Card3D {
 }
 
 // ===== Start: three.js se stahuje až u stránky, která kartu opravdu zobrazuje =====
-const THREE_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+// Pevná verze uložená přímo na webu, ne z CDN - viz JS/vendor/README.md.
+const THREE_SRC = 'JS/vendor/three-0.128.0.min.js';
 
 let threePromise = null;
 
@@ -199,7 +200,7 @@ const loadThree = () => {
   }
 
   threePromise = new Promise((resolve, reject) => {
-    const existing = document.querySelector(`script[src="${THREE_CDN}"]`);
+    const existing = document.querySelector(`script[src="${THREE_SRC}"]`);
     const script = existing || document.createElement('script');
 
     script.addEventListener('load', () => resolve(window.THREE), { once: true });
@@ -208,7 +209,7 @@ const loadThree = () => {
     });
 
     if (!existing) {
-      script.src = THREE_CDN;
+      script.src = THREE_SRC;
       script.async = true;
       document.head.appendChild(script);
     }

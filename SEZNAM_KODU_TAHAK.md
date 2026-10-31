@@ -25,7 +25,7 @@ Příklad z projektu:
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aura Michaell Massage</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="JS/vendor/three-0.128.0.min.js"></script>
 </head>
 ```
 

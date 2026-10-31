@@ -32,6 +32,11 @@ V repozitáři nejsou žádná hesla ani tajné klíče. Klíč Supabase
 v `JS/supabase-config.js` je veřejný (*publishable*) klíč určený pro prohlížeč;
 tajné údaje jsou uložené mimo repozitář v Supabase Vault.
 
+Knihovny Supabase a three.js jsou uložené přímo na webu v pevné verzi
+(`JS/vendor/`), ne načítané z cizího CDN. Přihlášení do administrace platí
+jen v kartě prohlížeče, kde proběhlo: na veřejných stránkách běží skripty
+třetích stran (Analytics, recenze), proto ho tyto stránky při načtení mažou.
+
 ## 📁 Struktura projektu
 
 ```
@@ -58,6 +63,7 @@ tajné údaje jsou uložené mimo repozitář v Supabase Vault.
 │   ├── card-3d.js           # 3D karta / vizuální efekty
 │   ├── logo-draw.js         # Kreslící animace loga
 │   ├── gallery-manifest.js  # Seznam obrázků (generovaný)
+│   ├── vendor/              # Supabase a three.js v pevné verzi (bez CDN)
 │   └── admin*.js            # Administrace
 ├── galerie/                # Obrázky
 │   ├── masaze/             # Masáže

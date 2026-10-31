@@ -139,7 +139,7 @@ const loadHomeGallery = async (carousel) => {
   }
 
   try {
-    const client = window.supabase.createClient(url, anonKey);
+    const client = window.createPublicSupabaseClient();
     const { data, error } = await client
       .from('gallery_images')
       .select('image_path, alt_text, sort_order')
