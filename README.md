@@ -14,8 +14,11 @@ o open-source projekt — podrobnosti v sekci [Autorská práva](#-autorská-pr�
 - Galerie salonu, ceremonií a dárkových poukazů
 - Moderovaná kniha návštěv — vzkazy se zobrazí až po schválení
 - Plynulé přepínání stránek bez znovunačtení
+- Přístupnost: ovládání z klávesnice, odkaz „Přeskočit na obsah“, viditelný fokus
+  a kontrast textu podle WCAG 2.1 AA (světlý i noční režim)
 - Rezervace termínů přes Reservio
-- Souhlas s cookies a stránka zásad ochrany osobních údajů (GDPR)
+- Souhlas s cookies a stránka zásad ochrany osobních údajů (GDPR). Google Analytics,
+  mapa a recenze se načtou až se souhlasem, fonty jsou uložené přímo na webu
 - Neveřejná administrace ceníku, galerie a knihy návštěv
 
 ## 🛠️ Technologie
@@ -31,6 +34,11 @@ o open-source projekt — podrobnosti v sekci [Autorská práva](#-autorská-pr�
 V repozitáři nejsou žádná hesla ani tajné klíče. Klíč Supabase
 v `JS/supabase-config.js` je veřejný (*publishable*) klíč určený pro prohlížeč;
 tajné údaje jsou uložené mimo repozitář v Supabase Vault.
+
+Knihovny Supabase a three.js jsou uložené přímo na webu v pevné verzi
+(`JS/vendor/`), ne načítané z cizího CDN. Přihlášení do administrace platí
+jen v kartě prohlížeče, kde proběhlo: na veřejných stránkách běží skripty
+třetích stran (Analytics, recenze), proto ho tyto stránky při načtení mažou.
 
 ## 📁 Struktura projektu
 
@@ -58,7 +66,9 @@ tajné údaje jsou uložené mimo repozitář v Supabase Vault.
 │   ├── card-3d.js           # 3D karta / vizuální efekty
 │   ├── logo-draw.js         # Kreslící animace loga
 │   ├── gallery-manifest.js  # Seznam obrázků (generovaný)
+│   ├── vendor/              # Supabase a three.js v pevné verzi (bez CDN)
 │   └── admin*.js            # Administrace
+├── fonts/                  # Fonty webu (místo Google Fonts)
 ├── galerie/                # Obrázky
 │   ├── masaze/             # Masáže
 │   ├── ceremonie/          # Ceremonie

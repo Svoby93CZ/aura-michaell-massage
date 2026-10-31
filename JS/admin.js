@@ -6,7 +6,15 @@
 
   const { url, anonKey } = window.SUPABASE_CONFIG;
   const hasConfiguration = url && anonKey && !url.includes('YOUR-PROJECT') && !anonKey.includes('YOUR_SUPABASE');
-  const client = hasConfiguration ? window.supabase.createClient(url, anonKey) : null;
+
+  // Přihlášení se drží jen v této kartě (sessionStorage), ne trvale v prohlížeči.
+  // Veřejné stránky sdílejí s administrací doménu a běží na nich skripty třetích
+  // stran (Analytics, recenze), které by uložené přihlášení mohly přečíst.
+  // Proto ho veřejné stránky hned při načtení mažou - skript v <head> každé
+  // z nich - a odkaz na web odsud vede do nové karty.
+  const client = hasConfiguration
+    ? window.supabase.createClient(url, anonKey, { auth: { storage: window.sessionStorage } })
+    : null;
 
   const loginPanel = app.querySelector('[data-admin-login-panel]');
   const dashboard = app.querySelector('[data-admin-dashboard]');

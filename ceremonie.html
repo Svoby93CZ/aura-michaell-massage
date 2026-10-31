@@ -13,7 +13,7 @@
     })();
   </script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Kakaová ceremonie a ženský kruh - setkání v bezpečném prostoru, sdílení, meditace, arteterapie a vědomý dotek." />
 
   <!-- Open Graph / Social -->
@@ -26,15 +26,47 @@
   <meta name="twitter:image" content="https://auramichaell.cz/galerie/ceremonie/ceremonie.webp" />
   <meta name="twitter:image:alt" content="Aura ceremonie – ženský kruh s kakaem" />
 
-  <!-- Security Headers -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <!-- Ostatní bezpečnostní hlavičky posílá server (.htaccess), z <meta> by je prohlížeč ignoroval -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Aura ceremonie – ženský kruh a kakaová ceremonie</title>
+  <link rel="canonical" href="https://auramichaell.cz/ceremonie.html" />
 
-  <!-- Google Consent Mode - výchozí stav (musí běžet před načtením gtag.js) -->
+  <!-- Ochrana přihlášení do administrace - musí běžet dřív než skripty třetích stran -->
+  <script>
+    (function () {
+      // Odkaz z e-mailu na obnovu hesla vede na úvodní stránku s přihlášením
+      // v adrese. Pošleme ho rovnou do administrace, ať ho tu nevidí Analytics.
+      if (/(^#|&)access_token=/.test(location.hash)) {
+        location.replace('admin.html' + location.hash);
+        return;
+      }
+
+      // Přihlášení z administrace na veřejné stránce nemá co dělat: běží tu
+      // skripty třetích stran, které by ho mohly přečíst. Smažeme ho.
+      var clearAdminSession = function () {
+        try {
+          [localStorage, sessionStorage].forEach(function (storage) {
+            Object.keys(storage).forEach(function (key) {
+              if (/^sb-.+-auth-token/.test(key)) {
+                storage.removeItem(key);
+              }
+            });
+          });
+        } catch (e) {}
+      };
+
+      clearAdminSession();
+      // Tlačítko Zpět obnoví stránku z paměti bez nového spuštění skriptů.
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+          clearAdminSession();
+        }
+      });
+    })();
+  </script>
+  <!-- Google Analytics se stáhne až po souhlasu návštěvníka (JS/cookie-consent.js).
+       Tady jen fronta příkazů pro gtag a výchozí stav: vše odmítnuto. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -46,22 +78,13 @@
       wait_for_update: 500
     });
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-732NT4QJEX');
-  </script>
 
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="style.css?v=e45296b0" />
+  <link rel="stylesheet" href="style.css?v=1b4d1c06" />
 </head>
 <body class="body_ceremonie">
 <div id="spa-root" data-view="ceremonie">
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <nav class="primary-nav" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
       <a class="primary-nav__brand" href="index.html">
@@ -110,7 +133,7 @@
   </nav>
 
   <!-- Hlavní obsah stránky -->
-  <main class="container">
+  <main id="obsah" class="container">
     <section class="parallax-section parallax-ceremony-hero" style="--parallax-image: url('galerie/ceremonie/ceremonie (3).jpg');" aria-label="Aura ceremonie">
       <div class="parallax-content ceremonie-hero-content">
         <div class="hero-logo-draw" aria-hidden="true"></div>
@@ -119,9 +142,9 @@
         </h1>
       </div>
     </section>
-      <div style="padding-bottom: 42px;"></div>
-      <div class="ceremony-content-box" style="text-align: center;">
-        <p style="font-weight: bold;">Je to setkání žen v kruhu, kde sdílíme, nasloucháme a prohlubujeme spojení se sebou.</p>
+      <div class="ceremony-spacer" aria-hidden="true"></div>
+      <div class="ceremony-content-box ceremony-content-box--center">
+        <p class="ceremony-lead">Je to setkání žen v kruhu, kde sdílíme, nasloucháme a prohlubujeme spojení se sebou.</p>
         <p><strong>Součástí je kakaová ceremonie</strong> – vědomý rituál s ceremoniálním kakaem, které podporuje otevřenost srdce, jemnost a vnitřní naladění.</p>
         <p><strong>Kakao</strong> nám pomáhá ztišit mysl a vstoupit hlouběji do prožívání.</p>
         <p>Nejde o výkon ani o „správnost“. Jde o autenticitu, pravdivost a bezpečí.</p>
@@ -130,11 +153,11 @@
       <div class="ceremony-photo-heading">
         <div class="embossed-badge">
           <div class="embossed-badge-inner">
-            <h3 class="embossed-title">Fotografie z minulých ceremonií</h3>
+            <h2 class="embossed-title">Fotografie z minulých ceremonií</h2>
           </div>
         </div>
       </div>
-      <div style="margin-top: 12px;">
+      <div class="ceremony-carousel-wrap">
         <div class="ceremony-carousel" aria-label="Karusel fotografií z ceremonie">
           <button type="button" class="ceremony-carousel__nav ceremony-carousel__nav--prev" aria-label="Předchozí obrázek">&#10094;</button>
           <div class="ceremony-carousel__track">
@@ -185,10 +208,10 @@
         </div>
       </div>
       <!-- iniciace sekce ceremonie -->
-    <section style="max-width: 920px; margin: 0 auto; padding: 36px 0;">
+    <section class="ceremony-details">
       <div class="ceremony-content-box">
-      <h3 style="text-align: center;text-decoration: underline">Co můžeš během ceremonie zažít?</h3>
-      <ul style="margin: 18px 0 24px 1.1em;">
+      <h2 class="ceremony-content-box__title">Co můžeš během ceremonie zažít?</h2>
+      <ul class="ceremony-list">
         <li>Vytvoření společného záměru</li>
         <li>Rituální sdílení kakaa</li>
         <li>Vedenou meditaci nebo jemnou vizualizaci</li>
@@ -202,49 +225,50 @@
       </div>
       <p class="ceremony-meta-text">Každý kruh je jedinečný a jednotlivé prvky se mohou jemně proměňovat podle tématu a energie skupiny.</p>
       <div class="ceremony-content-box">
-      <h3 style="text-align: center;">Pro koho je kruh určen?</h3>
-      <ul style="margin: 18px 0 40px 1.1em;">
+      <h2 class="ceremony-content-box__title">Pro koho je kruh určen?</h2>
+      <ul class="ceremony-list ceremony-list--spaced">
         <li>Pro ženy, které cítí, že potřebují <strong>zpomalit</strong>.</li>
         <li>Pro ty, které chtějí být slyšeny i <strong>slyšet druhé</strong>.</li>
         <li>Pro ženy, které touží po vědomém prostoru bez tlaku a očekávání.</li>
       </ul>
-      <p style="text-align: center;font-weight: bold;">Nemusíš mít žádnou předchozí zkušenost.<br>
+      <p class="ceremony-closing">Nemusíš mít žádnou předchozí zkušenost.<br>
         Stačí přijít taková, jaká jsi ✨</p>
       </div>
-      <div style="margin-top: 40px; text-align: center;">
+      <div class="ceremony-cta">
         <a href="https://aura-ceremonie.reservio.com" target="_blank" rel="noopener noreferrer" class="btn-3d-premium">
           <svg class="reservation-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <rect x="3" y="5" width="18" height="16" rx="3"/>
             <path d="M3 10h18M8 3v4M16 3v4"/>
             <path d="m9.5 15.5 1.8 1.8 3.4-3.6"/>
           </svg>
-          Chci se zůčastnit</a>
+          Chci se zúčastnit</a>
       </div>
     </section>
+  </main>
+
     <!-- Footer -->
-    <div class="site-footer" role="contentinfo">
+    <footer class="site-footer">
       <div class="site-footer__bar">
         <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
-        <div class="site-footer__links" aria-label="Rychlé odkazy">
+        <nav class="site-footer__links" aria-label="Odkazy v patičce">
           <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="site-footer__link">
-            <img src="galerie/instalogo.png" alt="Instagram">
+            <img src="galerie/instalogo.png" alt="">
             <span>Instagram</span>
           </a>
           <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="site-footer__link">
-            <img src="galerie/fb.png" alt="Facebook">
+            <img src="galerie/fb.png" alt="">
             <span>Facebook</span>
           </a>
           <a href="privacy-policy.html" class="site-footer__link">
-            <img src="galerie/GDPRlogo.png" alt="GDPR">
+            <img src="galerie/GDPRlogo.png" alt="">
             <span>Ochrana osobních údajů</span>
           </a>
-        </div>
+        </nav>
       </div>
-    </div>
-  </main>
+    </footer>
 
   <!-- Lightbox Modal -->
-  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
     <div class="lightbox-overlay"></div>
     <div class="lightbox-container">
       <div class="lightbox-header">
@@ -302,16 +326,16 @@
 </div>
 
   <!-- Sdílená interaktivita: router pohledů + funkce jednotlivých stránek -->
-  <script src="JS/router.js?v=8d59aa88" defer></script>
-  <script src="JS/supabase-config.js?v=6a67ae93" defer></script>
+  <script src="JS/router.js?v=32af9c3e" defer></script>
+  <script src="JS/supabase-config.js?v=93adcc46" defer></script>
   <script src="JS/logo-draw.js?v=9480dca5" defer></script>
-  <script src="JS/main.js?v=9ceb63a0" defer></script>
-  <script src="JS/guestbook.js?v=8cad648d" defer></script>
+  <script src="JS/main.js?v=c66e654b" defer></script>
+  <script src="JS/guestbook.js?v=19d539fa" defer></script>
   <script src="JS/3D_hover.js?v=acb24cd7" defer></script>
-  <script src="JS/card-3d.js?v=4150dc6c" defer></script>
-  <script src="JS/ceremony-carousel.js?v=3804635f" defer></script>
-  <script src="JS/ceremony-lightbox.js?v=c7303432" defer></script>
-  <script src="JS/katalog.js?v=24d5f879" defer></script>
-  <script src="JS/cookie-consent.js?v=11f68f21" defer></script>
+  <script src="JS/card-3d.js?v=372f0b9b" defer></script>
+  <script src="JS/ceremony-carousel.js?v=4df63cbf" defer></script>
+  <script src="JS/ceremony-lightbox.js?v=e16ea049" defer></script>
+  <script src="JS/katalog.js?v=81d42623" defer></script>
+  <script src="JS/cookie-consent.js?v=d4753220" defer></script>
 </body>
 </html>

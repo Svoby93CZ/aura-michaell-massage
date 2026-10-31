@@ -14,7 +14,7 @@
   </script>
   <!-- Základní metadata stránky -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="O mně - Aura Michaell Massage. Poznejte mou práci, přístup k masážím a atmosféru salonu v Bruntále." />
 
   <!-- Open Graph / Social -->
@@ -22,20 +22,55 @@
   <meta property="og:description" content="Poznejte můj přístup, zkušenosti a místo, kde vzniká prostor pro klid, péči a vědomý dotek." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://auramichaell.cz/about.html" />
-  <meta property="og:image" content="https://auramichaell.cz/galerie/salon.webp" />
+  <meta property="og:image" content="https://auramichaell.cz/galerie/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Aura Michaell Massage – masážní salon v Bruntále, fotografie salonu a logo" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://auramichaell.cz/galerie/salon.webp" />
-  <meta name="twitter:image:alt" content="Aura Michaell Massage - interiér salonu" />
+  <meta name="twitter:image" content="https://auramichaell.cz/galerie/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Aura Michaell Massage – masážní salon v Bruntále, fotografie salonu a logo" />
 
-  <!-- Security Headers -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <!-- Ostatní bezpečnostní hlavičky posílá server (.htaccess), z <meta> by je prohlížeč ignoroval -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>O mně - Aura Michaell Massage</title>
+  <link rel="canonical" href="https://auramichaell.cz/about.html" />
 
-  <!-- Google Consent Mode - výchozí stav (musí běžet před načtením gtag.js) -->
+  <!-- Ochrana přihlášení do administrace - musí běžet dřív než skripty třetích stran -->
+  <script>
+    (function () {
+      // Odkaz z e-mailu na obnovu hesla vede na úvodní stránku s přihlášením
+      // v adrese. Pošleme ho rovnou do administrace, ať ho tu nevidí Analytics.
+      if (/(^#|&)access_token=/.test(location.hash)) {
+        location.replace('admin.html' + location.hash);
+        return;
+      }
+
+      // Přihlášení z administrace na veřejné stránce nemá co dělat: běží tu
+      // skripty třetích stran, které by ho mohly přečíst. Smažeme ho.
+      var clearAdminSession = function () {
+        try {
+          [localStorage, sessionStorage].forEach(function (storage) {
+            Object.keys(storage).forEach(function (key) {
+              if (/^sb-.+-auth-token/.test(key)) {
+                storage.removeItem(key);
+              }
+            });
+          });
+        } catch (e) {}
+      };
+
+      clearAdminSession();
+      // Tlačítko Zpět obnoví stránku z paměti bez nového spuštění skriptů.
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+          clearAdminSession();
+        }
+      });
+    })();
+  </script>
+  <!-- Google Analytics se stáhne až po souhlasu návštěvníka (JS/cookie-consent.js).
+       Tady jen fronta příkazů pro gtag a výchozí stav: vše odmítnuto. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -47,22 +82,14 @@
       wait_for_update: 500
     });
   </script>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-732NT4QJEX');
-  </script>
 
   <!-- Ikona stránky, fonty a hlavní stylesheet -->
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&family=Lavishly+Yours&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=e45296b0" />
+  <link rel="stylesheet" href="style.css?v=1b4d1c06" />
 </head>
 <body class="page-about">
 <div id="spa-root" data-view="about">
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <!-- Hlavní navigační panel -->
   <nav class="primary-nav" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
@@ -112,66 +139,137 @@
   </nav>
 
   <!-- Hlavní obsah stránky -->
-  <main class="container">
+  <main id="obsah" class="container">
     <!-- Úvodní banner stránky O mně -->
     <section class="parallax-section parallax-balance"
              style="--parallax-image: url('galerie/salon.webp');"
              aria-label="O mně">
       <div class="parallax-content about-hero__content">
         <div class="hero-logo-draw" aria-hidden="true"></div>
-        <h1 class="main-title-text" style="padding-top: 20px;white-space: nowrap !important;">Něco málo o mně</h1>
+        <h1 class="main-title-text main-title-text--spaced about-hero__title">Něco málo o mně</h1>
         <p class="about-hero__intro">Poznejte můj přístup, zkušenosti a místo, kde vzniká prostor pro klid, péči a vědomý dotek.</p>
       </div>
     </section>
 
-    <!-- Informace o masérce a její praxi -->
-    <section id="about">
-      <div class="about-row">
-        <article class="about-card">
-          <img src="galerie/info.webp" alt="Masérka" loading="lazy" decoding="async">
-        </article>
-        <article class="about-card">
-          <img src="galerie/praxe.webp" alt="Praxe a vzdělání" loading="lazy" decoding="async">
-        </article>
-      </div>
-    </section>
+    <!-- Kdo jsem a vzdělání. Dřív dva obrázky s textem, teď skutečný text:
+         přečte ho vyhledávač i čtečka obrazovky, jde zvětšit a funguje
+         i v nočním režimu. -->
+    <div class="about-stories">
+      <section class="about-story" aria-labelledby="about-who-title">
+        <figure class="about-story__figure">
+          <img src="galerie/o-mne-portret.webp" width="520" height="1029" alt="Kreslená ilustrace: Michaela v pracovních šatech u masážního lehátka" loading="lazy" decoding="async">
+        </figure>
+        <div class="about-story__text">
+          <h2 id="about-who-title">Kdo jsem?</h2>
+          <p>Jmenuji se Michaela a jsem především mámou úžasné holčičky, která mě každý den žene kupředu.</p>
+          <p>Masáže mě pohltily už v dětství, kdy jsem masírovala rodinu za drobný peníz. Z malé holky vyrostla slečna, která se rozhodla jít touto cestou naplno.</p>
+          <p>Vystudovala jsem obor Masér sportovní a rekondiční zakončený maturitou.</p>
+          <p>Masíruji od roku 2016, kdy jsem nastoupila na školu. Právě díky studiu jsem měla možnost získat cenné zkušenosti v lázních, rehabilitacích i wellness centrech.</p>
+          <p>Věřím, že dotek má sílu uzdravovat. Rozhodla jsem se proto vytvořit místo, kde se tělo i mysl mohou zregenerovat – místo klidu, pohody a nového začátku.</p>
+          <p class="about-story__closing">Aura Michaell Massage je mojí oázou, kam vás zvu k odpočinku i načerpání nové energie.</p>
+          <ul class="about-facts" aria-label="Ve zkratce">
+            <li>Masíruji <strong>od roku 2016</strong></li>
+            <li><strong>1 206 hodin</strong> odborné výuky a praxe</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="about-story about-story--reverse" aria-labelledby="about-edu-title">
+        <figure class="about-story__figure">
+          <img src="galerie/o-mne-skola.webp" width="520" height="1030" alt="Desky s logem Gymnázia a Střední odborné školy Rýmařov a nápisem Hotovo po dokončení studia" loading="lazy" decoding="async">
+        </figure>
+        <div class="about-story__text">
+          <h2 id="about-edu-title">Praxe a vzdělání</h2>
+          <p class="about-school">Obor Masér sportovní a rekondiční zakončený maturitou<br>
+            <span>Gymnázium a Střední odborná škola, Rýmařov, příspěvková organizace</span></p>
+          <ol class="about-timeline">
+          <li>
+            <h3>2016–2017</h3>
+            <ul>
+              <li><span>Teorie masáží</span> <span class="about-hours">33&nbsp;hodin</span></li>
+              <li><span>Klasická masáž</span> <span class="about-hours">132&nbsp;hodin</span></li>
+              <li><span>Sportovní masáž</span> <span class="about-hours">132&nbsp;hodin</span></li>
+            </ul>
+          </li>
+          <li>
+            <h3>2017–2018</h3>
+            <ul>
+              <li><span>Sportovní a rekondiční masáž</span> <span class="about-hours">66&nbsp;hodin</span></li>
+              <li><span>Klasická masáž</span> <span class="about-hours">66&nbsp;hodin</span></li>
+              <li><span>Reflexní masáž</span> <span class="about-hours">66&nbsp;hodin</span></li>
+              <li><span>Reflexní masáž plosky nohy</span> <span class="about-hours">33&nbsp;hodin</span></li>
+              <li><span>Baňková masáž a moxování</span> <span class="about-hours">33&nbsp;hodin</span></li>
+              <li><span>Souvislá odborná praxe</span> <span class="about-hours">60&nbsp;hodin</span></li>
+            </ul>
+          </li>
+          <li>
+            <h3>2018–2019</h3>
+            <ul>
+              <li><span>Manuální lymfodrenáž</span> <span class="about-hours">99&nbsp;hodin</span></li>
+              <li><span>Krystaloterapie a masáž lávovými kameny</span> <span class="about-hours">33&nbsp;hodin</span></li>
+              <li><span>Průběžné náslechy na pracovištích, přístrojové masáže</span> <span class="about-hours">132&nbsp;hodin</span></li>
+              <li><span>Souvislá odborná praxe</span> <span class="about-hours">60&nbsp;hodin</span></li>
+            </ul>
+          </li>
+          <li>
+            <h3>2019–2020</h3>
+            <ul>
+              <li><span>Měkké (jemné) manuální techniky</span> <span class="about-hours">58&nbsp;hodin</span></li>
+              <li><span>Aromaterapie</span> <span class="about-hours">29&nbsp;hodin</span></li>
+              <li><span>Základy alternativních a orientálních technik</span> <span class="about-hours">58&nbsp;hodin</span></li>
+              <li><span>Příprava k maturitní zkoušce</span> <span class="about-hours">116&nbsp;hodin</span></li>
+            </ul>
+          </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="about-cta" aria-labelledby="about-cta-title">
+        <h2 id="about-cta-title" class="about-cta__title">Chcete si masáž vyzkoušet?</h2>
+        <div class="about-cta__actions">
+          <a class="welcome-section__cta" href="https://aura-michaell-massage.reservio.com" target="_blank" rel="noopener noreferrer">Rezervovat termín</a>
+          <a class="hero-action-button" href="msginfo.html">Prohlédnout masáže a ceník</a>
+        </div>
+      </section>
+    </div>
+
+  </main>
 
     <!-- Patička s odkazy na sociální sítě a zásady ochrany údajů -->
-    <div class="site-footer" role="contentinfo">
+    <footer class="site-footer">
       <div class="site-footer__bar">
         <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
-        <div class="site-footer__links" aria-label="Rychlé odkazy">
+        <nav class="site-footer__links" aria-label="Odkazy v patičce">
           <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="site-footer__link">
-            <img src="galerie/instalogo.png" alt="Instagram">
+            <img src="galerie/instalogo.png" alt="">
             <span>Instagram</span>
           </a>
           <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="site-footer__link">
-            <img src="galerie/fb.png" alt="Facebook">
+            <img src="galerie/fb.png" alt="">
             <span>Facebook</span>
           </a>
           <a href="privacy-policy.html" class="site-footer__link">
-            <img src="galerie/GDPRlogo.png" alt="GDPR">
+            <img src="galerie/GDPRlogo.png" alt="">
             <span>Ochrana osobních údajů</span>
           </a>
-        </div>
+        </nav>
       </div>
-    </div>
-  </main>
+    </footer>
   <!-- Plovoucí tlačítko návratu nahoru -->
   <button id="scrollTopBtn" type="button" title="Zpět nahoru" aria-label="Zpět nahoru">↑</button>
 </div>
 
   <!-- Sdílená interaktivita: router pohledů + funkce jednotlivých stránek -->
-  <script src="JS/router.js?v=8d59aa88" defer></script>
-  <script src="JS/supabase-config.js?v=6a67ae93" defer></script>
+  <script src="JS/router.js?v=32af9c3e" defer></script>
+  <script src="JS/supabase-config.js?v=93adcc46" defer></script>
   <script src="JS/logo-draw.js?v=9480dca5" defer></script>
-  <script src="JS/main.js?v=9ceb63a0" defer></script>
-  <script src="JS/guestbook.js?v=8cad648d" defer></script>
+  <script src="JS/main.js?v=c66e654b" defer></script>
+  <script src="JS/guestbook.js?v=19d539fa" defer></script>
   <script src="JS/3D_hover.js?v=acb24cd7" defer></script>
-  <script src="JS/card-3d.js?v=4150dc6c" defer></script>
-  <script src="JS/ceremony-carousel.js?v=3804635f" defer></script>
-  <script src="JS/ceremony-lightbox.js?v=c7303432" defer></script>
-  <script src="JS/katalog.js?v=24d5f879" defer></script>
-  <script src="JS/cookie-consent.js?v=11f68f21" defer></script>
+  <script src="JS/card-3d.js?v=372f0b9b" defer></script>
+  <script src="JS/ceremony-carousel.js?v=4df63cbf" defer></script>
+  <script src="JS/ceremony-lightbox.js?v=e16ea049" defer></script>
+  <script src="JS/katalog.js?v=81d42623" defer></script>
+  <script src="JS/cookie-consent.js?v=d4753220" defer></script>
 </body>
 </html>

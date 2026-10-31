@@ -24,7 +24,7 @@ window.SERVICE_CATEGORIES = [
   { slug: 'zabaly', label: 'Zábaly' },
   { slug: 'scratch', label: 'Scratch Therapy' },
   { slug: 'vedomy', label: 'Vědomý dotek' },
-  { slug: 'motyli', label: 'Motýlý dotek' },
+  { slug: 'motyli', label: 'Motýlí dotek' },
   { slug: 'bankovani', label: 'Baňkování' },
   { slug: 'fullbody', label: 'Full body' },
   { slug: 'tarot', label: 'Tarot' },
@@ -34,7 +34,10 @@ window.SERVICE_CATEGORIES = [
 // Knihovna Supabase se stahuje až ve chvíli, kdy ji stránka opravdu potřebuje
 // (kniha návštěv, ceník z databáze, galerie na úvodu). Díky routeru se pohled
 // může objevit i bez znovunačtení stránky, proto je načtení společné.
-window.SUPABASE_CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+//
+// Pevná verze uložená přímo na webu, ne z CDN - viz JS/vendor/README.md.
+// Stejný soubor načítá i admin.html.
+window.SUPABASE_LIBRARY = 'JS/vendor/supabase-2.118.0.js';
 
 let supabaseLibraryPromise = null;
 
@@ -47,7 +50,7 @@ window.ensureSupabase = () => {
   }
 
   supabaseLibraryPromise = new Promise((resolve, reject) => {
-    const existing = document.querySelector(`script[src="${window.SUPABASE_CDN}"]`);
+    const existing = document.querySelector(`script[src="${window.SUPABASE_LIBRARY}"]`);
     const script = existing || document.createElement('script');
 
     script.addEventListener('load', () => resolve(window.supabase), { once: true });
@@ -56,7 +59,7 @@ window.ensureSupabase = () => {
     });
 
     if (!existing) {
-      script.src = window.SUPABASE_CDN;
+      script.src = window.SUPABASE_LIBRARY;
       script.defer = true;
       document.head.appendChild(script);
     }
@@ -67,4 +70,24 @@ window.ensureSupabase = () => {
   });
 
   return supabaseLibraryPromise;
+};
+
+// Veřejné stránky se nikdy nepřihlašují. Jejich klient proto nesahá do úložiště
+// prohlížeče, takže přihlášení z administrace nemůže přečíst ani uložit.
+// Kniha návštěv, ceník i galerie sdílí jednoho klienta po celou návštěvu,
+// i když se pohledy přepínají. Volat až po window.ensureSupabase().
+let publicSupabaseClient = null;
+
+window.getPublicSupabaseClient = () => {
+  if (!publicSupabaseClient) {
+    const { url, anonKey } = window.SUPABASE_CONFIG;
+    publicSupabaseClient = window.supabase.createClient(url, anonKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+      }
+    });
+  }
+  return publicSupabaseClient;
 };

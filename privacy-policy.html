@@ -15,15 +15,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Security Headers -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <!-- Ostatní bezpečnostní hlavičky posílá server (.htaccess), z <meta> by je prohlížeč ignoroval -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Zásady ochrany osobních údajů | Aura Michaell Massage</title>
+  <link rel="canonical" href="https://auramichaell.cz/privacy-policy.html" />
 
-  <!-- Google Consent Mode - výchozí stav (musí běžet před načtením gtag.js) -->
+  <!-- Ochrana přihlášení do administrace - musí běžet dřív než skripty třetích stran -->
+  <script>
+    (function () {
+      // Odkaz z e-mailu na obnovu hesla vede na úvodní stránku s přihlášením
+      // v adrese. Pošleme ho rovnou do administrace, ať ho tu nevidí Analytics.
+      if (/(^#|&)access_token=/.test(location.hash)) {
+        location.replace('admin.html' + location.hash);
+        return;
+      }
+
+      // Přihlášení z administrace na veřejné stránce nemá co dělat: běží tu
+      // skripty třetích stran, které by ho mohly přečíst. Smažeme ho.
+      var clearAdminSession = function () {
+        try {
+          [localStorage, sessionStorage].forEach(function (storage) {
+            Object.keys(storage).forEach(function (key) {
+              if (/^sb-.+-auth-token/.test(key)) {
+                storage.removeItem(key);
+              }
+            });
+          });
+        } catch (e) {}
+      };
+
+      clearAdminSession();
+      // Tlačítko Zpět obnoví stránku z paměti bez nového spuštění skriptů.
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+          clearAdminSession();
+        }
+      });
+    })();
+  </script>
+  <!-- Google Analytics se stáhne až po souhlasu návštěvníka (JS/cookie-consent.js).
+       Tady jen fronta příkazů pro gtag a výchozí stav: vše odmítnuto. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -35,19 +67,13 @@
       wait_for_update: 500
     });
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-732NT4QJEX"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', 'G-732NT4QJEX');
-  </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tenor+Sans&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=e45296b0">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css?v=1b4d1c06">
+  <link rel="icon" type="image/webp" href="galerie/logo.webp" />
 </head>
 <body class="page-privacy">
 <div id="spa-root" data-view="gdpr">
+  <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
   <nav class="primary-nav" aria-label="Hlavní navigace">
     <div class="primary-nav__inner">
       <a class="primary-nav__brand" href="index.html">
@@ -94,93 +120,185 @@
       </button>
     </div>
   </nav>
-  <header class="privacy-hero">
-    <img src="galerie/GDPR.png" alt="GDPR ochrana osobních údajů">
-  </header>
-  <main class="privacy-policy">
+  <main id="obsah" class="privacy-policy">
+    <div class="privacy-hero">
+      <img src="galerie/GDPR.png" alt="">
+    </div>
     <section class="section">
       <h1>Zásady ochrany osobních údajů</h1>
       <p>
-        Tato webová stránka slouží jako informační prezentace služeb Aura Michaell Massage.
-        Kromě údajů odeslaných dobrovolně do Knihy návštěv neshromažďujeme osobní údaje návštěvníků.
+        Tady najdete, jaké osobní údaje při návštěvě webu auramichaell.cz zpracováváme, proč a jak dlouho
+        a jaká máte práva. Web slouží jako prezentace služeb Aura Michaell Massage. Bez vašeho souhlasu
+        nepoužívá žádné cookies a nenačítá obsah třetích stran.
+      </p>
+      <p class="privacy-policy__meta">Platné od 31. 10. 2026.</p>
+    </section>
+
+    <section class="section">
+      <h2>Správce osobních údajů</h2>
+      <p>
+        Michaela Svobodová – Aura Michaell<br>
+        IČO: 23405830<br>
+        Šmilovského 663/1, 792 01 Bruntál<br>
+        E-mail: <a href="mailto:aura.michaell@seznam.cz">aura.michaell@seznam.cz</a><br>
+        Telefon: <a href="tel:+420727836338">+420 727 836 338</a>
       </p>
     </section>
 
     <section class="section">
       <h2>Kniha návštěv</h2>
       <p>
-        Pokud odešlete vzkaz, zpracováváme vámi zadané jméno nebo přezdívku, text vzkazu, případné hodnocení a datum odeslání.
-        E-mail není pro odeslání vzkazu vyžadován. Vzkaz zveřejníme až po schválení provozovatelem a můžete požádat o jeho odstranění
-        na adrese <a href="mailto:aura.michaell@seznam.cz">aura.michaell@seznam.cz</a>.
-        Provozovatelem databáze je služba Supabase, která údaje zpracovává za účelem provozu této knihy návštěv.
-        O novém vzkazu dostane provozovatel upozornění e-mailem, který odesílá služba Resend; ta obsah vzkazu použije jen k doručení tohoto e-mailu.
+        Když odešlete vzkaz, zpracováváme jméno nebo přezdívku, kterou zadáte, text vzkazu, případné
+        hodnocení a datum odeslání. E-mail ani jiný kontakt nepožadujeme. Vzkaz se zveřejní až po schválení.
       </p>
+      <ul>
+        <li>
+          <strong>Právní základ:</strong> váš souhlas se zveřejněním, který dáváte zaškrtnutím políčka
+          ve formuláři (čl. 6 odst. 1 písm. a) GDPR). Souhlas můžete kdykoli odvolat e-mailem, vzkaz pak smažeme.
+        </li>
+        <li>
+          <strong>Jak dlouho:</strong> vzkaz uchováváme, dokud je zveřejněný v knize návštěv, nebo dokud nás
+          nepožádáte o jeho smazání.
+        </li>
+        <li>
+          <strong>Kde jsou údaje uložené:</strong> v databázi služby Supabase, v datovém centru v Irsku (EU).
+        </li>
+        <li>
+          <strong>Upozornění na nový vzkaz:</strong> obsah vzkazu dostane správce webu e-mailem. E-mail odesílá
+          služba Resend (Resend, Inc.), která vzkaz použije jen k jeho doručení. Resend sídlí v USA,
+          údaje se proto mohou přenášet mimo EU.
+        </li>
+      </ul>
       <p>
-        Za účelem ochrany proti spamu a hromadnému zneužití formuláře krátkodobě zaznamenáváme
-        IP adresu odesílatele - výhradně pro výpočet limitu počtu vzkazů z jedné adresy za
-        určitý čas. Tento záznam se automaticky maže nejpozději po 2 dnech a nepropojuje se
-        s obsahem vzkazu ani se nikde nezobrazuje.
-      </p>
-    </section>
-
-    <section class="section">
-      <h2>Cookies a Google Analytics</h2>
-      <p>
-        Používáme službu Google Analytics (Google Ireland Limited) k anonymní statistice návštěvnosti.
-        Tato služba využívá cookies, které se ale aktivují až po vašem souhlasu prostřednictvím lišty
-        zobrazené při první návštěvě. Bez souhlasu se žádné analytické cookies neukládají.
-      </p>
-      <p>
-        Svou volbu můžete kdykoliv změnit tlačítkem níže:
-      </p>
-      <p>
-        <button type="button" class="cookie-settings-btn" onclick="window.reopenCookieBanner && window.reopenCookieBanner()">
-          Nastavení cookies
-        </button>
+        Kvůli ochraně proti spamu ukládáme při odeslání vzkazu IP adresu odesílatele, a to jen k výpočtu,
+        kolik vzkazů z jedné adresy přišlo. Záznam se automaticky maže nejpozději po 2 dnech, není propojený
+        s obsahem vzkazu a nikde se nezobrazuje. Právním základem je náš oprávněný zájem na ochraně webu
+        před zneužitím (čl. 6 odst. 1 písm. f) GDPR).
       </p>
     </section>
 
     <section class="section">
-      <h2>Kontakt</h2>
+      <h2>Cookies a statistika návštěvnosti</h2>
       <p>
-        V případě dotazů ohledně ochrany osobních údajů nás můžete kontaktovat na e-mailu
-        <a href="mailto:aura.michaell@seznam.cz">aura.michaell@seznam.cz</a>.
+        Jen s vaším souhlasem používáme Google Analytics 4 (Google Ireland Limited) ke statistice
+        návštěvnosti: kolik lidí web navštíví a které stránky čtou. Google Analytics ukládá do prohlížeče
+        cookies <code>_ga</code> a <code>_ga_*</code> s platností až 2 roky. Bez souhlasu se Google Analytics
+        vůbec nestáhne a po odvolání souhlasu jeho cookies smažeme.
+      </p>
+      <ul>
+        <li>
+          <strong>Právní základ:</strong> váš souhlas (čl. 6 odst. 1 písm. a) GDPR a § 89 odst. 3 zákona
+          č. 127/2005 Sb., o elektronických komunikacích).
+        </li>
+        <li>
+          <strong>Předání mimo EU:</strong> údaje může zpracovávat i mateřská společnost Google LLC v USA,
+          která je zapojená do rámce EU–US Data Privacy Framework.
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Mapa a recenze</h2>
+      <p>
+        Mapu Google a recenze z Googlu, které zobrazujeme přes službu Elfsight, načítáme jen s vaším
+        souhlasem, nebo když si je sami zobrazíte tlačítkem. Při načtení získá Google a u recenzí také
+        Elfsight vaši IP adresu a technické údaje o prohlížeči. Tyto služby mohou ukládat vlastní cookies
+        a zpracování se řídí jejich zásadami:
+        <a href="https://policies.google.com/privacy?hl=cs" target="_blank" rel="noopener noreferrer">Google</a>,
+        <a href="https://elfsight.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Elfsight</a>.
+        Právním základem je váš souhlas (čl. 6 odst. 1 písm. a) GDPR).
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Rezervace a sociální sítě</h2>
+      <p>
+        Termíny se rezervují v externím systému Reservio, kam vede tlačítko Rezervace. Údaje, které tam
+        zadáte (jméno, kontakt, termín), slouží k domluvě a poskytnutí služby (čl. 6 odst. 1 písm. b) GDPR).
+        Systém technicky zajišťuje společnost Reservio podle svých zásad ochrany osobních údajů.
+      </p>
+      <p>
+        Odkazy na Instagram a Facebook jsou obyčejné odkazy. Dokud na ně nekliknete, nic se z těchto sítí nenačítá.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Údaje uložené v prohlížeči</h2>
+      <p>Web si ve vašem prohlížeči (localStorage) pamatuje jen to, co potřebuje k fungování:</p>
+      <ul>
+        <li>zvolený světlý nebo noční režim,</li>
+        <li>vaši volbu souhlasu s cookies. Platí 12 měsíců, potom se zeptáme znovu.</li>
+      </ul>
+      <p>Tyto údaje neopouštějí váš prohlížeč a souhlas nevyžadují.</p>
+    </section>
+
+    <section class="section">
+      <h2>Provoz webu</h2>
+      <p>
+        Server, na kterém web běží, zaznamenává jako každý webový server technické údaje o přístupech
+        (IP adresa, čas, požadovaná stránka), a to po dobu nezbytnou k zajištění provozu a bezpečnosti
+        (oprávněný zájem, čl. 6 odst. 1 písm. f) GDPR). Písma a ostatní soubory webu se načítají přímo
+        z tohoto serveru, ne od třetích stran. K automatizovanému rozhodování ani profilování nedochází.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Vaše práva</h2>
+      <p>Máte právo:</p>
+      <ul>
+        <li>požadovat přístup ke svým údajům a jejich kopii,</li>
+        <li>požadovat opravu nepřesných údajů nebo jejich výmaz,</li>
+        <li>požadovat omezení zpracování a na přenositelnost údajů,</li>
+        <li>vznést námitku proti zpracování založenému na oprávněném zájmu,</li>
+        <li>kdykoli odvolat souhlas. Odvolání nemá vliv na zpracování, které proběhlo před ním,</li>
+        <li>
+          podat stížnost u Úřadu pro ochranu osobních údajů
+          (<a href="https://uoou.gov.cz" target="_blank" rel="noopener noreferrer">uoou.gov.cz</a>).
+        </li>
+      </ul>
+      <p>
+        Žádosti a dotazy posílejte na <a href="mailto:aura.michaell@seznam.cz">aura.michaell@seznam.cz</a>,
+        odpovíme nejpozději do jednoho měsíce.
+      </p>
+      <p>Souhlas se statistikou návštěvnosti, mapou a recenzemi můžete kdykoli změnit:</p>
+      <p>
+        <button type="button" class="cookie-settings-btn" data-cookie-settings>Nastavení cookies</button>
       </p>
     </section>
   </main>
 
-  <div class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__bar">
       <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
-      <div class="site-footer__links" aria-label="Rychlé odkazy">
+      <nav class="site-footer__links" aria-label="Odkazy v patičce">
         <a href="https://instagram.com/aura_michaell_massage" target="_blank" rel="noopener noreferrer" class="site-footer__link">
-          <img src="galerie/instalogo.png" alt="Instagram">
+          <img src="galerie/instalogo.png" alt="">
           <span>Instagram</span>
         </a>
         <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" rel="noopener noreferrer" class="site-footer__link">
-          <img src="galerie/fb.png" alt="Facebook">
+          <img src="galerie/fb.png" alt="">
           <span>Facebook</span>
         </a>
         <a href="privacy-policy.html" class="site-footer__link">
-          <img src="galerie/GDPRlogo.png" alt="GDPR">
+          <img src="galerie/GDPRlogo.png" alt="">
           <span>Ochrana osobních údajů</span>
         </a>
-      </div>
+      </nav>
     </div>
-  </div>
+  </footer>
 </div>
 
   <!-- Sdílená interaktivita: router pohledů + funkce jednotlivých stránek -->
-  <script src="JS/router.js?v=8d59aa88" defer></script>
-  <script src="JS/supabase-config.js?v=6a67ae93" defer></script>
+  <script src="JS/router.js?v=32af9c3e" defer></script>
+  <script src="JS/supabase-config.js?v=93adcc46" defer></script>
   <script src="JS/logo-draw.js?v=9480dca5" defer></script>
-  <script src="JS/main.js?v=9ceb63a0" defer></script>
-  <script src="JS/guestbook.js?v=8cad648d" defer></script>
+  <script src="JS/main.js?v=c66e654b" defer></script>
+  <script src="JS/guestbook.js?v=19d539fa" defer></script>
   <script src="JS/3D_hover.js?v=acb24cd7" defer></script>
-  <script src="JS/card-3d.js?v=4150dc6c" defer></script>
-  <script src="JS/ceremony-carousel.js?v=3804635f" defer></script>
-  <script src="JS/ceremony-lightbox.js?v=c7303432" defer></script>
-  <script src="JS/katalog.js?v=24d5f879" defer></script>
-  <script src="JS/cookie-consent.js?v=11f68f21" defer></script>
+  <script src="JS/card-3d.js?v=372f0b9b" defer></script>
+  <script src="JS/ceremony-carousel.js?v=4df63cbf" defer></script>
+  <script src="JS/ceremony-lightbox.js?v=e16ea049" defer></script>
+  <script src="JS/katalog.js?v=81d42623" defer></script>
+  <script src="JS/cookie-consent.js?v=d4753220" defer></script>
 </body>
 </html>
