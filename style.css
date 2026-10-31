@@ -114,6 +114,8 @@
   --success: #3f6b45;
   --danger: #8b2e22;
   --danger-dark: #6b2016;
+  --on-danger: #fff8f0;
+  --focus-ring: var(--accent-dark);
   --overlay-dark: linear-gradient(180deg, rgba(43,28,18,.28), rgba(43,28,18,.58));
 
   --font-heading: "Cormorant Garamond", serif;
@@ -162,6 +164,9 @@
   --success: #7cc088;
   --danger: #e2685a;
   --danger-dark: #ff8a75;
+  /* Světle červená tlačítka nočního režimu potřebují tmavé písmo (kontrast 5,7:1) */
+  --on-danger: #1c0f09;
+  --focus-ring: var(--gold);
   --overlay-dark: linear-gradient(180deg, rgba(10,6,3,.45), rgba(10,6,3,.72));
 
   --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
@@ -237,6 +242,59 @@ header {
   min-height: 0;
   padding: 0;
   margin: 0;
+}
+
+/* Viditelný fokus pro ovládání z klávesnice (WCAG 2.4.7). Jednotný kroužek
+   místo změny odstínu, která byla na některých prvcích skoro neviditelná.
+   Myš ani dotyk ho nevyvolají - jen :focus-visible. */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Na tmavém podkladu náhledů obrázků a cookie lišty je potřeba světlý kroužek. */
+.modal :focus-visible,
+.lightbox-modal :focus-visible {
+  outline-color: #fff;
+}
+
+/* Text jen pro čtečky obrazovky (nadpis sekce, která ho vizuálně nepotřebuje) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Odkaz "Přeskočit na obsah" - schovaný, dokud se na něj nepřejde klávesou Tab */
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: calc(var(--layer-modal) + 10);
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 20px));
+  transition: transform .15s ease;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* Obsah, na který skok vede, dostane fokus jen kvůli čtečkám - bez rámečku */
+#obsah:focus {
+  outline: none;
 }
 
 /* 02. Stránkové kostry ----------------------------------------------------- */
@@ -407,11 +465,10 @@ header {
 .primary-nav__link:focus-visible {
   background: var(--accent-tint);
   color: var(--accent-dark);
-  outline: none;
 }
 
 .primary-nav__link[aria-current="page"] {
-  color: var(--accent-dark);
+  color: var(--ink);
   background: var(--accent-soft);
   pointer-events: none;
 }
@@ -419,19 +476,19 @@ header {
 .primary-nav__link--cta {
   margin-left: 6px;
   background: var(--danger);
-  color: #fff8f0 !important;
+  color: var(--on-danger) !important;
   box-shadow: var(--shadow-sm);
 }
 
 .primary-nav__link--cta:hover,
 .primary-nav__link--cta:focus-visible {
   background: var(--danger-dark);
-  color: #fff8f0 !important;
+  color: var(--on-danger) !important;
 }
 
 .primary-nav__link--cta[aria-current="page"] {
   background: var(--danger);
-  color: #fff8f0 !important;
+  color: var(--on-danger) !important;
 }
 
 .primary-nav__toggle {
@@ -694,7 +751,6 @@ header {
   transform: translateY(-2px);
   background: var(--accent-tint);
   box-shadow: var(--shadow-md);
-  outline: none;
 }
 
 .welcome-section__cta,
@@ -703,7 +759,7 @@ header {
 .admin-action,
 .map-link {
   background: var(--danger);
-  color: #fff8f0 !important;
+  color: var(--on-danger) !important;
 }
 
 .welcome-section__cta:hover,
@@ -752,7 +808,7 @@ header {
 .admin-action--danger:focus-visible {
   background: var(--danger);
   border-color: var(--danger);
-  color: #fff8f0 !important;
+  color: var(--on-danger) !important;
 }
 
 .cookie-settings-btn {
@@ -1764,6 +1820,10 @@ header {
 }
 
 .embossed-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 44px;
   text-decoration: none;
   transition: color .2s ease;
 }
@@ -1771,7 +1831,6 @@ header {
 .embossed-link:hover,
 .embossed-link:focus-visible {
   color: var(--accent-dark);
-  outline: none;
 }
 
 .ceremony-photo-heading {
@@ -1830,6 +1889,7 @@ header {
   display: inline-flex;
   align-items: center;
   gap: .35rem;
+  min-height: 44px;
   color: inherit;
   text-decoration: none;
 }
@@ -1854,40 +1914,172 @@ header {
 
 .page-about main.container { max-width: 1240px; }
 
-#about { margin-bottom: 60px; }
+.about-hero__content .about-hero__title { white-space: nowrap; }
 
-.about-row {
+.about-stories {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(18px, 3vw, 32px);
-  align-items: stretch;
+  gap: clamp(28px, 5vw, 56px);
+  margin-bottom: 60px;
 }
 
-.about-card {
-  overflow: hidden;
+/* Kapitola: obrázek v rámečku telefonu + text, druhá kapitola zrcadlově */
+.about-story {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
+  gap: clamp(22px, 4vw, 56px);
+  align-items: center;
+  padding: clamp(22px, 4vw, 48px);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
+  background: var(--surface);
   box-shadow: var(--shadow-sm);
-  aspect-ratio: 4 / 5;
 }
 
-.about-card img {
+.about-story--reverse { grid-template-columns: minmax(0, 1fr) minmax(180px, 280px); }
+.about-story--reverse .about-story__figure { order: 2; }
+
+.about-story__figure { margin: 0; }
+
+.about-story__figure img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .35s ease;
+  height: auto;
+  filter: drop-shadow(0 16px 26px rgba(43, 28, 18, .22));
 }
 
-.about-card:hover img,
-.about-card:focus-within img {
-  transform: scale(1.03);
+.about-story__text {
+  min-width: 0;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  line-height: 1.75;
 }
 
-@media (max-width: 700px) {
-  .about-row { grid-template-columns: 1fr; gap: 16px; }
+.about-story__text h2 {
+  margin: 0 0 .5em;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 1.3rem + 2vw, 2.7rem);
+  line-height: 1.15;
+  color: var(--ink);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .about-card img { transition: none; }
+.about-story__text p { margin: 0 0 1em; }
+
+.about-story__closing {
+  font-family: var(--font-heading);
+  font-size: 1.35em;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--accent-dark);
+}
+
+.about-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin: 1.4em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-facts li {
+  padding: 8px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--accent-tint);
+  font-size: .95rem;
+}
+
+.about-facts strong { color: var(--accent-dark); }
+
+.about-school {
+  margin: 0 0 1.5em;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.about-school span { font-weight: 500; color: var(--ink-soft); }
+
+/* Časová osa studia: svislá linka s tečkou u každého ročníku */
+.about-timeline {
+  margin: 0;
+  padding: 0 0 0 24px;
+  list-style: none;
+  border-left: 2px solid var(--line);
+}
+
+.about-timeline > li {
+  position: relative;
+  padding-bottom: 1.3em;
+}
+
+.about-timeline > li:last-child { padding-bottom: 0; }
+
+.about-timeline > li::before {
+  content: "";
+  position: absolute;
+  left: -33px;
+  top: .45em;
+  width: 12px;
+  height: 12px;
+  border: 3px solid var(--surface);
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.about-timeline h3 {
+  margin: 0 0 .3em;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+
+.about-timeline ul { margin: 0; padding: 0; list-style: none; }
+
+.about-timeline ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: .98rem;
+  line-height: 1.5;
+}
+
+.about-hours {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--accent-dark);
+  white-space: nowrap;
+}
+
+.about-cta { text-align: center; }
+
+.about-cta__title {
+  margin: 0 0 18px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+  color: var(--ink);
+}
+
+.about-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+@media (max-width: 760px) {
+  .about-story,
+  .about-story--reverse { grid-template-columns: 1fr; }
+  .about-story--reverse .about-story__figure { order: 0; }
+  .about-story__figure { width: min(220px, 62%); margin: 0 auto; }
 }
 
 /* 11. Obchod a poukazy ------------------------------------------------------- */
@@ -1986,7 +2178,20 @@ header {
 .ceremony-content-box p { line-height: 1.6; margin: clamp(8px, 2vw, 12px) 0; }
 .ceremony-content-box ul { line-height: 1.7; margin: clamp(12px, 2vw, 18px) 0 clamp(16px, 3vw, 24px) 1.1em; padding-left: 1.1em; }
 .ceremony-content-box li { margin-bottom: clamp(6px, 1.5vw, 8px); }
+.ceremony-content-box h2,
 .ceremony-content-box h3 { font-family: var(--font-heading); font-weight: 600; }
+
+.ceremony-spacer { height: 42px; }
+.ceremony-content-box--center { text-align: center; }
+.ceremony-lead,
+.ceremony-closing { font-weight: 700; }
+.ceremony-closing { text-align: center; }
+.ceremony-carousel-wrap { margin-top: 12px; }
+.ceremony-details { max-width: 920px; margin: 0 auto; padding: 36px 0; }
+.ceremony-content-box__title { margin-top: 0; text-align: center; font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem); }
+.ceremony-list { margin: 18px 0 24px 1.1em; }
+.ceremony-list--spaced { margin-bottom: 40px; }
+.ceremony-cta { margin-top: 40px; text-align: center; }
 
 .ceremony-carousel {
   position: relative;
@@ -1995,7 +2200,6 @@ header {
   justify-content: center;
   gap: clamp(4px, 2vw, 16px);
   padding: clamp(16px, 3vw, 32px) clamp(4px, 2vw, 12px);
-  outline: none;
 }
 
 .ceremony-carousel__track {
@@ -2051,7 +2255,6 @@ header {
 .ceremony-carousel__nav:focus-visible {
   background: rgba(43,28,18,.75);
   transform: scale(1.08);
-  outline: none;
 }
 
 .ceremony-meta-text {
@@ -2078,7 +2281,6 @@ header {
 .ceremony-gallery-img:focus {
   transform: scale(1.03);
   filter: brightness(1.05);
-  outline: none;
 }
 
 @media (max-width: 768px) {
@@ -2175,12 +2377,12 @@ header {
 .lightbox-prev, .lightbox-next { width: 52px; height: 52px; }
 .lightbox-zoom-in, .lightbox-zoom-out, .lightbox-zoom-reset { width: 40px; height: 40px; border-radius: 6px; }
 
-.lightbox-close:hover, .lightbox-close:focus { background: rgba(255,255,255,.28); transform: rotate(90deg); outline: none; }
-.lightbox-prev:hover, .lightbox-prev:focus { background: rgba(255,255,255,.28); transform: translateX(-4px); outline: none; }
-.lightbox-next:hover, .lightbox-next:focus { background: rgba(255,255,255,.28); transform: translateX(4px); outline: none; }
+.lightbox-close:hover, .lightbox-close:focus { background: rgba(255,255,255,.28); transform: rotate(90deg); }
+.lightbox-prev:hover, .lightbox-prev:focus { background: rgba(255,255,255,.28); transform: translateX(-4px); }
+.lightbox-next:hover, .lightbox-next:focus { background: rgba(255,255,255,.28); transform: translateX(4px); }
 .lightbox-zoom-in:hover, .lightbox-zoom-in:focus,
 .lightbox-zoom-out:hover, .lightbox-zoom-out:focus,
-.lightbox-zoom-reset:hover, .lightbox-zoom-reset:focus { background: rgba(255,255,255,.28); transform: scale(1.08); outline: none; }
+.lightbox-zoom-reset:hover, .lightbox-zoom-reset:focus { background: rgba(255,255,255,.28); transform: scale(1.08); }
 
 .lightbox-caption {
   background: rgba(0,0,0,.6);
@@ -2291,9 +2493,9 @@ header {
 }
 
 .svc2-chip.is-active {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: #fff;
+  border-color: var(--accent-dark);
+  background: var(--accent-dark);
+  color: var(--cream);
 }
 
 .svc2-results {
@@ -3771,7 +3973,6 @@ header {
 .modal-nav:hover, .modal-nav:focus {
   background: rgba(0,0,0,.82);
   transform: scale(1.05);
-  outline: none;
 }
 
 .modal-close { top: 16px; right: 16px; }
@@ -3891,3 +4092,42 @@ html.spa-busy {
     animation: none;
   }
 }
+
+/* --- Dřív inline styly v HTML -------------------------------------------- */
+
+.hero-spacer { height: 20px; }
+.main-title-text--spaced { padding-top: 20px; }
+.shop-section-heading--tight { padding-top: 10px; }
+
+.bonus-card-text { font-weight: 800; }
+.bonus-card-text__price { color: #ffb199; font-size: 1.5em; }
+
+.guestbook-description__lead { font-weight: 800; }
+.guestbook-description__note { font-size: .875em; }
+
+/* Info o elektronických poukazech. Papír má tmavé záhyby, proto přes něj
+   leží průsvitná vrstva v barvě stránky - text je čitelný bez stínů. */
+.voucher-info {
+  --voucher-veil: rgba(250, 242, 229, .8);
+  max-width: 900px;
+  margin: 20px auto;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background:
+    linear-gradient(var(--voucher-veil), var(--voucher-veil)),
+    url("galerie/papirek.webp") center / cover;
+  box-shadow: var(--shadow-sm);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  line-height: 1.6;
+  text-align: center;
+}
+
+:root[data-theme="dark"] .voucher-info { --voucher-veil: rgba(43, 23, 14, .9); }
+
+.voucher-info p { margin: 0 0 .8em; }
+.voucher-info p:last-child { margin-bottom: 0; }
+.voucher-info__lead { color: var(--danger); font-size: 1.3em; font-weight: 700; }
+.voucher-info__highlight { color: var(--success); font-size: 1.1em; }

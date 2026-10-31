@@ -304,6 +304,15 @@
     history.replaceState({ ...(history.state || {}), scrollY: window.scrollY }, '', location.href);
   };
 
+  // Skok na kotvu přesune i fokus, jinak by další Tab začal znovu od menu
+  // (odkaz "Přeskočit na obsah", čtečky obrazovky).
+  const focusTarget = (target) => {
+    if (!target.matches('a[href], button, input, select, textarea, [tabindex]')) {
+      target.setAttribute('tabindex', '-1');
+    }
+    target.focus({ preventScroll: true });
+  };
+
   const moveFocus = () => {
     const root = getRoot();
     if (!root) {
@@ -481,6 +490,7 @@
       rememberScroll();
       history.pushState({ path: url.pathname }, '', url.href);
       restoreScroll(url.hash, null);
+      focusTarget(target);
       return;
     }
 

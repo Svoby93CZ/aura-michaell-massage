@@ -5,6 +5,66 @@
  * pohledu routerem (JS/router.js). Globální listenery se proto navazují přes
  * onWindow/onDocument se signálem, aby se při odchodu z pohledu odpojily.
  */
+/**
+ * Modální okna (náhledy obrázků): po otevření jde fokus dovnitř, Tab z okna
+ * neuteče a po zavření se fokus vrátí na prvek, který okno otevřel.
+ * Používá ho lightbox níže i JS/ceremony-lightbox.js.
+ */
+window.AuraModal = (() => {
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
+  let active = null;
+
+  const focusables = (modal) =>
+    Array.from(modal.querySelectorAll(FOCUSABLE)).filter((el) => {
+      const style = getComputedStyle(el);
+      return style.display !== 'none' && style.visibility !== 'hidden' && el.getClientRects().length > 0;
+    });
+
+  const onKeydown = (event) => {
+    if (!active || event.key !== 'Tab') {
+      return;
+    }
+    const items = focusables(active.modal);
+    if (!items.length) {
+      event.preventDefault();
+      return;
+    }
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (!active.modal.contains(document.activeElement)) {
+      event.preventDefault();
+      first.focus();
+    } else if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  return {
+    open(modal, initialFocus) {
+      if (active?.modal !== modal) {
+        active = { modal, returnTo: document.activeElement };
+        document.addEventListener('keydown', onKeydown);
+      }
+      (initialFocus || focusables(modal)[0])?.focus();
+    },
+    close(modal) {
+      if (!active || active.modal !== modal) {
+        return;
+      }
+      const { returnTo } = active;
+      active = null;
+      document.removeEventListener('keydown', onKeydown);
+      if (returnTo && document.contains(returnTo)) {
+        returnTo.focus();
+      }
+    }
+  };
+})();
+
 const initMainView = (signal) => {
   const onWindow = (type, handler, options) =>
     window.addEventListener(type, handler, { ...(options || {}), signal });
@@ -249,6 +309,9 @@ const initMainView = (signal) => {
     };
 
     const closeLightbox = () => {
+      if (!lightbox.classList.contains('show')) {
+        return;
+      }
       lightbox.classList.remove('show');
       lightbox.setAttribute('aria-hidden', 'true');
       lightboxImg.removeAttribute('src');
@@ -257,6 +320,7 @@ const initMainView = (signal) => {
       currentGroupKey = null;
       currentIndex = 0;
       updateNavVisibility();
+      window.AuraModal.close(lightbox);
     };
 
     const openLightbox = (groupKey, index) => {
@@ -271,6 +335,7 @@ const initMainView = (signal) => {
       lightbox.classList.add('show');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      window.AuraModal.open(lightbox, closeBtn);
     };
 
     const showNext = () => {
@@ -319,6 +384,9 @@ const initMainView = (signal) => {
       if (!trigger.hasAttribute('tabindex')) {
         trigger.setAttribute('tabindex', '0');
       }
+      // Obrázek se ovládá jako tlačítko - čtečka to má ohlásit.
+      trigger.setAttribute('role', 'button');
+      trigger.setAttribute('aria-haspopup', 'dialog');
       trigger.classList.add('lightbox-trigger');
     });
 

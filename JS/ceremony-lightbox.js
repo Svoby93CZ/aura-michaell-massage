@@ -84,12 +84,17 @@
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       resetZoom();
+      window.AuraModal?.open(modal, closeBtn);
     };
 
     const closeLightbox = () => {
+      if (modal.getAttribute('aria-hidden') === 'true') {
+        return;
+      }
       modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       resetZoom();
+      window.AuraModal?.close(modal);
     };
 
     const showPrevImage = () => {

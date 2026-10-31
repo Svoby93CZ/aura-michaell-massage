@@ -35,9 +35,24 @@ const initCeremonyCarousel = (carousel, signal) => {
     });
   };
 
+  // Čtečka obrazovky se o posunu karuselu jinak nedozví - ohlásíme
+  // aktuální fotku. Při prvním vykreslení mlčí, ať nevyrušuje.
+  const status = document.createElement('p');
+  status.className = 'visually-hidden';
+  status.setAttribute('aria-live', 'polite');
+  carousel.appendChild(status);
+  carousel.setAttribute('role', 'region');
+  carousel.setAttribute('aria-roledescription', 'karusel');
+
+  const announce = () => {
+    const img = slides[activeIndex].querySelector('img');
+    status.textContent = `Fotografie ${activeIndex + 1} z ${total}${img?.alt ? `: ${img.alt}` : ''}`;
+  };
+
   const goTo = (index) => {
     activeIndex = ((index % total) + total) % total;
     render();
+    announce();
   };
 
   slides.forEach((slide, i) => {
@@ -98,6 +113,11 @@ const initCeremonyCarousel = (carousel, signal) => {
   carousel.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') goTo(activeIndex - 1);
     if (e.key === 'ArrowRight') goTo(activeIndex + 1);
+    // Enter/mezerník na samotném karuselu otevře prostřední fotku jako klik.
+    if (e.target === carousel && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      slides[activeIndex].click();
+    }
   });
 
   render();

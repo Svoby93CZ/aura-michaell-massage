@@ -14,6 +14,8 @@ o open-source projekt — podrobnosti v sekci [Autorská práva](#-autorská-pr�
 - Galerie salonu, ceremonií a dárkových poukazů
 - Moderovaná kniha návštěv — vzkazy se zobrazí až po schválení
 - Plynulé přepínání stránek bez znovunačtení
+- Přístupnost: ovládání z klávesnice, odkaz „Přeskočit na obsah“, viditelný fokus
+  a kontrast textu podle WCAG 2.1 AA (světlý i noční režim)
 - Rezervace termínů přes Reservio
 - Souhlas s cookies a stránka zásad ochrany osobních údajů (GDPR). Google Analytics,
   mapa a recenze se načtou až se souhlasem, fonty jsou uložené přímo na webu
