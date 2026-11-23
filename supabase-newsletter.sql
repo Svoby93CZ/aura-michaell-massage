@@ -19,10 +19,15 @@
 --   select vault.create_secret('1', 'newsletter_brevo_doi_template_id');
 --
 --   - API klíč: Brevo -> SMTP & API -> API Keys (Generate a new API key).
+--     Stačí omezený přístup (Restricted) s oprávněním Contacts: Read/write.
 --   - ID seznamu: číslo seznamu kontaktů, do kterého se odběratelé přidají
 --     (Contacts -> Lists).
---   - ID šablony: číslo šablony potvrzovacího e-mailu (double opt-in).
---     (Templates). Tlačítko v šabloně musí mít jako odkaz {{ doubleoptin }}.
+--   - ID šablony: číslo šablony potvrzovacího e-mailu (Marketing ->
+--     Templates, číslo "#1" pod názvem). Kód šablony je v
+--     emaily/potvrzeni-odberu.html. Brevo ji jako potvrzovací pozná, jen když:
+--       * je aktivní (Active),
+--       * má v pokročilém nastavení štítek (Tag) optin,
+--       * tlačítko v ní má jako odkaz {{ doubleoptin }}.
 --
 -- Dokud nejsou uložené všechny tři údaje, formulář návštěvníkovi oznámí,
 -- že se odběr teprve připravuje.
@@ -36,6 +41,8 @@
 --   201 nebo 204 = v pořádku. 401 = špatný API klíč, nebo Brevo blokuje
 --   požadavky z neznámé IP adresy (Brevo -> Security -> Authorised IPs).
 --   400 = špatné ID seznamu nebo šablony; přesný důvod je v content.
+--   "An active DOI template does not exist" = šablona není aktivní, nemá
+--   štítek optin, nebo je ve Vault jiné ID šablony.
 
 -- pg_net posílá HTTP požadavky na pozadí, až po skončení funkce, takže
 -- formulář kvůli spojení s Brevo nečeká.
@@ -169,3 +176,55 @@ $$;
 -- k odběru neumí a vrací jen chybu nebo nic.
 revoke all on function public.newsletter_subscribe(text) from public;
 grant execute on function public.newsletter_subscribe(text) to anon, authenticated;
+
+-- ============================================
+-- UDRŽENÍ API KLÍČE NAŽIVU
+-- ============================================
+-- Brevo zneplatní API klíč, který se 90 dní nepoužil. Kdyby se tak dlouho
+-- nikdo nepřihlásil, formulář by potichu přestal fungovat. Proto se databáze
+-- dvakrát měsíčně (1. a 15. ve 3:17 UTC) zeptá Brevo na seznam odběratelů.
+-- Nic se tím nemění, jde jen o použití klíče.
+--
+-- Naplánované úlohy jsou v Supabase v Integrations -> Cron, odpovědi Brevo
+-- v net._http_response jako u přihlášení (200 = v pořádku).
+create extension if not exists pg_cron with schema pg_catalog;
+
+create or replace function public.newsletter_brevo_keepalive()
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_api_key text;
+  v_list_id text;
+begin
+  select nullif(btrim(decrypted_secret), '') into v_api_key
+  from vault.decrypted_secrets where name = 'newsletter_brevo_api_key';
+
+  select btrim(decrypted_secret) into v_list_id
+  from vault.decrypted_secrets where name = 'newsletter_brevo_list_id';
+
+  if v_api_key is null or v_list_id is null or v_list_id !~ '^[0-9]+$' then
+    return;
+  end if;
+
+  perform net.http_get(
+    url := 'https://api.brevo.com/v3/contacts/lists/' || v_list_id,
+    headers := jsonb_build_object(
+      'Accept', 'application/json',
+      'api-key', v_api_key
+    )
+  );
+end;
+$$;
+
+-- Jen pro naplánovanou úlohu, ne pro web.
+revoke all on function public.newsletter_brevo_keepalive() from public, anon, authenticated;
+
+-- Úloha se stejným názvem se při opakovaném spuštění souboru jen přepíše.
+select cron.schedule(
+  'newsletter-brevo-keepalive',
+  '17 3 1,15 * *',
+  'select public.newsletter_brevo_keepalive()'
+);
