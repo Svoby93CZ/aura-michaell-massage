@@ -720,6 +720,7 @@ header {
 .btn-3d-premium,
 .welcome-section__cta,
 .guestbook-submit,
+.newsletter__submit,
 .admin-action,
 .map-link,
 .cookie-settings-btn,
@@ -756,6 +757,7 @@ header {
 .welcome-section__cta,
 .btn-3d-premium,
 .guestbook-submit,
+.newsletter__submit,
 .admin-action,
 .map-link {
   background: var(--danger);
@@ -766,6 +768,7 @@ header {
 .welcome-section__cta:focus-visible,
 .btn-3d-premium:hover,
 .guestbook-submit:hover,
+.newsletter__submit:hover,
 .admin-action:hover,
 .map-link:hover,
 .map-link:focus-visible {
@@ -775,6 +778,7 @@ header {
 }
 
 .guestbook-submit:disabled,
+.newsletter__submit:disabled,
 .admin-action:disabled {
   cursor: wait;
   opacity: .6;
@@ -1634,7 +1638,8 @@ header {
   border-color: var(--accent);
 }
 
-.guestbook-consent {
+.guestbook-consent,
+.newsletter__consent {
   display: flex;
   align-items: flex-start;
   gap: 9px;
@@ -1644,13 +1649,15 @@ header {
   line-height: 1.45;
 }
 
-.guestbook-consent input {
+.guestbook-consent input,
+.newsletter__consent input {
   flex: 0 0 auto;
   margin-top: 3px;
   accent-color: var(--accent);
 }
 
 .guestbook-status,
+.newsletter__status,
 .admin-status {
   min-height: 1.3em;
   margin: 5px 0 0;
@@ -1660,8 +1667,10 @@ header {
 }
 
 .guestbook-status[data-state="error"],
+.newsletter__status[data-state="error"],
 .admin-status[data-state="error"] { color: var(--danger); }
 .guestbook-status[data-state="success"],
+.newsletter__status[data-state="success"],
 .admin-status[data-state="success"] { color: var(--success); }
 
 .guestbook-list {
@@ -1732,7 +1741,8 @@ header {
   line-height: 1.6;
 }
 
-.guestbook-honeypot {
+.guestbook-honeypot,
+.newsletter__honeypot {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1908,6 +1918,136 @@ header {
 @media (max-width: 700px) {
   .site-footer__bar { justify-content: center; text-align: center; }
   .site-footer__copy, .site-footer__links { flex-basis: 100%; justify-content: center; }
+}
+
+/* Odběr novinek (newsletter) nad lištou patičky. Tlačítko, souhlas a stavová
+   hláška sdílí styly s knihou návštěv. */
+.newsletter {
+  border-bottom: 1px solid var(--line);
+}
+
+.newsletter__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 1.75rem 1.2rem 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 1rem 3rem;
+  align-items: center;
+}
+
+.newsletter__title {
+  margin: 0 0 .35rem;
+  color: var(--ink);
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.newsletter__text {
+  max-width: 34rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.newsletter__form {
+  display: grid;
+  gap: 8px;
+}
+
+.newsletter__label {
+  color: var(--ink);
+  font-size: .86rem;
+  font-weight: 700;
+}
+
+.newsletter__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.newsletter__row input {
+  flex: 1 1 15rem;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+
+.newsletter__row input::placeholder {
+  color: var(--ink-soft);
+  opacity: .75;
+}
+
+.newsletter__row input:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.newsletter__submit {
+  flex: 0 0 auto;
+}
+
+/* Poděkování po kliknutí na potvrzovací odkaz v e-mailu (vkládá ho
+   JS/newsletter.js). Drží se nahoře pod menu, mimo dosah lišty s cookies. */
+.newsletter-notice {
+  position: fixed;
+  top: calc(var(--nav-h) + 12px);
+  left: 50%;
+  z-index: var(--layer-overlay);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: min(560px, calc(100% - 32px));
+  padding: 14px 14px 14px 18px;
+  transform: translateX(-50%);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--success);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-ui);
+}
+
+.newsletter-notice__text {
+  flex: 1 1 auto;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.newsletter-notice__text strong {
+  color: var(--success);
+}
+
+.newsletter-notice__close {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  margin: -10px -8px -10px 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.newsletter-notice__close:hover {
+  background: var(--accent-tint);
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .newsletter__inner { grid-template-columns: 1fr; padding-top: 1.4rem; }
+  .newsletter__submit { flex-grow: 1; }
 }
 
 /* 10. O mně ------------------------------------------------------------------ */

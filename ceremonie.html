@@ -80,7 +80,7 @@
   </script>
 
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
-  <link rel="stylesheet" href="style.css?v=1b4d1c06" />
+  <link rel="stylesheet" href="style.css?v=a246a351" />
 </head>
 <body class="body_ceremonie">
 <div id="spa-root" data-view="ceremonie">
@@ -248,6 +248,30 @@
 
     <!-- Footer -->
     <footer class="site-footer">
+      <section class="newsletter" id="novinky" aria-labelledby="newsletter-title">
+        <div class="newsletter__inner">
+          <div class="newsletter__intro">
+            <h2 id="newsletter-title" class="newsletter__title">Novinky e-mailem</h2>
+            <p class="newsletter__text">Akce, novinky a dárkové poukazy. Píšu jen občas a odhlásit se můžete kdykoli jedním kliknutím.</p>
+          </div>
+          <form class="newsletter__form" data-newsletter-form>
+            <div class="newsletter__honeypot" aria-hidden="true">
+              <label for="newsletter-website">Web</label>
+              <input id="newsletter-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <label class="newsletter__label" for="newsletter-email">Váš e-mail</label>
+            <div class="newsletter__row">
+              <input id="newsletter-email" name="email" type="email" maxlength="254" required autocomplete="email" placeholder="jmeno@email.cz">
+              <button type="submit" class="newsletter__submit">Odebírat novinky</button>
+            </div>
+            <label class="newsletter__consent">
+              <input name="consent" type="checkbox" required>
+              <span>Souhlasím se zasíláním novinek e-mailem. <a href="privacy-policy.html#newsletter">Jak s e-mailem zacházím</a></span>
+            </label>
+            <p class="newsletter__status" data-newsletter-status role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
       <div class="site-footer__bar">
         <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
         <nav class="site-footer__links" aria-label="Odkazy v patičce">
@@ -331,6 +355,7 @@
   <script src="JS/logo-draw.js?v=9480dca5" defer></script>
   <script src="JS/main.js?v=c66e654b" defer></script>
   <script src="JS/guestbook.js?v=19d539fa" defer></script>
+  <script src="JS/newsletter.js?v=44e40d51" defer></script>
   <script src="JS/3D_hover.js?v=acb24cd7" defer></script>
   <script src="JS/card-3d.js?v=372f0b9b" defer></script>
   <script src="JS/ceremony-carousel.js?v=4df63cbf" defer></script>

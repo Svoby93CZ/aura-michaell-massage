@@ -13,6 +13,8 @@ o open-source projekt — podrobnosti v sekci [Autorská práva](#-autorská-pr�
 - Ceník masáží načítaný z databáze, se statickou zálohou pro případ výpadku
 - Galerie salonu, ceremonií a dárkových poukazů
 - Moderovaná kniha návštěv — vzkazy se zobrazí až po schválení
+- Přihlášení k odběru novinek e-mailem v patičce, s potvrzením odběru
+  e-mailem (double opt-in). Newslettery se píšou a rozesílají v Brevo
 - Plynulé přepínání stránek bez znovunačtení
 - Přístupnost: ovládání z klávesnice, odkaz „Přeskočit na obsah“, viditelný fokus
   a kontrast textu podle WCAG 2.1 AA (světlý i noční režim)
@@ -28,6 +30,9 @@ o open-source projekt — podrobnosti v sekci [Autorská práva](#-autorská-pr�
 - **[Supabase](https://supabase.com)** — databáze a přihlášení do administrace.
   Kdo smí data číst a měnit, hlídají pravidla RLS přímo v databázi.
 - **[Resend](https://resend.com)** — e-mailové upozornění na nový vzkaz
+- **[Brevo](https://www.brevo.com)** — seznam odběratelů a rozesílání newsletteru.
+  Web s Brevo komunikuje jen přes databázi, prohlížeč návštěvníka se k němu
+  nepřipojuje
 - **GitHub Actions** — automatická údržba souborů (viz níže)
 - **Apache** (`.htaccess`) — cache, bezpečnostní hlavičky a Content Security Policy
 
@@ -58,6 +63,7 @@ třetích stran (Analytics, recenze), proto ho tyto stránky při načtení maž
 │   ├── router.js            # Přepínání stránek bez znovunačtení
 │   ├── supabase-config.js   # Napojení na Supabase
 │   ├── guestbook.js         # Kniha návštěv
+│   ├── newsletter.js        # Přihlášení k odběru novinek
 │   ├── katalog.js           # Filtrování katalogu služeb
 │   ├── cookie-consent.js    # Souhlas s cookies
 │   ├── ceremony-carousel.js # Karusel ceremonií
@@ -90,6 +96,7 @@ Schéma je rozdělené do SQL souborů, které se spouštějí v Supabase SQL Ed
 | --- | --- |
 | `supabase-guestbook.sql` | Kniha návštěv a seznam správců |
 | `supabase-guestbook-notify.sql` | E-mailové upozornění na nový vzkaz |
+| `supabase-newsletter.sql` | Přihlášení k odběru novinek přes Brevo |
 | `supabase-services.sql` | Ceník masáží |
 | `supabase-services-seed.sql` | Prvotní naplnění ceníku |
 | `supabase-gallery.sql` | Galerie salonu na hlavní stránce |
