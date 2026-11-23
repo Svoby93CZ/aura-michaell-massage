@@ -58,7 +58,7 @@ třetích stran (Analytics, recenze), proto ho tyto stránky při načtení maž
 ├── admin.html              # Administrace (neveřejná)
 ├── style.css               # Hlavní CSS styly
 ├── supabase-*.sql          # Schéma databáze (viz Databáze)
-├── emaily/                 # E-maily pro Brevo: potvrzení odběru, hlavička, podpis a obrázky
+├── emaily/                 # E-maily pro Brevo: potvrzení odběru, newslettery, hlavička, podpis a obrázky
 ├── JS/                     # JavaScript
 │   ├── main.js              # Hlavní funkcionalita webu
 │   ├── router.js            # Přepínání stránek bez znovunačtení

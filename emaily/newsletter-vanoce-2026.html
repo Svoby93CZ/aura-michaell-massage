@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--
+  Vánoční newsletter 2026: vánoční soutěž a dárkové poukazy.
+
+  Jak ho použít: Brevo -> Campaigns -> Create campaign -> Email. V kroku
+  Content zvolte editor pro vlastní HTML kód (Code your own / Paste your code)
+  a vložte celý tento soubor.
+
+  Doporučený předmět:   Vánoční soutěž a dárkové poukazy pod stromeček
+  Text náhledu:         je už přímo v e-mailu (skrytý blok na začátku <body>),
+                        pole Preview text v Brevo proto nechte prázdné.
+
+  Zástupné znaky Brevo ve dvojitých složených závorkách se nesmí měnit:
+    {{ mirror }}       odkaz na zobrazení e-mailu v prohlížeči
+    {{ unsubscribe }}  odhlášení z odběru (bez něj Brevo kampaň neodešle)
+
+  Obrázky se načítají z webu (emaily/obrazky/vanoce-2026-*.jpg), proto musí
+  být na hostingu dřív, než se kampaň odešle. Každý obrázek má popis (alt)
+  a vše důležité je i v textu, protože obrázky bývají ve výchozím stavu skryté.
+
+  E-mailové programy neumí moderní CSS, proto je rozvržení z tabulek a styly
+  jsou přímo u prvků. Dvousloupcový blok s poukazem se na mobilu sám složí
+  pod sebe i bez @media (podmíněné komentáře [if mso] jsou pro Outlook).
+  Barvy a písma odpovídají potvrzovacímu e-mailu (potvrzeni-odberu.html).
+-->
+<html lang="cs" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <meta name="robots" content="noindex">
+  <title>Vánoční soutěž a dárkové poukazy | Aura Michaell Massage</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <style>
+    a { color: #8c4a22; }
+    @media (max-width: 620px) {
+      .pad { padding-left: 22px !important; padding-right: 22px !important; }
+      .heading { font-size: 30px !important; }
+      .subheading { font-size: 26px !important; }
+      .btn-cell { display: block !important; width: 100% !important; }
+      .col-text { padding-left: 0 !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#f1e6d5; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+
+  <!-- Text náhledu v seznamu e-mailů. Výplň za ním brání, aby program
+       do náhledu přitáhl i začátek viditelného textu. -->
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#f1e6d5; opacity:0;">
+    Vánoční soutěž o tři krásné výhry a dárkové poukazy, kterými darujete chvíli klidu.
+    &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f1e6d5;">
+    <tr>
+      <td align="center" style="padding:16px 12px 32px;">
+        <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;">
+
+          <!-- Odkaz na verzi v prohlížeči (doplní Brevo) -->
+          <tr>
+            <td align="center" style="padding:0 0 18px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:12px; line-height:1.5; color:#5c4838;">
+              <a href="{{ mirror }}" target="_blank" style="color:#5c4838; text-decoration:underline;">Zobrazit e-mail v prohlížeči</a>
+            </td>
+          </tr>
+
+          <!-- Hlavička (stejná jako emaily/hlavicka.html) -->
+          <tr>
+            <td align="center" style="padding:0 0 22px;">
+              <a href="https://auramichaell.cz" target="_blank" style="text-decoration:none;">
+                <img src="https://auramichaell.cz/emaily/obrazky/logo.png" width="72" height="72" alt="" style="display:block; width:72px; height:72px; margin:0 auto 10px; border:0;">
+              </a>
+              <div style="font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:30px; line-height:1.1; color:#3b2a1e;">Aura Michaell</div>
+              <div style="font-family:Raleway, Arial, Helvetica, sans-serif; font-size:12px; letter-spacing:4px; font-weight:bold; color:#8c4a22; padding-top:4px;">MASSAGE</div>
+            </td>
+          </tr>
+
+          <!-- ============ Úvod ============ -->
+          <tr>
+            <td class="pad" style="background-color:#faf2e5; border:1px solid #d3b997; border-radius:14px; padding:38px 44px 34px;">
+              <h1 class="heading" style="margin:0 0 18px; font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:36px; line-height:1.15; font-weight:normal; color:#3b2a1e;">Vánoce se blíží</h1>
+              <p style="margin:0 0 14px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.6; color:#3b2a1e;">Dobrý den,</p>
+              <p style="margin:0; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.6; color:#3b2a1e;">Vánoce se pomalu blíží a s nimi i čas, kdy si každý zaslouží chvíli klidu. Tentokrát pro vás mám dvě vánoční novinky: <strong>soutěž o tři krásné výhry</strong> a <strong>dárkové poukazy</strong>, kterými můžete odpočinek darovat svým blízkým.</p>
+            </td>
+          </tr>
+
+          <tr><td style="height:24px; line-height:24px; font-size:0;">&nbsp;</td></tr>
+
+          <!-- ============ Vánoční soutěž ============ -->
+          <tr>
+            <td style="background-color:#faf2e5; border:1px solid #d3b997; border-radius:14px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding:0; font-size:0; line-height:0;">
+                    <a href="https://instagram.com/aura_michaell_massage" target="_blank" style="text-decoration:none;">
+                      <img src="https://auramichaell.cz/emaily/obrazky/vanoce-2026-soutez.jpg" width="598" alt="Vánoční soutěž: 3 výherci, 3 krásné výhry – dárkový poukaz v hodnotě 1 000 Kč, Šepot doteku a masáž dekoltu, krku a obličeje. Losování proběhne 15. 12. 2026." style="display:block; width:100%; max-width:598px; height:auto; border:0; border-radius:13px 13px 0 0; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#3b2a1e;">
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="pad" style="padding:34px 44px 38px;">
+                    <div style="font-family:Raleway, Arial, Helvetica, sans-serif; font-size:12px; letter-spacing:3px; font-weight:bold; color:#8c4a22; padding-bottom:8px;">VÁNOČNÍ SOUTĚŽ</div>
+                    <h2 class="subheading" style="margin:0 0 16px; font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:30px; line-height:1.2; font-weight:normal; color:#3b2a1e;">Tři výherci, tři krásné výhry</h2>
+                    <p style="margin:0 0 14px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.6; color:#3b2a1e;">Na mých sociálních sítích právě probíhá vánoční soutěž. Vyhrát můžete:</p>
+
+                    <!-- Výhry -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px;">
+                      <tr>
+                        <td valign="top" width="26" style="padding:2px 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#8c4a22;">&#10052;</td>
+                        <td valign="top" style="padding:2px 0 10px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#3b2a1e;"><strong>Dárkový poukaz v&nbsp;hodnotě 1&nbsp;000&nbsp;Kč</strong></td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="26" style="padding:2px 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#8c4a22;">&#10052;</td>
+                        <td valign="top" style="padding:2px 0 10px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#3b2a1e;"><strong>Šepot doteku</strong> – pomalý rituál hlazení a&nbsp;jemného škrábání, který zklidní celou nervovou soustavu</td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="26" style="padding:2px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#8c4a22;">&#10052;</td>
+                        <td valign="top" style="padding:2px 0 0; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#3b2a1e;"><strong>Masáž dekoltu, krku a&nbsp;obličeje</strong></td>
+                      </tr>
+                    </table>
+
+                    <h3 style="margin:0 0 14px; font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:24px; line-height:1.2; font-weight:normal; color:#3b2a1e;">Jak se zapojit?</h3>
+
+                    <!-- Kroky soutěže -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px;">
+                      <tr>
+                        <td valign="top" width="40" style="padding:0 0 12px;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" valign="middle" width="26" height="26" bgcolor="#8c4a22" style="width:26px; height:26px; background-color:#8c4a22; border-radius:50%; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; line-height:26px; color:#fff8f0;">1</td></tr></table>
+                        </td>
+                        <td valign="top" style="padding:2px 0 12px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#3b2a1e;">Sledujte profil Aura Michaell Massage.</td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="40" style="padding:0 0 12px;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" valign="middle" width="26" height="26" bgcolor="#8c4a22" style="width:26px; height:26px; background-color:#8c4a22; border-radius:50%; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; line-height:26px; color:#fff8f0;">2</td></tr></table>
+                        </td>
+                        <td valign="top" style="padding:2px 0 12px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#3b2a1e;">Dejte soutěžnímu příspěvku srdíčko.</td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="40" style="padding:0 0 12px;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" valign="middle" width="26" height="26" bgcolor="#8c4a22" style="width:26px; height:26px; background-color:#8c4a22; border-radius:50%; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; line-height:26px; color:#fff8f0;">3</td></tr></table>
+                        </td>
+                        <td valign="top" style="padding:2px 0 12px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#3b2a1e;">Do komentáře označte někoho, kdo si zaslouží chvíli odpočinku.</td>
+                      </tr>
+                      <tr>
+                        <td valign="top" width="40" style="padding:0;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" valign="middle" width="26" height="26" bgcolor="#8c4a22" style="width:26px; height:26px; background-color:#8c4a22; border-radius:50%; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; line-height:26px; color:#fff8f0;">4</td></tr></table>
+                        </td>
+                        <td valign="top" style="padding:2px 0 0; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#3b2a1e;">Sdílejte soutěžní příspěvek ve svém Stories a&nbsp;označte v&nbsp;něm můj profil.</td>
+                      </tr>
+                    </table>
+
+                    <!-- Datum losování -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 26px;">
+                      <tr>
+                        <td align="center" bgcolor="#f1e6d5" style="background-color:#f1e6d5; border-radius:10px; padding:16px 18px;">
+                          <div style="font-family:Raleway, Arial, Helvetica, sans-serif; font-size:14px; line-height:1.4; color:#5c4838;">Losování proběhne v&nbsp;úterý</div>
+                          <div style="font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:30px; line-height:1.2; color:#3b2a1e;">15. 12. 2026</div>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <p style="margin:0 0 14px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.6; color:#3b2a1e; text-align:center;">Soutěžní příspěvek najdete tady:</p>
+
+                    <!-- Tlačítka Instagram a Facebook: na úzké obrazovce se složí pod sebe -->
+                    <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
+                      <tr>
+                        <td class="btn-cell" align="center" style="padding:0 6px 10px;">
+                          <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td align="center" bgcolor="#8b2e22" style="background-color:#8b2e22; border-radius:999px;">
+                                <a href="https://instagram.com/aura_michaell_massage" target="_blank" style="display:inline-block; padding:14px 30px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; line-height:1.2; color:#fff8f0; text-decoration:none; border-radius:999px;">Instagram</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td class="btn-cell" align="center" style="padding:0 6px 10px;">
+                          <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td align="center" bgcolor="#8b2e22" style="background-color:#8b2e22; border-radius:999px;">
+                                <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" style="display:inline-block; padding:14px 30px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; line-height:1.2; color:#fff8f0; text-decoration:none; border-radius:999px;">Facebook</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr><td style="height:24px; line-height:24px; font-size:0;">&nbsp;</td></tr>
+
+          <!-- ============ Dárkové poukazy ============ -->
+          <tr>
+            <td style="background-color:#faf2e5; border:1px solid #d3b997; border-radius:14px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding:0; font-size:0; line-height:0;">
+                    <a href="https://auramichaell.cz/obchod.html" target="_blank" style="text-decoration:none;">
+                      <img src="https://auramichaell.cz/emaily/obrazky/vanoce-2026-poukazy.jpg" width="598" alt="Vánoční dárkové poukazy: darujte svým blízkým to nejcennější – čas pro sebe, odpočinek a péči. K dispozici v tištěné i elektronické podobě, zakoupíte přímo v salonu." style="display:block; width:100%; max-width:598px; height:auto; border:0; border-radius:13px 13px 0 0; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; color:#3b2a1e;">
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="pad" style="padding:34px 44px 10px;">
+                    <div style="font-family:Raleway, Arial, Helvetica, sans-serif; font-size:12px; letter-spacing:3px; font-weight:bold; color:#8c4a22; padding-bottom:8px;">DÁRKOVÉ POUKAZY</div>
+                    <h2 class="subheading" style="margin:0 0 16px; font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:30px; line-height:1.2; font-weight:normal; color:#3b2a1e;">Darujte chvíli klidu</h2>
+                    <p style="margin:0 0 24px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.6; color:#3b2a1e;">Nechcete spoléhat jen na štěstí? Dárkovým poukazem můžete svým blízkým darovat to nejcennější – čas pro sebe, odpočinek a&nbsp;péči.</p>
+                  </td>
+                </tr>
+
+                <!-- Poukaz vlevo, informace vpravo. Na mobilu pod sebou. -->
+                <tr>
+                  <td class="pad" align="center" style="padding:0 44px 6px; font-size:0; line-height:0; text-align:center;">
+                    <!--[if mso]><table role="presentation" width="510" cellpadding="0" cellspacing="0" border="0"><tr><td width="200" valign="top"><![endif]-->
+                    <div style="display:inline-block; width:100%; max-width:200px; vertical-align:top;">
+                      <img src="https://auramichaell.cz/emaily/obrazky/vanoce-2026-poukaz.jpg" width="200" alt="Dárkový poukaz Aura Michaell Massage se zimní krajinou a básničkou Pod stromečkem dárek máš." style="display:block; width:100%; max-width:200px; height:auto; margin:0 auto 20px; border:0; border-radius:8px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:14px; line-height:1.5; color:#3b2a1e;">
+                    </div>
+                    <!--[if mso]></td><td width="310" valign="top"><![endif]-->
+                    <div style="display:inline-block; width:100%; max-width:310px; vertical-align:top;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td class="col-text" style="padding:0 0 20px 22px; text-align:left;">
+                            <div style="font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:22px; line-height:1.2; color:#3b2a1e; padding-bottom:4px;">Tištěný poukaz</div>
+                            <div style="font-family:Raleway, Arial, Helvetica, sans-serif; font-size:15px; line-height:1.55; color:#3b2a1e; padding-bottom:16px;">Zakoupíte přímo v&nbsp;salonu, připravený k&nbsp;předání pod stromeček.</div>
+                            <div style="font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:22px; line-height:1.2; color:#3b2a1e; padding-bottom:4px;">Elektronický poukaz</div>
+                            <div style="font-family:Raleway, Arial, Helvetica, sans-serif; font-size:15px; line-height:1.55; color:#3b2a1e;">V&nbsp;<strong>libovolné hodnotě</strong>. Stačí se domluvit telefonicky nebo v&nbsp;salonu. Platební údaje vám pošlu SMS a&nbsp;po zaplacení přijde poukaz v&nbsp;PDF na e-mail.</div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <!--[if mso]></td></tr></table><![endif]-->
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="pad" align="center" style="padding:6px 44px 38px;">
+                    <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 14px;">
+                      <tr>
+                        <td align="center" bgcolor="#8b2e22" style="background-color:#8b2e22; border-radius:999px;">
+                          <a href="tel:+420727836338" style="display:inline-block; padding:15px 32px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; line-height:1.2; color:#fff8f0; text-decoration:none; border-radius:999px;">Zavolat a domluvit poukaz</a>
+                        </td>
+                      </tr>
+                    </table>
+                    <div style="font-family:Raleway, Arial, Helvetica, sans-serif; font-size:14px; line-height:1.6; color:#5c4838;">
+                      +420&nbsp;727&nbsp;836&nbsp;338 · <a href="https://auramichaell.cz/obchod.html" target="_blank" style="color:#8c4a22; text-decoration:underline;">poukazy na webu</a>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr><td style="height:24px; line-height:24px; font-size:0;">&nbsp;</td></tr>
+
+          <!-- ============ Rozloučení a podpis ============ -->
+          <tr>
+            <td class="pad" style="background-color:#faf2e5; border:1px solid #d3b997; border-radius:14px; padding:34px 44px 38px;">
+              <p style="margin:0 0 22px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.6; color:#3b2a1e;">Ať už se zapojíte do soutěže, nebo někoho obdarujete poukazem, děkuji, že jste se mnou. Přeji vám klidný advent a&nbsp;Vánoce plné pohody.</p>
+              <p style="margin:0 0 18px; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.6; color:#3b2a1e;">Krásné svátky přeje</p>
+
+              <!-- Podpis (stejný jako emaily/podpis.html) -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="middle" style="padding:0 18px 0 0;">
+                    <img src="https://auramichaell.cz/emaily/obrazky/michaela.png" width="88" height="88" alt="Michaela Svobodová" style="display:block; width:88px; height:88px; border:0; border-radius:50%;">
+                  </td>
+                  <td valign="middle" style="padding:2px 0 2px 16px; border-left:3px solid #8c4a22; font-family:Arial, Helvetica, sans-serif;">
+                    <div style="font-size:18px; font-weight:bold; line-height:1.3; color:#3b2a1e;">Michaela Svobodová</div>
+                    <div style="padding:2px 0 8px; font-size:14px; line-height:1.4; color:#5c4838;">Chvíle klidu pro tělo i duši.</div>
+                    <div style="font-size:14px; line-height:1.5;"><a href="mailto:aura.michaell@seznam.cz" style="color:#8c4a22; text-decoration:none;">aura.michaell@seznam.cz</a></div>
+                    <div style="font-size:14px; line-height:1.5;"><a href="tel:+420727836338" style="color:#8c4a22; text-decoration:none;">+420&nbsp;727&nbsp;836&nbsp;338</a></div>
+                    <div style="padding-top:6px; font-size:14px; font-weight:bold; line-height:1.5;"><a href="https://auramichaell.cz" target="_blank" style="color:#8c4a22; text-decoration:none;">Aura Michaell Massage</a></div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ============ Patička ============ -->
+          <tr>
+            <td align="center" style="padding:26px 8px 0; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:13px; line-height:1.6; color:#5c4838;">
+              <a href="https://aura-michaell-massage.reservio.com" target="_blank" style="color:#8c4a22; text-decoration:none; font-weight:bold;">Rezervace</a>
+              &nbsp;·&nbsp;
+              <a href="https://instagram.com/aura_michaell_massage" target="_blank" style="color:#8c4a22; text-decoration:none; font-weight:bold;">Instagram</a>
+              &nbsp;·&nbsp;
+              <a href="https://www.facebook.com/share/14E6Ab1e1UW/" target="_blank" style="color:#8c4a22; text-decoration:none; font-weight:bold;">Facebook</a>
+              &nbsp;·&nbsp;
+              <a href="https://auramichaell.cz" target="_blank" style="color:#8c4a22; text-decoration:none; font-weight:bold;">auramichaell.cz</a>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:14px 8px 0; font-family:Raleway, Arial, Helvetica, sans-serif; font-size:12px; line-height:1.6; color:#5c4838;">
+              Aura Michaell Massage · Šmilovského 663/1, 792 01 Bruntál<br>
+              Tento e-mail dostáváte, protože jste se přihlásili k&nbsp;odběru novinek na auramichaell.cz.<br>
+              Pokud už o&nbsp;novinky nestojíte, můžete se kdykoli <a href="{{ unsubscribe }}" target="_blank" style="color:#8c4a22; text-decoration:underline;">odhlásit</a>.
+            </td>
+          </tr>
+
+        </table>
+        <!--[if mso]></td></tr></table><![endif]-->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
