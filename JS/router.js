@@ -284,14 +284,63 @@
     requestAnimationFrame(() => attempt(12));
   };
 
+  // Plynulý posun míří tam, kde cíl byl na začátku. Obrázky načítané cestou
+  // (loading="lazy") ale stránku prodlouží a cíl odsunou níž, takže by posun
+  // u vzdálené kotvy (třeba formulář v patičce) skončil před ní. Po doběhnutí
+  // se proto cíl dorovná - nejvýš párkrát a jen dokud nezačne posouvat
+  // návštěvník sám.
+  const scrollToTarget = (target) => {
+    const behavior = prefersReducedMotion() ? 'auto' : 'smooth';
+    target.scrollIntoView({ behavior, block: 'start' });
+
+    let cancelled = false;
+    const userEvents = ['wheel', 'touchstart', 'keydown', 'pointerdown'];
+    const stop = () => {
+      cancelled = true;
+      userEvents.forEach((type) => window.removeEventListener(type, stop));
+    };
+    userEvents.forEach((type) => window.addEventListener(type, stop, { passive: true }));
+
+    // Kde má cíl po posunu skončit: odsazení kvůli navigaci (scroll-padding
+    // na <html>) plus případný vlastní scroll-margin cíle.
+    const margin =
+      (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) +
+      (parseFloat(getComputedStyle(target).scrollMarginTop) || 0);
+    let lastY = -1;
+    let corrections = 0;
+    let checks = 0;
+
+    const check = () => {
+      if (cancelled || !target.isConnected || checks++ > 60) {
+        stop();
+        return;
+      }
+      // Posun ještě běží - počkat, až se zastaví.
+      if (window.scrollY !== lastY) {
+        lastY = window.scrollY;
+        window.setTimeout(check, 100);
+        return;
+      }
+      const offset = target.getBoundingClientRect().top - margin;
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (Math.abs(offset) <= 4 || (offset > 0 && atBottom) || corrections >= 4) {
+        stop();
+        return;
+      }
+      corrections += 1;
+      target.scrollIntoView({ behavior, block: 'start' });
+      lastY = -1;
+      window.setTimeout(check, 100);
+    };
+    window.setTimeout(check, 100);
+  };
+
   const restoreScroll = (hash, savedPosition) => {
     if (hash) {
       const target = document.getElementById(hash.slice(1));
       if (target) {
-        target.scrollIntoView({
-          behavior: prefersReducedMotion() ? 'auto' : 'smooth',
-          block: 'start'
-        });
+        scrollToTarget(target);
         return;
       }
     }
