@@ -132,7 +132,7 @@
   --shadow-md: 0 10px 26px rgba(59,42,23,.16);
   --shadow-lg: 0 20px 46px rgba(59,42,23,.20);
 
-  --nav-h: 76px;
+  --nav-h: 60px;
   --container-max: 1180px;
 
   --layer-ground: 0;
@@ -404,8 +404,8 @@ header {
 }
 
 .primary-nav__brand img {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid var(--gold);
   background: var(--surface);
@@ -452,7 +452,7 @@ header {
 .primary-nav__link {
   display: inline-flex;
   align-items: center;
-  padding: 10px 16px;
+  padding: 8px 16px;
   border-radius: var(--radius-pill);
   font-family: var(--font-ui);
   font-weight: 600;
