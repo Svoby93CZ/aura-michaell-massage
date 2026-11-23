@@ -68,7 +68,7 @@
     });
   </script>
 
-  <link rel="stylesheet" href="style.css?v=1b4d1c06">
+  <link rel="stylesheet" href="style.css?v=a246a351">
   <link rel="icon" type="image/webp" href="galerie/logo.webp" />
 </head>
 <body class="page-privacy">
@@ -131,7 +131,7 @@
         a jaká máte práva. Web slouží jako prezentace služeb Aura Michaell Massage. Bez vašeho souhlasu
         nepoužívá žádné cookies a nenačítá obsah třetích stran.
       </p>
-      <p class="privacy-policy__meta">Platné od 31. 10. 2026.</p>
+      <p class="privacy-policy__meta">Platné od 23. 11. 2026.</p>
     </section>
 
     <section class="section">
@@ -174,6 +174,42 @@
         kolik vzkazů z jedné adresy přišlo. Záznam se automaticky maže nejpozději po 2 dnech, není propojený
         s obsahem vzkazu a nikde se nezobrazuje. Právním základem je náš oprávněný zájem na ochraně webu
         před zneužitím (čl. 6 odst. 1 písm. f) GDPR).
+      </p>
+    </section>
+
+    <section class="section" id="newsletter">
+      <h2>Novinky e-mailem (newsletter)</h2>
+      <p>
+        Když se v patičce webu přihlásíte k odběru novinek, zpracováváme vaši e-mailovou adresu a to, kdy
+        jste se přihlásili a kdy jste odběr potvrdili. Odběr začne, až kliknete na odkaz v potvrzovacím
+        e-mailu. Bez potvrzení vám žádné další e-maily neposíláme.
+      </p>
+      <ul>
+        <li>
+          <strong>Účel:</strong> občasné zasílání novinek, akcí a nabídek Aura Michaell Massage.
+        </li>
+        <li>
+          <strong>Právní základ:</strong> váš souhlas (čl. 6 odst. 1 písm. a) GDPR). Odvolat ho můžete kdykoli
+          odkazem na odhlášení, který je v každém e-mailu, nebo zprávou na
+          <a href="mailto:aura.michaell@seznam.cz">aura.michaell@seznam.cz</a>.
+        </li>
+        <li>
+          <strong>Jak dlouho:</strong> do odhlášení. Potom si adresu ponecháme jen v seznamu odhlášených, aby vám
+          omylem nepřišel další e-mail. Na požádání ji smažeme úplně.
+        </li>
+        <li>
+          <strong>Kdo e-maily rozesílá:</strong> služba Brevo (Sendinblue SAS, Francie), která údaje zpracovává
+          v EU a používá je jen k rozesílání našich e-mailů.
+        </li>
+        <li>
+          <strong>Statistika:</strong> Brevo zaznamenává, jestli jste e-mail otevřeli a na které odkazy v něm jste
+          klikli. Podle toho poznáme, co čtenáře zajímá. K jinému účelu se tyto údaje nepoužívají.
+        </li>
+      </ul>
+      <p>
+        Adresa z formuláře putuje do Brevo přes databázi webu (Supabase), kde se neukládá. Kvůli ochraně
+        formuláře před zneužitím se při přihlášení na 2 dny uloží IP adresa, stejně jako u knihy návštěv
+        (oprávněný zájem, čl. 6 odst. 1 písm. f) GDPR).
       </p>
     </section>
 
@@ -268,6 +304,30 @@
   </main>
 
   <footer class="site-footer">
+    <section class="newsletter" id="novinky" aria-labelledby="newsletter-title">
+      <div class="newsletter__inner">
+        <div class="newsletter__intro">
+          <h2 id="newsletter-title" class="newsletter__title">Novinky e-mailem</h2>
+          <p class="newsletter__text">Akce, novinky a dárkové poukazy. Píšu jen občas a odhlásit se můžete kdykoli jedním kliknutím.</p>
+        </div>
+        <form class="newsletter__form" data-newsletter-form>
+          <div class="newsletter__honeypot" aria-hidden="true">
+            <label for="newsletter-website">Web</label>
+            <input id="newsletter-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <label class="newsletter__label" for="newsletter-email">Váš e-mail</label>
+          <div class="newsletter__row">
+            <input id="newsletter-email" name="email" type="email" maxlength="254" required autocomplete="email" placeholder="jmeno@email.cz">
+            <button type="submit" class="newsletter__submit">Odebírat novinky</button>
+          </div>
+          <label class="newsletter__consent">
+            <input name="consent" type="checkbox" required>
+            <span>Souhlasím se zasíláním novinek e-mailem. <a href="privacy-policy.html#newsletter">Jak s e-mailem zacházím</a></span>
+          </label>
+          <p class="newsletter__status" data-newsletter-status role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
     <div class="site-footer__bar">
       <div class="site-footer__copy">© 2026 Aura Michaell Massage. Všechna práva vyhrazena.</div>
       <nav class="site-footer__links" aria-label="Odkazy v patičce">
@@ -294,6 +354,7 @@
   <script src="JS/logo-draw.js?v=9480dca5" defer></script>
   <script src="JS/main.js?v=c66e654b" defer></script>
   <script src="JS/guestbook.js?v=19d539fa" defer></script>
+  <script src="JS/newsletter.js?v=44e40d51" defer></script>
   <script src="JS/3D_hover.js?v=acb24cd7" defer></script>
   <script src="JS/card-3d.js?v=372f0b9b" defer></script>
   <script src="JS/ceremony-carousel.js?v=4df63cbf" defer></script>
