@@ -18,11 +18,11 @@
 --   select vault.create_secret('2', 'newsletter_brevo_list_id');
 --   select vault.create_secret('1', 'newsletter_brevo_doi_template_id');
 --
---   - API klíč: Brevo -> Nastavení -> SMTP a API -> API klíče.
+--   - API klíč: Brevo -> SMTP & API -> API Keys (Generate a new API key).
 --   - ID seznamu: číslo seznamu kontaktů, do kterého se odběratelé přidají
---     (Kontakty -> Seznamy).
+--     (Contacts -> Lists).
 --   - ID šablony: číslo šablony potvrzovacího e-mailu (double opt-in).
---     Tlačítko v šabloně musí mít jako odkaz {{ doubleoptin }}.
+--     (Templates). Tlačítko v šabloně musí mít jako odkaz {{ doubleoptin }}.
 --
 -- Dokud nejsou uložené všechny tři údaje, formulář návštěvníkovi oznámí,
 -- že se odběr teprve připravuje.
@@ -34,7 +34,7 @@
 --   from net._http_response order by created desc limit 5;
 --
 --   201 nebo 204 = v pořádku. 401 = špatný API klíč, nebo Brevo blokuje
---   požadavky z neznámé IP adresy (Brevo -> Zabezpečení -> Autorizované IP).
+--   požadavky z neznámé IP adresy (Brevo -> Security -> Authorised IPs).
 --   400 = špatné ID seznamu nebo šablony; přesný důvod je v content.
 
 -- pg_net posílá HTTP požadavky na pozadí, až po skončení funkce, takže
